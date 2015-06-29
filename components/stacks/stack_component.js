@@ -1,7 +1,7 @@
 import { Component } from "../../core/bane";
 import StackActions from "./stack_actions";
 import StackState from "./stack_state";
-import assign from "../../node_modules/lodash/object/assign";
+import assign from "lodash/object/assign";
 
 // # Stack
 // Renders stack widgets

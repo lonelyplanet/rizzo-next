@@ -1,4 +1,4 @@
-import assign from "../../node_modules/lodash/object/assign";
+import assign from "lodash/object/assign";
 import { Arkham } from "../../core/bane";
 import Events from "../../core/mixins/events";
 
