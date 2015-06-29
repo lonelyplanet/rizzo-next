@@ -1,0 +1,39 @@
+@import "buttons_mixins";
+
+.button {
+  @include button();
+}
+
+//.button {
+//  border: 0;
+//  background-color: $button-background;
+//  color: #FFF;
+//  display: inline-block;
+//  text-transform: uppercase;
+//  font: {
+//    weight: $semibold;
+//    size: 13px;
+//  }
+//  padding: 11px 22px;
+//  border-radius: 29px;
+//  cursor: pointer;
+//  transition: background-color 0.2s ease-in;
+//
+//  &:hover {
+//    background-color: $button-hover-background;
+//  }
+//}
+//
+//.button--wide{
+//  padding: 11px 42px;
+//}
+//
+//.button--inverted {
+//  background-color: transparent;
+//  color: $button-background;
+//  padding: 0;
+//
+//  &:hover {
+//    background-color: transparent;
+//  }
+//}

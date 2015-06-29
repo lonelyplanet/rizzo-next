@@ -1,0 +1,29 @@
+html {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  font-size: 62.5%;
+
+  &.no-scroll {
+    overflow: hidden;
+  }
+}
+
+body {
+  position: relative;
+
+  line-height: $line-height;
+  font-family: $sans-serif;
+  font-size: $base-size;
+  color: $font-color;
+
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+.segment {
+  @include segment();
+}
+
+.container {
+  @include container();
+}

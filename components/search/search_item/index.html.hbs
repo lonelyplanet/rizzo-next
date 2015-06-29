@@ -1,0 +1,9 @@
+<a class="search-item__link" href="{{slug}}">
+  {{#if image}}
+  <div class="search-item__image" style="background-image: url( {{ image }} );" aria-label="icon {{type}}"></div>
+  {{else}}
+  <div class="search-item__image search-item__image--{{type}}" aria-label="icon {{type}}"></div>
+  {{/if}}
+
+  <div class="search-item__name">{{name}}</div>
+</a>

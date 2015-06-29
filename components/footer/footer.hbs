@@ -1,0 +1,84 @@
+<section class="footer">
+  <div class="footer-wrapper">
+    <section class="footer__main">
+      <input type="checkbox" class="footer__main__checkbox" id="destinations_checked">
+      <div class="footer__main__links footer__main__links--destinations">
+        <p class="footer__main__links__header">
+          <a href="http://www.lonelyplanet.com/destinations">destinations</a>
+          <label for="destinations_checked" class="accordion-target"><span class="icon--chevron-down"></span></label>
+        </p>
+        <ul class="footer__main__links__list">
+          {{#each footer_nav_destination_items}}
+            <li class="footer__main__links__list__item">
+              <a href="{{url}}">{{title}}</a>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+      <input type="checkbox" class="footer__main__checkbox" id="shop_checked">
+      <div class="footer__main__links footer__main__links--shop">
+        <p class="footer__main__links__header">
+          <a href="http://www.lonelyplanet.com/shop">shop</a>
+          <label for="shop_checked" class="accordion-target"><span class="icon--chevron-down"></span></label>
+        </p>
+        <ul class="footer__main__links__list">
+          {{#each footer_nav_shop_items}}
+            <li class="footer__main__links__list__item">
+              <a href="{{url}}">{{title}}</a>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+      <input type="checkbox" class="footer__main__checkbox" id="forum_checked">
+      <div class="footer__main__links footer__main__links--forum">
+        <p class="footer__main__links__header">
+          <a href="http://www.lonelyplanet.com/thorntree">forum</a>
+          <label for="forum_checked" class="accordion-target"><span class="icon--chevron-down"></span></label>
+        </p>
+        <ul class="footer__main__links__list">
+          {{#each footer_nav_forum_items}}
+            <li class="footer__main__links__list__item">
+              <a href="{{url}}">{{title}}</a>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+    </section>
+    <section class="footer__bottom">
+      <div class="footer__bottom__middle">
+        <div class="footer__bottom__middle__logo">
+          <a class="footer-logo icon--lp-logo icon--footer-logo" href="http://www.lonelyplanet.com" title="Return to homepage"></a>
+        </div>
+
+        <nav class="footer__bottom__middle__links">
+          <ul>
+            {{#each footer_bottom_links}}
+              <li class="footer__bottom__middle__links__li">
+                <a class="footer__bottom__middle__links__li__link" href="{{url}}">{{title}}</a>
+            {{/each}}
+          </ul>
+        </nav>
+      </div>
+      <div class="footer__bottom__logo">
+        <a class="footer-logo icon--lp-logo icon--footer-logo" href="http://www.lonelyplanet.com" title="Return to homepage"></a>
+      </div>
+      {{#with footer_social_media_links}}
+        <div class="footer__bottom__social-media">
+          <a href="{{facebook}}" class="footer__bottom__social-media__link">
+            <span class="icon--facebook icon--social-media"></span>
+          </a>
+          <a href="{{twitter}}" class="footer__bottom__social-media__link">
+            <span class="icon--twitter icon--social-media"></span>
+          </a>
+          <a href="{{pinterest}}" class="footer__bottom__social-media__link">
+            <span class="icon--pinterest icon--social-media"></span>
+          </a>
+        </div>
+      {{/with}}
+    </section>
+
+    <div class="footer__copyright">
+      <p>&copy; 2015 Lonely Planet. All rights reserved. No part of this site may be reproduced without our written permission.</p>
+    </div>
+  </div>
+</section>

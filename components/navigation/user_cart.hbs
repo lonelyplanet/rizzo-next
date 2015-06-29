@@ -1,0 +1,23 @@
+<div class="user-cart">
+  <div class="user-cart--wrap">
+    <h1 class="user-cart__title">{{title}}</h1>
+    <ul class="user-cart__items">
+    {{#each items}}
+      <li class="user-cart__item">
+        <img class="user-cart__item__image" src="{{image}}" alt="{{alt}}"/>
+        <div class="user-cart__item__name">
+          {{name}}
+          <span class="user-cart__item__price">
+            {{price}}
+          </span>
+        </div>
+      </li>
+    {{else}}
+      <li>(0 items)</li>
+    {{/each}}
+    </ul>
+  </div>
+  <a class="user-cart__action" href="{{action}}">
+    {{actiontitle}}
+  </a>
+</div>

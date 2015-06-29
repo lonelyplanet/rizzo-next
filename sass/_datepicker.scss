@@ -1,0 +1,235 @@
+$pickerWidth: 320px;
+
+.picker__holder {
+  @include z-layer(modal);
+  width: 100%;
+  height: 0;
+  position: relative;
+  clear: both;
+}
+
+.picker__frame {
+  @extend %transition--slower;
+  @extend %rounded-corners;
+  top: 0;
+  left: 0;
+  background: white;
+  position: relative;
+  max-width: $pickerWidth;
+  min-width: 256px;
+  max-height: 0;
+  overflow-y: hidden;
+  .picker--opened & {
+    max-height: 25em;
+    @extend %fly-out-shadow;
+  }
+}
+
+.picker__box {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid $subduedgray;
+}
+
+.picker__month--wrap,
+.picker__year--wrap {
+  @extend %inline-block;
+}
+
+.picker__month--wrap {
+  margin-right: 4px;
+}
+
+.picker__month {
+  margin-right: 10px;
+}
+
+.picker__month,
+.picker__year {
+  font-size: 20px;
+  display: inline-block;
+  font-weight: bold;
+  color: $darkgray;
+}
+
+.picker__header {
+  position: relative;
+  padding: 8px 0 10px;
+}
+
+.picker__nav--prev,
+.picker__nav--next {
+  position: absolute;
+  background-size: cover;
+  top: 8px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  background-size: cover;
+  .no-background-size & {
+    background: none;
+  }
+  .no-background-size &:after,
+  .no-js &:after {
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 0.5;
+  }
+}
+
+.picker__nav--prev {
+  @extend %left-icon;
+  left: 10px;
+  .no-background-size &:after,
+  .no-js &:after {
+    content: "\2039";
+  }
+}
+
+.picker__nav--next {
+  @extend %right-icon;
+  right: 10px;
+  .no-background-size &:after,
+  .no-js &:after {
+    content: "\203a";
+  }
+}
+
+.picker__nav--disabled {
+  background: none;
+  cursor: auto;
+  .no-background-size &:after,
+  .no-js &:after {
+    content: initial;
+  }
+}
+
+.picker__table {
+  border-collapse: separate;
+  border-spacing: 4px;
+  width: 100%;
+}
+
+.picker__weekday {
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+.picker__day {
+  font-size: 13px;
+  @extend %inline-block;
+  border-radius: 30px;
+  font-weight: bold;
+  width: 26px;
+  height: 26px;
+  line-height: 2.2;
+  text-align: center;
+  border: 1px solid #d7dee3;
+  cursor: pointer;
+  color: $darkgray;
+}
+
+.picker__day--selected,
+.picker__day--selected:hover {
+  border-color: $active;
+  background-color: $active;
+  color: white;
+}
+
+.picker__day--outfocus,
+.picker__day--disabled {
+  border: none;
+  opacity: 0.25;
+}
+
+.picker__day--disabled {
+  opacity: 0.5;
+  color: #dddddd;
+  cursor: default;
+}
+
+.picker__footer {
+  margin-top: 10px;
+  display: none;
+}
+
+.picker__button--clear {
+  display: none;
+}
+
+.picker__button--today {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 95%;
+  margin: 0 auto;
+}
+
+// -----------------------------------------------------------------------------
+// Datepickers with an arrow above (icon classes to be defined in JS)
+// -----------------------------------------------------------------------------
+
+.picker__holder[class*="arrow-up"] {
+  .picker--opened & {
+    @include css-arrow-central(top, $size: 30px);
+    &:after {
+      position: absolute;
+      top: -11px;
+    }
+  }
+  .picker__frame {
+    top: 10px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Centered datepicker
+//
+// Class to be defined in JS
+// -----------------------------------------------------------------------------
+
+.picker--centered {
+  .picker__frame {
+    left: 50%;
+    margin-left: -#{$pickerWidth / 2};
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Blue theme for the datepicker
+//
+// This class should be added in the js when the datepicker is created
+//
+// $input_datepicker.pickadate({
+//   klass: {
+//     picker: "picker picker__theme-blue",
+//     navPrev: 'picker__nav--prev icon--white',
+//     navNext: 'picker__nav--next icon--white'
+//   }
+// });
+//
+// -----------------------------------------------------------------------------
+
+.picker__theme-blue {
+  .picker__frame {
+    transition: none;
+    color: white;
+    background: $linkblue;
+  }
+  .picker__box,
+  .picker__day--selected {
+    border: none;
+  }
+  .picker__day--selected {
+    &, &:hover {
+      background: white;
+      color: $linkblue;
+    }
+  }
+  .picker__day--infocus {
+    border-color: rgba(255, 255, 255, 0.25);
+  }
+  .picker__footer {
+    display: block;
+  }
+}

@@ -1,0 +1,246 @@
+@import "rizzo-next/sass/webpack_deps";
+$navigation-sub-height: 9rem;
+$navigation-sub-height-mobile: $header-height-mobile;
+
+@keyframes fly-in-sub-nav {
+  0% {
+    width: 150%;
+    opacity: 0;
+    transform: translate(-25rem);
+  }
+
+  100% {
+    width: 150%;
+    opacity: 1;
+    transform: translate(0rem);
+  }
+}
+
+.city-nav {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  font-size: 0;
+
+  &:after {
+    display: block;
+    max-width: $max-width;
+    margin: 0 ($gutter / 2);
+    border-bottom: .1rem solid #e4e4e4;
+    content: "";
+
+    @media (min-width: $min-480) {
+      margin: 0 ($gutter);
+    }
+  }
+
+  @media (min-width: $min-720) {
+    @include container();
+
+    &:after {
+      margin: 0;
+    }
+  }
+
+  &__container {
+    height: $navigation-sub-height-mobile;
+    margin: 0;
+    overflow: hidden;
+
+    &:before,
+    &:after {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      display: block;
+      width: $gutter / 2;
+      background: linear-gradient(to right, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
+      content: "";
+    }
+
+    &:after {
+      right: 0;
+      left: auto;
+      background: linear-gradient(to left, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
+    }
+
+    @media (min-width: $min-720) {
+      height: $navigation-sub-height;
+    }
+  }
+
+  &__list {
+    width: 100%;
+    height: $navigation-sub-height-mobile + 2rem;
+    margin: 0;
+    padding: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    //opacity: 0;
+    //transform: translate(-15rem);
+    transition: opacity $animation-speed;
+    animation: fly-in-sub-nav $animation-speed-ui;
+    text-align: left;
+    white-space: nowrap;
+
+    @media (min-width: $min-480) {
+      animation: none;
+      text-align: center;
+    }
+
+    @media (min-width: $min-720) {
+      height: $navigation-sub-height + 2rem;
+    }
+  }
+
+  &__item {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    line-height: $navigation-sub-height-mobile;
+    list-style: none;
+
+    @media (min-width: $min-720) {
+      line-height: $navigation-sub-height;
+    }
+
+    &--active,
+    a:hover {
+      color: #287bbb;
+    }
+  }
+
+  &__link {
+    display: block;
+    padding: 0 $gutter / 2;
+    font-size: 1.4rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: $font-color;
+
+    @media (min-width: $min-720) {
+      font-size: 1.6rem;
+      font-weight: 600;
+    }
+  }
+
+  //&__item:first-child &__link {
+  //  padding-left: $gutter / 4;
+  //}
+  //
+  //&__item:last-child &__link {
+  //  padding-right: $gutter / 4;
+  //}
+
+  @media (min-width: $min-480) {
+    &__item:first-child &__link {
+      padding-left: $gutter;
+    }
+
+    &__item:last-child &__link {
+      padding-right: $gutter;
+    }
+  }
+}
+
+
+/*
+$wide-breakpoint: 1000;
+
+.city_nav {
+  width: 92%;
+  margin: 0 auto;
+  padding-top: 40px;
+  text-align: center;
+
+  @include divider;
+}
+
+.city_nav__item {
+  display: inline-block;
+  margin: 0 12px;
+  padding-bottom: 40px;
+}
+
+.city_nav__item__link {
+  font-weight: bold;
+  text-transform: uppercase;
+  color: $sub-navigation-color;
+}
+
+.icon--chevron-down {
+  width: 12px;
+  height: 12px;
+  cursor: pointer;
+}
+
+.city_nav__item--more{
+  position: relative;
+}
+
+.city_nav__item--more:hover .city_nav__submenu {
+  opacity: 1;
+}
+
+.city_nav__icon {
+  display: inline-block;
+}
+
+.city_nav__submenu {
+  position: absolute;
+  top: 35px;
+  right: -57px;
+  width: 185px;
+  border-radius: 4px;
+  background: #fff;
+  opacity: 0;
+  box-shadow: 0 3px 50px 0 rgba(44,54,67,.25);
+
+  &:before{
+    position: absolute;
+    top: -7px;
+    left: 50%;
+    display: block;
+    width: 0;
+    height: 0;
+    margin-left: -4px;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #fff;
+    border-left: 8px solid transparent;
+    content: "";
+  }
+}
+
+.city_nav__submenu__item {
+  position: relative;
+  list-style-type: none;
+  transition: background-color .2s;
+  text-align: left;
+  text-transform: none;
+
+  &:last-child {
+    .city_nav__submenu__link {
+      border-bottom: 0 none;
+    }
+  }
+
+  &:hover {
+    background-color: $hover-submenu-background;
+  }
+}
+
+.city_nav__submenu__link{
+  display: block;
+  margin: 0 30px;
+  padding: 7px 0;
+  border-bottom: 1px solid $sub-nav-border-color;
+  font: {
+    weight: $medium;
+    size: 18px;
+  }
+  text-decoration: none;
+  text-transform: capitalize;
+  color: $sub-navigation-color;
+}
+*/

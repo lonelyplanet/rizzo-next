@@ -1,0 +1,192 @@
+@import "rizzo-next/sass/webpack_deps";
+$small-breakpoint: 600;
+$mobile-breakpoint: 717;
+$tablet-breakpoint: 1025;
+$fad-gutter: 20px;
+$fad-color: #b2b4b8;
+
+.food-and-drink {
+  position: relative;
+
+  font-weight: $medium;
+  color: $fad-color;
+
+  &__heading {
+    @include h1();
+  }
+
+  &__image {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    z-index: -1;
+    display: none;
+    height: 100%;
+    background: url(https://assets.staticlp.com/destinations-next/images/food-and-drink-default@1x.jpg) right center no-repeat;
+    background-size: contain;
+    transform: translateY(-50%);
+
+    @include respond-to($small-breakpoint) {
+      right: calc( 50% + #{$fad-gutter} );
+      display: block;
+    }
+
+    @include respond-to($tablet-breakpoint) {
+      display: block;
+      right: calc( 66% + #{$fad-gutter * 3} );
+      left: auto;
+      width: 515px;
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (min--moz-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+      background-image: url(https://assets.staticlp.com/destinations-next/images/food-and-drink-default@2x.jpg);
+    }
+  }
+
+  &__title {
+    text-align: center;
+
+    @include respond-to($mobile-breakpoint) {
+      margin-bottom: 86px;
+    }
+
+    &:after {
+      @include bottom-heading-border();
+    }
+  }
+
+  &__inner {
+    @include clearfix;
+  }
+
+  &__list {
+    position: relative;
+    margin: 0 auto;
+    list-style: none;
+
+    @include respond-to($small-breakpoint) {
+      float: right;
+      width: 50%;
+
+      &__item {
+        display: block;
+        width: 100%;
+      }
+    }
+
+    @include respond-to($tablet-breakpoint) {
+      width: 66%;
+
+      .csscolumns & {
+        column-count: 2;
+        column-gap: $fad-gutter;
+      }
+
+      &__item {
+        display: inline-block;
+        width: 50%;
+        padding-left: $fad-gutter;
+        vertical-align: top;
+
+        break-inside: avoid-column;
+
+        &:nth-child(odd) {
+          margin-left: -$fad-gutter;
+        }
+
+        .csscolumns & {
+          display: block;
+          width: 100%;
+          margin-left: 0;
+          padding: 0;
+
+          &:nth-child(6) {
+            position: relative;
+            overflow: hidden;
+
+            &:before{
+              content: "";
+              display: block;
+              position: absolute;
+              top: 0;
+              right: 0;
+              left: 0;
+              height: 1px;
+              background: $sub-nav-border-color;
+            }
+          }
+        }
+      }
+
+    }
+
+    @media only screen and (max-width : $tablet-breakpoint - 1px) {
+      &__item:nth-last-child(-n+5) {
+        display: none;
+      }
+    }
+
+    &__item {
+      box-sizing: border-box;
+
+      &:first-child{
+        border-top: 1px solid $sub-nav-border-color;
+      }
+    }
+  }
+
+  &__entry {
+    display: block;
+    padding: $fad-gutter 0;
+    border-bottom: 1px solid $sub-nav-border-color;
+    line-height: 1;
+    color: inherit;
+
+    &__title {
+      margin: -.25em 0;
+      font-weight: 600;
+      line-height: 1.24;
+    }
+
+    &__name {
+      color: $sub-navigation-color;
+    }
+
+    &__location {
+      white-space: nowrap;
+    }
+
+    &__categories {
+      display: block;
+      height: 1em;
+      margin-top: 4px;
+      font-size: 13px;
+      line-height: 1;
+      overflow: hidden;
+      text-transform: uppercase;
+
+      [itemprop="category"] {
+        display: inline-block;
+
+        &:not(:first-child):before{
+          display: inline-block;
+          width: 3px;
+          height: 3px;
+          margin: 0 6px;
+          border-radius: 100%;
+          background: darken( $sub-nav-border-color, 10% );
+          content: "";
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+
+  &__button-container {
+    @include see-more-link;
+  }
+
+  &__more {
+    @include see-more();
+  }
+}

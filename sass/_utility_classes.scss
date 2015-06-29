@@ -1,0 +1,11 @@
+.is-hidden {
+  display: none !important;
+}
+
+.is-relative{
+  position: relative;
+}
+
+%transition--nav {
+  transition: transform 0.4s ease;
+}

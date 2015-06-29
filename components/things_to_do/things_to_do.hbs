@@ -1,0 +1,32 @@
+{{#with top_things_to_do}}
+{{#if cards}}
+<article id="ttd" class="ttd">
+  <h2 class="ttd__heading">{{title}}</h2>
+
+  <ul class="ttd__list">
+    {{#each cards}}
+    <li class="ttd__item js-ttd-item">
+
+      <a class="image-card" href="{{url}}">
+        <!--<div class="image-card__image" style="background-image: url({{src}});"></div>-->
+        <img class="image-card__image" src="{{src}}" onerror="this.src='https://s3.amazonaws.com/static-asset/destinations-next/images/{{@index}}-ttd-image.jpg';" />
+        <div class="image-card__content">
+          <div class="image-card__number"></div>
+          <h2 class="image-card__title">{{title}}</h2>
+          <h3 class="image-card__subtitle">{{subtitle}}</h3>
+        </div>
+      </a>
+
+    </li>
+    {{/each}}
+  </ul>
+
+  <div class="ttd__bottom">
+    <a class="ttd__more" href="{{see_more_url}}">
+      See More
+      <span class="icon-chevron-right"></span>
+    </a>
+  </div>
+</article>
+{{/if}}
+{{/with}}

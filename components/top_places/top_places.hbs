@@ -1,0 +1,78 @@
+<section class="top_places top_places{{ centered }}">
+  <div class="top_places__close icon-close-small">Close</div>
+
+  <div class="top_places__content">
+    <div class="top_places__wrap">
+      <!-- top countries -->
+      {{#if top_places.top_countries }}
+        <div class="top_places__section top_places__section--countries">
+          <h2 class="top_places__section__title">top countries in {{ place.name }}</h2>
+          <ol class="top_places__section__list top_places__section__list--top3">
+            {{#each top_places.top_countries}}
+              <li class="top_places__section__list__item">
+                <div class="top_places__placeholder">
+                  <img class="top_places__img" src="{{ thumbnail }}" alt="{{ name }} thumb image"/>
+                </div>
+                <a class="top_places__section__list__item__target" href="{{ slug }}">
+                  {{ name }}
+                </a>
+                <hr class="top_places__divider{{#if @last}}--last{{/if}}" />
+              </li>
+            {{/each}}
+          </ol>
+          {{#if top_places.countries }}
+            <ol class="top_places__section__list top_places__section__list--rest">
+              {{#each top_places.countries}}
+                <li class="top_places__section__list__item">
+                  <a class="top_places__section__list__item__target" href="{{ slug }}">
+                    {{ name }}
+                  </a>
+                </li>
+              {{/each}}
+            </ol>
+          {{/if}}
+          <a class="top_places__section__see-more" href="//lonelyplanet.com/{{ slug }}/places">
+            more top countries in {{ place.name }}
+            <span class="icon-chevron-right"></span>
+          </a>
+        </div>
+      {{/if}}
+      <!-- top cities -->
+      {{#if top_places.top_cities}}
+        <div class="top_places__section top_places__section--cities">
+          <h2 class="top_places__section__title">top cities in {{ place.name }}</h2>
+          <ol class="top_places__section__list top_places__section__list--top3">
+            {{#each top_places.top_cities}}
+              <li class="top_places__section__list__item">
+                <div class="top_places__placeholder">
+                  <img class="top_places__img" src="{{ thumbnail }}" alt="{{ name }} thumb image"/>
+                </div>
+                <a class="top_places__section__list__item__target" href="{{ slug }}">
+                  {{ name }}
+                  <span class="top_places__section__list__item__target--ancillary">
+                    {{ country_name }}
+                  </span>
+                </a>
+                <hr class="top_places__divider{{#if @last}}--last{{/if}}" />
+              </li>
+            {{/each}}
+          </ol>
+          {{#if top_places.cities}}
+            <ol class="top_places__section__list top_places__section__list--rest">
+              {{#each top_places.cities}}
+                <li class="top_places__section__list__item">
+                  <a class="top_places__section__list__item__target" href="{{ slug }}">
+                    {{ name }}
+                  </a>
+                </li>
+              {{/each}}
+            </ol>
+          {{/if}}
+          <a class="top_places__section__see-more" href="//lonelyplanet.com/{{ slug }}/places">more top cities in {{ place.name }}
+          <span class="icon icon--chevron-right icon--chevron-right--blue"></span>
+          </a>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+</section>

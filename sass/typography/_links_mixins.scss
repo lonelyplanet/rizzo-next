@@ -1,0 +1,65 @@
+@mixin more() {
+  font-size: 1.3rem;
+  line-height: 0.5;
+  font-weight: 600;
+  text-transform: uppercase;
+
+  transition: color 300ms, border 300ms, background 300ms;
+
+  &:after,
+  &:before {
+    transition: color 300ms, border 300ms, background 300ms;
+  }
+
+  &:hover {
+    color: $color-primary + 30;
+    transition: color 0ms, border 0ms, background 0ms;
+
+    &:after,
+    &:before {
+      transition: color 0ms, border 0ms, background 0ms;
+    }
+  }
+
+  [class*="icon-"] {
+    margin-left: 0.6rem;
+    font-size: 6px;
+    vertical-align: 20%;
+
+    transition: margin 500ms;
+  }
+
+  &:hover {
+    [class*="icon-"] {
+      margin-left: 0.2rem;
+    }
+  }
+}
+
+@mixin see-more(){
+  @include more();
+
+  position: relative;
+  display: inline-block;
+
+  margin: 0 0 $spacing;
+  padding: $gutter $gutter 0;
+
+  &:before {
+    $size: 12.5rem;
+
+    display: block;
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    margin-left: (-$size / 2);
+
+    width: $size;
+
+    border-top: .1rem solid #dde8f2;
+  }
+}

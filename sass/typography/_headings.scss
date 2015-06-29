@@ -1,0 +1,57 @@
+@import "headings_mixins";
+
+.h1 {
+  @include h1();
+}
+
+.h2 {
+  @include h2();
+}
+
+.h3 {
+  @include h3();
+}
+
+
+
+// Legacy
+// should not be used
+
+$mobile-breakpoint: 717;
+$tablet-breakpoint: 1025;
+
+.secondary-heading {
+  color: $h2-color;
+  font: {
+    size: 28px;
+    family: $sans-serif;
+    weight: $light;
+  }
+  line-height: 1.8;
+  text-align: center;
+  padding-top: 40px;
+
+  &:after {
+    border-bottom: 2px solid $h2-secondary-color;
+    width: 31px;
+    display: block;
+    content: "";
+    margin: 0 auto;
+    margin-bottom: 24px;
+  }
+
+  @include respond-to($mobile-breakpoint) {
+    font-size: 50px;
+    padding-top: 80px;
+
+    &:after {
+      margin-bottom: 35px;
+    }
+  }
+
+  @include respond-to($tablet-breakpoint) {
+    padding-top: 125px;
+  }
+}
+
+

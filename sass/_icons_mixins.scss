@@ -1,0 +1,15 @@
+@mixin icon-before($uri) {
+  &:before{
+    content: "";
+    position: relative;
+    width: 82px;
+    height: 59px;
+    display: block;
+    background:{
+      image: url($uri);
+      repeat: no-repeat;
+      size: 50%;
+      position: center -94px;
+    }
+  }
+}

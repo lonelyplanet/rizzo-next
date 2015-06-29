@@ -1,0 +1,183 @@
+@import "rizzo-next/sass/webpack_deps";
+$small-breakpoint: 600;
+$mobile-breakpoint: 717;
+$wide-breakpoint: 1024;
+
+.guidebook{
+  margin: 0 auto $gutter;
+  text-align: center;
+
+  @include respond-to($wide-breakpoint) {
+    text-align: left;
+  }
+
+  &:after {
+    display: block;
+    visibility: hidden;
+    clear: both;
+    height: 0;
+    content: "";
+  }
+}
+
+.guidebook__info{
+  position: relative;
+  z-index: 5;
+
+  @include respond-to($wide-breakpoint) {
+    float: right;
+    width: 35%;
+    margin-right: 3%;
+  }
+}
+
+.guidebook__info__link{
+  @include button();
+}
+
+.guidebook__info__blurb{
+  width: 90%;
+  margin: 0 auto $gutter;
+
+  font-size: 1.8rem;
+  font-weight: $font-weight-medium;
+  line-height: 1.8;
+
+  @include respond-to($wide-breakpoint) {
+    margin: 0 0 $gutter;
+
+    width: 100%;
+    max-width: 400px;
+
+    font-size: 2.4rem;
+  }
+}
+
+.guidebook {
+  &__title-wrap {
+    position: relative;
+    z-index: 5;
+
+    margin: 0 0 $spacing;
+
+    text-align: center;
+
+    @include respond-to($wide-breakpoint) {
+      float: right;
+      width: 43%;
+      margin-top: 10%;
+      padding-left: 5%;
+      text-align: left;
+    }
+  }
+
+  &__title {
+    @include h1();
+
+    margin: 0;
+    padding: 0;
+
+    line-height: 1;
+    color: $color-red;
+
+    &:after {
+      display: none;
+    }
+
+    @include respond-to($wide-breakpoint) {
+      max-width: 450px;
+      line-height: 1;
+    }
+
+    @include respond-to($wide-breakpoint) {
+      padding-top: 0;
+      text-align: left;
+      color: $h2-secondary-color;
+
+      &:after {
+        display: none;
+      }
+    }
+  }
+
+  &__subtitle {
+    margin: ($spacing / 2) 0 0;
+
+    display: none;
+    font-size: 20px;
+    font-weight: 300;
+    color: $ancillary-header-color;
+    @include respond-to($wide-breakpoint) {
+      font-size: 28px;
+      display: block;
+    }
+  }
+}
+
+.guidebook__pictures{
+  display: block;
+  position: relative;
+  width: 80%;
+  margin: 20px auto 20px auto;
+  float: none;
+
+  text-align: center;
+
+  @include respond-to($wide-breakpoint) {
+    width: 55%;
+    float: left;
+  }
+}
+
+.guidebook__picture {
+  display: inline-block;
+
+  width: 20rem;
+
+  font-size: 0;
+
+  box-shadow: 2rem 1rem 6rem rgba(0, 0, 0, .4);
+
+  background: $color-primary;
+
+  @media (min-width: $min-560) {
+    width: 25rem;
+  }
+
+  @media (min-width: $min-720) {
+    width: 35rem;
+  }
+
+  &--first {
+    position: absolute;
+    z-index: 1;
+
+    top: 0;
+    left: 50%;
+
+    margin-left: (-20rem / 2);
+
+    transform: translate(3rem,0) rotateZ(1deg);
+
+    @media (min-width: $min-560) {
+      margin-left: (-25rem / 2);
+    }
+
+    @media (min-width: $min-720) {
+      margin-left: (-35rem / 2);
+    }
+  }
+
+  &--second {
+    transform: translate(-8rem, -1rem) rotateZ(-19deg) scale(.8);
+  }
+}
+
+.guidebook__image{
+  width: 100%;
+  max-width: 465px;
+
+  @include respond-to($wide-breakpoint) {
+    max-width: 100%;
+  }
+}

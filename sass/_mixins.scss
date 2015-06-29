@@ -1,0 +1,260 @@
+$base-font-size: 14 !default;
+
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+@mixin clearfix {
+  &:before, &:after {
+    content: "";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+  zoom: 1;
+}
+
+@mixin respond-to($screen-width) {
+  @media only screen and (min-width : $screen-width + 0px) {
+    @content;
+  }
+}
+
+// Providing an image width and height, provides the correct aspect ratio via padding-bottom %
+// This should be used with an element of a height of 0, so that the height is determined by the padding-bottom
+// rather than the element's height property
+@mixin best-fit-padding($imageWidth, $imageHeight) {
+  $ratioPercentage: ($imageHeight / $imageWidth) * 100;
+  padding-bottom: #{$ratioPercentage + %};
+}
+
+// Hack to force GPU rendering (most in the community argue this should be used quite sparingly!!)
+@mixin hardware-acceleration() {
+  z-index: 1;
+  transform: translateZ(0);
+}
+
+// [doc] A mixin to help clean up z-index madness. Options are: `below`, `default`, `middle`, `top`, and `modal` [/doc]
+@mixin z-layer( $layer: default ){
+  @if $layer == below {
+    z-index: -1;
+  }
+  @else if $layer == default {
+    z-index: 1;
+  }
+  @else if $layer == middle {
+    z-index: 10;
+  }
+  @else if $layer == top {
+    z-index: 20;
+  }
+  @else if $layer == modal {
+    z-index: 9999;
+  }
+  @else {
+    z-index: 1;
+  }
+}
+
+// Standard divider used between sections
+@mixin divider($position: bottom) {
+  @if $position == bottom {
+    border-bottom: 1px solid $divider-color;
+  }
+  @else if $position == top {
+    border-top: 1px solid $divider-color;
+  }
+}
+
+@mixin component-width() {
+  max-width: 1290px;
+  margin: 0 auto;
+}
+
+@mixin author-image($mobile) {
+  display: inline-block;
+  width: 12vw;
+  margin-right: $spacing;
+  border-radius: 60px;
+  vertical-align: middle;
+  max-width: 50px;
+
+  @include respond-to($mobile) {
+    width: 80px;
+    max-width: none;
+    margin-bottom: 15px;
+  }
+}
+
+@mixin author-creds($mobile) {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+
+  @include respond-to($mobile) {
+    display: block;
+    text-align: center;
+  }
+}
+
+@mixin author-name($mobile) {
+  margin-bottom: 2px;
+  font: {
+    weight: $semibold;
+    size: 4vw;
+  }
+  text-transform: uppercase;
+  color: $body-color;
+  letter-spacing: 1px;
+
+  @include respond-to($mobile) {
+    font-size: 14px;
+  }
+}
+
+@mixin author-title($mobile) {
+  font: {
+    family: $serif;
+    style: italic;
+    size: 4vw;
+  }
+  color: $light-text-color;
+  letter-spacing: 1px;
+
+  @include respond-to($mobile) {
+    font-size: 14px;
+  }
+}
+
+@mixin see-more-link {
+  position: relative;
+  margin-top: 40px;
+  text-align: center;
+  font-size: 14px;
+
+  @include respond-to($mobile-breakpoint) {
+    margin-top: 65px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// CSS Arrow
+// -----------------------------------------------------------------------------
+
+@mixin css-arrow($side: top, $size: 20px, $offset: 0) {
+  &:after {
+    @include size($size);
+  }
+  @if $side == top {
+    &:after {
+      bottom: auto;
+      left: $offset;
+      top: -(0.7 * $size);
+    }
+  }
+  @if $side == right {
+    &:after {
+      left: auto;
+      right: -(0.65 * $size);
+      top: $offset;
+    }
+  }
+  @if $side == bottom {
+    &:after {
+      bottom: -(0.6 * $size);
+      left: $offset;
+      top: auto;
+    }
+  }
+  @if $side == left {
+    &:after {
+      left: -(0.6 * $size);
+      right: auto;
+      top: $offset;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Centralised CSS Arrow
+// -----------------------------------------------------------------------------
+
+@mixin css-arrow-central($side: top, $size: 28px, $offset: 0) {
+  @include css-arrow($side, $size, $offset);
+  @if $side == top {
+    &:after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  @if $side == bottom {
+    &:after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  @if $side == right {
+    &:after {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+  @if $side == left {
+    &:after {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Size
+// -----------------------------------------------------------------------------
+
+
+@mixin size($size) {
+  @if length($size) == 1 {
+    @if $size == auto {
+      width:  $size;
+      height: $size;
+    }
+
+    @else if unitless($size) {
+      width:  $size + px;
+      height: $size + px;
+    }
+
+    @else if not(unitless($size)) {
+      width:  $size;
+      height: $size;
+    }
+  }
+
+  // Width x Height
+  @if length($size) == 2 {
+    $width:  nth($size, 1);
+    $height: nth($size, 2);
+
+    @if $width == auto {
+      width: $width;
+    }
+    @else if not(unitless($width)) {
+      width: $width;
+    }
+    @else if unitless($width) {
+      width: $width + px;
+    }
+
+    @if $height == auto {
+      height: $height;
+    }
+    @else if not(unitless($height)) {
+      height: $height;
+    }
+    @else if unitless($height) {
+      height: $height + px;
+    }
+  }
+}
+

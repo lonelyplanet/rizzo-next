@@ -1,0 +1,145 @@
+@import "rizzo-next/sass/webpack_deps";
+
+.ttd {
+  margin: 0 0 $gutter;
+
+  &__heading {
+    @include h1();
+  }
+
+  &__list,
+  &__list {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+  }
+
+  &__list {
+    margin: 0 (-$gutter / 2) $gutter;
+
+    font-size: 0;
+    counter-reset: image-card;
+  }
+
+  &__item {
+    display: inline-block;
+
+    margin: 0 0 $gutter / 2;
+    padding: 0 ($gutter / 2);
+
+    width: 100%;
+
+    vertical-align: top;
+    text-align: center;
+
+    @media (min-width: $min-480) {
+      margin-bottom: $gutter;
+      width: 50%;
+
+      text-align: right;
+
+      &:nth-child(2n) {
+        text-align: left;
+      }
+    }
+
+    @media (min-width: $min-960) {
+      width: 25%;
+    }
+  }
+
+  &__bottom {
+    margin: 0 0 $spacing;
+    text-align: center;
+  }
+
+  &__more {
+    @include more();
+  }
+}
+
+.image-card {
+  display: inline-block;
+  position: relative;
+
+  max-width: 30rem;
+
+  background: #000;
+
+  transition: transform $animation-speed;
+
+  &:hover {
+    transform: translateY(-.5rem);
+  }
+
+  &__image {
+    width: 100%;
+  }
+
+  &__content {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    padding: 0 ($gutter / 2) ($gutter - 1);
+
+    font-size: $font-size;
+    color: #fff;
+    text-align: center;
+
+    background: linear-gradient(to top,  rgba(0,0,0,0.5) 0%,rgba(0,0,0,0) 100%);
+  }
+
+  &__number {
+    $size: 3.7rem;
+
+    display: inline-block;
+    position: relative;
+
+    margin: 0 0 ($spacing + 1);
+
+    width: $size;
+    height: $size;
+
+    font-family: $font-family-special;
+    font-size: 2rem;
+    line-height: $size;
+    text-align: center;
+    color: $font-color;
+
+    border-radius: .4rem;
+    background: #fff;
+    box-shadow: 0 .2rem .2rem rgba(0,0,0, .3);
+
+    transform: rotate(45deg);
+
+    &:before {
+      display: block;
+
+      counter-increment: image-card;
+      content: counter(image-card);
+
+      transform: rotate(-45deg);
+    }
+  }
+
+  &__title {
+    margin: 0 0 1rem;
+
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  &__subtitle {
+    margin: 0 0 1rem;
+
+    font-family: $font-family-special;
+    font-style: italic;
+    font-size: 1.4rem;
+    line-height: 1;
+  }
+}

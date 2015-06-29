@@ -1,0 +1,76 @@
+@function strip-units($number) {
+  @return $number / ($number * 0 + 1);
+}
+
+$min-width: 32rem; // Page min width
+$max-width: 129rem; // Page max width
+$base-size: 1.8em;
+
+$spacing: 1.5rem; // Text and inline spacing
+$gutter: 3.0rem; // Gutter and block level spacing
+$radius: .2rem; // Default border radius
+
+// Typography
+$font-family: 'FreightSansPro', sans-serif;
+$font-family-special: 'LPMillerItalic', serif;
+$font-size: #{strip-units($base-size)}rem;
+$font-color: #333;
+$font-color-light: #959aa0;
+$font-weight-light: 300;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$line-height: 1.5;
+
+
+// Typography legacy
+$sans-serif: $font-family;
+$serif: $font-family-special;
+$light: $font-weight-light;
+$medium: $font-weight-medium;
+$semibold: $font-weight-semibold;
+
+
+// Colors
+$color-blue: #287bbb;
+$color-lightblue: #e9f2f8;
+$color-red: #dc221a;
+$color-purpleish: #3b4450;
+$color-lightgrey: #f5f5f5;
+
+// Color shortcuts
+$color-primary: $color-blue;
+
+
+// UI elements
+$header-height: 13rem;
+$header-height-mobile: 5rem;
+
+$animation-speed: .4s;
+$animation-speed-ui: .8s;
+
+// Custom break points (Mobile first)
+$min-1290: #{(1290 * 0.0625)}em;
+$min-1200: #{(1200 * 0.0625)}em;
+$min-1080: #{(1080 * 0.0625)}em;
+$min-960: #{(960 * 0.0625)}em;
+$min-840: #{(840 * 0.0625)}em;
+$min-768: #{(768 * 0.0625)}em;
+$min-720: #{(720 * 0.0625)}em;
+$min-600: #{(600 * 0.0625)}em;
+$min-560: #{(560 * 0.0625)}em;
+$min-480: #{(480 * 0.0625)}em;
+$min-360: #{(360 * 0.0625)}em;
+
+// Custom break points
+$max-1290: #{(1289 * 0.0625)}em;
+$max-1200: #{(1199 * 0.0625)}em;
+$max-1080: #{(1079 * 0.0625)}em;
+$max-960: #{(959 * 0.0625)}em;
+$max-840: #{(839 * 0.0625)}em;
+$max-768: #{(767 * 0.0625)}em;
+$max-720: #{(719 * 0.0625)}em;
+$max-600: #{(599 * 0.0625)}em;
+$max-560: #{(559 * 0.0625)}em;
+$max-480: #{(479 * 0.0625)}em;
+$max-360: #{(359 * 0.0625)}em;

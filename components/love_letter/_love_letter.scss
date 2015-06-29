@@ -1,0 +1,59 @@
+@import "rizzo-next/sass/webpack_deps";
+$mobile-breakpoint: 717;
+$small-breakpoint: 320;
+
+.love-letter {
+  &__heading {
+    @include h1();
+  }
+
+  &__text {
+    margin: 0 auto 3rem;
+
+    font-style: italic;
+    font-size: $font-size;
+    color: #67747d;
+    text-align: center;
+    line-height: 1.8;
+
+    @media (min-width: $min-480) {
+      font-size: 2.1rem;
+
+      max-width: 80%;
+    }
+
+    //@include p-props($mobile-breakpoint);
+    @include respond-to($mobile-breakpoint) {
+
+      //max-width: 790px;
+    }
+  }
+}
+
+
+.love-letter__author {
+  font-size: 14px;
+  letter-spacing: 1px;
+  margin: 0 auto;
+  width: 93%;
+
+  @include respond-to($mobile-breakpoint) {
+    text-align: center;
+  }
+}
+
+.love-letter__author__image {
+  @include author-image($mobile-breakpoint);
+}
+
+.love-letter__author__creds {
+  @include author-creds($mobile-breakpoint);
+}
+
+.love-letter__author__creds__name {
+  @include author-name($small-breakpoint);
+}
+
+.love-letter__author__creds__title {
+  @include author-title($small-breakpoint);
+}

@@ -1,0 +1,199 @@
+@import "rizzo-next/sass/webpack_deps";
+
+$mobile-breakpoint: 717;
+
+$mobile-static-breakpoint: 480;
+$tablet-static-breakpoint: 1230;
+
+$mobile-padding-percentage: 1.5625%;
+$tablet-padding-percentage: 2.47395833%;
+$desktop-padding-percentage: 4.63269358041%;
+
+.masthead {
+  position: relative;
+  width: 100%;
+  max-height: 90vh;
+  background-color: $h2-color;
+  overflow: hidden;
+}
+
+// Masthead used on city pages
+.masthead--static {
+  background-color: #FFF;
+  padding: 0 $mobile-padding-percentage;
+
+  @include respond-to($mobile-static-breakpoint) {
+    padding: 0 $tablet-padding-percentage;
+  }
+
+  @include respond-to($tablet-static-breakpoint) {
+    padding: 0 $desktop-padding-percentage;
+  }
+
+  .masthead__images {
+    padding-bottom: 127.741935483871%;
+
+    @include respond-to($mobile-breakpoint) {
+      padding-bottom: 55.395683453237%;
+    }
+
+    @include respond-to($tablet-static-breakpoint) {
+      padding-bottom: 51.787016776076%;
+    }
+  }
+
+  .masthead__images__image {
+    position: relative;
+  }
+
+  .masthead__text {
+    position: relative;
+    margin-top: 0;
+    height: auto;
+    color: $sub-navigation-color;
+    width: 100%;
+
+    &.masthead__text--on-image {
+      width: calc(100% - (#{$mobile-padding-percentage} * 2));
+
+      @include respond-to($mobile-static-breakpoint) {
+        width: calc(100% - (#{$tablet-padding-percentage} * 2));
+      }
+
+      @include respond-to($tablet-static-breakpoint) {
+        width: calc(100% - (#{$desktop-padding-percentage} * 2));
+      }
+      position: absolute;
+      color: #FFF;
+
+      .masthead__text__title {
+        margin-top: -52px; // height of title
+        margin-bottom: 30px;
+        @include respond-to($mobile-static-breakpoint) {
+          margin-top: -94px;
+        }
+
+        @include respond-to($tablet-static-breakpoint) {
+          margin-top: -144px; // height of title
+        }
+      }
+    }
+  }
+
+  .masthead__text__title {
+    font-size: 65px;
+    margin-top: 70px;
+    line-height: 0.9;
+
+    @include respond-to($mobile-static-breakpoint) {
+      font-size: 105px;
+    }
+
+    @include respond-to($tablet-static-breakpoint) {
+      font-size: 160px;
+    }
+  }
+
+  .masthead__text__straplines__strapline {
+    font-size: 26px;
+
+    @include respond-to($tablet-static-breakpoint) {
+      font-size: 34px;
+    }
+  }
+
+  .masthead__text__button {
+    display: none;
+  }
+}
+
+.masthead__images {
+  position: relative;
+  height: 0;
+
+  @include best-fit-padding(375, 488);
+  @include respond-to($mobile-breakpoint) {
+    @include best-fit-padding(768, 700);
+  }
+  @include respond-to(1230) {
+    @include best-fit-padding(1509, 1000);
+  }
+}
+
+.masthead__images__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: auto;
+
+  &.hidden {
+    opacity: 0;
+    transition: opacity 2s ease-in;
+  }
+}
+
+.masthead__text {
+  position: absolute;
+  top: 50%;
+  z-index: 5;
+  width: 100%;
+  height: 176px;
+  margin-top: -72px;
+  text-align: center;
+  color: #fff;
+
+  @include respond-to($mobile-breakpoint) {
+    height: 241px;
+    margin-top: -80px;
+  }
+}
+
+.masthead__text__button {
+  //@include button-props($mobile-breakpoint);
+  @include button();
+}
+
+
+.masthead__text__title {
+  font-size: 81px;
+  font-weight: 600;
+  line-height: 0.8;
+
+  margin-bottom: 15px;
+  letter-spacing: -3px;
+
+  @include respond-to($mobile-breakpoint) {
+    font-size: 120px;
+  }
+}
+
+.masthead__text__straplines {
+  height: 26px;
+  margin-bottom: 27px;
+  letter-spacing: 1px;
+
+  @include respond-to($mobile-breakpoint) {
+    height: 41px;
+    margin-bottom: 24px;
+  }
+}
+
+.masthead__text__straplines__strapline {
+  position: absolute;
+  width: 100%;
+  font: {
+    family: $serif;
+    style: italic;
+  }
+  opacity: 0;
+  transition: opacity 2s ease-in;
+  text-decoration: italic;
+
+  @include strapline-props($mobile-breakpoint);
+
+  &.visible {
+    opacity: 1;
+  }
+}

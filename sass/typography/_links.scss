@@ -1,0 +1,10 @@
+@import "links_mixins";
+
+a {
+  color: $color-primary;
+  text-decoration: none;
+}
+
+.more {
+  @include more();
+}

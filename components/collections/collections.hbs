@@ -1,0 +1,10 @@
+<div class="articles" data-lp-initial-articles="{{collection.collections}}">
+  <h1 class="articles__header--text">{{collection.caption}}</h1>
+  <p>{{collection.caption}}</p>
+  <ul class="articles-list__container">
+    {{#each collection.collections}}
+    <li class="articles-list__item" style="background-image:url({{banner_image}})">{{name}}</li>
+    {{/each}}
+  </ul>
+  <button class="button">Get All</button>
+</div>

@@ -1,0 +1,256 @@
+@import "rizzo-next/sass/webpack_deps";
+$mobile-breakpoint: 945;
+$mobile-margin-left: 20;
+$footer-logo-desktop-width: 84;
+$desktop-logo-margin: 35;
+$extra-margin: 5; // used to push the copyright slightly further right than the bottom nav is
+$footer-total-logo-width: $footer-logo-desktop-width + $desktop-logo-margin + $extra-margin;
+
+.footer {
+  position: relative; // make footer clickable as it's overlapped by navigation
+  z-index: 5;
+  background: #fff;
+
+  @include clearfix;
+}
+
+.footer-wrapper {
+  width: 100%;
+  max-width: 1290px;
+  margin: 0 auto;
+
+  @include respond-to($mobile-breakpoint) {
+    width: 96%;
+  }
+}
+
+.footer-logo {
+  position: relative;
+  display: inline-block;
+}
+
+.footer__main {
+  @include divider("top");
+  @include respond-to($mobile-breakpoint) {
+    padding: {
+      top: 60px;
+      bottom: 60px;
+    }
+  }
+
+  a {
+    color: $feature-copy;
+  }
+}
+
+.footer__main__checkbox {
+  display: none;
+}
+
+.footer__main__links {
+  display: block;
+  max-height: 50px;
+  overflow: hidden;
+  transition: max-height .3s linear;
+  vertical-align: top;
+
+  @include component-width;
+  @include respond-to($mobile-breakpoint) {
+    display: inline-block;
+    width: 18%;
+    max-height: 600px;
+    transition-property: none;
+  }
+}
+
+.footer__main__links__header {
+  padding: 14px 20px;
+  font: {
+    weight: $semibold;
+    size: 13px;
+  }
+  text-transform: uppercase;
+
+  @include divider(top);
+  @include respond-to($mobile-breakpoint) {
+    padding: 0 0 15px 0;
+    border: none;
+    .accordion-target {
+      display: none;
+    }
+  }
+  .footer__main__links--destinations & {
+    border: none;
+  }
+  .accordion-target {
+    position: relative;
+    bottom: 14px;
+    float: right;
+    width: 50%;
+    height: 50px;
+    cursor: pointer;
+  }
+  .icon--chevron-down {
+    float: right;
+    width: 13px;
+    height: 13px;
+    margin-top: 20px;
+    transition: transform .3s linear;
+  }
+}
+
+#destinations_checked:checked + .footer__main__links--destinations,
+#shop_checked:checked + .footer__main__links--shop,
+#forum_checked:checked + .footer__main__links--forum {
+  max-height: 600px;
+  .icon--chevron-down {
+    transform: rotateZ(180deg);
+  }
+}
+
+.footer__main__links__list {
+  padding: {
+    bottom: 15px;
+    left: 20px;
+  }
+
+  @include respond-to($mobile-breakpoint) {
+    padding: 0;
+  }
+}
+
+.footer__main__links__list__item {
+  font-size: 14px;
+  line-height: 2.2;
+  list-style: none;
+  color: $tours-blurb-color;
+
+  @include respond-to($mobile-breakpoint) {
+    line-height: 1.6;
+  }
+}
+
+.footer__bottom {
+  padding-top: 0;
+
+  @include divider("top");
+  @include respond-to($mobile-breakpoint) {
+    padding-top: 17px;
+  }
+}
+
+.footer__bottom__logo {
+  float: left;
+  margin: {
+    top: 12px;
+    left: #{$mobile-margin-left}px;
+  }
+
+  @include respond-to($mobile-breakpoint) {
+    display: none;
+  }
+}
+
+.footer__bottom__middle {
+  display: block;
+
+  @include respond-to($mobile-breakpoint) {
+    display: inline-block;
+  }
+}
+
+.footer__copyright {
+  clear: both;
+  width: 88%;
+  margin: 0 auto;
+  padding: 30px 0;
+  font-size: 13px;
+  text-align: center;
+  color: $footer-copyright-color;
+
+  @include respond-to($mobile-breakpoint) {
+    display: inline-block;
+    float: left;
+    width: auto;
+    margin: {
+      top: -20px;
+      left: #{$footer-total-logo-width}px;
+    }
+    padding: 0;
+    padding-bottom: 20px;
+    font-size: 12px;
+    text-align: left;
+  }
+}
+
+.footer__bottom__middle__logo {
+  display: none;
+
+  @include respond-to($mobile-breakpoint) {
+    display: inline-block;
+    margin-right: #{$desktop-logo-margin}px;
+    vertical-align: middle;
+  }
+}
+
+.footer__bottom__middle__links {
+  font-size: 14px;
+
+  @include respond-to($mobile-breakpoint) {
+    display: inline-block;
+    margin-top: 4px;
+    vertical-align: top;
+  }
+}
+
+.footer__bottom__middle__links__li {
+  display: block;
+
+  @include divider;
+  @include respond-to($mobile-breakpoint) {
+    display: inline-block;
+    margin-right: 21px;
+    border-bottom: 0 none;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.footer__bottom__middle__links__li__link {
+  display: block;
+  padding: 14px 0;
+  padding-left: #{$mobile-margin-left}px;
+  color: $footer-bottom-link-color;
+
+  @include respond-to($mobile-breakpoint) {
+    padding: 0;
+  }
+}
+
+.footer__bottom__social-media {
+  float: right;
+  margin: {
+    top: 13px;
+    right: 14px;
+  }
+  font-size: 0;
+
+  @include respond-to($mobile-breakpoint) {
+    margin-top: 0;
+  }
+}
+
+.footer__bottom__social-media__link {
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  margin-right: 4px;
+  border: 1px solid $footer-bottom-icon-border-color;
+  border-radius: 60px;
+  vertical-align: middle;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}

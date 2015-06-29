@@ -1,0 +1,164 @@
+@import "rizzo-next/sass/webpack_deps";
+
+
+.search {
+  $input-height: 3.8rem;
+
+  position: absolute;
+  z-index: 9999;
+
+  top: 0;
+  left: 0;
+  right: 0;
+  //bottom: 0;
+
+  background: #fff;
+
+  opacity: 0;
+  transition: opacity ($animation-speed-ui / 2), box-shadow ($animation-speed-ui / 1);
+
+  &--visible {
+    opacity: 1;
+  }
+
+  @media (min-width: $min-720) {
+    box-shadow: -5rem 0 15rem rgba(0,0,0,.5);
+
+    &--visible {
+      box-shadow: .5rem 0 23rem rgba(0,0,0,.5);
+    }
+  }
+
+  &__inner {
+    position: relative;
+
+    height: $header-height-mobile;
+    line-height: $input-height;
+
+    @media (min-width: $min-720) {
+      height: $header-height + .1;
+    }
+  }
+
+  &__input {
+    position: absolute;
+
+    top: 50%;
+    left: $input-height - 1.2;
+    right: $input-height;
+
+    margin-top: (-$input-height / 2 - .1);
+
+    @media (min-width: $min-720) {
+      left: $input-height + .2;
+    }
+
+    input {
+      box-sizing: border-box;
+
+      width: 100%;
+      height: $input-height;
+
+      font-size: 1.8rem;
+      font-weight: 400;
+
+      border: none;
+      outline: none;
+
+      @media (min-width: $min-720) {
+        font-size: 2.8rem;
+        font-weight: 100;
+      }
+    }
+  }
+
+  &__icon,
+  &__clear {
+    display: block;
+
+    position: absolute;
+    top: 50%;
+    left: 0;
+
+    margin-top: (-$input-height / 2 - .2);
+
+    width: $input-height;
+    height: $input-height;
+    line-height: $input-height;
+
+    font-size: 0;
+    color: $font-color;
+    //text-align: center;
+
+    cursor: pointer;
+
+    //background: #eee;
+
+    &:hover {
+      color: $color-primary;
+    }
+
+    &:before {
+      font-size: 1.8rem;
+    }
+
+    @media (min-width: $min-720) {
+      text-align: left;
+
+      &:before {
+        font-size: 2rem;
+      }
+    }
+  }
+
+  &__clear {
+    left: auto;
+    right: 0;
+
+    text-align: right;
+    color: #bdcee3;
+
+    @media (min-width: $min-720) {
+      text-align: center;
+    }
+  }
+}
+
+.search-results {
+  opacity: 0;
+  height: 0;
+
+  overflow: hidden;
+
+  transition: opacity $animation-speed, transform $animation-speed;
+  transform: translateY(-2rem);
+
+  &--visible {
+    height: auto;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &__list {
+    display: block;
+
+    margin: 0 0 $gutter * 1.5;
+    padding: 1rem 0 0;
+
+    list-style: none;
+
+    border-top: .1rem solid #e4eaf8;
+  }
+
+  &__more {
+    @include more();
+
+    display: block;
+
+    margin: 0 0 $gutter * 1.5;
+
+    font-size: 1.4rem;
+
+    cursor: pointer;
+  }
+}

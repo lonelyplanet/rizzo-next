@@ -1,0 +1,93 @@
+@import "rizzo-next/sass/webpack_deps";
+
+.mobile-navigation {
+  position: fixed;
+  z-index: 10000;
+
+  top: 0;
+  right: 0;
+  bottom: 0;
+
+  padding: ($gutter + 5) $gutter $gutter;
+  padding: $gutter;
+
+  width: 25rem;
+  max-width: 75vw;
+
+  background: #fff;
+
+  &,
+  &__list {
+    opacity: 0;
+    transform: translateX(30%);
+
+    transition: transform $animation-speed / 2, opacity $animation-speed / 2;
+  }
+
+  &--visible,
+  &--visible &__list {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  &__close {
+    $size: 5rem;
+
+    display: none;
+    position: absolute;
+
+    top: 1.5rem;
+    right: 1.5rem;
+
+    width: $size;
+    height: $size;
+
+    text-indent: -9999px;
+    text-align: center;
+    line-height: $size;
+    color: $font-color;
+
+    cursor: pointer;
+
+    &:before {
+      position: absolute;
+
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      text-indent: 0;
+    }
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+
+    border-top: .1rem solid #e4e4e4;
+
+    transition: transform $animation-speed $animation-speed / 4, opacity $animation-speed $animation-speed / 4;
+  }
+
+  &__item {
+    border-bottom: .1rem solid #e4e4e4;
+
+    &:first-child {
+      display: none;
+
+    }
+
+    a {
+      display: block;
+
+      padding: $spacing 0;
+
+      color: $font-color;
+    }
+
+    &--active a {
+      color: $color-primary;
+    }
+  }
+}

@@ -1,0 +1,72 @@
+@mixin button(){
+  display: inline-block;
+
+  padding: 0 3rem;
+
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #fff;
+  text-transform: uppercase;
+  line-height: 4.4rem;
+
+  border: 0;
+  border-radius: 2.2rem;
+  outline: none;
+
+  cursor: pointer;
+
+  background: $color-primary;
+
+  -webkit-font-smoothing: antialiased;
+
+  backface-visibility: hidden;
+
+  transition: color 500ms, border 500ms, background 500ms;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  [class*="icon-"] {
+    display: inline-block;
+
+    margin-left: 0.6rem;
+    font-size: 6px;
+    vertical-align: 20%;
+
+    transform: translate3d(0,0,0);
+
+    transition: transform 500ms;
+  }
+
+  &:hover {
+    color: #fff;
+    text-decoration: none;
+
+    background: $color-primary + 15;
+
+    transition: color 0ms, border 0ms, background 0ms;
+
+    [class*="icon-"] {
+      transform: translate3d(-.4rem, 0, 0);
+    }
+
+    .icon-chevron-right {
+      transform: translate3d(.4rem, 0, 0);
+    }
+
+    .icon-chevron-down {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+}
+
+
+// Legacy
+// do not use
+@mixin button-props($mobile) {
+  @include respond-to($mobile) {
+    padding: 14px 31px;
+    letter-spacing: 1px;
+  }
+}

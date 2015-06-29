@@ -1,0 +1,18 @@
+{{#if card_count}}
+  <article id="interests" class="interests">
+    <h1 class="interests__heading">{{ interests.title }}</h1>
+
+    <section class="interests__cards interests__cards--{{ card_count }}">
+      {{#each interests.cards}}
+        <a class="interests__card interests__card--{{ num }}" href="{{ url }}">
+          <div class="interests__card--inner" style="background-image: url( {{ src }} )">
+            <span class="interests__card__link">
+              {{ interest }}
+            </span>
+          </div>
+        </a>
+      {{/each}}
+    </section>
+
+  </article>
+{{/if}}
