@@ -1,11 +1,11 @@
 import $ from "jquery";
 import Arkham from "./arkham";
 import Events from "./mixins/events";
-import assign from "../node_modules/lodash/object/assign";
-import pick from "../node_modules/lodash/object/pick";
-import bind from "../node_modules/lodash/function/bind";
-import each from "../node_modules/lodash/collection/each";
-import uniqueId from "../node_modules/lodash/utility/uniqueId";
+import assign from "lodash/object/assign";
+import pick from "lodash/object/pick";
+import bind from "lodash/function/bind";
+import each from "lodash/collection/each";
+import uniqueId from "lodash/utility/uniqueId";
 import MobileUtil from "./mobile_util";
 
 // # Bane
