@@ -72,6 +72,7 @@ class SearchComponent extends Component {
     this.$input = this.$el.find('input');
     this.$searchResults = this.$el.find('.search-results');
     this.$list = this.$searchResults.find('.search-results__list');
+    this.$resultsLink = this.$searchResults.find(".search-results__more");
   }
 
   show() {
@@ -117,6 +118,8 @@ class SearchComponent extends Component {
 
     this.$list.empty();
     this.currentPosition = -1;
+
+    this.$resultsLink.attr("href", "http://www.lonelyplanet.com/search?q=" + this.$input.val());
 
     data.results.forEach((model) => {
       collection.push(this.addOne(model));

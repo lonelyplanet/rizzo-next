@@ -17,7 +17,7 @@ class Navigation extends Component {
 
     /***TODO tooltip not yet needed
 
-    this.cartTemplate = require("components/navigation/user_cart.hbs");
+    this.cartTemplate = require("components/navigation/_user_cart.html.hbs");
     this.tooltip = new Tooltip({
       content: this.cartTemplate(state.cart)
     });

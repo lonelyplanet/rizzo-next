@@ -1,4 +1,5 @@
-@import "rizzo-next/sass/webpack_deps";
+@import "../../sass/webpack_deps";
+
 
 $responsive-nav-width: 190px;
 $nav-height--wide: 130px;
@@ -51,7 +52,7 @@ $medium-breakpoint: 768;
     }
   }
 
-  .navigation--city &__item--active {
+  .navigation--narrow &__item--active {
     border-bottom-color: transparent;
   }
 
@@ -72,7 +73,7 @@ $medium-breakpoint: 768;
     }
   }
 
-  .navigation--city &__link {
+  .navigation--narrow &__link {
     color: $font-color;
 
     &:hover {
@@ -80,7 +81,7 @@ $medium-breakpoint: 768;
     }
   }
 
-  .navigation--city &__item--active &__link {
+  .navigation--narrow &__item--active &__link {
     color: $color-primary;
   }
 
@@ -339,7 +340,7 @@ $medium-breakpoint: 768;
   }
 }
 
-.navigation--city {
+.navigation--narrow {
   position: relative;
   @include clearfix;
   padding-bottom: 30px;

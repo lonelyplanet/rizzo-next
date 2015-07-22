@@ -20,7 +20,7 @@
     max-width: $max-width;
     height: 0;
 
-    border-bottom: 1px solid #e4e4e4;
+    border-bottom: .1rem solid $color-border;
 
     @media (min-width: $min-720){
       margin: 0 ($gutter*1);
@@ -46,7 +46,11 @@
   }
 
   @media (min-width: $min-1080){
-    padding: ($gutter*3.5) 0 ($gutter*3.5 - $spacing);
+    padding: ($gutter*4.5) 0 ($gutter*4.5 - $spacing);
+  }
+
+  &--border-bottom:last-of-type:after {
+    border: 0;
   }
 }
 

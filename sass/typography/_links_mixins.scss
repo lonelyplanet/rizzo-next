@@ -1,24 +1,33 @@
-@mixin more() {
-  font-size: 1.3rem;
-  line-height: 0.5;
-  font-weight: 600;
-  text-transform: uppercase;
-
-  transition: color 300ms, border 300ms, background 300ms;
+@mixin link-transition(){
+  transition-property: color, border, background;
+  transition-duration: .3s;
 
   &:after,
   &:before {
-    transition: color 300ms, border 300ms, background 300ms;
+    transition-property: color, border, background;
+    transition-duration: .3s;
   }
 
   &:hover {
-    color: $color-primary + 30;
-    transition: color 0ms, border 0ms, background 0ms;
+    transition-duration: 0ms;
 
     &:after,
     &:before {
-      transition: color 0ms, border 0ms, background 0ms;
+      transition-duration: 0ms;
     }
+  }
+}
+
+@mixin more() {
+  font-size: 1.3rem;
+  line-height: 1;
+  font-weight: 600;
+  text-transform: uppercase;
+
+  @include link-transition();
+
+  &:hover {
+    color: $color-primary + 30;
   }
 
   [class*="icon-"] {

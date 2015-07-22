@@ -7,7 +7,7 @@ class Tooltip extends Component {
       mouseleave: "_leave"
     };
 
-    this.template = require("./tooltip.hbs");
+    this.template = require("./_tooltip.html.hbs");
     this.render();
   }
   render() {

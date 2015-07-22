@@ -34,20 +34,24 @@ class NavigationComponent extends Component {
       .each((i, el) => {
         let $el = $(el);
         let $subNavigation = $el.find('.sub-navigation');
-        let timer;
+        let hideTimer, showTimer;
 
         if($subNavigation.length === 0) {
           return;
         }
 
         $el.on('mouseenter', () => {
-          clearTimeout(timer);
+          clearTimeout(hideTimer);
 
-          $subNavigation.addClass('sub-navigation--visible');
+          showTimer = setTimeout(() => {
+            $subNavigation.addClass('sub-navigation--visible');
+          }, 150);
         });
 
         $el.on('mouseleave', () => {
-          timer = setTimeout(() => {
+          clearTimeout(showTimer);
+
+          hideTimer = setTimeout(() => {
             $subNavigation.removeClass('sub-navigation--visible');
           }, 500);
         });
@@ -77,7 +81,7 @@ class NavigationComponent extends Component {
       this.$mobileNavigation.addClass('mobile-navigation--visible');
     }, 20);
 
-    return waitForTransition(this.$mobileNavigation);
+    return waitForTransition(this.$mobileNavigation, { fallbackTime: 2000 });
   }
 
   hide(){
@@ -89,7 +93,7 @@ class NavigationComponent extends Component {
 
     this.overlay.hide();
 
-    return waitForTransition(this.$mobileNavigation)
+    return waitForTransition(this.$mobileNavigation, { fallbackTime: 2000 })
       .then(() => {
         this.$mobileNavigation.detach();
       });

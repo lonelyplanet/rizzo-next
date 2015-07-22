@@ -1,51 +1,38 @@
-<article class="masthead masthead--{{type}}" data-lp-initial-images="{{masthead.json}}">
-  {{#if masthead.first}}
-    <div class="masthead__images">
-      {{#with masthead.first}}
-        <picture>
-          <!--[if IE 9]><video style="display: none;"><![endif]-->
-          <source
-            media="(min-width: 1230px)"
-            srcset="{{large.normal}} 1x,
-                    {{large.hq}} 2x,
-                    {{large.lossless}} 3x">
-          <source
-            media="(min-width: 717px)"
-            srcset="{{medium.normal}} 1x,
-                    {{medium.hq}} 2x,
-                    {{medium.lossless}} 3x">
+<article class="masthead masthead--{{type}} {{#if images}}masthead--has-images{{else}} masthead--no-images{{/if}}" data-lp-initial-images="{{masthead.json}}">
 
-          <img
-            srcset="{{small.normal}} 1x,
-                    {{small.hq}} 2x,
-                    {{small.lossless}} 3x"
-            class="masthead__images__image">
-        </picture>
-      {{/with}}
+  {{#if masthead.first}}
+    <div class="masthead__wrap">
+      <div class="masthead__images">
+        {{#with masthead.first}}
+          <div class="masthead__slide masthead__slide--num_0" style="background-image: url({{large.hq}})"></div>
+        {{/with}}
+      </div>
     </div>
   {{/if}}
 
-  <div class="masthead__text {{#if masthead.first}}masthead__text--on-image{{/if}}">
-    <h1 class="masthead__text__title">{{place.name}}</h1>
+  <div class="masthead__text-wrap">
+    <div class="masthead__text {{#if masthead.first}}masthead__text--visible{{/if}}">
+      <div class="masthead__container">
+        <h1 class="masthead__title">{{place.name}}</h1>
 
-    {{#if masthead_images}}
-    <div class="masthead__text__straplines">
-      {{#each masthead_images}}
-        <div class="masthead__text__straplines__strapline{{#if @last}} visible{{/if}}">{{strapline}}</div>
-      {{/each}}
+        {{#if masthead_images}}
+        <div class="masthead__straplines">
+          {{#each masthead_images}}
+            <div class="masthead__strapline{{#if @first}} masthead__strapline--visible{{/if}}">{{strapline}}</div>
+          {{/each}}
+        </div>
+        {{/if}}
+
+        {{#if top_places}}
+          <a class="masthead__button js-top-places" >
+            Places in {{place.name}} <i class="icon-chevron-down"></i>
+          </a>
+        {{/if}}
+      </div>
     </div>
-    {{/if}}
-
-    {{#if top_places}}
-      <a class="masthead__text__button js-top-places" >
-        Places in {{place.name}} <i class="icon-chevron-down"></i>
-      </a>
-    {{else}}
-      <a class="masthead__text__button" href="/{{ place.slug }}/places" target="_blank">
-        Places in {{place.name}}
-      </a>
-    {{/if}}
   </div>
+
+
   {{#if top_places}}
     {{> "components/top_places/top_places" }}
   {{/if}}

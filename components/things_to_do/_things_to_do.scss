@@ -1,4 +1,5 @@
-@import "rizzo-next/sass/webpack_deps";
+@import "../../sass/webpack_deps";
+
 
 .ttd {
   margin: 0 0 $gutter;
@@ -16,32 +17,36 @@
   }
 
   &__list {
-    margin: 0 (-$gutter / 2) $gutter;
+    margin: 0 (-$gutter/8) $gutter;
 
     font-size: 0;
+    text-align: center;
     counter-reset: image-card;
+
+    @media (min-width: $min-480) {
+      margin: 0 (-$gutter/2) $gutter;
+    }
   }
 
   &__item {
     display: inline-block;
 
-    margin: 0 0 $gutter / 2;
-    padding: 0 ($gutter / 2);
+    margin: 0 0 $gutter / 4;
+    padding: 0 ($gutter / 8);
 
-    width: 100%;
+    width: 50%;
 
     vertical-align: top;
-    text-align: center;
+    //text-align: center;
+    text-align: right;
+
+    &:nth-child(2n) {
+      text-align: left;
+    }
 
     @media (min-width: $min-480) {
-      margin-bottom: $gutter;
-      width: 50%;
-
-      text-align: right;
-
-      &:nth-child(2n) {
-        text-align: left;
-      }
+      margin: 0 0 $gutter;
+      padding: 0 ($gutter / 2);
     }
 
     @media (min-width: $min-960) {
@@ -63,18 +68,32 @@
   display: inline-block;
   position: relative;
 
+  width: 100%;
   max-width: 30rem;
 
-  background: #000;
+  background: #ccc;
 
   transition: transform $animation-speed;
 
-  &:hover {
-    transform: translateY(-.5rem);
+  @media (min-width: $min-720) {
+    &:hover {
+      transform: translateY(-.5rem);
+    }
   }
 
   &__image {
+    padding-top: 150%;
+
     width: 100%;
+
+    background-size: cover;
+
+    opacity: 0;
+    transition: opacity $animation-speed-ui;
+
+    &--visible {
+      opacity: 1;
+    }
   }
 
   &__content {
@@ -84,28 +103,32 @@
     bottom: 0;
     right: 0;
 
-    padding: 0 ($gutter / 2) ($gutter - 1);
+    padding: 0 ($gutter / 3) ($gutter / 3 - 1);
 
     font-size: $font-size;
     color: #fff;
     text-align: center;
 
     background: linear-gradient(to top,  rgba(0,0,0,0.5) 0%,rgba(0,0,0,0) 100%);
+
+    @media (min-width: $min-480) {
+      padding: 0 ($gutter / 2) ($gutter - 1);
+    }
   }
 
   &__number {
-    $size: 3.7rem;
+    $size: 2.7rem;
 
     display: inline-block;
     position: relative;
 
-    margin: 0 0 ($spacing + 1);
+    margin: 0 0 ($spacing/2 + .5);
 
     width: $size;
     height: $size;
 
     font-family: $font-family-special;
-    font-size: 2rem;
+    font-size: 1.4rem;
     line-height: $size;
     text-align: center;
     color: $font-color;
@@ -124,14 +147,37 @@
 
       transform: rotate(-45deg);
     }
+
+    @media (min-width: $min-480) {
+      $size: 3.7rem;
+
+      margin: 0 0 ($spacing + 1);
+
+      width: $size;
+      height: $size;
+
+      line-height: $size;
+
+      font-size: 2rem;
+    }
   }
 
   &__title {
-    margin: 0 0 1rem;
+    margin: 0 0 .5rem;
 
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-weight: 600;
     line-height: 1;
+
+    height: 2.9rem;
+    overflow: hidden;
+
+    @media (min-width: $min-480) {
+      margin: 0 0 1rem;
+
+      font-size: 1.6rem;
+      height: 3.3rem;
+    }
   }
 
   &__subtitle {
@@ -139,7 +185,11 @@
 
     font-family: $font-family-special;
     font-style: italic;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     line-height: 1;
+
+    @media (min-width: $min-480) {
+      font-size: 1.4rem;
+    }
   }
 }

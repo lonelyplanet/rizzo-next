@@ -8,12 +8,12 @@ import assign from "lodash/object/assign";
 class Stack extends Component {
   initialize() {
     this.name = "stacks";
-
+    
     this.events = {
       "click .button": "getMore"
     };
-
-    this.template = require("components/stacks/stacks.hbs");
+    
+    this.template = require("components/stacks/_stacks.html.hbs");
     this.listenTo(StackState, "changed", this.render);
 
     StackState.setInitialState(this.getInitialState());

@@ -4,8 +4,6 @@ import $ from "jquery";
 
 class HotelsWidget extends Component {
   initialize() {
-    // this.events = {
-    // };
 
     let dates = this.$el.find("input[type='date']"),
         checkInDate = dates[0],
@@ -34,6 +32,8 @@ class HotelsWidget extends Component {
       startDate.pickadate({
           min: today,
           format: 'mm/d/yyyy',
+          formatSubmit: 'dd/mm/yyyy',
+          hiddenName: true,
           labelMonthNext: 'Go to the next month',
           labelMonthPrev: 'Go to the previous month',
           labelMonthSelect: 'Pick a month from the dropdown',
@@ -44,6 +44,8 @@ class HotelsWidget extends Component {
         endDate.pickadate({
           min: nextDate(today),
           format: 'mm/d/yyyy',
+          formatSubmit: 'dd/mm/yyyy',
+          hiddenName: true,
           labelMonthNext: 'Go to the next month',
           labelMonthPrev: 'Go to the previous month',
           labelMonthSelect: 'Pick a month from the dropdown',

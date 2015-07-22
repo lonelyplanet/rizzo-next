@@ -8,12 +8,11 @@
     <li class="ttd__item js-ttd-item">
 
       <a class="image-card" href="{{url}}">
-        <!--<div class="image-card__image" style="background-image: url({{src}});"></div>-->
-        <img class="image-card__image" src="{{src}}" onerror="this.src='https://s3.amazonaws.com/static-asset/destinations-next/images/{{@index}}-ttd-image.jpg';" />
+        <div class="image-card__image" data-image-url="{{src}}" data-backupimage-url="https://s3.amazonaws.com/static-asset/destinations-next/images/{{@index}}-ttd-image.jpg"></div>
         <div class="image-card__content">
           <div class="image-card__number"></div>
-          <h2 class="image-card__title">{{title}}</h2>
           <h3 class="image-card__subtitle">{{subtitle}}</h3>
+          <h2 class="image-card__title">{{title}}</h2>
         </div>
       </a>
 

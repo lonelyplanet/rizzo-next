@@ -1,34 +1,25 @@
-@import "rizzo-next/sass/webpack_deps";
+@import "../../sass/webpack_deps";
+
 
 .map_static {
   @media (max-width: $max-960) {
-    &:after {
-      box-sizing: content-box;
+    margin: 0 ($gutter*0.5);
 
-      display: block;
-      content: "";
+    max-width: $max-width;
+    height: .1rem;
 
-      position: relative;
-      bottom: -$gutter*1 + $spacing;
+    background: $color-border;;
 
-      margin: 0 ($gutter*0.5);
+    @media (min-width: $min-720){
+      margin: 0 ($gutter*1);
+    }
 
-      max-width: $max-width;
-      height: 0;
+    @media (min-width: $min-1080){
+      margin: 0 ($gutter*2);
+    }
 
-      border-bottom: 1px solid #e4e4e4;
-
-      @media (min-width: $min-720){
-        margin: 0 ($gutter*1);
-
-        bottom: -$gutter*2 + $spacing;
-      }
-
-      @media (min-width: $min-1080){
-        margin: 0 ($gutter*2);
-
-        bottom: -$gutter*3 + $spacing;
-      }
+    @media (min-width: $min-1290){
+      margin: 0 auto;
     }
   }
 

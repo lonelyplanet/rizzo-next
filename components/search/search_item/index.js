@@ -28,7 +28,7 @@ class SearchItemComponent extends Component {
   }
 
   navigate(){
-    window.location = this.model.slug;
+    window.location = "/" + this.model.slug;
   }
 
 }

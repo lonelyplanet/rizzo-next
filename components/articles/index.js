@@ -7,6 +7,7 @@ class ArticlesComponent extends Component {
   initialize(options) {
     this.articles = this.$el.find(".article");
     this.maxLines = options.maxLines || 6;
+    // Retrieved via getComputedStyle($0)["line-height"] ish
     this.titleLineHeight = options.titleLineHeight || { desktop: 35, mobile: 23 };
     this.blurbLineHeight = options.blurbLineHeight || { desktop: 27, mobile: 18 };
     this.mobileWidth = options.mobileWidth || 717;
@@ -27,35 +28,22 @@ class ArticlesComponent extends Component {
   }
   _clampText() {
     this.articles.each((index, article) => {
-      let articleElems = this._findElements(article);
+      let { 
+        titleLines,
+        teaserLines,
+        teaser,
+        blurb
+      } = this._findElements(article);
 
-      // This means we'll probably be removing from both the teaser and the blurb
-      if (articleElems.removeLines > 1) {
-        // Teaser is clamped to 3 unless the title is 2 lines
-        // Blurb should always be 2 lines, unless...
-        let teaserClamp = articleElems.titleLines > 1 ? 2 : 3,
-            blurbClamp = 2;
-
-        // ...it doesn't have 2 lines. In which case, give one back to the teaser
-        if (articleElems.blurbLines < blurbClamp) {
-          teaserClamp++;
-        }
-
-        $clamp(articleElems.teaser, { clamp: teaserClamp });
-        $clamp(articleElems.blurb, { clamp: blurbClamp });
-      } else if (articleElems.removeLines && articleElems.removeLines >= 1) {
-        // If just removing from one section, figure out which one is bigger and remove from that
-        let removeFrom, removeLines;
-
-        if (articleElems.teaserLines > articleElems.blurbLines) {
-          removeFrom = { section: articleElems.teaser, lines: articleElems.teaserLines };
-        } else {
-          removeFrom = { section: articleElems.blurb, lines: articleElems.blurbLines };
-        }
-
-        removeLines = removeFrom.lines - articleElems.removeLines;
-
-        $clamp(removeFrom.section, { clamp: removeLines });
+      // aka 2 + 5 or something
+      if (titleLines + teaserLines > this.maxLines) {
+        let teaserClamp = this.maxLines - titleLines;
+        $clamp(teaser.get(0), { clamp: teaserClamp });
+        blurb.hide();
+      } else {
+        // Only clamp the blurb
+        let blurbClamp = Math.ceil(this.maxLines - titleLines - teaserLines);
+        $clamp(blurb.get(0), { clamp: blurbClamp });
       }
     });
   }
@@ -78,14 +66,15 @@ class ArticlesComponent extends Component {
 
         // Figure out how many lines need to be removed
         linesAllowed = this.maxLines - titleLines,
-        removeLines = blurbLines + teaserLines - linesAllowed;
+        removeLines = Math.floor(blurbLines + teaserLines - linesAllowed);
 
     return {
       removeLines: removeLines,
       titleLines: titleLines,
+      teaserLines: teaserLines,
       blurbLines: blurbLines,
-      teaser: teaser[0],
-      blurb: blurb[0]
+      teaser: teaser,
+      blurb: blurb
     };
   }
 }

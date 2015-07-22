@@ -1,4 +1,5 @@
-@import "rizzo-next/sass/webpack_deps";
+@import "../../sass/webpack_deps";
+
 
 $mobile-breakpoint: 717px;
 $square-size: 190px;
@@ -102,7 +103,7 @@ $desktop-size: 1140px;
               padding-top: 2rem;
 
               font-size: 4rem;
-              line-height: 2.2rem;
+              line-height: 1;
               text-align: left;
               text-transform: none;
             }

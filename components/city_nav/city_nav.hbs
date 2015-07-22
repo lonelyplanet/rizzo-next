@@ -1,11 +1,13 @@
-<article id="city_nav" class="city-nav">
-  <div class="city-nav__container">
-    <ul class="city-nav__list">
-      {{#each city_nav}}
-        <li class="city-nav__item">
-          <a class="city-nav__link" href="{{link}}">{{title}}</a>
-        </li>
-      {{/each}}
-    </ul>
+<article id="city_nav" class="city-nav js-city-nav">
+  <div class="city-nav__wrap">
+    <div class="city-nav__container">
+      <ul class="city-nav__list">
+        {{#each city_nav}}
+          <li class="city-nav__item">
+            <a class="city-nav__link js-city-nav-lnk" href="{{link}}">{{title}}</a>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
   </div>
 </article>

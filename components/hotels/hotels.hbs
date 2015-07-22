@@ -1,55 +1,57 @@
-<section class="hotels">
+{{#if lodgings }}
+  <section id ="lodgings" class="hotels">
 
-  <div class="hotels__container">
-   <div class="hotels__top">
-    <h2 class="hotels__header">
-      Amazing places to stay
-    </h2>
-    <p class="hotels__widget__title">We've pre-picked the best Hotels, Hostels and Bed and Breakfasts to make your stay as enjoyable as possible.</p>
-  </div>
-    <form action="http://www.lonelyplanet.com/{{slug}}/hotels" class="search__widget" id="hotel-search-form">
-      <fieldset class="search-widget__set">
-        <div class="search__widget__wrap hotels-input">
-          {{!-- <label for="js-av-start" class="search__widget__label"></label> --}}
-          <div class="hotels-input__input">
-            <input  class="search__widget__element" id="js-av-start" autocomplete="off" name="search[from]" placeholder ="Check-in"type="date" value="">
-
-            <i class="hotels-input__icon icon-chevron-down"></i>
-          </div>
-        </div>
-
-        <div class="search__widget__wrap hotels-input">
-          {{!-- <label class="search__widget__label" for="js-av-end"></label> --}}
-          <div class="hotels-input__input">
-            <input  class="search__widget__element" id="js-av-end" autocomplete="off" name="search[to]" placeholder="Check-out" type="date" value="">
-
-            <i class="hotels-input__icon icon-chevron-down"></i>
-          </div>
-        </div>
-
-        <div class="search__widget__wrap hotels-input">
-          {{!-- <label for="js-guests" class="search__widget__label"></label> --}}
-          <div class="hotels-input__input">
-            <select class="search__widget__element" id="js-guests" name="search[guests]">
-              <option value="1">1 Guest</option>
-              <option selected="selected" value="2">2 Guests</option>
-              <option value="3">3 Guests</option>
-              <option value="4">4 Guests</option>
-              <option value="5">5 Guests</option>
-              <option value="6">6 Guests</option>
-              <option value="7">7 Guests</option>
-              <option value="8">8 Guests</option>
-              <option value="9">9 Guests</option>
-            </select>
+    <div class="hotels__container">
+     <div class="hotels__top">
+      <h2 class="hotels__header">
+        Amazing places to stay
+      </h2>
+      <p class="hotels__widget__title">We've pre-picked the best Hotels, Hostels and Bed and Breakfasts to make your stay as enjoyable as possible.</p>
+    </div>
+      <form action="http://www.lonelyplanet.com/{{slug}}/hotels" class="search__widget" id="hotel-search-form">
+        <fieldset class="search-widget__set">
+          <div class="search__widget__wrap hotels-input">
+            {{!-- <label for="js-av-start" class="search__widget__label"></label> --}}
+            <div class="hotels-input__input">
+              <input  class="search__widget__element" id="js-av-start" autocomplete="off" name="search[from]" placeholder ="Check-in"type="date" value="">
 
               <i class="hotels-input__icon icon-chevron-down"></i>
+            </div>
           </div>
-        </div>
 
-        <div class="search__widget__wrap">
-          <input class="hotels__widget__button" id="js-hotels-submit" type="submit" value="SEARCH">
-        </div>
-      </fieldset>
-    </form>
-  </div>
-</section>
+          <div class="search__widget__wrap hotels-input">
+            {{!-- <label class="search__widget__label" for="js-av-end"></label> --}}
+            <div class="hotels-input__input">
+              <input  class="search__widget__element" id="js-av-end" autocomplete="off" name="search[to]" placeholder="Check-out" type="date" value="">
+
+              <i class="hotels-input__icon icon-chevron-down"></i>
+            </div>
+          </div>
+
+          <div class="search__widget__wrap hotels-input">
+            {{!-- <label for="js-guests" class="search__widget__label"></label> --}}
+            <div class="hotels-input__input">
+              <select class="search__widget__element" id="js-guests" name="search[guests]">
+                <option value="1">1 Guest</option>
+                <option selected="selected" value="2">2 Guests</option>
+                <option value="3">3 Guests</option>
+                <option value="4">4 Guests</option>
+                <option value="5">5 Guests</option>
+                <option value="6">6 Guests</option>
+                <option value="7">7 Guests</option>
+                <option value="8">8 Guests</option>
+                <option value="9">9 Guests</option>
+              </select>
+
+                <i class="hotels-input__icon icon-chevron-down"></i>
+            </div>
+          </div>
+
+          <div class="search__widget__wrap">
+            <input class="hotels__widget__button" id="js-hotels-submit" type="submit" value="SEARCH">
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </section>
+{{/if}}

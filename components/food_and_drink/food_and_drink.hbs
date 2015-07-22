@@ -1,0 +1,37 @@
+{{#if food_and_drink}}
+
+<article id="food-and-drink" class="food-and-drink">
+  <h1 class="food-and-drink__heading">{{title}}</h1>
+
+  <div class="food-and-drink__image"></div>
+
+  <div class="food-and-drink__inner">
+    <ol class="food-and-drink__list">
+      {{#each food_and_drink}}
+        <li class="food-and-drink__item">
+          <a href="http://www.lonelyplanet.com/{{url}}" itemscope itemtype="http://schema.org/FoodEstablishment">
+
+            <div class="food-and-drink__title" itemprop="name">{{name}}</div>
+            <div class="food-and-drink__categories" itemprop="makesOffer" itemscope itemtype="http://schema.org/Offer">
+              {{#if tags}}
+                {{#each tags}}
+                  <span itemprop="category">{{this}}</span>
+                {{/each}}
+              {{/if}}
+            </div>
+          </a>
+        </li>
+      {{/each}}
+    </ol>
+  </div>
+
+  <div class="food-and-drink__button-container">
+    <a class="food-and-drink__more" href="{{see_more_url}}">
+      See More
+      <span class="icon-chevron-right"></span>
+    </a>
+  </div>
+
+</article>
+
+{{/if}}

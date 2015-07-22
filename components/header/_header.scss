@@ -1,10 +1,12 @@
-@import "rizzo-next/sass/webpack_deps";
+@import "../../sass/webpack_deps";
+
+
 
 .header {
   position: relative;
   z-index: 100;
 
-  &--absolute {
+  &--normal {
     position: absolute;
     z-index: 100;
 
@@ -31,13 +33,14 @@
     }
   }
 
-  &--city &__inner {
+  &--narrow &__inner {
     border-bottom-color: transparent;
   }
 
   &__logo {
     display: block;
     position: relative;
+    z-index: 1;
 
     top: 50%;
 
@@ -47,7 +50,11 @@
 
     fill: #fff;
 
-    transform: translate3d(0,-50%,0);
+    transform: translateY(-50%);
+
+    .no-csstransforms & {
+      top: 3rem;
+    }
 
     #header-logo {
       display: block;
@@ -65,7 +72,7 @@
     }
   }
 
-  &--city &__logo {
+  &--narrow &__logo {
     fill: $color-primary;
   }
 
@@ -82,6 +89,11 @@
     height: $header-height;
     line-height: $header-height;
 
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
     font-size: 2.8rem;
     font-weight: 100;
     color: #fff;
@@ -89,9 +101,12 @@
     user-select: none;
     cursor: pointer;
 
-    span {
-      opacity: .38;
+    &--fade {
+      width: 42%;
+      -webkit-mask-image: -webkit-gradient(linear, 70% 0, 100% 0, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
     }
+
+
 
     [class*="icon-"] {
       margin-right: $spacing;
@@ -111,7 +126,16 @@
     }
   }
 
-  &--city &__search {
+  &__search-text {
+    transition: opacity $animation-speed;
+  }
+
+  &__search-beyond,
+  &__search:hover &__search-text {
+    opacity: .4;
+  }
+
+  &--narrow &__search {
     color: $font-color;
   }
 
@@ -195,9 +219,9 @@
     }
   }
 
-  &--city &__mobile-search,
-  &--city &__mobile-menu,
-  &--city &__mobile-cart {
+  &--narrow &__mobile-search,
+  &--narrow &__mobile-menu,
+  &--narrow &__mobile-cart {
     color: $font-color;
   }
 
@@ -248,7 +272,7 @@
     }
   }
 
-  &--city &__mobile-menu {
+  &--narrow &__mobile-menu {
     .m1,
     .m2,
     .m3 {

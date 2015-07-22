@@ -1,4 +1,4 @@
-<nav class="navigation navigation--{{type}}">
+<nav class="navigation navigation--{{type}} {{#if images}}navigation--has-images{{else}} navigation--no-images{{/if}}">
   <ul class="navigation__list">
    {{#each navigation}}
      <li class="navigation__item {{nav_class_names title}}">
@@ -17,7 +17,7 @@
          <ul class="sub-navigation__list">
          {{#each submenu.items}}
            <li class="sub-navigation__item {{#if current}}sub-navigation__item--current{{/if}}">
-             <a class="sub-navigation__link" href="{{slug}}">{{title}}</a>
+             <a class="sub-navigation__link" href="/{{slug}}">{{title}}</a>
            </li>
          {{/each}}
          </ul>

@@ -10,7 +10,10 @@ class Overlay extends Component {
     this.$el = $('<div class="overlay"></div>');
 
     this.events = {
-      "click": "onClick"
+      "click": "onClick",
+      "touchmove": (e) => {
+        e.preventDefault();
+      }
     };
   }
 

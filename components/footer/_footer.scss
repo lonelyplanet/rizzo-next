@@ -1,4 +1,5 @@
-@import "rizzo-next/sass/webpack_deps";
+@import "../../sass/webpack_deps";
+
 $mobile-breakpoint: 945;
 $mobile-margin-left: 20;
 $footer-logo-desktop-width: 84;
@@ -6,32 +7,216 @@ $desktop-logo-margin: 35;
 $extra-margin: 5; // used to push the copyright slightly further right than the bottom nav is
 $footer-total-logo-width: $footer-logo-desktop-width + $desktop-logo-margin + $extra-margin;
 
-.footer {
-  position: relative; // make footer clickable as it's overlapped by navigation
-  z-index: 5;
-  background: #fff;
+$logo-height: 4rem;
 
-  @include clearfix;
+.footer {
+  position: relative;
+
+  @media (min-width: $min-960) {
+    @include container();
+  }
+
+  &__container {
+    position: relative;
+
+    //outline: 1px dashed #ccc;
+
+    @include clearfix;
+  }
+
+  &__bottom {
+    @include clearfix;
+
+    position: relative;
+
+    margin: 0 0 $spacing;
+    padding: 0;
+
+    border-top: .1rem solid $color-border;
+
+    @media (min-width: $min-960) {
+      padding-top: $spacing;
+      padding-left: 8rem + $gutter;
+      padding-right: ($logo-height + .2) * 3 + $spacing;
+    }
+  }
+
+  &__logo {
+    float: left;
+
+    margin: 0 0 $spacing $gutter/2;
+
+
+    fill: #cccdce;
+
+    transition: fill 1s;
+
+    &:hover {
+      fill: $color-primary;
+      transition: fill 200ms;
+    }
+
+    @media (min-width: $min-960) {
+      float: none;
+
+      position: absolute;
+
+      top: $spacing;
+      left: 0;
+
+      margin: 0;
+    }
+
+    #footer-logo {
+      display: block;
+
+      height: $logo-height;
+    }
+  }
+
+  &__social-list {
+    float: right;
+
+    margin: 0 $gutter/2 $spacing 0;
+
+    list-style: none;
+    font-size: 1.8rem;
+
+    @media (min-width: $min-960) {
+      float: none;
+
+      position: absolute;
+
+      top: $spacing;
+      right: 0;
+
+      margin: 0;
+    }
+  }
+
+  &__social-item {
+    display: inline-block;
+    margin-left: 0.2rem;
+  }
+
+  &__social-link {
+    display: block;
+
+    height: $logo-height;
+    width: $logo-height;
+
+    line-height: $logo-height + .3;
+    text-align: center;
+    color: #cccdce;
+
+    border: 0.1rem solid #e5e7ed;
+    border-radius: 50%;
+
+    transition-property: color, border, background;
+    transition-duration: .3s;
+
+    &:hover {
+      background: #e5e7ed;
+      color: #fff;
+
+      transition-duration: 0s;
+    }
+
+    &--facebook {
+      &:hover {
+        border-color: #3b5998;
+        background: #3b5998;
+      }
+    }
+
+    &--twitter {
+      &:hover {
+        border-color: #00aced;
+        background: #00aced;
+      }
+    }
+
+    &--pinterest {
+      &:hover {
+        border-color: #cb2027;
+        background: #cb2027;
+      }
+    }
+  }
+
+  &__links {
+  }
+
+  &__copyright {
+    clear: both;
+
+    margin: 0;
+    padding: 0;
+
+    font-size: 1.3rem;
+    text-align: center;
+    color: $footer-copyright-color;
+
+    @media (min-width: $min-960) {
+      text-align: left;
+      line-height: $logo-height/2;
+    }
+  }
+
 }
 
-.footer-wrapper {
-  width: 100%;
-  max-width: 1290px;
-  margin: 0 auto;
+.links {
+  margin: 0 0 $spacing;
 
-  @include respond-to($mobile-breakpoint) {
-    width: 96%;
+  font-size: 14px;
+
+  @media (min-width: $min-960) {
+    margin: 0;
+
+    line-height: $logo-height/2;
+  }
+
+  &__list {
+
+  }
+
+  &__item {
+    display: block;
+
+    @include divider;
+    @media (min-width: $min-960) {
+      display: inline-block;
+      margin-right: 21px;
+      border-bottom: 0 none;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &__link {
+    display: block;
+
+    padding: 14px 0;
+    padding-left: #{$mobile-margin-left}px;
+
+    color: $footer-bottom-link-color;
+
+    &:hover {
+      color: $color-primary;
+    }
+
+    @media (min-width: $min-960) {
+      padding: 0;
+    }
   }
 }
 
-.footer-logo {
-  position: relative;
-  display: inline-block;
-}
+
 
 .footer__main {
   @include divider("top");
-  @include respond-to($mobile-breakpoint) {
+  @media (min-width: $min-960) {
     padding: {
       top: 60px;
       bottom: 60px;
@@ -55,7 +240,7 @@ $footer-total-logo-width: $footer-logo-desktop-width + $desktop-logo-margin + $e
   vertical-align: top;
 
   @include component-width;
-  @include respond-to($mobile-breakpoint) {
+  @media (min-width: $min-960) {
     display: inline-block;
     width: 18%;
     max-height: 600px;
@@ -72,7 +257,7 @@ $footer-total-logo-width: $footer-logo-desktop-width + $desktop-logo-margin + $e
   text-transform: uppercase;
 
   @include divider(top);
-  @include respond-to($mobile-breakpoint) {
+  @media (min-width: $min-960) {
     padding: 0 0 15px 0;
     border: none;
     .accordion-target {
@@ -97,6 +282,16 @@ $footer-total-logo-width: $footer-logo-desktop-width + $desktop-logo-margin + $e
     margin-top: 20px;
     transition: transform .3s linear;
   }
+
+  a {
+    transition-property: color, border, background;
+    transition-duration: .3s;
+
+    &:hover {
+      transition-duration: 0s;
+      color: $color-primary;
+    }
+  }
 }
 
 #destinations_checked:checked + .footer__main__links--destinations,
@@ -114,7 +309,7 @@ $footer-total-logo-width: $footer-logo-desktop-width + $desktop-logo-margin + $e
     left: 20px;
   }
 
-  @include respond-to($mobile-breakpoint) {
+  @media (min-width: $min-960) {
     padding: 0;
   }
 }
@@ -125,132 +320,17 @@ $footer-total-logo-width: $footer-logo-desktop-width + $desktop-logo-margin + $e
   list-style: none;
   color: $tours-blurb-color;
 
-  @include respond-to($mobile-breakpoint) {
+  @media (min-width: $min-960) {
     line-height: 1.6;
   }
-}
 
-.footer__bottom {
-  padding-top: 0;
+  a {
+    transition-property: color, border, background;
+    transition-duration: .3s;
 
-  @include divider("top");
-  @include respond-to($mobile-breakpoint) {
-    padding-top: 17px;
-  }
-}
-
-.footer__bottom__logo {
-  float: left;
-  margin: {
-    top: 12px;
-    left: #{$mobile-margin-left}px;
-  }
-
-  @include respond-to($mobile-breakpoint) {
-    display: none;
-  }
-}
-
-.footer__bottom__middle {
-  display: block;
-
-  @include respond-to($mobile-breakpoint) {
-    display: inline-block;
-  }
-}
-
-.footer__copyright {
-  clear: both;
-  width: 88%;
-  margin: 0 auto;
-  padding: 30px 0;
-  font-size: 13px;
-  text-align: center;
-  color: $footer-copyright-color;
-
-  @include respond-to($mobile-breakpoint) {
-    display: inline-block;
-    float: left;
-    width: auto;
-    margin: {
-      top: -20px;
-      left: #{$footer-total-logo-width}px;
+    &:hover {
+      transition-duration: 0s;
+      color: $color-primary;
     }
-    padding: 0;
-    padding-bottom: 20px;
-    font-size: 12px;
-    text-align: left;
-  }
-}
-
-.footer__bottom__middle__logo {
-  display: none;
-
-  @include respond-to($mobile-breakpoint) {
-    display: inline-block;
-    margin-right: #{$desktop-logo-margin}px;
-    vertical-align: middle;
-  }
-}
-
-.footer__bottom__middle__links {
-  font-size: 14px;
-
-  @include respond-to($mobile-breakpoint) {
-    display: inline-block;
-    margin-top: 4px;
-    vertical-align: top;
-  }
-}
-
-.footer__bottom__middle__links__li {
-  display: block;
-
-  @include divider;
-  @include respond-to($mobile-breakpoint) {
-    display: inline-block;
-    margin-right: 21px;
-    border-bottom: 0 none;
-    &:last-child {
-      margin-right: 0;
-    }
-  }
-}
-
-.footer__bottom__middle__links__li__link {
-  display: block;
-  padding: 14px 0;
-  padding-left: #{$mobile-margin-left}px;
-  color: $footer-bottom-link-color;
-
-  @include respond-to($mobile-breakpoint) {
-    padding: 0;
-  }
-}
-
-.footer__bottom__social-media {
-  float: right;
-  margin: {
-    top: 13px;
-    right: 14px;
-  }
-  font-size: 0;
-
-  @include respond-to($mobile-breakpoint) {
-    margin-top: 0;
-  }
-}
-
-.footer__bottom__social-media__link {
-  display: inline-block;
-  width: 36px;
-  height: 36px;
-  margin-right: 4px;
-  border: 1px solid $footer-bottom-icon-border-color;
-  border-radius: 60px;
-  vertical-align: middle;
-
-  &:last-child {
-    margin-right: 0;
   }
 }

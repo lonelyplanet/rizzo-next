@@ -1,4 +1,4 @@
-@import "rizzo-next/sass/mixins";
+@import "rizzo/app/assets/stylesheets/rizzo_next/mixins";
 
 .hamburger-menu {
   position: relative;
@@ -31,7 +31,7 @@
   fill: #fff;
 }
 
-.navigation--city .hamburger-menu__svg__toggle {
+.navigation--narrow .hamburger-menu__svg__toggle {
   fill: $h2-color;
 }
 .hamburger-menu__svg__toggle__bar {

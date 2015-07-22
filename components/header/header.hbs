@@ -1,4 +1,4 @@
-<header class="header header--{{type}}">
+<header class="header header--{{type}} {{#if images}}header--has-images{{else}} header--no-images{{/if}}">
   <div class="header__container">
     <div class="header__inner">
 
@@ -14,7 +14,9 @@
       </a>
 
       <div class="header__search js-search">
-        <i class="icon-search"></i> Search {{place.title}} <span>and beyond</span>
+        <i class="icon-search"></i>
+        <span class="header__search-text">Search {{place.title}}</span>
+        <span class="header__search-beyond">and beyond</span>
       </div>
 
       <div class="header__navigation">
