@@ -1,6 +1,8 @@
 import { Component } from "../../core/bane";
-import waitForTransition from '../../core/utils/waitForTransition';
-import SlideComponent from './slide_component';
+import waitForTransition from "../../core/utils/waitForTransition";
+import Overlay from "../overlay";
+import SlideComponent from "./slide_component";
+import Video from "../video";
 
 let delay = function(time){
   return new Promise((resolve) => {
@@ -9,29 +11,20 @@ let delay = function(time){
 };
 
 class MastheadComponent extends Component {
-
   static get loopSpeed() {
     return 6000;
   }
 
   get padding() {
-    return this.type === 'slide' ? 2 : 1;
+    return this.type === "slide" ? 2 : 1;
   }
 
   get slides(){
-    if(!this._slides) {
-      this._slides = [];
-    }
-
-    return this._slides;
+    return this._slides || (this._slides = []);
   }
 
   get stack(){
-    if(!this._stack) {
-      this._stack = [];
-    }
-
-    return this._stack;
+    return this._stack || (this._stack = []);
   }
 
   get $images(){
@@ -53,14 +46,14 @@ class MastheadComponent extends Component {
 
   initialize(options){
     this.options = options;
-
-    this.$el.addClass('masthead--'+ this.type);
-
+    this.$el.addClass(`masthead--${this.type}`);
+    this.overlay = new Overlay();
     this.currentSlideIndex = 0;
 
     this.events = {
-      'click [class*="--num_-1"]': 'goLeft',
-      'click [class*="--num_1"]': 'goRight'
+      "click [class*=\"--num_-1\"]": "goLeft",
+      "click [class*=\"--num_1\"]": "goRight",
+      "click .js-play-video": "playVideo"
     };
 
     this.createBaseSlides();
@@ -68,6 +61,41 @@ class MastheadComponent extends Component {
     if(this.slides.length > 1) {
       this.initSlideShow();
       this.startLoop();
+    }
+
+    Video.addPlayer(document.body)
+      .then(this.playerReady.bind(this));
+  }
+
+  playVideo() {
+    this.overlay.show();
+    this.player.play(this.videoId);
+  }
+
+  playerReady(player) {
+    this.player = player;
+
+    this.player.search(window.lp.place.atlasId)
+      .then(this.searchDone.bind(this));
+
+    this.listenTo(this.player, "play", this.onPlay);
+    this.listenTo(this.player, "stop", this.onStop);
+    this.listenTo(this.player, "pause", this.onStop);
+  }
+
+  onPlay() {
+    // Use?
+  }
+
+  onStop() {
+    // Use?
+    this.overlay.hide();
+  }
+
+  searchDone(videos) {
+    if (videos.length) {
+      this.$el.find(".js-play-video").show();
+      this.videoId = videos[0];
     }
   }
 

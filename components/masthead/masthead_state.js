@@ -1,6 +1,6 @@
 import assign from "lodash/object/assign";
 import Events from "../../core/mixins/events";
-import { Arkham } from "../../core/bane";
+import Arkham from "../../core/arkham";
 
 let state = {
   currentIndex: 0,
@@ -10,7 +10,7 @@ let state = {
 let MastheadState = {
   setInitialState: (initialState) => {
     if (!initialState.images) return;
-    
+
     initialState.currentIndex = initialState.images.length;
     assign(state, initialState);
   },

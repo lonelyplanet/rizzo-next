@@ -1,4 +1,4 @@
-import { Arkham } from "../../core/bane";
+import Arkham from "../../core/arkham";
 
 let NavigationActions = {
   hoverStart: (data) => {

@@ -1,5 +1,5 @@
 import assign from "lodash/object/assign";
-import { Arkham } from "../../core/bane";
+import Arkham from "../../core/arkham";
 import Events from "../../core/mixins/events";
 
 let state = {

@@ -1,5 +1,8 @@
+<!--
+By use of this code snippet, I agree to the Brightcove Publisher T and C
+found at https://accounts.brightcove.com/en/terms-and-conditions/.
+-->
 <article class="masthead masthead--{{type}} {{#if images}}masthead--has-images{{else}} masthead--no-images{{/if}}" data-lp-initial-images="{{masthead.json}}">
-
   {{#if masthead.first}}
     <div class="masthead__wrap">
       <div class="masthead__images">
@@ -28,6 +31,11 @@
             Places in {{place.name}} <i class="icon-chevron-down"></i>
           </a>
         {{/if}}
+
+        <a class="masthead__button--play js-play-video" style="display: none;">
+          <i class="icon-play3"></i>
+        </a>
+
       </div>
     </div>
   </div>

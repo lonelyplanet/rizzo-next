@@ -1,16 +1,10 @@
 import $ from "jquery";
-import Arkham from "./arkham";
 import Events from "./mixins/events";
 import assign from "lodash/object/assign";
 import pick from "lodash/object/pick";
 import bind from "lodash/function/bind";
 import each from "lodash/collection/each";
 import uniqueId from "lodash/utility/uniqueId";
-import MobileUtil from "./mobile_util";
-
-// # Bane
-// The main namespace for Bane components
-var Bane = {};
 
 // Can pass in options that contains these keys. They will automatically be added to `this`
 var listOfOptions = [ "el", "events", "container" ];
@@ -29,7 +23,7 @@ var delegateEventSplitter = /^(\S+)\s*(.*)$/;
 //       }
 //     }
 //
-class Component {
+export class Component {
   constructor(options) {
     this.cid = uniqueId("comp");
 
@@ -138,13 +132,7 @@ class Component {
 
 assign(Component.prototype, Events);
 
-// Expose Bane's main API
-Bane.Component = Component;
-Bane.Arkham = Arkham;
-Bane.MobileUtil = MobileUtil;
 
 $.support.cors = true;
 
 window.jQuery = $;
-
-export default Bane;

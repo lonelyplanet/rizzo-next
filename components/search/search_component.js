@@ -1,4 +1,5 @@
-import { Arkham, Component } from "../../core/bane";
+import { Component } from "../../core/bane";
+import Arkham from "../../core/arkham";
 import Overlay from '../overlay';
 import waitForTransition from "../../core/utils/waitForTransition";
 import SearchActions from "./search_actions";

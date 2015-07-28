@@ -1,4 +1,4 @@
-import { Arkham } from "../../core/bane";
+import Arkham from "../../core/arkham";
 import SearchApi from "./search_api";
 
 let SearchActions = {

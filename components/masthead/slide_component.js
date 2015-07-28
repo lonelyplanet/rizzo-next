@@ -4,19 +4,19 @@ import waitForTransition from '../../core/utils/waitForTransition';
 class SlideComponent extends Component {
 
   static get imageSize(){
-    if(Modernizr.mq('only screen and (min-width: 1200px)')){
-      return 'large';
+    if(Modernizr.mq("only screen and (min-width: 1200px)")){
+      return "large";
     }
 
-    if(Modernizr.mq('only screen and (min-width: 720px)')){
-      return 'medium';
+    if(Modernizr.mq("only screen and (min-width: 720px)")){
+      return "medium";
     }
 
-    return 'small';
+    return "small";
   }
 
   static get quality() {
-    return 'hq';
+    return "hq";
   }
 
   get imageUrl(){
@@ -33,12 +33,12 @@ class SlideComponent extends Component {
   }
 
   getElement(){
-    let $el = this.currentEl = $('<div class="masthead__slide" />');
+    let $el = this.currentEl = $("<div class=\"masthead__slide\" />");
 
     $el.css({
-      'background-image': 'url('+ this.imageUrl +')'
+      "background-image": `url(${this.imageUrl})`
     });
-    $el.attr('data-strapline', this.model.strapline);
+    $el.attr("data-strapline", this.model.strapline);
 
     return $el;
   }
