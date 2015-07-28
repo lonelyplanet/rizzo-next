@@ -1,0 +1,131 @@
+@import "../../../../sass/webpack_deps";
+
+
+.search-item {
+  $height: 6rem;
+
+  position: relative;
+
+  margin: 0 0 1rem 0;
+  padding: 0 0 0 (8rem + $gutter);
+
+  line-height: $height;
+
+  list-style: none;
+
+  cursor: pointer;
+
+  transition: background $animation-speed / 2;
+
+  &:hover {
+    background: #f1f4fb;
+  }
+
+  &--selected {
+    background: #f1f4fb;
+  }
+
+  &__image {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 8rem;
+    height: $height;
+
+    background: #ccc;
+
+    background:{
+      size: cover;
+      repeat: no-repeat;
+    }
+
+    &--activity{
+      background:{
+        image: url("https://assets.staticlp.com/destinations-next/images/search-category-image-activities.jpg");
+        repeat: no-repeat;
+      }
+      @include icon-before("https://assets.staticlp.com/destinations-next/icons/activity--line.svg");
+    }
+
+    &--article{
+      background:{
+        image: url("https://assets.staticlp.com/destinations-next/images/search-category-image-articles.jpg");
+        repeat: no-repeat;
+      }
+      @include icon-before("https://assets.staticlp.com/destinations-next/icons/article--line.svg");
+    }
+
+    &--collection{
+      background:{
+        image: url("https://assets.staticlp.com/destinations-next/images/search-category-image-collection.jpg");
+        repeat: no-repeat;
+      }
+      @include icon-before("https://assets.staticlp.com/destinations-next/icons/image--line.svg");
+    }
+
+    &--guide{
+      background:{
+        image: url("https://assets.staticlp.com/destinations-next/images/search-category-image-guides.jpg");
+        repeat: no-repeat;
+      }
+      @include icon-before("https://assets.staticlp.com/destinations-next/icons/book.svg");
+    }
+
+    &--hotel{
+      background:{
+        image: url("https://assets.staticlp.com/destinations-next/images/search-category-image-hotels.jpg");
+        repeat: no-repeat;
+      }
+      @include icon-before("https://assets.staticlp.com/destinations-next/icons/hotel--line.svg");
+    }
+
+    &--place{
+      background:{
+        image: url("https://assets.staticlp.com/destinations-next/images/search-category-image-place.jpg");
+        repeat: no-repeat;
+      }
+      @include icon-before("https://assets.staticlp.com/destinations-next/icons/place.svg");
+    }
+
+    &--sight{
+      background:{
+        image: url("https://assets.staticlp.com/destinations-next/images/search-category-image-sights.jpg");
+        repeat: no-repeat;
+      }
+      @include icon-before("https://assets.staticlp.com/destinations-next/icons/sight--line.svg");
+    }
+
+    &--tour{
+      background:{
+        image: url("https://assets.staticlp.com/destinations-next/images/search-category-image-tours.jpg");
+        repeat: no-repeat;
+      }
+      @include icon-before("https://assets.staticlp.com/destinations-next/icons/tour--line.svg");
+    }
+  }
+
+  &__name {
+    font-size: $font-size;
+    color: #ccc;
+
+    border-bottom: .1rem solid #f1f4fb;
+
+    transition: transform $animation-speed;
+
+    .is-highlight {
+      color: $font-color;
+    }
+
+    @media (min-width: $min-720) {
+      font-size: 2.4rem;
+    }
+  }
+
+  &--selected &__name {
+    transform: translateX($spacing / 2);
+  }
+}
+
+

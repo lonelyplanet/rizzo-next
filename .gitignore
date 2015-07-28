@@ -31,3 +31,6 @@ npm-debug.log
 
 .idea
 public
+
+tmp
+docs
