@@ -2,7 +2,6 @@ import { Component } from "../../core/bane";
 import waitForTransition from "../../core/utils/waitForTransition";
 import Overlay from "../overlay";
 import SlideComponent from "./slide_component";
-import Video from "../video";
 
 let delay = function(time){
   return new Promise((resolve) => {
@@ -50,7 +49,6 @@ export default class MastheadComponent extends Component {
   initialize(options){
     this.options = options;
     this.$el.addClass(`masthead--${this.type}`);
-    this.overlay = new Overlay();
     this.currentSlideIndex = 0;
 
     this.events = {
@@ -66,15 +64,19 @@ export default class MastheadComponent extends Component {
       this.startLoop();
     }
 
-    Video.addPlayer(document.body)
-      .then(this.playerReady.bind(this));
+    // import Video from "../video";
+    require([
+        "../video"
+      ], (Video) => {
+        Video.addPlayer(document.body)
+          .then(this.playerReady.bind(this));
+      });
   }
 
   /**
    * Play the video, callback from click handler
    */
   playVideo() {
-    this.overlay.show();
     this.player.play(this.videoId);
   }
 
@@ -100,7 +102,6 @@ export default class MastheadComponent extends Component {
 
   onStop() {
     // Use?
-    this.overlay.hide();
   }
 
   searchDone(videos) {

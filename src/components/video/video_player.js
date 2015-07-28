@@ -1,4 +1,5 @@
 import { Component } from "../../core/bane";
+import waitForTransition from "../../core/utils/waitForTransition";
 
 class VideoPlayer extends Component {
   initialize({ playerId }) {
@@ -7,7 +8,7 @@ class VideoPlayer extends Component {
     this.loadPlayer();
 
     this.events = {
-      "click .js-close-video": "pause"
+      "click": "pause"
     };
 
     this.$el.addClass("video-overlay");
@@ -16,10 +17,15 @@ class VideoPlayer extends Component {
     // Overwrite this
   }
   play() {
+    this.$el.css("zIndex", 9999);
     this.$el.addClass("video-overlay--playing");
   }
   pause() {
     this.$el.removeClass("video-overlay--playing");
+    
+    waitForTransition(this.$el).then(() => {
+      this.$el.css("zIndex", 0);
+    });
   }
   loadPlayer() {
     this._getScripts(this.scripts);

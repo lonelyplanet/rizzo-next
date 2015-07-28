@@ -1,0 +1,76 @@
+@import "../../../sass/webpack_deps";
+
+$max-video-width: 129rem;
+
+.video-overlay {
+  background: #FFF;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  transition: opacity .5s ease-in;
+  opacity: 0;
+
+  &--playing {
+    opacity: 1;
+  }
+
+  &__close {
+    font-size: 2rem;
+    z-index: 1000;
+    height: 8rem;
+    left: auto;
+    position: absolute;
+    top: 3.5rem;
+    right: 3.5rem;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  &__close__button {
+    color: $font-color;
+  }
+}
+
+.masthead-video {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  max-width: $max-video-width;
+  top: 50%;
+  left: 0;
+  margin-left: 0;
+  margin-top: -36rem;
+
+  @media (min-width: $min-1290) {
+    left: 50%;
+    margin-left: -64.5rem;
+  }
+
+  &__container {
+    position: relative;
+    height: 0;
+    padding-bottom: 56.25%;
+    max-width: $max-video-width;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+}
+
+.BrightcoveExperience {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  // Max video width before controls start to disappear
+  max-width: $max-video-width;
+  max-height: 80rem;
+  margin: 0 auto;
+}

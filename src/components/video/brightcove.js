@@ -40,7 +40,9 @@ class Brightcove extends VideoPlayer {
     this.videoPlayer.addEventListener(brightcove.api.events.MediaEvent.STOP, () => this.trigger("stop"));
 
     this.videoPlayer.loadVideoByID(videoId);
-    this.videoPlayer.play();
+    
+    // setTimeout(() => this.videoPlayer.play());
+    // this.videoPlayer.play();
 
     document.getElementById("masthead-video-player").style.removeProperty("display");
 
@@ -110,9 +112,6 @@ class Brightcove extends VideoPlayer {
 
     for (let index in jsonData.items) {
       mastheadVideoIds.push(jsonData.items[index].id);
-    }
-    if (mastheadVideoIds.length > 0) {
-      //jQuery(".js-play-video").show();
     }
 
     this.searchResolver(mastheadVideoIds);
