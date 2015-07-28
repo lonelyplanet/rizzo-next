@@ -1,5 +1,6 @@
 {
-  "source": "./components",
+  "source": "src",
+  "excludes": ["node_modules", "spec", "sass", "tmp"],
   "destination": "./docs",
   "test": {
     "type": "mocha",

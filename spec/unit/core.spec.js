@@ -1,5 +1,5 @@
-import { Component } from "../../core/bane";
-import Arkham from "../../core/arkham"
+import { Component } from "../../src/core/bane";
+import Arkham from "../../src/core/arkham"
 
 var expect = require("expect.js");
 

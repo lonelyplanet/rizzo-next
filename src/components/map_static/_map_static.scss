@@ -1,0 +1,39 @@
+@import "../../../sass/webpack_deps";
+
+
+
+.map_static {
+  @media (max-width: $max-960) {
+    margin: 0 ($gutter*0.5);
+
+    max-width: $max-width;
+    height: .1rem;
+
+    background: $color-border;;
+
+    @media (min-width: $min-720){
+      margin: 0 ($gutter*1);
+    }
+
+    @media (min-width: $min-1080){
+      margin: 0 ($gutter*2);
+    }
+
+    @media (min-width: $min-1290){
+      margin: 0 auto;
+    }
+  }
+
+  &__container {
+    display: none;
+
+    @media (min-width: $min-960) {
+      display: block;
+    }
+  }
+}
+
+.map_static__img {
+  width: 100%;
+  height: auto;
+}

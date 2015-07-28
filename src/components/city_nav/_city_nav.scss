@@ -1,0 +1,155 @@
+@import "../../../sass/webpack_deps";
+
+
+$navigation-sub-height: 9rem;
+$navigation-sub-height-mobile: $header-height-mobile;
+
+@keyframes fly-in-sub-nav {
+  0% {
+    width: 150%;
+    opacity: 0;
+    transform: translate(-25rem);
+  }
+
+  100% {
+    width: 150%;
+    opacity: 1;
+    transform: translate(0rem);
+  }
+}
+
+.city-nav {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  font-size: 0;
+
+  background: #fff;
+
+  &--fixed{
+    @include z-layer(top);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+  }
+
+  &__wrap {
+    &:after {
+      display: block;
+      max-width: $max-width;
+      margin: 0 ($gutter / 2);
+      border-bottom: .1rem solid #e4e4e4;
+      content: "";
+
+      @media (min-width: $min-480) {
+        margin: 0 ($gutter);
+      }
+    }
+
+    @media (min-width: $min-720) {
+      @include container();
+
+      &:after {
+        margin: 0;
+      }
+    }
+  }
+
+
+
+  &__container {
+    height: $navigation-sub-height-mobile;
+    margin: 0;
+    overflow: hidden;
+
+    &:before,
+    &:after {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      display: block;
+      width: $gutter / 2;
+      background: linear-gradient(to right, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
+      content: "";
+    }
+
+    &:after {
+      right: 0;
+      left: auto;
+      background: linear-gradient(to left, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
+    }
+
+    @media (min-width: $min-720) {
+      height: $navigation-sub-height;
+    }
+  }
+
+  &__list {
+    width: 100%;
+    height: $navigation-sub-height-mobile + 2rem;
+    margin: 0;
+    padding: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    //opacity: 0;
+    //transform: translate(-15rem);
+    transition: opacity $animation-speed;
+    animation: fly-in-sub-nav $animation-speed-ui;
+    text-align: left;
+    white-space: nowrap;
+
+    @media (min-width: $min-480) {
+      animation: none;
+      text-align: center;
+    }
+
+    @media (min-width: $min-720) {
+      height: $navigation-sub-height + 2rem;
+    }
+  }
+
+  &__item {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    line-height: $navigation-sub-height-mobile;
+    list-style: none;
+
+    @media (min-width: $min-720) {
+      line-height: $navigation-sub-height;
+    }
+
+    &--active,
+    a:hover {
+      color: #287bbb;
+    }
+  }
+
+  &__link {
+    display: block;
+    padding: 0 $gutter / 2;
+    font-size: 1.4rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: $font-color;
+
+    @media (min-width: $min-720) {
+      font-size: 1.6rem;
+      font-weight: 600;
+    }
+  }
+
+  @media (min-width: $min-480) {
+    &__item:first-child &__link {
+      padding-left: $gutter;
+    }
+
+    &__item:last-child &__link {
+      padding-right: $gutter;
+    }
+  }
+}

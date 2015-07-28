@@ -1,0 +1,359 @@
+@import "../../../sass/webpack_deps";
+
+
+$max-video-width: 129rem;
+
+.masthead {
+  position: relative;
+
+  height: 90vh;
+  min-height: 40rem;
+  max-height: 80rem;
+
+  //overflow: hidden;
+
+  color: #fff;
+
+  background-color: $h2-color;
+  top: 0;
+  left: 0;
+
+  &--narrow {
+    background: transparent;
+  }
+  &--no-images.masthead--normal {
+    color: $font-color;
+    height: 30rem;
+    background: transparent;
+  }
+
+  &--no-images.masthead--narrow {
+    @include container();
+
+    border: none;
+
+    color: $font-color;
+
+    height: 30rem;
+  }
+
+  &--has-images.masthead--narrow {
+    height: calc(90vh - #{$header-height-mobile});
+
+    @media (min-width: $min-720) {
+      height: calc(90vh - #{$header-height});
+    }
+  }
+
+  &__wrap {
+    height: 100%;
+  }
+  &--no-images &__text-wrap {
+    border: .1rem solid $color-border;
+  }
+  &--narrow &__text-wrap {
+    border: .1rem solid $color-border;
+    border-left-style: none;
+    border-right-style: none;
+  }
+
+  &--has-images &__text-wrap {
+    border: none;
+  }
+
+  &__images {
+    position: relative;
+
+    height: 100%;
+  }
+
+  &__slide {
+    position: absolute;
+    z-index: 3;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background: center no-repeat $h2-color;
+    background-size: cover;
+
+    transition: opacity $animation-speed-ui, transform $animation-speed-ui;
+  }
+
+  &--fade &__slide {
+    opacity: 1;
+
+    transition-duration: $animation-speed-ui*2;
+    transition-timing-function: ease-in-out;
+
+    &--num_-1 {
+      z-index: 1;
+      opacity: 1;
+    }
+
+    &--num_1 {
+      z-index: 5;
+      opacity: 0;
+    }
+  }
+
+  &--slide &__wrap {
+    @include container();
+
+    @media (min-width: $min-1290) {
+      padding: 0;
+    }
+  }
+
+  &--slide &__slide {
+    &--num_-2 {
+      transform: translateX(calc(-200% - #{$gutter * 2}));
+    }
+
+    &--num_-1 {
+      transform: translateX(calc(-100% - #{$gutter * 1}));
+    }
+
+    &--num_1 {
+      transform: translateX(calc(100% + #{$gutter * 1}));
+    }
+
+    &--num_2 {
+      transform: translateX(calc(200% + #{$gutter * 2}));
+    }
+
+    &--num_-2,
+    &--num_-1,
+    &--num_1,
+    &--num_2 {
+      opacity: .75;
+
+      cursor: pointer;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__text-wrap {
+    $width: $max-video-width - $gutter*4;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    z-index: 10;
+
+    top: $header-height-mobile;
+    left: $gutter*1;
+    right: $gutter*1;
+
+    bottom: 0;
+
+    @media (min-width: $min-720) {
+      top: $header-height;
+    }
+
+    @media (min-width: $min-1290) {
+      left: 50%;
+
+      margin-left: -$width/2;
+      width: $width;
+    }
+  }
+
+  &--no-images &__text-wrap {
+    position: static;
+
+    height: 100%;
+
+    @media (min-width: $min-1290) {
+      margin-left: 0;
+      width: 100%;
+    }
+  }
+
+  &--narrow &__text-wrap {
+    top: 0;
+
+    @media (min-width: $min-720) {
+      top: 0;
+    }
+  }
+
+  &__text {
+    width: 100%;
+  }
+
+  .no-flexbox &__text {
+    display: table;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__container {
+    text-align: center;
+
+    .no-flexbox & {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+    }
+  }
+
+  .no-flexbox &__container {
+    display: table-cell;
+
+    vertical-align: middle;
+  }
+
+  &__title {
+    font-size: 80px;
+    font-weight: 600;
+    line-height: 0.8;
+
+    margin-bottom: 18px;
+    letter-spacing: -3px;
+
+    @media (min-width: $min-720) {
+      font-size: 120px;
+    }
+  }
+
+  &__straplines {
+    height: 26px;
+    margin-bottom: 27px;
+    letter-spacing: 1px;
+
+    @media (min-width: $min-720) {
+      height: 41px;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__strapline {
+    position: absolute;
+    width: 100%;
+
+    font: {
+      family: $serif;
+      style: italic;
+    }
+    font-size: 20px;
+    text-decoration: italic;
+
+    opacity: 0;
+    transition: opacity $animation-speed-ui*2 ease-in-out;
+
+
+
+    @media (min-width: $min-720) {
+      font-size: 30px;
+    }
+
+    &--visible {
+      opacity: 1;
+    }
+  }
+
+  &__button {
+    @include button();
+  }
+
+  &__button--play {
+    display: block;
+    margin: 0 auto;
+    background: #297cbc;
+    width: 5rem;
+    height: 5rem;
+    line-height: 6.1rem;
+    border-radius: 50%;
+    color: white;
+    position: relative;
+    top: 3.5rem;
+
+    &:hover {
+      background: #2172b0;
+    }
+
+    & i {
+      margin-left: .5rem;
+      font-size: 2.7rem;
+    }
+  }
+}
+
+.video-overlay {
+  background: #FFF;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  transition: opacity .5s ease-in;
+  opacity: 0;
+
+  &--playing {
+    z-index: 9999;
+    opacity: 1;
+  }
+
+  &__close {
+    color: $font-color;
+    font-size: 2rem;
+    z-index: 1000;
+    height: 8rem;
+    left: 90%;
+    position: relative;
+    top: 5.5rem;
+    width: 48rem;
+    overflow: hidden;
+    cursor: pointer;
+  }
+}
+
+.masthead-video {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  max-width: $max-video-width;
+  top: 50%;
+  left: 0;
+  margin-left: 0;
+  margin-top: -36rem;
+
+  @media (min-width: $min-1290) {
+    left: 50%;
+    margin-left: -64.5rem;
+  }
+
+  &__container {
+    position: relative;
+    height: 0;
+    padding-bottom: 56.25%;
+    max-width: $max-video-width;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+}
+
+.BrightcoveExperience {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  // Max video width before controls start to disappear
+  max-width: $max-video-width;
+  max-height: 80rem;
+  margin: 0 auto;
+}
