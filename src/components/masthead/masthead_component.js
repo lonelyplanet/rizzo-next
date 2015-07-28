@@ -50,6 +50,7 @@ export default class MastheadComponent extends Component {
     this.options = options;
     this.$el.addClass(`masthead--${this.type}`);
     this.currentSlideIndex = 0;
+    this.overlay = new Overlay();
 
     this.events = {
       "click [class*=\"--num_-1\"]": "goLeft",
@@ -77,6 +78,7 @@ export default class MastheadComponent extends Component {
    * Play the video, callback from click handler
    */
   playVideo() {
+    this.overlay.show();
     this.player.play(this.videoId);
   }
 
@@ -102,6 +104,7 @@ export default class MastheadComponent extends Component {
 
   onStop() {
     // Use?
+    this.overlay.hide();
   }
 
   searchDone(videos) {
