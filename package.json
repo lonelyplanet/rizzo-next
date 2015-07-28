@@ -3,7 +3,7 @@
   "scripts": {
     "test": "webpack && karma start --single-run",
     "docs": "./node_modules/.bin/esdoc -c esdoc.json",
-    "lint": "./node_modules/.bin/eslint components core"
+    "lint": "./node_modules/.bin/eslint src"
   },
   "version": "0.0.1",
   "dependencies": {
