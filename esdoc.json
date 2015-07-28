@@ -1,0 +1,8 @@
+{
+  "source": "./components",
+  "destination": "./docs",
+  "test": {
+    "type": "mocha",
+    "source": "./spec"
+  }
+}

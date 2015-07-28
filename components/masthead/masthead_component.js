@@ -10,7 +10,10 @@ let delay = function(time){
   });
 };
 
-class MastheadComponent extends Component {
+/**
+ * Masthead Component
+*/
+export default class MastheadComponent extends Component {
   static get loopSpeed() {
     return 6000;
   }
@@ -67,11 +70,19 @@ class MastheadComponent extends Component {
       .then(this.playerReady.bind(this));
   }
 
+  /**
+   * Play the video, callback from click handler
+   */
   playVideo() {
     this.overlay.show();
     this.player.play(this.videoId);
   }
 
+  /**
+   * Callback from the player load event
+   * @param  {VideoPlayer} player Instance of the VideoPlayer
+   * @listens {play} 
+   */
   playerReady(player) {
     this.player = player;
 
@@ -282,5 +293,3 @@ class MastheadComponent extends Component {
   }
 
 }
-
-export default MastheadComponent;

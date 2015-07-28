@@ -1,7 +1,6 @@
 /* jshint node:true */
 
-var path = require("path"),
-  ExtractTextPlugin = require("extract-text-webpack-plugin");
+var path = require("path");
 
 module.exports = {
   progress: true,
@@ -15,11 +14,19 @@ module.exports = {
     libraryTarget: "var"
   },
   module: {
-    loaders: [
-      { test: /\.js$/, loader: "babel-loader"},
-      { test: /\.scss$/, loader: "style!css!sass?outputStyle=expanded&" +
-          "includePaths[]=" + (path.resolve(__dirname, "./node_modules")) },
-      { test: /\.hbs$/, loader: "handlebars-loader" }
-    ]
+    loaders: [{ 
+        test: /\.js$/, 
+        exclude: /node_modules\/[^rizzo|flamsteed]/,
+        loader: "babel-loader"
+      },
+      { 
+        test: /\.scss$/, 
+          loader: "style!css!sass?outputStyle=expanded&" +
+          "includePaths[]=" + (path.resolve(__dirname, "./node_modules")) 
+      },
+      { 
+        test: /\.hbs$/, 
+        loader: "handlebars-loader" 
+      }]
   }
 };
