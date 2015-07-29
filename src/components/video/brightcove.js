@@ -103,11 +103,13 @@ class Brightcove extends VideoPlayer {
       mastheadVideoIds.push(jsonData.items[index].id);
     }
 
-    this.videoPlayer.cueVideoByID(mastheadVideoIds[0]);
+    if (mastheadVideoIds.length) {
+      this.videoPlayer.cueVideoByID(mastheadVideoIds[0]);
 
-    this.videoPlayer.addEventListener(brightcove.api.events.MediaEvent.CHANGE, () => {
-      this.searchResolver(mastheadVideoIds);
-    });
+      this.videoPlayer.addEventListener(brightcove.api.events.MediaEvent.CHANGE, () => {
+        this.searchResolver(mastheadVideoIds);
+      });
+    }
   }
 }
 
