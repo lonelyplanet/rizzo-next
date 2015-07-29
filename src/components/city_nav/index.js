@@ -8,14 +8,14 @@ if ($cityNav.length) {
       firstTrigger = true,
       $window = $(window),
       fixedState, fixedCityNav;
-  
+
   $(document).on("click", ".js-city-nav-lnk", function(e) {
     let target = this.hash;
     let $target = $(target);
     let navHeight = $cityNav.height();
 
-    if($target.parents('.segment').length > 0) {
-      $target = $target.parents('.segment');
+    if($target.parents(".segment").length > 0) {
+      $target = $target.parents(".segment");
     }
 
     $("html, body").stop().animate({

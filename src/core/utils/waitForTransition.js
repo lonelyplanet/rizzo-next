@@ -1,12 +1,11 @@
-const onTransitionEndEventNames = 'transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd';
-const onAnimationEndEventName = 'webkitAnimationEnd oanimationend msAnimationEnd animationend';
+const onTransitionEndEventNames = "transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd";
+// const onAnimationEndEventName = 'webkitAnimationEnd oanimationend msAnimationEnd animationend';
 
 var waitForTransition = function($el, { fallbackTime = 10000 } = {}){
-  return new Promise((resolve, reject) => {
-    var done = function(e){
-      //if(e)
-      //	console.log(e.target, $el.get(0), e.type, e.propertyName, e.elapsedTime, e.pseudoElement);
+  return new Promise((resolve) => {
 
+    var done = function(e){
+      /*eslint no-use-before-define:0*/
       if(e && e.target !== $el.get(0)) {
         return;
       }

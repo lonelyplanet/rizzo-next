@@ -5,7 +5,7 @@ var StackActions = {
     Arkham.trigger("stacks.fetch", {});
 
     // Simulate Ajax request
-    setTimeout(() => { 
+    setTimeout(() => {
       Arkham.trigger("stacks.fetched", {
         stacks: [ {
           name: "Spider Man"

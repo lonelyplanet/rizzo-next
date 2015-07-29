@@ -11,15 +11,15 @@ var listOfOptions = [ "el", "events", "container" ];
 // Regex for the "click .foo .bar" in the events
 var delegateEventSplitter = /^(\S+)\s*(.*)$/;
 
-/** 
+/**
 * The main class that will be extended when a new componenet is created.
 * Extend this class with es6 syntax
 * @example
 *     import { Component } from "./core/bane"
-* 
+*
 *     class ArticlesComponent extends Component {
 *       render() {
-* 
+*
 *       }
 *     }
 */
@@ -44,11 +44,9 @@ export class Component {
   }
   // This method actually builds the template and inserts the HTML into the DOM
   build(data) {
-    if (!this.el) {
-      return;
+    if (this.el) {
+      this.$el.html(typeof this.template === "function" ? this.template(data) : this.template);
     }
-
-    return this.$el.html(typeof this.template === "function" ? this.template(data) : this.template);
   }
   getInitialState() {
     if (this.__initialState__) {
@@ -74,7 +72,7 @@ export class Component {
           parsed = val;
         }
 
-        let cleanKey = key.replace("lpInitial", "").toLowerCase()
+        let cleanKey = key.replace("lpInitial", "").toLowerCase();
         state[cleanKey] = parsed;
 
         this.$el.removeAttr(`data-lp-initial-${cleanKey}`);
@@ -94,12 +92,19 @@ export class Component {
   //     }
   //
   _delegateEvents(events) {
-    if (!(events || (events = this.events))) return this;
+    if (!(events || (events = this.events))) {
+      return this;
+    }
     this._undelegateEvents();
+
     for (let key in events) {
       let method = events[key];
-      if (typeof method !== "function") method = this[events[key]];
-      if (!method) continue;
+      if (typeof method !== "function") {
+        method = this[events[key]];
+      }
+      if (!method) {
+        continue;
+      }
 
       let match = key.match(delegateEventSplitter);
       let eventName = match[1], selector = match[2];

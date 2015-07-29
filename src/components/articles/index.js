@@ -28,7 +28,7 @@ class ArticlesComponent extends Component {
   }
   _clampText() {
     this.articles.each((index, article) => {
-      let { 
+      let {
         titleLines,
         teaserLines,
         teaser,
@@ -53,14 +53,12 @@ class ArticlesComponent extends Component {
         title = $article.find(".article__info__title"),
         teaser = $article.find(".article__info__teaser"),
         blurb = $article.find(".article__info__blurb"),
-
         // Find elements heights
         titleHeight = parseInt(title.height()),
         teaserHeight = parseInt(teaser.height()),
         blurbHeight = parseInt(blurb.height()),
-
         // Figure out how many lines each element actually is based on line heights and height
-        blurbLines  = blurbHeight / this.blurbLineHeight[this.screen],
+        blurbLines = blurbHeight / this.blurbLineHeight[this.screen],
         teaserLines = teaserHeight / this.blurbLineHeight[this.screen],
         titleLines = titleHeight / this.titleLineHeight[this.screen],
 

@@ -7,8 +7,10 @@ import "./index.scss";
 class Overlay extends Component {
 
   initialize(){
-    this.$html = $('html');
-    this.$el = $('<div class="overlay"></div>');
+    this.$html = $("html");
+    this.$el = $("</div>", {
+      "class": "overlay"
+    });
 
     this.events = {
       "click": "onClick",
@@ -43,12 +45,12 @@ class Overlay extends Component {
     getScrollbarWidth()
       .then((scrollWidth) => {
         setTimeout(() => {
-          this.$el.addClass('overlay--visible');
+          this.$el.addClass("overlay--visible");
         }, 10);
 
-        this.$html.addClass('no-scroll');
+        this.$html.addClass("no-scroll");
         this.$html.css({
-          'margin-right': scrollWidth
+          "margin-right": scrollWidth
         });
       });
 
@@ -61,7 +63,7 @@ class Overlay extends Component {
       return Promise.all([]);
     }
 
-    this.$el.removeClass('overlay--visible');
+    this.$el.removeClass("overlay--visible");
 
     this.isVisible = false;
 
@@ -69,16 +71,16 @@ class Overlay extends Component {
       .then(() => {
         this.$el.detach();
 
-        this.$html.removeClass('no-scroll');
+        this.$html.removeClass("no-scroll");
         this.$html.css({
-          'margin-right': 0
+          "margin-right": 0
         });
       });
   }
 
   onClick(){
-    Arkham.trigger('overlay:click');
-    this.trigger('click');
+    Arkham.trigger("overlay:click");
+    this.trigger("click");
   }
 }
 

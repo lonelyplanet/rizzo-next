@@ -1,5 +1,5 @@
 import { Component } from "../../core/bane";
-import SearchComponent from '../search';
+import SearchComponent from "../search";
 import NavigationComponent from "../navigation";
 
 import debounce from "lodash/function/debounce";
@@ -13,20 +13,20 @@ class Header extends Component {
     });
 
     this.events = {
-      'click .js-search': 'onSearchClick',
-      'click .js-search .navigation__link': 'onSearchClick',
-      'click .js-menu': 'onMobileMenuClick'
+      "click .js-search": "onSearchClick",
+      "click .js-search .navigation__link": "onSearchClick",
+      "click .js-menu": "onMobileMenuClick"
     };
 
-    this.$search = this.$el.find('.header__search');
-    this.$inner = this.$el.find('.header__inner');
+    this.$search = this.$el.find(".header__search");
+    this.$inner = this.$el.find(".header__inner");
 
     $(window).resize(debounce(this.render.bind(this), 100));
     this.render();
   }
 
   render(){
-    let fadeClassName = 'header__search--fade';
+    let fadeClassName = "header__search--fade";
 
     this.$search.removeClass(fadeClassName);
 
@@ -41,7 +41,7 @@ class Header extends Component {
     this.search.show();
   }
 
-  onMobileMenuClick(e){
+  onMobileMenuClick(){
     this.navigation._clickNav();
   }
 }

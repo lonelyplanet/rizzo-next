@@ -1,5 +1,5 @@
 import { Component } from "../../core/bane";
-import waitForTransition from '../../core/utils/waitForTransition';
+import waitForTransition from "../../core/utils/waitForTransition";
 
 class SlideComponent extends Component {
 
@@ -28,7 +28,7 @@ class SlideComponent extends Component {
     this.preloadPromise = [];
 
     if(!this.model) {
-      throw new Error('Missing slide model');
+      throw new Error("Missing slide model");
     }
   }
 
@@ -49,9 +49,8 @@ class SlideComponent extends Component {
       return this.preloadPromise[SlideComponent.imageSize];
     }
 
-    return this.preloadPromise[SlideComponent.imageSize] = new Promise((resolve) => {
+    let promise = this.preloadPromise[SlideComponent.imageSize] = new Promise((resolve) => {
       let image = new Image();
-      let now = Date.now();
 
       image.src = this.imageUrl;
       image.onload = function(){
@@ -61,12 +60,14 @@ class SlideComponent extends Component {
         resolve();
       };
     });
+
+    return promise;
   }
 
   show(){
     let $el = this.currentEl;
 
-    $el.addClass('masthead__slide--visible');
+    $el.addClass("masthead__slide--visible");
 
     return waitForTransition($el);
   }

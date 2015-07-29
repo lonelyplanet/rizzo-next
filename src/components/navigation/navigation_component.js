@@ -1,5 +1,4 @@
 import { Component } from "../../core/bane";
-import Arkham from "../../core/arkham";
 import Overlay from "../overlay";
 import Notification from "../notification/notification";
 import waitForTransition from "../../core/utils/waitForTransition";
@@ -13,14 +12,14 @@ class NavigationComponent extends Component {
     this.state = NavigationState.getState();
     this.overlay = new Overlay();
 
-    new Notification({
+    this.notification = new Notification({
       target: this.$el.find(".js-cart-notification"),
       content: this.state.cartItemCount
     });
 
     this.name = "navigation";
-    this.$mobileNavigation = this.$el.find('.mobile-navigation').detach();
-    this.$mobileNavigation.on('click', '.js-close', this._clickNav.bind(this));
+    this.$mobileNavigation = this.$el.find(".mobile-navigation").detach();
+    this.$mobileNavigation.on("click", ".js-close", this._clickNav.bind(this));
 
     // SubNavigation hover
     this.handleHover();
@@ -31,35 +30,35 @@ class NavigationComponent extends Component {
   }
 
   handleHover(){
-    this.$el.find('.navigation__item')
+    this.$el.find(".navigation__item")
       .each((i, el) => {
         let $el = $(el);
-        let $subNavigation = $el.find('.sub-navigation');
+        let $subNavigation = $el.find(".sub-navigation");
         let hideTimer, showTimer;
 
         if($subNavigation.length === 0) {
           return;
         }
 
-        $el.on('mouseenter', () => {
+        $el.on("mouseenter", () => {
           clearTimeout(hideTimer);
 
           showTimer = setTimeout(() => {
-            $subNavigation.addClass('sub-navigation--visible');
+            $subNavigation.addClass("sub-navigation--visible");
           }, 150);
         });
 
-        $el.on('mouseleave', () => {
+        $el.on("mouseleave", () => {
           clearTimeout(showTimer);
 
           hideTimer = setTimeout(() => {
-            $subNavigation.removeClass('sub-navigation--visible');
+            $subNavigation.removeClass("sub-navigation--visible");
           }, 500);
         });
       });
   }
 
-  toggleNav(data) {
+  toggleNav() {
     if(this.state.isNavOpen){
       this.show();
     } else {
@@ -69,7 +68,7 @@ class NavigationComponent extends Component {
 
   show() {
     if(!this.state.isNavOpen){
-      return;
+      return Promise.all([]);
     }
 
     if(this.$mobileNavigation.parents().length === 0) {
@@ -79,7 +78,7 @@ class NavigationComponent extends Component {
     this.overlay.show();
 
     setTimeout(() => {
-      this.$mobileNavigation.addClass('mobile-navigation--visible');
+      this.$mobileNavigation.addClass("mobile-navigation--visible");
     }, 20);
 
     return waitForTransition(this.$mobileNavigation, { fallbackTime: 2000 });
@@ -87,10 +86,10 @@ class NavigationComponent extends Component {
 
   hide(){
     if(this.state.isNavOpen){
-      return;
+      return Promise.all([]);
     }
 
-    this.$mobileNavigation.removeClass('mobile-navigation--visible');
+    this.$mobileNavigation.removeClass("mobile-navigation--visible");
 
     this.overlay.hide();
 

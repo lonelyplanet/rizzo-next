@@ -9,7 +9,9 @@ let state = {
 
 let MastheadState = {
   setInitialState: (initialState) => {
-    if (!initialState.images) return;
+    if (!initialState.images) {
+      return;
+    }
 
     initialState.currentIndex = initialState.images.length;
     assign(state, initialState);

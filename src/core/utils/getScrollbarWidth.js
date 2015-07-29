@@ -1,5 +1,5 @@
 let getScrollbarWidth = function(){
-  let html = document.getElementsByTagName('html')[0];
+  let html = document.getElementsByTagName("html")[0];
   let body = document.body;
 
   let withScroll = body.offsetWidth;
@@ -8,11 +8,11 @@ let getScrollbarWidth = function(){
   let getWidth = function(){
     return new Promise((resolve) => {
       setTimeout(() => {
-        html.style.overflowY = 'scroll';
+        html.style.overflowY = "scroll";
       }, 1);
 
       setTimeout(() => {
-        html.style.overflowY = 'hidden';
+        html.style.overflowY = "hidden";
 
         scrollWidth = body.offsetWidth - withScroll;
 
@@ -20,7 +20,7 @@ let getScrollbarWidth = function(){
       }, 2);
 
       setTimeout(() => {
-        html.style.overflowY = '';
+        html.style.overflowY = "";
       }, 3);
     });
   };
@@ -40,7 +40,7 @@ let getScrollbarWidth = function(){
           });
       }
     });
-  }
+  };
 }();
 
 export default getScrollbarWidth;

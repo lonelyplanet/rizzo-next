@@ -1,11 +1,11 @@
-import { Component, Arkham } from "../../core/bane";
+import { Component } from "../../core/bane";
 import waitForTimeout from "../../core/utils/waitForTransition";
-import Overlay from '../overlay';
+import Overlay from "../overlay";
 
 class TopPlaces extends Component {
   initialize() {
-    this.$html = $('html');
-    this.$body = $('body');
+    this.$html = $("html");
+    this.$body = $("body");
 
     // Remove from dom
     this.$el.detach();
@@ -14,10 +14,10 @@ class TopPlaces extends Component {
     this.overlay = new Overlay();
 
     // Events
-    this.$body.on('click', '.js-top-places', this.show.bind(this));
-    this.$body.on('keyup', this.onKeyup.bind(this));
-    this.$el.on('click', '[class*="__close"]', this.hide.bind(this));
-    this.listenTo(this.overlay, 'click', this.hide);
+    this.$body.on("click", ".js-top-places", this.show.bind(this));
+    this.$body.on("keyup", this.onKeyup.bind(this));
+    this.$el.on("click", "[class*='__close']", this.hide.bind(this));
+    this.listenTo(this.overlay, "click", this.hide);
   }
 
   toggle() {
@@ -41,7 +41,7 @@ class TopPlaces extends Component {
 
     // wait a few ticks so transition triggers
     setTimeout(() => {
-      this.$el.addClass('top_places--visible');
+      this.$el.addClass("top_places--visible");
     }, 10);
 
     this.isOpen = true;
@@ -56,7 +56,7 @@ class TopPlaces extends Component {
 
     this.overlay.hide();
 
-    this.$el.removeClass('top_places--visible');
+    this.$el.removeClass("top_places--visible");
 
     return waitForTimeout(this.$el)
       .then(() => {

@@ -6,11 +6,11 @@ class ThingsToDo extends Component {
     this.events = {
     };
 
-    this.$el.find('.image-card__image').each((index, element) => {
+    this.$el.find(".image-card__image").each((index, element) => {
       let $el = $(element);
 
-      let imageUrl = $el.data('image-url');
-      let backupUrl = $el.data('backupimage-url');
+      let imageUrl = $el.data("image-url");
+      let backupUrl = $el.data("backupimage-url");
 
       this.lazyLoadImage(imageUrl)
         .then(undefined, () => {
@@ -18,10 +18,10 @@ class ThingsToDo extends Component {
         })
         .then((url) => {
           $el.css({
-            'background-image': 'url('+ url +')'
+            "background-image": "url(" + url + ")"
           });
-          $el.addClass('image-card__image--visible');
-        })
+          $el.addClass("image-card__image--visible");
+        });
     });
   }
 
@@ -33,9 +33,9 @@ class ThingsToDo extends Component {
       image.onload = function(){
         resolve(url);
       };
-      image.onerror = function(e){
+      image.onerror = function(){
         reject();
-      }
+      };
     });
   }
 }
