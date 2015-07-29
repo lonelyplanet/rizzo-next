@@ -1,6 +1,6 @@
 class MobileUtil {
   isMobile() {
-    return this.checkUserAgent(navigator.userAgent||navigator.vendor||window.opera);
+    return this.checkUserAgent(navigator.userAgent || navigator.vendor || window.opera);
   }
   /** source http://detectmobilebrowsers.com **/
   checkUserAgent(a){
@@ -8,4 +8,4 @@ class MobileUtil {
   }
 }
 
-export default new MobileUtil;
+export default new MobileUtil();

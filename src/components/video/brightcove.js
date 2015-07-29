@@ -31,21 +31,9 @@ class Brightcove extends VideoPlayer {
 
     super.pause();
   }
-  play(videoId) {
-    console.log("BCL.playVideo");
+  play() {
     this.calculateDimensions();
-
-    //BCL.videoPlayer.addEventListener(brightcove.api.events.MediaEvent.BEGIN, function(event) {
-    this.videoPlayer.addEventListener(brightcove.api.events.MediaEvent.PLAY, () => this.trigger("play"));
-    this.videoPlayer.addEventListener(brightcove.api.events.MediaEvent.STOP, () => this.trigger("stop"));
-
-    this.videoPlayer.loadVideoByID(videoId);
-    
-    // setTimeout(() => this.videoPlayer.play());
-    // this.videoPlayer.play();
-
-    document.getElementById("masthead-video-player").style.removeProperty("display");
-
+    this.videoPlayer.play();
     super.play();
   }
 
@@ -55,8 +43,6 @@ class Brightcove extends VideoPlayer {
     }));
   }
   onTemplateLoad(id) {
-    console.log("BCL.onTemplateLoad");
-
     function calculateNewPercentage(width, height) {
       var newPercentage = ((height / width) * 100) + "%";
       document.getElementById("outer-container").style.paddingBottom = newPercentage;
@@ -67,6 +53,9 @@ class Brightcove extends VideoPlayer {
     // get a reference to the video player
     this.videoPlayer = this.player.getModule(brightcove.api.modules.APIModules.VIDEO_PLAYER);
     this.experienceModule = this.player.getModule(brightcove.api.modules.APIModules.EXPERIENCE);
+
+    this.videoPlayer.addEventListener(brightcove.api.events.MediaEvent.PLAY, () => this.trigger("play"));
+    this.videoPlayer.addEventListener(brightcove.api.events.MediaEvent.STOP, () => this.trigger("stop"));
 
     this.videoPlayer.getCurrentRendition((renditionDTO) => {
       if (renditionDTO) {
@@ -100,7 +89,7 @@ class Brightcove extends VideoPlayer {
     var resizeWidth = document.getElementById("masthead-video-player").clientWidth,
         resizeHeight = document.getElementById("masthead-video-player").clientHeight;
 
-      if (this.experienceModule.experience.type == "html"){
+      if (this.experienceModule.experience.type === "html"){
         this.experienceModule.setSize(resizeWidth, resizeHeight);
     }
   }
@@ -114,7 +103,13 @@ class Brightcove extends VideoPlayer {
       mastheadVideoIds.push(jsonData.items[index].id);
     }
 
-    this.searchResolver(mastheadVideoIds);
+    if (mastheadVideoIds.length) {
+      this.videoPlayer.cueVideoByID(mastheadVideoIds[0]);
+
+      this.videoPlayer.addEventListener(brightcove.api.events.MediaEvent.CHANGE, () => {
+        this.searchResolver(mastheadVideoIds);
+      });
+    }
   }
 }
 

@@ -23,7 +23,7 @@ class Video {
 
     $(element).append(player.el);
 
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       player.on("ready", () => {
         resolve(player);
       });

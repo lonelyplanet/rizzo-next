@@ -10,7 +10,7 @@ class ToursComponent extends Component {
       this.blurbs = this.$el.find(".tour__description__blurb");
       this.mobileBreak = options.mobileBreak || 518;
       this.headingHeight = options.headingHeight || 18;
-      this.nativeSupport = typeof(this.$el[0].style.webkitLineClamp) != "undefined";
+      this.nativeSupport = typeof this.$el[0].style.webkitLineClamp !== "undefined";
 
       if (!$("html").hasClass("ie9")) {
         this._clampText();
@@ -37,7 +37,8 @@ class ToursComponent extends Component {
         if (!this.nativeSupport) {
           blurbClamp++;
         }
-        $clamp(blurb, { clamp: blurbClamp })
+
+        $clamp(blurb, { clamp: blurbClamp });
       }
 
     });

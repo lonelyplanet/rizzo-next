@@ -1,18 +1,17 @@
 import { Component } from "../../core/bane";
-import Arkham from "../../core/arkham";
-import Overlay from '../overlay';
+import Overlay from "../overlay";
 import waitForTransition from "../../core/utils/waitForTransition";
 import SearchActions from "./search_actions";
 import SearchState from "./search_state";
-import template from './search.hbs';
-import './_search.scss';
+import template from "./search.hbs";
+import "./_search.scss";
 
 import SearchItemComponent from "./search_item";
 
 class SearchComponent extends Component {
 
   static get className() {
-    return 'search';
+    return "search";
   }
 
   get isOpen() {
@@ -39,9 +38,9 @@ class SearchComponent extends Component {
     this._collection = arr;
 
     if(this._collection.length > 0) {
-      this.$searchResults.addClass('search-results--visible');
+      this.$searchResults.addClass("search-results--visible");
     } else {
-      this.$searchResults.removeClass('search-results--visible');
+      this.$searchResults.removeClass("search-results--visible");
     }
   }
 
@@ -57,12 +56,12 @@ class SearchComponent extends Component {
 
       "keydown .search__input": "onKeyup"
     };
-    //$(document.body).on('keyup', this.onKeyup.bind(this));
+    //$(document.body).on("keyup", this.onKeyup.bind(this));
 
     this.collection = [];
     this.overlay = new Overlay();
 
-    this.listenTo(this.overlay, 'click', this.hide);
+    this.listenTo(this.overlay, "click", this.hide);
 
     SearchState.on("change:results", this.searchComplete.bind(this));
   }
@@ -70,15 +69,15 @@ class SearchComponent extends Component {
   build(){
     this.$el = $(template());
 
-    this.$input = this.$el.find('input');
-    this.$searchResults = this.$el.find('.search-results');
-    this.$list = this.$searchResults.find('.search-results__list');
+    this.$input = this.$el.find("input");
+    this.$searchResults = this.$el.find(".search-results");
+    this.$list = this.$searchResults.find(".search-results__list");
     this.$resultsLink = this.$searchResults.find(".search-results__more");
   }
 
   show() {
     if(this.isOpen) {
-      return;
+      return Promise.all([]);
     }
 
     this.isOpen = true;
@@ -88,7 +87,7 @@ class SearchComponent extends Component {
     this.overlay.show();
 
     setTimeout(() => {
-      this.$el.addClass(SearchComponent.className + '--visible');
+      this.$el.addClass(SearchComponent.className + "--visible");
     }, 10);
 
     return waitForTransition(this.$el)
@@ -99,12 +98,12 @@ class SearchComponent extends Component {
 
   hide() {
     if(!this.isOpen) {
-      return;
+      return Promise.all([]);
     }
 
     this.isOpen = false;
 
-    this.$el.removeClass(SearchComponent.className + '--visible');
+    this.$el.removeClass(SearchComponent.className + "--visible");
 
     this.overlay.hide();
 
@@ -196,7 +195,7 @@ class SearchComponent extends Component {
     this.currentPosition++;
 
     if(this.currentPosition >= this.collection.length) {
-      this.currentPosition = this.collection.length -1;
+      this.currentPosition = this.collection.length - 1;
     }
 
     let currentItem = this.collection[this.currentPosition];

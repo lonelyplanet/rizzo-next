@@ -19,13 +19,17 @@ class VideoPlayer extends Component {
   play() {
     this.$el.css("zIndex", 9999);
     this.$el.addClass("video-overlay--playing");
+
+    this.isPlaying = true;
   }
   pause() {
     this.$el.removeClass("video-overlay--playing");
-    
+
     waitForTransition(this.$el).then(() => {
       this.$el.css("zIndex", 0);
     });
+
+    this.isPlaying = false;
   }
   loadPlayer() {
     this._getScripts(this.scripts);

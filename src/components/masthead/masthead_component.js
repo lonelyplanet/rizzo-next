@@ -3,12 +3,6 @@ import waitForTransition from "../../core/utils/waitForTransition";
 import Overlay from "../overlay";
 import SlideComponent from "./slide_component";
 
-let delay = function(time){
-  return new Promise((resolve) => {
-    setTimeout(resolve, time);
-  });
-};
-
 /**
  * Masthead Component
 */
@@ -31,7 +25,7 @@ export default class MastheadComponent extends Component {
 
   get $images(){
     if(!this._$images) {
-      this._$images = this.$el.find('.masthead__images');
+      this._$images = this.$el.find(".masthead__images");
       this._$images.empty();
     }
 
@@ -39,11 +33,11 @@ export default class MastheadComponent extends Component {
   }
 
   get $straplines() {
-    return this.$el.find('.masthead__strapline');
+    return this.$el.find(".masthead__strapline");
   }
 
   get type(){
-    return this.options.type || 'fade';
+    return this.options.type || "fade";
   }
 
   initialize(options){
@@ -85,7 +79,7 @@ export default class MastheadComponent extends Component {
   /**
    * Callback from the player load event
    * @param  {VideoPlayer} player Instance of the VideoPlayer
-   * @listens {play} 
+   * @listens {play}
    */
   playerReady(player) {
     this.player = player;
@@ -99,7 +93,7 @@ export default class MastheadComponent extends Component {
   }
 
   onPlay() {
-    // Use?
+    // Use this?
   }
 
   onStop() {
@@ -131,7 +125,7 @@ export default class MastheadComponent extends Component {
     });
 
     if(!hasStraplines) {
-      this.$el.find('.masthead__straplines').remove();
+      this.$el.find(".masthead__straplines").remove();
     }
   }
 
@@ -152,7 +146,7 @@ export default class MastheadComponent extends Component {
   }
 
   startLoop() {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         this.loopTimer = setTimeout(resolve, MastheadComponent.loopSpeed);
       })
       .then(() => {
@@ -203,7 +197,7 @@ export default class MastheadComponent extends Component {
       output = (this.slides.length) + currentIndex + index;
     }
 
-    if(nextIndex > this.slides.length-1){
+    if(nextIndex > this.slides.length - 1){
       output = nextIndex - (this.slides.length);
     }
 
@@ -218,7 +212,7 @@ export default class MastheadComponent extends Component {
     let i = -this.padding;
 
     this.stack.forEach(($el) => {
-      $el.attr('class', 'masthead__slide masthead__slide--num_'+ i++);
+      $el.attr("class", "masthead__slide masthead__slide--num_" + i++);
     });
   }
 
@@ -235,7 +229,7 @@ export default class MastheadComponent extends Component {
     var toBeRemoved = reverse ? this.stack.pop() : this.stack.shift();
 
     // add new item to stack, [1,2,3] -> [1,2,3,4]
-    let nextIndexIn = reverse ? state[0] : state[state.length-1];
+    let nextIndexIn = reverse ? state[0] : state[state.length - 1];
     let nextSlide = this.slides[nextIndexIn];
     let nextEl = nextSlide.getElement();
 
@@ -290,10 +284,10 @@ export default class MastheadComponent extends Component {
   }
 
   showStraplineByIndex(index){
-    this.$straplines.removeClass('masthead__strapline--visible');
+    this.$straplines.removeClass("masthead__strapline--visible");
     this.$straplines
       .eq(index)
-      .addClass('masthead__strapline--visible');
+      .addClass("masthead__strapline--visible");
   }
 
 }
