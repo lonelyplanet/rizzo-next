@@ -1,3 +1,5 @@
+[![Build Status](https://build.lonelyplanet.com/job/rizzo-next/badge/icon)](https://build.lonelyplanet.com/job/rizzo-next/)
+
 # Rizzo Next
 Rizzo next is the evolution of Lonely Planet's pattern library. 
 
