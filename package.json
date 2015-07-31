@@ -21,12 +21,15 @@
     "esdoc": "^0.1.4",
     "eslint": "^0.24.1",
     "expect.js": "^0.3.1",
+    "jsx-loader": "^0.13.2",
     "karma": "^0.13.3",
     "karma-mocha": "^0.2.0",
     "karma-phantomjs-launcher": "^0.2.0",
     "karma-sinon": "^1.0.4",
     "mocha": "^2.2.5",
     "phantomjs": "^1.9.17",
+    "object-assign": "^3.0.0",
+    "react": "^0.13.3",
     "sinon": "^1.15.4"
   }
 }
