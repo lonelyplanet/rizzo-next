@@ -1,0 +1,89 @@
+@import "../../../sass/webpack_deps";
+@import "./vars";
+@import "./sidebar/sidebar";
+@import "./sidebar/item";
+@import "./mapbox/pins";
+@import "./alert";
+
+.noscroll {
+  overflow: hidden;
+  oveflow-y: hidden;
+}
+
+#pinTemplate {
+  display: none;
+
+  .leaflet-popup-pane & {
+    display: block;
+  }
+}
+
+.map_holder {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 200;
+  background: rgba(0,0,0,.5);
+  transform: translate(100%);
+  transition: transform .4s ease-in-out;
+
+  &.open {
+    transform: translate(0);
+  }
+}
+
+.map-toggle {
+  position: absolute;
+  top: 50%;
+  left: 3vw;
+  transform: translate(-50%);
+  width: 3vw;
+  height: 3vw;
+  border-radius: 50%;
+  background: #333;
+}
+
+
+.map {
+  width: 94vw;
+  transform: translate(6vw);
+  height: 100%;
+
+  .flexbox & {
+    display: flex;
+    flex-direction: row;
+  }
+
+}
+
+.map-container {
+  width: 100 - $sidebarwidth;
+  height: 100%;
+  background: rgba(255,255,255,.5);
+
+  .flexbox & {
+    width: auto;
+    flex: 1 1 auto;
+  }
+
+  .leaflet-popup-tip-container {
+    display: none;
+  }
+  .leaflet-popup-content {
+    padding: 0px;
+    width: $itemwidth !important;
+  }
+
+  .leaflet-popup-content-wrapper {
+    padding: 0;
+    border-radius: 0;
+  }
+}
+
+.close-map {
+
+}

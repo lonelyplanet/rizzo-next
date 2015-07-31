@@ -1,0 +1,171 @@
+$inactive: #999;
+$active: $lpblue;
+$speed: .8s;
+$size: 30px;
+$unit: $size / 16;
+
+@keyframes spinner {
+  0% { transform: rotate(0); }
+  100% { transform: rotate(360deg); }
+}
+
+.fetching {
+  text-align: center;
+  padding: 30px;
+}
+.spinner {
+  display: block;
+  width: $size;
+  height: $size;
+  border-radius: 50%;
+  border: $unit solid $inactive;
+  animation: spinner $speed linear infinite;
+  position: relative;
+  margin: 20px auto;
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    top: (-$unit*1.5);
+    left: ($size/2 -$unit);
+    width: ($unit*2);
+    height: ($unit*2);
+    border-radius: 50%;
+    background: $active;
+  }
+}
+
+.sidebar {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  width: $sidebarwidth;
+  overflow: hidden;
+
+  .flexbox & {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    flex: 0 0 auto;
+  }
+
+  .no-content {
+    padding: 30px;
+  }
+
+  .sidebar-header {
+    background: $lpblue;
+    height: 30vh;
+
+    .flexbox & {
+      height: auto;
+      width: 100%;
+      flex: 0 0 auto;
+    }
+
+    h1 {
+      margin: 0;
+      padding: 30px 30px 0 30px;
+      color: #fff;
+      font-weight: bold;
+      font-size: 40px;
+      letter-spacing: -1px;
+    }
+
+    .details {
+      a {
+        color: #fff;
+      }
+    }
+
+    .location-subtitle {
+      color: #fff;
+      padding: 0 0 0 30px;
+      font-size: 14px;
+    }
+
+    .close-poi {
+      color: #fff;
+    }
+
+    .tabs {
+      list-style: none;
+      margin: 30px 30px 0 30px;
+      padding: 0;
+      border-top: 1px solid rgba(255,255,255,.2);
+
+      .tab {
+        position: relative;
+        display: inline-block;
+        color: #fff;
+        text-align: center;
+        margin: 0 10px 0 0;
+        padding: 10px 0;
+        font-size: 13px;
+        cursor: pointer;
+        font-weight: bold;
+        letter-spacing: -.3px;
+
+        &:after {
+          display: block;
+          width: 100%;
+          height: 3px;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          transform: translate(0, 3px);
+          transition: transform .2s linear;
+          background: #fff;
+          content: "";
+        }
+
+        &:hover,
+        &.active {
+          &:after {
+            transform: translate(0,0);
+          }
+        }
+      }
+    }
+  }
+
+  .panel {
+    height: 70vh;
+    overflow: auto;
+
+    .flexbox & {
+      height: auto;
+      width: 100%;
+      flex: 1 1 auto;
+    }
+
+    .listing {
+      margin: 30px 0 0 30px;
+      position: relative;
+
+      &:before {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%);
+        width: 90%;
+        height: 0;
+        border-top: 1px solid #ccc;
+        content: "";
+      }
+
+    }
+
+    .poi-body {
+      padding: 30px;
+    }
+
+  }
+
+
+}
