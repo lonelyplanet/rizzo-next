@@ -11,7 +11,9 @@ class VideoPlayer extends Component {
       "click": "pause"
     };
 
-    this.$el.addClass("video-overlay");
+    this.$el
+    .addClass("video-overlay")
+    .css("zIndex", -20);
   }
   setup() {
     // Overwrite this
@@ -26,7 +28,7 @@ class VideoPlayer extends Component {
     this.$el.removeClass("video-overlay--playing");
 
     waitForTransition(this.$el).then(() => {
-      this.$el.css("zIndex", 0);
+      this.$el.css("zIndex", -20);
     });
 
     this.isPlaying = false;
