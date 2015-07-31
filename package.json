@@ -8,7 +8,7 @@
   "version": "0.0.1",
   "dependencies": {
     "clamp-js": "*",
-    "flamsteed": "*",
+    "flamsteed": "latest",
     "imagesloaded": "*",
     "jquery": "^2.1.4",
     "lodash": "^3.10.0",
