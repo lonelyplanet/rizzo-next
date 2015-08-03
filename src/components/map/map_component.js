@@ -3,7 +3,6 @@ var React = require("react");
 var MainView = require("./views/main.jsx");
 var MapActions = require("./actions");
 var InteractiveMap = require("./interactive-map");
-var MapState = require("./state");
 
 class MapComponent extends Component {
 
@@ -13,7 +12,7 @@ class MapComponent extends Component {
     this.el = props.el;
     MapActions.setState(originalState.data);
     React.render(<MainView />, document.querySelector(this.el));
-    new InteractiveMap({
+    this.interactiveMap = new InteractiveMap({
       el: this.el
     });
     MapActions.initMap();

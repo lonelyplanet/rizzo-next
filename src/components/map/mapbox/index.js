@@ -8,7 +8,6 @@ let mapID = "lonelyplanet.jf08j2nj";
 L.mapbox.accessToken = "pk.eyJ1IjoibG9uZWx5cGxhbmV0IiwiYSI6Imh1ODUtdUEifQ.OLLon0V6rcoTyayXzzUzsg";
 
 class MapProvider extends Component {
-  
   initialize() {
     this.layer = L.mapbox.featureLayer();
   }

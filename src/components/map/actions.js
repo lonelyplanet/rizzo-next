@@ -17,7 +17,7 @@ let MapActions = {
       var error = {
         message: "There was an error fetching " + data.placeTitled,
         type: results.status
-      }
+      };
       Arkham.trigger("place.errorfetching", error);
     });
   },

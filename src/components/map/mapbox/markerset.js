@@ -1,7 +1,7 @@
 import { Component } from "../../../core/bane";
 import Arkham from "../../../core/arkham";
 import MapActions from "../actions";
-import PinTemplate from "./pin.html.hbs";
+// import PinTemplate from "./pin.html.hbs";
 import MapState from "../state";
 import React from "react";
 import Pin from "../views/pin.jsx";
@@ -64,7 +64,7 @@ class MarkerSet extends Component {
     for (i = 0; i < l; i++) {
       var geo = this.pois[i].geo;
       if(geo.geometry.coordinates[0] === null || geo.geometry.coordinates[0] === null) {
-        geo.geometry.coordinates = [0,0];
+        geo.geometry.coordinates = [0, 0];
       }
       geo.properties.index = i;
       geojson.features.push(geo);
@@ -73,7 +73,6 @@ class MarkerSet extends Component {
   }
 
   _addIcons() {
-    let _this = this;
     this.layer.eachLayer(function(l) {
       let myIcon = L.divIcon({
         className: "poi js-poi"
@@ -124,7 +123,9 @@ class MarkerSet extends Component {
       .openOn(this.map);
   }
 
-  _poiUnhover(layer) {
+  // A layer argument is passed in, but it is not used
+  // The defined argument has been removed to pass ESLint
+  _poiUnhover() {
   }
 
   _poiClick(layer) {

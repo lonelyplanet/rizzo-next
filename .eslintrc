@@ -18,5 +18,11 @@
     "no-mixed-requires": [0],
     "no-underscore-dangle": [0],
     "strict": [0, "never"]
+  },
+  "plugins": [
+    "react"
+  ],
+  "ecmaFeatures": {
+    "jsx": true
   }
 }
