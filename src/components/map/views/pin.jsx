@@ -1,11 +1,11 @@
-var React = require("react");
-var MapActions = require("../actions");
-var Item = require("./item.jsx");
+let React = require("react");
+let MapActions = require("../actions");
+let Item = require("./item.jsx");
 
-var PinView = React.createClass({
+let PinView = React.createClass({
 
   render: function() {
-    var pin = this.props.pin;
+    let pin = this.props.pin;
     return (
       <Item item={pin} />
     )

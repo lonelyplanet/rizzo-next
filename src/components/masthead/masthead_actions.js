@@ -1,6 +1,6 @@
 import Arkham from "../../core/arkham";
 
-var MastheadActions = {
+let MastheadActions = {
   advanceImage: () => {
     Arkham.trigger("masthead.nextImage", {});
   },

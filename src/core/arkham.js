@@ -1,7 +1,7 @@
 import Events from "./mixins/events";
 import assign from "lodash/object/assign";
 
-var Arkham = {};
+let Arkham = {};
 
 assign(Arkham, Events);
 

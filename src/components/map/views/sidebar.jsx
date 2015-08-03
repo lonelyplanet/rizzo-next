@@ -1,19 +1,19 @@
-var React = require("react");
-var Tab = require("./tab.jsx");
-var Panel = require("./panel.jsx");
+let React = require("react");
+let Tab = require("./tab.jsx");
+let Panel = require("./panel.jsx");
 
-var MapActions = require("../actions");
+let MapActions = require("../actions");
 
-var SidebarView = React.createClass({
+let SidebarView = React.createClass({
 
   render: function() {
-    var location = this.props.location;
-    var activeSetIndex = this.props.activeSetIndex;
-    var panelContent;
-    var tabCount = 0;
-    var tabs = this.props.sets.map(function(set, i) {
+    let location = this.props.location;
+    let activeSetIndex = this.props.activeSetIndex;
+    let panelContent;
+    let tabCount = 0;
+    let tabs = this.props.sets.map(function(set, i) {
       tabCount++;
-      var isActive = i === activeSetIndex ? true : false;
+      let isActive = i === activeSetIndex ? true : false;
       return (
         <Tab name={set.title} active={isActive} i={i} />
       )
@@ -21,15 +21,15 @@ var SidebarView = React.createClass({
 
     if (location.description.length > 0) {
       tabCount++;
-      var isActive = tabCount === activeSetIndex ? true : false;
-      var aboutTab = <Tab name="About" active={isActive} i={tabCount} />
+      let isActive = tabCount === activeSetIndex ? true : false;
+      let aboutTab = <Tab name="About" active={isActive} i={tabCount} />
       tabs.push(aboutTab);
     }
 
     if (this.props.sets.length < 1) {
       panelContent =  <div className="no-content" dangerouslySetInnerHTML={{__html: location.description}}></div>;
     } else {
-      var activePanel = this.props.sets[this.props.activeSetIndex];
+      let activePanel = this.props.sets[this.props.activeSetIndex];
       panelContent = <Panel set={activePanel} />;
     }
 
@@ -51,7 +51,7 @@ var SidebarView = React.createClass({
 
   parentClick(e) {
     e.preventDefault();
-    var props = this.props;
+    let props = this.props;
     MapActions.gotoPlace({ place: props.location.parent_slug, placeTitle: props.location.parent })
   }
 

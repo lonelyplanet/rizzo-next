@@ -14,7 +14,7 @@ let MapActions = {
     }).done((results) => {
       Arkham.trigger("place.fetched", results);
     }).error((results) => {
-      var error = {
+      let error = {
         message: "There was an error fetching " + data.placeTitled,
         type: results.status
       };

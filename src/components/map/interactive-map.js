@@ -1,15 +1,16 @@
 import $ from "jquery";
 import Arkham from "../../core/arkham";
 import { Component } from "../../core/bane";
-
 import MapActions from "./actions";
 import MapState from "./state";
 import MapAPI from "./api";
 
+/**
+ * Wrapper around the map element
+ */
 class InteractiveMap extends Component {
 
   initialize() {
-
     Arkham.on("map.init", () => {
       this.launch();
       this.changeView();
@@ -31,6 +32,7 @@ class InteractiveMap extends Component {
   changeView() {
     let state = MapState.getState();
     let pois = state.sets[state.activeSetIndex].items;
+
     MapAPI.redraw(pois);
   }
 
@@ -45,7 +47,6 @@ class InteractiveMap extends Component {
   }
 
   pinClick(e) {
-
     let pinType = $(e.currentTarget).data("pintype");
 
     if(pinType === "poi") {

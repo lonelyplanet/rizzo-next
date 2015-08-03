@@ -12,11 +12,10 @@ let L = window.L;
 
 class MarkerSet extends Component {
 
-  initialize(options) {
-
-    this.pois = options.pois;
-    this.map = options.map;
-    this.layer = options.layer;
+  initialize({ pois, map, layer }) {
+    this.pois = pois;
+    this.map = map;
+    this.layer = layer;
 
     this.listen();
 
@@ -31,13 +30,14 @@ class MarkerSet extends Component {
 
   listen() {
     let _this = this;
+
     Arkham.on("map.poihover", (data) => {
-      var layer = _this._findLayerByIndex(data.poiIndex);
+      let layer = _this._findLayerByIndex(data.poiIndex);
       _this._poiHover(layer);
     });
 
     Arkham.on("map.poiunhover", (data) => {
-      var layer = _this._findLayerByIndex(data.poiIndex);
+      let layer = _this._findLayerByIndex(data.poiIndex);
       _this._poiUnhover(layer);
     });
 
@@ -45,30 +45,33 @@ class MarkerSet extends Component {
 
   _findLayerByIndex(i) {
     let l;
+
     this.layer.eachLayer(function(layer) {
       if (layer.feature.properties.poiIndex === (i + 1)) {
         l = layer;
       }
     });
+
     return l;
   }
 
   _createGeoJSON() {
-    let i,
-        l = this.pois.length,
-        geojson = {
-          type: "FeatureCollection",
-          features: []
-        };
+    let geojson = {
+      type: "FeatureCollection",
+      features: []
+    };
 
-    for (i = 0; i < l; i++) {
-      var geo = this.pois[i].geo;
+    for (let i = 0, l = this.pois.length; i < l; i++) {
+      let geo = this.pois[i].geo;
+
       if(geo.geometry.coordinates[0] === null || geo.geometry.coordinates[0] === null) {
         geo.geometry.coordinates = [0, 0];
       }
+
       geo.properties.index = i;
       geojson.features.push(geo);
     }
+
     this.layer.setGeoJSON(geojson);
   }
 
@@ -77,6 +80,7 @@ class MarkerSet extends Component {
       let myIcon = L.divIcon({
         className: "poi js-poi"
       });
+
       l.setIcon(myIcon);
     });
   }
@@ -84,9 +88,11 @@ class MarkerSet extends Component {
   _createIcon(layer) {
     let state = MapState.getState();
     let pin = state.sets[state.activeSetIndex].items[layer.feature.properties.index];
+
     pin.onMap = true;
+
     let poi = { pin: pin };
-    var markup = React.renderToStaticMarkup(React.createElement(Pin, poi));
+    let markup = React.renderToStaticMarkup(React.createElement(Pin, poi));
     // let pin = PinTemplate(layer.feature.properties);
     return markup;
   }
@@ -96,7 +102,8 @@ class MarkerSet extends Component {
   }
 
   _createLayer() {
-    var _this = this;
+    let _this = this;
+
     this.layer.on("mouseover", function(e) {
       _this._poiHover(e.layer);
     })
@@ -110,9 +117,11 @@ class MarkerSet extends Component {
 
   _poiHover(layer) {
     this._fixzIndex(layer);
+
     let template = this._createIcon(layer);
     let lat = layer._latlng.lat;
     let lng = layer._latlng.lng;
+
     this.popup = L.popup({
         closeButton: false,
         keepInView: true,
@@ -126,6 +135,7 @@ class MarkerSet extends Component {
   // A layer argument is passed in, but it is not used
   // The defined argument has been removed to pass ESLint
   _poiUnhover() {
+    // Use if needed
   }
 
   _poiClick(layer) {

@@ -1,12 +1,13 @@
-var React = require("react");
+let React = require("react");
 
-var AlertView = React.createClass({
+let AlertView = React.createClass({
 
   render: function() {
-    var classString = "alert";
+    let classString = "alert";
+
     if (this.props.error) {
-      var message = this.props.error.message;
-      var type = this.props.error.type;
+      let message = this.props.error.message;
+      let type = this.props.error.type;
       classString += " active error" + type;
     }
 
@@ -14,7 +15,7 @@ var AlertView = React.createClass({
       <div className={classString}>
         {message}
       </div>
-    )
+    );
   }
 
 });

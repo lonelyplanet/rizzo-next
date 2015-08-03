@@ -19,7 +19,7 @@ class Stack extends Component {
     StackState.setInitialState(this.getInitialState());
   }
   render(data) {
-    var templateData = assign({}, StackState.getState(), data);
+    let templateData = assign({}, StackState.getState(), data);
 
     this.build(templateData);
   }

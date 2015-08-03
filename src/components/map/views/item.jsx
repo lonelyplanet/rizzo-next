@@ -1,11 +1,12 @@
-var React = require("react");
-var MapActions = require("../actions");
+let React = require("react");
+let MapActions = require("../actions");
 
-var ItemView = React.createClass({
+let ItemView = React.createClass({
 
   render: function() {
-    var item = this.props.item;
-    var classString = "place ";
+    let item = this.props.item;
+    let classString = "place ";
+
     if (item.onMap) {
       classString += "pin";
     } else {
@@ -22,11 +23,11 @@ var ItemView = React.createClass({
           <div className="subtitle">{item.subtitle}</div>
         </div>
       </div>
-    )
+    );
   },
 
-  clickItem: function(e) {
-    var props = this.props;
+  clickItem: function() {
+    let props = this.props;
     console.log(props);
     // MapActions.poiOpen({ index: props.item.i });
     MapActions.gotoPlace({ place: props.item.slug, placeTitle: props.item.title });

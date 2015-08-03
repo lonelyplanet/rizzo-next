@@ -1,6 +1,6 @@
-var React = require("react");
+let React = require("react");
 
-var SidebarFetchingView = React.createClass({
+let SidebarFetchingView = React.createClass({
 
   render: function() {
     return (

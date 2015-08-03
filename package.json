@@ -3,7 +3,7 @@
   "scripts": {
     "test": "webpack && karma start --single-run",
     "docs": "./node_modules/.bin/esdoc -c esdoc.json",
-    "lint": "./node_modules/.bin/eslint src"
+    "lint": "./node_modules/.bin/eslint src --ext .js,.jsx"
   },
   "version": "0.0.1",
   "dependencies": {
@@ -19,7 +19,7 @@
     "babel-eslint": "^4.0.5",
     "babel-loader": "^5.3.2",
     "esdoc": "^0.1.4",
-    "eslint": "^0.24.1",
+    "eslint": "^1.0.0",
     "eslint-plugin-react": "^3.1.0",
     "expect.js": "^0.3.1",
     "jsx-loader": "^0.13.2",

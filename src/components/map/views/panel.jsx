@@ -1,10 +1,10 @@
-var React = require("react");
-var Item = require("./item.jsx");
+let React = require("react");
+let Item = require("./item.jsx");
 
-var PanelView = React.createClass({
+let PanelView = React.createClass({
 
   render: function() {
-    var items = this.props.set.items.map(function(item, i) {
+    let items = this.props.set.items.map(function(item, i) {
       item.i = i;
       return (
         <Item item={item}/>

@@ -1,17 +1,17 @@
-var React = require("react");
+let React = require("react");
 
-var Sidebar =         require("./sidebar.jsx");
-var SidebarFetching = require("./sidebar-fetching.jsx");
-var SidebarDetails =  require("./sidebar-details.jsx");
-var Map =             require("./map.jsx");
-var Alert =           require("./alert.jsx");
-var MapState =        require("../state");
+let Sidebar =         require("./sidebar.jsx");
+let SidebarFetching = require("./sidebar-fetching.jsx");
+let SidebarDetails =  require("./sidebar-details.jsx");
+let Map =             require("./map.jsx");
+let Alert =           require("./alert.jsx");
+let MapState =        require("../state");
 
-var getMapState = function(props) {
+let getMapState = function(props) {
   return MapState.getState();
 };
 
-var MainView = React.createClass({
+let MainView = React.createClass({
 
   getInitialState: function() {
     return getMapState();
@@ -30,10 +30,8 @@ var MainView = React.createClass({
   },
 
   render: function() {
-    console.log(this);
-    var sidebar;
-    var classString = "map";
-    var alert;
+    let sidebar;
+    let classString = "map";
 
     if (this.state.isOpen) {
       classString += " open";
@@ -49,7 +47,7 @@ var MainView = React.createClass({
       }
     }
 
-    var activeSet = this.state.sets[this.state.activeSetIndex];
+    let activeSet = this.state.sets[this.state.activeSetIndex];
 
     return (
       <div className={classString}>
@@ -58,7 +56,7 @@ var MainView = React.createClass({
         {sidebar}
         <Alert error={this.state.error} />
       </div>
-    )
+    );
   },
 
   closeMap() {

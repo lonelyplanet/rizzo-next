@@ -1,7 +1,7 @@
-var React = require("react");
-var MapActions = require("../actions");
+let React = require("react");
+let MapActions = require("../actions");
 
-var MapView = React.createClass({
+let MapView = React.createClass({
 
   render: function() {
     return (

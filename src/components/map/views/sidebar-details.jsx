@@ -1,10 +1,10 @@
-var React = require("react");
-var MapActions = require("../actions");
+let React = require("react");
+let MapActions = require("../actions");
 
-var SidebarDetailsView = React.createClass({
+let SidebarDetailsView = React.createClass({
 
   render: function() {
-    var poi = this.props.poi;
+    let poi = this.props.poi;
 
     return (
       <div className="sidebar details">
