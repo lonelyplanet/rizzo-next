@@ -6,16 +6,16 @@ class VideoPlayer extends Component {
     this.playerId = playerId;
     this.render();
     this.loadPlayer();
+
     this.events = {
       "click": "pause"
     };
 
     this.$el
-    .addClass("video-overlay")
-    .css("zIndex", -20);
+      .addClass("video-overlay")
+      .css("zIndex", -20);
 
-    this.$close = this.$el.find(".video-overlay__close__button")
-      .addClass("video-overlay__close__button--disabled");
+    this.$close = this.$el.find(".video-overlay__close__button");
   }
   setup() {
     // Overwrite this

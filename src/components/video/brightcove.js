@@ -6,7 +6,6 @@ let template = require("./brightcove.hbs");
 
 class Brightcove extends VideoPlayer {
   get scripts() {
-    // TODO: Move this to config with webpack
     return [
       "http://files.brightcove.com/bc-mapi.js",
       "http://admin.brightcove.com/js/BrightcoveExperiences.js"
@@ -17,6 +16,11 @@ class Brightcove extends VideoPlayer {
 
     window.BCL = window.BCL || {};
   }
+
+  /**
+   * Search for a video by it's Atlas ID
+   * @returns {Promise}
+   */
   search() {
     return new Promise((resolve) => {
       BCMAPI.search({
@@ -26,26 +30,44 @@ class Brightcove extends VideoPlayer {
       this.searchResolver = resolve;
     });
   }
+  /**
+   * Pause the playing video
+   */
   pause() {
-    // Don't allow pausing until the `PROGRESS` event has started firing.
+    // This kind of sucks, but since it's flash based I have to keep trying to pause
+    // until it actually pauses... O_o
     if (this.isPlaying) {
-      this.videoPlayer.pause();
+      clearTimeout(this.pauseTimer);
+      this.videoPlayer.pause(true);
 
       super.pause();
-      this.isPlaying = false;
+    } else {
+      this.pauseTimer = setTimeout(() => this.pause(), 50);
     }
   }
+  /**
+   * Play the video
+   */
   play() {
     this.calculateDimensions();
     this.videoPlayer.play();
+
     super.play();
   }
 
+  /**
+   * Render the brightcove template
+   */
   render() {
     this.$el.html(template({
       playerId: this.playerId
     }));
   }
+
+  /**
+   * Callback from the brightcove API
+   * @param id
+   */
   onTemplateLoad(id) {
     function calculateNewPercentage(width, height) {
       var newPercentage = ((height / width) * 100) + "%";
@@ -59,6 +81,7 @@ class Brightcove extends VideoPlayer {
     this.experienceModule = this.player.getModule(brightcove.api.modules.APIModules.EXPERIENCE);
 
     this.videoPlayer.addEventListener(brightcove.api.events.MediaEvent.PROGRESS, this.progress.bind(this));
+    this.videoPlayer.addEventListener(brightcove.api.events.MediaEvent.BEGIN, this.begin.bind(this));
     this.videoPlayer.addEventListener(brightcove.api.events.MediaEvent.PLAY, this.playing.bind(this));
     this.videoPlayer.addEventListener(brightcove.api.events.MediaEvent.STOP, () => this.trigger("stop"));
 
@@ -74,7 +97,6 @@ class Brightcove extends VideoPlayer {
     });
   }
   setup() {
-    /* global brightcove, BCMAPI */
     brightcove.createExperiences();
 
     window.BCL["player" + this.playerId] = this;
@@ -83,20 +105,22 @@ class Brightcove extends VideoPlayer {
     this.onSearchResponse = this.onSearchResponse.bind(this);
 
     // Media API read token
-    // TODO: Determine the best practice for securing the token.
     BCMAPI.token = "f1kYE3jBtEUS9XJ9rxo4ijS9rAhTizk87O6v7jMZ49qWmQemLSPhbw..";
     // set the callback for Media API calls
     BCMAPI.callback = `BCL.player${this.playerId}.onSearchResponse`;
 
     window.onresize = this.calculateDimensions.bind(this);
   }
-  progress() {
-    // Since this progress runs a bunch, trying to only remove class when necessary
-    if (this.$close[0].className.indexOf("--disabled") > -1) {
-      this.$close.removeClass("video-overlay__close__button--disabled");
-    }
 
+  /**
+   * Callback from the BEGIN event from the video player
+   */
+  begin() {
+    this.trigger("begin");
     this.isPlaying = true;
+  }
+  progress() {
+    this.trigger("progress");
   }
   playing() {
     this.trigger("play");
