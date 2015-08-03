@@ -27,9 +27,13 @@ class Brightcove extends VideoPlayer {
     });
   }
   pause() {
-    this.videoPlayer.pause();
+    // Don't allow pausing until the `PROGRESS` event has started firing.
+    if (this.isPlaying) {
+      this.videoPlayer.pause();
 
-    super.pause();
+      super.pause();
+      this.isPlaying = false;
+    }
   }
   play() {
     this.calculateDimensions();
@@ -54,7 +58,8 @@ class Brightcove extends VideoPlayer {
     this.videoPlayer = this.player.getModule(brightcove.api.modules.APIModules.VIDEO_PLAYER);
     this.experienceModule = this.player.getModule(brightcove.api.modules.APIModules.EXPERIENCE);
 
-    this.videoPlayer.addEventListener(brightcove.api.events.MediaEvent.PLAY, () => this.trigger("play"));
+    this.videoPlayer.addEventListener(brightcove.api.events.MediaEvent.PROGRESS, this.progress.bind(this));
+    this.videoPlayer.addEventListener(brightcove.api.events.MediaEvent.PLAY, this.playing.bind(this));
     this.videoPlayer.addEventListener(brightcove.api.events.MediaEvent.STOP, () => this.trigger("stop"));
 
     this.videoPlayer.getCurrentRendition((renditionDTO) => {
@@ -85,6 +90,17 @@ class Brightcove extends VideoPlayer {
 
     window.onresize = this.calculateDimensions.bind(this);
   }
+  progress() {
+    // Since this progress runs a bunch, trying to only remove class when necessary
+    if (this.$close[0].className.indexOf("--disabled") > -1) {
+      this.$close.removeClass("video-overlay__close__button--disabled");
+    }
+
+    this.isPlaying = true;
+  }
+  playing() {
+    this.trigger("play");
+  }
   calculateDimensions() {
     var resizeWidth = document.getElementById("masthead-video-player").clientWidth,
         resizeHeight = document.getElementById("masthead-video-player").clientHeight;
@@ -104,11 +120,11 @@ class Brightcove extends VideoPlayer {
     }
 
     if (mastheadVideoIds.length) {
-      this.videoPlayer.cueVideoByID(mastheadVideoIds[0]);
-
       this.videoPlayer.addEventListener(brightcove.api.events.MediaEvent.CHANGE, () => {
         this.searchResolver(mastheadVideoIds);
       });
+
+      this.videoPlayer.cueVideoByID(mastheadVideoIds[0]);
     }
   }
 }

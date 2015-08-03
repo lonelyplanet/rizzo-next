@@ -26,11 +26,19 @@ $max-video-width: 129rem;
     top: 3.5rem;
     right: 3.5rem;
     overflow: hidden;
-    cursor: pointer;
   }
 
   &__close__button {
+    cursor: pointer;
+    opacity: 1;
     color: $font-color;
+    transition: .5s opacity ease-in;
+
+    &--disabled {
+      opacity: 0;
+      cursor: default;
+      pointer-events: none;
+    }
   }
 }
 
@@ -52,7 +60,7 @@ $max-video-width: 129rem;
   &__container {
     position: relative;
     height: 0;
-    
+
     margin-left: $gutter / 2;
     margin-right: $gutter / 2;
     padding-bottom: 56.25%;

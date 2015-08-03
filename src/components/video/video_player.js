@@ -6,7 +6,6 @@ class VideoPlayer extends Component {
     this.playerId = playerId;
     this.render();
     this.loadPlayer();
-
     this.events = {
       "click": "pause"
     };
@@ -14,6 +13,9 @@ class VideoPlayer extends Component {
     this.$el
     .addClass("video-overlay")
     .css("zIndex", -20);
+
+    this.$close = this.$el.find(".video-overlay__close__button")
+      .addClass("video-overlay__close__button--disabled");
   }
   setup() {
     // Overwrite this
@@ -21,8 +23,6 @@ class VideoPlayer extends Component {
   play() {
     this.$el.css("zIndex", 9999);
     this.$el.addClass("video-overlay--playing");
-
-    this.isPlaying = true;
   }
   pause() {
     this.$el.removeClass("video-overlay--playing");
@@ -30,8 +30,6 @@ class VideoPlayer extends Component {
     waitForTransition(this.$el).then(() => {
       this.$el.css("zIndex", -20);
     });
-
-    this.isPlaying = false;
   }
   loadPlayer() {
     this._getScripts(this.scripts);
