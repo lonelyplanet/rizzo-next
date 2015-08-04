@@ -1,16 +1,15 @@
-let React = require("react");
-let MapActions = require("../actions");
-let Item = require("./item.jsx");
+import React from "react";
+import MapActions from "../actions";
+import Item from "./item.jsx";
 
-let PinView = React.createClass({
+export default class PinView extends React.Component {
 
-  render: function() {
+  render() {
     let pin = this.props.pin;
+
     return (
       <Item item={pin} />
-    )
+    );
   }
 
-});
-
-module.exports = PinView;
+}

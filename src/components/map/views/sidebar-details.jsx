@@ -1,9 +1,9 @@
-let React = require("react");
-let MapActions = require("../actions");
+import React from "react";
+import MapActions from "../actions";
 
-let SidebarDetailsView = React.createClass({
+export default class SidebarDetailsView extends React.Component{
 
-  render: function() {
+  render() {
     let poi = this.props.poi;
 
     return (
@@ -20,13 +20,11 @@ let SidebarDetailsView = React.createClass({
         </div>
       </div>
     )
-  },
+  }
 
-  closePOI: function(e) {
+  closePOI(e) {
     e.preventDefault();
     MapActions.poiClose();
   }
 
-});
-
-module.exports = SidebarDetailsView;
+}

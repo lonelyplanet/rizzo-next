@@ -1,13 +1,15 @@
-let React = require("react");
-let MapActions = require("../actions");
+import React from "react";
+import MapActions from "../actions";
 
-let MapView = React.createClass({
+/**
+ * The main component for the map view
+ */
+export default class MapView extends React.Component {
 
-  render: function() {
+  render() {
     return (
       <div className="map-container">Map goes here</div>
     )
   }
 
-});
-module.exports = MapView;
+}

@@ -1,8 +1,11 @@
-let React = require("react");
+import React from "react";
 
-let SidebarFetchingView = React.createClass({
+/**
+ * Shows when items are being fetched
+ */
+export default class SidebarFetchingView extends React.Component {
 
-  render: function() {
+  render() {
     return (
       <div className="sidebar fetching">
         <span>Fetching {this.props.place}</span>
@@ -12,6 +15,4 @@ let SidebarFetchingView = React.createClass({
     )
   }
 
-});
-
-module.exports = SidebarFetchingView;
+}

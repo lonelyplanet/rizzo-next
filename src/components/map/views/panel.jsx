@@ -1,15 +1,19 @@
-let React = require("react");
-let Item = require("./item.jsx");
+import React from "react";
+import Item from "./item.jsx";
 
-let PanelView = React.createClass({
+/**
+ * The side panel view
+ */
+export default class PanelView extends React.Component {
 
-  render: function() {
-    let items = this.props.set.items.map(function(item, i) {
+  render() {
+    let items = this.props.set.items.map((item, i) => {
       item.i = i;
       return (
         <Item item={item}/>
       )
     });
+
     return (
       <div className="panel">
         <div className="listing">
@@ -19,6 +23,4 @@ let PanelView = React.createClass({
     )
   }
 
-});
-
-module.exports = PanelView;
+}

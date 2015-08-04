@@ -1,12 +1,16 @@
-let React = require("react");
+import React from "react";
 
-let AlertView = React.createClass({
+/**
+ * Alerts for the sidebar
+ */
+export default class AlertView extends React.Component {
 
-  render: function() {
-    let classString = "alert";
+  render() {
+    let classString = "alert",
+        message = "";
 
     if (this.props.error) {
-      let message = this.props.error.message;
+      message = this.props.error.message;
       let type = this.props.error.type;
       classString += " active error" + type;
     }
@@ -18,6 +22,4 @@ let AlertView = React.createClass({
     );
   }
 
-});
-
-module.exports = AlertView;
+}

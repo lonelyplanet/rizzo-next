@@ -1,12 +1,14 @@
-let React = require("react");
-let Tab = require("./tab.jsx");
-let Panel = require("./panel.jsx");
+import React from "react";
+import Tab from "./tab.jsx";
+import Panel from "./panel.jsx";
+import MapActions from "../actions";
 
-let MapActions = require("../actions");
+/**
+ * Sidebar view that sets up main tabs
+ */
+export default class SidebarView extends React.Component {
 
-let SidebarView = React.createClass({
-
-  render: function() {
+  render() {
     let location = this.props.location;
     let activeSetIndex = this.props.activeSetIndex;
     let panelContent;
@@ -39,7 +41,7 @@ let SidebarView = React.createClass({
           <h1>
             {location.title}
           </h1>
-          <a href={location.parent_slug} className="location-subtitle" onClick={this.parentClick}>&lt; Back to {location.parent}</a>
+          <a href={location.parent_slug} className="location-subtitle" onClick={this.parentClick.bind(this)}>&lt; Back to {location.parent}</a>
           <ul className="tabs">
             {tabs}
           </ul>
@@ -47,7 +49,7 @@ let SidebarView = React.createClass({
         {panelContent}
       </div>
     )
-  },
+  }
 
   parentClick(e) {
     e.preventDefault();
@@ -55,6 +57,4 @@ let SidebarView = React.createClass({
     MapActions.gotoPlace({ place: props.location.parent_slug, placeTitle: props.location.parent })
   }
 
-});
-
-module.exports = SidebarView;
+}

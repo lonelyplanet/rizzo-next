@@ -1,35 +1,38 @@
-let React = require("react");
-
-let Sidebar =         require("./sidebar.jsx");
-let SidebarFetching = require("./sidebar-fetching.jsx");
-let SidebarDetails =  require("./sidebar-details.jsx");
-let Map =             require("./map.jsx");
-let Alert =           require("./alert.jsx");
-let MapState =        require("../state");
+import React from "react";
+import Sidebar from "./sidebar.jsx";
+import SidebarFetching from "./sidebar-fetching.jsx";
+import SidebarDetails from "./sidebar-details.jsx";
+import Map from "./map.jsx";
+import Alert from "./alert.jsx";
+import MapState from "../state";
 
 let getMapState = function(props) {
   return MapState.getState();
 };
 
-let MainView = React.createClass({
+/**
+ * Controls the sidebar views, and the map
+ */
+export default class MainView extends React.Component {
+  constructor(props) {
+    super(props);
 
-  getInitialState: function() {
-    return getMapState();
-  },
+    this.state = getMapState();
+  }
 
-  componentDidMount: function() {
-    MapState.addChangeListener(this._onChange);
-  },
+  componentDidMount() {
+    MapState.addChangeListener(this._onChange.bind(this));
+  }
 
-  componentWillUnmount: function() {
-    MapState.removeChangeListener(this._onChange);
-  },
+  componentWillUnmount() {
+    MapState.removeChangeListener(this._onChange.bind(this));
+  }
 
-  _onChange: function() {
+  _onChange() {
     this.setState(getMapState());
-  },
+  }
 
-  render: function() {
+  render() {
     let sidebar;
     let classString = "map";
 
@@ -57,12 +60,11 @@ let MainView = React.createClass({
         <Alert error={this.state.error} />
       </div>
     );
-  },
+  }
 
+  // TODO: Trigger an action here, try not to call dispatcher directly
   closeMap() {
     Arkham.trigger("map.closed");
   }
 
-});
-
-module.exports = MainView;
+}
