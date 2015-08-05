@@ -4,7 +4,7 @@ require("./stacks.scss");
 
 export default (function() {
   return $(".articles").each(function() {
-    var stack = new Stack({
+    let stack = new Stack({
       el: this
     });
 

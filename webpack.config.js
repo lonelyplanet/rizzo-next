@@ -14,19 +14,19 @@ module.exports = {
     libraryTarget: "var"
   },
   module: {
-    loaders: [{ 
-        test: /\.js$/, 
+    loaders: [{
+        test: /\.js$/,
         exclude: /node_modules\/[^rizzo|flamsteed]/,
         loader: "babel-loader"
       },
-      { 
-        test: /\.scss$/, 
+      {
+        test: /\.scss$/,
           loader: "style!css!sass?outputStyle=expanded&" +
-          "includePaths[]=" + (path.resolve(__dirname, "./node_modules")) 
+          "includePaths[]=" + (path.resolve(__dirname, "./node_modules"))
       },
-      { 
-        test: /\.hbs$/, 
-        loader: "handlebars-loader" 
+      {
+        test: /\.hbs$/,
+        loader: "handlebars-loader"
       }]
   }
 };

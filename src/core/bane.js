@@ -7,9 +7,9 @@ import each from "lodash/collection/each";
 import uniqueId from "lodash/utility/uniqueId";
 
 // Can pass in options that contains these keys. They will automatically be added to `this`
-var listOfOptions = [ "el", "events", "container" ];
+let listOfOptions = [ "el", "events", "container" ];
 // Regex for the "click .foo .bar" in the events
-var delegateEventSplitter = /^(\S+)\s*(.*)$/;
+let delegateEventSplitter = /^(\S+)\s*(.*)$/;
 
 /**
 * The main class that will be extended when a new componenet is created.

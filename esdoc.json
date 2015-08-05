@@ -1,6 +1,7 @@
 {
   "source": "src",
   "excludes": ["node_modules", "spec", "sass", "tmp"],
+  "includes": ["\\.(jsx?)$"],
   "destination": "./docs",
   "test": {
     "type": "mocha",

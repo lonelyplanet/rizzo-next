@@ -180,7 +180,7 @@ export default class MastheadComponent extends Component {
   getNewState() {
     let arr = [];
 
-    for(var i = -this.padding; i <= this.padding; i++) {
+    for(let i = -this.padding; i <= this.padding; i++) {
       arr.push(this.getSlideFromIndex(i));
     }
 
@@ -226,7 +226,7 @@ export default class MastheadComponent extends Component {
     this.isAnimating = true;
 
     // remove first/last element of stack, [0,1,2,3] -> [1,2,3]
-    var toBeRemoved = reverse ? this.stack.pop() : this.stack.shift();
+    let toBeRemoved = reverse ? this.stack.pop() : this.stack.shift();
 
     // add new item to stack, [1,2,3] -> [1,2,3,4]
     let nextIndexIn = reverse ? state[0] : state[state.length - 1];

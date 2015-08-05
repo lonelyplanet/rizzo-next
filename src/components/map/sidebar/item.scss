@@ -1,0 +1,105 @@
+.place {
+  width: $itemwidth;
+  height: 60px;
+  background: #fff;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+
+  &.list {
+    margin: 10px 0;
+
+    &:after {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      display: block;
+      height: 0;
+      width: ($itemwidth - $imagewidth - ($orderwidth / 2));
+      border-top: 1px solid $disabled;
+      content: ""
+    }
+  }
+
+  &.pin {
+    box-shadow: 0 44px 87px -22px #000;
+
+    &:after {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      height: $orderwidth * .6;
+      border-left: 1px solid $disabled;
+      transform: translate(0, -50%);
+      content: ">";
+      line-height: $orderwidth * .6;
+      padding-left: 10px;
+      font-size: 12px;
+      color: $lpblue;
+    }
+  }
+
+  &__pic {
+    height: 100%;
+    width: $imagewidth;
+    overflow: hidden;
+    position: relative;
+
+    img {
+      position: absolute;
+      max-width: ($itemwidth * .6);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &__order {
+    position: absolute;
+    width: $orderwidth;
+    height: $orderwidth;
+    display: block;
+    left: $imagewidth;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    line-height: $orderwidth;
+    font-size: 12px;
+    color: $lpblue;
+
+    &:before {
+      position: absolute;
+      display: block;
+      background: #fff;
+      top: 50%;
+      left: 50%;
+      width: 40%;
+      height: 40%;
+      transform: translate(-50%, -50%) rotate(45deg);
+      content: "";
+      z-index: -1;
+      box-shadow: 2px 2px 3px -2px #333;
+      border-radius: 3px;
+    }
+  }
+
+  &__text {
+    position: absolute;
+    width: ($itemwidth - $imagewidth - 30px);
+    right: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+    padding-right: 10px;
+    box-sizing: border-box;
+
+    .title {
+      color: $lpblue;
+    }
+
+    .subtitle {
+      color: $disabled;
+      font-size: 10px;
+      text-transform: uppercase;
+    }
+  }
+}

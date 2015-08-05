@@ -70,7 +70,7 @@ class Brightcove extends VideoPlayer {
    */
   onTemplateLoad(id) {
     function calculateNewPercentage(width, height) {
-      var newPercentage = ((height / width) * 100) + "%";
+      let newPercentage = ((height / width) * 100) + "%";
       document.getElementById("outer-container").style.paddingBottom = newPercentage;
     }
 
@@ -126,7 +126,7 @@ class Brightcove extends VideoPlayer {
     this.trigger("play");
   }
   calculateDimensions() {
-    var resizeWidth = document.getElementById("masthead-video-player").clientWidth,
+    let resizeWidth = document.getElementById("masthead-video-player").clientWidth,
         resizeHeight = document.getElementById("masthead-video-player").clientHeight;
 
       if (this.experienceModule.experience.type === "html"){

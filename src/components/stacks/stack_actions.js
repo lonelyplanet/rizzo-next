@@ -1,6 +1,6 @@
 import { Arkham } from "../../core/bane";
 
-var StackActions = {
+let StackActions = {
   getMore: () => {
     Arkham.trigger("stacks.fetch", {});
 

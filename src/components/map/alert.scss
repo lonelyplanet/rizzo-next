@@ -1,0 +1,20 @@
+.alert {
+  background: #333;
+  color: #fff;
+  padding: 5px 8px;
+  font-size: 13px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  border: 1px solid #fff;
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+
+  &.active {
+    opacity: 1;
+  }
+
+  &.error500 {
+    background: #FA5858;
+  }
+}
