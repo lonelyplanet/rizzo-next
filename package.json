@@ -13,7 +13,8 @@
     "jquery": "^2.1.4",
     "lodash": "^3.10.0",
     "pickadate": "*",
-    "picturefill": "*"
+    "picturefill": "*",
+    "react": "^0.13.3"
   },
   "devDependencies": {
     "babel-eslint": "^4.0.5",
@@ -30,7 +31,6 @@
     "mocha": "^2.2.5",
     "object-assign": "^3.0.0",
     "phantomjs": "^1.9.17",
-    "react": "^0.13.3",
     "sinon": "^1.15.4"
   }
 }
