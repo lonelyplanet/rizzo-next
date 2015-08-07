@@ -1,18 +1,18 @@
-require("./_city_nav.scss");
+require("./_sub_nav.scss");
 
 let debounce = require("lodash/function/debounce"),
-    $cityNav = $(".js-city-nav");
+    $subNav = $(".js-sub-nav");
 
-if ($cityNav.length) {
-  let cityNavTop = $cityNav.offset().top,
+if ($subNav.length) {
+  let subNavTop = $subNav.offset().top,
       firstTrigger = true,
       $window = $(window),
-      fixedState, fixedCityNav;
+      fixedState, fixedSubNav;
 
-  $(document).on("click", ".js-city-nav-lnk", function(e) {
+  $(document).on("click", ".js-sub-nav-lnk", function(e) {
     let target = this.hash;
     let $target = $(target);
-    let navHeight = $cityNav.height();
+    let navHeight = $subNav.height();
 
     if($target.parents(".segment").length > 0) {
       $target = $target.parents(".segment");
@@ -27,26 +27,26 @@ if ($cityNav.length) {
 
   $window.scroll(debounce(() => {
     if (firstTrigger) {
-      fixedCityNav = $cityNav
+      fixedSubNav = $subNav
         .clone(true)
-        .addClass("city-nav--fixed");
+        .addClass("sub-nav--fixed");
 
       firstTrigger = false;
     }
 
-    if ($window.scrollTop() > cityNavTop){
+    if ($window.scrollTop() > subNavTop){
       if(!fixedState){
-        fixedCityNav.appendTo( "body" );
+        fixedSubNav.appendTo( "body" );
         fixedState = true;
       }
     } else if (fixedState) {
-        fixedCityNav.detach();
+        fixedSubNav.detach();
         fixedState = false;
     }
 
   }, 10));
 
   $window.resize(debounce(() => {
-    cityNavTop = $cityNav.offset().top;
+    subNavTop = $subNav.offset().top;
   }, 10));
 }
