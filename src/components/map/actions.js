@@ -49,6 +49,10 @@ let MapActions = {
 
   initMap: () => {
     Arkham.trigger("map.init");
+  },
+
+  customPanel: (data) => {
+    Arkham.trigger("custompanel.opened", data);
   }
 
 };

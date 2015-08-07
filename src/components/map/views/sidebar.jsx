@@ -2,6 +2,7 @@ import React from "react";
 import Tab from "./tab.jsx";
 import Panel from "./panel.jsx";
 import MapActions from "../actions";
+import AboutPanel from "./about-panel.jsx"
 
 /**
  * Sidebar view that sets up main tabs
@@ -23,16 +24,20 @@ export default class SidebarView extends React.Component {
 
     if (location.description.length > 0) {
       tabCount++;
-      let isActive = tabCount === activeSetIndex ? true : false;
-      let aboutTab = <Tab name="About" active={isActive} i={tabCount} />
+      var isActive = tabCount === activeSetIndex ? true : false;
+      var aboutTab = <Tab name="About" active={isActive} i={tabCount} customPanel="about" />
       tabs.push(aboutTab);
     }
 
     if (this.props.sets.length < 1) {
       panelContent =  <div className="no-content" dangerouslySetInnerHTML={{__html: location.description}}></div>;
     } else {
-      let activePanel = this.props.sets[this.props.activeSetIndex];
-      panelContent = <Panel set={activePanel} />;
+      if( this.props.customPanel === "about" ) {
+        panelContent = <AboutPanel location={location} />;
+      } else {
+        var activePanel = this.props.sets[this.props.activeSetIndex];
+        panelContent = <Panel set={activePanel} />;
+      }
     }
 
     return (
