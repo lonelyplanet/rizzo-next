@@ -88,9 +88,6 @@ class MarkerSet extends Component {
   _createIcon(layer) {
     let state = MapState.getState();
     let pin = state.sets[state.activeSetIndex].items[layer.feature.properties.index];
-
-    pin.onMap = true;
-
     let poi = { pin: pin };
     let markup = React.renderToStaticMarkup(React.createElement(Pin, poi));
     // let pin = PinTemplate(layer.feature.properties);

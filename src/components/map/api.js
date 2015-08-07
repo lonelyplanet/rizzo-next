@@ -36,8 +36,8 @@ let MapAPI = {
    * Remove all map markers
    */
   clear: function() {
-    // empty map of all pins
     this.mapProvider.removeMarkers();
+    this.mapProvider.removePopup();
   }
 
 };

@@ -36,6 +36,10 @@ class MapProvider extends Component {
     delete this.markers;
   }
 
+  removePopup() {
+    this.map.closePopup();
+  }
+
 }
 
 export default MapProvider;
