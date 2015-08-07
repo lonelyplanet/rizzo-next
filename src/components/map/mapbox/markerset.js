@@ -64,12 +64,12 @@ class MarkerSet extends Component {
     for (let i = 0, l = this.pois.length; i < l; i++) {
       let geo = this.pois[i].geo;
 
-      if(geo.geometry.coordinates[0] === null || geo.geometry.coordinates[0] === null) {
-        geo.geometry.coordinates = [0, 0];
+      if(geo.geometry.coordinates[0] === null || geo.geometry.coordinates[1] === null) {
+        continue
+      } else {
+        geo.properties.index = i;
+        geojson.features.push(geo);
       }
-
-      geo.properties.index = i;
-      geojson.features.push(geo);
     }
 
     this.layer.setGeoJSON(geojson);

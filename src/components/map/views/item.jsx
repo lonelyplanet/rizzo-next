@@ -7,8 +7,10 @@ import MapActions from "../actions";
  */
 export default class ItemView extends React.Component {
 
+<<<<<<< HEAD
   render() {
     let item = this.props.item;
+    let title = item.title;
     let classString = "place ";
     let imageSrc = "http://placehold.it/350x150";
     if (item.onMap) {
@@ -17,7 +19,10 @@ export default class ItemView extends React.Component {
       classString += "list";
     }
     if (item.geo.properties.image) {
-      imageSrc = "http://images-resrc.staticlp.com/S=H150/" + item.geo.properties.image;
+      imageSrc = "http://images-resrc.staticlp.com/S=H150=/" + item.geo.properties.image;
+    }
+    if (title.length > 35) {
+      title = title.substr(0, 34) + "...";
     }
     return (
       <div className={classString} onClick={this.clickItem.bind(this)}>
@@ -26,7 +31,7 @@ export default class ItemView extends React.Component {
         </div>
         <div className="place__order">{item.i+1}</div>
         <div className="place__text">
-          <div className="title">{item.title}</div>
+          <div className="title">{title}</div>
           <div className="subtitle">{item.subtitle}</div>
         </div>
       </div>
