@@ -31,7 +31,6 @@ let MapAPI = {
    */
   plot: function(pois) {
     this.mapProvider.addMarkers(pois);
-    // clear map and replot with new pins
   },
   /**
    * Remove all map markers

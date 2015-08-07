@@ -12,7 +12,7 @@ let MapActions = {
     $.ajax({
       url: "/" + place + "/map.json"
     }).done((results) => {
-      Arkham.trigger("place.fetched", results);
+      Arkham.trigger("place.fetched", results.map_data);
     }).error((results) => {
       let error = {
         message: "There was an error fetching " + data.placeTitled,

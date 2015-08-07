@@ -19,6 +19,10 @@ class InteractiveMap extends Component {
     Arkham.on("view.changed", () => {
       this.changeView();
     });
+
+    Arkham.on("place.fetched", () => {
+      this.changeView();
+    });
   }
 
   launch() {
@@ -34,10 +38,6 @@ class InteractiveMap extends Component {
     let pois = state.sets[state.activeSetIndex].items;
 
     MapAPI.redraw(pois);
-  }
-
-  isFetching() {
-    MapAPI.clear();
   }
 
   hasFetched() {
