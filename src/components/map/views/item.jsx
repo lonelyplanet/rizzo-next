@@ -10,17 +10,19 @@ export default class ItemView extends React.Component {
   render() {
     let item = this.props.item;
     let classString = "place ";
-
+    let imageSrc = "http://placehold.it/350x150";
     if (item.onMap) {
       classString += "pin";
     } else {
       classString += "list";
     }
-
+    if (item.geo.properties.image) {
+      imageSrc = "http://images-resrc.staticlp.com/S=H150/" + item.geo.properties.image;
+    }
     return (
       <div className={classString} onClick={this.clickItem.bind(this)}>
         <div className="place__pic">
-          <img src="http://www.luxuo.com/wp-content/uploads/2011/07/bangkok-temple.jpg" />
+          <img src={imageSrc} />
         </div>
         <div className="place__order">{item.i+1}</div>
         <div className="place__text">
