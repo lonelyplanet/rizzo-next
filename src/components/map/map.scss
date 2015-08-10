@@ -18,6 +18,7 @@
   }
 }
 
+// Needs an :after fix
 .map_holder {
   position: fixed;
   top: 0;
@@ -26,13 +27,14 @@
   left: 0;
   height: 100vh;
   width: 100vw;
-  z-index: 200;
+
   background: rgba(0,0,0,.5);
-  transform: translate(100%);
-  transition: transform .4s ease-in-out;
+  opacity: 0;
+  transition: opacity .2s ease-in-out;
 
   &.open {
-    transform: translate(0);
+    opacity: 1;
+    z-index: 200;
   }
 }
 
@@ -49,9 +51,15 @@
 
 
 .map {
-  width: 94vw;
-  transform: translate(6vw);
+  width: 100%;
   height: 100%;
+  transform: translate(100%);
+  transition: transform .4s ease-in-out;
+  // transition-delay: .2s;
+
+  &.open {
+    transform: translate(0);
+  }
 
   .flexbox & {
     display: flex;
@@ -61,7 +69,7 @@
 }
 
 .map-container {
-  width: 100 - $sidebarwidth;
+  width: 100 - $sidebarwidth - $closeWidth;
   height: 100%;
   background: rgba(255,255,255,.5);
 
@@ -85,5 +93,12 @@
 }
 
 .close-map {
+  width: 100px;
 
+  .flexbox & {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    flex: 0 0 auto;
+  }
 }

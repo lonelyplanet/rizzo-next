@@ -3,12 +3,15 @@ import React from "react";
 import MainView from "./views/main.jsx";
 import MapActions from "./actions";
 import InteractiveMap from "./interactive-map";
+import Arkham from "../../core/arkham"
 
 class MapComponent extends Component {
 
   initialize(props) {
     let originalState = this.getInitialState();
     this.el = props.el;
+
+    let fullscreen = $(this.el).parent().data("fullscreen");
 
     MapActions.setState(originalState.data);
 
@@ -18,6 +21,12 @@ class MapComponent extends Component {
       el: this.el
     });
     MapActions.initMap();
+
+    Arkham.on("map.closed", () => {
+      this.close();
+    });
+
+    // MapActions.fetchSponsors();
   }
 
   open() {
@@ -29,7 +38,6 @@ class MapComponent extends Component {
   close() {
     $("html,body").removeClass("noscroll");
     this.$el.removeClass("open");
-    MapActions.close();
   }
 
 }
