@@ -1,7 +1,6 @@
 import { Component } from "../../../core/bane";
 import Arkham from "../../../core/arkham";
 import MapActions from "../actions";
-// import PinTemplate from "./pin.html.hbs";
 import MapState from "../state";
 import React from "react";
 import Pin from "../views/pin.jsx";

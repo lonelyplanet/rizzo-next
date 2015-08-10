@@ -6,8 +6,6 @@ import MapActions from "../actions";
  * @type {*|Function}x
  */
 export default class ItemView extends React.Component {
-
-<<<<<<< HEAD
   render() {
     let item = this.props.item;
     let title = item.title;
@@ -19,7 +17,7 @@ export default class ItemView extends React.Component {
       classString += "list";
     }
     if (item.geo.properties.image) {
-      imageSrc = "http://images-resrc.staticlp.com/S=H150=/" + item.geo.properties.image;
+      imageSrc = "http://images-resrc.staticlp.com/S=H150/" + item.geo.properties.image;
     }
     if (title.length > 35) {
       title = title.substr(0, 34) + "...";
@@ -40,10 +38,11 @@ export default class ItemView extends React.Component {
 
   clickItem() {
     let props = this.props;
-
-     MapActions.poiOpen({ index: props.item.i });
-    // TODO: Swap to fix the map loading issue
-    //MapActions.gotoPlace({ place: props.item.slug, placeTitle: props.item.title });
+    console.log(props);
+    if(props.item.item_type === "Place") {
+      MapActions.gotoPlace({ place: props.item.slug, placeTitle: props.item.title });
+    } else {
+      MapActions.poiOpen({ index: props.item.i });
+    }
   }
-
 }
