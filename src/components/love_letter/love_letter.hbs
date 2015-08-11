@@ -1,7 +1,14 @@
 <article id="introduction" class="love-letter">
   <h2 class="love-letter__heading">{{{love_letter_title}}}</h2>
 
-  <p class="love-letter__text">&ldquo;{{{love_letter.text}}}&rdquo;</p>
+  <p class="love-letter__text">
+    &ldquo;<span class="js-love-letter">{{{love_letter_text}}}</span>&rdquo;
+
+    <a class="love-letter__more" href="{{love_letter_more}}">
+      Read More
+      <span class="icon-chevron-right"></span>
+    </a>
+  </p>
 
   {{#if love_letter.author.name }}
     <div class="love-letter__author">
