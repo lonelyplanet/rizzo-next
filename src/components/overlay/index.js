@@ -8,9 +8,7 @@ class Overlay extends Component {
 
   initialize(){
     this.$html = $("html");
-    this.$el = $("</div>", {
-      "class": "overlay"
-    });
+    this.$el.addClass("overlay");
 
     this.events = {
       "click": "onClick",
