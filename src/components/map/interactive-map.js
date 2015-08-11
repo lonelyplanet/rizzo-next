@@ -26,7 +26,7 @@ class InteractiveMap extends Component {
   }
 
   launch() {
-    MapAPI.launch(this.$el.find(".map-container"));
+    MapAPI.launch(this.$el);
   }
 
   kill() {

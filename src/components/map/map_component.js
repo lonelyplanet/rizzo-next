@@ -2,7 +2,6 @@ import { Component } from "../../core/bane";
 import React from "react";
 import MainView from "./views/main.jsx";
 import MapActions from "./actions";
-import InteractiveMap from "./interactive-map";
 import Arkham from "../../core/arkham"
 
 class MapComponent extends Component {
@@ -16,11 +15,6 @@ class MapComponent extends Component {
     MapActions.setState(originalState.data);
 
     React.render(<MainView />, document.querySelector(this.el));
-
-    this.interactiveMap = new InteractiveMap({
-      el: this.el
-    });
-    MapActions.initMap();
 
     Arkham.on("map.closed", () => {
       this.close();

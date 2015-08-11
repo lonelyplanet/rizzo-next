@@ -12,6 +12,10 @@ let L = window.L;
 class MarkerSet extends Component {
 
   initialize({ pois, map, layer }) {
+    this.events = {
+      "click .pin": "_poiClick"
+    };
+
     this.pois = pois;
     this.map = map;
     this.layer = layer;
@@ -105,9 +109,6 @@ class MarkerSet extends Component {
     })
     .on("mouseout", function(e) {
       _this._poiUnhover(e.layer);
-    })
-    .on("click", function(e) {
-      _this._poiClick(e.layer);
     });
   }
 
@@ -130,13 +131,14 @@ class MarkerSet extends Component {
 
   // A layer argument is passed in, but it is not used
   // The defined argument has been removed to pass ESLint
-  _poiUnhover() {
+  _poiUnhover(layer) {
     // Use if needed
+    this.activeLayer = layer;
   }
 
-  _poiClick(layer) {
+  _poiClick(event) {
     // figure out if a PLACE or a POI
-    MapActions.poiOpen(layer.feature.properties);
+    MapActions.poiOpen(this.activeLayer.feature.properties);
   }
 
   _fixzIndex(currentLayer) {

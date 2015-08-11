@@ -26,6 +26,7 @@ class MapProvider extends Component {
 
   addMarkers(pois) {
     this.markers = new MapboxMarkerSet({
+      el: this.el,
       map: this.map,
       layer: this.layer,
       pois: pois
