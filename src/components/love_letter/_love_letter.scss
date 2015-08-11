@@ -59,6 +59,13 @@ $small-breakpoint: 320;
       //max-width: 790px;
     }
   }
+
+  &__more {
+    @include more();
+
+    text-transform: uppercase;
+    font-style: normal;
+  }
 }
 
 
