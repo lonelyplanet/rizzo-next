@@ -53,6 +53,54 @@ let MapActions = {
 
   customPanel: (data) => {
     Arkham.trigger("custompanel.opened", data);
+  },
+
+  fetchSponsors: (data) => {
+    var x = JSON.stringify({
+      placements: [
+        {
+          divName: "sponsored",
+          networkId: 9807,
+          siteId: 316543,
+          adTypes: [ 43 ],
+          eventIds: [31, 32],
+          campaignId: 284161,
+          properties: {
+            "place": "asia"
+          }
+        },
+        {
+          divName: "sponsored1",
+          networkId: 9807,
+          siteId: 316543,
+          adTypes: [ 43 ],
+          eventIds: [31, 32],
+          campaignId: 284161,
+          properties: {
+            "place": "asia"
+          }
+        }
+      ]
+    });
+  $.ajax({
+    url: "http://engine.adzerk.net/api/v2",
+    method: "POST",
+    contentType: "application/json",
+    data: x,
+    success: function(response) {
+      var set = {title: "Sponsored", items: [] };
+      for(var decision in response.decisions) {
+        var poi = JSON.parse(response.decisions[decision].contents[0].body);
+          set.items.push(poi);
+      }
+      Arkham.trigger("sponsor.fetched", set)
+    },
+    error: function() {
+      console.log('fail"')
+    }
+  });
+
+
   }
 
 };

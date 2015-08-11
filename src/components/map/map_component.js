@@ -26,7 +26,7 @@ class MapComponent extends Component {
       this.close();
     });
 
-    // MapActions.fetchSponsors();
+    MapActions.fetchSponsors();
   }
 
   open() {

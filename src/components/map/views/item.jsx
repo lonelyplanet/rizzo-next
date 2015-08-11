@@ -38,7 +38,6 @@ export default class ItemView extends React.Component {
 
   clickItem() {
     let props = this.props;
-    console.log(props);
     if(props.item.item_type === "Place") {
       MapActions.gotoPlace({ place: props.item.slug, placeTitle: props.item.title });
     } else {

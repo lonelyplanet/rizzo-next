@@ -110,4 +110,9 @@ Arkham.on("custompanel.opened", (data) => {
   MapState.emitChange();
 });
 
+Arkham.on("sponsor.fetched", (data) => {
+  state.sets.push(data);
+  MapState.emitChange();
+});
+
 export default MapState;
