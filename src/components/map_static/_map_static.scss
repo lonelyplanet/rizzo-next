@@ -12,6 +12,7 @@
 
   &__container {
     display: none;
+    text-align: center;
 
     @media (min-width: $min-960) {
       display: block;
@@ -22,5 +23,11 @@
       width: 100%;
       padding: ($gutter*13.2) 0;
     }
+  }
+
+  &__btn {
+    @include button();
+
+    position: absolute;
   }
 }
