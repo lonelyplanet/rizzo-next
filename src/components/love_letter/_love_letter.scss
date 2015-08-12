@@ -82,6 +82,7 @@ $small-breakpoint: 320;
 
 .love-letter__author__image {
   @include author-image($mobile-breakpoint);
+  margin-right: 0px;
 }
 
 .love-letter__author__creds {

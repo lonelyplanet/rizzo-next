@@ -113,6 +113,7 @@ $small-breakpoint: 320;
 
 .article__info__author__image {
   @include author-image(9999999); // massive number here because we don't want it resizing ever
+  margin-right: $spacing;
 }
 
 .article__info__author__creds {
