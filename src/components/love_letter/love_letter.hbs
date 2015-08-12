@@ -3,7 +3,7 @@
 
   <p class="love-letter__text">
     &ldquo;<span class="js-love-letter">{{{love_letter_text}}}</span>&rdquo;
-    
+
     {{#if love_letter_more}}
     <a class="love-letter__more" href="{{love_letter_more}}" target="_blank">
       Read More
@@ -18,8 +18,8 @@
         <img class="love-letter__author__image" src="{{love_letter.author.image}}" />
       </a>
       <div class="love-letter__author__creds">
-        <div class="love-letter__author__creds__name">{{love_letter.author.name}}</div>
-        <div class="love-letter__author__creds__title">{{love_letter.author.title}}</div>
+        <div class="love-letter__author__creds__name"><a href="{{love_letter.author.url}}">{{love_letter.author.name}}</a></div>
+        <div class="love-letter__author__creds__title"><a href="{{love_letter.author.url}}">{{love_letter.author.title}}</a></div>
       </div>
     </div>
   {{/if}}
