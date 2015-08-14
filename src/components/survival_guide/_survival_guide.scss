@@ -62,6 +62,13 @@ $mobile-breakpoint: 400;
   }
 }
 
+.survival_guide__list__item__icon {
+  display: block;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+}
+
 .survival_guide__list__item__title {
   font-size: 20px;
   margin-bottom: 5px;
