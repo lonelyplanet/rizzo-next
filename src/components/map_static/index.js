@@ -1,10 +1,11 @@
 require("./_map_static.scss");
 
 let mapLoaded = false;
-$(".js-open-map").on("click", function() {
+let $mapButton = $(".js-open-map");
+$mapButton.on("click", function() {
   if (!mapLoaded) {
     require([
-      "../map/map_component"
+      "../map/index"
     ], (MapComponent) => {
       let map = new MapComponent({
         el: ".map_holder"
@@ -13,3 +14,7 @@ $(".js-open-map").on("click", function() {
     });
   }
 });
+
+if (window.location.href.indexOf("/map") > -1) {
+  $mapButton.trigger("click");
+}

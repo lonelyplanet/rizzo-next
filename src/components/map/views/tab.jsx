@@ -10,7 +10,7 @@ export default class TabView extends React.Component {
     let title = this.props.name;
     let isActive = this.props.active ? "tab active" : "tab";
     return (
-      <div className={isActive} onClick={this.tabClick}>
+      <div className={isActive} onClick={this.tabClick.bind(this)}>
         {title}
       </div>
     )
@@ -18,7 +18,11 @@ export default class TabView extends React.Component {
 
   tabClick() {
     let props = this.props;
-    MapActions.viewChange({ view: props.i })
+    if (props.customPanel) {
+      MapActions.customPanel({ panel: props.customPanel, view: props.i })
+    } else {
+      MapActions.viewChange({ view: props.i })
+    }
   }
 }
 

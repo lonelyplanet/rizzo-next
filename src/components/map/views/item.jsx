@@ -6,25 +6,30 @@ import MapActions from "../actions";
  * @type {*|Function}x
  */
 export default class ItemView extends React.Component {
-
   render() {
     let item = this.props.item;
+    let title = item.title;
     let classString = "place ";
-
+    let imageSrc = "http://placehold.it/350x150";
     if (item.onMap) {
       classString += "pin";
     } else {
       classString += "list";
     }
-
+    if (item.geo.properties.image) {
+      imageSrc = "http://images-resrc.staticlp.com/S=H150/" + item.geo.properties.image;
+    }
+    if (title.length > 35) {
+      title = title.substr(0, 34) + "...";
+    }
     return (
       <div className={classString} onClick={this.clickItem.bind(this)}>
         <div className="place__pic">
-          <img src="http://www.luxuo.com/wp-content/uploads/2011/07/bangkok-temple.jpg" />
+          <img src={imageSrc} />
         </div>
         <div className="place__order">{item.i+1}</div>
         <div className="place__text">
-          <div className="title">{item.title}</div>
+          <div className="title">{title}</div>
           <div className="subtitle">{item.subtitle}</div>
         </div>
       </div>
@@ -33,10 +38,10 @@ export default class ItemView extends React.Component {
 
   clickItem() {
     let props = this.props;
-
-     MapActions.poiOpen({ index: props.item.i });
-    // TODO: Swap to fix the map loading issue
-    //MapActions.gotoPlace({ place: props.item.slug, placeTitle: props.item.title });
+    if(props.item.item_type === "Place") {
+      MapActions.gotoPlace({ place: props.item.slug, placeTitle: props.item.title });
+    } else {
+      MapActions.poiOpen({ index: props.item.i });
+    }
   }
-
 }

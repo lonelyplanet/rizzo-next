@@ -15,7 +15,8 @@ let state = {
   currentLocation: {},
   sets: [],
   error: null,
-  hoveredPin: 0
+  hoveredPin: 0,
+  customPanel: ""
 };
 
 let MapState = assign({
@@ -49,6 +50,7 @@ Arkham.on("map.closed", () => {
 
 Arkham.on("view.changed", (data) => {
   state.activeSetIndex = data.view;
+  state.customPanel = "";
   MapState.emitChange();
 });
 
@@ -99,6 +101,17 @@ Arkham.on("state.setinitial", (data) => {
 
 Arkham.on("poi.hover", (data) => {
   state.hoveredPin = data.pin;
+  MapState.emitChange();
+});
+
+Arkham.on("custompanel.opened", (data) => {
+  state.activeSetIndex = data.view;
+  state.customPanel = data.panel;
+  MapState.emitChange();
+});
+
+Arkham.on("sponsor.fetched", (data) => {
+  state.sets.push(data);
   MapState.emitChange();
 });
 

@@ -31,14 +31,13 @@ let MapAPI = {
    */
   plot: function(pois) {
     this.mapProvider.addMarkers(pois);
-    // clear map and replot with new pins
   },
   /**
    * Remove all map markers
    */
   clear: function() {
-    // empty map of all pins
     this.mapProvider.removeMarkers();
+    this.mapProvider.removePopup();
   }
 
 };

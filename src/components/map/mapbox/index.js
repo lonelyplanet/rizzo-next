@@ -3,7 +3,7 @@ import MapboxMarkerSet from "./markerset";
 import "mapbox.js";
 
 let L = window.L;
-let mapID = "lonelyplanet.jf08j2nj";
+let mapID = "lonelyplanet.04cf7895";
 
 L.mapbox.accessToken = "pk.eyJ1IjoibG9uZWx5cGxhbmV0IiwiYSI6Imh1ODUtdUEifQ.OLLon0V6rcoTyayXzzUzsg";
 
@@ -26,6 +26,7 @@ class MapProvider extends Component {
 
   addMarkers(pois) {
     this.markers = new MapboxMarkerSet({
+      el: this.el,
       map: this.map,
       layer: this.layer,
       pois: pois
@@ -34,6 +35,10 @@ class MapProvider extends Component {
 
   removeMarkers() {
     delete this.markers;
+  }
+
+  removePopup() {
+    this.map.closePopup();
   }
 
 }

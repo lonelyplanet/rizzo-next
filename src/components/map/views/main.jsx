@@ -5,6 +5,7 @@ import SidebarDetails from "./sidebar-details.jsx";
 import Map from "./map.jsx";
 import Alert from "./alert.jsx";
 import MapState from "../state";
+import MapActions from "../actions";
 
 let getMapState = function(props) {
   return MapState.getState();
@@ -46,7 +47,7 @@ export default class MainView extends React.Component {
       if (this.state.isDetail) {
         sidebar = <SidebarDetails poi={this.state.sets[this.state.activeSetIndex].items[this.state.poi]} />
       } else {
-        sidebar = <Sidebar location={this.state.currentLocation} sets={this.state.sets} activeSetIndex={this.state.activeSetIndex} />
+        sidebar = <Sidebar location={this.state.currentLocation} sets={this.state.sets} activeSetIndex={this.state.activeSetIndex} customPanel={this.state.customPanel}/>
       }
     }
 
@@ -64,7 +65,7 @@ export default class MainView extends React.Component {
 
   // TODO: Trigger an action here, try not to call dispatcher directly
   closeMap() {
-    Arkham.trigger("map.closed");
+    MapActions.mapClose()
   }
 
 }

@@ -248,8 +248,6 @@
     opacity: 0;
     transition: opacity $animation-speed-ui*2 ease-in-out;
 
-
-
     @media (min-width: $min-720) {
       font-size: 30px;
     }

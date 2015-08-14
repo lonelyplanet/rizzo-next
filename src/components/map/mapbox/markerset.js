@@ -1,7 +1,6 @@
 import { Component } from "../../../core/bane";
 import Arkham from "../../../core/arkham";
 import MapActions from "../actions";
-// import PinTemplate from "./pin.html.hbs";
 import MapState from "../state";
 import React from "react";
 import Pin from "../views/pin.jsx";
@@ -13,6 +12,10 @@ let L = window.L;
 class MarkerSet extends Component {
 
   initialize({ pois, map, layer }) {
+    this.events = {
+      "click .pin": "_poiClick"
+    };
+
     this.pois = pois;
     this.map = map;
     this.layer = layer;
@@ -64,12 +67,12 @@ class MarkerSet extends Component {
     for (let i = 0, l = this.pois.length; i < l; i++) {
       let geo = this.pois[i].geo;
 
-      if(geo.geometry.coordinates[0] === null || geo.geometry.coordinates[0] === null) {
-        geo.geometry.coordinates = [0, 0];
+      if(geo.geometry.coordinates[0] === null || geo.geometry.coordinates[1] === null) {
+        continue
+      } else {
+        geo.properties.index = i;
+        geojson.features.push(geo);
       }
-
-      geo.properties.index = i;
-      geojson.features.push(geo);
     }
 
     this.layer.setGeoJSON(geojson);
@@ -88,9 +91,6 @@ class MarkerSet extends Component {
   _createIcon(layer) {
     let state = MapState.getState();
     let pin = state.sets[state.activeSetIndex].items[layer.feature.properties.index];
-
-    pin.onMap = true;
-
     let poi = { pin: pin };
     let markup = React.renderToStaticMarkup(React.createElement(Pin, poi));
     // let pin = PinTemplate(layer.feature.properties);
@@ -109,9 +109,6 @@ class MarkerSet extends Component {
     })
     .on("mouseout", function(e) {
       _this._poiUnhover(e.layer);
-    })
-    .on("click", function(e) {
-      _this._poiClick(e.layer);
     });
   }
 
@@ -134,13 +131,14 @@ class MarkerSet extends Component {
 
   // A layer argument is passed in, but it is not used
   // The defined argument has been removed to pass ESLint
-  _poiUnhover() {
+  _poiUnhover(layer) {
     // Use if needed
+    this.activeLayer = layer;
   }
 
-  _poiClick(layer) {
+  _poiClick(event) {
     // figure out if a PLACE or a POI
-    MapActions.poiOpen(layer.feature.properties);
+    MapActions.poiOpen(this.activeLayer.feature.properties);
   }
 
   _fixzIndex(currentLayer) {
