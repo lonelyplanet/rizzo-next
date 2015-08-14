@@ -1,5 +1,6 @@
-<article id="maps" class="map_static">
-  <div class="map_static__container">
-    <img class="map_static__img" src="{{static_map.map_url}}" alt="Map of {{place.name}}">
+<article id="maps" class="map_static" >
+  <div class="map_static__container" style="background-image: url('{{static_map.map_url}}')">
+    {{!-- hide button until ready for preview --}}
+    <button class="map_static__btn js-open-map is-hidden">Open Map</button>
   </div>
 </article>
