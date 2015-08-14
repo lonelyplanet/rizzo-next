@@ -24,8 +24,8 @@ export default class SidebarView extends React.Component {
 
     if (location.description.length > 0) {
       tabCount++;
-      var isActive = tabCount === activeSetIndex ? true : false;
-      var aboutTab = <Tab name="About" active={isActive} i={tabCount} customPanel="about" />
+      let isActive = tabCount === activeSetIndex ? true : false;
+      let aboutTab = <Tab name="About" active={isActive} i={tabCount} customPanel="about" />
       tabs.push(aboutTab);
     }
 
@@ -35,7 +35,7 @@ export default class SidebarView extends React.Component {
       if( this.props.customPanel === "about" ) {
         panelContent = <AboutPanel location={location} />;
       } else {
-        var activePanel = this.props.sets[this.props.activeSetIndex];
+        let activePanel = this.props.sets[this.props.activeSetIndex];
         panelContent = <Panel set={activePanel} />;
       }
     }

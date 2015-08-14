@@ -1,16 +1,13 @@
-var React = require("react");
-var Item = require("./item.jsx");
+import React from "react";
+import Item from "./item.jsx";
 
-var PanelView = React.createClass({
+export default class AboutPanel extends React.Component {
 
-  render: function() {
-    var description = this.props.location.description;
+  render() {
+    let description = this.props.location.description;
     return (
       <div className="panel" dangerouslySetInnerHTML={{__html: description}}>
       </div>
     )
   }
-
-});
-
-module.exports = PanelView;
+}

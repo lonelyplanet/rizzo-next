@@ -56,7 +56,7 @@ let MapActions = {
   },
 
   fetchSponsors: (data) => {
-    var x = JSON.stringify({
+    let x = JSON.stringify({
       placements: [
         {
           divName: "sponsored",
@@ -88,15 +88,15 @@ let MapActions = {
     contentType: "application/json",
     data: x,
     success: function(response) {
-      var set = {title: "Sponsored", items: [] };
-      for(var decision in response.decisions) {
-        var poi = JSON.parse(response.decisions[decision].contents[0].body);
+      let set = {title: "Sponsored", items: [] };
+      for(let decision in response.decisions) {
+        let poi = JSON.parse(response.decisions[decision].contents[0].body);
           set.items.push(poi);
       }
       Arkham.trigger("sponsor.fetched", set)
     },
     error: function() {
-      console.log('fail"')
+      console.log("fail")
     }
   });
 
