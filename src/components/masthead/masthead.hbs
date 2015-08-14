@@ -16,6 +16,9 @@ found at https://accounts.brightcove.com/en/terms-and-conditions/.
   <div class="masthead__text-wrap">
     <div class="masthead__text {{#if masthead.first}}masthead__text--visible{{/if}}">
       <div class="masthead__container">
+        <div class="masthead__breadcrumb">
+          <a href="{{masthead.parent_slug}}">{{masthead.parent_name}}</a>
+        </div>
         <h1 class="masthead__title">{{place.name}}</h1>
 
         {{#if masthead_images}}

@@ -210,6 +210,12 @@
     vertical-align: middle;
   }
 
+  &__breadcrumb a {
+    color: #fff;
+    text-transform: uppercase;
+    position: relative;
+  }
+
   &__title {
     font-size: 80px;
     font-weight: 600;
