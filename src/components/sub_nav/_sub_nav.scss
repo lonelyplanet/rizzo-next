@@ -137,6 +137,10 @@ $navigation-sub-height-mobile: $header-height-mobile;
     text-transform: uppercase;
     color: $font-color;
 
+    &--active {
+      color: #287bbb;
+    }
+
     @media (min-width: $min-720) {
       font-size: 1.6rem;
       font-weight: 600;
