@@ -17,7 +17,10 @@ found at https://accounts.brightcove.com/en/terms-and-conditions/.
     <div class="masthead__text {{#if masthead.first}}masthead__text--visible{{/if}}">
       <div class="masthead__container">
         <div class="masthead__breadcrumb">
-          <a href="{{masthead.parent_slug}}">{{masthead.parent_name}}</a>
+          {{#if masthead.grandparent}}
+            <a href="{{masthead.grandparent.slug}}">{{masthead.grandparent.place}}</a>,&nbsp;
+          {{/if}}
+          <a href="{{masthead.parent.slug}}">{{masthead.parent.place}}</a>
         </div>
         <h1 class="masthead__title">{{place.name}}</h1>
 
