@@ -25,6 +25,12 @@ if ($subNav.length) {
     e.preventDefault();
   });
 
+  let $links = $(".js-sub-nav-lnk"),
+      $components = $links.map((i, el) => {
+        return document.getElementById(el.href.split("#")[1]);
+      });
+  let $last;
+
   $window.scroll(debounce(() => {
     if (firstTrigger) {
       fixedSubNav = $subNav
@@ -42,6 +48,22 @@ if ($subNav.length) {
     } else if (fixedState) {
         fixedSubNav.detach();
         fixedState = false;
+    }
+
+    let scrollTop = $(window).scrollTop() + $subNav.height();
+
+    let $current = $components.map((i, el) => {
+      if (el.offsetTop < scrollTop) {
+        return el;
+      }
+    });
+
+    if ($current.length) {
+      fixedSubNav.find("a").removeClass("sub-nav__link--active");
+
+      fixedSubNav
+        .find(`a[href*="#${$current[$current.length - 1].id}"]`)
+          .addClass("sub-nav__link--active");
     }
 
   }, 10));

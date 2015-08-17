@@ -122,7 +122,7 @@ $navigation-sub-height-mobile: $header-height-mobile;
     @media (min-width: $min-720) {
       line-height: $navigation-sub-height;
     }
-
+  
     &--active,
     a:hover {
       color: #287bbb;
@@ -136,6 +136,11 @@ $navigation-sub-height-mobile: $header-height-mobile;
     font-weight: 500;
     text-transform: uppercase;
     color: $font-color;
+    transition: .3s color ease-in; 
+
+    &--active {
+      color: #287bbb;
+    }
 
     @media (min-width: $min-720) {
       font-size: 1.6rem;
