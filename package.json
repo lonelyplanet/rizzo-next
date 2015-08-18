@@ -3,6 +3,7 @@
   "scripts": {
     "test": "webpack && karma start --single-run",
     "docs": "./node_modules/.bin/esdoc -c esdoc.json",
+    "sassdoc": "./node_modules/.bin/sassdoc sass --theme neat",
     "lint": "./node_modules/.bin/eslint src --ext .js,.jsx"
   },
   "version": "0.0.1",
@@ -14,7 +15,8 @@
     "lodash": "^3.10.0",
     "pickadate": "*",
     "picturefill": "*",
-    "react": "^0.13.3"
+    "react": "^0.13.3",
+    "sassdoc-theme-neat": "0.0.2"
   },
   "devDependencies": {
     "babel-eslint": "^4.0.5",
@@ -32,6 +34,7 @@
     "mocha": "^2.2.5",
     "object-assign": "^3.0.0",
     "phantomjs": "^1.9.17",
+    "sassdoc": "^2.1.15",
     "sinon": "^1.15.4"
   }
 }
