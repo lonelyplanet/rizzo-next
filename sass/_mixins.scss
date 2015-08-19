@@ -1,9 +1,9 @@
-$base-font-size: 14 !default;
-
+/// @deprecated
 @function strip-unit($value) {
   @return $value / ($value * 0 + 1);
 }
 
+/// A simple clearfix helper
 @mixin clearfix {
   &:before, &:after {
     content: "";
@@ -15,27 +15,38 @@ $base-font-size: 14 !default;
   zoom: 1;
 }
 
+/// Set up a media query passing a value to use for min width
+///
+/// @param {number} $screen-width - A value for the media query
+/// @example sass
+/// .header {
+///     @include respond-to($min-1290) {
+///
+///     }
+/// }
 @mixin respond-to($screen-width) {
   @media only screen and (min-width : $screen-width + 0px) {
     @content;
   }
 }
 
-// Providing an image width and height, provides the correct aspect ratio via padding-bottom %
-// This should be used with an element of a height of 0, so that the height is determined by the padding-bottom
-// rather than the element's height property
+/// Providing an image width and height, provides the correct aspect ratio via padding-bottom %
+/// This should be used with an element of a height of 0, so that the height is determined by the padding-bottom
+/// rather than the element's height property
+/// @param {number} $imageWidth - The width of the image
+/// @param {number} $imageHeight - The height of the image
 @mixin best-fit-padding($imageWidth, $imageHeight) {
   $ratioPercentage: ($imageHeight / $imageWidth) * 100;
-  padding-bottom: #{$ratioPercentage + %};
+  padding-bottom: #{$ratioPercentage} + %;
 }
 
-// Hack to force GPU rendering (most in the community argue this should be used quite sparingly!!)
+/// Hack to force GPU rendering (most in the community argue this should be used quite sparingly!!)
 @mixin hardware-acceleration() {
   z-index: 1;
   transform: translateZ(0);
 }
 
-// [doc] A mixin to help clean up z-index madness. Options are: `below`, `default`, `middle`, `top`, and `modal` [/doc]
+/// A mixin to help clean up z-index madness. Options are: `below`, `default`, `middle`, `top`, and `modal` [/doc]
 @mixin z-layer( $layer: default ){
   @if $layer == below {
     z-index: -1;
@@ -57,7 +68,7 @@ $base-font-size: 14 !default;
   }
 }
 
-// Standard divider used between sections
+/// Standard divider used between sections
 @mixin divider($position: bottom) {
   @if $position == bottom {
     border-bottom: 1px solid $divider-color;
@@ -67,11 +78,14 @@ $base-font-size: 14 !default;
   }
 }
 
+/// Sets max width and centers component
 @mixin component-width() {
   max-width: 1290px;
   margin: 0 auto;
 }
 
+/// Style the author's image
+/// @param {boolean} $mobile
 @mixin author-image($mobile) {
   display: inline-block;
   width: 12vw;
@@ -86,6 +100,8 @@ $base-font-size: 14 !default;
   }
 }
 
+/// Style the author's credentials
+/// @param {boolean} $mobile
 @mixin author-creds($mobile) {
   display: inline-block;
   text-align: left;
@@ -97,6 +113,8 @@ $base-font-size: 14 !default;
   }
 }
 
+/// Style the author's name
+/// @param {boolean} $mobile
 @mixin author-name($mobile) {
   margin-bottom: 2px;
   font: {
@@ -112,6 +130,8 @@ $base-font-size: 14 !default;
   }
 }
 
+/// Style an author's Title
+/// @param {boolean} $mobile
 @mixin author-title($mobile) {
   font: {
     family: $serif;
@@ -125,6 +145,12 @@ $base-font-size: 14 !default;
     font-size: 14px;
   }
 }
+
+/// Used for the see more links at the bottom of components
+/// @example sass
+/// .survival_guide__button-container {
+///   @include see-more-link;
+/// }
 
 @mixin see-more-link {
   position: relative;
@@ -175,10 +201,8 @@ $base-font-size: 14 !default;
   }
 }
 
-// -----------------------------------------------------------------------------
-// Centralised CSS Arrow
-// -----------------------------------------------------------------------------
-
+/// Css arrow, currently only used in date picker
+/// @deprecated
 @mixin css-arrow-central($side: top, $size: 28px, $offset: 0) {
   @include css-arrow($side, $size, $offset);
   @if $side == top {
@@ -207,11 +231,7 @@ $base-font-size: 14 !default;
   }
 }
 
-// -----------------------------------------------------------------------------
-// Size
-// -----------------------------------------------------------------------------
-
-
+/// @deprecated
 @mixin size($size) {
   @if length($size) == 1 {
     @if $size == auto {

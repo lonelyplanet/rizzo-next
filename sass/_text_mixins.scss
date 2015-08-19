@@ -1,3 +1,4 @@
+/// @deprecated
 @mixin h1-props($mobile) {
   font-size: 81px;
   line-height: 0.8;
@@ -8,6 +9,8 @@
   }
 }
 
+/// TODO: Refactor this
+/// @deprecated
 @mixin h3-props($mobile) {
   color: $h2-color;
   font: {
@@ -22,6 +25,8 @@
   }
 }
 
+/// TODO: Refactor this
+/// @deprecated
 @mixin h4-props($mobile) {
   color: $tours-title-color;
   font: {
@@ -36,6 +41,8 @@
   }
 }
 
+/// TODO: Refactor this
+/// @deprecated
 @mixin h5-props($mobile) {
   color: $articles-blurb-color;
   font: {
@@ -47,70 +54,5 @@
   @include respond-to($mobile) {
     font-size: 16px;
     line-height: 1.7;
-  }
-}
-
-@mixin bottom-heading-border() {
-  border-bottom: 2px solid $h2-secondary-color;
-  width: 31px;
-  display: block;
-  content: "";
-  margin: 0 auto;
-  margin-bottom: 16px;
-}
-
-@mixin p-props($mobile) {
-  color: $body-color;
-  font: {
-    size: 16px;
-    family: $sans-serif;
-    weight: $light;
-  }
-  line-height: 1.8;
-
-  @include respond-to($mobile) {
-    font-size: 24px;
-  }
-}
-
-@mixin strapline-props($mobile) {
-  font-size: 20px;
-
-  @include respond-to($mobile) {
-    font-size: 30px;
-  }
-}
-
-@mixin navigation-item-props($mobile, $wide) {
-  font-size: 18px;
-  color: $nav-primary-type;
-  text-decoration: none;
-  padding: {
-    top: 17px;
-    bottom: 17px;
-    left: 20px;
-  }
-  display: block;
-  position: relative;
-
-  @include respond-to($mobile) {
-    color: #FFF;
-    font: {
-      size: 16px;
-      weight: $semibold;
-    }
-
-    padding: {
-      top: 41px;
-      bottom: 35px;
-      left: 0;
-    }
-  }
-
-  @include respond-to($wide) {
-    padding: {
-      top: 56px;
-      bottom: 50px;
-    }
   }
 }

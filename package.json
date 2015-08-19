@@ -1,11 +1,23 @@
 {
   "name": "rizzo-next",
+  "description": "Lonely Planet's style guide and pattern library.",
+  "homepage": "http://rizzo.lonelyplanet.com",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lonelyplanet/rizzo-next.git"
+  },
+  "author": {
+    "name": "Lonely Planet"
+  },
   "scripts": {
     "test": "webpack && karma start --single-run",
     "docs": "./node_modules/.bin/esdoc -c esdoc.json",
-    "lint": "./node_modules/.bin/eslint src --ext .js,.jsx"
+    "sassdoc": "./node_modules/.bin/sassdoc sass --theme neat",
+    "lint": "./node_modules/.bin/eslint src --ext .js,.jsx",
+    "postinstall": "npm run docs && npm run sassdoc"
   },
-  "version": "0.0.1",
+  "version": "0.9.0",
   "dependencies": {
     "clamp-js": "*",
     "flamsteed": "latest",
@@ -32,6 +44,8 @@
     "mocha": "^2.2.5",
     "object-assign": "^3.0.0",
     "phantomjs": "^1.9.17",
+    "sassdoc": "^2.1.15",
+    "sassdoc-theme-neat": "0.0.2",
     "sinon": "^1.15.4"
   }
 }

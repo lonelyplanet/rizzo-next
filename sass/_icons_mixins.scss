@@ -1,3 +1,5 @@
+/// Use in an icon to add it to the before selector
+/// @param {string} $uri The icon uri to add
 @mixin icon-before($uri) {
   &:before{
     content: "";
