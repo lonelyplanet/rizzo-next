@@ -14,8 +14,7 @@
     "test": "webpack && karma start --single-run",
     "docs": "./node_modules/.bin/esdoc -c esdoc.json",
     "sassdoc": "./node_modules/.bin/sassdoc sass --theme neat",
-    "lint": "./node_modules/.bin/eslint src --ext .js,.jsx",
-    "postinstall": "npm run docs && npm run sassdoc"
+    "lint": "./node_modules/.bin/eslint src --ext .js,.jsx"
   },
   "version": "0.9.0",
   "dependencies": {
@@ -26,11 +25,11 @@
     "lodash": "^3.10.0",
     "pickadate": "*",
     "picturefill": "*",
-    "react": "^0.13.3",
-    "esdoc": "^0.1.4",
-    "sassdoc": "^2.1.15"
+    "react": "^0.13.3"
   },
   "devDependencies": {
+    "esdoc": "^0.1.4",
+    "sassdoc": "^2.1.15",
     "babel-eslint": "^4.0.5",
     "babel-loader": "^5.3.2",
     "eslint": "^1.0.0",
