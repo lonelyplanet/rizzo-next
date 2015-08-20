@@ -22,8 +22,14 @@ if ($subNav.length) {
       scrollTop: $target.offset().top - navHeight
     }, 500, "swing");
 
+    window.location.hash = this.hash;
+
     e.preventDefault();
   });
+
+  if (window.location.hash) {
+    $subNav.find(`[href="${window.location.hash}"]`).trigger("click");
+  }
 
   let $links = $(".js-sub-nav-lnk"),
       $components = $links.map((i, el) => {

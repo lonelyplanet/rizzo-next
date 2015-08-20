@@ -2,6 +2,12 @@
 
 var path = require("path");
 
+
+/**
+ * 
+ * This webpack config is for transpiling and running unit tests
+ * 
+ */
 module.exports = {
   progress: true,
   entry: {
@@ -16,13 +22,14 @@ module.exports = {
   module: {
     loaders: [{
         test: /\.js$/,
-        exclude: /node_modules\/[^rizzo|flamsteed]/,
+        exclude: /node_modules\/(?!rizzo|flamsteed).*/,
         loader: "babel-loader"
       },
       {
+        // For some reason the sass-loader borks karma
         test: /\.scss$/,
-          loader: "style!css!sass?outputStyle=expanded&" +
-          "includePaths[]=" + (path.resolve(__dirname, "./node_modules"))
+        loader: "file"
+        // loader: "style!css!sass"
       },
       {
         test: /\.hbs$/,

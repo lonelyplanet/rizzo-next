@@ -37,7 +37,7 @@
 /// @param {number} $imageHeight - The height of the image
 @mixin best-fit-padding($imageWidth, $imageHeight) {
   $ratioPercentage: ($imageHeight / $imageWidth) * 100;
-  padding-bottom: #{$ratioPercentage} + %;
+  padding-bottom: #{$ratioPercentage + %};
 }
 
 /// Hack to force GPU rendering (most in the community argue this should be used quite sparingly!!)
