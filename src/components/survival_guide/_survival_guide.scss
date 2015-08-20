@@ -1,89 +1,70 @@
 @import "../../../sass/webpack_deps";
 
-
 $tablet-breakpoint: 700;
 $mobile-breakpoint: 400;
 
 .survival_guide {
-
   font-weight: $medium;
   text-align: center;
 
   &__heading {
     @include h1();
   }
-}
 
-.survival_guide__list {
-  margin: 0 auto;
-}
+  &__list {
+    margin: 0 auto;
 
-.survival_guide__list__link {
-  color: $body-color;
-}
+    &__link {
+      color: $body-color;
 
-.survival_guide__list__item {
-  display: inline-block;
-  width: 100%;
-  margin-bottom: 25px;
-  text-align: center;
-  vertical-align:top;
-  &:last-of-type {
-    margin-bottom: 0;
-  }
-}
+      &:last-of-type .survival_guide__list__item {
+        margin-bottom: 0;
+      }
+    }
 
-.survival_guide__list__item--even-set {
-  .survival_guide__list__item__blurb {
-    width: 90%;
-  }
-  @include respond-to($mobile-breakpoint) {
-    width: 45%
-  }
-  @include respond-to($tablet-breakpoint) {
-    width: 23%;
-  }
-}
+    &__item {
+      display: inline-block;
+      width: 100%;
+      margin-bottom: 25px;
+      text-align: center;
+      vertical-align:top;
 
-.survival_guide__list__item--three-set {
-  .survival_guide__list__item__blurb {
-    width: 80%
-  }
-  @include respond-to($mobile-breakpoint) {
-    .survival_guide__list__item__blurb {
-      width: 48%;
+      &__blurb {
+        width: 90%;
+        margin: 0 auto;
+        font-size: 18px;
+      }
+
+      &__icon {
+        display: block;
+        width: 80px;
+        height: 80px;
+        margin: 0 auto;
+      }
+
+      &__title {
+        font-size: 20px;
+        margin-bottom: 5px;
+        padding-top: 15px;
+      }
+
+      @include respond-to($mobile-breakpoint) {
+        width: 45%
+      }
+      @include respond-to($tablet-breakpoint) {
+        width: 23%;
+      }
     }
   }
-  @include respond-to($tablet-breakpoint) {
-    width: 30%;
-    .survival_guide__list__item__blurb {
-      width: 90%;
-    }
+
+  &__button-container {
+    @include see-more-link;
+  }
+
+  &__more {
+    @include see-more();
   }
 }
 
-.survival_guide__list__item__icon {
-  display: block;
-  width: 80px;
-  height: 80px;
-  margin: 0 auto;
-}
 
-.survival_guide__list__item__title {
-  font-size: 20px;
-  margin-bottom: 5px;
-  padding-top: 15px;
-}
 
-.survival_guide__list__item__blurb {
-  margin: 0 auto;
-  font-size: 18px;
-}
-
-.survival_guide__button-container {
-  @include see-more-link;
-}
-
-.survival_guide__more {
-  @include see-more();
-}
