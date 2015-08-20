@@ -1,0 +1,60 @@
+@import "../../../sass/webpack_deps";
+
+.tabs {
+  &__content {
+    opacity: 0;
+    display: none;
+    transition: .3s opacity ease-in;
+
+    &.is-active {
+      display: block;
+      opacity: 1;
+    }
+  }
+
+  &__links {
+    list-style: none;
+    display: inline-block;
+    border-bottom: .1rem solid $color-gray;
+    margin-bottom: 10rem;
+
+    li {
+      position: relative;
+      display: inline-block;
+      margin-left: 5rem;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+
+    // Such nest, very sass
+    a {
+      position: relative;
+      font-weight: $font-weight-semibold;
+      text-transform: uppercase;
+      color: $color-text;
+      letter-spacing: 1px;
+      margin: 0 0 $gutter * 2;
+      padding: 0 0 $spacing;
+      font-size: 1.4rem;
+
+      &.is-active {
+        color: $color-blue;
+
+        &:after {
+          display: block;
+          content: "";
+          position: relative;
+          bottom: 0;
+          margin-top: 3rem;
+          width: 100%;
+          border-bottom: .2rem solid $color-blue;
+        }
+      }
+    }
+  }
+}
+.tabs__content {
+  
+}
