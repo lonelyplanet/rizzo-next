@@ -1,7 +1,8 @@
 import { Component } from "../../core/bane";
 import $clamp from "clamp-js/clamp.js";
+import Tabs from "../tabs/tabs_component";
 
-require("./_articles.scss");
+import "./_articles.scss";
 
 class ArticlesComponent extends Component {
   initialize(options) {
@@ -12,16 +13,21 @@ class ArticlesComponent extends Component {
     this.blurbLineHeight = options.blurbLineHeight || { desktop: 27, mobile: 18 };
     this.mobileWidth = options.mobileWidth || 717;
     this.screen = "mobile";
+    this.tabs = new Tabs({
+      el: $(".tabs")
+    });
 
     if (!$("html").hasClass("ie9")) {
       this._detectScreen();
       this._clampText();
 
-      $(window).on("resize", () => {
-        this._detectScreen();
-        this._clampText();
-      });
+      this.listenTo(this.tabs, "tabs.activate", this._reclamp.bind(this));
+      $(window).on("resize", this._reclamp.bind(this));
     }
+  }
+  _reclamp() {
+    this._detectScreen();
+    this._clampText();
   }
   _detectScreen() {
     this.screen = $(window).width() >= this.mobileWidth ? "desktop" : "mobile";
@@ -54,9 +60,9 @@ class ArticlesComponent extends Component {
         teaser = $article.find(".article__info__teaser"),
         blurb = $article.find(".article__info__blurb"),
         // Find elements heights
-        titleHeight = parseInt(title.height()),
-        teaserHeight = parseInt(teaser.height()),
-        blurbHeight = parseInt(blurb.height()),
+        titleHeight = parseInt(title.height(), 10) || 0,
+        teaserHeight = parseInt(teaser.height(), 10) || 0,
+        blurbHeight = parseInt(blurb.height(), 10) || 0,
         // Figure out how many lines each element actually is based on line heights and height
         blurbLines = blurbHeight / this.blurbLineHeight[this.screen],
         teaserLines = teaserHeight / this.blurbLineHeight[this.screen],

@@ -1,3 +1,4 @@
+/// Mixin for main headers
 @mixin h1(){
   position: relative;
 
@@ -35,9 +36,9 @@
 }
 
 @mixin h2(){
-
+  font-size: 1.8rem;
 }
 
 @mixin h3(){
-
+  font-size: 1.4rem;
 }

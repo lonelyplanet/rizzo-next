@@ -12,6 +12,10 @@ $small-breakpoint: 320;
   &__heading {
     @include h1();
   }
+
+  .tabs {
+    max-width: 85rem;
+  }
 }
 
 .articles__title {

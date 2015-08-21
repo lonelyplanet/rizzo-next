@@ -1,6 +1,8 @@
 // Karma configuration
 // http://karma-runner.github.io/0.10/config/configuration-file.html
 
+var webpackConfig = require("./webpack.config");
+
 module.exports = function(config) {
   config.set({
 
@@ -12,7 +14,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      "tmp/js/spec/tests.js"
+      "spec/index.js"
     ],
 
 
@@ -45,8 +47,22 @@ module.exports = function(config) {
     // if true, it capture browsers, run tests and exit
     singleRun: false,
 
-    reporters: ['nyan']
+    reporters: ["nyan"],
 
+    webpack: {
+        module: {
+            loaders: webpackConfig.module.loaders
+        }
+    },
+    webpackMiddleware: {
+        // webpack-dev-middleware configuration
+        // i. e.
+        noInfo: true
+    },
 
+    preprocessors: {
+        "spec/**/*.js": ["webpack"],
+        "src/**/*.js": ["webpack"]
+    }
   });
 };
