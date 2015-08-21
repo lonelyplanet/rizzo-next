@@ -23,8 +23,7 @@ npm test
 To use watch mode...
 
 ```shell
-webpack --watch # In one tab
-karma start # In another tab
+npm run ci
 ```
 
 
