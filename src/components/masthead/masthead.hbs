@@ -32,11 +32,18 @@ found at https://accounts.brightcove.com/en/terms-and-conditions/.
         </div>
         {{/if}}
 
-        {{#if top_places}}
+        {{#if top_places.neighbourhoods}}
           <a class="masthead__button js-top-places" >
-            Top Places in {{place.name}} <i class="icon-chevron-down"></i>
+            Top Neighborhoods in {{place.name}} <i class="icon-chevron-down"></i>
           </a>
+        {{else}}
+          {{#if top_places}}
+            <a class="masthead__button js-top-places" >
+              Top Places in {{place.name}} <i class="icon-chevron-down"></i>
+            </a>
+          {{/if}}
         {{/if}}
+
 
         <a class="masthead__button--play js-play-video" style="display: none;">
           <i class="icon-play3"></i>
