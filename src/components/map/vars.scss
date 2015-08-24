@@ -4,5 +4,7 @@ $orderwidth: 60px;
 $disabled: #CBD9E4;
 $togglewidth: 10vw;
 $sidebarwidth: 470px;
-$closeWidth: 100px;
+$closeButton: 70px;
+$closeMargin: calc(50vh - (#{$closeButton} / 2) );
 $pinsize: 20px;
+$mapContainerWidth: calc(100% - #{$sidebarwidth} - #{$closeButton});
