@@ -59,13 +59,6 @@ $unit: $size / 16;
 
   .sidebar-header {
     background: $lpblue;
-    height: 30vh;
-
-    .flexbox & {
-      height: auto;
-      width: 100%;
-      flex: 0 0 auto;
-    }
 
     h1 {
       margin: 0;
@@ -134,14 +127,8 @@ $unit: $size / 16;
   }
 
   .panel {
-    height: 70vh;
+    height: 80vh;
     overflow: auto;
-
-    .flexbox & {
-      height: auto;
-      width: 100%;
-      flex: 1 1 auto;
-    }
 
     .listing {
       margin: 30px 0 0 30px;

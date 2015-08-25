@@ -30,7 +30,8 @@
 
   background: rgba(0,0,0,.5);
   opacity: 0;
-  transition: opacity .2s ease-in-out;
+  z-index: 200;
+  transition: opacity .5s ease-in-out;
 
   &.open {
     opacity: 1;
@@ -49,13 +50,12 @@
   background: #333;
 }
 
-
 .map {
+  display: block;
   width: 100%;
   height: 100%;
   transform: translate(100%);
   transition: transform .4s ease-in-out;
-  // transition-delay: .2s;
 
   &.open {
     transform: translate(0);
@@ -65,22 +65,17 @@
     display: flex;
     flex-direction: row;
   }
-
 }
 
 .map-container {
-  width: 100 - $sidebarwidth - $closeWidth;
+  width: $mapContainerWidth;
   height: 100%;
   background: rgba(255,255,255,.5);
-
-  .flexbox & {
-    width: auto;
-    flex: 1 1 auto;
-  }
 
   .leaflet-popup-tip-container {
     display: none;
   }
+
   .leaflet-popup-content {
     padding: 0px;
     width: $itemwidth !important;
@@ -93,12 +88,35 @@
 }
 
 .close-map {
-  width: 100px;
+  float: left;
+  z-index: 10000;
 
-  .flexbox & {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    flex: 0 0 auto;
+  height: $closeButton;
+  width: $closeButton;
+  margin: {
+    top: $closeMargin;
+    left: 5px;
+    right: 5px;
+  }
+  font-size: 2.6rem;
+  line-height: $closeButton;
+  text-align: center;
+
+  // Move 'Close' text out of sight but keep for screen readers
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+
+  border: none;
+  border-radius: 50%;
+
+  box-shadow: 0 12px 25px rgba(0,0,0,.75);
+  background: #fff;
+
+  cursor: pointer;
+
+  &:before {
+    display: block;
+    text-indent: 0;
   }
 }
