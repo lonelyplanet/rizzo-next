@@ -210,6 +210,11 @@
     vertical-align: middle;
   }
 
+  &__breadcrumb {
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+
   &__breadcrumb a {
     color: #fff;
     text-transform: uppercase;
@@ -221,7 +226,6 @@
     font-weight: 600;
     line-height: 0.8;
 
-    margin-bottom: 18px;
     letter-spacing: -3px;
 
     @media (min-width: $min-720) {
@@ -229,8 +233,13 @@
     }
   }
 
+  &__title + &__button {
+    margin-top: 42px;
+  }
+
   &__straplines {
     height: 26px;
+    margin-top: 18px;
     margin-bottom: 27px;
     letter-spacing: 1px;
 
