@@ -15,12 +15,13 @@
   {{#if love_letter.author.name }}
     <div class="love-letter__author">
       <a href="{{love_letter.author.url}}">
-        <img class="love-letter__author__image" src="{{love_letter.author.image}}" />
+        <img class="love-letter__author__image" src="{{love_letter.author.image}}" alt="Image of {{love_letter.author.name}}">
+
+        <div class="love-letter__author__creds">
+          <div class="love-letter__author__creds__name">{{love_letter.author.name}}</div>
+          <div class="love-letter__author__creds__title">{{love_letter.author.title}}</div>
+        </div>
       </a>
-      <div class="love-letter__author__creds">
-        <div class="love-letter__author__creds__name"><a href="{{love_letter.author.url}}">{{love_letter.author.name}}</a></div>
-        <div class="love-letter__author__creds__title"><a href="{{love_letter.author.url}}">{{love_letter.author.title}}</a></div>
-      </div>
     </div>
   {{/if}}
 </article>
