@@ -50,7 +50,7 @@ class MarkerSet extends Component {
     let l;
 
     this.layer.eachLayer(function(layer) {
-      if (layer.feature.properties.poiIndex === (i + 1)) {
+      if (layer.feature.properties.index === (i)) {
         l = layer;
       }
     });
