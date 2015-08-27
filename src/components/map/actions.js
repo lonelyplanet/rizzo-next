@@ -65,15 +65,13 @@ let MapActions = {
       placements: generatePlacements()
     }); 
 
-    console.log(x);
-
     $.ajax({
       url: "http://engine.adzerk.net/api/v2",
       method: "POST",
       contentType: "application/json",
       data: x,
       success: function(response) {
-        let set = {title: "Sponsored", items: [] },
+        let set = { title: "Sponsored", items: [] },
             decisions = uniq(filter(response.decisions, d => d), "creativeId");
 
         each(decisions, decision => {
