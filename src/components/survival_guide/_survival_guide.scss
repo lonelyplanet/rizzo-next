@@ -3,54 +3,75 @@
 $tablet-breakpoint: 700;
 $mobile-breakpoint: 400;
 
-.survival_guide {
+.survival-guide {
   font-weight: $medium;
   text-align: center;
 
   &__heading {
-    @include h1();
+    @include h1(3.8rem);
   }
 
   &__list {
-    margin: 0 auto;
+    margin: 0 auto 2.5rem;
 
     &__link {
+      display: block;
       color: $body-color;
-
-      &:last-of-type .survival_guide__list__item {
-        margin-bottom: 0;
-      }
     }
 
     &__item {
       display: inline-block;
       width: 100%;
-      margin-bottom: 25px;
       text-align: center;
-      vertical-align:top;
+      vertical-align: top;
 
-      &__blurb {
-        width: 90%;
-        margin: 0 auto;
-        font-size: 18px;
+      @include respond-to($mobile-breakpoint - 1, 'max') {
+        margin-top: 4.5rem;
+
+        &:first-child {
+          margin-top: 0;
+        }
       }
 
       &__icon {
         display: block;
-        width: 80px;
-        height: 80px;
+        width: 60px;
+        height: 60px;
         margin: 0 auto;
+
+        @include respond-to($mobile-breakpoint) {
+          width: 80px;
+          height: 80px;
+        }
       }
 
       &__title {
-        font-size: 20px;
-        margin-bottom: 5px;
-        padding-top: 15px;
+        font-size: 1.8rem;
+        font-weight: 700;
+        line-height: 1;
+        margin-top: 2rem;
+
+        @include respond-to($mobile-breakpoint) {
+          margin-top: 2.8rem;
+        }
+      }
+
+      &__blurb {
+        width: 90%;
+        margin: .5rem auto 0;
+        font-size: 1.6rem;
+        line-height: 1.2;
+        color: $light-text-color;
+
+        @include respond-to($mobile-breakpoint) {
+          margin-top: .9rem;
+        }
       }
 
       @include respond-to($mobile-breakpoint) {
         width: 45%
       }
+
       @include respond-to($tablet-breakpoint) {
         width: 23%;
       }
@@ -65,6 +86,3 @@ $mobile-breakpoint: 400;
     @include see-more();
   }
 }
-
-
-
