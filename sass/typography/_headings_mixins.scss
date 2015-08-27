@@ -1,9 +1,10 @@
 /// Mixin for main headers
-@mixin h1(){
+@mixin h1($margin-bottom: $gutter * 2){
   position: relative;
 
-  margin: 0 0 $gutter * 2;
-  padding: 0 0 $spacing;
+  margin-top: 0;
+  margin-bottom: $margin-bottom;
+  padding-bottom: $spacing;
 
   font-family: $sans-serif;
   font-size: 2.8rem;
