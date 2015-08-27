@@ -34,9 +34,10 @@ found at https://accounts.brightcove.com/en/terms-and-conditions/.
 
         {{#if top_places}}
           <a class="masthead__button js-top-places" >
-            Top Places in {{place.name}} <i class="icon-chevron-down"></i>
+            Top {{#if top_places.neighborhoods}}Neighborhoods{{else}}Places{{/if}} in {{place.name}} <i class="icon-chevron-down"></i>
           </a>
         {{/if}}
+
 
         <a class="masthead__button--play js-play-video" style="display: none;">
           <i class="icon-play3"></i>
