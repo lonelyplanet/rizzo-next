@@ -18,14 +18,15 @@
 /// Set up a media query passing a value to use for min width
 ///
 /// @param {number} $screen-width - A value for the media query
+/// @param {string} $method ['min'] - 'min' or 'max'
 /// @example sass
 /// .header {
 ///     @include respond-to($min-1290) {
 ///
 ///     }
 /// }
-@mixin respond-to($screen-width) {
-  @media only screen and (min-width : $screen-width + 0px) {
+@mixin respond-to($screen-width, $method: "min") {
+  @media only screen and (#{$method}-width : $screen-width + 0px) {
     @content;
   }
 }
