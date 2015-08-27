@@ -45,8 +45,6 @@
 
     background: $color-primary + 15;
 
-    transition: color 0ms, border 0ms, background 0ms;
-
     [class*="icon-"] {
       transform: translate3d(-.4rem, 0, 0);
     }

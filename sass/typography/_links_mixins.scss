@@ -31,16 +31,20 @@
   }
 
   [class*="icon-"] {
-    margin-left: 0.6rem;
+    display: inline-block;
+
     font-size: 6px;
     vertical-align: 20%;
 
-    transition: margin 500ms;
+    transition: transform 500ms;
+
+    transform: translateX(.6rem);
+    backface-visibility: hidden;
   }
 
   &:hover {
     [class*="icon-"] {
-      margin-left: 0.2rem;
+      transform: translateX(.2rem);
     }
   }
 }
