@@ -12,6 +12,7 @@ export default class SidebarDetailsView extends React.Component{
           <h1>
             {poi.title}
           </h1>
+          <h3>{poi.subtitle}</h3>
           <a href={poi.slug} className="lp-link">Go to POI page on LP</a>
           <a href="#" className="close-poi" onClick={this.closePOI}>&lt; Go Back</a>
         </header>

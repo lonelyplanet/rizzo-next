@@ -22,6 +22,12 @@ export default class ItemView extends React.Component {
     if (title.length > 35) {
       title = title.substr(0, 34) + "...";
     }
+
+    let subtitle;
+    if (item.subtitle) {
+      subtitle = <div className="subtitle">{item.subtitle}</div>;
+    }
+
     return (
       <div className={classString} onClick={this.clickItem.bind(this)}>
         <div className="place__pic">
@@ -30,7 +36,7 @@ export default class ItemView extends React.Component {
         <div className="place__order">{item.i+1}</div>
         <div className="place__text">
           <div className="title">{title}</div>
-          <div className="subtitle">{item.subtitle}</div>
+          {subtitle}
         </div>
       </div>
     );
