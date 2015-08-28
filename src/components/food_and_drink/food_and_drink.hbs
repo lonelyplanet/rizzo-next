@@ -2,8 +2,9 @@
 
 <article id="food-and-drink" class="food-and-drink">
   <h1 class="food-and-drink__heading">{{title}}</h1>
-
-  <div class="food-and-drink__image"></div>
+  {{#if image}}
+    <div class="food-and-drink__image"></div>
+  {{/if}}
 
   <div class="food-and-drink__inner">
     <ol class="food-and-drink__list">
