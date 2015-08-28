@@ -39,14 +39,14 @@ export default class SidebarView extends React.Component {
         panelContent = <Panel set={activePanel} />;
       }
     }
-
+    let backSlug = `/${location.parent_slug}`;
     return (
       <div className="sidebar">
         <header className="sidebar-header">
           <h1>
             {location.title}
           </h1>
-          <a href={location.parent_slug} className="location-subtitle" onClick={this.parentClick.bind(this)}>&lt; Back to {location.parent}</a>
+          <a href={backSlug} className="location-subtitle" onClick={this.parentClick.bind(this)}>&lt; Back to {location.parent}</a>
           <ul className="tabs">
             {tabs}
           </ul>

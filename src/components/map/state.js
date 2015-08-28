@@ -78,6 +78,7 @@ Arkham.on("place.fetched", (data) => {
   state.activeSetIndex = 0;
   state.fetchingPlace = "";
   state.isFetching = false;
+  state.customPanel = "";
   MapState.emitChange();
 });
 
