@@ -110,19 +110,20 @@ $small-breakpoint: 320;
 }
 
 .article__info__author {
-  display: block;
+  display: inline-block;
 
   margin-top: 22px;
   margin-bottom: 14px;
 }
 
 .article__info__author__image {
-  @include author-image(9999999); // massive number here because we don't want it resizing ever
-  margin-right: $spacing;
+  @include author-image(9999999, 'horizontal'); // massive number here because we don't want it resizing ever
 }
 
 .article__info__author__creds {
   display: inline-block;
+  margin-top: .6rem;
+  margin-left: 1rem;
   vertical-align: middle;
 }
 

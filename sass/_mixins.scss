@@ -87,47 +87,51 @@
 
 /// Style the author's image
 /// @param {boolean} $mobile
-@mixin author-image($mobile) {
+/// @param {string}  $orientation ['vertical'] - 'vertical' or 'horizontal'
+@mixin author-image($mobile, $orientation: 'vertical') {
   display: inline-block;
   width: 12vw;
-  border-radius: 60px;
+  border-radius: 100%;
   vertical-align: middle;
-  max-width: 50px;
+  max-width: 40px;
+
+  @if $orientation == 'vertical' {
+    margin-bottom: 1.3rem;
+  }
 
   @include respond-to($mobile) {
     width: 80px;
     max-width: none;
-    margin-bottom: 15px;
+
+    @if $orientation == 'vertical' {
+      margin-bottom: 3rem;
+    }
   }
 }
 
 /// Style the author's credentials
 /// @param {boolean} $mobile
 @mixin author-creds($mobile) {
-  display: inline-block;
-  text-align: left;
+  display: block;
+  text-align: center;
   vertical-align: middle;
-
-  @include respond-to($mobile) {
-    display: block;
-    text-align: center;
-  }
 }
 
 /// Style the author's name
 /// @param {boolean} $mobile
 @mixin author-name($mobile) {
-  margin-bottom: 2px;
+  margin-bottom: .5rem;
   font: {
     weight: $semibold;
     size: 4vw;
   }
+  line-height: 1;
   text-transform: uppercase;
   color: $body-color;
-  letter-spacing: 1px;
+  letter-spacing: .6px;
 
   @include respond-to($mobile) {
-    font-size: 14px;
+    font-size: 1.2rem;
   }
 }
 
@@ -139,11 +143,12 @@
     style: italic;
     size: 4vw;
   }
+  line-height: 1;
   color: $light-text-color;
-  letter-spacing: 1px;
+  letter-spacing: .6px;
 
   @include respond-to($mobile) {
-    font-size: 14px;
+    font-size: 1.4rem;
   }
 }
 
@@ -152,7 +157,6 @@
 /// .survival_guide__button-container {
 ///   @include see-more-link;
 /// }
-
 @mixin see-more-link {
   position: relative;
   margin-top: 40px;
