@@ -2,12 +2,16 @@
   width: $itemwidth;
   height: 60px;
   background: #fff;
-  // overflow: hidden;
   position: relative;
   cursor: pointer;
+  transition: background .3s ease;
 
   &.list {
     margin: 10px 0;
+
+    &:hover {
+      background: rgba(#000, .1);
+    }
 
     &:after {
       position: absolute;
