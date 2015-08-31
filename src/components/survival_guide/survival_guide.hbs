@@ -1,6 +1,6 @@
 {{#if survival_guide.items}}
 
-<article id="survival_guide" class="survival-guide">
+<div class="survival-guide" id="survival_guide">
   <h1 class="survival-guide__heading">{{survival_guide.title}}</h1>
 
   <div class="survival-guide__inner">
@@ -8,7 +8,7 @@
       {{#each survival_guide.items}}
       <li class="survival-guide__list__item">
         <a class="survival-guide__list__link" href="{{../survival_guide.item_url}}{{slug}}">
-          <span class="survival-guide__list__item__icon icon--{{icon}}-blue"></span>
+          <i class="survival-guide__list__item__icon icon--{{icon}}-blue" aria-hidden="true" aria-label="{{title}}"></i>
           <h3 class="survival-guide__list__item__title">{{title}}</h3>
           <p class="survival-guide__list__item__blurb">{{blurb}}</p>
         </a>
@@ -20,10 +20,9 @@
   <div class="survival-guide__button-container">
     <a class="survival-guide__more" href="{{survival_guide.see_more_url}}">
       See More
-      <span class="icon-chevron-right"></span>
+      <i class="icon-chevron-right" aria-hidden="true"></i>
     </a>
   </div>
-
-</article>
+</div>
 
 {{/if}}
