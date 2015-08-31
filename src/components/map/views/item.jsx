@@ -30,6 +30,8 @@ export default class ItemView extends React.Component {
 
     return (
       <div className={classString} onClick={this.clickItem.bind(this)}>
+        <div className="place__pointer"></div>
+        <div className="place__pointer--shadow"></div>
         <div className="place__pic">
           <img src={imageSrc} />
         </div>
