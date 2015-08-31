@@ -2,8 +2,9 @@
 
 <article id="food-and-drink" class="food-and-drink">
   <h1 class="food-and-drink__heading">{{title}}</h1>
+
   {{#if image}}
-    <div class="food-and-drink__image"></div>
+    <div class="food-and-drink__image" style="background-image: url({{image}});" aria-hidden="true"></div>
   {{/if}}
 
   <div class="food-and-drink__inner">
