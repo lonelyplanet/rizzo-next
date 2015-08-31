@@ -2,9 +2,15 @@ import React from "react";
 import MapActions from "../actions";
 
 export default class SidebarDetailsView extends React.Component{
-
   render() {
     let poi = this.props.poi;
+    let image = "";
+
+    if (poi.geo.properties.image) {
+      image = <div className="details__image" ref="slideshow">
+        <img src={poi.geo.properties.image} />
+      </div>
+    }
 
     return (
       <div className="sidebar details">
@@ -17,6 +23,7 @@ export default class SidebarDetailsView extends React.Component{
           <a href="#" className="close-poi" onClick={this.closePOI}>&lt; Go Back</a>
         </header>
         <div className="panel">
+          {image}
           <div className="poi-body" dangerouslySetInnerHTML={{__html: poi.description}}></div>
         </div>
       </div>

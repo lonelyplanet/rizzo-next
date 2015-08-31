@@ -33,7 +33,7 @@ class SlideComponent extends Component {
   }
 
   getElement(){
-    let $el = this.currentEl = $("<div class=\"masthead__slide\" />");
+    let $el = this.currentEl = $("<div class=\"slideshow__slide\" />");
 
     $el.css({
       "background-image": `url(${this.imageUrl})`
@@ -67,7 +67,7 @@ class SlideComponent extends Component {
   show(){
     let $el = this.currentEl;
 
-    $el.addClass("masthead__slide--visible");
+    $el.addClass("slideshow__slide--visible");
 
     return waitForTransition($el);
   }
