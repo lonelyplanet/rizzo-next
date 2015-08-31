@@ -38,91 +38,136 @@ $small-breakpoint: 320;
 }
 
 .article {
-  margin-bottom: 30px;
-  padding-bottom: 30px;
-
   @include divider;
   @include clearfix;
+
+  margin-bottom: 42px;
+  padding-bottom: 48px;
+
   @include respond-to($tablet-breakpoint) {
-    padding: {
-      top: 32px;
-      bottom: 60px;
-    }
+    margin-bottom: 62px;
+    padding-bottom: 60px;
   }
 
   &:last-child {
     margin-bottom: 0;
     border-bottom: 0 none;
   }
-
-  &:first-child {
-    padding-top: 0;
-  }
 }
 
 .article__imagery {
   display: none;
-  float: right;
-}
 
-.article__info,
-.article__imagery {
   @include respond-to($mobile-breakpoint) {
     display: inline-block;
     vertical-align: top;
+    width: 189px;
+    height: 271px;
+    float: right;
+  }
+}
+
+.article__imagery__image {
+  @include respond-to($mobile-breakpoint) {
+    width: 100%;
+    height: 100%;
+    background: {
+      position: center center;
+      size: cover;
+    }
   }
 }
 
 .article__info {
-  float: left;
-
   @include respond-to($mobile-breakpoint) {
+    display: inline-block;
+    vertical-align: top;
     width: calc(98% - 189px);
     padding-right: 40px;
+    float: left;
   }
 }
 
-.article__imagery {
-  width: 189px;
-  height: 271px;
-  background: {
-    position: center center;
-
-    size: cover;
-  }
+.article__info__link {
+  display: block;
 }
 
 .article__info__title {
-  margin-bottom: 14px;
-  line-height: 1.25;
+  line-height: (27/19);
+  color: $h2-color;
+  font: {
+    size: 1.9rem;
+    family: $sans-serif;
+    weight: $semibold;
+  }
+  letter-spacing: -.2px;
 
-  @include h3-props($mobile-breakpoint);
+  @include respond-to($mobile-breakpoint) {
+    font-size: 2.8rem;
+    line-height: (40/28);
+    margin-top: -.8rem;
+  }
 }
 
 .article__info__teaser {
-  line-height: 1.3;
+  line-height: (24/16);
+  margin-top: 1.9rem;
+  color: $tours-title-color;
+  font: {
+    size: 1.6rem;
+    family: $sans-serif;
+    weight: $medium;
+  }
+  letter-spacing: .1px;
 
-  @include h4-props($mobile-breakpoint);
+  @include respond-to($mobile-breakpoint) {
+    font-size: 2rem;
+    line-height: (30/20);
+    margin-top: 2.4rem;
+  }
 }
 
 .article__info__blurb {
-  @include h5-props($mobile-breakpoint);
+  color: $articles-blurb-color;
+  font: {
+    size: 1.4rem;
+    family: $sans-serif;
+    weight: $medium;
+  }
+  margin-top: .8rem;
+
+  @include respond-to($mobile-breakpoint) {
+    font-size: 1.6rem;
+    line-height: (26/16);
+    margin-top: 1rem;
+  }
+}
+
+.article__info__title + .article__info__blurb {
+  margin-top: 2rem;
+
+  @include respond-to($mobile-breakpoint) {
+    margin-top: 2.5rem;
+  }
 }
 
 .article__info__author {
-  display: block;
+  display: inline-block;
+  margin-top: 2.4rem;
 
-  margin-top: 22px;
-  margin-bottom: 14px;
+  @include respond-to($mobile-breakpoint) {
+    margin-top: 3rem;
+  }
 }
 
 .article__info__author__image {
-  @include author-image(9999999); // massive number here because we don't want it resizing ever
-  margin-right: $spacing;
+  @include author-image(9999999, 'horizontal'); // massive number here because we don't want it resizing ever
+  margin-right: 1rem;
 }
 
 .article__info__author__creds {
   display: inline-block;
+  margin-top: .6rem;
   vertical-align: middle;
 }
 

@@ -1,29 +1,28 @@
 {{#if survival_guide.items}}
 
-<article id="survival_guide" class="survival_guide">
-  <h1 class="survival_guide__heading">{{survival_guide.title}}</h1>
+<div class="survival-guide" id="survival_guide">
+  <h1 class="survival-guide__heading">{{survival_guide.title}}</h1>
 
-  <div class="survival_guide__inner">
-    <ul class="survival_guide__list">
+  <div class="survival-guide__inner">
+    <ul class="survival-guide__list">
       {{#each survival_guide.items}}
-      <a href="{{../survival_guide.item_url}}{{slug}}" class="survival_guide__list__link">
-        <li class="survival_guide__list__item">
-          <span class="survival_guide__list__item__icon icon--{{icon}}-blue"></span>
-          <h3 class="survival_guide__list__item__title"><strong>{{title}}</strong></h3>
-          <p class="survival_guide__list__item__blurb">{{blurb}}</p>
-        </li>
-      </a>
+      <li class="survival-guide__list__item">
+        <a class="survival-guide__list__link" href="{{../survival_guide.item_url}}{{slug}}">
+          <i class="survival-guide__list__item__icon icon--{{icon}}-blue" aria-hidden="true" aria-label="{{title}}"></i>
+          <h3 class="survival-guide__list__item__title">{{title}}</h3>
+          <p class="survival-guide__list__item__blurb">{{blurb}}</p>
+        </a>
+      </li>
       {{/each}}
     </ul>
   </div>
 
-  <div class="survival_guide__button-container">
-    <a class="survival_guide__more" href="{{survival_guide.see_more_url}}">
+  <div class="survival-guide__button-container">
+    <a class="survival-guide__more" href="{{survival_guide.see_more_url}}">
       See More
-      <span class="icon-chevron-right"></span>
+      <i class="icon-chevron-right" aria-hidden="true"></i>
     </a>
   </div>
-
-</article>
+</div>
 
 {{/if}}

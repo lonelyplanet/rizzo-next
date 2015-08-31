@@ -11,7 +11,7 @@
       {{#each articles}}
         <article class="article">
           <div class="article__info">
-            <a href="{{url}}">
+            <a class="article__info__link" href="{{url}}">
               <h3 class="article__info__title">{{title}}</h3>
               <h4 class="article__info__teaser">{{teaser1}}</h4>
               <p class="article__info__blurb">{{teaser2}}</p>
@@ -19,7 +19,7 @@
 
             <a class="article__info__author" href="{{author_url}}">
               {{#if author_image}}
-                <img class="article__info__author__image" src="{{author_image}}" />
+                <img class="article__info__author__image" src="{{author_image}}">
               {{/if}}
               <div class="article__info__author__creds">
                 <div class="article__info__author__creds__name">{{author_name}}</div>
@@ -28,8 +28,8 @@
             </a>
           </div>
           {{#if src}}
-            <a href="{{url}}">
-              <div class="article__imagery" style="background-image: url({{src}})"></div>
+            <a class="article__imagery" href="{{url}}">
+              <div class="article__imagery__image" aria-label="Image for {{title}}" style="background-image: url({{src}})"></div>
             </a>
           {{/if}}
         </article>
