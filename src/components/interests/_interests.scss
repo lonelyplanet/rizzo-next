@@ -1,13 +1,11 @@
 @import "../../../sass/webpack_deps";
 
-
-
 $mobile-breakpoint: 717px;
 $square-size: 190px;
 $local_gutter: 30px;
-$fluid-max: 395px;
+$fluid-max: 427px;
 $fluid-min: $fluid-max + 1;
-$desktop-size: 1140px;
+$desktop-size: 1170px;
 
 /**************************************/
 /********** helper functions **********/
@@ -15,28 +13,28 @@ $desktop-size: 1140px;
 
 // column size should be half of the blueprint-size
 // 2 and 4 cards should show up in a single row
-@function calculate-columns($blueprint-size, $card-count){
+@function calculate-columns($blueprint-size, $card-count) {
   @if $card-count == 2 or $card-count == 4 {
     @return $card-count;
   }
-  @else{
+  @else {
     @return $blueprint-size / 2;
   }
 }
 
 // figure out odd or even based on card numbers .. (1 to 9)
-@function determine-parity($card-count){
+@function determine-parity($card-count) {
   @if $card-count % 2 == 0 {
     @return "even";
   }
-  @else{
+  @else {
     @return "odd";
   }
 }
 
 // calculate first cards size depending on odd/even
-@function calculate-first-square-size($parity){
-  @if $parity == "odd"{
+@function calculate-first-square-size($parity) {
+  @if $parity == "odd" {
     @return $square-size * 2;
   }
   @else {
@@ -47,11 +45,11 @@ $desktop-size: 1140px;
 // calculates the size of the grid
 // odd numbered grid size equals card numbers plus 3
 // (big card == 4x small card)
-@function calculate-blueprint-size($parity , $card-count){
-  @if $parity == "odd"{
+@function calculate-blueprint-size($parity, $card-count) {
+  @if $parity == "odd" {
     @return $card-count + 3;
   }
-  @else{
+  @else {
     @return $card-count;
   }
 }
@@ -62,14 +60,17 @@ $desktop-size: 1140px;
 
 // outputs a media query dynamicaly
 // for each whole quotient of blueprint
-@mixin generate-dynamic-media-queries($square-size, $blueprint-size, $fluid-max, $card-count){
+@mixin generate-dynamic-media-queries($square-size, $blueprint-size, $fluid-max, $card-count) {
   $factor: $blueprint-size;
   $i: $blueprint-size - 1;
 
   @while $i > 1 {
     @if round($blueprint-size / $i) == $blueprint-size / $i {
-      @media screen and (max-width: $factor * $square-size) and (min-width: $fluid-max) {
+      $mq-max-width: ($factor * $square-size) + 60px + 15px;
+
+      @media screen and (min-width: $fluid-max) and (max-width: $mq-max-width) {
         $factor: $i;
+
         .interests__cards.interests__cards--#{$card-count} {
           width: $i * $square-size;
         }
@@ -81,19 +82,22 @@ $desktop-size: 1140px;
 }
 
 // outputs distinct styles for all card number permutations 1-9
-@mixin generate-style-permutations($card-count, $column-count, $square-size, $first-square-dimension, $g, $parity, $fluid-max){
-  .interests__cards.interests__cards--#{$card-count} {
+@mixin generate-style-permutations($card-count, $column-count, $square-size, $first-square-dimension, $g, $parity, $fluid-max) {
+  .interests__cards--#{$card-count} {
     width: $column-count * $square-size;
+
     .interests__card {
       &:first-child {
         width: $first-square-dimension;
         height: $first-square-dimension;
+
         .interests__card--inner {
-          height: $first-square-dimension - $g;
           width: $first-square-dimension - $g;
+          height: $first-square-dimension - $g;
+
           @if $parity == "odd" {
-            .interests__card__link{
-              //text-transform: none;
+            .interests__card__link {
+              text-transform: capitalize;
               //text-align: left;
               //font-size: 40px;
 
@@ -101,9 +105,9 @@ $desktop-size: 1140px;
               bottom: $gutter;
               right: $gutter;
 
-              padding-top: 2rem;
+              padding-top: 1.8rem;
 
-              font-size: 4rem;
+              font-size: 3.6rem;
               line-height: 1;
               text-align: left;
             }
@@ -111,36 +115,41 @@ $desktop-size: 1140px;
         }
       }
     }
+
     @media screen and (max-width: $fluid-max) {
       .interests__card {
         width: 50%;
         height: auto;
         margin-bottom: 2px;
+
         &:first-child {
           @if $parity == "odd" {
             width: 100%;
             height: auto;
 
             .interests__card--inner {
-              height: 100%;
               width: 100%;
+              height: 100%;
             }
           }
           @else {
             width: 50%;
             height: auto;
-            .interests__card--inner{
+
+            .interests__card--inner {
               margin-right: 1px;
               width: calc(100% - 1px);
               height: 100%;
             }
           }
         }
+
         .interests__card--inner {
-          height: 100%;
           width: 100%;
+          height: 100%;
           padding-bottom: 100%;
         }
+
         &:nth-child(#{ if($parity == "odd", "even", "odd")}) {
           .interests__card--inner {
             margin-right: 1px;
@@ -157,7 +166,7 @@ $desktop-size: 1140px;
 /******************************************/
 
 .interests {
-  margin: 0 0 $gutter;
+  margin-bottom: $gutter;
 
   &__heading {
     @include h1();
@@ -165,7 +174,6 @@ $desktop-size: 1140px;
 }
 
 .interests__cards {
-  //display: inline-block;
   margin: 0 auto;
 
   overflow: hidden;
@@ -181,8 +189,8 @@ $desktop-size: 1140px;
     .interests__card--inner {
       position: relative;
 
-      height: $square-size - $local_gutter;
       width: $square-size - $local_gutter;
+      height: $square-size - $local_gutter;
 
       background: {
         color: #67747c;
@@ -201,7 +209,7 @@ $desktop-size: 1140px;
         right: 0;
         bottom: 0;
 
-        background: linear-gradient(to top,  rgba(0,0,0,0.5) 0%,rgba(0,0,0,0) 75%);
+        background: linear-gradient(to top, rgba(#000, .5) 0%, rgba(#000, 0) 75%);
       }
 
       .interests__card__link {
@@ -222,30 +230,26 @@ $desktop-size: 1140px;
         text-align: center;
         text-transform: uppercase;
 
-        border-top: .1rem solid rgba(255,255,255, .6);
+        border-top: .1rem solid rgba(#fff, .6);
       }
     }
 
-    transition: transform $animation-speed;
+    @include respond-to($fluid-min) {
+      transition: transform $animation-speed;
 
-    &:hover {
-      transform: translateY(-.5rem);
+      &:hover {
+        transform: translateY(-.5rem);
+      }
     }
   }
 }
 
-//main loop to controll dymanic style creation
+// main loop to control dynamic style creation
 @for $card-count from 1 through 9 {
   $parity: determine-parity($card-count);
   $first-square-dimension: calculate-first-square-size($parity);
-
-  $blueprint-size: calculate-blueprint-size(
-                    $parity ,
-                    $card-count);
-
-  $column-count: calculate-columns(
-                  $blueprint-size,
-                  $card-count);
+  $blueprint-size: calculate-blueprint-size($parity, $card-count);
+  $column-count: calculate-columns($blueprint-size, $card-count);
 
   @include generate-style-permutations(
     $card-count,
@@ -254,13 +258,15 @@ $desktop-size: 1140px;
     $first-square-dimension,
     $local_gutter,
     $parity,
-    $fluid-max);
+    $fluid-max
+  );
 
   @include generate-dynamic-media-queries(
     $square-size,
     $blueprint-size,
     $fluid-max,
-    $card-count);
+    $card-count
+  );
 }
 
 /**************************************/
@@ -268,12 +274,13 @@ $desktop-size: 1140px;
 /**************************************/
 
 @media screen and (max-width: $fluid-max) {
-  .interests .interests__cards{
+  .interests .interests__cards {
     width: calc(100% - 2px);
     margin: 0 auto;
     font-size: 0;
     text-align: center;
-    .interests__card{
+
+    .interests__card {
       float: none;
       display: inline-block;
     }
@@ -281,7 +288,7 @@ $desktop-size: 1140px;
 }
 
 @include respond-to($fluid-min) {
-  .interests__card--inner{
+  .interests__card--inner {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
