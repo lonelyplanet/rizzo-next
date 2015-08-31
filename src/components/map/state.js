@@ -16,6 +16,7 @@ let state = {
   sets: [],
   error: null,
   hoveredPin: 0,
+  hoveredItem: null,
   customPanel: ""
 };
 
@@ -102,6 +103,11 @@ Arkham.on("state.setinitial", (data) => {
 
 Arkham.on("poi.hover", (data) => {
   state.hoveredPin = data.pin;
+  MapState.emitChange();
+});
+
+Arkham.on("item.hovered", (data) => {
+  state.hoveredItem = data;
   MapState.emitChange();
 });
 

@@ -127,6 +127,9 @@ class MarkerSet extends Component {
       .setLatLng(L.latLng(lat, lng))
       .setContent(template)
       .openOn(this.map);
+
+    let poiIndex = layer.feature.properties.index;
+    MapActions.itemHighlight(poiIndex);
   }
 
   // A layer argument is passed in, but it is not used

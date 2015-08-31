@@ -36,7 +36,7 @@ export default class SidebarView extends React.Component {
         panelContent = <AboutPanel location={location} />;
       } else {
         let activePanel = this.props.sets[this.props.activeSetIndex];
-        panelContent = <Panel set={activePanel} />;
+        panelContent = <Panel highlightedPoi={this.props.highlightedPoi} set={activePanel} />;
       }
     }
     let backSlug = `/${location.parent_slug}`;

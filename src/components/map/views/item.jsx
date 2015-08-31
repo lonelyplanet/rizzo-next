@@ -15,6 +15,9 @@ export default class ItemView extends React.Component {
       classString += "pin";
     } else {
       classString += "list";
+      if (item.highlighted) {
+        classString += " is-hovered";
+      }
     }
     if (item.geo.properties.image) {
       imageSrc = "http://images-resrc.staticlp.com/S=H150/" + item.geo.properties.image;

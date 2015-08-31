@@ -6,11 +6,15 @@
   cursor: pointer;
   transition: background .3s ease;
 
+  &.is-hovered {
+    background: $hoveredItem;
+  }
+
   &.list {
     margin: 10px 0;
 
     &:hover {
-      background: rgba(#000, .1);
+      background: $hoveredItem;
     }
 
     &:after {

@@ -35,9 +35,12 @@ let MapActions = {
     Arkham.trigger("poi.closed");
   },
 
-  // looks like this wasn't being used?
   pinHover: (data) => {
     Arkham.trigger("map.poihover", data);
+  },
+
+  itemHighlight: (data) => {
+    Arkham.trigger("item.hovered", data);
   },
 
   mapOpen: () => {
