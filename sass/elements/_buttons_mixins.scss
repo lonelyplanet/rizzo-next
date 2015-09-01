@@ -1,13 +1,17 @@
 @mixin button(){
   display: inline-block;
 
-  padding: 0 3rem;
+  padding: 1.8rem 3rem 1.4rem;
 
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 600;
   color: #fff;
+  text-align: center;
+  text-decoration: none;
   text-transform: uppercase;
-  line-height: 4.4rem;
+  line-height: 1;
+  vertical-align: middle;
+  white-space: nowrap;
 
   border: 0;
   border-radius: 2.2rem;
@@ -15,16 +19,14 @@
 
   cursor: pointer;
 
-  background: $color-primary;
+  background-color: $color-primary;
 
   -webkit-font-smoothing: antialiased;
 
   backface-visibility: hidden;
 
-  transition: color 500ms, border 500ms, background 500ms;
+  transition: color $animation-speed, border $animation-speed, background-color $animation-speed;
 
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
 
   [class*="icon-"] {
@@ -39,11 +41,12 @@
     transition: transform 500ms;
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: #fff;
     text-decoration: none;
 
-    background: $color-primary + 15;
+    background-color: $color-primary + 15;
 
     [class*="icon-"] {
       transform: translate3d(-.4rem, 0, 0);
@@ -56,6 +59,14 @@
     .icon-chevron-down {
       transform: translate3d(0, 0, 0);
     }
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 1px $color-primary;
+  }
+
+  &:active:focus {
+    box-shadow: none;
   }
 }
 
