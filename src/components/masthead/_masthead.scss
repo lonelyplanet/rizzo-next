@@ -138,10 +138,22 @@
     margin-bottom: 10px;
   }
 
-  &__breadcrumb a {
+  &__breadcrumb {
     color: #fff;
-    text-transform: uppercase;
-    position: relative;
+
+    a {
+      color: #fff;
+      text-transform: uppercase;
+      position: relative;
+    }
+  }
+
+  &--no-images &__breadcrumb {
+    color: $font-color;
+
+    a {
+      color: $font-color;
+    }
   }
 
   &__title {
