@@ -26,7 +26,8 @@
     "lodash": "^3.10.0",
     "pickadate": "*",
     "picturefill": "*",
-    "react": "^0.13.3"
+    "react": "^0.13.3",
+    "resrc.js": "^0.9.5"
   },
   "devDependencies": {
     "babel-eslint": "^4.0.5",

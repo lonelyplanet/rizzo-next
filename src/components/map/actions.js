@@ -12,12 +12,24 @@ let MapActions = {
   },
 
   gotoPlace: (data) => {
-    let place = data.place;
+    let place = data.place,
+        url = "/" + place + "/map.json";
+    
     Arkham.trigger("place.fetching", data);
+
+    // TODO: JC, maybe this is cool, maybe not?
+    // let mapData = window.localStorage.getItem(url);
+
+    // if (mapData) {
+    //   return Arkham.trigger("place.fetched", JSON.parse(mapData));
+    // }
+
     $.ajax({
-      url: "/" + place + "/map.json"
+      url: url
     }).done((results) => {
-      Arkham.trigger("place.fetched", results.map_data);
+      // window.localStorage.setItem(url, JSON.stringify(results));
+
+      Arkham.trigger("place.fetched", results);
     }).error((results) => {
       let error = {
         message: "There was an error fetching " + data.placeTitled,

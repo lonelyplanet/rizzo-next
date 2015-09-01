@@ -10,7 +10,9 @@ export default class ItemView extends React.Component {
     let item = this.props.item;
     let title = item.title;
     let classString = "place ";
-    let imageSrc = "http://placehold.it/350x150";
+    let img = "";
+    let picClass = "place__pic";
+
     if (item.onMap) {
       classString += "pin";
     } else {
@@ -20,7 +22,13 @@ export default class ItemView extends React.Component {
       }
     }
     if (item.geo.properties.image) {
-      imageSrc = "http://images-resrc.staticlp.com/S=H150/" + item.geo.properties.image;
+      let imgSrc = "http://images-resrc.staticlp.com/S=H150/" + item.geo.properties.image;
+      img = <img src={imgSrc} />
+    }
+    else {
+      // TODO: This will have to change when topics are correct
+      let type = this.props.item.item_type === "Place" ? "sight" : "activity";
+      picClass += ` topic__image topic__image--${type}`;
     }
     if (title.length > 35) {
       title = title.substr(0, 34) + "...";
@@ -35,8 +43,8 @@ export default class ItemView extends React.Component {
       <div className={classString} onClick={this.clickItem.bind(this)}>
         <div className="place__pointer"></div>
         <div className="place__pointer--shadow"></div>
-        <div className="place__pic">
-          <img src={imageSrc} />
+        <div className={picClass}>
+          {img}
         </div>
         <div className="place__order">{item.i+1}</div>
         <div className="place__text">

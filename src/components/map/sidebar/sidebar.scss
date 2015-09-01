@@ -145,14 +145,34 @@ $unit: $size / 16;
         border-top: 1px solid #ccc;
         content: "";
       }
-
     }
 
-    .poi-body {
-      padding: 30px;
+    &__content {
+      padding: $gutter / 2;
     }
 
+    &__footer {
+      position: absolute;
+      top: auto;
+      bottom: 0;
+      width: 100%;
+    }
+
+    &__close {
+      @include button();
+
+      text-transform: uppercase;
+      background: $color-blue;
+      color: #FFF;
+      display: block;
+      text-align: center;
+      width: 100%;
+      padding: .5em;
+      border-radius: 0;
+    }
   }
 
-
+  .about-panel {
+    margin-bottom: 36rem;
+  }
 }
