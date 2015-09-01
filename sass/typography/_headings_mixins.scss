@@ -1,5 +1,5 @@
 /// Mixin for main headers
-@mixin h1($margin-bottom: $gutter * 2){
+@mixin h1($margin-bottom: $gutter * 2, $color: $h2-color) {
   position: relative;
 
   margin-top: 0;
@@ -10,7 +10,7 @@
   font-size: 2.8rem;
   font-weight: 100;
 
-  color: $h2-color;
+  color: $color;
 
   line-height: 1.3;
   text-align: center;
