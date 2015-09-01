@@ -149,6 +149,7 @@ $wide-breakpoint: 1024;
   box-shadow: 2rem 1rem 6rem rgba(0, 0, 0, .4);
 
   background: $color-primary;
+  backface-visibility: hidden;
 
   @media (min-width: $min-560) {
     width: 25rem;
