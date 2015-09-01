@@ -1,182 +1,33 @@
 @import "../../../sass/webpack_deps";
 @import "../../../sass/datepicker";
 
-$small-breakpoint: 600;
-$mobile-breakpoint: 717;
-$wide-breakpoint: 1024;
-$form-height: 4.2rem;
+$hotels-breakpoint-small-max: em(729px);
+$hotels-breakpoint-medium-min: em(730px);
+$hotels-breakpoint-large-min: em(860px);
+$hotels-color: #fff;
+$hotels-form-height: 4.4rem;
+$hotels-form-width: 784;
+$hotels-max-width: 1170;
 
 .hotels {
   @include segment();
-
-  background: url("https://assets.staticlp.com/destinations-next/images/hotels-default.jpg");
+  background-image: url("https://assets.staticlp.com/destinations-next/images/hotels-default.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 
+  // Override segment() padding
+  padding-top: ($gutter*2) - .6rem;
+  padding-bottom: ($gutter*2);
+
+  @media (min-width: $min-720) {
+    padding-top: ($gutter*3) - 1rem;
+    padding-bottom: ($gutter*3);
+  }
+
   @media (min-width: $min-1080) {
-    padding: ($gutter*8) 0 ($gutter*8 - $spacing);
-  }
-
-  &__header {
-    @include h1();
-
-    margin-bottom: $gutter;
-
-    color: #ffffff;
-  }
-
-  &__container {
-    @include container();
-
-    &__img {
-      width: 100%;
-      height: auto;
-      z-index: 1;
-    }
-
-    &__header,
-    .hotels__widget__title {
-      text-align: center;
-    }
-
-    .secondary-heading,
-    .hotels__widget__title {
-      color: #ffffff;
-    }
-
-    .search__widget {
-      max-width: 30rem;
-      margin: 0 auto;
-
-      @media (min-width: $min-1080) {
-        max-width: 80rem;
-      }
-    }
-
-    .search-widget__set {
-      position: relative;
-      margin: 0 (-$gutter/2);
-      text-align: center;
-      font-size: 0;
-    }
-
-    .hotels__widget__title {
-      max-width: 50rem;
-      font-size: 1.8rem;
-      margin: 0 auto $gutter;
-    }
-
-    .search__widget__wrap {
-      margin: 0 0 $spacing;
-      padding: 0 $gutter/2;
-      font-size: 1.2rem;
-
-      text-align: center;
-
-      @media (min-width: $min-1080) {
-
-        display: inline-block;
-        width: 25%;
-      }
-    }
-
-    // .hotels__input {
-    //   position: relative;
-    // }
-
-    .search__widget__label {
-      display: inline-block;
-      width: 55%;
-      font-size: 18px;
-      font-weight: $semibold;
-      color: $nav-primary-type;
-    }
-
-    .search__widget__element {
-      display: inline-block;
-      position: relative;
-      width: 100%;
-      height: $form-height;
-      font-size: 18px;
-      background-color: transparent;
-      border: 1px rgba(255, 255, 255, 0.4) solid;
-      color: #ffffff;
-      padding-left: 10px;
-      -webkit-appearance: none;
-      z-index: 1;
-      line-height: 4.0rem;
-
-      option {
-        color: $darkgray;
-      }
-    }
-
-    .hotels__widget__button {
-      @include button();
-
-      line-height: $form-height;
-      width: 100%;
-      position: relative;
-
-      @media (min-width: $min-1080) {
-        left: -1rem;
-      }
-    }
-
-    :focus {
-      outline: none;
-    }
-
-    ::-moz-focus-inner {
-      border: 0;
-    }
-
-    // Firefox
-    input[type="submit"]::-moz-focus-inner,
-    input[type="button"]::-moz-focus-inner {
-      border: 0;
-    }
-
-    // IE8
-    input[type="submit"]:focus,
-    input[type="button"]:focus {
-      outline: none;
-    }
-  }
-
-  select {
-    color: #ffffff;
-    -moz-appearance: none;
-    text-indent: 0.01px;
-    text-overflow: '';
-  }
-
-  ::-webkit-input-placeholder {
-    color: #ffffff;
-  }
-
-  input::-moz-placeholder { // Firefox 18-
-    color: #ffffff;
-    opacity: 1;
-  }
-
-  input::-moz-placeholder { // Firefox 19+
-    color: #ffffff;
-    opacity: 1;
-  }
-
-  :-ms-input-placeholder {
-    color: #ffffff;
-  }
-
-  input {
-    color: #ffffff;
-  }
-
-  .picker__input {
-    border-radius: 0;
-    cursor: pointer;
+    padding-top: 205px;
+    padding-bottom: 269px;
   }
 
   .picker__wrap {
@@ -189,33 +40,137 @@ $form-height: 4.2rem;
 
     select,
     tbody {
-      color: #000000;
+      color: $font-color;
     }
   }
 }
 
-.hotels-input {
-  $size: 2rem;
-  position: relative;
-  padding: 0 $size 0 0;
+.hotels__container {
+  @include container();
+}
 
-  &__input {
-    width: 100%;
-    height: $form-height;
+.hotels__header {
+  color: $hotels-color;
+  margin-bottom: 4.3rem;
+  text-align: center;
+}
+
+.hotels__title {
+  @include h1(2.5rem, $hotels-color);
+}
+
+.hotels__text {
+  max-width: 50rem;
+  font-size: 1.6rem;
+  font-weight: 300;
+  line-height: (21/16);
+  margin: 0 auto;
+}
+
+.hotels__search {
+  margin: 0 auto;
+  width: 100%;
+
+  @media (max-width: $hotels-breakpoint-small-max) {
+    max-width: 30rem;
   }
 
-  &__input select {
-    cursor: pointer;
+  @media (min-width: $hotels-breakpoint-medium-min) {
+    height: $hotels-form-height;
   }
 
-  &__icon {
-    position: absolute;
-    color: #ffffff;
-    top: 40%;
-    right: 7%;
+  @media (min-width: $hotels-breakpoint-large-min) {
+    max-width: 78.4rem;
+  }
+}
 
-    @include respond-to($wide-breakpoint) {
-      right: 12%;
+.hotels__search__field {
+  height: $hotels-form-height;
+  font-size: 1.2rem;
+
+  @media (max-width: $hotels-breakpoint-small-max) {
+    margin-top: 1.5rem;
+
+    &:first-child {
+      margin-top: 0;
     }
+  }
+
+  @media (min-width: $hotels-breakpoint-medium-min) {
+    float: left;
+    width: percent(175, $hotels-form-width);
+  }
+
+  @media (min-width: $hotels-breakpoint-large-min) {
+    width: 17.5rem;
+  }
+
+  + .hotels__search__field {
+    @media (min-width: $hotels-breakpoint-medium-min) {
+      margin-left: percent(29, $hotels-form-width);
+    }
+
+    @media (min-width: $hotels-breakpoint-large-min) {
+      margin-left: 2.9rem;
+    }
+  }
+}
+
+.hotels__search__label {
+  @include visuallyhidden("focusable");
+}
+
+.hotels__search__control {
+  -webkit-appearance: none;
+  background-color: transparent;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iN3B4IiBoZWlnaHQ9IjdweCIgdmlld0JveD0iMCAwIDcgNCI+DQogIDxwb2x5Z29uIGZpbGw9IiNmZmZmZmYiIHBvaW50cz0iNywwIDAsMCAzLjUsNCAiLz4NCjwvc3ZnPg0K");
+  background-position: calc(100% - 15px) 50%;
+  background-repeat: no-repeat;
+  border: 1px rgba($hotels-color, .44) solid;
+  border-radius: 2px;
+  color: $hotels-color;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.6rem;
+  height: $hotels-form-height;
+  padding: .4rem 3.5rem 0 1.3rem;
+  position: relative;
+  transition: border-color $animation-speed;
+  width: 100%;
+  z-index: 1;
+
+  @include placeholder {
+    color: $hotels-color;
+    opacity: 1; // Firefox
+  }
+
+  &:hover,
+  &:focus {
+    border-color: rgba($hotels-color, .66);
+  }
+
+  option {
+    color: $darkgray;
+  }
+}
+
+.hotels__search__button {
+  @include button();
+  width: 100%;
+
+  @media (max-width: $hotels-breakpoint-small-max) {
+    margin-top: 1.5rem;
+  }
+
+  @media (min-width: $hotels-breakpoint-medium-min) {
+    float: left;
+    max-width: 18rem;
+    width: percent(180, $hotels-form-width);
+    margin-left: percent(21, $hotels-form-width);
+  }
+
+  @media (min-width: $hotels-breakpoint-large-min) {
+    width: 180px;
+    margin-left: 21px;
   }
 }

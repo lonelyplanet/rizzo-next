@@ -1,57 +1,52 @@
 {{#if lodgings }}
-  <section id ="lodgings" class="hotels">
-
+  <section class="hotels" id="lodgings">
     <div class="hotels__container">
-     <div class="hotels__top">
-      <h2 class="hotels__header">
-        Amazing places to stay
-      </h2>
-      <p class="hotels__widget__title">We've pre-picked the best Hotels, Hostels and Bed and Breakfasts to make your stay as enjoyable as possible.</p>
-    </div>
-      <form action="http://www.lonelyplanet.com/{{slug}}/hotels" class="search__widget" id="hotel-search-form">
-        <fieldset class="search-widget__set">
-          <div class="search__widget__wrap hotels-input">
-            {{!-- <label for="js-av-start" class="search__widget__label"></label> --}}
-            <div class="hotels-input__input">
-              <input  class="search__widget__element" id="js-av-start" autocomplete="off" name="search[from]" placeholder ="Check-in"type="date" value="">
 
-              <i class="hotels-input__icon icon-chevron-down"></i>
-            </div>
+      <header class="hotels__header">
+        <h2 class="hotels__title">
+          Amazing places to stay
+        </h2>
+
+        <p class="hotels__text">
+          We've pre-picked the best Hotels, Hostels and Bed and Breakfasts to
+          make your stay as enjoyable as possible.
+        </p>
+      </header>
+
+      <form class="hotels__search" id="hotel-search-form" action="http://www.lonelyplanet.com/{{slug}}/hotels">
+        <fieldset>
+          <div class="hotels__search__field">
+            <label class="hotels__search__label" for="js-av-start">Check-in</label>
+
+            <input class="hotels__search__control" id="js-av-start" autocomplete="off" name="search[from]" placeholder="Check-in" type="date">
           </div>
 
-          <div class="search__widget__wrap hotels-input">
-            {{!-- <label class="search__widget__label" for="js-av-end"></label> --}}
-            <div class="hotels-input__input">
-              <input  class="search__widget__element" id="js-av-end" autocomplete="off" name="search[to]" placeholder="Check-out" type="date" value="">
+          <div class="hotels__search__field">
+            <label class="hotels__search__label" for="js-av-end">Check-out</label>
 
-              <i class="hotels-input__icon icon-chevron-down"></i>
-            </div>
+            <input class="hotels__search__control" id="js-av-end" autocomplete="off" name="search[to]" placeholder="Check-out" type="date">
           </div>
 
-          <div class="search__widget__wrap hotels-input">
-            {{!-- <label for="js-guests" class="search__widget__label"></label> --}}
-            <div class="hotels-input__input">
-              <select class="search__widget__element" id="js-guests" name="search[guests]">
-                <option value="1">1 Guest</option>
-                <option selected="selected" value="2">2 Guests</option>
-                <option value="3">3 Guests</option>
-                <option value="4">4 Guests</option>
-                <option value="5">5 Guests</option>
-                <option value="6">6 Guests</option>
-                <option value="7">7 Guests</option>
-                <option value="8">8 Guests</option>
-                <option value="9">9 Guests</option>
-              </select>
+          <div class="hotels__search__field">
+            <label class="hotels__search__label" for="js-guests">Number of guests</label>
 
-                <i class="hotels-input__icon icon-chevron-down"></i>
-            </div>
+            <select class="hotels__search__control" id="js-guests" name="search[guests]">
+              <option value="1">1 Guest</option>
+              <option value="2" selected="selected">2 Guests</option>
+              <option value="3">3 Guests</option>
+              <option value="4">4 Guests</option>
+              <option value="5">5 Guests</option>
+              <option value="6">6 Guests</option>
+              <option value="7">7 Guests</option>
+              <option value="8">8 Guests</option>
+              <option value="9">9 Guests</option>
+            </select>
           </div>
 
-          <div class="search__widget__wrap">
-            <input class="hotels__widget__button" id="js-hotels-submit" type="submit" value="SEARCH">
-          </div>
+          <button class="hotels__search__button" id="js-hotels-submit" type="submit">Search</button>
         </fieldset>
       </form>
+
     </div>
   </section>
 {{/if}}
