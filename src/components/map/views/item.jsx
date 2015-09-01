@@ -15,6 +15,9 @@ export default class ItemView extends React.Component {
       classString += "pin";
     } else {
       classString += "list";
+      if (item.highlighted) {
+        classString += " is-hovered";
+      }
     }
     if (item.geo.properties.image) {
       imageSrc = "http://images-resrc.staticlp.com/S=H150/" + item.geo.properties.image;
@@ -30,6 +33,8 @@ export default class ItemView extends React.Component {
 
     return (
       <div className={classString} onClick={this.clickItem.bind(this)}>
+        <div className="place__pointer"></div>
+        <div className="place__pointer--shadow"></div>
         <div className="place__pic">
           <img src={imageSrc} />
         </div>
@@ -48,6 +53,7 @@ export default class ItemView extends React.Component {
       MapActions.gotoPlace({ place: props.item.slug, placeTitle: props.item.title });
     } else {
       MapActions.poiOpen({ index: props.item.i });
+      MapActions.pinHover({ poiIndex: props.item.i });
     }
   }
 }

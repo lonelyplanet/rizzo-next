@@ -2,12 +2,20 @@
   width: $itemwidth;
   height: 60px;
   background: #fff;
-  overflow: hidden;
   position: relative;
   cursor: pointer;
+  transition: background .3s ease;
+
+  &.is-hovered {
+    background: $hoveredItem;
+  }
 
   &.list {
     margin: 10px 0;
+
+    &:hover {
+      background: $hoveredItem;
+    }
 
     &:after {
       position: absolute;
@@ -23,6 +31,30 @@
 
   &.pin {
     box-shadow: 0 44px 87px -22px #000;
+
+    .place__pointer {
+      position: absolute;
+      left: -9px;
+      top: 20px;
+      width: 0;
+      height: 0;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-right:10px solid #fff;
+      z-index: -1;
+
+      &--shadow {
+        position: absolute;
+        left: -12px;
+        top: 18px;
+        width: 0;
+        height: 0;
+        border-top: 12px solid transparent;
+        border-bottom: 12px solid transparent;
+        border-right:12px solid #C0C0C0;
+        z-index: -2;
+      }
+    }
 
     &:after {
       position: absolute;

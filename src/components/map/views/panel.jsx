@@ -10,6 +10,7 @@ export default class PanelView extends React.Component {
     let items = this.props.set.items.map((item, i) => {
       item.i = i;
       item.onMap = false;
+      item.highlighted = i === this.props.highlightedPoi;
       return (
         <Item item={item}/>
       )

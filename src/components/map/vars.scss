@@ -8,3 +8,4 @@ $closeButton: 70px;
 $closeMargin: calc(50vh - (#{$closeButton} / 2) );
 $pinsize: 20px;
 $mapContainerWidth: calc(100% - #{$sidebarwidth} - #{$closeButton});
+$hoveredItem: rgba(#000, .1);

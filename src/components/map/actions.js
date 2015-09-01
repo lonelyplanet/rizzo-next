@@ -36,12 +36,15 @@ let MapActions = {
   },
 
   pinHover: (data) => {
-    Arkham.trigger("poi.hovered", data);
+    Arkham.trigger("map.poihover", data);
+  },
+
+  itemHighlight: (data) => {
+    Arkham.trigger("item.hovered", data);
   },
 
   mapOpen: () => {
     Arkham.trigger("map.opened");
-    // MapActions.gotoPlace({ place: "asia", placeTitle: "Asia" });
   },
 
   mapClose: () => {

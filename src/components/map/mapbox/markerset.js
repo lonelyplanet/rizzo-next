@@ -50,7 +50,7 @@ class MarkerSet extends Component {
     let l;
 
     this.layer.eachLayer(function(layer) {
-      if (layer.feature.properties.poiIndex === (i + 1)) {
+      if (layer.feature.properties.index === (i)) {
         l = layer;
       }
     });
@@ -122,11 +122,14 @@ class MarkerSet extends Component {
     this.popup = L.popup({
         closeButton: false,
         keepInView: true,
-        offset: L.point(115, 30)
+        offset: L.point(220, 30)
       })
       .setLatLng(L.latLng(lat, lng))
       .setContent(template)
       .openOn(this.map);
+
+    let poiIndex = layer.feature.properties.index;
+    MapActions.itemHighlight(poiIndex);
   }
 
   // A layer argument is passed in, but it is not used
