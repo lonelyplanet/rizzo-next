@@ -1,128 +1,112 @@
 @import "../../../sass/webpack_deps";
 
+$guidebook-breakpoint-large-max: 1023px;
+$guidebook-breakpoint-xlarge-min: 1024px;
 
-$small-breakpoint: 600;
-$mobile-breakpoint: 717;
-$wide-breakpoint: 1024;
-
-.guidebook{
+.guidebook {
+  @include clearfix;
   margin: 0 auto $gutter;
-  text-align: center;
 
-  @include respond-to($wide-breakpoint) {
-    text-align: left;
-  }
-
-  &:after {
-    display: block;
-    visibility: hidden;
-    clear: both;
-    height: 0;
-    content: "";
+  @media (max-width: $guidebook-breakpoint-large-max) {
+    text-align: center;
   }
 }
 
-.guidebook__info{
+.guidebook__info {
   position: relative;
   z-index: 5;
 
-  @include respond-to($wide-breakpoint) {
+  @media (min-width: $guidebook-breakpoint-xlarge-min) {
     float: right;
     width: 35%;
     margin-right: 3%;
   }
 }
 
-.guidebook__info__link{
-  @include button();
-}
-
-.guidebook__info__blurb{
+.guidebook__blurb {
   width: 90%;
-  margin: 0 auto $gutter;
-
+  margin: 0 auto;
   font-size: 1.8rem;
   font-weight: $font-weight-medium;
-  line-height: 1.8;
+  line-height: (32 / 18);
 
-  @include respond-to($wide-breakpoint) {
-    margin: 0 0 $gutter;
-
+  @media (min-width: $guidebook-breakpoint-xlarge-min) {
     width: 100%;
     max-width: 400px;
-
-    font-size: 2.4rem;
+    margin-left: 0;
+    margin-right: 0;
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: (36 / 20);
   }
 }
 
-.guidebook {
-  &__title-wrap {
-    position: relative;
-    z-index: 5;
+.guidebook__button {
+  margin-top: 5.3rem;
+}
 
-    margin: 0 0 $spacing;
+.guidebook__header {
+  position: relative;
+  z-index: 5;
+  margin-bottom: $spacing;
+  text-align: center;
 
-    text-align: center;
+  @media (min-width: $guidebook-breakpoint-xlarge-min) {
+    float: right;
+    width: 43%;
+    margin-top: 10%;
+    padding-left: 5%;
+    text-align: left;
+  }
+}
 
-    @include respond-to($wide-breakpoint) {
-      float: right;
-      width: 43%;
-      margin-top: 10%;
-      padding-left: 5%;
-      text-align: left;
-    }
+.guidebook__title {
+  @include h1();
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  color: $color-red;
+  font-size: 5rem;
+
+  &:after {
+    display: none;
   }
 
-  &__title {
-    @include h1();
-
-    margin: 0;
-    padding: 0;
-
+  @media (min-width: $guidebook-breakpoint-xlarge-min) {
+    max-width: 450px;
     line-height: 1;
-    color: $color-red;
+  }
+
+  @media (min-width: $guidebook-breakpoint-xlarge-min) {
+    padding-top: 0;
+    text-align: left;
+    color: $h2-secondary-color;
 
     &:after {
       display: none;
     }
-
-    @include respond-to($wide-breakpoint) {
-      max-width: 450px;
-      line-height: 1;
-    }
-
-    @include respond-to($wide-breakpoint) {
-      padding-top: 0;
-      text-align: left;
-      color: $h2-secondary-color;
-
-      &:after {
-        display: none;
-      }
-    }
-  }
-
-  &__subtitle {
-    margin: ($spacing / 2) 0 0;
-
-    display: none;
-    font-size: 20px;
-    font-weight: 300;
-    color: $ancillary-header-color;
-    @include respond-to($wide-breakpoint) {
-      font-size: 28px;
-      display: block;
-    }
   }
 }
 
-.guidebook__pictures{
+.guidebook__subtitle {
+  margin: ($spacing / 2) 0 0;
+  display: none;
+  font-size: 20px;
+  font-weight: 300;
+  color: $ancillary-header-color;
+
+  @media (min-width: $guidebook-breakpoint-xlarge-min) {
+    font-size: 28px;
+    display: block;
+  }
+}
+
+.guidebook__pictures {
   display: block;
   position: relative;
   width: 80%;
   margin: 2rem auto;
   float: none;
-
   text-align: center;
 
   @media (min-width: $min-720) {
@@ -133,7 +117,7 @@ $wide-breakpoint: 1024;
     margin: 2rem auto;
   }
 
-  @include respond-to($wide-breakpoint) {
+  @media (min-width: $guidebook-breakpoint-xlarge-min) {
     width: 55%;
     float: left;
   }
@@ -141,13 +125,9 @@ $wide-breakpoint: 1024;
 
 .guidebook__picture {
   display: inline-block;
-
   width: 20rem;
-
   font-size: 0;
-
   box-shadow: 2rem 1rem 6rem rgba(0, 0, 0, .4);
-
   background: $color-primary;
   backface-visibility: hidden;
 
@@ -158,37 +138,34 @@ $wide-breakpoint: 1024;
   @media (min-width: $min-720) {
     width: 35rem;
   }
+}
 
-  &--first {
-    position: absolute;
-    z-index: 1;
+.guidebook__picture--primary {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 50%;
+  margin-left: (-20rem / 2);
+  transform: translate(3rem,0) rotateZ(1deg);
 
-    top: 0;
-    left: 50%;
-
-    margin-left: (-20rem / 2);
-
-    transform: translate(3rem,0) rotateZ(1deg);
-
-    @media (min-width: $min-560) {
-      margin-left: (-25rem / 2);
-    }
-
-    @media (min-width: $min-720) {
-      margin-left: (-35rem / 2);
-    }
+  @media (min-width: $min-560) {
+    margin-left: (-25rem / 2);
   }
 
-  &--second {
-    transform: translate(-8rem, -1rem) rotateZ(-19deg) scale(.8);
+  @media (min-width: $min-720) {
+    margin-left: (-35rem / 2);
   }
 }
 
-.guidebook__image{
+.guidebook__picture--secondary {
+  transform: translate(-8rem, -1rem) rotateZ(-19deg) scale(.8);
+}
+
+.guidebook__image {
   width: 100%;
   max-width: 465px;
 
-  @include respond-to($wide-breakpoint) {
+  @media (min-width: $guidebook-breakpoint-xlarge-min) {
     max-width: 100%;
   }
 }

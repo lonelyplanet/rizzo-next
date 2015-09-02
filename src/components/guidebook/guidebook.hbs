@@ -1,72 +1,67 @@
 {{#if books }}
-  <article id="guidebook" class="guidebook">
-    <div class="guidebook__title-wrap">
+  <div class="guidebook" id="guidebook">
+    <header class="guidebook__header">
       <h2 class="guidebook__title">{{ title }}</h2>
       {{#if subtitle }}
         <p class="guidebook__subtitle">{{ subtitle }}</p>
       {{/if}}
-    </div>
+    </header>
 
-    <a class="guidebook__pictures" href="{{ store_link_href }}">
+    <a class="guidebook__pictures" href="{{ store_link_href }}" tabindex="-1">
       {{#with first_image}}
-      <picture class="guidebook__picture guidebook__picture--first">
-        <source
-          media="(min-width: 1230px)"
+      <picture class="guidebook__picture guidebook__picture--primary">
+        <source media="(min-width: 1230px)"
           srcset="{{large.normal}} 1x,
                   {{large.hq}} 2x,
                   {{large.lossless}} 3x">
-          <source
-            media="(min-width: 500px)"
-            srcset="{{medium.normal}} 1x,
-                    {{medium.hq}} 2x,
-                    {{medium.lossless}} 3x">
 
-          <source
-            media="(min-width: 200px)"
-            srcset="{{small.normal}} 1x,
-                    {{small.hq}} 2x,
-                    {{small.lossless}} 3x">
+        <source media="(min-width: 500px)"
+          srcset="{{medium.normal}} 1x,
+                  {{medium.hq}} 2x,
+                  {{medium.lossless}} 3x">
 
-          <img
-            srcset="{{small.normal}} 1x,
-                    {{small.hq}} 2x,
-                    {{small.lossless}} 3x"
-            class="guidebook__image"
-            alt="image for {{ title }}">
+        <source media="(min-width: 200px)"
+          srcset="{{small.normal}} 1x,
+                  {{small.hq}} 2x,
+                  {{small.lossless}} 3x">
+
+        <img class="guidebook__image"
+          alt="Image for {{ title }}"
+          srcset="{{small.normal}} 1x,
+                  {{small.hq}} 2x,
+                  {{small.lossless}} 3x">
       </picture>
       {{/with}}
+
       {{#with second_image}}
-      <picture class="guidebook__picture guidebook__picture--second">
-        <source
-          media="(min-width: 1230px)"
+      <picture class="guidebook__picture guidebook__picture--secondary">
+        <source media="(min-width: 1230px)"
           srcset="{{large.normal}} 1x,
                   {{large.hq}} 2x,
                   {{large.lossless}} 3x">
-          <source
-            media="(min-width: 500px)"
-            srcset="{{medium.normal}} 1x,
-                    {{medium.hq}} 2x,
-                    {{medium.lossless}} 3x">
 
-          <source
-            media="(min-width: 200px)"
-            srcset="{{small.normal}} 1x,
-                    {{small.hq}} 2x,
-                    {{small.lossless}} 3x">
+        <source media="(min-width: 500px)"
+          srcset="{{medium.normal}} 1x,
+                  {{medium.hq}} 2x,
+                  {{medium.lossless}} 3x">
 
-          <img
-            srcset="{{small.normal}} 1x,
-                    {{small.hq}} 2x,
-                    {{small.lossless}} 3x"
-            class="guidebook__image"
-            alt="image for {{ title }}">
+        <source media="(min-width: 200px)"
+          srcset="{{small.normal}} 1x,
+                  {{small.hq}} 2x,
+                  {{small.lossless}} 3x">
+
+        <img class="guidebook__image"
+          alt="Image for {{ title }}"
+          srcset="{{small.normal}} 1x,
+                  {{small.hq}} 2x,
+                  {{small.lossless}} 3x">
       </picture>
       {{/with}}
     </a>
 
     <aside class="guidebook__info">
-      <p class="guidebook__info__blurb">{{ blurb }}</p>
-      <a class="guidebook__info__link" href="{{ store_link_href }}">Go to store</a>
+      <p class="guidebook__blurb">{{ blurb }}</p>
+      <a class="guidebook__button button" href="{{ store_link_href }}" role="button">Go to store</a>
     </aside>
-  </article>
+  </div>
 {{/if}}
