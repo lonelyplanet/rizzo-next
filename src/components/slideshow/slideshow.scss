@@ -80,4 +80,27 @@
       }
     }
   }
+
+  &__progress {
+    position: absolute;
+    top: auto;
+    bottom: 10px;
+    margin: 0 auto;
+    left: 50%;
+    // Put above the slides
+    z-index: 4;
+  }
+
+  &__progress__dot {
+    background: rgba(255,255,255, .6);
+    border-radius: 50%;
+    height: 1.2rem;
+    width: 1.2rem;
+    display: inline-block;
+    margin-right: .8rem;
+
+    &--active {
+      background: rgba(255,255,255, 1);
+    }
+  }
 }

@@ -8,7 +8,8 @@ export default class AboutPanel extends React.Component {
       el: this.refs.slideshow.getDOMNode(),
       type: "fade",
       images: this.props.location.images,
-      height: 300
+      height: 300,
+      showProgress: true
     });
   }
   render() {
