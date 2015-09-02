@@ -26,10 +26,9 @@ $height: 6rem;
 
     width: 8rem;
     height: $height;
-
-    background: #ccc;
-
+    
     background:{
+      color: #ccc;
       size: cover;
       repeat: no-repeat;
     }
