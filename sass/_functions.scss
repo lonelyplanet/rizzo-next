@@ -1,0 +1,21 @@
+/// Convert a pixel value to a percentage value
+///
+/// @param  {String} $target  - Pixel value of element width
+/// @param  {String} $context - Pixel value of element's container width
+/// @return {String}          - Percentage value
+@function percent($target, $context) {
+  @return ($target / $context) * 100%;
+}
+
+/// Convert a pixel value to an em value
+///
+/// For a relational value, the input is calculated based on a parent value.
+/// The default parent is 16px. The parent can be changed by passing an
+/// optional second value.
+///
+/// @param  {String} $pixel       - Pixel value to convert
+/// @param  {String} $base [16px] - Base pixel value
+/// @return {String}              - em value
+@function em($pixel, $base: 16px) {
+  @return ($pixel / $base) * 1em;
+}
