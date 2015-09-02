@@ -88,6 +88,10 @@ export default class Slideshow extends Component {
     if(!hasStraplines) {
       this.$el.find(".slideshow__straplines").remove();
     }
+
+    if (this.options.showProgress && images.length > 1) {
+      this.makeProgress();
+    }
   }
 
   initSlideShow() {
@@ -141,6 +145,10 @@ export default class Slideshow extends Component {
   }
 
   getNewState() {
+    if (this.slides.length === 1) {
+      return [0];
+    }
+
     let arr = [];
 
     for(let i = -this.padding; i <= this.padding; i++) {
@@ -148,7 +156,7 @@ export default class Slideshow extends Component {
     }
 
     // E.G., make sure if the array has [0,0,0], it only returns [0]
-    return uniq(arr);
+    return arr;
   }
 
   // TODO: Fix double overflow (more then one circle)
@@ -178,6 +186,10 @@ export default class Slideshow extends Component {
     this.stack.forEach(($el) => {
       $el.attr("class", "slideshow__slide slideshow__slide--num_" + i++);
     });
+
+    if (this.options.showProgress) {
+      this.updateProgress();
+    }
   }
 
   showNext({ reverse = false } = {}){
@@ -252,6 +264,28 @@ export default class Slideshow extends Component {
     this.$straplines
       .eq(index)
       .addClass("slideshow__strapline--visible");
+  }
+
+  makeProgress() {
+    this.$progress = $("<div />", {
+      "class": "slideshow__progress"
+    });
+
+    this.slides.forEach(() => {
+      this.$progress.append($("<span />", {
+        "class": "slideshow__progress__dot"
+      }));
+    });
+
+    this.$images.append(this.$progress);
+  }
+
+  updateProgress() {
+    let $dots = this.$progress.find(".slideshow__progress__dot");
+      
+    $dots.removeClass("slideshow__progress__dot--active");
+
+    $dots.eq(this.currentSlideIndex).addClass("slideshow__progress__dot--active");
   }
 
 }
