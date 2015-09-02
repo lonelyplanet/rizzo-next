@@ -14,7 +14,7 @@ export default class SidebarDetailsView extends React.Component{
 
     if (poi.geo.properties.image) {
       image = <div className="details__image">
-        <img data-src={poi.geo.properties.image} className="resrc" ref="img" />
+        <img data-src={poi.geo.properties.image} ref="img" />
       </div>
     }
 
