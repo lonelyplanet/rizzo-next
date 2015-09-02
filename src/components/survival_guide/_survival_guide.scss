@@ -15,12 +15,23 @@ $mobile-breakpoint: 400;
     margin: 0 auto 2.5rem;
   }
 
-  &__list__link {
+  &__link {
     display: block;
     color: $body-color;
+
+    &:hover,
+    &:focus {
+      .survival-guide__icon {
+        transform: translateY(-.5rem);
+      }
+
+      .survival-guide__title {
+        color: $color-primary;
+      }
+    }
   }
 
-  &__list__item {
+  &__item {
     display: inline-block;
     width: 100%;
     text-align: center;
@@ -49,11 +60,12 @@ $mobile-breakpoint: 400;
     }
   }
 
-  &__list__item__icon {
+  &__icon {
     display: block;
     width: 60px;
     height: 60px;
     margin: 0 auto;
+    transition: transform $animation-speed;
 
     @include respond-to($mobile-breakpoint) {
       width: 80px;
@@ -61,18 +73,19 @@ $mobile-breakpoint: 400;
     }
   }
 
-  &__list__item__title {
+  &__title {
     font-size: 1.8rem;
     font-weight: 700;
     line-height: 1;
     margin-top: 2rem;
+    transition: color $animation-speed;
 
     @include respond-to($mobile-breakpoint) {
       margin-top: 2.8rem;
     }
   }
 
-  &__list__item__blurb {
+  &__blurb {
     width: 90%;
     margin: .5rem auto 0;
     font-size: 1.6rem;
