@@ -15,7 +15,10 @@ export default class SidebarView extends React.Component {
         panelContent,
         tabCount = 0,
         sets = this.props.sets,
-        place = location.title;
+        place = location.title,
+        backSlug = "",
+        backElement = "",
+        h1Class = "sidebar__title __continent";
 
     let tabs = sets.map(function(set, i) {
       tabCount++;
@@ -43,12 +46,17 @@ export default class SidebarView extends React.Component {
       }
     }
 
-    let backSlug = `/${location.parent_slug}`;
+    if (location.parent_slug !== location.slug) {
+      backSlug = `/${location.parent_slug}`;
+      backElement = <a href={backSlug} className="location-subtitle" onClick={this.parentClick.bind(this)}>&lt; Back to {location.parent}</a>;
+      h1Class = "sidebar__title";
+    }
+
     return (
       <div className="sidebar">
-        <header className="sidebar-header">
-          <a href={backSlug} className="location-subtitle" onClick={this.parentClick.bind(this)}>&lt; {location.parent}</a>
-          <h1>
+        <header className="sidebar__header">
+          {backElement}
+          <h1 className={h1Class} >
             {location.title}
           </h1>
           <ul className="tabs">

@@ -8,6 +8,7 @@ $sidebarwidth: 470px;
 $closeButton: 70px;
 $closeMargin: calc(50vh - (#{$closeButton} / 2) );
 $pinsize: 20px;
+$pinColor: #CC0013;
 $mapContainerWidth: calc(100% - #{$sidebarwidth} - #{$closeButton});
 $hoveredItem: rgba(#000, .1);
 $pinItemColor: #3774B4;

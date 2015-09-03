@@ -57,21 +57,25 @@ $unit: $size / 16;
     padding: 30px;
   }
 
-  .sidebar-header {
-    background: #2569AF;
+  .sidebar__header {
+    background: $color-blue;
 
-    h1 {
+    .details {
+      a {
+        color: #fff;
+      }
+    }
+
+    .sidebar__title {
       margin-top: -12px;
       padding: 0 30px;
       color: #fff;
       font-weight: bold;
       font-size: 45px;
       letter-spacing: -1px;
-    }
 
-    .details {
-      a {
-        color: #fff;
+      &.__continent {
+        margin-top: 35px;
       }
     }
 
@@ -146,7 +150,7 @@ $unit: $size / 16;
 
     &__content {
       padding: $gutter / 2;
-      padding-bottom: $gutter;
+      padding-bottom: 10rem;
     }
 
     &__footer {
@@ -172,7 +176,7 @@ $unit: $size / 16;
     }
   }
 
-  .about-panel {
-    margin-bottom: 36rem;
-  }
+  // .about-panel {
+  //   margin-bottom: 36rem;
+  // }
 }
