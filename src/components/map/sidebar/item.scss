@@ -1,5 +1,4 @@
 .place {
-  width: $itemwidth;
   height: 60px;
   background: #fff;
   position: relative;
@@ -11,7 +10,18 @@
   }
 
   &.list {
+    width: $itemwidthList;
     margin: 10px 0;
+
+    .title {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: $feature-copy;
+    }
+
+    .subtitle {
+      font-size: 1.4rem;
+    }
 
     &:hover {
       background: $hoveredItem;
@@ -23,14 +33,24 @@
       right: 0;
       display: block;
       height: 0;
-      width: ($itemwidth - $imagewidth - ($orderwidth / 2));
-      border-top: 1px solid $disabled;
+      width: ($itemwidthList - $imagewidth - ($orderwidth / 2));
+      border-top: 1px solid $divider-color;
       content: ""
     }
   }
 
   &.pin {
+    width: $itemwidthPin;
     box-shadow: 0 44px 87px -22px #000;
+
+    .title {
+      font-size: 1.5rem;
+      color: $pinItemColor;
+    }
+
+    .subtitle {
+      margin-top: 7px;
+    }
 
     .place__pointer {
       position: absolute;
@@ -61,13 +81,10 @@
       right: 10px;
       top: 50%;
       height: $orderwidth * .6;
-      border-left: 1px solid $disabled;
+      border-left: 1px solid #EEF1FA;
       transform: translate(0, -50%);
-      content: ">";
-      line-height: $orderwidth * .6;
-      padding-left: 10px;
-      font-size: 12px;
-      color: $lpblue;
+      background-position: 3px 61%;
+      width: 17px;
     }
   }
 
@@ -79,7 +96,7 @@
 
     img {
       position: absolute;
-      max-width: ($itemwidth * .6);
+      max-width: ($itemwidthList * .6);
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
@@ -96,8 +113,17 @@
     transform: translate(-50%, -50%);
     text-align: center;
     line-height: $orderwidth;
-    font-size: 12px;
-    color: $lpblue;
+    font-weight: bold;
+
+    .pin & {
+      font-size: 1rem;
+      color: $pinItemColor;
+    }
+
+    .list & {
+      font-size: 1.4rem;
+      color: $feature-copy;
+    }
 
     &:before {
       position: absolute;
@@ -110,28 +136,32 @@
       transform: translate(-50%, -50%) rotate(45deg);
       content: "";
       z-index: -1;
-      box-shadow: 2px 2px 3px -2px #333;
-      border-radius: 3px;
+      box-shadow: 2px 1px 4px -2px #333;
+      border-radius: 4px;
     }
   }
 
   &__text {
     position: absolute;
-    width: ($itemwidth - $imagewidth - 30px);
     right: 0;
     top: 50%;
     transform: translate(0, -50%);
     padding-right: 10px;
     box-sizing: border-box;
 
-    .title {
-      color: $lpblue;
-    }
-
     .subtitle {
-      color: $disabled;
+      color: $footer-bottom-link-color;
       font-size: 10px;
       text-transform: uppercase;
     }
+
+    .list & {
+      width: ($itemwidthList - $imagewidth - 30px);
+    }
+
+    .pin & {
+      width: ($itemwidthPin - $imagewidth - 30px);
+    }
+
   }
 }

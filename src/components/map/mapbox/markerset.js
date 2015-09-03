@@ -129,7 +129,7 @@ class MarkerSet extends Component {
     this.popup = L.popup({
         closeButton: false,
         keepInView: true,
-        offset: L.point(220, 30)
+        offset: L.point(190, 29)
       })
       .setLatLng(L.latLng(lat, lng))
       .setContent(template)

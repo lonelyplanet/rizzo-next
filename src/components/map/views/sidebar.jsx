@@ -10,11 +10,13 @@ import AboutPanel from "./about-panel.jsx"
 export default class SidebarView extends React.Component {
 
   render() {
-    let location = this.props.location;
-    let activeSetIndex = this.props.activeSetIndex;
-    let panelContent;
-    let tabCount = 0;
-    let tabs = this.props.sets.map(function(set, i) {
+    let location = this.props.location,
+        activeSetIndex = this.props.activeSetIndex,
+        panelContent,
+        tabCount = 0,
+        sets = this.props.sets;
+
+    let tabs = sets.map(function(set, i) {
       tabCount++;
       let isActive = i === activeSetIndex ? true : false;
       return (
@@ -35,7 +37,7 @@ export default class SidebarView extends React.Component {
       if( this.props.customPanel === "about" ) {
         panelContent = <AboutPanel location={location} />;
       } else {
-        let activePanel = this.props.sets[this.props.activeSetIndex];
+        let activePanel = sets[this.props.activeSetIndex];
         panelContent = <Panel highlightedPoi={this.props.highlightedPoi} set={activePanel} />;
       }
     }
@@ -43,10 +45,10 @@ export default class SidebarView extends React.Component {
     return (
       <div className="sidebar">
         <header className="sidebar-header">
+          <a href={backSlug} className="location-subtitle" onClick={this.parentClick.bind(this)}>&lt; {location.parent}</a>
           <h1>
             {location.title}
           </h1>
-          <a href={backSlug} className="location-subtitle" onClick={this.parentClick.bind(this)}>&lt; Back to {location.parent}</a>
           <ul className="tabs">
             {tabs}
           </ul>

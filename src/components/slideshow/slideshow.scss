@@ -86,7 +86,7 @@
     top: auto;
     bottom: 10px;
     margin: 0 auto;
-    left: 50%;
+    left: calc(50% - 40px);
     // Put above the slides
     z-index: 4;
   }
