@@ -83,10 +83,6 @@ $unit: $size / 16;
       font-weight: 600;
     }
 
-    .close-poi {
-      color: #fff;
-    }
-
     .tabs {
       list-style: none;
       margin: 20px 30px 0 30px;
@@ -138,8 +134,19 @@ $unit: $size / 16;
       border-top: 1px solid $divider-color;
     }
 
+    &__welcome {
+      padding: {
+        left: $gutter / 2;
+        top: $gutter;
+      }
+      font-size: 1.8em;
+      font-weight: 100;
+      color: $h2-color;
+    }
+
     &__content {
       padding: $gutter / 2;
+      padding-bottom: $gutter;
     }
 
     &__footer {
@@ -147,6 +154,8 @@ $unit: $size / 16;
       top: auto;
       bottom: 0;
       width: 100%;
+      box-shadow: 0px 25px 63px 7px rgba(0,0,0,0.75);
+
     }
 
     &__close {
