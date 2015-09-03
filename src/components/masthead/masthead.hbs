@@ -18,7 +18,8 @@ found at https://accounts.brightcove.com/en/terms-and-conditions/.
       <div class="masthead__container">
         <div class="masthead__breadcrumb">
           {{#if masthead.grandparent}}
-            <a href="{{masthead.grandparent.slug}}">{{masthead.grandparent.place}}</a>,&nbsp;
+            <a href="{{masthead.grandparent.slug}}">{{masthead.grandparent.place}}</a>
+            <span class="masthead__breadcrumb__separator" aria-hidden="true">/</span>
           {{/if}}
           <a href="{{masthead.parent.slug}}">{{masthead.parent.place}}</a>
         </div>
