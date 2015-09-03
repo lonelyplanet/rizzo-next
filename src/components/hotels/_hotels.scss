@@ -1,8 +1,6 @@
 @import "../../../sass/webpack_deps";
 @import "../../../sass/datepicker";
 
-$hotels-breakpoint-small-max: em(729px);
-$hotels-breakpoint-medium-min: em(730px);
 $hotels-breakpoint-large-min: em(860px);
 $hotels-color: #fff;
 $hotels-form-height: 4.4rem;
@@ -71,11 +69,11 @@ $hotels-max-width: 1170;
   margin: 0 auto;
   width: 100%;
 
-  @media (max-width: $hotels-breakpoint-small-max) {
+  @media (max-width: $max-720) {
     max-width: 30rem;
   }
 
-  @media (min-width: $hotels-breakpoint-medium-min) {
+  @media (min-width: $min-720) {
     height: $hotels-form-height;
   }
 
@@ -88,7 +86,7 @@ $hotels-max-width: 1170;
   height: $hotels-form-height;
   font-size: 1.2rem;
 
-  @media (max-width: $hotels-breakpoint-small-max) {
+  @media (max-width: $max-720) {
     margin-top: 1.5rem;
 
     &:first-child {
@@ -96,7 +94,7 @@ $hotels-max-width: 1170;
     }
   }
 
-  @media (min-width: $hotels-breakpoint-medium-min) {
+  @media (min-width: $min-720) {
     float: left;
     width: percent(175, $hotels-form-width);
   }
@@ -106,7 +104,7 @@ $hotels-max-width: 1170;
   }
 
   + .hotels__search__field {
-    @media (min-width: $hotels-breakpoint-medium-min) {
+    @media (min-width: $min-720) {
       margin-left: percent(29, $hotels-form-width);
     }
 
@@ -158,11 +156,11 @@ $hotels-max-width: 1170;
   @include button();
   width: 100%;
 
-  @media (max-width: $hotels-breakpoint-small-max) {
+  @media (max-width: $max-720) {
     margin-top: 1.5rem;
   }
 
-  @media (min-width: $hotels-breakpoint-medium-min) {
+  @media (min-width: $min-720) {
     float: left;
     max-width: 18rem;
     width: percent(180, $hotels-form-width);

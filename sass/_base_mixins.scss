@@ -43,8 +43,8 @@
     border-bottom: .1rem solid $color-border;
 
     @media (min-width: $min-720) {
-      margin-left: ($gutter*1);
-      margin-right: ($gutter*1);
+      margin-left: ($gutter);
+      margin-right: ($gutter);
 
       bottom: -$gutter*3 + $spacing;
     }
