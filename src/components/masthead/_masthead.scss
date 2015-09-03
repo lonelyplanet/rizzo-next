@@ -135,17 +135,23 @@
 
   &__breadcrumb {
     line-height: 1;
-    margin-bottom: 10px;
-  }
-
-  &__breadcrumb {
+    margin-bottom: 1rem;
     color: #fff;
+    font-size: 1.5rem;
 
     a {
       color: #fff;
       text-transform: uppercase;
       position: relative;
     }
+  }
+
+  &__breadcrumb__separator {
+    position: relative;
+    top: -2px;
+    padding-left: .5rem;
+    padding-right: .4rem;
+    font-size: 1.1rem;
   }
 
   &--no-images &__breadcrumb {
