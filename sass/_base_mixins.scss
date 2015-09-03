@@ -1,14 +1,25 @@
 /// Use to separate components on the page.
-/// ### Modifiers 
+/// ### Modifiers
 /// * `--grey` modifier to change the background color
-/// 
+///
 /// @example css
-/// .segment { 
+/// .segment {
 ///   @include segment();
 /// }
 @mixin segment() {
   margin: 0;
-  padding: ($gutter*2) 0 ($gutter*2 - $spacing);
+  padding-top: ($gutter*2);
+  padding-bottom: ($gutter*2 - $spacing);
+
+  @media (min-width: $min-720){
+    padding-top: ($gutter*3);
+    padding-bottom: ($gutter*3 - $spacing);
+  }
+
+  @media (min-width: $min-1080){
+    padding-top: ($gutter*4.5);
+    padding-bottom: ($gutter*4.5 - $spacing);
+  }
 
   &--grey {
     background-color: $color-lightgrey;
@@ -23,38 +34,34 @@
     position: relative;
     bottom: -$gutter*2 + $spacing;
 
-    margin: 0 ($gutter*0.5);
+    margin-left: ($gutter*0.5);
+    margin-right: ($gutter*0.5);
 
     max-width: $max-width;
     height: 0;
 
     border-bottom: .1rem solid $color-border;
 
-    @media (min-width: $min-720){
-      margin: 0 ($gutter*1);
+    @media (min-width: $min-720) {
+      margin-left: ($gutter);
+      margin-right: ($gutter);
 
       bottom: -$gutter*3 + $spacing;
     }
 
-    @media (min-width: $min-1080){
-      margin: 0 ($gutter*2);
+    @media (min-width: $min-1080) {
+      margin-left: ($gutter*2);
+      margin-right: ($gutter*2);
 
       bottom: -$gutter*3.5 + $spacing;
     }
 
-    @media (min-width: $min-1290){
-      margin: 0 auto;
+    @media (min-width: $min-1290) {
+      margin-left: auto;
+      margin-right: auto;
 
       max-width: $max-width - $gutter * 4;
     }
-  }
-
-  @media (min-width: $min-720){
-    padding: ($gutter*3) 0 ($gutter*3 - $spacing);
-  }
-
-  @media (min-width: $min-1080){
-    padding: ($gutter*4.5) 0 ($gutter*4.5 - $spacing);
   }
 
   &--border-bottom:last-of-type:after {
@@ -66,21 +73,24 @@
 /// ### Modifiers
 /// * `--slim` removes the gutters
 /// * `--narrow` smaller width
-/// * `--half` half of the max width 
+/// * `--half` half of the max width
 @mixin container() {
   margin-left: auto;
   margin-right: auto;
 
-  padding: 0 ($gutter/2);
+  padding-left: ($gutter/2);
+  padding-right: ($gutter/2);
 
   max-width: $max-width;
 
   @media (min-width: $min-480){
-    padding: 0 $gutter;
+    padding-left: $gutter;
+    padding-right: $gutter;
   }
 
   @media (min-width: $min-1080){
-    padding: 0 $gutter*2;
+    padding-left: $gutter*2;
+    padding-right: $gutter*2;
   }
 
   &--slim {
