@@ -3,6 +3,8 @@ import Arkham from "../../core/arkham";
 import Events from "../../core/mixins/events";
 // TODO: Pull in only delay method
 import _ from "lodash";
+import find from "lodash/collection/find";
+
 let CHANGE_EVENT = "change";
 
 let state = {
@@ -36,6 +38,19 @@ let MapState = assign({
 
   removeChangeListener(cb) {
     this.stopListening(CHANGE_EVENT, cb);
+  },
+
+  sortSets: (sets) => {
+    let headings = ["experiences", "countries", "cities", "sponsored", "about"];
+
+    return headings.reduce((memo, heading) => {
+      let set = find(sets, (set) => set.title.toLowerCase() === heading);
+      if (set) {
+        memo.push(set);
+      }
+
+      return memo;
+    }, []);
   }
 }, Events);
 
@@ -75,7 +90,7 @@ Arkham.on("place.fetching", (data) => {
 
 Arkham.on("place.fetched", (data) => {
   state.currentLocation = data.location;
-  state.sets = data.sets;
+  state.sets = MapState.sortSets(data.sets);
   state.activeSetIndex = 0;
   state.fetchingPlace = "";
   state.isFetching = false;
@@ -96,7 +111,7 @@ Arkham.on("place.errorfetching", (data) => {
 
 Arkham.on("state.setinitial", (data) => {
   state.isFetching = false;
-  state.sets = data.sets;
+  state.sets = MapState.sortSets(data.sets);
   state.currentLocation = data.location;
   MapState.emitChange();
 });
