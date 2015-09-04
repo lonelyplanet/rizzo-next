@@ -7,6 +7,10 @@ import Overlay from "../overlay";
  * Masthead Component
 */
 export default class MastheadComponent extends Component {
+  get $straplines() {
+    return this.$el.find(".masthead__strapline");
+  }
+
   initialize(options) {
     this.events = {
       "click .js-play-video": "playVideo"
@@ -16,6 +20,8 @@ export default class MastheadComponent extends Component {
     this.slideshow = new Slideshow(assign({
       el: this.$el.find(".slideshow")
     }, options.slideshow));
+
+    this.listenTo(this.slideshow, "image.changed", this.updateStrapline);
 
      // import Video from "../video";
     require([
@@ -63,5 +69,12 @@ export default class MastheadComponent extends Component {
       this.$el.find(".js-play-video").show();
       this.videoId = videos[0];
     }
+  }
+
+  updateStrapline(data) {
+    this.$straplines.removeClass("masthead__strapline--visible");
+    this.$straplines
+      .eq(data.index)
+      .addClass("masthead__strapline--visible");
   }
 }
