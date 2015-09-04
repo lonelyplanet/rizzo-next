@@ -17,7 +17,7 @@
     "sassdoc": "./node_modules/.bin/sassdoc sass --theme neat",
     "lint": "./node_modules/.bin/eslint src --ext .js,.jsx"
   },
-  "version": "0.9.0",
+  "version": "0.9.1",
   "dependencies": {
     "clamp-js": "*",
     "flamsteed": "latest",
