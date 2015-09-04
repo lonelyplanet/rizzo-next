@@ -90,7 +90,7 @@ Arkham.on("place.fetching", (data) => {
 
 Arkham.on("place.fetched", (data) => {
   state.currentLocation = data.location;
-  state.sets = MapState.sortSets(data.sets);
+  state.sets = MapState.sortSets(data.sets.filter((s) => s.items.length));
   state.activeSetIndex = 0;
   state.fetchingPlace = "";
   state.isFetching = false;
