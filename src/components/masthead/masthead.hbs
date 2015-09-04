@@ -25,9 +25,9 @@ found at https://accounts.brightcove.com/en/terms-and-conditions/.
         </div>
         <h1 class="masthead__title">{{place.name}}</h1>
 
-        {{#if masthead_images}}
+        {{#if masthead.images}}
         <div class="masthead__straplines">
-          {{#each masthead_images}}
+          {{#each masthead.images}}
             <div class="masthead__strapline{{#if @first}} masthead__strapline--visible{{/if}}">{{strapline}}</div>
           {{/each}}
         </div>

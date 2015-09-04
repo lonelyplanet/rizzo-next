@@ -39,9 +39,7 @@ export default class Slideshow extends Component {
     return this._$images;
   }
 
-  get $straplines() {
-    return this.$el.find(".slideshow__strapline");
-  }
+  
 
   get type(){
     return this.options.type || "fade";
@@ -260,10 +258,9 @@ export default class Slideshow extends Component {
   }
 
   showStraplineByIndex(index){
-    this.$straplines.removeClass("slideshow__strapline--visible");
-    this.$straplines
-      .eq(index)
-      .addClass("slideshow__strapline--visible");
+    this.trigger("image.changed", {
+      index
+    });
   }
 
   makeProgress() {
