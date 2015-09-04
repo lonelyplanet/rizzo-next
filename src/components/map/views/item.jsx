@@ -14,7 +14,7 @@ export default class ItemView extends React.Component {
     let picClass = "place__pic";
 
     if (item.onMap) {
-      classString += "pin";
+      classString += "pin icon icon--chevron-right";
     } else {
       classString += "list";
       if (item.highlighted) {
@@ -30,8 +30,8 @@ export default class ItemView extends React.Component {
       let type = this.props.item.item_type === "Place" ? "sight" : "activity";
       picClass += ` topic__image topic__image--${type}`;
     }
-    if (title.length > 35) {
-      title = title.substr(0, 34) + "...";
+    if (title.length > 30) {
+      title = title.substr(0, 29) + "...";
     }
 
     let subtitle;

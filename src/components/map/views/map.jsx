@@ -14,7 +14,7 @@ export default class MapView extends React.Component {
   }
   render() {
     return (
-      <div ref="map" className="map-container">Map goes here</div>
+      <div ref="map" className="map-container"></div>
     )
   }
 

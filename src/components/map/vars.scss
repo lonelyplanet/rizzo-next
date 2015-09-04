@@ -1,4 +1,5 @@
-$itemwidth: 400px;
+$itemwidthPin: 340px;
+$itemwidthList: 410px;
 $imagewidth: 90px;
 $orderwidth: 60px;
 $disabled: #CBD9E4;
@@ -7,5 +8,7 @@ $sidebarwidth: 470px;
 $closeButton: 70px;
 $closeMargin: calc(50vh - (#{$closeButton} / 2) );
 $pinsize: 20px;
+$pinColor: #CC0013;
 $mapContainerWidth: calc(100% - #{$sidebarwidth} - #{$closeButton});
 $hoveredItem: rgba(#000, .1);
+$pinItemColor: #3774B4;

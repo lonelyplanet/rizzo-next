@@ -13,19 +13,21 @@ export default class AboutPanel extends React.Component {
     });
   }
   render() {
-    let description = this.props.location.description;
-    let slug = `/${this.props.location.slug}`;
+    let place = this.props.location.title,
+        description = this.props.location.description,
+        slug = `/${this.props.location.slug}`;
 
     return (
       <div className="about-panel">
         <div className="panel">
           <div className="slideshow js-panel-slideshow" ref="slideshow">
           </div>
+          <div className="panel__welcome">Welcome to {place}</div>
           <div className="panel__content" dangerouslySetInnerHTML={{__html: description}}>
           </div>
           <div className="panel__footer">
             <a className="panel__close" href={slug}>
-              Close map and explore {this.props.location.title}
+              Close map and explore {place}
               <span className="icon-chevron-right"></span>
             </a>
           </div>

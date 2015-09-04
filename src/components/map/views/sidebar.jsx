@@ -10,11 +10,17 @@ import AboutPanel from "./about-panel.jsx"
 export default class SidebarView extends React.Component {
 
   render() {
-    let location = this.props.location;
-    let activeSetIndex = this.props.activeSetIndex;
-    let panelContent;
-    let tabCount = 0;
-    let tabs = this.props.sets.map(function(set, i) {
+    let location = this.props.location,
+        activeSetIndex = this.props.activeSetIndex,
+        panelContent,
+        tabCount = 0,
+        sets = this.props.sets,
+        place = location.title,
+        backSlug = "",
+        backElement = "",
+        h1Class = "sidebar__title __continent";
+
+    let tabs = sets.map(function(set, i) {
       tabCount++;
       let isActive = i === activeSetIndex ? true : false;
       return (
@@ -25,7 +31,7 @@ export default class SidebarView extends React.Component {
     if (location.description.length > 0) {
       tabCount++;
       let isActive = tabCount === activeSetIndex ? true : false;
-      let aboutTab = <Tab name="About" active={isActive} i={tabCount} customPanel="about" />
+      let aboutTab = <Tab name="About" place={place} active={isActive} i={tabCount} customPanel="about" />
       tabs.push(aboutTab);
     }
 
@@ -35,18 +41,24 @@ export default class SidebarView extends React.Component {
       if( this.props.customPanel === "about" ) {
         panelContent = <AboutPanel location={location} />;
       } else {
-        let activePanel = this.props.sets[this.props.activeSetIndex];
+        let activePanel = sets[this.props.activeSetIndex];
         panelContent = <Panel highlightedPoi={this.props.highlightedPoi} set={activePanel} />;
       }
     }
-    let backSlug = `/${location.parent_slug}`;
+
+    if (location.parent_slug !== location.slug) {
+      backSlug = `/${location.parent_slug}`;
+      backElement = <a href={backSlug} className="location-subtitle" onClick={this.parentClick.bind(this)}>&lt; Back to {location.parent}</a>;
+      h1Class = "sidebar__title";
+    }
+
     return (
       <div className="sidebar">
-        <header className="sidebar-header">
-          <h1>
+        <header className="sidebar__header">
+          {backElement}
+          <h1 className={h1Class} >
             {location.title}
           </h1>
-          <a href={backSlug} className="location-subtitle" onClick={this.parentClick.bind(this)}>&lt; Back to {location.parent}</a>
           <ul className="tabs">
             {tabs}
           </ul>

@@ -57,17 +57,8 @@ $unit: $size / 16;
     padding: 30px;
   }
 
-  .sidebar-header {
-    background: $lpblue;
-
-    h1 {
-      margin: 0;
-      padding: 30px 30px 0 30px;
-      color: #fff;
-      font-weight: bold;
-      font-size: 40px;
-      letter-spacing: -1px;
-    }
+  .sidebar__header {
+    background: $color-blue;
 
     .details {
       a {
@@ -75,19 +66,30 @@ $unit: $size / 16;
       }
     }
 
-    .location-subtitle {
+    .sidebar__title {
+      margin-top: -12px;
+      padding: 0 30px;
       color: #fff;
-      padding: 0 0 0 30px;
-      font-size: 14px;
+      font-weight: bold;
+      font-size: 45px;
+      letter-spacing: -1px;
+
+      &.__continent {
+        margin-top: 35px;
+      }
     }
 
-    .close-poi {
-      color: #fff;
+    .location-subtitle {
+      display: block;
+      color: #82A6CE;
+      padding: 10px 0 0 25px;
+      font-size: 2.4rem;
+      font-weight: 600;
     }
 
     .tabs {
       list-style: none;
-      margin: 30px 30px 0 30px;
+      margin: 2rem 3rem 0 3rem;
       padding: 0;
       border-top: 1px solid rgba(255,255,255,.2);
 
@@ -96,9 +98,9 @@ $unit: $size / 16;
         display: inline-block;
         color: #fff;
         text-align: center;
-        margin: 0 10px 0 0;
-        padding: 10px 0;
-        font-size: 13px;
+        margin: 0 2.5rem 0 0;
+        padding: 12px 0 15px;
+        font-size: 1.5rem;
         cursor: pointer;
         font-weight: bold;
         letter-spacing: -.3px;
@@ -106,11 +108,11 @@ $unit: $size / 16;
         &:after {
           display: block;
           width: 100%;
-          height: 3px;
+          height: 4px;
           position: absolute;
           bottom: 0;
           left: 0;
-          transform: translate(0, 3px);
+          transform: translate(0, 4px);
           transition: transform .2s linear;
           background: #fff;
           content: "";
@@ -131,24 +133,24 @@ $unit: $size / 16;
     overflow: auto;
 
     .listing {
-      margin: 30px 0 0 30px;
       position: relative;
+      margin: 3rem 3rem 0 3rem;
+      border-top: 1px solid $divider-color;
+    }
 
-      &:before {
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translate(-50%);
-        width: 90%;
-        height: 0;
-        border-top: 1px solid #ccc;
-        content: "";
+    &__welcome {
+      padding: {
+        left: $gutter / 2;
+        top: $gutter;
       }
+      font-size: 1.8em;
+      font-weight: 100;
+      color: $h2-color;
     }
 
     &__content {
       padding: $gutter / 2;
+      padding-bottom: 10rem;
     }
 
     &__footer {
@@ -156,6 +158,8 @@ $unit: $size / 16;
       top: auto;
       bottom: 0;
       width: 100%;
+      box-shadow: 0 0 10px 0 rgba(0,0,0,.5);
+
     }
 
     &__close {
@@ -172,7 +176,7 @@ $unit: $size / 16;
     }
   }
 
-  .about-panel {
-    margin-bottom: 36rem;
-  }
+  // .about-panel {
+  //   margin-bottom: 36rem;
+  // }
 }
