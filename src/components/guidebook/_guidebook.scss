@@ -1,13 +1,10 @@
 @import "../../../sass/webpack_deps";
 
-$guidebook-breakpoint-large-max: 1023px;
-$guidebook-breakpoint-xlarge-min: 1024px;
-
 .guidebook {
   @include clearfix;
   margin: 0 auto $gutter;
 
-  @media (max-width: $guidebook-breakpoint-large-max) {
+  @media (max-width: $max-1080) {
     text-align: center;
   }
 }
@@ -16,7 +13,7 @@ $guidebook-breakpoint-xlarge-min: 1024px;
   position: relative;
   z-index: 5;
 
-  @media (min-width: $guidebook-breakpoint-xlarge-min) {
+  @media (min-width: $min-1080) {
     float: right;
     width: 35%;
     margin-right: 3%;
@@ -30,7 +27,7 @@ $guidebook-breakpoint-xlarge-min: 1024px;
   font-weight: $font-weight-medium;
   line-height: (32 / 18);
 
-  @media (min-width: $guidebook-breakpoint-xlarge-min) {
+  @media (min-width: $min-1080) {
     width: 100%;
     max-width: 400px;
     margin-left: 0;
@@ -51,7 +48,7 @@ $guidebook-breakpoint-xlarge-min: 1024px;
   margin-bottom: $spacing;
   text-align: center;
 
-  @media (min-width: $guidebook-breakpoint-xlarge-min) {
+  @media (min-width: $min-1080) {
     float: right;
     width: 43%;
     margin-top: 10%;
@@ -72,12 +69,12 @@ $guidebook-breakpoint-xlarge-min: 1024px;
     display: none;
   }
 
-  @media (min-width: $guidebook-breakpoint-xlarge-min) {
+  @media (min-width: $min-1080) {
     max-width: 450px;
     line-height: 1;
   }
 
-  @media (min-width: $guidebook-breakpoint-xlarge-min) {
+  @media (min-width: $min-1080) {
     padding-top: 0;
     text-align: left;
     color: $h2-secondary-color;
@@ -95,7 +92,7 @@ $guidebook-breakpoint-xlarge-min: 1024px;
   font-weight: 300;
   color: $ancillary-header-color;
 
-  @media (min-width: $guidebook-breakpoint-xlarge-min) {
+  @media (min-width: $min-1080) {
     font-size: 28px;
     display: block;
   }
@@ -117,7 +114,7 @@ $guidebook-breakpoint-xlarge-min: 1024px;
     margin: 2rem auto;
   }
 
-  @media (min-width: $guidebook-breakpoint-xlarge-min) {
+  @media (min-width: $min-1080) {
     width: 55%;
     float: left;
   }
@@ -165,7 +162,7 @@ $guidebook-breakpoint-xlarge-min: 1024px;
   width: 100%;
   max-width: 465px;
 
-  @media (min-width: $guidebook-breakpoint-xlarge-min) {
+  @media (min-width: $min-1080) {
     max-width: 100%;
   }
 }
