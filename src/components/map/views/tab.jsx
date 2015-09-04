@@ -21,7 +21,7 @@ export default class TabView extends React.Component {
   tabClick() {
     let props = this.props;
     if (props.customPanel) {
-      MapActions.customPanel({ panel: props.customPanel, view: props.i })
+      MapActions.customPanel({ panel: props.customPleanel, view: props.i })
     } else {
       MapActions.viewChange({ view: props.i })
     }

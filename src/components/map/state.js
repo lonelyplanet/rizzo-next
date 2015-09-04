@@ -65,6 +65,7 @@ Arkham.on("map.closed", () => {
 });
 
 Arkham.on("view.changed", (data) => {
+  state.hoveredItem = data;
   state.activeSetIndex = data.view;
   state.customPanel = "";
   MapState.emitChange();

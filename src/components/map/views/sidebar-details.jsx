@@ -20,9 +20,9 @@ export default class SidebarDetailsView extends React.Component{
 
     return (
       <div className="sidebar details">
-        <header className="sidebar-header">
+        <header className="sidebar__header">
           <a href="#" className="close-poi location-subtitle" onClick={this.closePOI}>&lt; Back</a>
-          <h1>
+          <h1 className="sidebar__title">
             {poi.title}
           </h1>
         </header>

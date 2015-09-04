@@ -13,7 +13,7 @@ class MarkerSet extends Component {
 
   initialize({ pois, map, layer }) {
     this.events = {
-      "click .pin": "_poiClick"
+      "click.poi .pin": "_poiClick"
     };
 
     this.pois = pois;
@@ -92,7 +92,7 @@ class MarkerSet extends Component {
     let state = MapState.getState();
     // If there's no active set for the current view, use the first set
     let set = state.sets[state.sets[state.activeSetIndex] ? state.activeSetIndex : 0];
-    
+
     if (!set) {
       return;
     }
@@ -147,8 +147,14 @@ class MarkerSet extends Component {
   }
 
   _poiClick(event) {
-    // figure out if a PLACE or a POI
-    MapActions.poiOpen(this.activeLayer.feature.properties);
+    let poiIndex = this.activeLayer.feature.properties.index,
+        poi = this.pois[poiIndex];
+    if (poi.item_type === "Place") {
+      console.log(this.pois[poiIndex]);
+      MapActions.gotoPlace({ place: poi.slug, placeTitle: poi.title });
+    } else {
+      MapActions.poiOpen(this.activeLayer.feature.properties);
+    }
   }
 
   _fixzIndex(currentLayer) {

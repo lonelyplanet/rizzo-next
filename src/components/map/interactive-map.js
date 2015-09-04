@@ -17,6 +17,7 @@ class InteractiveMap extends Component {
     });
 
     Arkham.on("view.changed", () => {
+      this.$el.off("click.poi");
       this.changeView();
     });
 
