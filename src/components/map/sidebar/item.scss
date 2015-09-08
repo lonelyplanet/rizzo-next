@@ -23,10 +23,6 @@
       font-size: 1.4rem;
     }
 
-    &:hover {
-      background: $hoveredItem;
-    }
-
     &:after {
       position: absolute;
       bottom: 0;
