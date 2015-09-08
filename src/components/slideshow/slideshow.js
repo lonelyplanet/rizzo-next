@@ -55,7 +55,13 @@ export default class Slideshow extends Component {
       "click [class*=\"--num_1\"]": "goRight"
     };
 
-    this.createBaseSlides();
+    let state = this.getInitialState();
+
+    if (!state.images && !this.options.images) {
+      return;
+    }
+
+    this.createBaseSlides(state);
     this.initSlideShow();
 
     if(this.slides.length > 1) {
@@ -64,8 +70,8 @@ export default class Slideshow extends Component {
     }
   }
 
-  createBaseSlides() {
-    let state = this.getInitialState();
+  createBaseSlides(state) {
+    
 
     let images = state.images || this.options.images || [];
 
