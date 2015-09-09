@@ -25,7 +25,7 @@ class SlideComponent extends Component {
 
   initialize(options){
     this.model = options.model;
-    this.preloadPromise = [];
+    this.preloadPromise = {};
 
     if(!this.model) {
       throw new Error("Missing slide model");
@@ -33,12 +33,13 @@ class SlideComponent extends Component {
   }
 
   getElement(){
-    let $el = this.currentEl = $("<div class=\"slideshow__slide\" />");
+    let $el = this.currentEl = $("<div />", {
+      "class": "slideshow__slide slideshow__slide--next"
+    });
 
     $el.css({
       "background-image": `url(${this.imageUrl})`
-    });
-    $el.attr("data-strapline", this.model.strapline);
+    }).attr("data-strapline", this.model.strapline);
 
     return $el;
   }
