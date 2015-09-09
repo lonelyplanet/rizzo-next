@@ -39,6 +39,11 @@
       z-index: 5;
       opacity: 0;
     }
+
+    &--next {
+      z-index: -1;
+      opacity: 0;
+    }
   }
 
   &--slide {
