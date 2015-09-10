@@ -45,7 +45,7 @@ export default class MainView extends React.Component {
       sidebar = <SidebarFetching place={this.state.fetchingPlace} />;
     } else {
       if (this.state.isDetail) {
-        sidebar = <SidebarDetails poi={this.state.sets[this.state.activeSetIndex].items[this.state.poi]} />
+        sidebar = <SidebarDetails poi={this.state.poi} />
       } else {
         sidebar = <Sidebar location={this.state.currentLocation} sets={this.state.sets} highlightedPoi={ this.state.hoveredItem } activeSetIndex={this.state.activeSetIndex} customPanel={this.state.customPanel}/>
       }

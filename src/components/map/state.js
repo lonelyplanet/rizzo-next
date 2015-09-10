@@ -72,7 +72,8 @@ Arkham.on("view.changed", (data) => {
 });
 
 Arkham.on("poi.opened", (data) => {
-  state.poi = parseInt(data.index, 10);
+  state.poiIndex = parseInt(data.index, 10);
+  state.poi = data.poi;
   state.isDetail = true;
   MapState.emitChange();
 });
@@ -91,7 +92,7 @@ Arkham.on("place.fetching", (data) => {
 
 Arkham.on("place.fetched", (data) => {
   state.currentLocation = data.location;
-  state.sets = MapState.sortSets(data.sets.filter((s) => s.items.length));
+  state.sets = MapState.sortSets(data.sets.filter((s) => !!s.items.length));
   state.activeSetIndex = 0;
   state.fetchingPlace = "";
   state.isFetching = false;
@@ -112,7 +113,7 @@ Arkham.on("place.errorfetching", (data) => {
 
 Arkham.on("state.setinitial", (data) => {
   state.isFetching = false;
-  state.sets = MapState.sortSets(data.sets.filter((s) => s.items.length));
+  state.sets = MapState.sortSets(data.sets.filter((s) => !!s.items.length));
   state.currentLocation = data.location;
   MapState.emitChange();
 });
@@ -128,6 +129,7 @@ Arkham.on("item.hovered", (data) => {
 });
 
 Arkham.on("custompanel.opened", (data) => {
+  state.lastActiveSetIndex = state.activeSetIndex;
   state.activeSetIndex = data.view;
   state.customPanel = data.panel;
   MapState.emitChange();
