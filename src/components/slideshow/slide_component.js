@@ -34,7 +34,7 @@ class SlideComponent extends Component {
 
   getElement(){
     let $el = this.currentEl = $("<div />", {
-      "class": "slideshow__slide slideshow__slide--next"
+      "class": "slideshow__slide"
     });
 
     $el.css({

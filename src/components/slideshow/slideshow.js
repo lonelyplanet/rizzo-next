@@ -226,7 +226,7 @@ export default class Slideshow extends Component {
         $(toBeRemoved[0]).remove();
 
         // insert new element
-        nextEl.appendTo(this.$images);
+        nextEl.addClass("slideshow__slide--next").appendTo(this.$images);
 
         // reset all css classes on stack for positioning / animation
         this.setCssClasses();
