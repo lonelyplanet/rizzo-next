@@ -1,43 +1,63 @@
+/*
+This CSS resource incorporates links to font software which is 
+the valuable copyrighted property of WebType LLC, The Font Bureau, 
+and/or their suppliers. You may not 
+attempt to copy, install, redistribute, convert, modify or reverse 
+engineer this font software. Please contact WebType with any 
+questions: http://www.webtype.com 
+*/
+
 @font-face {
-  font-family:'FreightSansPro' {}
-  font-weight: 400;
+  font-family: "Main";
+  src: url("../fonts/main/2c8c3478-e1ba-4af3-bfd0-9fea259fc17f-2.eot");
+  src: url("../fonts/main/2c8c3478-e1ba-4af3-bfd0-9fea259fc17f-2.eot?") format("embedded-opentype"),
+       url("../fonts/main/2c8c3478-e1ba-4af3-bfd0-9fea259fc17f-3.woff") format("woff"),
+       url("../fonts/main/2c8c3478-e1ba-4af3-bfd0-9fea259fc17f-1.ttf") format("truetype");
   font-style: normal;
   font-stretch: normal;
-  src: url("http://assets.staticlp.com/javascripts/fonts/FreightSansProBook/FreightSansProBook-Regular_gdi.eot");
-  src: url("http://assets.staticlp.com/javascripts/fonts/FreightSansProBook/FreightSansProBook-Regular_gdi.eot?#iefix") format("embedded-opentype"), url("http://assets.staticlp.com/javascripts/fonts/FreightSansProBook/FreightSansProBook-Regular_gdi.woff") format("woff"), url("http://assets.staticlp.com/javascripts/fonts/FreightSansProBook/FreightSansProBook-Regular_gdi.ttf") format("truetype"), url("http://assets.staticlp.com/javascripts/fonts/FreightSansProBook/FreightSansProBook-Regular_gdi.otf") format("opentype"), url("http://assets.staticlp.com/javascripts/fonts/FreightSansProBook/FreightSansProBook-Regular_gdi.svg#FreightSansProBook-Regular") format("svg");
-  unicode-range: U+0020-2265;
-}
-
-
-@font-face {
-  font-family:'FreightSansPro' {}
   font-weight: 300;
-  font-style: normal;
-  font-stretch: normal;
-  src: url("http://assets.staticlp.com/javascripts/fonts/FreightSansProLight/FreightSansProLight-Regular_gdi.eot");
-  src: url("http://assets.staticlp.com/javascripts/fonts/FreightSansProLight/FreightSansProLight-Regular_gdi.eot?#iefix") format("embedded-opentype"), url("http://assets.staticlp.com/javascripts/fonts/FreightSansProLight/FreightSansProLight-Regular_gdi.woff") format("woff"), url("http://assets.staticlp.com/javascripts/fonts/FreightSansProLight/FreightSansProLight-Regular_gdi.ttf") format("truetype"), url("http://assets.staticlp.com/javascripts/fonts/FreightSansProLight/FreightSansProLight-Regular_gdi.otf") format("opentype"), url("http://assets.staticlp.com/javascripts/fonts/FreightSansProLight/FreightSansProLight-Regular_gdi.svg#FreightSansProLight-Regular") format("svg");
-  unicode-range: U+0020-2265;
 }
 
+@font-face {
+  font-family: "Main";
+  src: url("../fonts/main/19319132-31a6-45e2-85a5-6dacae897490-2.eot");
+  src: url("../fonts/main/19319132-31a6-45e2-85a5-6dacae897490-2.eot?") format("embedded-opentype"),
+       url("../fonts/main/19319132-31a6-45e2-85a5-6dacae897490-3.woff") format("woff"),
+       url("../fonts/main/19319132-31a6-45e2-85a5-6dacae897490-1.ttf") format("truetype");
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 500;
+}
 
 @font-face {
-  font-family:'FreightSansPro' {}
+  font-family: "Main";
+  src: url("../fonts/main/743d3d3a-da58-48d2-a5c3-bd7994650e23-2.eot");
+  src: url("../fonts/main/743d3d3a-da58-48d2-a5c3-bd7994650e23-2.eot?") format("embedded-opentype"),
+       url("../fonts/main/743d3d3a-da58-48d2-a5c3-bd7994650e23-3.woff") format("woff"),
+       url("../fonts/main/743d3d3a-da58-48d2-a5c3-bd7994650e23-1.ttf") format("truetype");
+  font-style: normal;
+  font-stretch: normal;
   font-weight: 600;
-  font-style: normal;
-  font-stretch: normal;
-  src: url("http://assets.staticlp.com/javascripts/fonts/FreightSansProSemiBold/FreightSansProSemibold-Regular_gdi.eot");
-  src: url("http://assets.staticlp.com/javascripts/fonts/FreightSansProSemiBold/FreightSansProSemibold-Regular_gdi.eot?#iefix") format("embedded-opentype"), url("http://assets.staticlp.com/javascripts/fonts/FreightSansProSemiBold/FreightSansProSemibold-Regular_gdi.woff") format("woff"), url("http://assets.staticlp.com/javascripts/fonts/FreightSansProSemiBold/FreightSansProSemibold-Regular_gdi.ttf") format("truetype"), url("http://assets.staticlp.com/javascripts/fonts/FreightSansProSemiBold/FreightSansProSemibold-Regular_gdi.otf") format("opentype"), url("http://assets.staticlp.com/javascripts/fonts/FreightSansProSemiBold/FreightSansProSemibold-Regular_gdi.svg#FreightSansProSemibold-Regular") format("svg");
-  unicode-range: U+0020-2265;
 }
-
 
 @font-face {
-  font-family:'LPMillerItalic' {}
-  font-weight: 400;
+  font-family: "Secondary";
+  src: url("../fonts/secondary/2d4b6287-e087-4bce-89af-61a0cd634f27-2.eot");
+  src: url("../fonts/secondary/2d4b6287-e087-4bce-89af-61a0cd634f27-2.eot?") format("embedded-opentype"),
+       url("../fonts/secondary/2d4b6287-e087-4bce-89af-61a0cd634f27-3.woff") format("woff"),
+       url("../fonts/secondary/2d4b6287-e087-4bce-89af-61a0cd634f27-1.ttf") format("truetype");
   font-style: italic;
+  font-weight: normal;
   font-stretch: normal;
-  src: url("http://assets.staticlp.com/javascripts/fonts/LpMillerItalic/LPMillerDailyOne-Italic_gdi.eot");
-  src: url("http://assets.staticlp.com/javascripts/fonts/LpMillerItalic/LPMillerDailyOne-Italic_gdi.eot?#iefix") format("embedded-opentype"), url("http://assets.staticlp.com/javascripts/fonts/LpMillerItalic/LPMillerDailyOne-Italic_gdi.woff") format("woff"), url("http://assets.staticlp.com/javascripts/fonts/LpMillerItalic/LPMillerDailyOne-Italic_gdi.ttf") format("truetype"), url("http://assets.staticlp.com/javascripts/fonts/LpMillerItalic/LPMillerDailyOne-Italic_gdi.otf") format("opentype"), url("http://assets.staticlp.com/javascripts/fonts/LpMillerItalic/LPMillerDailyOne-Italic_gdi.svg#LPMillerDailyOne-Italic") format("svg");
-  unicode-range: U+0020-2265;
 }
 
+@font-face {
+  font-family: "Secondary";
+  src: url("../fonts/secondary/6e603ae4-800b-4625-9fa8-1819315263a6-2.eot");
+  src: url("../fonts/secondary/6e603ae4-800b-4625-9fa8-1819315263a6-2.eot?") format("embedded-opentype"),
+       url("../fonts/secondary/6e603ae4-800b-4625-9fa8-1819315263a6-3.woff") format("woff"),
+       url("../fonts/secondary/6e603ae4-800b-4625-9fa8-1819315263a6-1.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+  font-stretch: normal;
+}
