@@ -7,7 +7,7 @@
       {{/if}}
     </header>
 
-    <a class="guidebook__pictures" href="{{ store_link_href }}" tabindex="-1">
+    <a class="guidebook__pictures {{#unless second_image}}guidebook__pictures--single{{/unless}}" href="{{ store_link_href }}" tabindex="-1">
       {{#with first_image}}
       <picture class="guidebook__picture guidebook__picture--primary">
         <source media="(min-width: 1230px)"
@@ -32,7 +32,8 @@
                   {{small.lossless}} 3x">
       </picture>
       {{/with}}
-
+  
+      {{#if second_image}}
       {{#with second_image}}
       <picture class="guidebook__picture guidebook__picture--secondary">
         <source media="(min-width: 1230px)"
@@ -57,6 +58,7 @@
                   {{small.lossless}} 3x">
       </picture>
       {{/with}}
+      {{/if}}
     </a>
 
     <aside class="guidebook__info">

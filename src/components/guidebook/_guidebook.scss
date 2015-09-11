@@ -138,7 +138,7 @@
 }
 
 .guidebook__picture--primary {
-  position: absolute;
+  position: relative;
   z-index: 1;
   top: 0;
   left: 50%;
@@ -152,10 +152,14 @@
   @media (min-width: $min-720) {
     margin-left: (-35rem / 2);
   }
+
+  .guidebook__pictures--single & {
+    left: 0;
+  }
 }
 
 .guidebook__picture--secondary {
-  transform: translate(-8rem, -1rem) rotateZ(-19deg) scale(.8);
+  transform: translate(-11rem, -1rem) rotateZ(-19deg) scale(.8);
 }
 
 .guidebook__image {
