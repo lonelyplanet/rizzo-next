@@ -2,27 +2,24 @@ import React from "react";
 import MapActions from "../actions";
 
 export default class SidebarDetailsView extends React.Component{
-  componentDidMount() {
-    if (this.refs.img) {
-      let el = this.refs.img.getDOMNode();
-      resrc.run(el);
-    }
-  }
+
   render() {
     let poi = this.props.poi;
     let image = "";
+    console.log("Render", poi.geo.properties.image);
 
     if (poi.geo.properties.image) {
+      let imgSrc = `http://images-resrc.staticlp.com/s=w470,pd1/o=85/${poi.geo.properties.image}`;
       image = <div className="details__image">
-        <img data-src={poi.geo.properties.image} ref="img" />
+        <img src={imgSrc} ref="img" />
       </div>
     }
 
     return (
       <div className="sidebar details">
-        <header className="sidebar-header">
+        <header className="sidebar__header">
           <a href="#" className="close-poi location-subtitle" onClick={this.closePOI}>&lt; Back</a>
-          <h1>
+          <h1 className="sidebar__title">
             {poi.title}
           </h1>
         </header>

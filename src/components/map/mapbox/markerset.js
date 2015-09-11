@@ -13,7 +13,8 @@ class MarkerSet extends Component {
 
   initialize({ pois, map, layer }) {
     this.events = {
-      "click .pin": "_poiClick"
+      "click.marker .pin": "_poiClick",
+      "click.marker .poi": "_poiClick"
     };
 
     this.pois = pois;
@@ -91,8 +92,12 @@ class MarkerSet extends Component {
   _createIcon(layer) {
     let state = MapState.getState();
     // If there's no active set for the current view, use the first set
-    let set = state.sets[state.sets[state.activeSetIndex] ? state.activeSetIndex : 0];
-    
+    let index = state.sets[state.activeSetIndex] ?
+      state.activeSetIndex :
+      state.lastActiveSetIndex;
+
+    let set = state.sets[index || 0];
+
     if (!set) {
       return;
     }
@@ -109,14 +114,17 @@ class MarkerSet extends Component {
   }
 
   _createLayer() {
-    let _this = this;
+    this.layer
+      .off("mouseover")
+      .off("mouseout");
 
-    this.layer.on("mouseover", function(e) {
-      _this._poiHover(e.layer);
-    })
-    .on("mouseout", function(e) {
-      _this._poiUnhover(e.layer);
-    });
+    this.layer
+      .on("mouseover", (e) => {
+        this._poiHover(e.layer);
+      })
+      .on("mouseout", (e) => {
+        this._poiUnhover(e.layer);
+      });
   }
 
   _poiHover(layer) {
@@ -147,8 +155,13 @@ class MarkerSet extends Component {
   }
 
   _poiClick(event) {
-    // figure out if a PLACE or a POI
-    MapActions.poiOpen(this.activeLayer.feature.properties);
+    let poiIndex = this.activeLayer.feature.properties.index,
+        poi = this.pois[poiIndex];
+    if (poi.item_type === "Place") {
+      MapActions.gotoPlace({ place: poi.slug, placeTitle: poi.title });
+    } else {
+      MapActions.poiOpen({ index: poiIndex, poi });
+    }
   }
 
   _fixzIndex(currentLayer) {

@@ -129,7 +129,7 @@ $unit: $size / 16;
   }
 
   .panel {
-    height: 80vh;
+    height: 83vh;
     overflow: auto;
 
     .listing {
@@ -171,12 +171,7 @@ $unit: $size / 16;
       display: block;
       text-align: center;
       width: 100%;
-      padding: .5em;
       border-radius: 0;
     }
   }
-
-  // .about-panel {
-  //   margin-bottom: 36rem;
-  // }
 }

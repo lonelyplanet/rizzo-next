@@ -35,7 +35,16 @@ class InteractiveMap extends Component {
 
   changeView() {
     let state = MapState.getState();
-    let pois = state.sets[state.activeSetIndex].items;
+    let pois = [];
+
+    if (!state.sets[state.activeSetIndex]) {
+      pois.push(state.currentLocation);
+    } else {
+      pois = state.sets[state.activeSetIndex].items;
+    }
+
+    // Prevent double evnts
+    this.$el.off("click.marker");
 
     MapAPI.redraw(pois);
   }

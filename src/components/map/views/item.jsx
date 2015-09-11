@@ -15,10 +15,16 @@ export default class ItemView extends React.Component {
 
     if (item.onMap) {
       classString += "pin icon icon--chevron-right";
+      if (title.length > 23) {
+        title = title.substr(0, 22) + "...";
+      }
     } else {
       classString += "list";
       if (item.highlighted) {
         classString += " is-hovered";
+      }
+      if (title.length > 30) {
+        title = title.substr(0, 29) + "...";
       }
     }
     if (item.geo.properties.image) {
@@ -30,9 +36,6 @@ export default class ItemView extends React.Component {
       let type = this.props.item.item_type === "Place" ? "sight" : "activity";
       picClass += ` topic__image topic__image--${type}`;
     }
-    if (title.length > 30) {
-      title = title.substr(0, 29) + "...";
-    }
 
     let subtitle;
     if (item.subtitle) {
@@ -40,7 +43,7 @@ export default class ItemView extends React.Component {
     }
 
     return (
-      <div className={classString} onClick={this.clickItem.bind(this)}>
+      <div className={classString} onMouseEnter={this.hoverItem.bind(this)} onClick={this.clickItem.bind(this)}>
         <div className="place__pointer"></div>
         <div className="place__pointer--shadow"></div>
         <div className={picClass}>
@@ -60,8 +63,13 @@ export default class ItemView extends React.Component {
     if(props.item.item_type === "Place") {
       MapActions.gotoPlace({ place: props.item.slug, placeTitle: props.item.title });
     } else {
-      MapActions.poiOpen({ index: props.item.i });
+      MapActions.poiOpen({ index: props.item.i, poi: props.item });
       MapActions.pinHover({ poiIndex: props.item.i });
     }
+  }
+
+  hoverItem() {
+    let props = this.props;
+    MapActions.pinHover({ poiIndex: props.item.i });
   }
 }

@@ -30,24 +30,13 @@
 
   background: rgba(0,0,0,.8);
   opacity: 0;
-  z-index: 200;
-  transition: opacity .5s ease-in-out;
+  z-index: 0;
+  transition: .5s ease-in-out;
 
   &.open {
     opacity: 1;
     z-index: 200;
   }
-}
-
-.map-toggle {
-  position: absolute;
-  top: 50%;
-  left: 3vw;
-  transform: translate(-50%);
-  width: 3vw;
-  height: 3vw;
-  border-radius: 50%;
-  background: #333;
 }
 
 .map {
