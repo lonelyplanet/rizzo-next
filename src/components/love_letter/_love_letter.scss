@@ -38,8 +38,9 @@ $small-breakpoint: 320;
   }
 
   &__text {
-    margin: 0 auto 5.5rem;
-
+    margin: 0 auto 5.5rem;  
+    font-family: $font-family-special;
+    font-style: italic;
     font-size: $font-size;
     font-weight: 300;
     color: #67747d;
@@ -57,6 +58,7 @@ $small-breakpoint: 320;
     @include more();
 
     text-transform: uppercase;
+    font-family: $font-family;
     font-style: normal;
   }
 }
