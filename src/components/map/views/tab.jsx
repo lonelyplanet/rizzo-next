@@ -8,12 +8,11 @@ export default class TabView extends React.Component {
 
   render() {
     let title = this.props.name,
-        place = this.props.place,
         isActive = this.props.active ? "tab active" : "tab";
 
     return (
       <div className={isActive} onClick={this.tabClick.bind(this)}>
-        {title} {place}
+        {title}
       </div>
     )
   }

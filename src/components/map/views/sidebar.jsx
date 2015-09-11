@@ -31,7 +31,7 @@ export default class SidebarView extends React.Component {
     if (location.description.length > 0) {
       tabCount++;
       let isActive = tabCount === activeSetIndex ? true : false;
-      let aboutTab = <Tab name="About" place={place} active={isActive} i={tabCount} customPanel="about" />
+      let aboutTab = <Tab name="About" active={isActive} i={tabCount} customPanel="about" />
       tabs.push(aboutTab);
     }
 
@@ -48,7 +48,7 @@ export default class SidebarView extends React.Component {
 
     if (location.parent_slug || (location.parent_slug !== location.slug)) {
       backSlug = `/${location.parent_slug}`;
-      backElement = <a href={backSlug} className="location-subtitle" onClick={this.parentClick.bind(this)}>&lt; Back to {location.parent}</a>;
+      backElement = <a href={backSlug} className="location-subtitle" onClick={this.parentClick.bind(this)}>&lt; {location.parent}</a>;
       h1Class = "sidebar__title";
     }
 
