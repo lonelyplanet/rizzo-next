@@ -14,7 +14,6 @@
 
   &__container {
     display: none;
-    text-align: center;
 
     @media (min-width: $min-960) {
       display: block;
@@ -34,5 +33,6 @@
     @include button();
 
     position: absolute;
+    margin-left: calc(50% - 62px);
   }
 }
