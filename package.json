@@ -3,6 +3,7 @@
   "description": "Lonely Planet's style guide and pattern library.",
   "homepage": "http://rizzo.lonelyplanet.com",
   "license": "MIT",
+  "main": "src/rizzo",
   "repository": {
     "type": "git",
     "url": "https://github.com/lonelyplanet/rizzo-next.git"
@@ -19,6 +20,7 @@
   },
   "version": "0.9.1",
   "dependencies": {
+    "airbrake-js": "^0.5.2",
     "clamp-js": "*",
     "flamsteed": "latest",
     "imagesloaded": "*",
