@@ -56,7 +56,7 @@ export default class MainView extends React.Component {
     return (
       <div className={classString}>
         <div className="close-map icon-close-small" onClick={this.closeMap}>Close</div>
-        <Map pins={activeSet} location={this.state.location} index={this.state.activeIndex} />
+        <Map pins={activeSet} location={this.state.currentLocation} index={this.state.activeIndex} />
         {sidebar}
         <Alert error={this.state.error} />
       </div>
