@@ -144,8 +144,6 @@
   position: relative;
   z-index: 1;
   top: 0;
-  // left: 50%;
-  // margin-left: (-20rem / 2);
   transform: translate(3rem,0) rotateZ(1deg);
 
   @media (min-width: $min-560) {
