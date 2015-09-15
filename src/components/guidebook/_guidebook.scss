@@ -103,7 +103,6 @@
   position: relative;
   width: 80%;
   margin: 2rem auto;
-  float: none;
   text-align: center;
 
   @media (min-width: $min-720) {
@@ -122,11 +121,15 @@
 
 .guidebook__picture {
   display: inline-block;
-  width: 20rem;
+  width: 60%;
   font-size: 0;
   box-shadow: 2rem 1rem 6rem rgba(0, 0, 0, .4);
   background: $color-primary;
   backface-visibility: hidden;
+
+  @media (min-width: $min-480) {
+    width: 20rem;
+  }
 
   @media (min-width: $min-560) {
     width: 25rem;
@@ -141,11 +144,12 @@
   position: relative;
   z-index: 1;
   top: 0;
-  left: 50%;
-  margin-left: (-20rem / 2);
+  // left: 50%;
+  // margin-left: (-20rem / 2);
   transform: translate(3rem,0) rotateZ(1deg);
 
   @media (min-width: $min-560) {
+    left: 50%;
     margin-left: (-25rem / 2);
   }
 
@@ -155,11 +159,18 @@
 
   .guidebook__pictures--single & {
     left: 0;
+    margin-left: -5rem;
   }
 }
 
 .guidebook__picture--secondary {
   transform: translate(-11rem, -1rem) rotateZ(-19deg) scale(.8);
+
+  @media (max-width: $max-560) {
+    position: absolute;
+    top: 2rem;
+    left: 11rem;
+  }
 }
 
 .guidebook__image {
