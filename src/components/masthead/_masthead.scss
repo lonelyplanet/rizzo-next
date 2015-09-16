@@ -135,9 +135,14 @@
 
   &__breadcrumb {
     line-height: 1;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     color: #fff;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+    letter-spacing: -.2px;
+
+    @media (min-width: $min-480) {
+      margin-bottom: 3.4rem;
+    }
 
     a {
       color: #fff;
@@ -163,6 +168,7 @@
   }
 
   &__title {
+    margin-bottom: 18px;
     font-size: 80px;
     font-weight: 600;
     line-height: 0.8;
@@ -179,14 +185,14 @@
   }
 
   &__straplines {
-    height: 26px;
-    margin-top: 18px;
-    margin-bottom: 27px;
-    letter-spacing: 1px;
+    &:not(.has-empty) {
+      height: 26px;
+      margin-bottom: 27px;
 
-    @media (min-width: $min-720) {
-      height: 41px;
-      margin-bottom: 24px;
+      @media (min-width: $min-720) {
+        height: 41px;
+        margin-bottom: 24px;
+      }
     }
   }
 
@@ -200,6 +206,7 @@
     }
     font-size: 20px;
     text-decoration: italic;
+    letter-spacing: 1px;
 
     opacity: 0;
     transition: opacity $animation-speed-ui*2 ease-in-out;
@@ -210,6 +217,23 @@
 
     &--visible {
       opacity: 1;
+    }
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  &__straplines.has-empty &__strapline--visible {
+    position: relative;
+  }
+
+  &__straplines.has-empty &__strapline:not(:empty) {
+    height: 26px + 27px; // height + margin-bottom
+    transition: height $animation-speed-ui*2 ease-in-out;
+
+    @media (min-width: $min-720) {
+      height: 41px + 24px; // height + margin-bottom
     }
   }
 
