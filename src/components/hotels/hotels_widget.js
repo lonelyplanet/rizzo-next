@@ -46,7 +46,8 @@ class HotelsWidget extends Component {
       let newMinimumEndDate = new Date(newStartDate.getTime() + 24 * 60 * 60 * 1000);
       endDate.pickadate("picker").set({
         "min": newMinimumEndDate,
-        "select": newMinimumEndDate});
+        "select": newMinimumEndDate
+      });
     }
   }
   searchHotels(event) {
