@@ -29,7 +29,7 @@ class MarkerSet extends Component {
     this._addIcons();
 
     this.layer.addTo(this.map);
-    this.map.fitBounds(this.layer.getBounds(), { padding: [ 50, 50 ] });
+    this.map.fitBounds(this.layer.getBounds(), { padding: [ 50, 50 ], maxZoom:  14 });
   }
 
   listen() {

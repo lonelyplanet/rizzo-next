@@ -6,7 +6,6 @@ export default class SidebarDetailsView extends React.Component{
   render() {
     let poi = this.props.poi;
     let image = "";
-    console.log("Render", poi.geo.properties.image);
 
     if (poi.geo.properties.image) {
       let imgSrc = `http://images-resrc.staticlp.com/s=w470,pd1/o=85/${poi.geo.properties.image}`;
