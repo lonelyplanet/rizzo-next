@@ -14,17 +14,17 @@ if ($subNav.length) {
     let $target = $(target);
     let navHeight = $subNav.height();
 
+    e.preventDefault();
+
     if($target.parents(".segment").length > 0) {
       $target = $target.parents(".segment");
     }
 
     $("html, body").stop().animate({
       scrollTop: $target.offset().top - navHeight
-    }, 500, "swing");
-
-    window.location.hash = this.hash;
-
-    e.preventDefault();
+    }, 500, "swing", () => {
+      window.location.hash = target;
+    });
   });
 
   if (window.location.hash) {
