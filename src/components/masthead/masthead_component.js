@@ -23,6 +23,14 @@ export default class MastheadComponent extends Component {
 
     this.listenTo(this.slideshow, "image.changed", this.updateStrapline);
 
+    $.each(this.$straplines, function(index, strapline) {
+      if (!$(strapline).html()) {
+        $(strapline)
+          .parent()
+          .addClass('has-empty');
+      }
+    });
+
      // import Video from "../video";
     require([
         "../video"
