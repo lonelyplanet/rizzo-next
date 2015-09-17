@@ -46,7 +46,7 @@ export default class SidebarView extends React.Component {
       }
     }
 
-    if (location.parent_slug || (location.parent_slug !== location.slug)) {
+    if (location.parent_slug && (location.parent_slug !== location.slug)) {
       backSlug = `/${location.parent_slug}`;
       backElement = <a href={backSlug} className="location-subtitle" onClick={this.parentClick.bind(this)}>&lt; {location.parent}</a>;
       h1Class = "sidebar__title";
