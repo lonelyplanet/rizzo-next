@@ -3,8 +3,9 @@
 <article id="food-and-drink" class="food-and-drink">
   <h2 class="food-and-drink__heading">{{title}}</h2>
 
-  {{#if image}}
-    <div class="food-and-drink__image" style="background-image: url({{image}});" aria-hidden="true"></div>
+
+  {{#if food_accent}}
+    <div class="food-and-drink__image" style="background-image: url({{food_accent}});" aria-hidden="true"></div>
   {{/if}}
 
   <div class="food-and-drink__inner">
