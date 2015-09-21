@@ -27,7 +27,7 @@ export default class MastheadComponent extends Component {
       if (!$(strapline).html()) {
         $(strapline)
           .parent()
-          .addClass('has-empty');
+          .addClass("has-empty");
       }
     });
 

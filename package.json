@@ -55,6 +55,7 @@
     "sassdoc": "^2.1.15",
     "sassdoc-theme-neat": "0.0.2",
     "sinon": "^1.15.4",
-    "style-loader": "^0.12.3"
+    "style-loader": "^0.12.3",
+    "webpack": "^1.12.2"
   }
 }
