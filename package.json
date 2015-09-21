@@ -31,6 +31,9 @@
     "react": "^0.13.3",
     "resrc.js": "^0.9.5"
   },
+  "peerDependencies": {
+    "webpack": "1.x.0"
+  },
   "devDependencies": {
     "babel-eslint": "^4.0.5",
     "babel-loader": "^5.3.2",
