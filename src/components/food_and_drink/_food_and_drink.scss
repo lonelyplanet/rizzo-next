@@ -24,6 +24,10 @@ $item-border-color: #f1f4fb;
     display: none;
 
     @media (min-width: $min-480) {
+
+      background-size: 100%;
+      background-repeat: no-repeat;
+
       display: block;
 
       position: absolute;
