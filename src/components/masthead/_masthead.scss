@@ -2,23 +2,19 @@
 
 .masthead {
   position: relative;
-
+  top: 0;
+  left: 0;
   height: 90vh;
   min-height: 40rem;
   max-height: 80rem;
-
-  //overflow: hidden;
-
   color: #fff;
-
   background-color: $h2-color;
-  top: 0;
-  left: 0;
 
   &--narrow {
     max-height: 70.8rem;
     background: transparent;
   }
+
   &--no-images.masthead--normal {
     color: $font-color;
     height: 30rem;
@@ -27,11 +23,8 @@
 
   &--no-images.masthead--narrow {
     @include container();
-
     border: none;
-
     color: $font-color;
-
     height: 30rem;
   }
 
@@ -46,51 +39,49 @@
   &__wrap {
     height: 100%;
   }
-  &--no-images &__text-wrap {
-    border: .1rem solid $color-border;
-  }
-  &--narrow &__text-wrap {
-    border: .1rem solid $color-border;
-    border-left-style: none;
-    border-right-style: none;
-  }
-
-  &--has-images &__text-wrap {
-    border: none;
-  }
 
   &__text-wrap {
-    $width: $max-width - $gutter*4;
-
+    $width: $max-width - ($gutter * 4);
     display: flex;
-
     align-items: center;
     justify-content: center;
-
     position: absolute;
     z-index: 10;
-
     top: $header-height-mobile;
-    left: $gutter*1;
-    right: $gutter*1;
-
+    right: ($gutter * .5);
     bottom: 0;
+    left: ($gutter * .5);
+    padding-right: ($gutter * .5);
+    padding-left: ($gutter * .5);
+
+    @media (min-width: $min-480) {
+      right: $gutter;
+      left: $gutter;
+      padding-right: $gutter;
+      padding-left: $gutter;
+    }
 
     @media (min-width: $min-720) {
       top: $header-height;
     }
 
-    @media (min-width: $min-1290) {
-      left: 50%;
+    @media (min-width: $min-1080) {
+      right: ($gutter * 2);
+      left: ($gutter * 2);
+    }
 
-      margin-left: -$width/2;
-      width: $width;
+    @media (min-width: $min-1290) {
+      left: 0;
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 90%;
     }
   }
 
   &--no-images &__text-wrap {
+    border: .1rem solid $color-border;
     position: static;
-
     height: 100%;
 
     @media (min-width: $min-1290) {
@@ -100,11 +91,18 @@
   }
 
   &--narrow &__text-wrap {
+    border-width: .1rem 0;
+    border-style: solid;
+    border-color: $color-border;
     top: 0;
 
     @media (min-width: $min-720) {
       top: 0;
     }
+  }
+
+  &--has-images &__text-wrap {
+    border: none;
   }
 
   &__text {
@@ -119,18 +117,12 @@
 
   &__container {
     text-align: center;
-
-    .no-flexbox & {
-      display: table-cell;
-      vertical-align: middle;
-      text-align: center;
-    }
   }
 
   .no-flexbox &__container {
     display: table-cell;
-
     vertical-align: middle;
+    text-align: center;
   }
 
   &__breadcrumb {
@@ -151,14 +143,6 @@
     }
   }
 
-  &__breadcrumb__separator {
-    position: relative;
-    top: -2px;
-    padding-left: .5rem;
-    padding-right: .4rem;
-    font-size: 1.1rem;
-  }
-
   &--no-images &__breadcrumb {
     color: $font-color;
 
@@ -167,52 +151,55 @@
     }
   }
 
-  &__title {
-    margin-bottom: 18px;
-    font-size: 80px;
-    font-weight: 600;
-    line-height: 0.8;
+  &__breadcrumb__separator {
+    position: relative;
+    top: -.2rem;
+    padding-left: .5rem;
+    padding-right: .4rem;
+    font-size: 1.1rem;
+  }
 
+  &__title {
+    margin-bottom: 1.8rem;
+    font-size: 8rem;
+    font-weight: 600;
+    line-height: .8;
     letter-spacing: -3px;
 
     @media (min-width: $min-720) {
-      font-size: 120px;
+      font-size: 12rem;
     }
   }
 
   &__title + &__button {
-    margin-top: 42px;
+    margin-top: 4.2rem;
   }
 
   &__straplines {
     &:not(.has-empty) {
-      height: 26px;
-      margin-bottom: 27px;
+      height: 2.6rem;
+      margin-bottom: 2.7rem;
 
       @media (min-width: $min-720) {
-        height: 41px;
-        margin-bottom: 24px;
+        height: 4.1rem;
+        margin-bottom: 2.4rem;
       }
     }
   }
 
   &__strapline {
     position: absolute;
+    left: 0;
     width: 100%;
-
-    font: {
-      family: $serif;
-      style: italic;
-    }
-    font-size: 20px;
-    text-decoration: italic;
+    font-family: $serif;
+    font-style: italic;
+    font-size: 2rem;
     letter-spacing: 1px;
-
     opacity: 0;
-    transition: opacity $animation-speed-ui*2 ease-in-out;
+    transition: opacity ($animation-speed-ui * 2) ease-in-out;
 
     @media (min-width: $min-720) {
-      font-size: 30px;
+      font-size: 3rem;
     }
 
     &--visible {
@@ -229,11 +216,11 @@
   }
 
   &__straplines.has-empty &__strapline:not(:empty) {
-    height: 26px + 27px; // height + margin-bottom
-    transition: height $animation-speed-ui*2 ease-in-out;
+    height: (2.6rem + 2.7rem); // height + margin-bottom
+    transition: height ($animation-speed-ui * 2) ease-in-out;
 
     @media (min-width: $min-720) {
-      height: 41px + 24px; // height + margin-bottom
+      height: (4.1rem + 2.4rem); // height + margin-bottom
     }
   }
 
@@ -242,24 +229,71 @@
   }
 
   &__button--play {
+    position: absolute;
+    bottom: (2.6rem - 1rem);
     display: block;
-    margin: 0 auto;
-    background: #297cbc;
-    width: 5rem;
-    height: 5rem;
-    line-height: 6.1rem;
-    border-radius: 50%;
-    color: white;
-    position: relative;
-    top: 3.5rem;
+    padding: 1rem;
+    border: 0;
+    background-color: transparent;
+    color: #fff;
+    line-height: 1;
+    cursor: pointer;
 
-    &:hover {
-      background: #2172b0;
+    @media (max-width: $max-720) {
+      left: 0;
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
+      width: 8.2rem;
     }
 
-    & i {
-      margin-left: .5rem;
-      font-size: 2.7rem;
+    @media (min-width: $min-720) {
+      left: ($gutter - 1rem);
+    }
+
+    &:hover,
+    &:focus {
+      .masthead__button--play__icon {
+        background-color: rgba(#fff, .2);
+      }
+    }
+  }
+
+  &__button--play__icon {
+    font-size: 1.8rem;
+    display: inline-block;
+    border: .2rem solid #fff;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    padding-top: 1rem;
+    padding-left: .4rem;
+    transition: background-color $animation-speed linear;
+    box-shadow: 0 0 20px rgba(#000, .5);
+
+    @media (min-width: $min-720) {
+      font-size: 2.2rem;
+      width: 5.2rem;
+      height: 5.2rem;
+      padding-top: 1.3rem;
+      padding-left: .6rem;
+    }
+  }
+
+  &__button--play__label {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: ($gutter / 3);
+    text-shadow: 0 0 10px #000;
+
+    @media (min-width: $min-720) {
+      display: inline-block;
+      position: relative;
+      top: -.3rem;
+      margin-top: 0;
+      padding-left: 1rem;
+      font-size: 1.4rem;
     }
   }
 }
