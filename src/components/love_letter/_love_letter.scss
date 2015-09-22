@@ -38,11 +38,10 @@ $small-breakpoint: 320;
   }
 
   &__text {
-    margin: 0 auto 5.5rem;  
-    font-family: $font-family-special;
+    margin: 0 auto 5.5rem;
+    font-family: $font-family;
     font-style: italic;
     font-size: $font-size;
-    font-weight: 300;
     color: #67747d;
     text-align: center;
     line-height: 1.8;
@@ -70,7 +69,7 @@ $small-breakpoint: 320;
   text-align: center;
   width: 93%;
 
-  @include respond-to($mobile-breakpoint) {
+  @media (min-width: $min-720) {
     text-align: center;
   }
 
