@@ -14,7 +14,7 @@ let MapActions = {
   gotoPlace: (data) => {
     let place = data.place,
         url = "/" + place + "/map.json";
-    
+
     Arkham.trigger("place.fetching", data);
 
     // TODO: JC, maybe this is cool, maybe not?
@@ -75,10 +75,14 @@ let MapActions = {
     Arkham.trigger("custompanel.opened", data);
   },
 
+  tabSubmenu: (data) => {
+    Arkham.trigger("tabsubmenu.hovered", data);
+  },
+
   fetchSponsors: (data) => {
     let x = JSON.stringify({
       placements: generatePlacements()
-    }); 
+    });
 
     $.ajax({
       url: "http://engine.adzerk.net/api/v2",
@@ -93,9 +97,9 @@ let MapActions = {
           let poi = JSON.parse(decision.contents[0].body);
               set.items.push(poi);
         });
-        
+
         if (set.items.length) {
-          Arkham.trigger("sponsor.fetched", set)  
+          Arkham.trigger("sponsor.fetched", set)
         }
       },
       error: function() {

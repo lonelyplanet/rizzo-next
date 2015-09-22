@@ -2,7 +2,7 @@ import React from "react";
 import Tab from "./tab.jsx";
 import Panel from "./panel.jsx";
 import MapActions from "../actions";
-import AboutPanel from "./about-panel.jsx"
+import AboutPanel from "./about-panel.jsx";
 
 /**
  * Sidebar view that sets up main tabs
@@ -30,8 +30,9 @@ export default class SidebarView extends React.Component {
 
     if (location.description.length > 0) {
       tabCount++;
+      let dropdownOpen = this.props.tabDropdownOpen
       let isActive = tabCount === activeSetIndex ? true : false;
-      let aboutTab = <Tab name="About" active={isActive} i={tabCount} customPanel="about" />
+      let aboutTab = <Tab name="About" active={isActive} i={tabCount} customPanel="about" tabDropdownOpen={dropdownOpen}/>
       tabs.push(aboutTab);
     }
 
@@ -59,7 +60,7 @@ export default class SidebarView extends React.Component {
           <h1 className={h1Class}>
             {location.title}
           </h1>
-          <ul className="tabs">
+          <ul className="sidebar__tabs">
             {tabs}
           </ul>
         </header>

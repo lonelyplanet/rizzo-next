@@ -23,7 +23,8 @@ let state = {
   error: null,
   hoveredPin: 0,
   hoveredItem: null,
-  customPanel: ""
+  customPanel: "",
+  tabDropdownOpen: false
 };
 
 let MapState = assign({
@@ -141,6 +142,11 @@ Arkham.on("custompanel.opened", (data) => {
 
 Arkham.on("sponsor.fetched", (data) => {
   state.sets.push(data);
+  MapState.emitChange();
+});
+
+Arkham.on("tabsubmenu.hovered", (data) => {
+  state.tabDropdownOpen = data.openDropdown;
   MapState.emitChange();
 });
 

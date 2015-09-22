@@ -94,48 +94,67 @@ $unit: $size / 16;
         font-size: 1.25rem;
       }
     }
+  }
 
-    .tabs {
-      list-style: none;
-      margin-top: 2.6rem;
-      border-top: .1rem solid rgba(255,255,255,.2);
-      line-height: 1;
+  .sidebar__tabs {
+    list-style: none;
+    margin-top: 2.6rem;
+    border-top: .1rem solid rgba(255,255,255,.2);
+    line-height: 1;
 
-      .tab {
-        position: relative;
-        display: inline-block;
-        color: #fff;
-        text-align: center;
-        padding-top: 1.7rem;
-        padding-bottom: 1.7rem;
-        font-size: 1.4rem;
-        cursor: pointer;
-        font-weight: bold;
-        letter-spacing: -.3px;
+    .tab {
+      position: relative;
+      display: inline-block;
+      color: #fff;
+      text-align: center;
+      padding-top: 1.7rem;
+      padding-bottom: 1.7rem;
+      font-size: 1.4rem;
+      cursor: pointer;
+      font-weight: bold;
+      letter-spacing: -.3px;
 
-        + .tab {
-          margin-left: $gutter;
+      + .tab {
+        margin-left: $gutter;
+      }
+
+      &__sub-nav {
+        $width: 30rem;
+        @include dropdownMenu( $header-height - $gutter, 50%, $width, -($width / 2) );
+
+        &:before {
+          @include dropdownMenuArrow;
         }
+      }
 
+      &__sub-nav--visible {
+        @include dropdownMenuVisible;
+      }
+
+      &__sub-nav__list {
+        margin: 0 0 $gutter $gutter;
+        padding: 0 $gutter 0 0;
+        list-style: none;
+      }
+
+      &:after {
+        $height: .4rem;
+        display: block;
+        width: 100%;
+        height: $height;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        transform: translate(0, $height);
+        transition: transform ($animation-speed / 2) linear;
+        background: #fff;
+        content: "";
+      }
+
+      &:hover,
+      &.active {
         &:after {
-          $height: .4rem;
-          display: block;
-          width: 100%;
-          height: $height;
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          transform: translate(0, $height);
-          transition: transform ($animation-speed / 2) linear;
-          background-color: #fff;
-          content: "";
-        }
-
-        &:hover,
-        &.active {
-          &:after {
-            transform: translate(0, 0);
-          }
+          transform: translate(0,0);
         }
       }
     }
