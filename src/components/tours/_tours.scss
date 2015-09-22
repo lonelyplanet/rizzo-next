@@ -1,154 +1,147 @@
 @import "../../../sass/webpack_deps";
 
-
-
-$mobile-breakpoint: 480px;
-$tablet-breakpoint: 1066;
-$mobile-image-size: 70px;
+$mobile-breakpoint: $min-480;
+$tours-image-width: 19rem;
+$tours-image-width-mobile: 7rem;
 
 .tours {
-  margin: 0 auto $gutter;
-
-  max-width: 108rem;
-  overflow: hidden;
-
   @include clearfix;
+  margin: 0 auto $gutter;
+}
 
-  &__heading {
-    @include h1();
-  }
+.tours__heading {
+  @include h1();
 }
 
 .tours__list {
-  margin: 0 -$gutter;
+  @include clearfix;
 
-  text-align: center;
-  font-size: 0;
-
-  @include respond-to(1268) {
-    text-align: left;
+  @media (min-width: $min-1290) {
+    text-align: center;
   }
 }
 
 .tours__title {
-  @include respond-to($tablet-breakpoint) {
-    margin-bottom: 65px;
+  @media (min-width: $min-1080) {
+    margin-bottom: 6.5rem;
   }
 }
-
-$image-width: 19rem;
-$image-width-mobile: 7rem;
 
 .tour {
   display: block;
   position: relative;
-
   margin: 0 auto ($gutter * 1);
-  padding: 0 $gutter 0 $image-width-mobile + $gutter;
-
+  padding-left: $tours-image-width-mobile + $gutter;
   max-width: 50rem + $gutter * 2;
   min-height: 10rem;
-
   text-align: left;
   vertical-align: top;
-  font-size: 0;
 
   @media (min-width: $min-480) {
-    padding-left: $image-width + $gutter;
-
+    padding-left: $tours-image-width + $gutter;
     min-height: 14rem;
   }
 
   @media (min-width: $min-960) {
     display: inline-block;
-
     margin: 0 0 ($gutter * 2);
-
     width: 50%;
     max-width: none;
+    float: left;
   }
 
-  &__imagery,
-  &__description {
-    font-size: $font-size;
+  @media (min-width: $min-1290) {
+    float: none;
+    width: 520px / (strip-units($max-width) * 10px) * 100%;
   }
 
-  &__imagery {
-    position: absolute;
-
-    top: 0;
-    left: $gutter;
-
-    padding: 0 0 .6rem;
-
-    width: $image-width-mobile;
-
-    font-size: 13px;
-
-    border-bottom: 1px solid $divider-color;
-
-    @media (min-width: $min-480) {
-      width: $image-width;
+  &:nth-child(even) {
+    @media (min-width: $min-1290) {
+      margin-left: $gutter;
     }
-  }
-
-  &__description {
-    padding: 0 0 0 $gutter;
-
-    font-weight: $medium;
-    color: $tours-title-color;
   }
 }
 
+.tour__imagery,
+.tour__description {
+  font-size: $font-size;
+}
 
+.tour__imagery {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: $tours-image-width-mobile;
+
+  @media (min-width: $min-480) {
+    width: $tours-image-width;
+  }
+
+  @media (min-width: $min-960) {
+    left: $gutter;
+  }
+}
+
+.tour__description {
+  font-weight: $medium;
+  color: $tours-title-color;
+
+  @media (min-width: $min-960) {
+    margin-left: $gutter;
+  }
+}
 
 .tour__imagery__caption {
-  position: absolute;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  padding-bottom: .3rem;
+  margin-top: -.3rem;
 
-  @include respond-to($mobile-breakpoint) {
-    position: relative;
+  @media (max-width: $max-480) {
+    position: absolute;
+  }
+
+  @media (min-width: $min-480) {
+    border-bottom: .1rem solid $divider-color;
+    margin-top: .3rem;
     color: $tours-type-color;
   }
 }
 
-.tour__imagery__caption__price,
-.tour__imagery__caption__type {
-  display: inline-block;
-  vertical-align: middle;
-}
-
 .tour__imagery__image {
-  width: $mobile-image-size;
-  height: $mobile-image-size;
-  margin-bottom: 6px;
+  width: $tours-image-width-mobile;
+  height: $tours-image-width-mobile + .7rem;
   background-position: center center;
   background-size: cover;
 
-  @include respond-to($mobile-breakpoint) {
-    width: 190px;
-    height: 100px;
+  @media (min-width: $min-480) {
+    width: 19rem;
+    height: 10rem;
   }
 }
 
 .tour__imagery__caption__price {
-  min-width: 70px;
-  margin-right: $gutter;
-  padding: 0 10px 4px 8px;
+  display: inline-block;
+  min-width: $tours-image-width-mobile;
+  margin-right: $gutter - .5rem;
+  padding: .5rem .8rem .4rem;
+  font-size: 1.2rem;
   font-weight: $semibold;
+  line-height: 1;
   background-color: $tours-price-background;
   text-align: center;
   color: #fff;
+  vertical-align: middle;
 
-  @include respond-to($mobile-breakpoint) {
-    min-width: 52px;
-    margin-right: 5px;
+  @media (min-width: $min-480) {
+    min-width: 5rem;
+    margin-right: .5rem;
   }
 }
 
 .tour__imagery__caption__type {
+  font-size: 1.1rem;
   font-weight: $semibold;
   text-transform: uppercase;
   color: $tours-title-color;
@@ -157,33 +150,43 @@ $image-width-mobile: 7rem;
   text-overflow: ellipsis;
   display: inline;
 
-  @include respond-to($mobile-breakpoint) {
+  @media (min-width: $min-480) {
     color: $tours-type-color;
   }
 }
 
 .tour__description__title {
   margin: {
-    top: -2px;
-    bottom: 5px;
+    top: -.2rem;
+    bottom: .5rem;
   }
-  font-size: 17px;
+  font-size: 1.7rem;
   line-height: 1.1;
 
-  @include respond-to($mobile-breakpoint) {
-    margin-top: -4px;
-    font-size: 20px;
+  @media (min-width: $min-480) {
+    font-size: 1.8rem;
+    line-height: (24 / 18);
   }
 }
 
 .tour__description__blurb {
-  font-size: 13px;
+  font-size: 1.3rem;
   line-height: 1.4;
   color: $tours-blurb-color;
 
-  @include respond-to($mobile-breakpoint) {
-    font-size: 16px;
-    line-height: 1.6;
+  @media (min-width: $min-480) {
+    font-size: 1.4rem;
+    line-height: (24 / 16);
+  }
+}
+
+// IE9 can't use Clamp.js, so we have to force it to hide the paragraph at a specific height
+.ie9 .tour__description__blurb {
+  height: 5.5rem;
+  overflow: hidden;
+
+  @media (min-width: $min-480) {
+    height: 7.4rem;
   }
 }
 
@@ -193,16 +196,4 @@ $image-width-mobile: 7rem;
 
 .tours__more {
   @include see-more();
-}
-
-// IE9 can't use Clamp.js, so we have to force it to hide the paragraph at a specific height
-.ie9 {
-  .tour__description__blurb {
-    height: 55px;
-    overflow: hidden;
-
-    @include respond-to($mobile-breakpoint) {
-      height: 74px;
-    }
-  }
 }
