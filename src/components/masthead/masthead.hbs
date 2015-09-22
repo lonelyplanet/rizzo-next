@@ -35,19 +35,17 @@ found at https://accounts.brightcove.com/en/terms-and-conditions/.
 
         {{#if top_places}}
           <a class="masthead__button js-top-places" >
-            Top {{masthead_button_types}} <i class="icon-chevron-down"></i>
+            Top {{masthead_button_types}} <i class="icon-chevron-down" aria-hidden="true"></i>
           </a>
         {{/if}}
-
-
-        <a class="masthead__button--play js-play-video" style="display: none;">
-          <i class="icon-play3"></i>
-        </a>
-
       </div>
     </div>
-  </div>
 
+    <button class="masthead__button--play js-play-video" hidden>
+      <i class="masthead__button--play__icon icon-play3" aria-hidden="true"></i>
+      <span class="masthead__button--play__label">Play Video</span>
+    </button>
+  </div>
 
   {{#if top_places}}
     {{> "components/top_places/top_places" }}
