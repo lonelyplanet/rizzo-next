@@ -80,6 +80,10 @@ $hotels-max-width: 1170;
   @media (min-width: $hotels-breakpoint-large-min) {
     max-width: 78.4rem;
   }
+
+  :focus {
+    outline: none;
+  }
 }
 
 .hotels__search__field {
