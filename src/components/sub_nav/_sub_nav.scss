@@ -117,7 +117,7 @@ $navigation-sub-height-mobile: $header-height-mobile;
     &--active,
     a:hover,
     a:focus {
-      color: #287bbb;
+      color: $color-blue;
     }
   }
 
@@ -131,7 +131,7 @@ $navigation-sub-height-mobile: $header-height-mobile;
     transition: .3s color ease-in;
 
     &--active {
-      color: #287bbb;
+      color: $color-blue;
     }
 
     @media (min-width: $min-720) {
