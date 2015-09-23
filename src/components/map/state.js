@@ -145,9 +145,4 @@ Arkham.on("sponsor.fetched", (data) => {
   MapState.emitChange();
 });
 
-Arkham.on("tabsubmenu.hovered", (data) => {
-  state.tabDropdownOpen = data.openDropdown;
-  MapState.emitChange();
-});
-
 export default MapState;

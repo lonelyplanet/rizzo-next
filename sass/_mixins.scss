@@ -333,7 +333,7 @@
   }
 }
 
-@mixin dropdownMenu( $top, $left, $width, $margin-left ) {
+@mixin dropdownMenu( $top, $left, $width, $margin-left, $padding-top: $gutter ) {
 
   display: block;
 
@@ -344,7 +344,7 @@
   left: $left;
 
   margin-left: $margin-left;
-  padding: $gutter 0 0;
+  padding: $padding-top 0 0;
 
   width: $width;
 
@@ -370,7 +370,7 @@
     box-shadow: 0 3rem 9rem rgba(0,0,0, .4);
 }
 
-@mixin dropdownMenuArrow() {
+@mixin dropdownMenuArrow($left: 50%) {
   $size: 1.6rem;
 
   display: block;
@@ -379,7 +379,7 @@
   position: absolute;
 
   top: -($size);
-  left: 50%;
+  left: $left;
 
   margin-left: -($size / 2);
 

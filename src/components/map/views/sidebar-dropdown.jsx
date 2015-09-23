@@ -20,9 +20,9 @@ export default class SidebarDropdown extends React.Component {
     return (
       <div className={classString}>
         <ul className="tab__sub-nav__list">
-          <li>topic 1</li>
-          <li>topic 2</li>
-          <li>topic 3</li>
+          <li className="tab__sub-nav__list--item"><span className="tab__sub-nav__list--text">See</span></li>
+          <li className="tab__sub-nav__list--item"><span className="tab__sub-nav__list--text">Sleep</span></li>
+          <li className="tab__sub-nav__list--item"><span className="tab__sub-nav__list--text">Eat</span></li>
         </ul>
       </div>
     )

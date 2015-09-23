@@ -75,10 +75,6 @@ let MapActions = {
     Arkham.trigger("custompanel.opened", data);
   },
 
-  tabSubmenu: (data) => {
-    Arkham.trigger("tabsubmenu.hovered", data);
-  },
-
   fetchSponsors: (data) => {
     let x = JSON.stringify({
       placements: generatePlacements()

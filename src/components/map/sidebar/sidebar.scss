@@ -43,7 +43,7 @@ $unit: $size / 16;
   bottom: 0;
   background-color: #fff;
   width: $sidebar-width;
-  overflow: hidden;
+  overflow: visible;
   height: 100vh;
 
   .no-content {
@@ -119,11 +119,12 @@ $unit: $size / 16;
       }
 
       &__sub-nav {
-        $width: 30rem;
-        @include dropdownMenu( $header-height - $gutter, 50%, $width, -($width / 2) );
+        $width: 15rem;
+        // args = $top, $left, $width, $margin-left, $padding-top
+        @include dropdownMenu( 4.3rem, 40%, $width, -($width / 2), 2rem );
 
         &:before {
-          @include dropdownMenuArrow;
+          @include dropdownMenuArrow(35%);
         }
       }
 
@@ -132,9 +133,25 @@ $unit: $size / 16;
       }
 
       &__sub-nav__list {
-        margin: 0 0 $gutter $gutter;
-        padding: 0 $gutter 0 0;
+        margin: 0 0 2rem $gutter;
+        padding: 0 1.5rem 0 0;
+        text-align: left;
         list-style: none;
+
+        &--item {
+          font-size: 2.3rem;
+          margin-left: .25rem;
+          color: #2c3642;
+
+          &:hover {
+            color: $lpblue;
+            list-style: disc;
+          }
+        }
+
+        &--text {
+          font-size: 1.6rem;
+        }
       }
 
       &:after {

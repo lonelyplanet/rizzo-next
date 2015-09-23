@@ -7,15 +7,22 @@ import SidebarDropdown from "./sidebar-dropdown.jsx";
  */
 export default class TabView extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
   render() {
     let title = this.props.name,
-        sidebarDropdown = "",
         hideTimer,
         showTimer,
-        isActive = this.props.active ? "tab active" : "tab";
+        sidebarDropdown = "",
+        isActive = this.props.active ? "tab active" : "tab",
+        isCity = window.lp.place.type.toLowerCase() === "city",
+        isExperienceTab = this.props.name === "Experiences";
 
-    if (window.lp.place.type.toLowerCase() === "city") {
-      sidebarDropdown = <SidebarDropdown tabDropdownOpen={this.props.tabDropdownOpen}/>
+    if (isCity && isExperienceTab) {
+      sidebarDropdown = <SidebarDropdown tabDropdownOpen={this.state.openDropdown}/>
     }
 
     return (
@@ -40,7 +47,7 @@ export default class TabView extends React.Component {
       clearTimeout(this.hideTimer);
 
       this.showTimer = setTimeout(() => {
-        MapActions.tabSubmenu({ openDropdown: true });
+        this.setState({ openDropdown: true });
       }, 150);
     }
   }
@@ -49,7 +56,7 @@ export default class TabView extends React.Component {
     clearTimeout(this.showTimer);
 
     this.hideTimer = setTimeout(() => {
-      MapActions.tabSubmenu({ openDropdown: false });
+      this.setState({ openDropdown: false });
     }, 500);
   }
 }
