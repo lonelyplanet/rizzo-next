@@ -86,15 +86,14 @@
 }
 
 .guidebook__subtitle {
-  margin: ($spacing / 2) 0 0;
   display: none;
-  font-size: 20px;
-  font-weight: 300;
-  color: $ancillary-header-color;
 
   @media (min-width: $min-1080) {
-    font-size: 28px;
     display: block;
+    margin: ($spacing / 2) 0 0;
+    font-size: 28px;
+    font-weight: 300;
+    color: #b2b4b8;
   }
 }
 
