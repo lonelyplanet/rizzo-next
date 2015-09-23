@@ -225,6 +225,8 @@
 
   &__button {
     @include button();
+    position: relative;
+    z-index: 2;
   }
 
   &__button--play {
