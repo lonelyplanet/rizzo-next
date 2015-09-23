@@ -14,15 +14,14 @@ export default class TabView extends React.Component {
 
   render() {
     let title = this.props.name,
+        sets = this.props.sets,
         hideTimer,
         showTimer,
         sidebarDropdown = "",
-        isActive = this.props.active ? "tab active" : "tab",
-        isCity = window.lp.place.type.toLowerCase() === "city",
-        isExperienceTab = this.props.name === "Experiences";
+        isActive = this.props.active ? "tab active" : "tab";
 
-    if (isCity && isExperienceTab) {
-      sidebarDropdown = <SidebarDropdown tabDropdownOpen={this.state.openDropdown}/>
+    if (this.props.showDropdown) {
+      sidebarDropdown = <SidebarDropdown sets={sets} tabDropdownOpen={this.state.openDropdown}/>
     }
 
     return (
@@ -43,7 +42,7 @@ export default class TabView extends React.Component {
   }
 
   showSubmenu() {
-    if (this.props.name === "Experiences") {
+    if (this.props.type === "experiences") {
       clearTimeout(this.hideTimer);
 
       this.showTimer = setTimeout(() => {

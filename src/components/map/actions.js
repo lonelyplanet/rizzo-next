@@ -11,11 +11,11 @@ let MapActions = {
     Arkham.trigger("view.changed", data);
   },
 
-  gotoPlace: (data) => {
-    let place = data.place,
-        url = "/" + place + "/map.json";
+  gotoPlace: ({ placeTitle, place, topic="" }) => {
+    let query = topic ? `?topic=${topic}` : "",
+        url = `/${place}/map.json${query}`;
 
-    Arkham.trigger("place.fetching", data);
+    Arkham.trigger("place.fetching", { placeTitle });
 
     // TODO: JC, maybe this is cool, maybe not?
     // let mapData = window.localStorage.getItem(url);

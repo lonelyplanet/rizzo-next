@@ -20,11 +20,15 @@ export default class SidebarView extends React.Component {
         backElement = "",
         h1Class = "sidebar__title __continent";
 
-    let tabs = sets.map(function(set, i) {
+
+    let tabs = sets.map((set, i) => {
       tabCount++;
       let isActive = i === activeSetIndex ? true : false;
+      let isCity = location.type.toLowerCase() === "city";
+      let isExperienceTab = set.type === "experiences";
+      let showDropdown = isCity && isExperienceTab;
       return (
-        <Tab name={set.title} active={isActive} i={i} />
+        <Tab sets={sets} showDropdown={showDropdown} name={set.title} active={isActive} i={i} type={set.type} />
       )
     });
 
