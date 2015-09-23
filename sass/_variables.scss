@@ -63,13 +63,15 @@ $header-height-mobile: 5rem;
 $animation-speed: .4s;
 $animation-speed-ui: .8s;
 
-// Custom break points (Mobile first)
+// Custom breakpoints (Mobile first)
 /// 1290px min width breakpoint
 $min-1290: #{(1290 * 0.0625)}em;
 /// 1200px min width breakpoint
 $min-1200: #{(1200 * 0.0625)}em;
 /// 1080px min width breakpoint
 $min-1080: #{(1080 * 0.0625)}em;
+/// 1024px min width breakpoint
+$min-1024: #{(1024 * 0.0625)}em;
 /// 960px min width breakpoint
 $min-960: #{(960 * 0.0625)}em;
 /// 840px min width breakpoint
@@ -86,11 +88,14 @@ $min-560: #{(560 * 0.0625)}em;
 $min-480: #{(480 * 0.0625)}em;
 /// 360px min width breakpoint
 $min-360: #{(360 * 0.0625)}em;
+/// 320px min width breakpoint
+$min-320: #{(320 * 0.0625)}em;
 
-// Custom break points
+// Custom breakpoints
 $max-1290: #{(1289 * 0.0625)}em;
 $max-1200: #{(1199 * 0.0625)}em;
 $max-1080: #{(1079 * 0.0625)}em;
+$max-1024: #{(1023 * 0.0625)}em;
 $max-960: #{(959 * 0.0625)}em;
 $max-840: #{(839 * 0.0625)}em;
 $max-768: #{(767 * 0.0625)}em;
@@ -99,3 +104,4 @@ $max-600: #{(599 * 0.0625)}em;
 $max-560: #{(559 * 0.0625)}em;
 $max-480: #{(479 * 0.0625)}em;
 $max-360: #{(359 * 0.0625)}em;
+$max-320: #{(319 * 0.0625)}em;

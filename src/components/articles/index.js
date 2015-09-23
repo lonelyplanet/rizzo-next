@@ -43,9 +43,10 @@ class ArticlesComponent extends Component {
 
       // aka 2 + 5 or something
       if (titleLines + teaserLines > this.maxLines) {
-        let teaserClamp = this.maxLines - titleLines;
+        let teaserClamp = Math.ceil(this.maxLines - titleLines);
         $clamp(teaser.get(0), { clamp: teaserClamp });
-        blurb.hide();
+        teaser.addClass("article__info__teaser--small");
+        blurb.prop("hidden", true);
       } else {
         // Only clamp the blurb
         let blurbClamp = Math.ceil(this.maxLines - titleLines - teaserLines);
