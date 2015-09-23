@@ -41,7 +41,6 @@
   }
 
   &__text-wrap {
-    $width: $max-width - ($gutter * 4);
     display: flex;
     align-items: center;
     justify-content: center;
