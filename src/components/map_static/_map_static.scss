@@ -30,11 +30,14 @@
   }
 
   &__btn {
+    $btnWidth: 268px;
+
     @include button();
 
     position: absolute;
     bottom: 38px;
-    margin-left: calc(50% - 62px);
+    width: $btnWidth;
+    margin-left: calc(50% - #{ $btnWidth / 2 });
     letter-spacing: 0.05em;
     padding-bottom: 1.8rem;
 
