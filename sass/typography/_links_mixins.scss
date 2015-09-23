@@ -49,30 +49,11 @@
   }
 }
 
-@mixin see-more(){
+@mixin see-more() {
   @include more();
 
   position: relative;
   display: inline-block;
 
-  margin: 0 0 $spacing;
-  padding: $gutter $gutter 0;
-
-  &:before {
-    $size: 12.5rem;
-
-    display: block;
-    content: "";
-
-    position: absolute;
-
-    top: 0;
-    left: 50%;
-
-    margin-left: (-$size / 2);
-
-    width: $size;
-
-    border-top: .1rem solid #dde8f2;
-  }
+  padding: $gutter;
 }
