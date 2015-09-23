@@ -105,7 +105,7 @@ $small-breakpoint: 320;
 
 .article__info__teaser {
   margin-top: 1.9rem;
-  color: #888d95;
+  color: $tours-title-color;
   font-family: $sans-serif;
   font-size: 1.6rem;
   font-weight: $medium;
@@ -116,6 +116,15 @@ $small-breakpoint: 320;
     font-size: 2rem;
     line-height: (30 / 20);
     margin-top: 2.4rem;
+  }
+
+  &--small {
+    color: $articles-blurb-color;
+
+    @media (min-width: $min-720) {
+      font-size: 1.8rem;
+      line-height: (28 / 18);
+    }
   }
 }
 
