@@ -1,5 +1,6 @@
 import { Component } from "../../core/bane";
 import assign from "lodash/object/assign";
+import waitForTransition from "../../core/utils/waitForTransition";
 
 class ThingsToDo extends Component {
   initialize() {
@@ -93,15 +94,28 @@ class ThingsToDo extends Component {
         "class": "ttd__list"
       })
       .css({
-        "margin-top": `-${$list.outerHeight(true)}px`
+        "margin-top": `-${$list.outerHeight(true)}px`,
+        "transform": `translate3d(${ttdComponentWidth}px, 0, 0)`
       })
       .append(cards);
 
     this.animating = true;
     this.loadImages($nextList.find(".image-card__image")).then(() => {
-      $list.after($nextList).remove();
-      $nextList.css("margin-top", 0);
-      this.animating = false;
+      $list.after($nextList)
+        .css("transform", `translate3d(-${ttdComponentWidth}px, 0, 0)`);
+      
+      waitForTransition($list, { fallbackTime: 3000 })
+        .then(() => {
+          $nextList
+            .css("transform", "translate3d(0, 0, 0)");
+          
+          return waitForTransition($nextList, { fallbackTime: 3000 });
+        })
+        .then(() => {
+          $list.remove();
+          $nextList.css("margin-top", 0);
+          this.animating = false;
+        });
     });
   }
   /**

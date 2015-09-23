@@ -9,7 +9,7 @@
   }
 
   &__list {
-    transition: $animation-speed-ui opacity ease-in;
+    transition: 120ms transform ease-in;
     margin: 0 (-$gutter/8) $gutter;
     list-style: none;
 
