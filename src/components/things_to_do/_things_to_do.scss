@@ -1,6 +1,7 @@
 @import "../../../sass/webpack_deps";
 
 .ttd {
+  overflow: hidden;
   margin-bottom: $gutter;
 
   &__heading {
@@ -8,15 +9,21 @@
   }
 
   &__list {
+    transition: 120ms transform ease-in;
     margin: 0 (-$gutter/8) $gutter;
     list-style: none;
 
     font-size: 0;
     text-align: center;
     counter-reset: image-card;
+    opacity: 1;
+
+    &--next {
+      opacity: 0;
+    }
 
     @media (min-width: $min-480) {
-      margin: 0 (-$gutter/2) $gutter;
+      margin: 0 0 $gutter;
     }
   }
 
@@ -79,7 +86,7 @@
 
     background-size: cover;
 
-    opacity: 0;
+    opacity: 1;
     transition: opacity $animation-speed-ui;
 
     &--visible {
@@ -130,14 +137,19 @@
 
     transform: rotate(45deg);
 
-    &:before {
+    .num {
       display: block;
-
-      counter-increment: image-card;
-      content: counter(image-card);
-
       transform: rotate(-45deg);
     }
+
+    // &:before {
+    //   display: block;
+
+    //   counter-increment: image-card;
+    //   content: counter(image-card);
+
+    //   transform: rotate(-45deg);
+    // }
 
     @media (min-width: $min-480) {
       $size: 3.7rem;

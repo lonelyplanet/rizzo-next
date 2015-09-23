@@ -1,23 +1,9 @@
 {{#with top_things_to_do}}
 {{#if cards}}
-<article id="ttd" class="ttd">
+<article id="ttd" class="ttd" data-lp-initial-cards="{{cards}}">
   <h2 class="ttd__heading">{{title}}</h2>
 
   <ul class="ttd__list">
-    {{#each cards}}
-    <li class="ttd__item js-ttd-item">
-
-      <a class="image-card" href="{{url}}">
-        <div class="image-card__image" data-image-url="{{src}}" data-backupimage-url="https://s3.amazonaws.com/static-asset/destinations-next/images/{{@index}}-ttd-image.jpg"></div>
-        <div class="image-card__content">
-          <div class="image-card__number"></div>
-          <p class="image-card__subtitle">{{subtitle}}</p>
-          <h3 class="image-card__title">{{title}}</h3>
-        </div>
-      </a>
-
-    </li>
-    {{/each}}
   </ul>
 
   <div class="ttd__bottom">
