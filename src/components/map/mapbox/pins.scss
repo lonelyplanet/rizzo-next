@@ -1,7 +1,8 @@
 .poi {
-  border: 3px solid $pinColor;
+  background-color: #fff;
+  border: 3px solid $pin-color;
   border-radius: 50%;
-  height: 30px;
-  width: 30px;
+  height: 3rem;
+  width: 3rem;
   display: block;
 }

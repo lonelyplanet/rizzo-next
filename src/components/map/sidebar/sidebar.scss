@@ -1,7 +1,6 @@
 $inactive: #999;
 $active: $lpblue;
-$speed: .8s;
-$size: 30px;
+$size: 3rem;
 $unit: $size / 16;
 
 @keyframes spinner {
@@ -11,26 +10,27 @@ $unit: $size / 16;
 
 .fetching {
   text-align: center;
-  padding: 30px;
+  padding: $gutter;
 }
+
 .spinner {
   display: block;
   width: $size;
   height: $size;
   border-radius: 50%;
   border: $unit solid $inactive;
-  animation: spinner $speed linear infinite;
+  animation: spinner $animation-speed-ui linear infinite;
   position: relative;
-  margin: 20px auto;
+  margin: 2rem auto;
 
   &:before,
   &:after {
-    content: '';
+    content: "";
     position: absolute;
-    top: (-$unit*1.5);
-    left: ($size/2 -$unit);
-    width: ($unit*2);
-    height: ($unit*2);
+    top: (-$unit * 1.5);
+    left: ($size / 2) - $unit;
+    width: ($unit * 2);
+    height: ($unit * 2);
     border-radius: 50%;
     background: $active;
   }
@@ -43,7 +43,7 @@ $unit: $size / 16;
   right: 0;
   bottom: 0;
   background: #fff;
-  width: $sidebarwidth;
+  width: $sidebar-width;
   overflow: hidden;
 
   .flexbox & {
@@ -54,11 +54,12 @@ $unit: $size / 16;
   }
 
   .no-content {
-    padding: 30px;
+    padding: $gutter;
   }
 
   .sidebar__header {
-    background: $color-blue;
+    background-color: $color-blue;
+    padding: 1.9rem $gutter .5rem;
 
     .details {
       a {
@@ -67,73 +68,83 @@ $unit: $size / 16;
     }
 
     .sidebar__title {
-      margin-top: -5px;
-      padding: 0 30px;
+      margin-top: .8rem;
       color: #fff;
       font-weight: bold;
       font-size: 4rem;
-      letter-spacing: -1px;
+      letter-spacing: -.2px;
+      line-height: 1;
 
       &.__continent {
-        margin-top: 35px;
+        margin-top: 3.5rem;
       }
     }
 
     .location-subtitle {
-      display: block;
-      color: #92B5D6;
-      padding: 16px 0 0 25px;
+      display: inline-block;
+      color: #92b5d6;
       font-size: 2.2rem;
-      letter-spacing: -0.15rem;
+      letter-spacing: -1.5px;
+      line-height: 1;
+      transition: color $animation-speed;
+
+      &:hover,
+      &:focus {
+        color: #cbdaea;
+      }
+
+      .icon {
+        top: -2px;
+        position: relative;
+        padding-right: 5px;
+        font-size: 1.25rem;
+      }
     }
 
     .tabs {
       list-style: none;
-      margin: 1.7rem 3rem 0 3rem;
-      padding: 0;
-      border-top: 1px solid rgba(255,255,255,.2);
+      margin-top: 2.6rem;
+      border-top: .1rem solid rgba(255,255,255,.2);
+      line-height: 1;
 
       .tab {
         position: relative;
         display: inline-block;
         color: #fff;
         text-align: center;
-        margin: 0 2.5rem 0 0;
-        padding: 12px 0 15px;
-        font-size: 1.5rem;
+        padding-top: 1.7rem;
+        padding-bottom: 1.7rem;
+        font-size: 1.4rem;
         cursor: pointer;
         font-weight: bold;
         letter-spacing: -.3px;
 
+        + .tab {
+          margin-left: $gutter;
+        }
+
         &:after {
+          $height: .4rem;
           display: block;
           width: 100%;
-          height: 4px;
+          height: $height;
           position: absolute;
           bottom: 0;
           left: 0;
-          transform: translate(0, 4px);
-          transition: transform .2s linear;
-          background: #fff;
+          transform: translate(0, $height);
+          transition: transform ($animation-speed / 2) linear;
+          background-color: #fff;
           content: "";
         }
 
         &:hover,
         &.active {
           &:after {
-            transform: translate(0,0);
+            transform: translate(0, 0);
           }
         }
       }
     }
-  }
-
-  p {
-    margin-bottom: 1rem;
-  }
-
-  ul {
-    margin-left: 1rem;
   }
 
   .panel {
@@ -142,24 +153,48 @@ $unit: $size / 16;
 
     .listing {
       position: relative;
-      margin: 3rem 3rem 0 3rem;
-      border-top: 1px solid $divider-color;
+      width: (($sidebar-width - ($gutter * 2)) / $sidebar-width) * 100%;
+      margin: $gutter auto 0;
+      border-top: .1rem solid $divider-color;
     }
 
-    &__welcome {
-      padding: {
-        left: $gutter / 2;
-        top: $gutter;
-      }
-      font-size: 2.8rem;
-      font-weight: 100;
-      color: $h2-color;
+    &__header {
+      padding: ($gutter + .7rem) $gutter 0;
+      font-size: 3rem;
+      font-weight: 300;
+      line-height: 1.2;
+      color: #2b3642;
     }
 
     &__content {
+      padding: ($gutter - .5rem) 5rem ($gutter * 2) $gutter;
       font-size: 1.5rem;
-      padding: $gutter / 2;
-      padding-bottom: 10rem;
+
+      h2 {
+        color: rgba($color-text, .7);
+        font-size: 2rem;
+      }
+
+      p {
+        margin: $gutter 0;
+        font-size: 1.6rem;
+        line-height: (22 / 16);
+        color: rgba($color-text, .7);
+      }
+
+      .copy--feature {
+        margin-top: 0;
+      }
+
+      h2 + p {
+        margin-top: .7rem;
+      }
+
+      ul {
+        margin-left: 1rem;
+        font-size: 1.8rem;
+        line-height: (24 / 18);
+      }
     }
 
     &__footer {
@@ -167,20 +202,20 @@ $unit: $size / 16;
       top: auto;
       bottom: 0;
       width: 100%;
-      box-shadow: 0 0 10px 0 rgba(0,0,0,.5);
-
+      box-shadow: 0 0 6rem 0 rgba(0,0,0,.08);
     }
 
     &__close {
-      @include button();
-
-      text-transform: uppercase;
-      background: $color-blue;
-      color: #FFF;
+      @include button("inverse");
       display: block;
-      text-align: center;
-      width: 100%;
       border-radius: 0;
+      padding-top: 2.5rem;
+      padding-bottom: 2.3rem;
     }
+  }
+
+  .slideshow__progress__dot {
+    width: .7rem;
+    height: .7rem;
   }
 }
