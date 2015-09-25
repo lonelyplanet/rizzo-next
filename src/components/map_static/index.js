@@ -4,14 +4,17 @@ let mapLoaded = false;
 let $mapButton = $(".js-open-map");
 $mapButton.on("click", function() {
   if (!mapLoaded) {
-    require([
+    require.ensure([
       "../map/index"
-    ], (MapComponent) => {
+    ], (require) => {
+      let MapComponent = require("../map/index");
+      
       let map = new MapComponent({
         el: ".map_holder"
       });
+      
       map.open();
-    });
+    }, "map");
   }
 });
 

@@ -5,6 +5,7 @@ import pick from "lodash/object/pick";
 import bind from "lodash/function/bind";
 import each from "lodash/collection/each";
 import uniqueId from "lodash/utility/uniqueId";
+import postal from "postal/lib/postal.lodash";
 
 // Can pass in options that contains these keys. They will automatically be added to `this`
 let listOfOptions = [ "el", "events", "container" ];
@@ -24,6 +25,9 @@ let delegateEventSplitter = /^(\S+)\s*(.*)$/;
 *     }
 */
 export class Component {
+  get channel() {
+    return "components";
+  }
   constructor(options) {
     this.cid = uniqueId("comp");
 
@@ -131,11 +135,19 @@ export class Component {
       this.$el = $("<div/>");
       this.el = this.$el[0];
     }
-
+  }
+  publish(topic, data) {
+    postal.channel("components").publish(topic, data);
   }
 }
 
 assign(Component.prototype, Events);
+
+if (!ENV_PROD) {
+  postal.addWireTap((data, envelope) => {
+    console.log(JSON.stringify(envelope));
+  });
+}
 
 
 $.support.cors = true;

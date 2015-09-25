@@ -2,8 +2,12 @@ import assign from "lodash/object/assign";
 import Arkham from "../../core/arkham";
 import Events from "../../core/mixins/events";
 // TODO: Pull in only delay method
-import _ from "lodash";
+import delay from "lodash/function/delay";
 import find from "lodash/collection/find";
+
+let _ = {
+  find, delay
+};
 
 let CHANGE_EVENT = "change";
 

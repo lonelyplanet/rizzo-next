@@ -1,6 +1,7 @@
 import { Component } from "../../core/bane";
 import assign from "lodash/object/assign";
 import waitForTransition from "../../core/utils/waitForTransition";
+import publish from "../../core/decorators/publish";
 
 class ThingsToDo extends Component {
   initialize() {
@@ -76,6 +77,7 @@ class ThingsToDo extends Component {
    * Load more top things to do. Callback from click on load more button.
    * @param  {jQuery.Event} e The DOM event
    */
+  @publish("ttd.loadmore")
   loadMore(e) {
     let $list = this.$el.find(".ttd__list"),
         ttdComponentWidth = this.$el.width();

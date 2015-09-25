@@ -1,6 +1,9 @@
 import { Component } from "../../core/bane";
+import Arkham from "../../core/arkham";
 import assign from "lodash/object/assign";
 import "pickadate/lib/picker.date";
+import HotelsEvents from "./hotels.events";
+import publish from "../../core/decorators/publish";
 
 const dateDefaults = {
   format: "mm/d/yyyy",
@@ -13,6 +16,16 @@ const dateDefaults = {
 };
 
 class HotelsWidget extends Component {
+  get booking() {
+    let dates = this.$el.find("[type='date']"),
+        guests = this.$el.find("#js-guests");
+
+    return {
+      startDate: new Date(this.startDate.get()),
+      endDate: new Date(this.endDate.get()),
+      guests: guests.val()
+    }
+  }
   initialize() {
     this.events = {
       "submit #hotel-search-form": "searchHotels"
@@ -23,11 +36,11 @@ class HotelsWidget extends Component {
         endDate = $(dates[1]),
         today = new Date();
 
-    startDate.pickadate(assign({
+    this.startDate = startDate.pickadate(assign({
       min: today,
     }, dateDefaults));
 
-    endDate.pickadate(assign({
+    this.endDate = endDate.pickadate(assign({
       min: this.nextDate(today)
     }, dateDefaults));
 
@@ -50,13 +63,13 @@ class HotelsWidget extends Component {
       });
     }
   }
-  searchHotels(event) {
-    let serialized = $(event.target).serialize();
+  @publish(HotelsEvents.SEARCH)
+  searchHotels({ target }) {
+    let serialized = $(target).serialize();
 
-    window.lp.analytics.api.trackEvent({ 
-      category: "Partner Click",
-      action: `partner=booking&${serialized}`
-    });
+    return {
+      booking: this.booking
+    };
   }
 }
 
