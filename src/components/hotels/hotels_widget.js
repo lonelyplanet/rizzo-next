@@ -21,8 +21,8 @@ class HotelsWidget extends Component {
         guests = this.$el.find("#js-guests");
 
     return {
-      startDate: new Date(this.startDate.get()),
-      endDate: new Date(this.endDate.get()),
+      startDate: new Date(this.startDate.pickadate("picker").get()),
+      endDate: new Date(this.endDate.pickadate("picker").get()),
       guests: guests.val()
     }
   }
