@@ -4,6 +4,10 @@
   @include button();
 }
 
+.button--inverse {
+  @include button("inverse");
+}
+
 //.button {
 //  border: 0;
 //  background-color: $button-background;

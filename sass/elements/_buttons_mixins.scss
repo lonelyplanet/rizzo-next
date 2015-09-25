@@ -1,11 +1,10 @@
-@mixin button(){
+@mixin button($type: ""){
   display: inline-block;
 
   padding: 1.8rem 3rem 1.4rem;
 
   font-size: 1.2rem;
   font-weight: 600;
-  color: #fff;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
@@ -19,7 +18,15 @@
 
   cursor: pointer;
 
-  background-color: $color-primary;
+  @if $type == "" {
+    color: #fff;
+    background-color: $color-primary;
+  }
+
+  @if $type == "inverse" {
+    color: $color-primary;
+    background-color: #fff;
+  }
 
   -webkit-font-smoothing: antialiased;
 
@@ -43,10 +50,17 @@
 
   &:hover,
   &:focus {
-    color: #fff;
     text-decoration: none;
 
-    background-color: $color-primary + 15;
+    @if $type == "" {
+      color: #fff;
+      background-color: $color-primary + 15;
+    }
+
+    @if $type == "inverse" {
+      color: $color-primary + 15;
+      background-color: #fff;
+    }
 
     [class*="icon-"] {
       transform: translate3d(-.4rem, 0, 0);
