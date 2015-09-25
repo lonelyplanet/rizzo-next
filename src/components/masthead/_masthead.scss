@@ -129,7 +129,7 @@
     margin-bottom: 2rem;
     color: #fff;
     font-size: 1.4rem;
-    letter-spacing: -.2px;
+    letter-spacing: -.02rem;
 
     @media (min-width: $min-480) {
       margin-bottom: 3.4rem;
@@ -163,10 +163,14 @@
     font-size: 8rem;
     font-weight: 600;
     line-height: .8;
-    letter-spacing: -3px;
+    letter-spacing: -.3rem;
 
     @media (min-width: $min-720) {
       font-size: 12rem;
+    }
+
+    @media (max-width: $max-480) and (max-height: $max-720) {
+      font-size: 6rem;
     }
   }
 
@@ -193,7 +197,7 @@
     font-family: $serif;
     font-style: italic;
     font-size: 2rem;
-    letter-spacing: 1px;
+    letter-spacing: .1rem;
     opacity: 0;
     transition: opacity ($animation-speed-ui * 2) ease-in-out;
 
@@ -252,6 +256,14 @@
       left: ($gutter - 1rem);
     }
 
+    @media (max-height: em(679px)) {
+      width: auto;
+      left: 50%;
+      transform: translateX(-50%);
+      padding-top: .4rem;
+      padding-bottom: .4rem;
+    }
+
     &:hover,
     &:focus {
       .masthead__button--play__icon {
@@ -270,7 +282,7 @@
     padding-top: 1rem;
     padding-left: .4rem;
     transition: background-color $animation-speed linear;
-    box-shadow: 0 0 20px rgba(#000, .5);
+    box-shadow: 0 0 2rem rgba(#000, .5);
 
     @media (min-width: $min-720) {
       font-size: 2.2rem;
@@ -279,6 +291,14 @@
       padding-top: 1.3rem;
       padding-left: .6rem;
     }
+
+    @media (max-height: em(679px)) {
+      font-size: 1rem;
+      width: 1.8rem;
+      height: 1.8rem;
+      padding-top: .2rem;
+      padding-left: .2rem;
+    }
   }
 
   &__button--play__label {
@@ -286,7 +306,7 @@
     font-size: 1.2rem;
     font-weight: 600;
     margin-top: ($gutter / 3);
-    text-shadow: 0 0 10px #000;
+    text-shadow: 0 0 1rem #000;
 
     @media (min-width: $min-720) {
       display: inline-block;
@@ -295,6 +315,11 @@
       margin-top: 0;
       padding-left: 1rem;
       font-size: 1.4rem;
+    }
+
+    @media (max-height: em(679px)) {
+      display: inline-block;
+      margin-top: 0;
     }
   }
 }
