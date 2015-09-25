@@ -48,7 +48,7 @@ export default class SidebarView extends React.Component {
 
     if (location.parent_slug && (location.parent_slug !== location.slug)) {
       backSlug = `/${location.parent_slug}`;
-      backElement = <a href={backSlug} className="location-subtitle" onClick={this.parentClick.bind(this)}>&lt; {location.parent}</a>;
+      backElement = <a href={backSlug} className="location-subtitle" onClick={this.parentClick.bind(this)}><i className="icon icon-chevron-left" aria-hidden="true"></i>{location.parent}</a>;
       h1Class = "sidebar__title";
     }
 
@@ -56,7 +56,7 @@ export default class SidebarView extends React.Component {
       <div className="sidebar">
         <header className="sidebar__header">
           {backElement}
-          <h1 className={h1Class} >
+          <h1 className={h1Class}>
             {location.title}
           </h1>
           <ul className="tabs">
@@ -65,13 +65,13 @@ export default class SidebarView extends React.Component {
         </header>
         {panelContent}
       </div>
-    )
+    );
   }
 
   parentClick(e) {
     e.preventDefault();
     let props = this.props;
-    MapActions.gotoPlace({ place: props.location.parent_slug, placeTitle: props.location.parent })
+    MapActions.gotoPlace({ place: props.location.parent_slug, placeTitle: props.location.parent });
   }
 
 }

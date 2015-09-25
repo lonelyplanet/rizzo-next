@@ -8,7 +8,7 @@ export default class AboutPanel extends React.Component {
       el: this.refs.slideshow.getDOMNode(),
       type: "fade",
       images: this.props.location.images,
-      height: 300,
+      height: 270,
       showProgress: true
     });
   }
@@ -18,21 +18,19 @@ export default class AboutPanel extends React.Component {
         slug = `/${this.props.location.slug}`;
 
     return (
-      <div className="about-panel">
-        <div className="panel">
-          <div className="slideshow js-panel-slideshow" ref="slideshow">
-          </div>
-          <div className="panel__welcome">Welcome to {place}</div>
-          <div className="panel__content" dangerouslySetInnerHTML={{__html: description}}>
-          </div>
-          <div className="panel__footer">
-            <a className="panel__close" href={slug}>
-              Close map and explore {place}
-              <span className="icon-chevron-right"></span>
-            </a>
-          </div>
+      <div className="panel">
+        <div className="slideshow js-panel-slideshow" ref="slideshow">
         </div>
+        <header className="panel__header">Welcome to {place}</header>
+        <div className="panel__content" dangerouslySetInnerHTML={{__html: description}}>
+        </div>
+        <footer className="panel__footer">
+          <a className="panel__close" href={slug}>
+            Close map and explore {place}
+            <i className="icon-chevron-right" aria-hidden="true"></i>
+          </a>
+        </footer>
       </div>
-    )
+    );
   }
 }

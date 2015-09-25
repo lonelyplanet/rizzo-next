@@ -1,26 +1,28 @@
 .place {
-  height: 60px;
+  height: 6rem;
   background: #fff;
   position: relative;
   cursor: pointer;
-  transition: background .3s ease;
 
-  &.is-hovered {
-    background: $hoveredItem;
+  .title {
+    color: $feature-copy;
+    font-weight: bold;
+    transition: color $animation-speed ease;
+  }
+
+  &.is-hovered.list {
+    .title {
+      color: $color-blue;
+    }
   }
 
   &.list {
-    width: $itemwidthList;
-    margin: 10px 0;
+    width: 100%;
+    margin-top: ($gutter / 3);
+    margin-bottom: ($gutter / 3);
 
     .title {
       font-size: 1.6rem;
-      font-weight: bold;
-      color: $feature-copy;
-    }
-
-    .subtitle {
-      font-size: 1rem;
     }
 
     &:after {
@@ -29,70 +31,74 @@
       right: 0;
       display: block;
       height: 0;
-      width: ($itemwidthList - $imagewidth - ($orderwidth / 2));
-      border-top: 1px solid $divider-color;
-      content: ""
+      width: ($item-width-list - $image-width - ($order-width / 2));
+      border-top: .1rem solid $divider-color;
+      content: "";
     }
   }
 
   &.pin {
-    width: $itemwidthPin;
-    box-shadow: 0 44px 87px -22px #000;
+    width: $item-width-pin;
+    box-shadow: 0 4.4rem 8.7rem -2.2rem #000;
 
     .title {
       font-size: 1.5rem;
-      color: $pinItemColor;
+    }
+
+    &:hover .title,
+    &:focus .title {
+      color: $color-blue;
     }
 
     .subtitle {
-      margin-top: 7px;
+      margin-top: .7rem;
     }
 
     .place__pointer {
       position: absolute;
-      left: -9px;
-      top: 20px;
+      left: -.9rem;
+      top: 2rem;
       width: 0;
       height: 0;
-      border-top: 10px solid transparent;
-      border-bottom: 10px solid transparent;
-      border-right:10px solid #fff;
+      border-top: 1rem solid transparent;
+      border-bottom: 1rem solid transparent;
+      border-right: 1rem solid #fff;
       z-index: -1;
 
       &--shadow {
         position: absolute;
-        left: -12px;
-        top: 18px;
+        left: -1.2rem;
+        top: 1.8rem;
         width: 0;
         height: 0;
-        border-top: 12px solid transparent;
-        border-bottom: 12px solid transparent;
-        border-right:12px solid #C0C0C0;
+        border-top: 1.2rem solid transparent;
+        border-bottom: 1.2rem solid transparent;
+        border-right: 1.2rem solid #c0c0c0;
         z-index: -2;
       }
     }
 
     &:after {
       position: absolute;
-      right: 10px;
+      right: 1rem;
       top: 50%;
-      height: $orderwidth * .6;
-      border-left: 1px solid #EEF1FA;
+      height: ($order-width * .6);
+      border-left: .1rem solid #eef1fa;
       transform: translate(0, -50%);
-      background-position: 3px 61%;
-      width: 17px;
+      background-position: .3rem 61%;
+      width: 1.7rem;
     }
   }
 
   &__pic {
     height: 100%;
-    width: $imagewidth;
+    width: $image-width;
     overflow: hidden;
     position: relative;
 
     img {
       position: absolute;
-      max-width: ($itemwidthList * .6);
+      max-width: ($item-width-list * .6);
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
@@ -101,30 +107,30 @@
 
   &__order {
     position: absolute;
-    width: $orderwidth;
-    height: $orderwidth;
+    width: $order-width;
+    height: $order-width;
     display: block;
-    left: $imagewidth;
+    left: $image-width;
     top: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    line-height: $orderwidth;
+    line-height: $order-width;
     font-weight: bold;
+    color: $feature-copy;
 
     .pin & {
       font-size: 1rem;
-      color: $pinItemColor;
     }
 
     .list & {
-      font-size: 1.4rem;
-      color: $feature-copy;
+      font-size: 1.2rem;
+      padding-top: .2rem;
     }
 
     &:before {
       position: absolute;
       display: block;
-      background: #fff;
+      background-color: #fff;
       top: 50%;
       left: 50%;
       width: 40%;
@@ -132,8 +138,8 @@
       transform: translate(-50%, -50%) rotate(45deg);
       content: "";
       z-index: -1;
-      box-shadow: 2px 1px 4px -2px #333;
-      border-radius: 4px;
+      box-shadow: .2rem .1rem .4rem -.2rem #333;
+      border-radius: .4rem;
     }
   }
 
@@ -142,23 +148,22 @@
     right: 0;
     top: 50%;
     transform: translate(0, -50%);
-    padding-right: 10px;
-    box-sizing: border-box;
+    padding-right: 1rem;
 
     .subtitle {
       color: $footer-bottom-link-color;
-      font-size: 10px;
+      font-size: 1rem;
+      font-weight: 600;
       text-transform: uppercase;
     }
 
     .list & {
-      width: ($itemwidthList - $imagewidth - 30px);
+      width: ($item-width-list - $image-width - $gutter);
     }
 
     .pin & {
-      width: ($itemwidthPin - $imagewidth - 30px);
-      word-spacing: -.1em
+      width: ($item-width-pin - $image-width - $gutter);
+      word-spacing: -.1em;
     }
-
   }
 }

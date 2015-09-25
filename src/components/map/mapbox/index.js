@@ -3,7 +3,7 @@ import MapboxMarkerSet from "./markerset";
 import "mapbox.js";
 
 let L = window.L;
-let mapID = "lonelyplanet.3d9e3afc";
+let mapID = "lonelyplanet.04cf7895";
 
 L.mapbox.accessToken = "pk.eyJ1IjoibG9uZWx5cGxhbmV0IiwiYSI6Imh1ODUtdUEifQ.OLLon0V6rcoTyayXzzUzsg";
 
