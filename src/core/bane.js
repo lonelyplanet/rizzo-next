@@ -143,7 +143,7 @@ export class Component {
 
 assign(Component.prototype, Events);
 
-if (!ENV_PROD) {
+if (typeof ENV_PROD !== "undefined" && !ENV_PROD) {
   postal.addWireTap((data, envelope) => {
     console.log(JSON.stringify(envelope));
   });
