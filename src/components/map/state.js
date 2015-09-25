@@ -101,7 +101,7 @@ Arkham.on("place.fetched", (data) => {
   state.currentLocation = data.location;
   state.topics = data.topics;
   state.sets = MapState.sortSets(data.sets.filter((s) => !!s.items.length));
-  if (find(state.sets, (s) => s.title === 'Experiences')) {
+  if (find(state.sets, (s) => s.type === 'experiences')) {
     state.topics.unshift("experiences");
   }
   state.activeSetIndex = 0;
@@ -126,7 +126,7 @@ Arkham.on("state.setinitial", (data) => {
   state.isFetching = false;
   state.topics = data.topics;
   state.sets = MapState.sortSets(data.sets.filter((s) => !!s.items.length));
-  if (find(state.sets, (s) => s.title === 'Experiences')) {
+  if (find(state.sets, (s) => s.type === 'experiences')) {
     state.topics.unshift("experiences");
   }
   state.currentLocation = data.location;
@@ -155,4 +155,4 @@ Arkham.on("sponsor.fetched", (data) => {
   MapState.emitChange();
 });
 
-export default MapState;
+export default MapState;;

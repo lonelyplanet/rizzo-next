@@ -18,16 +18,21 @@ export default class TabView extends React.Component {
         hideTimer,
         showTimer,
         sidebarDropdown = "",
-        isActive = this.props.active ? "tab active" : "tab";
+        isActive = this.props.active ? "tab active" : "tab",
+        classString = `${isActive}`,
+        iconAfter = "";
 
     if (this.props.showDropdown) {
+      classString += " experiences"
       sidebarDropdown = <SidebarDropdown sets={sets} tabDropdownOpen={this.state.openDropdown}/>
+      iconAfter = "tab--icon icon--chevron-down icon--white";
     }
 
     return (
-      <li className={isActive} onClick={this.tabClick.bind(this)} onMouseEnter={this.showSubmenu.bind(this)} onMouseLeave={this.hideSubmenu.bind(this)} >
+      <li className={classString} onClick={this.tabClick.bind(this)} onMouseEnter={this.showSubmenu.bind(this)} onMouseLeave={this.hideSubmenu.bind(this)} >
         {sidebarDropdown}
         {title}
+        <div className={iconAfter}></div>
       </li>
     );
   }

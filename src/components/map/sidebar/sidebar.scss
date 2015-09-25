@@ -119,12 +119,12 @@ $unit: $size / 16;
       }
 
       &__sub-nav {
-        $width: 15rem;
+        $width: 25rem;
         // args = $top, $left, $width, $margin-left, $padding-top
-        @include dropdownMenu( 4.3rem, 40%, $width, -($width / 2), 2rem );
+        @include dropdownMenu( 4.3rem, 75%, $width, -($width / 2), 2rem );
 
         &:before {
-          @include dropdownMenuArrow(35%);
+          @include dropdownMenuArrow(30%);
         }
       }
 
@@ -141,6 +141,7 @@ $unit: $size / 16;
         &--item {
           font-size: 2.3rem;
           margin-left: .25rem;
+          text-transform: capitalize;
           color: #2c3642;
 
           &:hover {
@@ -173,6 +174,13 @@ $unit: $size / 16;
         &:after {
           transform: translate(0,0);
         }
+      }
+      .tab--icon {
+        float: right;
+        margin-top: 6px;
+        margin-left: 10px;
+        height: 8px;
+        width: 8px;
       }
     }
   }
