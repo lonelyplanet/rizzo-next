@@ -47,7 +47,7 @@ let MapState = assign({
 
   sortSets: (sets) => {
     let headings = state.topics.concat([
-      "Experiences", "countries", "cities", "sponsored", "about"
+      "Experiences", "Countries", "Cities", "Sponsored", "About"
     ]);
 
     return headings.reduce((memo, heading) => {
