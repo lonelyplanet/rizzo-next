@@ -94,7 +94,9 @@
     height: 100%;
     width: $image-width;
     overflow: hidden;
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
 
     img {
       position: absolute;
@@ -145,10 +147,8 @@
 
   &__text {
     position: absolute;
-    right: 0;
     top: 50%;
     transform: translate(0, -50%);
-    padding-right: 1rem;
 
     .subtitle {
       color: $footer-bottom-link-color;
@@ -159,11 +159,15 @@
 
     .list & {
       width: ($item-width-list - $image-width - $gutter);
+      padding-right: 1rem;
+      left: 10.7rem;
     }
 
     .pin & {
       width: ($item-width-pin - $image-width - $gutter);
       word-spacing: -.1em;
+      padding-right: $gutter;
+      right: 0;
     }
   }
 }
