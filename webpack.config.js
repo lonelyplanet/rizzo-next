@@ -23,7 +23,7 @@ module.exports = {
     loaders: [{
         test: /\.js$/,
         exclude: /node_modules\/(?!rizzo|flamsteed).*/,
-        loader: "babel-loader"
+        loader: "babel-loader?stage=1"
       },
       {
         // For some reason the sass-loader borks karma
