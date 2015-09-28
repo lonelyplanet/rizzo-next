@@ -37,21 +37,14 @@ $unit: $size / 16;
 }
 
 .sidebar {
-  display: block;
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
-  background: #fff;
+  background-color: #fff;
   width: $sidebar-width;
   overflow: hidden;
-
-  .flexbox & {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    flex: 0 0 auto;
-  }
+  height: 100vh;
 
   .no-content {
     padding: $gutter;
@@ -59,6 +52,7 @@ $unit: $size / 16;
 
   .sidebar__header {
     background-color: $color-blue;
+    height: $sidebar-header-height;
     padding: 1.9rem $gutter .5rem;
 
     .details {
@@ -148,13 +142,13 @@ $unit: $size / 16;
   }
 
   .panel {
-    height: 87vh;
+    height: calc(100% - #{$sidebar-header-height});
     overflow: auto;
 
     .listing {
       position: relative;
       width: (($sidebar-width - ($gutter * 2)) / $sidebar-width) * 100%;
-      margin: $gutter auto 0;
+      margin: $gutter auto;
       border-top: .1rem solid $divider-color;
     }
 
