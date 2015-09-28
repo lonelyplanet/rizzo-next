@@ -23,7 +23,8 @@ let state = {
   error: null,
   hoveredPin: 0,
   hoveredItem: null,
-  customPanel: ""
+  customPanel: "",
+  tabDropdownOpen: false
 };
 
 let MapState = assign({
@@ -45,7 +46,9 @@ let MapState = assign({
   },
 
   sortSets: (sets) => {
-    let headings = ["experiences", "countries", "cities", "sponsored", "about"];
+    let headings = state.topics.concat([
+      "experiences", "countries", "cities", "sponsored", "about"
+    ]);
 
     return headings.reduce((memo, heading) => {
       let set = find(sets, (set) => set.title.toLowerCase() === heading);
@@ -96,7 +99,11 @@ Arkham.on("place.fetching", (data) => {
 
 Arkham.on("place.fetched", (data) => {
   state.currentLocation = data.location;
+  state.topics = data.topics;
   state.sets = MapState.sortSets(data.sets.filter((s) => !!s.items.length));
+  if (find(state.sets, (s) => s.type === 'experiences')) {
+    state.topics.unshift("experiences");
+  }
   state.activeSetIndex = 0;
   state.fetchingPlace = "";
   state.isFetching = false;
@@ -117,7 +124,11 @@ Arkham.on("place.errorfetching", (data) => {
 
 Arkham.on("state.setinitial", (data) => {
   state.isFetching = false;
+  state.topics = data.topics;
   state.sets = MapState.sortSets(data.sets.filter((s) => !!s.items.length));
+  if (find(state.sets, (s) => s.type === 'experiences')) {
+    state.topics.unshift("experiences");
+  }
   state.currentLocation = data.location;
   MapState.emitChange();
 });
@@ -144,4 +155,4 @@ Arkham.on("sponsor.fetched", (data) => {
   MapState.emitChange();
 });
 
-export default MapState;
+export default MapState;;

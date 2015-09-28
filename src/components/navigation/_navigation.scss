@@ -1,7 +1,5 @@
 @import "../../../sass/webpack_deps";
 
-
-
 $responsive-nav-width: 190px;
 $nav-height--wide: 130px;
 $nav-height--medium: 100px;
@@ -113,59 +111,14 @@ $medium-breakpoint: 768;
 
 .sub-navigation {
   $width: 30rem;
-
-  display: block;
-
-  position: absolute;
-  z-index: 101;
-
-  top: $header-height - $gutter;
-  left: 50%;
-
-  margin-left: -($width / 2);
-  padding: $gutter 0 0;
-
-  width: $width;
-
-  font-size: $font-size;
-  color: $font-color;
-  line-height: $line-height;
-
-  border-radius: $radius;
-  box-shadow: 0 -1rem 2rem rgba(0,0,0, 0);
-  background: #fff;
-
-  pointer-events: none;
-  opacity: 0;
-  transform: translateY(1rem);
-  transition: opacity $animation-speed, transform $animation-speed, box-shadow ($animation-speed-ui * 1.5);
+  @include dropdownMenu($header-height - $gutter, 50%, $width, -($width / 2));
 
   &:before {
-    $size: 1.6rem;
-
-    display: block;
-    content: "";
-
-    position: absolute;
-
-    top: -($size);
-    left: 50%;
-
-    margin-left: -($size / 2);
-
-    height: 0;
-    width: 0;
-
-    border: ($size/2) solid transparent;
-    border-bottom-color: #fff;
+    @include dropdownMenuArrow;
   }
 
   &--visible {
-    transform: translateY(0rem);
-    opacity: 1;
-    pointer-events: all;
-
-    box-shadow: 0 3rem 9rem rgba(0,0,0, .4);
+    @include dropdownMenuVisible;
   }
 
   &__list {

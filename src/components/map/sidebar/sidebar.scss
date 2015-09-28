@@ -43,7 +43,7 @@ $unit: $size / 16;
   bottom: 0;
   background-color: #fff;
   width: $sidebar-width;
-  overflow: hidden;
+  overflow: visible;
   height: 100vh;
 
   .no-content {
@@ -94,49 +94,93 @@ $unit: $size / 16;
         font-size: 1.25rem;
       }
     }
+  }
 
-    .tabs {
-      list-style: none;
-      margin-top: 2.6rem;
-      border-top: .1rem solid rgba(255,255,255,.2);
-      line-height: 1;
+  .sidebar__tabs {
+    list-style: none;
+    margin-top: 2.6rem;
+    border-top: .1rem solid rgba(255,255,255,.2);
+    line-height: 1;
 
-      .tab {
-        position: relative;
-        display: inline-block;
-        color: #fff;
-        text-align: center;
-        padding-top: 1.7rem;
-        padding-bottom: 1.7rem;
-        font-size: 1.4rem;
-        cursor: pointer;
-        font-weight: bold;
-        letter-spacing: -.3px;
+    .tab {
+      position: relative;
+      display: inline-block;
+      color: #fff;
+      text-align: center;
+      padding-top: 1.7rem;
+      padding-bottom: 1.7rem;
+      font-size: 1.4rem;
+      cursor: pointer;
+      font-weight: bold;
+      letter-spacing: -.3px;
 
-        + .tab {
-          margin-left: $gutter;
+      + .tab {
+        margin-left: $gutter;
+      }
+
+      &__sub-nav {
+        $width: 25rem;
+        // args = $top, $left, $width, $margin-left, $padding-top
+        @include dropdownMenu( 4.3rem, 75%, $width, -($width / 2), 2rem );
+
+        &:before {
+          @include dropdownMenuArrow(30%);
         }
+      }
 
-        &:after {
-          $height: .4rem;
-          display: block;
-          width: 100%;
-          height: $height;
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          transform: translate(0, $height);
-          transition: transform ($animation-speed / 2) linear;
-          background-color: #fff;
-          content: "";
-        }
+      &__sub-nav--visible {
+        @include dropdownMenuVisible;
+      }
 
-        &:hover,
-        &.active {
-          &:after {
-            transform: translate(0, 0);
+      &__sub-nav__list {
+        margin: 0 0 2rem $gutter;
+        padding: 0 1.5rem 0 0;
+        text-align: left;
+        list-style: none;
+
+        &--item {
+          font-size: 2.3rem;
+          margin-left: .25rem;
+          text-transform: capitalize;
+          color: #2c3642;
+
+          &:hover {
+            color: $lpblue;
+            list-style: disc;
           }
         }
+
+        &--text {
+          font-size: 1.6rem;
+        }
+      }
+
+      &:after {
+        $height: .4rem;
+        display: block;
+        width: 100%;
+        height: $height;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        transform: translate(0, $height);
+        transition: transform ($animation-speed / 2) linear;
+        background: #fff;
+        content: "";
+      }
+
+      &:hover,
+      &.active {
+        &:after {
+          transform: translate(0,0);
+        }
+      }
+      .tab--icon {
+        float: right;
+        margin-top: 2px;
+        margin-left: 10px;
+        height: 8px;
+        width: 8px;
       }
     }
   }
