@@ -47,11 +47,11 @@ let MapState = assign({
 
   sortSets: (sets) => {
     let headings = state.topics.concat([
-      "experiences", "countries", "cities", "sponsored", "about"
+      "Experiences", "countries", "cities", "sponsored", "about"
     ]);
 
     return headings.reduce((memo, heading) => {
-      let set = find(sets, (set) => set.title.toLowerCase() === heading);
+      let set = find(sets, (set) => set.title === heading);
       if (set) {
         memo.push(set);
       }

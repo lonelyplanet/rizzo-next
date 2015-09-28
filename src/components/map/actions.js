@@ -12,7 +12,7 @@ let MapActions = {
   },
 
   gotoPlace: ({ placeTitle, place, topic="" }) => {
-    let query = topic ? `?topic=${topic}` : "",
+    let query = topic ? `?topic=${topic.toLowerCase()}` : "",
         url = `/${place}/map.json${query}`;
 
     Arkham.trigger("place.fetching", { placeTitle });
@@ -28,7 +28,7 @@ let MapActions = {
       url: url
     }).done((results) => {
       // window.localStorage.setItem(url, JSON.stringify(results));
-
+      console.log(results);
       Arkham.trigger("place.fetched", results);
     }).error((results) => {
       let error = {
