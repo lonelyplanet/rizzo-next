@@ -35,7 +35,6 @@ export default class SubNav {
 
       let $links = $(".js-sub-nav-link"),
           $components = $links.map((i, el) => {
-            console.log(document.getElementById(el.href.split("#")[1]));
             return document.getElementById(el.href.split("#")[1]);
           });
       let $last;
