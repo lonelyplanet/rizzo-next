@@ -8,11 +8,6 @@ $unit: $size / 16;
   100% { transform: rotate(360deg); }
 }
 
-.fetching {
-  text-align: center;
-  padding: $gutter;
-}
-
 .spinner {
   display: block;
   width: $size;

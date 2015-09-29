@@ -6,10 +6,17 @@ import React from "react";
 export default class SidebarFetchingView extends React.Component {
 
   render() {
+    let poi = this.props.poi;
+
     return (
       <div className="sidebar fetching">
-        <span>Fetching {this.props.place}</span>
-        <br/>
+        <header className="sidebar__header">
+          <div className="location-subtitle" ></div>
+          <h1 className="sidebar__title">
+            {this.props.place}
+          </h1>
+          <div className="sidebar__tabs"></div>
+        </header>
         <div className='spinner'></div>
       </div>
     )
