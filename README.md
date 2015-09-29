@@ -1,3 +1,4 @@
+![](https://doc.esdoc.org/github.com/lonelyplanet/rizzo-next/badge.svg)
 # Rizzo Next
 Rizzo next is the evolution of Lonely Planet's pattern library. 
 

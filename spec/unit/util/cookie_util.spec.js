@@ -2,6 +2,7 @@ import CookieUtil from "../../../src/core/cookie_util";
 
 let expect = require("expect.js");
 
+/** @test {CookieUtil} */
 describe("cookie util", () => {
   let cookie = null;
   before(() => {
