@@ -15,7 +15,7 @@
 engines:
 # to turn on an engine, add it here and set enabled to `true`
 # to turn off an engine, set enabled to `false` or remove it
-  csslint:
+  eslint:
     enabled: true
 
 # Engines can analyze files and report issues on them, but you can separately
