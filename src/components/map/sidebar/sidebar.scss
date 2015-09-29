@@ -50,7 +50,7 @@ $unit: $size / 16;
     padding: $gutter;
   }
 
-  .sidebar__header {
+  &__header {
     background-color: $color-blue;
     height: $sidebar-header-height;
     padding: 1.9rem $gutter .5rem;
@@ -96,7 +96,7 @@ $unit: $size / 16;
     }
   }
 
-  .sidebar__tabs {
+  &__tabs {
     list-style: none;
     margin-top: 2.6rem;
     border-top: .1rem solid rgba(255,255,255,.2);
@@ -119,39 +119,60 @@ $unit: $size / 16;
       }
 
       &__sub-nav {
-        $width: 25rem;
-        // args = $top, $left, $width, $margin-left, $padding-top
-        @include dropdownMenu( 4.3rem, 75%, $width, -($width / 2), 2rem );
+        $top: 4.3rem;
+        $left: -#{$gutter + 2rem};
+        $width: 28rem;
+        $margin-left: 0;
+        $padding-top: ($gutter * 1.5) - 1.3rem;
+        @include dropdownMenu($top, $left, $width, $margin-left, $padding-top);
+        padding-left: ($gutter + .8rem);
+        padding-bottom: ($gutter - 1.3rem);
+        padding-right: $gutter;
 
         &:before {
-          @include dropdownMenuArrow(30%);
+          $size: 1.2rem;
+          $left: 5.8rem;
+          @include dropdownMenuArrow($size, $left);
+        }
+
+        &.is-visible {
+          @include dropdownMenuVisible;
         }
       }
 
-      &__sub-nav--visible {
-        @include dropdownMenuVisible;
-      }
-
       &__sub-nav__list {
-        margin: 0 0 2rem $gutter;
-        padding: 0 1.5rem 0 0;
         text-align: left;
         list-style: none;
 
         &--item {
-          font-size: 2.3rem;
-          margin-left: .25rem;
+          font-size: 1.4rem;
+          line-height: 1;
           text-transform: capitalize;
-          color: #2c3642;
+          color: $color-darkblue;
+          padding-top: 1.3rem;
+          padding-bottom: 1.3rem;
+          position: relative;
+          transition: color $animation-speed;
 
-          &:hover {
+          &:hover,
+          &:focus {
             color: $lpblue;
-            list-style: disc;
           }
-        }
 
-        &--text {
-          font-size: 1.6rem;
+          &.is-selected {
+            color: $lpblue;
+
+            &:before {
+              background-color: $lpblue;
+              border-radius: 100%;
+              content: "";
+              height: .6rem;
+              left: -2.1rem;
+              margin-top: .3rem;
+              position: absolute;
+              width: .6rem;
+            }
+          }
         }
       }
 
@@ -175,12 +196,13 @@ $unit: $size / 16;
           transform: translate(0,0);
         }
       }
-      .tab--icon {
+
+      .tab__icon {
         float: right;
-        margin-top: 2px;
-        margin-left: 10px;
-        height: 8px;
-        width: 8px;
+        margin-top: .2rem;
+        margin-left: 1rem;
+        height: .8rem;
+        width: .8rem;
       }
     }
   }
