@@ -25,14 +25,14 @@ export default class TabView extends React.Component {
     if (this.props.showDropdown) {
       classString += " experiences"
       sidebarDropdown = <SidebarDropdown sets={sets} tabDropdownOpen={this.state.openDropdown}/>
-      iconAfter = "tab--icon icon--chevron-down icon--white";
+      iconAfter = "tab__icon icon--chevron-down icon--white";
     }
 
     return (
-      <li className={classString} onClick={this.tabClick.bind(this)} onMouseEnter={this.showSubmenu.bind(this)} onMouseLeave={this.hideSubmenu.bind(this)} >
-        {sidebarDropdown}
+      <li className={classString} onClick={this.tabClick.bind(this)} onMouseEnter={this.showSubmenu.bind(this)} onMouseLeave={this.hideSubmenu.bind(this)}>
         {title}
-        <div className={iconAfter}></div>
+        <i className={iconAfter} aria-hidden="true"></i>
+        {sidebarDropdown}
       </li>
     );
   }
@@ -52,7 +52,7 @@ export default class TabView extends React.Component {
 
       this.showTimer = setTimeout(() => {
         this.setState({ openDropdown: true });
-      }, 150);
+      }, 0);
     }
   }
 
@@ -61,7 +61,7 @@ export default class TabView extends React.Component {
 
     this.hideTimer = setTimeout(() => {
       this.setState({ openDropdown: false });
-    }, 500);
+    }, 250);
   }
 }
 
