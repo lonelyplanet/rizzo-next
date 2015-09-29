@@ -333,8 +333,7 @@
   }
 }
 
-@mixin dropdownMenu( $top, $left, $width, $margin-left, $padding-top: $gutter ) {
-
+@mixin dropdownMenu($top, $left, $width, $margin-left, $padding-top: $gutter) {
   display: block;
 
   position: absolute;
@@ -344,8 +343,7 @@
   left: $left;
 
   margin-left: $margin-left;
-  padding: $padding-top 0 0;
-
+  padding-top: $padding-top;
   width: $width;
 
   font-size: $font-size;
@@ -354,25 +352,21 @@
 
   border-radius: $radius;
   box-shadow: 0 -1rem 2rem rgba(0,0,0, 0);
-  background: #fff;
-
+  background-color: #fff;
   pointer-events: none;
   opacity: 0;
   transform: translateY(1rem);
   transition: opacity $animation-speed, transform $animation-speed, box-shadow ($animation-speed-ui * 1.5);
 }
 
-@mixin dropdownMenuVisible() {
-  transform: translateY(0rem);
-    opacity: 1;
-    pointer-events: all;
-
-    box-shadow: 0 3rem 9rem rgba(0,0,0, .4);
+@mixin dropdownMenuVisible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: all;
+  box-shadow: 0 3rem 9rem rgba(0,0,0, .4);
 }
 
-@mixin dropdownMenuArrow($left: 50%) {
-  $size: 1.6rem;
-
+@mixin dropdownMenuArrow($size: 1.6rem, $left: 50%) {
   display: block;
   content: "";
 
@@ -386,6 +380,6 @@
   height: 0;
   width: 0;
 
-  border: ($size/2) solid transparent;
+  border: ($size / 2) solid transparent;
   border-bottom-color: #fff;
 }

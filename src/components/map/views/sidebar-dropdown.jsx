@@ -8,7 +8,7 @@ import MapState from "../state";
 
 export default class SidebarDropdown extends React.Component {
   constructor(data) {
-    super(data)
+    super(data);
 
     this.state = MapState.getState();
   }
@@ -27,12 +27,12 @@ export default class SidebarDropdown extends React.Component {
 
     let topics = this.state.topics.map((item) => {
       return (
-        <li className="tab__sub-nav__list--item" data-item={item} onClick={this.changeTopic.bind(this)}><span className="tab__sub-nav__list--text">{item}</span></li>
-      )
+        <li className="tab__sub-nav__list--item" data-item={item} onClick={this.changeTopic.bind(this)}>{item}</li>
+      );
     });
 
     if (this.props.tabDropdownOpen) {
-      classString += " tab__sub-nav--visible"
+      classString += " is-visible";
     }
 
     return (
@@ -41,9 +41,6 @@ export default class SidebarDropdown extends React.Component {
           {topics}
         </ul>
       </div>
-    )
+    );
   }
 }
-
-
-

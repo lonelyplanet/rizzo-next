@@ -169,7 +169,7 @@ $medium-breakpoint: 768;
   &__link {
     display: block;
 
-    color: #2c3642;
+    color: $color-darkblue;
 
     transition: opacity $animation-speed / 4;
 

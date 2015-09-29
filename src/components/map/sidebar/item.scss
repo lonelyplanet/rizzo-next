@@ -5,8 +5,7 @@
   cursor: pointer;
 
   .title {
-    color: $feature-copy;
-    font-weight: bold;
+    color: $color-darkblue;
     transition: color $animation-speed ease;
   }
 
@@ -21,10 +20,6 @@
     margin-top: ($gutter / 3);
     margin-bottom: ($gutter / 3);
 
-    .title {
-      font-size: 1.6rem;
-    }
-
     &:after {
       position: absolute;
       bottom: 0;
@@ -34,6 +29,15 @@
       width: ($item-width-list - $image-width - ($order-width / 2));
       border-top: .1rem solid $divider-color;
       content: "";
+    }
+
+    .title {
+      font-size: 1.6rem;
+    }
+
+    .place__pointer,
+    .place__pointer--shadow {
+      display: none;
     }
   }
 

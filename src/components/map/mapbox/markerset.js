@@ -82,7 +82,8 @@ class MarkerSet extends Component {
   _addIcons() {
     this.layer.eachLayer(function(l) {
       let myIcon = L.divIcon({
-        className: "poi js-poi"
+        className: "poi js-poi",
+        iconSize: [14, 14]
       });
 
       l.setIcon(myIcon);
