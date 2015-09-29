@@ -49,7 +49,6 @@ export default class ItemView extends React.Component {
         <div className={picClass}>
           {img}
         </div>
-        <div className="place__order">{item.i+1}</div>
         <div className="place__text">
           <div className="title">{title}</div>
           {subtitle}
