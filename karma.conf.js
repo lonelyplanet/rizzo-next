@@ -63,7 +63,7 @@ module.exports = function(config) {
     webpackMiddleware: {
         // webpack-dev-middleware configuration
         // i. e.
-        noInfo: false
+        noInfo: true
     },
 
     preprocessors: {
