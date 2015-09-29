@@ -34,6 +34,9 @@ module.exports = {
       {
         test: /\.hbs$/,
         loader: "handlebars-loader"
+      }, {
+        test: /picker(.date)?.js$/,
+        loader: "imports?define=>false"
       }]
   }
 };

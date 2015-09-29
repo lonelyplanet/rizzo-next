@@ -18,7 +18,7 @@
     "sassdoc": "./node_modules/.bin/sassdoc sass --theme neat",
     "lint": "./node_modules/.bin/eslint src --ext .js,.jsx"
   },
-  "version": "0.9.1",
+  "version": "0.9.10",
   "dependencies": {
     "airbrake-js": "^0.5.2",
     "clamp-js": "*",
@@ -41,9 +41,13 @@
     "eslint-plugin-react": "^3.1.0",
     "expect.js": "^0.3.1",
     "file-loader": "^0.8.4",
+    "handlebars-loader": "^1.1.4",
+    "imports-loader": "^0.6.4",
+    "istanbul-instrumenter-loader": "^0.1.3",
     "jsx-loader": "^0.13.2",
-    "karma": "^0.13.3",
+    "karma": "^0.13.10",
     "karma-chrome-launcher": "^0.2.0",
+    "karma-coverage": "^0.5.2",
     "karma-mocha": "^0.2.0",
     "karma-nyan-reporter": "^0.2.2",
     "karma-phantomjs-launcher": "^0.2.0",

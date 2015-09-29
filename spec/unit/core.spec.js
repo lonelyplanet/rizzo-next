@@ -3,6 +3,7 @@ import Arkham from "../../src/core/arkham"
 
 var expect = require("expect.js");
 
+/** @test {Component} */
 describe("bane core", () => {
   it("should have a component", () => {
     expect(Component).to.be.ok();
