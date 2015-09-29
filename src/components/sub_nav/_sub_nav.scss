@@ -119,6 +119,12 @@ $navigation-sub-height-mobile: $header-height-mobile;
     a:focus {
       color: $color-blue;
     }
+
+    &--maps {
+      @media (max-width: $max-960) {
+        display: none;
+      }
+    }
   }
 
   &__link {

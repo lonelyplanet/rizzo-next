@@ -11,11 +11,11 @@ export default class SubNav {
           $window = $(window),
           fixedState, fixedSubNav;
 
-      $(document).on("click", ".js-sub-nav-lnk", function(e) {
+      $(document).on("click", ".js-sub-nav-link", function(e) {
         let target = this.hash;
         let $target = $(target);
         let navHeight = $subNav.height();
-        
+
         e.preventDefault();
 
         if($target.parents(".segment").length > 0) {
@@ -33,8 +33,9 @@ export default class SubNav {
         $subNav.find(`[href="${window.location.hash}"]`).trigger("click");
       }
 
-      let $links = $(".js-sub-nav-lnk"),
+      let $links = $(".js-sub-nav-link"),
           $components = $links.map((i, el) => {
+            console.log(document.getElementById(el.href.split("#")[1]));
             return document.getElementById(el.href.split("#")[1]);
           });
       let $last;
