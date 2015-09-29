@@ -203,6 +203,19 @@ $unit: $size / 16;
         margin-left: 1rem;
         height: .8rem;
         width: .8rem;
+        position: relative;
+
+        // covers up the border
+        &:after {
+          content: "";
+          position: absolute;
+          width: 2rem;
+          height: .4rem;
+          background-color: $color-blue;
+          bottom: -2.1rem;
+          right: -.2rem;
+          z-index: 1;
+        }
       }
     }
   }
