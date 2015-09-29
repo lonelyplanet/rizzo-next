@@ -47,22 +47,41 @@ module.exports = function(config) {
     // if true, it capture browsers, run tests and exit
     singleRun: false,
 
-    reporters: ["nyan"],
+    reporters: ["nyan", "coverage"],
 
     webpack: {
         module: {
-            loaders: webpackConfig.module.loaders
+            noParse: webpackConfig.module.noParse,
+            loaders: webpackConfig.module.loaders,
+            postLoaders: [ { // << add subject as webpack's postloader 
+                test: /\.js$/,
+                exclude: /(spec|node_modules|bower_components)\//,
+                loader: "istanbul-instrumenter"
+            }]
         }
     },
     webpackMiddleware: {
         // webpack-dev-middleware configuration
         // i. e.
-        noInfo: true
+        noInfo: false
     },
 
     preprocessors: {
         "spec/**/*.js": ["webpack"],
         "src/**/*.js": ["webpack"]
+    },
+
+    coverageReporter: {
+      type : "html",
+      dir : "docs/coverage",
+      check: {
+            global: {
+              statements: 30,
+              branches: 30,
+              functions: 30,
+              lines: 30
+            }
+        }
     }
   });
 };
