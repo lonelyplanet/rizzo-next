@@ -90,7 +90,7 @@ class SearchComponent extends Component {
       this.$el.addClass(SearchComponent.className + "--visible");
     }, 10);
 
-    return waitForTransition(this.$el)
+    return waitForTransition(this.$el, { fallbackTime: 100 })
       .then(() => {
         this.$input.focus();
       });
@@ -107,7 +107,7 @@ class SearchComponent extends Component {
 
     this.overlay.hide();
 
-    return waitForTransition(this.$el)
+    return waitForTransition(this.$el, { fallbackTime: 100 })
       .then(() => {
         this.$el.detach();
       });

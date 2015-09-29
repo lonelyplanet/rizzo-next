@@ -106,12 +106,12 @@ class ThingsToDo extends Component {
       $list.after($nextList)
         .css("transform", `translate3d(-${ttdComponentWidth}px, 0, 0)`);
       
-      waitForTransition($list, { fallbackTime: 3000 })
+      waitForTransition($list, { fallbackTime: 300 })
         .then(() => {
           $nextList
             .css("transform", "translate3d(0, 0, 0)");
           
-          return waitForTransition($nextList, { fallbackTime: 3000 });
+          return waitForTransition($nextList, { fallbackTime: 300 });
         })
         .then(() => {
           $list.remove();
