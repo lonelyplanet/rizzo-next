@@ -15,7 +15,7 @@ let MapActions = {
     let query = topic ? `?topic=${topic.toLowerCase()}` : "",
         url = `/${place}/map.json${query}`;
 
-    Arkham.trigger("place.fetching", { placeTitle, breadcrumb });
+    Arkham.trigger("place.fetching", { placeTitle, breadcrumb, topic });
 
     // TODO: JC, maybe this is cool, maybe not?
     // let mapData = window.localStorage.getItem(url);
