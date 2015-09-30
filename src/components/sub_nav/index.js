@@ -3,13 +3,28 @@ require("./_sub_nav.scss");
 export default class SubNav {
   constructor() {
     let debounce = require("lodash/function/debounce"),
-        $subNav = $(".js-sub-nav");
+        $subNav = $(".js-sub-nav"),
+        $window = $(window);
+
+    /**
+     * Checks to see if a given element has been scrolled into view
+     * @param  {Object}  element Element to check
+     * @return {Boolean}         Is the element in view or not?
+     */
+    let isScrolledIntoView = (element) => {
+      let $element = $(element),
+          windowTop = $window.scrollTop(),
+          elementTop = $element.offset().top,
+          viewportTop = windowTop + ($subNav.height() * 2);
+
+      return elementTop <= viewportTop;
+    };
 
     if ($subNav.length) {
       let subNavTop = $subNav.offset().top,
           firstTrigger = true,
-          $window = $(window),
-          fixedState, fixedSubNav;
+          fixedState,
+          fixedSubNav;
 
       $(document).on("click", ".js-sub-nav-link", function(e) {
         let target = this.hash;
@@ -48,20 +63,18 @@ export default class SubNav {
           firstTrigger = false;
         }
 
-        if ($window.scrollTop() > subNavTop){
-          if(!fixedState){
-            fixedSubNav.appendTo( "body" );
+        if ($window.scrollTop() > subNavTop) {
+          if(!fixedState) {
+            fixedSubNav.appendTo("body");
             fixedState = true;
           }
         } else if (fixedState) {
-            fixedSubNav.detach();
-            fixedState = false;
+          fixedSubNav.detach();
+          fixedState = false;
         }
 
-        let scrollTop = $(window).scrollTop() + $subNav.height();
-
         let $current = $components.map((i, el) => {
-          if (el.offsetTop < scrollTop) {
+          if (isScrolledIntoView(el)) {
             return el;
           }
         });
@@ -72,6 +85,10 @@ export default class SubNav {
           fixedSubNav
             .find(`a[href*="#${$current[$current.length - 1].id}"]`)
               .addClass("sub-nav__link--active");
+
+        } else {
+          fixedSubNav.find("a").removeClass("sub-nav__link--active");
+
         }
 
       }, 10));
