@@ -16,9 +16,12 @@
     "ci": "karma start",
     "docs": "node-sass sass/docs.scss -o dist/css --include-path=node_modules && esdoc -c esdoc.json",
     "sassdoc": "./node_modules/.bin/sassdoc sass --theme neat",
-    "lint": "./node_modules/.bin/eslint src --ext .js,.jsx"
+    "lint": "./node_modules/.bin/eslint src --ext .js,.jsx && scss-lint . --config .scss-lint.yml"
   },
   "version": "0.10.0",
+  "pre-commit": [
+    "lint"
+  ],
   "dependencies": {
     "airbrake-js": "^0.5.2",
     "babel-runtime": "^5.8.25",
@@ -70,6 +73,7 @@
     "node-sass": "^3.4.2",
     "object-assign": "^3.0.0",
     "phantomjs": "^1.9.17",
+    "pre-commit": "^1.1.2",
     "sass-loader": "^3.1.1",
     "sassdoc": "^2.1.15",
     "sassdoc-theme-neat": "0.0.2",

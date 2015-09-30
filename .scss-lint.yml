@@ -1,0 +1,297 @@
+# Default application configuration that all configurations inherit from.
+
+scss_files:
+- 'sass/**/*.scss'
+- 'src/components/**/*.scss'
+exclude:
+- 'docs/**'
+- 'node_modules/**'
+- 'tmp/**'
+plugin_directories: ['.scss-linters']
+
+# List of gem names to load custom linters from (make sure they are already installed)
+plugin_gems: []
+
+# https://github.com/brigade/scss-lint/blob/master/lib/scss_lint/linter/README.md
+linters:
+  BangFormat:
+    enabled: true
+    space_before_bang: true
+    space_after_bang: false
+
+  BemDepth:
+    enabled: true
+    max_elements: 1
+
+  BorderZero:
+    enabled: true
+    convention: zero # or `none`
+
+  ColorKeyword:
+    enabled: true
+
+  ColorVariable:
+    enabled: true
+
+  Comment:
+    enabled: true
+
+  Compass::*:
+    enabled: false
+
+  DebugStatement:
+    enabled: true
+
+  # Rule sets should be ordered as follows:
+  # - @extend declarations
+  # - @include declarations without inner @content
+  # - properties
+  # - @include declarations with inner @content
+  # - nested rule sets
+  DeclarationOrder:
+    enabled: true
+
+  DisableLinterReason:
+    enabled: false
+
+  DuplicateProperty:
+    enabled: true
+
+  ElsePlacement:
+    enabled: true
+    style: same_line # or 'new_line'
+
+  EmptyLineBetweenBlocks:
+    enabled: true
+    ignore_single_line_blocks: true
+
+  EmptyRule:
+    enabled: true
+
+  ExtendDirective:
+    enabled: false # see PlaceholderInExtend
+
+  FinalNewline:
+    enabled: true
+    present: true
+
+  HexLength:
+    enabled: true
+    style: short # or 'long'
+
+  HexNotation:
+    enabled: true
+    style: lowercase # or 'uppercase'
+
+  HexValidation:
+    enabled: true
+
+  IdSelector:
+    enabled: true
+
+  ImportantRule:
+    exclude:
+      - 'sass/_base.scss' # need !important on .hide-text
+      - 'sass/_print.scss' # need !important to force print styles in some cases
+      - 'sass/_utility_classes.scss' # need !important on is-hidden class
+      - 'src/components/ads/ads.scss' # need !important to ensure ad is hidden
+      - 'src/components/article_body/article_body.scss' # need !important to override legacy styles
+    enabled: true
+
+  ImportPath:
+    enabled: true
+    leading_underscore: false
+    filename_extension: false
+
+  Indentation:
+    enabled: true
+    allow_non_nested_indentation: false
+    character: space # or 'tab'
+    width: 2
+
+  LeadingZero:
+    enabled: true
+    style: exclude_zero # or 'include_zero'
+
+  MergeableSelector:
+    enabled: true
+    force_nesting: true
+
+  # Functions, mixins, variables, and placeholders
+  NameFormat:
+    enabled: true
+    allow_leading_underscore: true
+    convention: hyphenated_lowercase # or 'camel_case', or 'snake_case', or a regex pattern
+
+  NestingDepth:
+    enabled: true
+    max_depth: 3
+    ignore_parent_selectors: false
+
+  PlaceholderInExtend:
+    enabled: true
+
+  PropertyCount:
+    enabled: false
+    include_nested: false
+    max_properties: 10
+
+  PropertySortOrder:
+    enabled: true
+    ignore_unspecified: false
+    min_properties: 2
+    separate_groups: false
+
+  PropertySpelling:
+    enabled: true
+    extra_properties: []
+
+  PropertyUnits:
+    exclude:
+      - 'sass/_print.scss' # need to use px for border and cm for margin
+      - 'sass/_reset.scss' # need to use px for border
+    enabled: true
+    global: [
+      'em', 'rem',                    # Font-relative lengths ('ch', 'em', 'ex', 'rem')
+      'px',                           # Absolute lengths ('cm', 'in', 'mm', 'pc', 'pt', 'px', 'q')
+      'vh', 'vw', 'vmin', 'vmax',     # Viewport-percentage lengths ('vh', 'vw', 'vmin', 'vmax')
+      'deg', 'grad', 'rad', 'turn',   # Angle ('deg', 'grad', 'rad', 'turn')
+      'ms',                           # Duration ('ms', 's')
+      'Hz', 'kHz',                    # Frequency ('Hz', 'kHz')
+      'dpi', 'dpcm', 'dppx',          # Resolution ('dpi', 'dpcm', 'dppx')
+      '%']                            # Other ('%')
+    properties: {
+      border: ['rem'],
+      border-top: ['rem'],
+      border-right: ['rem'],
+      border-bottom: ['rem'],
+      border-left: ['rem'],
+      border-spacing: ['rem'],
+      border-radius: ['rem', '%'],
+      font-size: ['rem', 'vw', '%'],
+      height: ['px', 'em', 'rem', '%', 'vw', 'vh'],
+      max-height: ['px', 'em', 'rem', '%', 'vh'],
+      min-height: ['px', 'em', 'rem', '%', 'vh'],
+      letter-spacing: ['rem'],
+      line-height: [],
+      margin: ['em', 'rem', '%', 'vw'],
+      margin-top: ['em', 'rem', '%', 'vw'],
+      margin-right: ['em', 'rem', '%', 'vw'],
+      margin-bottom: ['em', 'rem', '%', 'vw'],
+      margin-left: ['em', 'rem', '%', 'vw'],
+      padding: ['em', 'rem', '%', 'vw'],
+      padding-top: ['em', 'rem', '%', 'vw'],
+      padding-right: ['em', 'rem', '%', 'vw'],
+      padding-bottom: ['em', 'rem', '%', 'vw'],
+      padding-left: ['em', 'rem', '%', 'vw'],
+      transition: ['ms'],
+      transition-duration: ['ms'],
+      width: ['px', 'em', 'rem', '%', 'vw'],
+      max-width: ['px', 'em', 'rem', '%', 'vw'],
+      min-width: ['px', 'em', 'rem', '%', 'vw'],
+      top: ['px', 'rem', '%', 'vw'],
+      bottom: ['px', 'rem', '%', 'vw'],
+      left: ['px', 'rem', '%', 'vw'],
+      right: ['px', 'rem', '%', 'vw']
+    }
+
+  QualifyingElement:
+    exclude:
+      - 'src/components/article_body/article_body.scss' # need to override legacy styles
+    enabled: true
+    allow_element_with_attribute: false
+    allow_element_with_class: false
+    allow_element_with_id: false
+
+  SelectorDepth:
+    enabled: true
+    max_depth: 3
+
+  SelectorFormat:
+    exclude:
+      - 'src/components/video/video_player.scss' # because of Brightcove
+    enabled: true
+    convention: hyphenated_BEM # 'hyphenated_lowercase', or 'strict_BEM', or 'hyphenated_BEM', or 'snake_case', or 'camel_case', or a regex pattern
+
+  Shorthand:
+    enabled: true
+    allowed_shorthands: [1, 2, 3]
+
+  SingleLinePerProperty:
+    enabled: true
+    allow_single_line_rule_sets: false
+
+  SingleLinePerSelector:
+    exclude:
+      - 'sass/_reset.scss' # because of the margin and padding reset on every element imaginable
+    enabled: true
+
+  SpaceAfterComma:
+    enabled: true
+    style: one_space # or 'no_space', or 'at_least_one_space'
+
+  SpaceAfterPropertyColon:
+    enabled: true
+    style: one_space # or 'no_space', or 'at_least_one_space', or 'aligned'
+
+  SpaceAfterPropertyName:
+    enabled: true
+
+  SpaceAfterVariableName:
+    enabled: true
+
+  SpaceAroundOperator:
+    enabled: true
+    style: one_space # or 'no_space'
+
+  SpaceBeforeBrace:
+    enabled: true
+    style: space # or 'new_line'
+    allow_single_line_padding: false
+
+  SpaceBetweenParens:
+    enabled: true
+    spaces: 0
+
+  StringQuotes:
+    enabled: true
+    style: single_quotes # or double_quotes
+
+  TrailingSemicolon:
+    enabled: true
+
+  TrailingWhitespace:
+    enabled: true
+
+  TrailingZero:
+    enabled: false
+
+  TransitionAll:
+    enabled: true
+
+  UnnecessaryMantissa:
+    enabled: true
+
+  UnnecessaryParentReference:
+    enabled: true
+
+  UrlFormat:
+    enabled: true
+
+  UrlQuotes:
+    enabled: true
+
+  VariableForProperty:
+    enabled: false
+    properties: []
+
+  VendorPrefix:
+    exclude:
+      - 'sass/_reset.scss' # because of unstandard properties
+    enabled: true
+    identifier_list: base
+    additional_identifiers: []
+    excluded_identifiers: []
+
+  ZeroUnit:
+    enabled: true
