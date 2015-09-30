@@ -2,6 +2,7 @@ $inactive: #999;
 $active: $lpblue;
 $size: 3rem;
 $unit: $size / 16;
+$panel-height: calc(100% - #{$sidebar-header-height});
 
 @keyframes spinner {
   0% { transform: rotate(0); }
@@ -16,7 +17,8 @@ $unit: $size / 16;
   border: $unit solid $inactive;
   animation: spinner $animation-speed-ui linear infinite;
   position: relative;
-  margin: 2rem auto;
+  top: calc(50% - (#{$size} / 2);
+  margin: 0 auto;
 
   &:before,
   &:after {
@@ -216,7 +218,7 @@ $unit: $size / 16;
   }
 
   .panel {
-    height: calc(100% - #{$sidebar-header-height});
+    height: $panel-height;
     overflow: auto;
 
     .listing {

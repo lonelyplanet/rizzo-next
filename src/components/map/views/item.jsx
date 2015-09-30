@@ -59,7 +59,7 @@ export default class ItemView extends React.Component {
   clickItem() {
     let props = this.props;
     if(props.item.item_type === "Place") {
-      MapActions.gotoPlace({ place: props.item.slug, placeTitle: props.item.title });
+      MapActions.gotoPlace({ place: props.item.slug, placeTitle: props.item.title, breadcrumb: props.item.subtitle });
     } else {
       MapActions.poiOpen({ index: props.item.i, poi: props.item });
       MapActions.pinHover({ poiIndex: props.item.i });

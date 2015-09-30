@@ -7,29 +7,12 @@ import Tab from "./tab.jsx";
 export default class SidebarFetchingView extends React.Component {
 
   render() {
-    let poi = this.props.poi,
-        location = this.props.location,
-        sets = this.props.sets,
-        backElement = "",
-        tabCount = 0;
+    let location = this.props.location,
+        breadcrumb = this.props.breadcrumb,
+        crumbText =  breadcrumb || location.grandparent,
+        placeText = this.props.place || location.title;
 
-    let tabs = sets.map((set, i) => {
-      tabCount++;
-      return (
-        <Tab sets={sets} name={set.title} i={i} type={set.type} />
-      )
-    });
-
-    if (location.description.length > 0) {
-      tabCount++;
-      let aboutTab = <Tab name="About" i={tabCount} customPanel="about" />
-      tabs.push(aboutTab);
-    }
-
-    console.log(location);
-    if (location.grandparent) {
-      backElement = <div className="location-subtitle" ><i className="icon icon-chevron-left" aria-hidden="true"></i>{location.grandparent}</div>;
-    }
+    let backElement = crumbText ? <div className="location-subtitle" ><i className="icon icon-chevron-left" aria-hidden="true"></i>{crumbText}</div> : ""
 
     return (
       <div className="sidebar fetching">
@@ -38,13 +21,13 @@ export default class SidebarFetchingView extends React.Component {
             {backElement}
           </div>
           <h1 className="sidebar__title">
-            {this.props.place}
+            {placeText}
           </h1>
-          <div className="sidebar__tabs">
-
-          </div>
+          <div className="sidebar__tabs"></div>
         </header>
-        <div className='spinner'></div>
+        <div className="panel">
+          <div className='spinner'></div>
+        </div>
       </div>
     )
   }

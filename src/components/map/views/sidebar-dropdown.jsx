@@ -18,7 +18,8 @@ export default class SidebarDropdown extends React.Component {
 
     MapActions.gotoPlace({
       place: this.state.currentLocation.slug,
-      topic
+      topic,
+      breadcrumb: this.state.currentLocation.parent
     });
   }
   render() {
