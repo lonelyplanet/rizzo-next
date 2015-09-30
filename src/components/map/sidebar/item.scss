@@ -35,8 +35,7 @@
       font-size: 1.6rem;
     }
 
-    .place__pointer,
-    .place__pointer--shadow {
+    .place__pointer {
       display: none;
     }
   }
@@ -60,26 +59,16 @@
 
     .place__pointer {
       position: absolute;
-      left: -.9rem;
-      top: 2rem;
+      bottom: -1rem;
+      left: 0;
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
       width: 0;
       height: 0;
-      border-top: 1rem solid transparent;
-      border-bottom: 1rem solid transparent;
-      border-right: 1rem solid #fff;
-      z-index: -1;
-
-      &--shadow {
-        position: absolute;
-        left: -1.2rem;
-        top: 1.8rem;
-        width: 0;
-        height: 0;
-        border-top: 1.2rem solid transparent;
-        border-bottom: 1.2rem solid transparent;
-        border-right: 1.2rem solid #c0c0c0;
-        z-index: -2;
-      }
+      border-left: 1rem solid transparent;
+      border-right: 1rem solid transparent;
+      border-top: 1rem solid #fff;
     }
 
     &:after {
