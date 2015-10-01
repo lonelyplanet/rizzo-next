@@ -1,6 +1,7 @@
 import { Component } from "../../core/bane";
 import $clamp from "clamp-js/clamp.js";
 import Tabs from "../tabs/tabs_component";
+import $ from "jquery";
 
 import "./_articles.scss";
 
@@ -25,12 +26,18 @@ class ArticlesComponent extends Component {
       $(window).on("resize", this._reclamp.bind(this));
     }
   }
+  widthWindow() {
+    return $(window).width();
+  }
+  isDesktop() {
+    return this.widthWindow() >= this.mobileWidth;
+  }
   _reclamp() {
     this._detectScreen();
     this._clampText();
   }
   _detectScreen() {
-    this.screen = $(window).width() >= this.mobileWidth ? "desktop" : "mobile";
+    return this.screen = this.isDesktop() ? "desktop" : "mobile";
   }
   _clampText() {
     this.articles.each((index, article) => {

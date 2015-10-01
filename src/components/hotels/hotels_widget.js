@@ -1,9 +1,10 @@
 import { Component } from "../../core/bane";
-import Arkham from "../../core/arkham";
 import assign from "lodash/object/assign";
 import "pickadate/lib/picker.date";
 import HotelsEvents from "./hotels.events";
 import publish from "../../core/decorators/publish";
+import $ from "jquery";
+let _ = { assign };
 
 const dateDefaults = {
   format: "mm/d/yyyy",
@@ -17,14 +18,19 @@ const dateDefaults = {
 
 class HotelsWidget extends Component {
   get booking() {
-    let dates = this.$el.find("[type='date']"),
-        guests = this.$el.find("#js-guests");
+    let guests = this.$el.find("#js-guests");
 
     return {
-      startDate: new Date(this.startDate.pickadate("picker").get()),
-      endDate: new Date(this.endDate.pickadate("picker").get()),
-      guests: guests.val()
+      startDate: new Date(this.startDate),
+      endDate: new Date(this.endDate),
+      guests: parseInt(guests.val(), 10)
     }
+  }
+  get startDate() {
+    return this.$startDate.pickadate("picker").get();
+  }
+  get endDate() {
+    return this.$endDate.pickadate("picker").get();
   }
   initialize() {
     this.events = {
@@ -36,15 +42,15 @@ class HotelsWidget extends Component {
         endDate = $(dates[1]),
         today = new Date();
 
-    this.startDate = startDate.pickadate(assign({
+    this.$startDate = startDate.pickadate(_.assign({
       min: today,
     }, dateDefaults));
 
-    this.endDate = endDate.pickadate(assign({
+    this.$endDate = endDate.pickadate(_.assign({
       min: this.nextDate(today)
     }, dateDefaults));
 
-    startDate.change(() => this.changeDate(endDate, startDate));
+    startDate.change(() => this.changeDate(this.endDate, this.startDate));
   }
   nextDate(date) {
     let tmpDate = new Date(date);
@@ -52,21 +58,23 @@ class HotelsWidget extends Component {
     return tmpDate;
   }
   changeDate (endDate, startDate){
-    let existingEndDate = new Date(endDate.pickadate("picker").get()),
-        newStartDate = new Date(startDate.pickadate("picker").get());
-   
+    let existingEndDate = new Date(endDate),
+        newStartDate = new Date(startDate);
+    
     if (existingEndDate.toString() === "Invalid Date" || newStartDate > existingEndDate) {
       let newMinimumEndDate = new Date(newStartDate.getTime() + 24 * 60 * 60 * 1000);
-      endDate.pickadate("picker").set({
-        "min": newMinimumEndDate,
-        "select": newMinimumEndDate
-      });
+      this.updateEndDate(newMinimumEndDate);
+      return newMinimumEndDate;
     }
   }
+  updateEndDate(date) {
+    this.$endDate.pickadate("picker").set({
+      "min": date,
+      "select": date
+    });
+  }
   @publish(HotelsEvents.SEARCH)
-  searchHotels({ target }) {
-    let serialized = $(target).serialize();
-
+  searchHotels() {
     return {
       booking: this.booking
     };

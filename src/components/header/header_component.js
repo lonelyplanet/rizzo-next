@@ -1,9 +1,15 @@
 import { Component } from "../../core/bane";
 import SearchComponent from "../search";
 import NavigationComponent from "../navigation";
+import $ from "jquery";
 
 import debounce from "lodash/function/debounce";
 
+/**
+ * The page header which contains both search and navigation.
+ * Clicking on the search icons opens the search.
+ * Will re-render when the browser changes sizes
+ */
 class Header extends Component {
 
   initialize() {
@@ -24,17 +30,27 @@ class Header extends Component {
     $(window).resize(debounce(this.render.bind(this), 100));
     this.render();
   }
-
-  render(){
+  /**
+   * Add a class to the search when it's too big for the screen
+   * @return {Header} The instance of the header
+   */
+  render() {
     let fadeClassName = "header__search--fade";
 
-    this.$search.removeClass(fadeClassName);
+    this.$search
+        .removeClass(fadeClassName)
+        .toggleClass(fadeClassName, this.isTooBig());
 
-    let isToBig = this.$search.width() > this.$inner.width() * .42;
-
-    this.$search.toggleClass(fadeClassName, isToBig);
+    return this;
   }
-
+  /**
+   * If the search box is too big based on the screen width
+   * @return {Boolean} 
+   */
+  isTooBig() {
+    return this.$search.width() > this.$inner.width() * .42;
+  }
+  
   onSearchClick(e) {
     e.preventDefault();
 

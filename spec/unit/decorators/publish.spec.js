@@ -44,7 +44,8 @@ describe("publish decorator", () => {
 
     let foo = new Foo();
 
-    foo.myMessage();
+    let result = foo.myMessage();
     definition.unsubscribe();
+    expect(result.foo).to.be("bazinga");
   });
 });
