@@ -30,6 +30,7 @@ export default function publish(topic, channel) {
     descriptor.value = function() {
       let value = fn.apply(this, arguments);
       postal.channel(channel || target.channel || "/").publish(topic, value);
+      return value;
     };
   };
 }

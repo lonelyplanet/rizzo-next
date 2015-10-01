@@ -19,7 +19,8 @@
     "no-underscore-dangle": [0],
     "strict": [0, "never"],
     "no-var": [1],
-    "react/jsx-uses-vars": [0]
+    "react/jsx-uses-vars": [0],
+    "no-unused-vars": [1]
   },
   "plugins": [
     "react"

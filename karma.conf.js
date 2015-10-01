@@ -14,6 +14,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      require.resolve("es5-shim/es5-shim.js"),
       "spec/index.js"
     ],
 
@@ -78,7 +79,7 @@ module.exports = function(config) {
             global: {
               statements: 30,
               branches: 30,
-              functions: 30,
+              functions: 25,
               lines: 30
             }
         }

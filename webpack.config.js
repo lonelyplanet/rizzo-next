@@ -2,7 +2,6 @@
 
 var path = require("path");
 
-
 /**
  * 
  * This webpack config is for transpiling and running unit tests
@@ -23,7 +22,7 @@ module.exports = {
     loaders: [{
         test: /\.js$/,
         exclude: /node_modules\/(?!rizzo|flamsteed).*/,
-        loader: "babel-loader?stage=1"
+        loader: "babel-loader?stage=1&optional[]=runtime"
       },
       {
         // For some reason the sass-loader borks karma
@@ -33,9 +32,13 @@ module.exports = {
       },
       {
         test: /\.hbs$/,
-        loader: "handlebars-loader"
-      }, {
+        loader: "handlebars?rootRelative=" + path.join(__dirname, "src") + "/"
+      }, 
+      {
         test: /picker(.date)?.js$/,
+        loader: "imports?define=>false"
+      }, {
+        test: /sinon(.*)?\.js$/,
         loader: "imports?define=>false"
       }]
   }
