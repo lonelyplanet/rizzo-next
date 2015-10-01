@@ -13,7 +13,7 @@ export default class SidebarDetailsView extends React.Component{
         <img src={imgSrc} ref="img" />
       </div>
     }
-
+    let slug = `/${poi.slug}`;
     return (
       <div className="sidebar details">
         <header className="sidebar__header">
@@ -26,7 +26,7 @@ export default class SidebarDetailsView extends React.Component{
           {image}
           <div className="panel__content" dangerouslySetInnerHTML={{__html: poi.description}}></div>
           <div className="panel__footer">
-            <a className="panel__close" href={poi.slug}>
+            <a className="panel__close" href={slug}>
               Close map and explore {poi.title}
               <span className="icon-chevron-right"></span>
             </a>
