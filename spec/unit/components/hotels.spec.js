@@ -1,22 +1,6 @@
 import HotelsWidget from "../../../src/components/hotels/hotels_widget";
 import $ from "jquery";
 
-function createStub(target, method, original) {
-  let stub = function() {
-    stub.callCount++;
-  };
-  stub.restore = function() {
-    target[method] = original;
-  };
-  stub.callCount = 0;
-  return stub;
-}
-
-function stub(target, method) {
-  let original = target[method];
-  target[method] = createStub(target, method, original);
-}
-
 let hotelsTemplate = require("../../../src/components/hotels/hotels.hbs");
 
 let html = hotelsTemplate({
@@ -34,7 +18,7 @@ describe("hotels widget", () => {
   });
 
   it("should change the endDate if the startDate gets changed to after the end date", () => {
-    stub(HotelsWidget.prototype, "updateEndDate");
+    sinon.stub(HotelsWidget.prototype, "updateEndDate");
 
     let date = HotelsWidget.prototype.changeDate(
       new Date("January 5, 2015 00:00:00"),
