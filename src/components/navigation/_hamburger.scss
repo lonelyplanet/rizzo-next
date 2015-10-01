@@ -12,8 +12,8 @@
   transition: transform .4s ease;
   outline: none;
   cursor: pointer;
-
   appearance: none;
+
   @include respond-to($mobile-breakpoint) {
     display: none;
   }
@@ -27,22 +27,24 @@
 .hamburger-menu__svg__toggle {
   cursor: pointer;
   pointer-events: all;
-
   fill: #fff;
 }
 
 .navigation--narrow .hamburger-menu__svg__toggle {
   fill: $h2-color;
 }
+
 .hamburger-menu__svg__toggle__bar {
   opacity: 1;
   transition: transform .4s ease-in-out, opacity .2s ease-in-out;
   transform: rotate(0) translateY(0) translateX(0);
   transform-origin: 20px 10px;
 }
+
 .hamburger-menu__svg__toggle__bar:nth-of-type(1) {
   transform-origin: 20px 10px;
 }
+
 .hamburger-menu__svg__toggle__bar:nth-of-type(3) {
   transform-origin: 20px 20px;
 }
@@ -50,9 +52,11 @@
 .is-open .hamburger-menu__svg__toggle__bar:nth-of-type(1) {
   transform: rotate(-45deg) translateY(0) translateX(0);
 }
+
 .is-open .hamburger-menu__svg__toggle__bar:nth-of-type(2) {
   opacity: 0;
 }
+
 .is-open .hamburger-menu__svg__toggle__bar:nth-of-type(3) {
-  transform: rotate(45deg) translateY(0em) translateX(0em);
+  transform: rotate(45deg) translateY(0) translateX(0);
 }
