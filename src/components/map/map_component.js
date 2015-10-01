@@ -10,8 +10,6 @@ class MapComponent extends Component {
     let originalState = this.getInitialState();
     this.el = props.el;
 
-    let fullscreen = $(this.el).parent().data("fullscreen");
-
     MapActions.setState(originalState.data);
 
     React.render(<MainView />, document.querySelector(this.el));
@@ -20,6 +18,7 @@ class MapComponent extends Component {
       this.close();
     });
 
+    // TODO: Uncomment to grab sponsored data
     // MapActions.fetchSponsors();
   }
 
@@ -27,11 +26,25 @@ class MapComponent extends Component {
     this.$el.addClass("open");
     $("html,body").addClass("noscroll");
     MapActions.mapOpen();
+
+    if (!/map\/?$/.test(window.location.pathname)) {
+      let pathname = window.location.pathname;
+      let lastChar = window.location.pathname.substr(-1); // Selects the last character
+      
+      if (lastChar !== "/") {         // If the last character is not a slash
+         pathname = pathname + "/";   // Append a slash to it.
+      }
+    
+      history.pushState({}, "", `${pathname}map/`);
+    }
   }
 
   close() {
     $("html,body").removeClass("noscroll");
     this.$el.removeClass("open");
+
+    let path = window.location.pathname.replace(/map\/?/, "");
+    history.pushState({}, "", `${path}`);
   }
 
 }
