@@ -1,16 +1,21 @@
 import React from "react";
 import Item from "./item.jsx";
 import Slideshow from "../../slideshow";
+import $ from "jquery";
 
 export default class AboutPanel extends React.Component {
   componentDidMount() {
-    this.slideshow = new Slideshow({
-      el: this.refs.slideshow.getDOMNode(),
-      type: "fade",
-      images: this.props.location.images,
-      height: 270,
-      showProgress: true
-    });
+    if (this.props.location.images.length) {
+      this.slideshow = new Slideshow({
+        el: this.refs.slideshow.getDOMNode(),
+        type: "fade",
+        images: this.props.location.images,
+        height: 270,
+        showProgress: true
+      });
+    } else {
+      $(this.refs.slideshow.getDOMNode()).remove();
+    }
   }
   render() {
     let place = this.props.location.title,

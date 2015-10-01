@@ -55,7 +55,7 @@ module.exports = function(config) {
             noParse: webpackConfig.module.noParse,
             loaders: webpackConfig.module.loaders,
             postLoaders: [ { // << add subject as webpack's postloader 
-                test: /\.js$/,
+                test: /\.jsx?$/,
                 exclude: /(spec|node_modules|bower_components)\//,
                 loader: "istanbul-instrumenter"
             }]
