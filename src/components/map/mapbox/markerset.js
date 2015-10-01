@@ -159,7 +159,7 @@ class MarkerSet extends Component {
     let poiIndex = this.activeLayer.feature.properties.index,
         poi = this.pois[poiIndex];
     if (poi.item_type === "Place") {
-      MapActions.gotoPlace({ place: poi.slug, placeTitle: poi.title });
+      MapActions.gotoPlace({ place: poi.slug, placeTitle: poi.title, breadcrumb: poi.subtitle });
     } else {
       MapActions.poiOpen({ index: poiIndex, poi });
     }

@@ -18,25 +18,31 @@ export default class SidebarDropdown extends React.Component {
 
     MapActions.gotoPlace({
       place: this.state.currentLocation.slug,
-      topic
+      topic,
+      breadcrumb: this.state.currentLocation.parent
     });
   }
   render() {
     let topicCount = 0,
-        classString = "tab__sub-nav";
+        menuClassString = "tab__sub-nav";
 
     let topics = this.state.topics.map((item) => {
+      let itemClassString = "tab__sub-nav__list--item";
+      if (this.state.topicClicked === item) {
+        itemClassString += " is-selected";
+      }
+
       return (
-        <li className="tab__sub-nav__list--item" data-item={item} onClick={this.changeTopic.bind(this)}>{item}</li>
+        <li className={itemClassString} data-item={item} onClick={this.changeTopic.bind(this)}>{item}</li>
       );
     });
 
     if (this.props.tabDropdownOpen) {
-      classString += " is-visible";
+      menuClassString += " is-visible";
     }
 
     return (
-      <div className={classString}>
+      <div className={menuClassString}>
         <ul className="tab__sub-nav__list">
           {topics}
         </ul>

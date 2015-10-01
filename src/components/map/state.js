@@ -24,7 +24,9 @@ let state = {
   hoveredPin: 0,
   hoveredItem: null,
   customPanel: "",
-  tabDropdownOpen: false
+  tabDropdownOpen: false,
+  placeParent: "",
+  topicClicked: ""
 };
 
 let MapState = assign({
@@ -94,6 +96,8 @@ Arkham.on("poi.closed", () => {
 Arkham.on("place.fetching", (data) => {
   state.isFetching = true;
   state.fetchingPlace = data.placeTitle;
+  state.placeParent = data.breadcrumb;
+  state.topicClicked = data.topic;
   MapState.emitChange();
 });
 

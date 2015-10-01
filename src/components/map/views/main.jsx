@@ -42,7 +42,7 @@ export default class MainView extends React.Component {
     }
 
     if (this.state.isFetching) {
-      sidebar = <SidebarFetching place={this.state.fetchingPlace} />;
+      sidebar = <SidebarFetching location={this.state.currentLocation} place={this.state.fetchingPlace} breadcrumb={this.state.placeParent} />;
     } else {
       if (this.state.isDetail) {
         sidebar = <SidebarDetails poi={this.state.poi} />

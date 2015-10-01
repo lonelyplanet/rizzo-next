@@ -27,6 +27,7 @@ export default class SidebarView extends React.Component {
       let isCity = location.type.toLowerCase() === "city";
       let isExperienceTab = set.type === "experiences";
       let showDropdown = isCity && isExperienceTab;
+
       return (
         <Tab sets={sets} showDropdown={showDropdown} name={set.title} active={isActive} i={i} type={set.type} />
       )
@@ -35,7 +36,7 @@ export default class SidebarView extends React.Component {
     if (location.description.length > 0) {
       tabCount++;
       let dropdownOpen = this.props.tabDropdownOpen
-      let isActive = tabCount === activeSetIndex ? true : false;
+      let isActive = tabCount === 1 || tabCount === activeSetIndex ? true : false;
       let aboutTab = <Tab name="About" active={isActive} i={tabCount} customPanel="about" tabDropdownOpen={dropdownOpen}/>
       tabs.push(aboutTab);
     }
