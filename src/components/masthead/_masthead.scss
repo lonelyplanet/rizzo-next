@@ -84,8 +84,7 @@
     height: 100%;
 
     @media (min-width: $min-1290) {
-      margin-left: 0;
-      width: 100%;
+      max-width: 100%;
     }
   }
 
