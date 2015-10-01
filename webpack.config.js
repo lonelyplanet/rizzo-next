@@ -19,8 +19,9 @@ module.exports = {
     libraryTarget: "var"
   },
   module: {
+    noParse: /node_modules\/(jquery|keymirror)/,
     loaders: [{
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules\/(?!rizzo|flamsteed).*/,
         loader: "babel-loader?stage=1&optional[]=runtime"
       },
@@ -40,6 +41,9 @@ module.exports = {
       }, {
         test: /sinon(.*)?\.js$/,
         loader: "imports?define=>false"
+      }, {
+        test: /\.json$/,
+        loader: "json"
       }]
   }
 };
