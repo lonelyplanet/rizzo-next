@@ -4,7 +4,7 @@
       <input type="checkbox" class="footer__main__checkbox" id="destinations_checked">
       <div class="footer__main__links footer__main__links--destinations">
         <p class="footer__main__links__header">
-          <a href="http://www.lonelyplanet.com/destinations">destinations</a>
+          <a href="http://www.lonelyplanet.com/destinations">Destinations</a>
           <label for="destinations_checked" class="accordion-target"><span class="icon--chevron-down"></span></label>
         </p>
         <ul class="footer__main__links__list">
@@ -18,7 +18,7 @@
       <input type="checkbox" class="footer__main__checkbox" id="shop_checked">
       <div class="footer__main__links footer__main__links--shop">
         <p class="footer__main__links__header">
-          <a href="http://www.lonelyplanet.com/shop">shop</a>
+          <a href="http://www.lonelyplanet.com/shop">Shop</a>
           <label for="shop_checked" class="accordion-target"><span class="icon--chevron-down"></span></label>
         </p>
         <ul class="footer__main__links__list">
@@ -32,11 +32,39 @@
       <input type="checkbox" class="footer__main__checkbox" id="forum_checked">
       <div class="footer__main__links footer__main__links--forum">
         <p class="footer__main__links__header">
-          <a href="http://www.lonelyplanet.com/thorntree">forum</a>
+          <a href="http://www.lonelyplanet.com/thorntree">Forum</a>
           <label for="forum_checked" class="accordion-target"><span class="icon--chevron-down"></span></label>
         </p>
         <ul class="footer__main__links__list">
           {{#each footer_nav_forum_items}}
+            <li class="footer__main__links__list__item">
+              <a href="{{url}}">{{title}}</a>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+      <input type="checkbox" class="footer__main__checkbox" id="interests_checked">
+      <div class="footer__main__links footer__main__links--interests">
+        <p class="footer__main__links__header">
+          <a href="http://www.lonelyplanet.com/interests">Interests</a>
+          <label for="interests_checked" class="accordion-target"><span class="icon--chevron-down"></span></label>
+        </p>
+        <ul class="footer__main__links__list">
+          {{#each footer_nav_interest_items}}
+            <li class="footer__main__links__list__item">
+              <a href="{{url}}">{{title}}</a>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+      <input type="checkbox" class="footer__main__checkbox" id="booking_checked">
+      <div class="footer__main__links footer__main__links--booking">
+        <p class="footer__main__links__header">
+          <a href="http://www.lonelyplanet.com/bookings">Travel Booking</a>
+          <label for="booking_checked" class="accordion-target"><span class="icon--chevron-down"></span></label>
+        </p>
+        <ul class="footer__main__links__list">
+          {{#each footer_nav_booking_items}}
             <li class="footer__main__links__list__item">
               <a href="{{url}}">{{title}}</a>
             </li>
