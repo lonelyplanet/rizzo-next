@@ -1,33 +1,33 @@
-<nav class="navigation navigation--{{type}} {{#if images}}navigation--has-images{{else}} navigation--no-images{{/if}}">
+<nav class="navigation navigation--{{type}}{{#if images}} navigation--has-images{{else}} navigation--no-images{{/if}}">
   <ul class="navigation__list">
     {{#each navigation}}
       <li class="navigation__item {{nav_class_names title}}">
-       <a class="navigation__link" {{#unless submenu.items.length}}href="{{slug}}"{{/unless}}>{{title}}</a>
+       <a class="navigation__link" href="{{slug}}">{{title}}</a>
 
         {{#if submenu.items.length}}
         <div class="sub-navigation">
           {{#if submenu.featured}}
           <a class="sub-navigation-feature" href="{{submenu.featured.link}}">
-           <img class="sub-navigation-feature__image" src="{{submenu.featured.image}}" />
-           <div class="sub-navigation-feature__text">
-             <div class="sub-navigation-feature__title">{{submenu.featured.title}}</div>
-             <div class="sub-navigation-feature__subtitle">{{submenu.featured.subtitle}}</div>
-           </div>
+            <img class="sub-navigation-feature__image" src="{{submenu.featured.image}}" alt="{{submenu.featured.title}}">
+            <div class="sub-navigation-feature__text">
+              <div class="sub-navigation-feature__title">{{submenu.featured.title}}</div>
+              <div class="sub-navigation-feature__subtitle">{{submenu.featured.subtitle}}</div>
+            </div>
           </a>
           {{/if}}
 
           <ul class="sub-navigation__list">
           {{#each submenu.items}}
-           <li class="sub-navigation__item {{#if current}}sub-navigation__item--current{{/if}}">
-             <a class="sub-navigation__link" href="/{{slug}}">{{title}}</a>
-           </li>
+            <li class="sub-navigation__item{{#if current}} sub-navigation__item--current{{/if}}">
+              <a class="sub-navigation__link" href="/{{slug}}">{{title}}</a>
+            </li>
           {{/each}}
           </ul>
 
           {{#if submenu.call_to_action}}
           <a class="sub-navigation__button" href="{{submenu.call_to_action.slug}}">
-           {{submenu.call_to_action.title}}
-           <i class="icon-chevron-right"></i>
+            {{submenu.call_to_action.title}}
+            <i class="icon-chevron-right" aria-hidden="true"></i>
           </a>
           {{/if}}
         </div>
@@ -37,15 +37,14 @@
   </ul>
 
   <nav class="mobile-navigation">
-    <a class="mobile-navigation__close icon-close-small js-close">Close</a>
+    <button class="mobile-navigation__close icon-close-small js-close">Close</button>
 
     <ul class="mobile-navigation__list">
       {{#each navigation}}
         <li class="mobile-navigation__item">
-          <a class="mobile-navigation__link" {{#unless submenu.items.length}}href="{{slug}}"{{/unless}}>{{title}}</a>
+          <a class="mobile-navigation__link" href="{{slug}}">{{title}}</a>
         </li>
       {{/each}}
     </ul>
   </nav>
 </nav>
-
