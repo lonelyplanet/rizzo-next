@@ -1,23 +1,15 @@
 @import "../../../sass/webpack_deps";
 
-
-
-
 .search {
   $input-height: 3.8rem;
-
   position: absolute;
   z-index: 9999;
-
   top: 0;
   left: 0;
   right: 0;
-  //bottom: 0;
-
-  background: #fff;
-
+  background-color: #fff;
   opacity: 0;
-  transition: opacity ($animation-speed-ui / 2), box-shadow ($animation-speed-ui / 1);
+  transition: opacity ($animation-speed-ui / 2), box-shadow $animation-speed-ui;
 
   &--visible {
     opacity: 1;
@@ -33,99 +25,96 @@
 
   &__inner {
     position: relative;
-
     height: $header-height-mobile;
     line-height: $input-height;
 
     @media (min-width: $min-720) {
-      height: $header-height + .1;
+      height: $header-height;
     }
   }
 
   &__input {
     position: absolute;
-
-    top: 50%;
+    top: 0;
+    bottom: 0;
+    margin-top: auto;
+    margin-bottom: auto;
     left: $input-height - 1.2;
     right: $input-height;
+    width: calc(100% - #{$input-height} - #{$input-height} - 1.2rem);
+    height: $input-height;
+    font-size: 1.6rem;
+    color: #3b4450;
+    border: 0;
+    outline: 0;
 
-    margin-top: (-$input-height / 2 - .1);
-
-    @media (min-width: $min-720) {
-      left: $input-height + .2;
+    @include placeholder {
+      color: #bec1c5;
     }
 
-    input {
-      box-sizing: border-box;
-
-      width: 100%;
-      height: $input-height;
-
-      font-size: 1.8rem;
-      font-weight: 400;
-
-      border: none;
-      outline: none;
-
-      @media (min-width: $min-720) {
-        font-size: 2.8rem;
-        font-weight: 100;
-      }
+    @media (min-width: $min-720) {
+      left: 4rem;
+      right: 4rem;
+      font-size: 2.8rem;
+      font-weight: 300;
+      width: calc(100% - 8rem);
     }
   }
 
-  &__icon,
-  &__clear {
+  &__label {
     display: block;
-
     position: absolute;
-    top: 50%;
     left: 0;
-
-    margin-top: (-$input-height / 2 - .2);
-
-    width: $input-height;
-    height: $input-height;
-    line-height: $input-height;
-
+    width: 1.8rem;
+    height: 1.8rem;
+    line-height: 1;
     font-size: 0;
     color: $font-color;
-    //text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    top: 0;
+    bottom: 0;
 
-    cursor: pointer;
-
-    //background: #eee;
-
-    &[class*="icon-"] {
-      line-height: $input-height;
+    &:before {
+      font-size: 1.8rem;
     }
+  }
 
-    &:hover {
+  &__close {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: $input-height;
+    height: $input-height;
+    font-size: 0;
+    color: $font-color;
+  }
+
+  &__close {
+    right: 0;
+    color: #bdcee3;
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    transition: color $animation-speed;
+    outline: 0;
+
+    &:hover,
+    &:active,
+    &:focus {
       color: $color-primary;
     }
 
     &:before {
       font-size: 1.8rem;
-    }
 
-    @media (min-width: $min-720) {
-      text-align: left;
-
-      &:before {
+      @media (min-width: $min-720) {
         font-size: 2rem;
       }
-    }
-  }
-
-  &__clear {
-    left: auto;
-    right: 0;
-
-    text-align: right;
-    color: #bdcee3;
-
-    @media (min-width: $min-720) {
-      text-align: center;
     }
   }
 }
@@ -133,9 +122,7 @@
 .search-results {
   opacity: 0;
   height: 0;
-
   overflow: hidden;
-
   transition: opacity $animation-speed, transform $animation-speed;
   transform: translateY(-2rem);
 
@@ -147,24 +134,16 @@
 
   &__list {
     display: block;
-
-    margin: 0 0 $gutter * 1.5;
-    padding: 1rem 0 0;
-
+    margin-bottom: ($gutter * 1.5);
+    padding-top: 1rem;
     list-style: none;
-
     border-top: .1rem solid #e4eaf8;
   }
 
   &__more {
     @include more();
-
-    display: block;
-
-    margin: 0 0 $gutter * 1.5;
-
-    font-size: 1.4rem;
-
-    cursor: pointer;
+    display: inline-block;
+    margin-bottom: ($gutter * 1.5);
+    font-size: 1.2rem;
   }
 }
