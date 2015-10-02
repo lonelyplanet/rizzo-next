@@ -1,4 +1,6 @@
 require("./unit/core.spec.js");
+require("./unit/core/rizzo.spec.js");
+require("./unit/core/component_registry.spec.js");
 require("./unit/components/articles.spec.js");
 require("./unit/components/header.spec.js");
 require("./unit/components/hotels.spec.js");
