@@ -297,7 +297,9 @@ $logo-height: 4rem;
 
 #destinations_checked:checked + .footer__main__links--destinations,
 #shop_checked:checked + .footer__main__links--shop,
-#forum_checked:checked + .footer__main__links--forum {
+#forum_checked:checked + .footer__main__links--forum,
+#interests_checked:checked + .footer__main__links--interests,
+#booking_checked:checked + .footer__main__links--booking {
   max-height: 600px;
   .icon--chevron-down {
     transform: rotateZ(180deg);
