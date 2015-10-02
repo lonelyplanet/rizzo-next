@@ -1,4 +1,4 @@
-import { Component } from "../../core/bane";
+import Component from "../../core/component";
 import assign from "lodash/object/assign";
 import waitForTransition from "../../core/utils/waitForTransition";
 import publish from "../../core/decorators/publish";

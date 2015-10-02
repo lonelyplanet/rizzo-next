@@ -14,7 +14,7 @@
   "scripts": {
     "test": "karma start --single-run",
     "ci": "karma start",
-    "docs": "./node_modules/.bin/esdoc -c esdoc.json",
+    "docs": "node-sass sass/docs.scss -o dist/css && esdoc -c esdoc.json",
     "sassdoc": "./node_modules/.bin/sassdoc sass --theme neat",
     "lint": "./node_modules/.bin/eslint src --ext .js,.jsx"
   },
@@ -25,6 +25,7 @@
     "clamp-js": "*",
     "es5-shim": "^4.1.13",
     "flamsteed": "latest",
+    "handlebars": "^4.0.3",
     "history": "^1.11.1",
     "imagesloaded": "*",
     "jquery": "^2.1.4",
@@ -41,6 +42,7 @@
     "babel-loader": "^5.3.2",
     "css-loader": "^0.16.0",
     "esdoc": "^0.3.1",
+    "esdoc-es7-plugin": "0.0.2",
     "eslint": "^1.0.0",
     "eslint-plugin-react": "^3.1.0",
     "expect.js": "^0.3.1",

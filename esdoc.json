@@ -6,5 +6,11 @@
   "test": {
     "type": "mocha",
     "source": "./spec"
-  }
+  },
+  "plugins": [
+    {
+      "name": "esdoc-es7-plugin"
+    }
+  ],
+  "styles": ["dist/css/docs.css"]
 }

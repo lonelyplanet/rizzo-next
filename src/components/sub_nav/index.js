@@ -1,7 +1,8 @@
+import { Component } from "../../core/bane";
 require("./_sub_nav.scss");
 
-export default class SubNav {
-  constructor() {
+export default class SubNav extends Component {
+  initialize() {
     let debounce = require("lodash/function/debounce"),
         $subNav = $(".js-sub-nav"),
         $window = $(window);
