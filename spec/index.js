@@ -14,4 +14,6 @@ require("./unit/components/tabs.spec.js");
 require("./unit/components/things_to_do.spec.js");
 require("./unit/components/video.spec.js");
 require("./unit/decorators/publish.spec.js");
+require("./unit/decorators/subscribe.spec.js");
+require("./unit/decorators/channel.spec.js");
 require("./unit/util/cookie_util.spec.js");

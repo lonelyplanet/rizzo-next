@@ -1,9 +1,18 @@
 /*global escape, unescape  */
 
-class CookieUtil {
+/**
+ * A utility for managing cookies
+ */
+export default class CookieUtil {
   constructor({ cookies = null } = {}) {
     this.cookies = cookies;
   }
+  /**
+   * Retrievew a cookie by it's name
+   * @param  {String} cookieName Name of the cookie to retrieve
+   * @param  {String} format Whether or not the cookie should be parsed with JSON
+   * @return {String|Object} The cookie
+   */
   getCookie(cookieName = "", format = "") {
     let contents = unescape(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" +
       escape(cookieName).replace(/[\-\.\+\*]/g, "\\$&") +
@@ -11,6 +20,14 @@ class CookieUtil {
 
     return (format.toUpperCase() === "JSON") ? JSON.parse(contents) : contents;
   }
+  /**
+   * Set a cookie
+   * @param {String} k Cookie name
+   * @param {String} v Cookie value      
+   * @param {[Number]} days Expiration in days
+   * @param {[String]} domain Domain of the cookie
+   * @param {[String]} path Path of the cookie
+   */
   setCookie(k, v, days, domain, path) {
     let exp = "";
 
@@ -32,5 +49,3 @@ class CookieUtil {
     );
   }
 }
-
-export default CookieUtil;
