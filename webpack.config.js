@@ -33,7 +33,8 @@ module.exports = {
       },
       {
         test: /\.hbs$/,
-        loader: "handlebars?rootRelative=" + path.join(__dirname, "src") + "/"
+        loader: "handlebars?rootRelative=" + path.join(__dirname, "src") + "/" + 
+          "&runtime=" + require.resolve("handlebars/dist/handlebars.runtime")
       }, 
       {
         test: /picker(.date)?.js$/,
