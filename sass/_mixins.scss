@@ -383,3 +383,33 @@
   border: ($size / 2) solid transparent;
   border-bottom-color: #fff;
 }
+
+@mixin form-control($type: "text") {
+  padding-left: $spacing;
+  padding-right: $spacing;
+  width: 100%;
+  height: 4.4rem;
+  font-size: 1.3rem;
+  color: $font-color-light;
+  border: .1rem solid #d4d4d4;
+  border-radius: .2rem;
+  background-color: #fff;
+  outline: 0;
+  appearance: none;
+  transition: border-color ($animation-speed / 2);
+
+  @if $type == "select" {
+    cursor: pointer;
+    font-weight: 600;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAICAYAAACCuR0hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDE0IDc5LjE1Njc5NywgMjAxNC8wOC8yMC0wOTo1MzowMiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RjhGQzc5MkNGMDM4MTFFNDlCOTE5QTczMjQ3MjgzMTciIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RjhGQzc5MkRGMDM4MTFFNDlCOTE5QTczMjQ3MjgzMTciPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo1MDA1QkRGRkYwMjQxMUU0OUI5MTlBNzMyNDcyODMxNyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo1MDA1QkUwMEYwMjQxMUU0OUI5MTlBNzMyNDcyODMxNyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PiH5FUMAAAB7SURBVHjaYkwvqZnGwMCQyUAamA7EWSDGjO5mBnoCJiDOBeJNJOjZBNUzIADk4L9AHAnEJ4lQfxKq9u9AOhgEvgGxLxDfwaP2DlTNN4YBBExI7NdA7Aml0QE+uQFzMK5QJCb0B8zB6OmUlPRNF8BCoCRgIbEEoTkACDAA8w0eWK8rNGMAAAAASUVORK5CYII=');
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-size: 2.2rem .4rem;
+  }
+
+  &:active,
+  &:focus,
+  &:hover {
+    border-color: darken($color-border, 20%);
+  }
+}
