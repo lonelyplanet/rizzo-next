@@ -90,12 +90,11 @@ $navigation-sub-height-mobile: $header-height-mobile;
     -webkit-overflow-scrolling: touch;
     transition: opacity $animation-speed;
     animation: fly-in-sub-nav $animation-speed-ui;
-    text-align: left;
+    text-align: center;
     white-space: nowrap;
 
     @media (min-width: $min-480) {
       animation: none;
-      text-align: center;
     }
 
     @media (min-width: $min-720) {
