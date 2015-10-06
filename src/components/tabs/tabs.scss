@@ -1,59 +1,80 @@
 @import "../../../sass/webpack_deps";
 
 .tabs {
-  &__content {
-    opacity: 0;
-    display: none;
-    transition: .3s opacity ease-in;
-
-    &.is-active {
-      display: block;
-      opacity: 1;
-    }
-  }
-
-  &__links {
-    list-style: none;
-    display: inline-block;
-    border-bottom: .1rem solid $color-gray;
-    margin-bottom: 10rem;
-
-    li {
-      position: relative;
-      display: inline-block;
-      margin-left: 5rem;
-
-      &:first-child {
-        margin-left: 0;
-      }
-    }
-
-    // Such nest, very sass
-    a {
-      position: relative;
-      font-weight: $font-weight-semibold;
-      text-transform: uppercase;
-      color: $color-text;
-      letter-spacing: 1px;
-      margin: 0 0 $gutter * 2;
-      font-size: 1.4rem;
-
-      &.is-active {
-        color: $color-blue;
-
-        &:after {
-          display: block;
-          content: "";
-          position: relative;
-          bottom: 0;
-          margin-top: 3rem;
-          width: 100%;
-          border-bottom: .2rem solid $color-blue;
-        }
-      }
-    }
+  .articles & {
+    max-width: 85rem;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
+
 .tabs__content {
-  
+  opacity: 0;
+  display: none;
+  transition: .3s opacity ease-in;
+
+  &.is-active {
+    display: block;
+    opacity: 1;
+  }
+}
+
+.tabs__links {
+  @include clearfix;
+  list-style: none;
+  border-bottom: .1rem solid $color-gray;
+  margin-bottom: 8rem;
+  display: inline-flex;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+
+  .no-flexbox & {
+    display: inline-block;
+  }
+
+  @media (min-width: $min-720) {
+    margin-bottom: 10rem;
+  }
+
+  li {
+    line-height: 1;
+
+    .no-flexbox & {
+      float: left;
+    }
+
+    &:not(:first-child) {
+      margin-left: $gutter + .2;
+
+      @media (min-width: $min-720) {
+        margin-left: 4.8rem;
+      }
+    }
+  }
+
+  a {
+    position: relative;
+    font-weight: $font-weight-semibold;
+    text-transform: uppercase;
+    color: $h2-color;
+    letter-spacing: .06rem;
+    font-size: 1.2rem;
+    display: block;
+    text-align: center;
+    padding-bottom: 2.6rem;
+
+    &.is-active {
+      color: $color-blue;
+
+      &:after {
+        display: block;
+        content: "";
+        position: absolute;
+        bottom: -.1rem;
+        width: 100%;
+        height: .3rem;
+        background-color: $color-blue;
+      }
+    }
+  }
 }
