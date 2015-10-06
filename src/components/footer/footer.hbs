@@ -1,12 +1,46 @@
 <footer class="footer">
   <div class="footer__container">
+
     <div class="footer__main">
-      <input type="checkbox" class="footer__main__checkbox" id="destinations_checked">
+      <div class="footer__main__links footer__main__links--newsletter">
+        <p class="footer__main__links__header">
+          Newsletter sign up
+        </p>
+
+        <form class="newsletter-register" action="//www.lonelyplanet.com/newsletter/form-submission.php" method="post" _lpchecked="1">
+          <input name="Source" type="hidden" value="homepagefooter">
+          <input name="type" type="hidden" value="subscribe">
+
+          <p class="newsletter-register__text">
+            Subscribe now and receive a 20% discount on your next
+            guidebook purchase.
+          </p>
+
+          <label for="newsletter-register-email">Email address</label>
+          <input class="newsletter-register__email" id="newsletter-register-email" name="sailthru_email" type="email" placeholder="your@email.com" autocomplete="email" autocapitalize="none" autocorrect="off" required>
+
+          <label for="newsletter-register-country">Country</label>
+          <select class="newsletter-register__country" id="newsletter-register-country" name="sailthru_Country">
+            <option value="">Select country</option>
+            {{#each newsletter_countries}}
+              <option value="{{this}}">{{this}}</option>
+            {{/each}}
+          </select>
+
+          <button class="newsletter-register__button" data-lpa-action="newsletter" data-lpa-category="account">Sign up</button>
+        </form>
+      </div>
+
+      <input class="footer__main__checkbox" id="destinations_checked" type="checkbox">
       <div class="footer__main__links footer__main__links--destinations">
         <p class="footer__main__links__header">
-          <a href="http://www.lonelyplanet.com/destinations">Destinations</a>
-          <label for="destinations_checked" class="accordion-target"><span class="icon--chevron-down"></span></label>
+          <a href="http://www.lonelyplanet.com/destinations">
+            Destinations
+          </a>
+
+          <label for="destinations_checked" class="accordion-target"><i class="icon icon--chevron-down" aria-hidden="true"></i></label>
         </p>
+
         <ul class="footer__main__links__list">
           {{#each footer_nav_destination_items}}
             <li class="footer__main__links__list__item">
@@ -15,12 +49,17 @@
           {{/each}}
         </ul>
       </div>
-      <input type="checkbox" class="footer__main__checkbox" id="shop_checked">
+
+      <input class="footer__main__checkbox" id="shop_checked" type="checkbox">
       <div class="footer__main__links footer__main__links--shop">
         <p class="footer__main__links__header">
-          <a href="http://www.lonelyplanet.com/shop">Shop</a>
-          <label for="shop_checked" class="accordion-target"><span class="icon--chevron-down"></span></label>
+          <a href="http://www.lonelyplanet.com/shop">
+            Shop
+          </a>
+
+          <label for="shop_checked" class="accordion-target"><i class="icon icon--chevron-down" aria-hidden="true"></i></label>
         </p>
+
         <ul class="footer__main__links__list">
           {{#each footer_nav_shop_items}}
             <li class="footer__main__links__list__item">
@@ -29,12 +68,17 @@
           {{/each}}
         </ul>
       </div>
-      <input type="checkbox" class="footer__main__checkbox" id="forum_checked">
+
+      <input class="footer__main__checkbox" id="forum_checked" type="checkbox">
       <div class="footer__main__links footer__main__links--forum">
         <p class="footer__main__links__header">
-          <a href="http://www.lonelyplanet.com/thorntree">Forum</a>
-          <label for="forum_checked" class="accordion-target"><span class="icon--chevron-down"></span></label>
+          <a href="http://www.lonelyplanet.com/thorntree">
+            Forum
+          </a>
+
+          <label for="forum_checked" class="accordion-target"><i class="icon icon--chevron-down" aria-hidden="true"></i></label>
         </p>
+
         <ul class="footer__main__links__list">
           {{#each footer_nav_forum_items}}
             <li class="footer__main__links__list__item">
@@ -43,12 +87,17 @@
           {{/each}}
         </ul>
       </div>
-      <input type="checkbox" class="footer__main__checkbox" id="interests_checked">
+
+      <input class="footer__main__checkbox" id="interests_checked" type="checkbox">
       <div class="footer__main__links footer__main__links--interests">
         <p class="footer__main__links__header">
-          <a href="http://www.lonelyplanet.com/interests">Interests</a>
-          <label for="interests_checked" class="accordion-target"><span class="icon--chevron-down"></span></label>
+          <a href="http://www.lonelyplanet.com/interests">
+            Interests
+          </a>
+
+          <label for="interests_checked" class="accordion-target"><i class="icon icon--chevron-down" aria-hidden="true"></i></label>
         </p>
+
         <ul class="footer__main__links__list">
           {{#each footer_nav_interest_items}}
             <li class="footer__main__links__list__item">
@@ -57,12 +106,17 @@
           {{/each}}
         </ul>
       </div>
-      <input type="checkbox" class="footer__main__checkbox" id="booking_checked">
+
+      <input class="footer__main__checkbox" id="booking_checked" type="checkbox">
       <div class="footer__main__links footer__main__links--booking">
         <p class="footer__main__links__header">
-          <a href="http://www.lonelyplanet.com/bookings">Travel Booking</a>
-          <label for="booking_checked" class="accordion-target"><span class="icon--chevron-down"></span></label>
+          <a href="http://www.lonelyplanet.com/bookings">
+            Travel booking
+          </a>
+
+          <label for="booking_checked" class="accordion-target"><i class="icon icon--chevron-down" aria-hidden="true"></i></label>
         </p>
+
         <ul class="footer__main__links__list">
           {{#each footer_nav_booking_items}}
             <li class="footer__main__links__list__item">
@@ -74,7 +128,6 @@
     </div>
 
     <div class="footer__bottom">
-
       <div class="footer__links">
         <nav class="links">
           <ul class="links__list">
@@ -98,21 +151,35 @@
         </svg>
       </a>
 
-
-        <ul class="footer__social-list">
-          {{#each footer_social_media_links}}
+      <ul class="footer__social-list">
+        {{#each footer_social_media_links}}
           <li class="footer__social-item">
             <a class="footer__social-link footer__social-link--{{className}}" href="{{url}}">
-              <i class="icon-{{className}}"></i>
+              <i class="icon-{{className}}" aria-hidden="true"></i>
               <span class="hide-text">{{title}}</span>
             </a>
           </li>
-          {{/each}}
-        </ul>
+        {{/each}}
+      </ul>
 
+      <div class="language">
+        <label class="language__label" for="language-select">International</label>
+
+        <select class="language__select js-language-select" id="language-select">
+          <option value="www.lonelyplanet.com" selected>English</option>
+          <option value="www.lonelyplanet.in">English (India)</option>
+          <option value="www.lonelyplanet.de">Deutsch</option>
+          {{!-- <option value="www.lonelyplanet.fr">Français</option> --}}
+          {{!-- <option value="www.lonelyplanet.es">Español</option> --}}
+          <option value="www.lonelyplanetitalia.it">Italiano</option>
+          {{!-- <option value="www.lonelyplanet.ru">Русский</option> --}}
+          {{!-- <option value="www.lonelyplanetbrasil.com.br">Português</option> --}}
+          {{!-- <option value="www.lonelyplanet.cz">Česky</option> --}}
+        </select>
+      </div>
 
       <p class="footer__copyright">
-        &copy; 2015 Lonely Planet. All rights reserved.
+        &copy; {{copyright_year}} Lonely Planet. All rights reserved.
         No part of this site may be reproduced without our written permission.
       </p>
     </div>

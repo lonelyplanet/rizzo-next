@@ -1,13 +1,5 @@
 @import "../../../sass/webpack_deps";
 
-
-$mobile-breakpoint: 945;
-$mobile-margin-left: 20;
-$footer-logo-desktop-width: 84;
-$desktop-logo-margin: 35;
-$extra-margin: 5; // used to push the copyright slightly further right than the bottom nav is
-$footer-total-logo-width: $footer-logo-desktop-width + $desktop-logo-margin + $extra-margin;
-
 $logo-height: 4rem;
 
 .footer {
@@ -18,129 +10,111 @@ $logo-height: 4rem;
   }
 
   &__container {
-    position: relative;
-
-    //outline: 1px dashed #ccc;
-
     @include clearfix;
+    position: relative;
   }
 
   &__bottom {
     @include clearfix;
-
     position: relative;
-
-    margin: 0 0 $spacing;
-    padding: 0;
-
+    padding-bottom: $gutter;
     border-top: .1rem solid $color-border;
 
     @media (min-width: $min-960) {
-      padding-top: $spacing;
+      padding-bottom: ($spacing + 6.6);
+      padding-top: 2.6rem;
       padding-left: 8rem + $gutter;
       padding-right: ($logo-height + .2) * 3 + $spacing;
     }
   }
 
   &__logo {
-    float: left;
-
-    margin: 0 0 $spacing $gutter/2;
-
-
     fill: #cccdce;
+    transition: fill ($animation-speed / 2);
 
-    transition: fill 1s;
-
-    &:hover {
-      fill: $color-primary;
-      transition: fill 200ms;
+    @media (max-width: $max-960) {
+      float: left;
+      margin-bottom: $spacing;
+      margin-left: $spacing;
     }
 
     @media (min-width: $min-960) {
-      float: none;
-
       position: absolute;
-
-      top: $spacing;
+      top: 1.7rem;
       left: 0;
-
-      margin: 0;
     }
 
-    #footer-logo {
-      display: block;
+    &:hover {
+      fill: $color-primary;
+    }
 
-      height: $logo-height;
+    svg {
+      display: block;
+      height: 4.6rem;
     }
   }
 
   &__social-list {
-    float: right;
-
-    margin: 0 $gutter/2 $spacing 0;
-
+    @include clearfix;
     list-style: none;
     font-size: 1.8rem;
 
+    @media (max-width: $max-960) {
+      float: right;
+      margin-right: $spacing;
+      margin-bottom: $spacing;
+    }
+
     @media (min-width: $min-960) {
-      float: none;
-
       position: absolute;
-
-      top: $spacing;
+      top: 2rem;
       right: 0;
-
-      margin: 0;
     }
   }
 
   &__social-item {
-    display: inline-block;
-    margin-left: 0.2rem;
+    float: left;
+
+    &:not(:first-child) {
+      margin-left: .6rem;
+    }
   }
 
   &__social-link {
     display: block;
-
     height: $logo-height;
     width: $logo-height;
-
-    line-height: $logo-height + .3;
+    line-height: ($logo-height + .5);
     text-align: center;
     color: #cccdce;
-
-    border: 0.1rem solid #e5e7ed;
+    border: .1rem solid #e5e7ed;
     border-radius: 50%;
-
-    transition-property: color, border, background;
-    transition-duration: .3s;
+    transition-property: color, border, background-color;
+    transition-duration: $animation-speed;
 
     &:hover {
-      background: #e5e7ed;
+      background-color: #e5e7ed;
       color: #fff;
-
-      transition-duration: 0s;
     }
 
     &--facebook {
       &:hover {
-        border-color: #3b5998;
-        background: #3b5998;
+        border-color: $color-facebook;
+        background-color: $color-facebook;
       }
     }
 
     &--twitter {
       &:hover {
-        border-color: #00aced;
-        background: #00aced;
+        border-color: $color-twitter;
+        background-color: $color-twitter;
       }
     }
 
     &--pinterest {
       &:hover {
-        border-color: #cb2027;
-        background: #cb2027;
+        border-color: $color-pinterest;
+        background-color: $color-pinterest;
       }
     }
   }
@@ -150,82 +124,69 @@ $logo-height: 4rem;
 
   &__copyright {
     clear: both;
-
-    margin: 0;
-    padding: 0;
-
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     text-align: center;
     color: $footer-copyright-color;
+    line-height: 1;
+    margin-top: 1.2rem;
 
     @media (min-width: $min-960) {
       text-align: left;
-      line-height: $logo-height/2;
     }
   }
 
 }
 
 .links {
-  margin: 0 0 $spacing;
-
-  font-size: 14px;
+  margin-bottom: $spacing;
+  font-size: 1.3rem;
+  line-height: 1;
 
   @media (min-width: $min-960) {
     margin: 0;
-
-    line-height: $logo-height/2;
-  }
-
-  &__list {
-
   }
 
   &__item {
+    @include divider;
     display: block;
 
-    @include divider;
     @media (min-width: $min-960) {
       display: inline-block;
-      margin-right: 21px;
-      border-bottom: 0 none;
-      &:last-child {
-        margin-right: 0;
+      border-bottom: 0;
+    }
+
+    &:not(:last-child) {
+      @media (min-width: $min-960) {
+        margin-right: 2.1rem;
       }
     }
   }
 
   &__link {
     display: block;
-
-    padding: 14px 0;
-    padding-left: #{$mobile-margin-left}px;
-
     color: $footer-bottom-link-color;
+    font-weight: 600;
+    transition: color $animation-speed;
+
+    @media (max-width: $max-960) {
+      padding-top: 1.4rem;
+      padding-bottom: 1.4rem;
+      padding-left: 2rem;
+    }
 
     &:hover {
       color: $color-primary;
     }
-
-    @media (min-width: $min-960) {
-      padding: 0;
-    }
   }
 }
 
-
-
 .footer__main {
   @include divider("top");
-  @media (min-width: $min-960) {
-    padding: {
-      top: 60px;
-      bottom: 60px;
-    }
-  }
 
-  a {
-    color: $feature-copy;
+  @media (min-width: $min-960) {
+    overflow: hidden;
+    padding-top: ($gutter * 2);
+    padding-bottom: ($gutter * 2);
   }
 }
 
@@ -234,106 +195,214 @@ $logo-height: 4rem;
 }
 
 .footer__main__links {
-  display: block;
   max-height: 50px;
   overflow: hidden;
-  transition: max-height .3s linear;
   vertical-align: top;
 
-  @include component-width;
+  @media (max-width: $max-960) {
+    transition: max-height $animation-speed linear;
+  }
+
+  &:not(:first-of-type) {
+    @media (max-width: $max-960) {
+      @include divider("top");
+    }
+  }
+
   @media (min-width: $min-960) {
-    display: inline-block;
-    width: 18%;
+    float: left;
+    width: percent(22rem, $max-width);
+    padding-right: percent($gutter, $max-width);
     max-height: 600px;
-    transition-property: none;
+  }
+}
+
+.footer__main__links--newsletter {
+  border-top: 0;
+  max-height: none;
+
+  @media (min-width: $min-960) {
+    float: right;
+    padding-right: 0;
+    width: percent(19rem, $max-width);
   }
 }
 
 .footer__main__links__header {
-  padding: 14px 20px;
-  font: {
-    weight: $semibold;
-    size: 13px;
-  }
+  font-weight: $semibold;
+  font-size: 1.2rem;
+  line-height: 1;
   text-transform: uppercase;
 
-  @include divider(top);
+  @media (max-width: $max-960) {
+    padding: 2.1rem 2rem 1.7rem;
+  }
+
   @media (min-width: $min-960) {
-    padding: 0 0 15px 0;
-    border: none;
-    .accordion-target {
+    border: 0;
+    margin-bottom: 1.7rem;
+  }
+
+  .accordion-target {
+    position: relative;
+    bottom: 2.1rem;
+    right: -2rem;
+    padding-right: 2rem;
+    float: right;
+    width: 5rem;
+    height: 5rem;
+    cursor: pointer;
+
+    @media (min-width: $min-960) {
       display: none;
     }
   }
-  .footer__main__links--destinations & {
-    border: none;
-  }
-  .accordion-target {
-    position: relative;
-    bottom: 14px;
+
+  .icon {
     float: right;
-    width: 50%;
-    height: 50px;
-    cursor: pointer;
-  }
-  .icon--chevron-down {
-    float: right;
-    width: 13px;
-    height: 13px;
-    margin-top: 20px;
-    transition: transform .3s linear;
+    width: 1.3rem;
+    height: 1.3rem;
+    margin-top: 2rem;
+    transition: transform $animation-speed linear;
   }
 
   a {
+    color: $darkgray;
     transition-property: color, border, background;
-    transition-duration: .3s;
+    transition-duration: $animation-speed;
 
-    &:hover {
-      transition-duration: 0s;
+    &:hover,
+    &:focus {
       color: $color-primary;
     }
   }
 }
 
-#destinations_checked:checked + .footer__main__links--destinations,
-#shop_checked:checked + .footer__main__links--shop,
-#forum_checked:checked + .footer__main__links--forum,
-#interests_checked:checked + .footer__main__links--interests,
-#booking_checked:checked + .footer__main__links--booking {
+.footer__main__checkbox:checked + .footer__main__links {
   max-height: 600px;
-  .icon--chevron-down {
+
+  .icon {
     transform: rotateZ(180deg);
   }
 }
 
 .footer__main__links__list {
-  padding: {
-    bottom: 15px;
-    left: 20px;
-  }
-
-  @media (min-width: $min-960) {
-    padding: 0;
+  @media (max-width: $max-960) {
+    padding: 0 2rem $spacing;
   }
 }
 
 .footer__main__links__list__item {
-  font-size: 14px;
+  font-size: 1.3rem;
   line-height: 2.2;
   list-style: none;
-  color: $tours-blurb-color;
+  letter-spacing: .02rem;
 
   @media (min-width: $min-960) {
-    line-height: 1.6;
+    line-height: (24 / 13);
   }
 
   a {
+    color: $font-color-light;
     transition-property: color, border, background;
-    transition-duration: .3s;
+    transition-duration: $animation-speed;
 
-    &:hover {
-      transition-duration: 0s;
+    &:hover,
+    &:focus {
       color: $color-primary;
     }
+  }
+}
+
+.newsletter-register {
+  @media (max-width: $max-960) {
+    padding: 0 2rem $spacing;
+  }
+
+  label {
+    @include visuallyhidden('focusable');
+  }
+}
+
+.newsletter-register__text {
+  font-size: 1.2rem;
+  line-height: (18 / 12);
+  color: $font-color-light;
+  letter-spacing: .02rem;
+}
+
+.newsletter-register__email {
+  @include form-control;
+  margin-top: 1.4rem;
+}
+
+.newsletter-register__country {
+  @include form-control("select");
+  margin-top: 1rem;
+}
+
+.newsletter-register__button {
+  @include button();
+  margin-top: $spacing;
+
+  @media (max-width: $max-480) {
+    display: block;
+    width: 100%;
+  }
+
+  @media (min-width: $min-960) {
+    margin-top: 2rem;
+  }
+}
+
+.language {
+  @include clearfix;
+  clear: both;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (min-width: $min-960) {
+    width: 22rem;
+  }
+
+  .footer & {
+    @media (max-width: $max-960) {
+      margin-bottom: $gutter;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    @media (min-width: $min-960) {
+      position: absolute;
+      right: 0;
+      top: 8rem;
+    }
+  }
+}
+
+.language__label {
+  color: #717880;
+  font-size: 1.3rem;
+  line-height: 1;
+  margin-bottom: 0;
+  float: left;
+
+  @media (min-width: $min-960) {
+    padding-left: 1.2rem;
+    width: 11rem;
+  }
+}
+
+.language__select {
+  @include form-control("select");
+  float: left;
+
+  @media (max-width: $max-960) {
+    margin-left: 2rem;
+  }
+
+  @media (min-width: $min-960) {
+    width: 11rem;
   }
 }
