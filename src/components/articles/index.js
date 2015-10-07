@@ -15,7 +15,7 @@ class ArticlesComponent extends Component {
     this.mobileWidth = options.mobileWidth || 717;
     this.screen = "mobile";
     this.tabs = new Tabs({
-      el: $(".tabs")
+      el: $(".articles").find(".tabs")
     });
 
     if (!$("html").hasClass("ie9")) {
