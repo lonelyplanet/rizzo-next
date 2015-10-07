@@ -119,7 +119,12 @@
   }
 
   &__list {
+    padding-top: 2.8rem;
     padding-bottom: 2.8rem;
+  }
+
+  .sub-navigation-feature + &__list {
+    padding-top: 0;
   }
 
   &__item {
