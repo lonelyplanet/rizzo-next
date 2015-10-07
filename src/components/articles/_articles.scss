@@ -3,18 +3,11 @@
 $small-breakpoint: 320;
 
 .articles {
-  width: 92%;
   margin: 0 auto $gutter;
+}
 
-  &__heading {
-    @include h1();
-  }
-
-  .tabs {
-    max-width: 85rem;
-    margin-left: auto;
-    margin-right: auto;
-  }
+.articles__heading {
+  @include h1();
 }
 
 .articles__title {
