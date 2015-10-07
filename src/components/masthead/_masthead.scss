@@ -1,5 +1,8 @@
 @import "../../../sass/webpack_deps";
 
+$masthead-straplines-height-small: (2.6rem + 2.7rem); // height + margin-bottom
+$masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
+
 .masthead {
   position: relative;
   top: 0;
@@ -67,6 +70,8 @@
     @media (min-width: $min-1080) {
       right: ($gutter * 2);
       left: ($gutter * 2);
+      padding-right: ($gutter * 4);
+      padding-left: ($gutter * 4);
     }
 
     @media (min-width: $min-1290) {
@@ -131,7 +136,7 @@
     letter-spacing: -.02rem;
 
     @media (min-width: $min-480) {
-      margin-bottom: 3.4rem;
+      margin-bottom: 2.6rem;
     }
 
     a {
@@ -151,20 +156,24 @@
 
   &__breadcrumb__separator {
     position: relative;
-    top: -.2rem;
+    top: -.1rem;
     padding-left: .5rem;
     padding-right: .4rem;
     font-size: 1.1rem;
   }
 
   &__title {
-    margin-bottom: 1.8rem;
-    font-size: 8rem;
+    margin-bottom: 1rem;
+    font-size: 5.6rem;
     font-weight: 600;
-    line-height: .8;
+    line-height: 1;
     letter-spacing: -.3rem;
 
-    @media (min-width: $min-720) {
+    @media (min-width: $min-560) {
+      font-size: 8rem;
+    }
+
+    @media (min-width: $min-1080) {
       font-size: 12rem;
     }
 
@@ -178,13 +187,15 @@
   }
 
   &__straplines {
+    position: relative;
+
     &:not(.has-empty) {
-      height: 2.6rem;
-      margin-bottom: 2.7rem;
+      height: $masthead-straplines-height-small;
+      padding-top: .5rem;
 
       @media (min-width: $min-720) {
-        height: 4.1rem;
-        margin-bottom: 2.4rem;
+        height: $masthead-straplines-height-large;
+        padding-top: .7rem;
       }
     }
   }
@@ -197,6 +208,7 @@
     font-style: italic;
     font-size: 2rem;
     letter-spacing: .1rem;
+    line-height: 1;
     opacity: 0;
     transition: opacity ($animation-speed-ui * 2) ease-in-out;
 
@@ -218,11 +230,11 @@
   }
 
   &__straplines.has-empty &__strapline:not(:empty) {
-    height: (2.6rem + 2.7rem); // height + margin-bottom
+    height: $masthead-straplines-height-small;
     transition: height ($animation-speed-ui * 2) ease-in-out;
 
     @media (min-width: $min-720) {
-      height: (4.1rem + 2.4rem); // height + margin-bottom
+      height: $masthead-straplines-height-large;
     }
   }
 
