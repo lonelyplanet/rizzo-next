@@ -1,0 +1,156 @@
+@import "../../../sass/webpack_deps";
+
+$user-panel: (
+  "tabs-height": 5rem,
+  "icon-size": 3rem,
+  "icon-spacing": .25rem
+);
+
+.user-panel {
+  $top: ($header-height - $gutter);
+  $left: 50%;
+  $width: 29rem;
+  $margin-left: -($width / 2);
+  $padding-top: 0;
+  @include dropdownMenu($top, $left, $width, $margin-left, $padding-top);
+  @include dropdownMenuVisible;
+
+  &:before {
+    @include dropdownMenuArrow;
+  }
+}
+
+.user-panel__button {
+  @include button;
+  border-radius: 0 0 $radius $radius;
+  display: block;
+  padding-top: 2.3rem;
+  padding-bottom: 1.9rem;
+}
+
+.user-panel__header {
+  padding-left: $gutter;
+  padding-right: $gutter;
+  height: 9rem;
+  font-size: 1.6rem;
+  line-height: 9rem;
+  border-bottom: .1rem solid $color-gray;
+
+  a {
+    color: $font-color;
+    display: block;
+    transition: color $animation-speed;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $color-blue;
+    }
+  }
+}
+
+.user-panel__sign-out {
+  position: absolute;
+  top: map-get($user-panel, "icon-spacing");
+  right: map-get($user-panel, "icon-spacing");
+  width: map-get($user-panel, "icon-size");
+  height: map-get($user-panel, "icon-size");
+  text-indent: -9999rem;
+  color: $font-color-light;
+  transition: color $animation-speed;
+  z-index: 1;
+
+  &:before {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font-size: 1.6rem;
+    line-height: map-get($user-panel, "icon-size");
+    text-indent: 0;
+    text-align: center;
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: $font-color;
+  }
+}
+
+.user-panel__name {
+  display: inline-block;
+  line-height: 1;
+  overflow: hidden;
+  padding-left: 1rem;
+  padding-top: .3rem;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  width: 18.6rem;
+}
+
+.user-panel__empty {
+  color: $font-color-light;
+  font-size: 1.4rem;
+  font-style: italic;
+  min-height: 15rem;
+  padding: ($spacing * 4) $gutter;
+  text-align: center;
+}
+
+.user-panel__items {
+  li {
+    font-size: 1.2rem;
+    line-height: 1.2;
+    overflow: hidden;
+
+    &:not(:first-child) {
+      border-top: 1px solid $color-gray;
+    }
+  }
+
+  a {
+    color: $font-color;
+    display: block;
+    padding: $spacing $gutter;
+    transition: background-color $animation-speed linear;
+
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: #f4f5f8;
+    }
+  }
+
+  .avatar {
+    float: right;
+    height: 3.5rem;
+    width: 3.5rem;
+  }
+
+  time {
+    color: $light-text-color;
+    display: block;
+    font-size: 1.1rem;
+  }
+}
+
+.user-panel__link {
+  @include button("inverse");
+  border-radius: 0;
+  border-top: 1px solid $color-gray;
+  text-transform: none;
+  width: 100%;
+}
+
+.unread-count {
+  color: $light-text-color;
+  font-weight: normal;
+  font-size: 1.1rem;
+
+  .tabs & {
+    padding-left: 3px;
+  }
+}

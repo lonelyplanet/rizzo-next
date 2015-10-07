@@ -2,9 +2,9 @@ import { Component } from "../../core/bane";
 import Overlay from "../overlay";
 import Notification from "../notification/notification";
 import waitForTransition from "../../core/utils/waitForTransition";
-
 import NavigationActions from "./navigation_actions";
 import NavigationState from "./navigation_state";
+import Tabs from "../tabs/tabs_component";
 
 class NavigationComponent extends Component {
 
@@ -27,9 +27,13 @@ class NavigationComponent extends Component {
     // Events
     this.listenTo(NavigationState, "changed:nav", this.toggleNav);
     this.listenTo(this.overlay, "click", this._clickNav);
+
+    this.tabs = new Tabs({
+      el: $(".navigation").find(".tabs")
+    });
   }
 
-  handleHover(){
+  handleHover() {
     this.$el.find(".navigation__item")
       .each((i, el) => {
         let $el = $(el);
@@ -45,7 +49,7 @@ class NavigationComponent extends Component {
 
           showTimer = setTimeout(() => {
             $subNavigation.addClass("sub-navigation--visible");
-          }, 150);
+          }, 0);
         });
 
         $el.on("mouseleave", () => {
@@ -53,13 +57,13 @@ class NavigationComponent extends Component {
 
           hideTimer = setTimeout(() => {
             $subNavigation.removeClass("sub-navigation--visible");
-          }, 500);
+          }, 100);
         });
       });
   }
 
   toggleNav() {
-    if(this.state.isNavOpen){
+    if(this.state.isNavOpen) {
       this.show();
     } else {
       this.hide();
@@ -84,8 +88,8 @@ class NavigationComponent extends Component {
     return waitForTransition(this.$mobileNavigation, { fallbackTime: 2000 });
   }
 
-  hide(){
-    if(this.state.isNavOpen){
+  hide() {
+    if(this.state.isNavOpen) {
       return Promise.all([]);
     }
 
