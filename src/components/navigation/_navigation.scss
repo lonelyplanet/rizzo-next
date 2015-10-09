@@ -184,7 +184,7 @@
     position: absolute;
     right: -#{$gutter};
     top: -.1rem;
-    transition: background-color $animation-speed linear;
+    transition: background-color ($animation-speed / 2) linear;
     width: calc(100% + #{$gutter} + #{$gutter});
     z-index: -1;
   }
