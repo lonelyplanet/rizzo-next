@@ -1,80 +1,60 @@
 @import "../../../sass/webpack_deps";
 
-
-
 .tlist {
   $height: 6rem;
   $image-width: 8rem;
   $item-spacing: 1rem;
-
   $total-height: ($height + $item-spacing) * 3;
-
   $size-width: 35%;
-
   position: relative;
-
-  margin: 0 0 $spacing*2;
-
   text-align: left;
-
   counter-reset: tlist;
 
   &__heading {
-    margin: 0 0 $spacing * 2;
-
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 600;
     text-transform: uppercase;
+    line-height: 1;
   }
 
   &__content {
     position: relative;
+    margin-top: ($gutter - .3rem);
+    border-top: .1rem solid #f1f4fb;
 
-    margin: 0 0 $spacing*2;
-    padding: 0;
-
-    border-top: 1px solid #f4f7fc;
-
-    @media (min-width: $min-360){
-      padding: 0 $size-width 0 0;
+    @media (min-width: $min-360) {
+      padding-right: $size-width;
     }
   }
 
-  &__top {
-    display: none;
-
-    margin: 0;
-    padding: $item-spacing $gutter 0 0;
-
-    @media (min-width: $min-360){
-      display: block;
-    }
-  }
-
-  &__top-item {
-    display: block;
-
-    margin: 0 0 $item-spacing;
-    padding: 0;
-
+  &__primary {
     list-style: none;
+    padding-top: $item-spacing;
+    padding-right: $gutter;
+
+    @media (max-width: $max-360) {
+      display: none;
+    }
   }
 
-  &__top-link {
+  &__primary-item {
+    &:not(:first-child) {
+      margin-top: $item-spacing;
+    }
+  }
+
+  &__primary-link {
     display: block;
-
     position: relative;
-
-    padding: 0 0 0 $image-width + $gutter;
-
+    padding-left: ($image-width + $gutter);
     height: $height;
-
-    font-size: 1.8rem;
-    color: $font-color;
+    font-size: 1.6rem;
+    color: $color-darkblue;
     transition: color $animation-speed;
 
-    &:hover {
-      transition-duration: $animation-speed/4;
+    &:hover,
+    &:active,
+    &:focus {
       color: $color-primary;
     }
   }
@@ -85,22 +65,22 @@
     position: absolute;
 
     top: 50%;
-    left: $image-width - $size / 2;
+    left: $image-width - ($size / 2);
 
-    margin-top: -$size/2;
+    margin-top: -($size / 2);
 
     width: $size;
     height: $size;
 
     font-family: $sans-serif;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     color: $font-color;
     text-align: center;
-    line-height: $size - .5rem;
+    line-height: ($size + .1rem);
 
     border-radius: .3rem;
-    box-shadow: 0 .2rem .3rem rgba(0,0,0, .30);
-    background: #fff;
+    box-shadow: 0 .2rem .3rem rgba(0,0,0, .3);
+    background-color: #fff;
 
     transform: rotate(45deg);
 
@@ -128,33 +108,31 @@
   }
 
   &__title {
-    padding: 1rem 0 0;
-
     line-height: ($height / 2) - 1rem;
     height: ($height / 2);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 
-    &:last-child {
-      padding: 0;
+    &:not(:last-child) {
+      padding-top: 1rem;
+    }
 
+    &:last-child {
       line-height: $height;
       height: $height - .1rem;
-
       border-bottom: .1rem solid #f4f7fc;
     }
   }
 
   &__subtitle {
-    padding: 0 0 1rem;
+    padding-bottom: 1rem;
     line-height: ($height / 2) - 1rem;
     height: ($height / 2);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     color: #cdd0d6;
 
     &:last-child {
@@ -162,52 +140,39 @@
     }
   }
 
-  $bottom-line-height: ($total-height - .1rem - $item-spacing * 2) / 7;
+  $secondary-line-height: ($total-height - .1rem - $item-spacing * 2) / 7;
 
-  &__bottom {
-    padding: $item-spacing 0 $item-spacing 3rem;
-
-    font-size: 1.4rem;
+  &__secondary {
+    padding: $item-spacing 0 $item-spacing $gutter;
+    font-size: 1.2rem;
     font-weight: 600;
-    line-height: $bottom-line-height;
-
+    line-height: $secondary-line-height;
     border-bottom: .1rem solid #f4f7fc;
+    list-style: none;
 
-    @media (min-width: $min-360){
+    @media (min-width: $min-360) {
       position: absolute;
-
       top: 0;
       right: 0;
       bottom: 0;
-
       width: $size-width;
-      height: $total-height - .1rem;
+      height: ($total-height - .1rem);
     }
   }
 
-  &__bottom-item {
+  &__secondary-item {
     position: relative;
-
-    margin: 0;
-    padding: 0;
-
-    list-style: none;
 
     &:before {
       display: block;
-
       position: absolute;
-
       top: 0;
       left: -4rem;
-
       width: 3rem;
       text-align: right;
-
       font-family: $font-family-special;
       font-weight: 500;
       color: #a7a9ae;
-
       counter-increment: tlist;
       content: counter(tlist) ".";
     }
@@ -221,32 +186,28 @@
     }
   }
 
-  &__bottom-link {
+  &__secondary-link {
     position: relative;
-
     display: block;
-
-    height: $bottom-line-height;
+    height: $secondary-line-height;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-
     color: #2b3642;
-
     transition: color $animation-speed;
 
-    &:hover {
-      transition-duration: $animation-speed/4;
+    &:hover,
+    &:active,
+    &:focus {
       color: $color-primary;
     }
   }
 
   &__more {
     @include more();
-
     display: block;
-
-    margin: 0 0 $spacing;
+    margin-top: (4rem - .2);
+    font-size: 1.1rem;
   }
 }
 
@@ -261,7 +222,7 @@
   right: 0;
   bottom: 0;
 
-  box-shadow: 0 5px 50px rgba(0,0,0,.5);
+  box-shadow: 0 .5rem 5rem rgba(0,0,0,.5);
 
   background: #fff;
 
@@ -271,9 +232,6 @@
 
   @media (min-width: $min-720) {
     top: auto;
-
-    //transform: translateY(100%);
-    //opacity: 1;
   }
 
   &--visible {
@@ -283,33 +241,29 @@
 
   &__close {
     display: block;
-
     position: absolute;
     z-index: 10000;
-
-    top: $gutter / 2;
-    right: $gutter / 2;
-
+    top: ($gutter / 2);
+    right: ($gutter / 2);
     height: 4rem;
     width: 4rem;
-
     font-size: 2rem;
     line-height: 4rem;
     text-align: left;
     text-indent: -9999px;
-
     cursor: pointer;
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    outline: 0;
 
     &:before {
       display: block;
-
       position: absolute;
-
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-
       text-indent: 0;
       text-align: center;
     }
@@ -318,24 +272,16 @@
       z-index: 9998;
       top: 0;
       left: 50%;
-
       margin-left: (-$close-button-size / 2);
-
       width: $close-button-size;
       height: $close-button-size;
-
       font-size: 2.6rem;
-      line-height: $close-button-size; //$close-button-size;
+      line-height: $close-button-size;
       text-align: center;
-
-      border: none;
       border-radius: 50%;
-
-      box-shadow: 0 22px 45px rgba(0,0,0, .75);
-      background: #fff;
-
+      box-shadow: 0 2.2rem 4.5rem rgba(0,0,0, .75);
+      background-color: #fff;
       user-select: none;
-
       transition: transform .4s 1s;
     }
   }
@@ -359,53 +305,64 @@
     margin: 0 auto;
     padding: $gutter $gutter 0;
 
-    max-width: 1290px;
+    max-width: $max-width;
 
     overflow-x: hidden;
     overflow-y: auto;
 
-    background: #fff;
+    background-color: #fff;
 
     @media (min-width: $min-720) {
       position: relative;
-
       top: auto;
       left: auto;
       right: auto;
       bottom: auto;
-
-      padding: ($gutter*2) $gutter*2 $gutter;
-
+      padding: 4rem ($gutter * 2) ($gutter * 2);
       max-height: calc(100vh - #{($close-button-size + $gutter * 2)});
+    }
+
+    $top-places-content-mq: (strip-units($max-width) * 10) + (strip-units($gutter) * 10 * 4);
+
+    @media (min-width: #{$top-places-content-mq * .0625}em) {
+      padding-left: 0;
+      padding-right: 0;
     }
   }
 
   &__wrap {
-    font-size: 0;
-    text-align: center;
+    @media (min-width: $min-720) {
+      display: flex;
+    }
 
-    @media (min-width: $min-960) {
-      margin: 0 -$gutter/2;
+    .no-flexbox & {
+      overflow: hidden;
     }
   }
 
-  &__spacer {
-    display: inline-block;
-
-    margin-bottom: $gutter;
-
-    max-width: 65rem;
+  &__column {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 63rem;
     width: 100%;
 
-    &:last-child:first-child {
-
+    &:not(:first-child) {
+      @media (max-width: $max-960) {
+        margin-top: ($gutter * 2);
+      }
     }
 
-    @media (min-width: $min-960) {
-      margin: 0;
-      padding: 0 $gutter/2;
+    .no-flexbox & {
+      @media (min-width: $min-960) {
+        float: left;
+        width: calc(50% - #{$gutter});
+      }
+    }
 
-      width: 50%;
+    + .top_places__column {
+      @media (min-width: $min-960) {
+        margin-left: $gutter;
+      }
     }
   }
 }
