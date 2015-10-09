@@ -30,8 +30,9 @@
   &__item {
     display: inline-block;
 
-    margin: 0 0 $gutter / 4;
-    padding: 0 ($gutter / 8);
+    margin-bottom: ($gutter / 4);
+    padding-left: ($gutter / 8);
+    padding-right: ($gutter / 8);
 
     width: 50%;
 
@@ -43,8 +44,9 @@
     }
 
     @media (min-width: $min-480) {
-      margin: 0 0 $gutter;
-      padding: 0 ($gutter / 2);
+      margin-bottom: $gutter;
+      padding-left: ($gutter / 2);
+      padding-right: ($gutter / 2);
     }
 
     @media (min-width: $min-960) {
@@ -53,7 +55,7 @@
   }
 
   &__bottom {
-    margin: 0 0 $spacing;
+    margin-bottom: $spacing;
     text-align: center;
   }
 
@@ -107,10 +109,14 @@
     color: #fff;
     text-align: center;
 
-    background: linear-gradient(to top,  rgba(0,0,0,0.5) 0%,rgba(0,0,0,0) 100%);
+    background: linear-gradient(to top, rgba(0,0,0, .5) 0%, rgba(0,0,0, 0) 100%);
 
     @media (min-width: $min-480) {
       padding: 0 ($gutter / 2) ($gutter - 1);
+    }
+
+    @media (min-width: $min-720) {
+      min-height: 14.5rem;
     }
   }
 
@@ -120,7 +126,7 @@
     display: inline-block;
     position: relative;
 
-    margin: 0 0 ($spacing/2 + .5);
+    margin-bottom: ($spacing/2 + .5);
 
     width: $size;
     height: $size;
@@ -136,6 +142,7 @@
     box-shadow: 0 .2rem .2rem rgba(0,0,0, .3);
 
     transform: rotate(45deg);
+    backface-visibility: hidden;
 
     .num {
       display: block;
@@ -154,7 +161,7 @@
     @media (min-width: $min-480) {
       $size: 3.7rem;
 
-      margin: 0 0 ($spacing + 1);
+      margin-bottom: 2.1rem;
 
       width: $size;
       height: $size;
@@ -176,7 +183,7 @@
     @media (min-width: $min-480) {
       margin-top: 1.2rem;
       font-size: 1.4rem;
-      line-height: (20 / 14);
+      line-height: (19 / 14);
       letter-spacing: .6px;
     }
   }
@@ -186,6 +193,10 @@
     font-style: italic;
     font-size: 1.2rem;
     line-height: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
 
     @media (min-width: $min-480) {
       font-size: 1.4rem;
