@@ -1,21 +1,21 @@
-<section class="top_places top_places{{ centered }}">
-  <div class="top_places__close icon-close-small">Close</div>
+<section class="top_places{{#if centered}} top_places{{ centered }}{{/if}}">
+  <button class="top_places__close icon-close-small" type="button">Close</button>
 
   <div class="top_places__content">
     <div class="top_places__wrap">
-      <!-- top countries -->
+      {{!-- top countries --}}
       {{#if top_places.top_countries }}
 
-      <div class="top_places__spacer">
+      <div class="top_places__column">
 
         <div class="tlist">
           <h2 class="tlist__heading">Top countries in {{ place.name }}</h2>
           <div class="tlist__content">
 
-            <ul class="tlist__top">
+            <ul class="tlist__primary">
               {{#each top_places.top_countries}}
-              <li class="tlist__top-item">
-                <a class="tlist__top-link" href="/{{ slug }}">
+              <li class="tlist__primary-item">
+                <a class="tlist__primary-link" href="/{{ slug }}">
                   <div class="tlist__image" title="{{ name }} thumb image" style="background-image: url({{ thumbnail }});"></div>
                   <div class="tlist__number"></div>
                   <div class="tlist__title">{{ name }}</div>
@@ -25,16 +25,16 @@
             </ul>
 
             {{#if top_places.countries }}
-            <ul class="tlist__bottom">
+            <ul class="tlist__secondary">
 
               {{#each top_places.top_countries}}
-              <li class="tlist__bottom-item tlist__bottom-item--top">
-                <a class="tlist__bottom-link" href="/{{ slug }}">{{ name }}</a>
+              <li class="tlist__secondary-item tlist__secondary-item--top">
+                <a class="tlist__secondary-link" href="/{{ slug }}">{{ name }}</a>
               </li>
               {{/each}}
               {{#each top_places.countries}}
-              <li class="tlist__bottom-item">
-                <a class="tlist__bottom-link" href="/{{ slug }}">{{ name }}</a>
+              <li class="tlist__secondary-item">
+                <a class="tlist__secondary-link" href="/{{ slug }}">{{ name }}</a>
               </li>
               {{/each}}
             </ul>
@@ -51,19 +51,20 @@
       </div>
 
       {{/if}}
-      <!-- top cities -->
+
+      {{!-- top cities --}}
       {{#if top_places.top_cities}}
 
-      <div class="top_places__spacer">
+      <div class="top_places__column">
 
         <div class="tlist">
           <h2 class="tlist__heading">Top cities in {{ place.name }}</h2>
           <div class="tlist__content">
 
-            <ul class="tlist__top">
+            <ul class="tlist__primary">
               {{#each top_places.top_cities}}
-                <li class="tlist__top-item">
-                  <a class="tlist__top-link" href="/{{ slug }}">
+                <li class="tlist__primary-item">
+                  <a class="tlist__primary-link" href="/{{ slug }}">
                     <div class="tlist__image" title="{{ name }} thumb image" style="background-image: url({{ thumbnail }});"></div>
                     <div class="tlist__number"></div>
                     <div class="tlist__title">{{ name }}</div>
@@ -74,15 +75,15 @@
             </ul>
 
             {{#if top_places.cities}}
-              <ul class="tlist__bottom">
+              <ul class="tlist__secondary">
                 {{#each top_places.top_cities}}
-                  <li class="tlist__bottom-item tlist__bottom-item--top">
-                    <a class="tlist__bottom-link" href="/{{ slug }}">{{ name }}</a>
+                  <li class="tlist__secondary-item tlist__secondary-item--top">
+                    <a class="tlist__secondary-link" href="/{{ slug }}">{{ name }}</a>
                   </li>
                 {{/each}}
                 {{#each top_places.cities}}
-                  <li class="tlist__bottom-item">
-                    <a class="tlist__bottom-link" href="/{{ slug }}">{{ name }}</a>
+                  <li class="tlist__secondary-item">
+                    <a class="tlist__secondary-link" href="/{{ slug }}">{{ name }}</a>
                   </li>
                 {{/each}}
               </ul>
@@ -100,19 +101,19 @@
 
       {{/if}}
 
-      <!-- generic top places (for regions) -->
+      {{!-- generic top places (for regions) --}}
       {{#if top_places.top_places}}
 
-      <div class="top_places__spacer">
+      <div class="top_places__column">
 
         <div class="tlist">
           <h2 class="tlist__heading">Top places in {{ place.name }}</h2>
           <div class="tlist__content">
 
-            <ul class="tlist__top">
+            <ul class="tlist__primary">
               {{#each top_places.top_places}}
-                <li class="tlist__top-item">
-                  <a class="tlist__top-link" href="/{{ slug }}">
+                <li class="tlist__primary-item">
+                  <a class="tlist__primary-link" href="/{{ slug }}">
                     <div class="tlist__image" title="{{ name }} thumb image" style="background-image: url({{ thumbnail }});"></div>
                     <div class="tlist__number"></div>
                     <div class="tlist__title">{{ name }}</div>
@@ -123,15 +124,15 @@
             </ul>
 
             {{#if top_places.places}}
-              <ul class="tlist__bottom">
+              <ul class="tlist__secondary">
                 {{#each top_places.top_places}}
-                  <li class="tlist__bottom-item tlist__bottom-item--top">
-                    <a class="tlist__bottom-link" href="/{{ slug }}">{{ name }}</a>
+                  <li class="tlist__secondary-item tlist__secondary-item--top">
+                    <a class="tlist__secondary-link" href="/{{ slug }}">{{ name }}</a>
                   </li>
                 {{/each}}
                 {{#each top_places.places}}
-                  <li class="tlist__bottom-item">
-                    <a class="tlist__bottom-link" href="/{{ slug }}">{{ name }}</a>
+                  <li class="tlist__secondary-item">
+                    <a class="tlist__secondary-link" href="/{{ slug }}">{{ name }}</a>
                   </li>
                 {{/each}}
               </ul>
@@ -149,18 +150,18 @@
 
       {{/if}}
 
-      <!-- top neighborhoods -->
+      {{!-- top neighborhoods --}}
       {{#if top_places.top_neighborhoods}}
-      <div class="top_places__spacer">
+      <div class="top_places__column">
 
         <div class="tlist">
           <h2 class="tlist__heading">Top neighborhoods in {{ place.name }}</h2>
           <div class="tlist__content">
 
-            <ul class="tlist__top">
+            <ul class="tlist__primary">
               {{#each top_places.top_neighborhoods}}
-                <li class="tlist__top-item">
-                  <a class="tlist__top-link" href="/{{ slug }}">
+                <li class="tlist__primary-item">
+                  <a class="tlist__primary-link" href="/{{ slug }}">
                     <div class="tlist__image" title="{{ name }} thumb image" style="background-image: url({{ thumbnail }});"></div>
                     <div class="tlist__number"></div>
                     <div class="tlist__title">{{ name }}</div>
@@ -171,15 +172,15 @@
             </ul>
 
             {{#if top_places.neighborhoods}}
-              <ul class="tlist__bottom">
+              <ul class="tlist__secondary">
                 {{#each top_places.top_neighborhoods}}
-                  <li class="tlist__bottom-item tlist__bottom-item--top">
-                    <a class="tlist__bottom-link" href="/{{ slug }}">{{ name }}</a>
+                  <li class="tlist__secondary-item tlist__secondary-item--top">
+                    <a class="tlist__secondary-link" href="/{{ slug }}">{{ name }}</a>
                   </li>
                 {{/each}}
                 {{#each top_places.neighborhoods}}
-                  <li class="tlist__bottom-item">
-                    <a class="tlist__bottom-link" href="/{{ slug }}">{{ name }}</a>
+                  <li class="tlist__secondary-item">
+                    <a class="tlist__secondary-link" href="/{{ slug }}">{{ name }}</a>
                   </li>
                 {{/each}}
               </ul>
