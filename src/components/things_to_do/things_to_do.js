@@ -2,6 +2,7 @@ import Component from "../../core/component";
 import assign from "lodash/object/assign";
 import waitForTransition from "../../core/utils/waitForTransition";
 import publish from "../../core/decorators/publish";
+import $clamp from "clamp-js/clamp.js";
 
 class ThingsToDo extends Component {
   initialize() {
@@ -12,12 +13,12 @@ class ThingsToDo extends Component {
     };
 
     let { cards } = this.getInitialState();
-    
+
     // Exit in case there were no experiences
     if (!cards) {
       return;
     }
-    
+
     this.cards = cards;
 
     this.events = {
@@ -26,6 +27,8 @@ class ThingsToDo extends Component {
 
     this.template = require("./thing_to_do_card.hbs");
     this.render(this.nextCards());
+
+    this.clampText();
   }
 
   /**
@@ -38,7 +41,7 @@ class ThingsToDo extends Component {
     }
 
     return this.cards.slice(this.currentIndex, this.currentIndex + this.options.numOfCards)
-      .map((card, i) => this.template(assign(card, { 
+      .map((card, i) => this.template(assign(card, {
           card_num: i + this.currentIndex + 1,
           order: i
         })));
@@ -52,7 +55,7 @@ class ThingsToDo extends Component {
 
   loadImages(images) {
     let imagePromises = [];
-    
+
     images.each((index, element) => {
       let $el = $(element),
           imageUrl = $el.data("image-url"),
@@ -105,12 +108,12 @@ class ThingsToDo extends Component {
     this.loadImages($nextList.find(".image-card__image")).then(() => {
       $list.after($nextList)
         .css("transform", `translate3d(-${ttdComponentWidth}px, 0, 0)`);
-      
+
       waitForTransition($list, { fallbackTime: 300 })
         .then(() => {
           $nextList
             .css("transform", "translate3d(0, 0, 0)");
-          
+
           return waitForTransition($nextList, { fallbackTime: 300 });
         })
         .then(() => {
@@ -152,6 +155,12 @@ class ThingsToDo extends Component {
     });
 
     return promise;
+  }
+
+  clampText() {
+    $.each($(".image-card__title"), function() {
+      $clamp($(this).get(0), { clamp: 2 });
+    });
   }
 }
 
