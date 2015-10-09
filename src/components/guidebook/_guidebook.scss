@@ -91,9 +91,9 @@
   @media (min-width: $min-1080) {
     display: block;
     margin: ($spacing / 2) 0 0;
-    font-size: 28px;
+    font-size: 2.6rem;
     font-weight: 300;
-    color: #b2b4b8;
+    color: $ancillary-header-color;
   }
 }
 
