@@ -5,7 +5,7 @@
 
 
   {{#if food_accent}}
-    <div class="food-and-drink__image" style="background-image: url({{food_accent}});" aria-hidden="true"></div>
+    <img class="food-and-drink__image" src="{{food_accent}}" alt="{{title}} accent image">
   {{/if}}
 
   <div class="food-and-drink__inner">
@@ -31,7 +31,7 @@
   <div class="food-and-drink__button-container">
     <a class="food-and-drink__more" href="{{see_more_url}}">
       See More
-      <span class="icon-chevron-right"></span>
+      <i class="icon-chevron-right" aria-hidden="true"></i>
     </a>
   </div>
 

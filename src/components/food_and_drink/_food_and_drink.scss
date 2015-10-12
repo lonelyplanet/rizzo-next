@@ -3,16 +3,13 @@
 $small-breakpoint: 600;
 $mobile-breakpoint: 717;
 $tablet-breakpoint: 1025;
-$fad-gutter: 20px;
 $fad-color: #b2b4b8;
-$fad-column-width: (100%/3);
+$fad-column-width: (100% / 3);
 $item-border-color: #f1f4fb;
 
 .food-and-drink {
   position: relative;
-
-  margin: 0 0 $spacing;
-
+  margin-bottom: $spacing;
   font-weight: $medium;
 
   &__heading {
@@ -23,42 +20,32 @@ $item-border-color: #f1f4fb;
     display: none;
 
     @media (min-width: $min-480) {
-
-      background-size: 100%;
-      background-repeat: no-repeat;
-
       display: block;
-
       position: absolute;
-
       top: 0;
       left: 0;
       bottom: 0;
-
       width: $fad-column-width;
-
-      z-index: -1;
+      margin-top: auto;
+      margin-bottom: auto;
     }
   }
 
   &__image + &__inner {
     @media (min-width: $min-480) {
-      margin: 0 0 $spacing*4 $fad-column-width;
+      margin-bottom: ($spacing * 4);
+      margin-left: $fad-column-width;
       padding-left: $gutter;
     }
   }
 
   &__list {
     position: relative;
-
-    margin: 0 0 $spacing*4;
-    padding: 0;
-
+    margin-bottom: ($spacing * 4);
     list-style: none;
 
     @media (min-width: $min-960) {
       overflow: hidden;
-
       column-count: 2;
       column-gap: $gutter;
     }
@@ -66,9 +53,7 @@ $item-border-color: #f1f4fb;
 
   &__item {
     display: block;
-
     break-inside: avoid-column;
-
     border-bottom: .1rem solid $item-border-color;
 
     &:first-child,
@@ -84,12 +69,9 @@ $item-border-color: #f1f4fb;
 
     a {
      display: block;
-
      padding-top: 2.1rem;
      padding-bottom: 1.8rem;
-
      transition: transform $animation-speed;
-
      backface-visibility: hidden; // Fix hidden content bug in Chrome, FF, Opera
      transform: scale(1); // Fix hidden content bug in Safari
     }
@@ -102,7 +84,6 @@ $item-border-color: #f1f4fb;
 
   &__title {
     @include link-transition();
-
     font-size: 1.4rem;
     font-weight: 700;
     color: $color-darkblue;
@@ -114,8 +95,7 @@ $item-border-color: #f1f4fb;
   }
 
   &__categories {
-    margin-top: 4px;
-
+    margin-top: .4rem;
     font-size: 1.1rem;
     font-weight: 700;
     color: $fad-color;
