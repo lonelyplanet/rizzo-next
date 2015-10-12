@@ -1,10 +1,11 @@
 import { Component } from "../../core/bane";
+import debounce from "lodash/function/debounce";
 require("./_sub_nav.scss");
 
 export default class SubNav extends Component {
   initialize() {
-    let debounce = require("lodash/function/debounce"),
-        $subNav = $(".js-sub-nav"),
+    let $subNav = $(".js-sub-nav"),
+        $subNavPlaceholder = $(".js-sub-nav-placeholder"),
         $window = $(window);
 
     /**
@@ -24,8 +25,7 @@ export default class SubNav extends Component {
     if ($subNav.length) {
       let subNavTop = $subNav.offset().top,
           firstTrigger = true,
-          fixedState,
-          fixedSubNav;
+          fixedState;
 
       $(document).on("click", ".js-sub-nav-link", function(e) {
         let target = this.hash;
@@ -57,21 +57,21 @@ export default class SubNav extends Component {
 
       $window.scroll(debounce(() => {
         if (firstTrigger) {
-          fixedSubNav = $subNav
-            .clone(true)
-            .addClass("sub-nav--fixed");
-
           firstTrigger = false;
         }
 
-        if ($window.scrollTop() > subNavTop) {
+        if ($window.scrollTop() >= subNavTop) {
           if(!fixedState) {
-            fixedSubNav.appendTo("body");
+            $subNav.addClass("is-fixed");
             fixedState = true;
+
+            $subNavPlaceholder.addClass("is-fixed");
           }
         } else if (fixedState) {
-          fixedSubNav.detach();
+          $subNav.removeClass("is-fixed");
           fixedState = false;
+
+          $subNavPlaceholder.removeClass("is-fixed");
         }
 
         let $current = $components.map((i, el) => {
@@ -81,14 +81,14 @@ export default class SubNav extends Component {
         });
 
         if ($current.length) {
-          fixedSubNav.find("a").removeClass("sub-nav__link--active");
+          $subNav.find("a").removeClass("sub-nav__link--active");
 
-          fixedSubNav
+          $subNav
             .find(`a[href*="#${$current[$current.length - 1].id}"]`)
               .addClass("sub-nav__link--active");
 
         } else {
-          fixedSubNav.find("a").removeClass("sub-nav__link--active");
+          $subNav.find("a").removeClass("sub-nav__link--active");
 
         }
 
