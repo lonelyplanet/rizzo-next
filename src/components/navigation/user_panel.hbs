@@ -1,0 +1,112 @@
+{{#if user.notification_count}}
+  <span class="notification-badge">{{user.notification_count}}</span>
+{{/if}}
+
+<a class="avatar" href="#">
+  <img src="{{user.avatar}}" alt="Haraldur Thorleifsson avatar">
+</a>
+
+<div class="sub-navigation">
+  <a class="user-panel__sign-out icon-sign-out" href="//auth.lonelyplanet.com/users/sign_out" title="Sign out">Sign out</a>
+
+  <div class="user-panel__header">
+    <a href="#">
+      <img class="user-panel__avatar avatar" src="{{user.avatar}}" alt="{{user.username}} avatar">
+      <span class="user-panel__name">{{user.username}}</span>
+    </a>
+  </div>
+
+  <div class="tabs tabs--full tabs--small">
+    <ul class="tabs__links">
+      <li>
+        <a href="#activity">Recent activity</a>
+      </li>
+
+      <li>
+        <a href="#messages">Messages 
+
+        {{#if user.unread_message_count}}
+          <span class="unread-count">{{user.unread_message_count}}</span></a>
+        {{/if}}
+      </li>
+    </ul>
+
+    <div class="user-panel__content tabs__content" id="activity">
+      {{#unless user.activities}}
+      <div class="user-panel__empty">No recent activity</div>
+      {{/unless}}
+      
+      {{#if user.activities}}
+      <ul class="user-panel__items">
+        <li>
+          <a href="#">
+            Something happened and this is it.
+            <time>Just now</time>
+          </a>
+        </li>
+
+        <li>
+          <a href="#">
+            Your order <strong>5738432</strong> has been shipped.
+            <time>5 hours ago</time>
+          </a>
+        </li>
+
+        <li>
+          <a href="#">
+            This is another message and it's a bit longer so it wraps to two lines.
+            <time>5 hours ago</time>
+          </a>
+        </li>
+      </ul>
+      {{/if}}
+
+      <a class="user-panel__link" href="#">See all activity</a>
+    </div>
+
+    <div class="user-panel__content tabs__content" id="messages">
+      {{#unless user.messages}}
+      <div class="user-panel__empty">No new messages</div>
+      {{/unless}}
+
+      {{#if user.messages}}
+      <ul class="user-panel__items">
+        {{#each user.messages}}
+        {{{text}}}
+        {{!-- <li>
+          <a href="#">
+            <img class="avatar" src="http://dummyimage.com/60x60/4d494d/686a82.gif" alt="Mom's avatar">
+            Your <strong>mom</strong> says <strong>hello</strong>.
+            <time>Just now</time>
+          </a>
+        </li>
+
+        <li>
+          <a href="#">
+            <img class="avatar" src="http://dummyimage.com/60x60/4d494d/686a82.gif" alt="Thorn Tree avatar">
+            <strong>Thorn Tree</strong> sent you a <strong>private message</strong>.
+            <time>5 hours ago</time>
+          </a>
+        </li>
+
+        <li>
+          <a href="#">
+            <img class="avatar" src="http://dummyimage.com/60x60/4d494d/686a82.gif" alt="Thorn Tree avatar">
+            <strong>Thorn Tree</strong> sent you a <strong>private message</strong>.
+            <time>5 hours ago</time>
+          </a>
+        </li> --}}
+        {{/each}}
+      </ul>
+      {{/if}}
+
+      <a class="user-panel__link" href="#">See all messages</a>
+    </div>
+  </div>
+
+  <a class="sub-navigation__button" href="//www.lonelyplanet.com/thorntree">
+    Go to Thorn Tree Travel Forum
+    <i class="icon-chevron-right" aria-hidden="true"></i>
+  </a>
+</div>
+

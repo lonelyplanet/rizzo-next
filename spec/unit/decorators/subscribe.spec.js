@@ -12,17 +12,20 @@ describe("subscribe decorator", () => {
   it("should subscribe to a topic", () => {
     let callCount = 0;
     class Foo {
-      @subscribe("my.message", "/")
+      constructor() {
+        this.subscribe();
+      }
+      @subscribe("my.message", "foo")
       myMessage(data, env, sub) {
         expect(data.foo).to.be("bar");
         callCount++;
         sub.unsubscribe();
       }
     }
-    Foo.channel = "foobar";
+    
     new Foo();
 
-    postal.channel("/").publish("my.message", { foo: "bar" });
+    postal.channel("foo").publish("my.message", { foo: "bar" });
     
     expect(callCount).to.be(1);
   });
@@ -31,32 +34,41 @@ describe("subscribe decorator", () => {
     let callCount = 0;
     
     class Foo {
+      constructor() {
+        this.number = 2;
+        this.subscribe();
+      }
       @subscribe("my.other.message")
       @channel("foobar")
       myOtherMessage(data, env, sub) {
+        this.number++;
         expect(data.foo).to.be("bazinga");
         callCount++;
         sub.unsubscribe();
       }
       @subscribe("my.other.message.2")
-      myOtherMessage(data, env, sub) {
+      myOtherMessage2(data, env, sub) {
+        this.number++;
         expect(data.foo).to.be("bazinga");
         callCount++;
         sub.unsubscribe();
       }
       @subscribe("my.other.message.3")
       @channel("foobazinga")
-      myOtherMessage(data, env, sub) {
+      myOtherMessage3(data, env, sub) {
+        this.number++;
         expect(data.foo).to.be("bazinga");
         callCount++;
         sub.unsubscribe();
       }
     }
-    new Foo();
+    let foo = new Foo();
+    
     postal.channel("foobar").publish("my.other.message", { foo: "bazinga" });
     postal.channel("foobar").publish("my.other.message.2", { foo: "bazinga" });
     postal.channel("foobazinga").publish("my.other.message.3", { foo: "bazinga" });
     
     expect(callCount).to.be(3);
+    expect(foo.number).to.be(5);
   });
 });

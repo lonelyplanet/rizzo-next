@@ -33,9 +33,6 @@ let delegateEventSplitter = /^(\S+)\s*(.*)$/;
 * }
 */
 export default class Component {
-  get channel() {
-    return "components";
-  }
   /**
    * Constructs a component
    * @param  {[Options]} options An options object
@@ -44,6 +41,7 @@ export default class Component {
    */
   constructor(options) {
     this.cid = uniqueId("comp");
+    this.channel = "components";
 
     // Assign things from the passed in options to `this`
     assign(this, pick(options, listOfOptions));

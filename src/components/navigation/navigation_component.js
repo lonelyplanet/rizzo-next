@@ -5,6 +5,9 @@ import waitForTransition from "../../core/utils/waitForTransition";
 import NavigationActions from "./navigation_actions";
 import NavigationState from "./navigation_state";
 import Tabs from "../tabs/tabs_component";
+import subscribe from "../../core/decorators/subscribe";
+
+let userPanelTemplate = require("./user_panel.hbs");
 
 class NavigationComponent extends Component {
 
@@ -28,38 +31,34 @@ class NavigationComponent extends Component {
     this.listenTo(NavigationState, "changed:nav", this.toggleNav);
     this.listenTo(this.overlay, "click", this._clickNav);
 
-    this.tabs = new Tabs({
-      el: $(".navigation").find(".tabs")
-    });
+    this.subscribe();
   }
-
+  /**
+   * Set up hover events to trigger the sub menu's opening and closing.
+   * Use event delegation here because the user login is dynamically added.
+   * @return {[type]} [description]
+   */
   handleHover() {
-    this.$el.find(".navigation__item")
-      .each((i, el) => {
-        let $el = $(el);
-        let $subNavigation = $el.find(".sub-navigation");
-        let hideTimer, showTimer;
+    let hideTimer, showTimer;
 
-        if($subNavigation.length === 0) {
-          return;
-        }
+    this.$el.on("mouseenter", ".navigation__item", (event) => {
+      clearTimeout(hideTimer);
 
-        $el.on("mouseenter", () => {
-          clearTimeout(hideTimer);
+      // Always clear the currently active one
+      this.$el.find(".sub-navigation").removeClass("sub-navigation--visible");
+      
+      showTimer = setTimeout(() => {
+        $(event.currentTarget).find(".sub-navigation").addClass("sub-navigation--visible");
+      }, 0);
+    });
 
-          showTimer = setTimeout(() => {
-            $subNavigation.addClass("sub-navigation--visible");
-          }, 0);
-        });
+    this.$el.on("mouseleave", ".navigation__item", (event) => {
+      clearTimeout(showTimer);
 
-        $el.on("mouseleave", () => {
-          clearTimeout(showTimer);
-
-          hideTimer = setTimeout(() => {
-            $subNavigation.removeClass("sub-navigation--visible");
-          }, 100);
-        });
-      });
+      hideTimer = setTimeout(() => {
+        $(event.currentTarget).find(".sub-navigation").removeClass("sub-navigation--visible");
+      }, 100);
+    });
   }
 
   toggleNav() {
@@ -107,6 +106,29 @@ class NavigationComponent extends Component {
     NavigationActions.clickNav();
   }
 
+  @subscribe("user.status.update")
+  userStatusUpdate(user) {
+    let $li = this.$el.find(".navigation__item--user");
+    
+    if (!user.id) {
+      return $li.html($("<a />", { 
+        "class": "navigation__link", 
+        "href": "https://auth.lonelyplanet.com/users/sign_in"
+      }).text("Sign In"));
+    }
+    
+    $li.append(userPanelTemplate({
+      user
+    }));
+
+    this.profileTabs = new Tabs({
+      el: $(".navigation").find(".tabs")
+    });
+  }
+  @subscribe("user.notifications.update")
+  userNotificationUpdate(user) {
+    this.userStatusUpdate(user);
+  }
 }
 
 export default NavigationComponent;

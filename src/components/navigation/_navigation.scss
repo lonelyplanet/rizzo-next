@@ -40,7 +40,9 @@
   }
 
   &__item--user {
-    top: -.4rem;
+    .avatar {
+      top: -.4rem;
+    }
 
     .notification-badge {
       right: .2rem;
