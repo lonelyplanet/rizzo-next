@@ -90,7 +90,8 @@ $item-border-color: #f1f4fb;
 
      transition: transform $animation-speed;
 
-     backface-visibility: hidden;
+     backface-visibility: hidden; // Fix hidden content bug in Chrome, FF, Opera
+     transform: scale(1); // Fix hidden content bug in Safari
     }
 
     &:hover a {
