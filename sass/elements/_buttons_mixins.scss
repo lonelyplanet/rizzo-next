@@ -74,14 +74,6 @@
       transform: translate3d(0, 0, 0);
     }
   }
-
-  &:focus {
-    box-shadow: 0 0 0 1px $color-primary;
-  }
-
-  &:active:focus {
-    box-shadow: none;
-  }
 }
 
 
