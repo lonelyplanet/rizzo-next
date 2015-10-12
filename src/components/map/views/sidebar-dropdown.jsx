@@ -13,8 +13,14 @@ export default class SidebarDropdown extends React.Component {
     this.state = MapState.getState();
   }
 
+  componentDidMount() {
+    if( !$(".is-selected").length )
+      $(".tab__sub-nav__list--item:first-child").addClass("is-selected");
+  }
+
   changeTopic(event) {
     let topic = $(event.currentTarget).data("item");
+    $(".tab__sub-nav__list--item").removeClass("is-selected");
 
     MapActions.gotoPlace({
       place: this.state.currentLocation.slug,
@@ -22,9 +28,9 @@ export default class SidebarDropdown extends React.Component {
       breadcrumb: this.state.currentLocation.parent
     });
   }
+
   render() {
-    let topicCount = 0,
-        menuClassString = "tab__sub-nav";
+    let menuClassString = "tab__sub-nav";
 
     let topics = this.state.topics.map((item) => {
       let itemClassString = "tab__sub-nav__list--item";
