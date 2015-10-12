@@ -40,10 +40,10 @@ $navigation-sub-height-mobile: $header-height-mobile;
   padding: 0;
   font-size: 0;
   background-color: #fff;
-  height: $navigation-sub-height-mobile + .1;
+  height: ($navigation-sub-height-mobile + .1);
 
   @media (min-width: $min-720) {
-    height: $navigation-sub-height + .1;
+    height: ($navigation-sub-height + .1);
   }
 
   &.is-fixed {
@@ -73,8 +73,12 @@ $navigation-sub-height-mobile: $header-height-mobile;
   }
 
   &__container {
-    margin: 0;
     overflow: hidden;
+    height: ($navigation-sub-height-mobile + .1);
+
+    @media (min-width: $min-720) {
+      height: ($navigation-sub-height + .1);
+    }
 
     &:before,
     &:after {
@@ -99,7 +103,7 @@ $navigation-sub-height-mobile: $header-height-mobile;
 
   &__list {
     width: 100%;
-    height: $navigation-sub-height-mobile;
+    height: ($navigation-sub-height-mobile + 2); // to push horizontal scrollbar out of view
     margin: 0;
     padding: 0;
     overflow-x: auto;
