@@ -2,6 +2,7 @@
 
 .slideshow {
   height: 100%;
+  overflow: hidden;
 
   &__images {
     position: relative;
