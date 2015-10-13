@@ -31,6 +31,7 @@
     "jquery": "^2.1.4",
     "lodash": "^3.10.0",
     "mapbox.js": "^2.2.2",
+    "moment": "^2.10.6",
     "pickadate": "*",
     "picturefill": "*",
     "postal": "^1.0.7",

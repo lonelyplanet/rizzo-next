@@ -33,13 +33,16 @@ export default class User {
     }
     
     obj.messages = obj.messages.length ? obj.messages.map((msg) => {
-        return { text: msg.text.replace(rClass, "") }
+        return { 
+          text: msg.text.replace(rClass, ""),
+          read: msg["read?"]
+        }
       }) : null;
 
     obj.activity = obj.activity.length ? obj.activity : null;
     
     obj.activity_count = obj.activity ? obj.activity.length : null;
-    obj.unread_message_count = obj.messages ? obj.messages.filter((msg) => !msg["read?"]).length : null;
+    obj.unread_message_count = obj.messages ? obj.messages.filter((msg) => !msg.read).length : null;
 
     obj.notification_count = (obj.activity_count || 0) + (obj.unread_message_count || 0);
 

@@ -6,6 +6,7 @@ import NavigationActions from "./navigation_actions";
 import NavigationState from "./navigation_state";
 import Tabs from "../tabs/tabs_component";
 import subscribe from "../../core/decorators/subscribe";
+import moment from "moment";
 
 let userPanelTemplate = require("./user_panel.hbs");
 
@@ -120,6 +121,11 @@ class NavigationComponent extends Component {
     $li.append(userPanelTemplate({
       user
     }));
+
+    $li.find("time").each((i, el) => {
+      let $el = $(el);
+      $el.text(moment($el.text()).fromNow());
+    });
 
     this.profileTabs = new Tabs({
       el: $(".navigation").find(".tabs")
