@@ -46,7 +46,7 @@ class NavigationComponent extends Component {
 
       // Always clear the currently active one
       this.$el.find(".sub-navigation").removeClass("sub-navigation--visible");
-      
+
       showTimer = setTimeout(() => {
         $(event.currentTarget).find(".sub-navigation").addClass("sub-navigation--visible");
       }, 0);
@@ -109,14 +109,14 @@ class NavigationComponent extends Component {
   @subscribe("user.status.update")
   userStatusUpdate(user) {
     let $li = this.$el.find(".navigation__item--user");
-    
+
     if (!user.id) {
-      return $li.html($("<a />", { 
-        "class": "navigation__link", 
+      return $li.html($("<a />", {
+        "class": "navigation__link",
         "href": "https://auth.lonelyplanet.com/users/sign_in"
       }).text("Sign In"));
     }
-    
+
     $li.append(userPanelTemplate({
       user
     }));

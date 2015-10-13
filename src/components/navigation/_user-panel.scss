@@ -95,40 +95,70 @@ $user-panel: (
   color: $font-color-light;
   font-size: 1.4rem;
   font-style: italic;
-  min-height: 15rem;
-  padding: ($spacing * 4) $gutter;
+  min-height: 15.6rem;
+  padding: (($gutter * 2) + .3) $gutter;
   text-align: center;
 }
 
-.user-panel__items {
-  li {
-    font-size: 1.2rem;
-    line-height: 1.2;
-    overflow: hidden;
+.user-panel__scroll {
+  max-height: 23.6rem;
+  overflow: auto;
+}
 
-    &:not(:first-child) {
-      border-top: 1px solid $color-gray;
-    }
+// The strange selectors for .user-panel__items are due to the way that the user
+// data is currently being returned; each item is one long string of HTML. For
+// that reason, classes cannot be applied to each item or its children.
+
+.user-panel__items li {
+  color: $font-color;
+  font-size: 1.2rem;
+  line-height: 1.2;
+  overflow: hidden;
+  padding: $spacing $gutter;
+  position: relative;
+  width: 100%;
+
+  &:not(:first-child) {
+    border-top: .1rem solid $color-gray;
   }
+}
+
+.user-panel__items li > a {
+  display: block;
+  transition: background-color $animation-speed linear;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: #f4f5f8;
+  }
+}
+
+// avatar
+.user-panel__items li > div:nth-of-type(1) {
+  height: 3.5rem;
+  position: absolute;
+  right: $spacing;
+  top: $spacing;
+  width: 3.5rem;
 
   a {
-    color: $font-color;
     display: block;
-    padding: $spacing $gutter;
-    transition: background-color $animation-speed linear;
-
-    &:hover,
-    &:active,
-    &:focus {
-      background-color: #f4f5f8;
-    }
   }
 
   img {
-    float: right;
-    height: 3.5rem;
-    width: 3.5rem;
+    border-radius: 100%;
+    display: block;
+    height: 100%;
+    width: 100%;
   }
+}
+
+// timestamp
+.user-panel__items li > div:nth-of-type(2) {
+  bottom: $spacing;
+  position: absolute;
+  width: 18rem;
 
   time {
     color: $light-text-color;
@@ -137,10 +167,29 @@ $user-panel: (
   }
 }
 
+// subject text
+.user-panel__items li > span {
+  display: block;
+  padding-bottom: ($spacing + .5);
+  width: 18rem;
+
+  a {
+    color: $font-color;
+    font-weight: bold;
+    transition: color $animation-speed linear;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $color-blue;
+    }
+  }
+}
+
 .user-panel__link {
   @include button("inverse");
   border-radius: 0;
-  border-top: 1px solid $color-gray;
+  box-shadow: 0 0 3rem 0 rgba(0, 0, 0, .08);
   text-transform: none;
   width: 100%;
 }
@@ -151,6 +200,6 @@ $user-panel: (
   font-size: 1.1rem;
 
   .tabs & {
-    padding-left: 3px;
+    padding-left: .3rem;
   }
 }
