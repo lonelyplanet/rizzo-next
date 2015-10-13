@@ -85,6 +85,7 @@
 
   &__pic {
     background-size: cover;
+    background-repeat: no-repeat;
     height: 100%;
     width: $image-width;
     overflow: hidden;
