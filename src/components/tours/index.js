@@ -9,7 +9,7 @@ class ToursComponent extends Component {
       this.clampAt = options.clampAt || 3;
       this.blurbs = this.$el.find(".tour__description__blurb");
       this.mobileBreak = options.mobileBreak || 518;
-      this.headingHeight = options.headingHeight || 18;
+      this.headingHeight = options.headingHeight || 23; // lovely magic numbers o_O
       this.nativeSupport = typeof this.$el[0].style.webkitLineClamp !== "undefined";
 
       if (!$("html").hasClass("ie9")) {
