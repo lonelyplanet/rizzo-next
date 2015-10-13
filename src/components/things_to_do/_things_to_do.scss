@@ -71,12 +71,12 @@
   width: 100%;
   max-width: 30rem;
 
-  background: #ccc;
+  background-color: #ccc;
 
   transition: transform $animation-speed;
 
-  @media (min-width: $min-720) {
-    &:hover {
+  &:hover {
+    @media (min-width: $min-720) {
       transform: translateY(-.5rem);
     }
   }
@@ -91,7 +91,7 @@
     opacity: 1;
     transition: opacity $animation-speed-ui;
 
-    &--visible {
+    &.is-visible {
       opacity: 1;
     }
   }
