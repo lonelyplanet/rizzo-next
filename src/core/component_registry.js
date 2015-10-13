@@ -20,7 +20,8 @@ export default class ComponentRegistry {
    * @return {object} Instance of the component
    */
   createInstanceOf(Component, options) {
-    if (!this.components.has(Component.name)) {
+    // Function.name only supported in certain browsers, hence the check
+    if (Component.name && !this.components.has(Component.name)) {
       this.register(Component);
     }
 
@@ -29,7 +30,10 @@ export default class ComponentRegistry {
     let instance = null;
     try {
       instance = new Component(options);
-      instances.push(instance);
+      
+      if (instances) {
+        instances.push(instance);
+      }
     } catch(e) {
       if (typeof ENV_PROD !== "undefined" && !ENV_PROD) {
         throw e;
@@ -55,12 +59,13 @@ export default class ComponentRegistry {
     return this.components.get(name);
   }
   /**
-   * Add a new Component to the registry.
-   * Must extend the `Component` constructor
+   * Add a new Component to the registry.  
+   * Must extend the `Component` constructor.  
+   * Components will only be registered in browsers that support `Function.name` since this is mostly for debugging anyways.
    * @param  {Component} Constructor The component being added
    */
   register(Constructor) {
-    if (Object.getPrototypeOf(Constructor) !== Component) {
+    if (!(Constructor.prototype instanceof Component)) {
       throw "Can only register Components";
     }
 

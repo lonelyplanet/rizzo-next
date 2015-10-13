@@ -73,14 +73,19 @@ module.exports = function(config) {
     },
 
     coverageReporter: {
-      type : "html",
+      
       dir : "docs/coverage",
+      reporters: [{
+        type : "html"
+      }, {
+        type: "lcov"
+      }],
       check: {
-            global: {
-              statements: 30,
-              branches: 30,
-              functions: 25,
-              lines: 30
+        global: {
+                statements: 30,
+                branches: 30,
+                functions: 25,
+                lines: 30
             }
         }
     }
