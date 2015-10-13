@@ -12,6 +12,7 @@ export default class ItemView extends React.Component {
     let classString = "place ";
     let img = "";
     let picClass = "place__pic";
+    let imgStyle;
 
     if (item.onMap) {
       classString += "pin icon icon--chevron-right";
@@ -28,8 +29,8 @@ export default class ItemView extends React.Component {
       }
     }
     if (item.geo.properties.image) {
-      let imgSrc = "http://images-resrc.staticlp.com/S=H150/" + item.geo.properties.image;
-      img = <img src={imgSrc} />
+      let imgSrc = "http://images-resrc.staticlp.com/O=60/S=W80/" + item.geo.properties.image;
+      imgStyle = { backgroundImage: `url(${imgSrc})` };
     }
     else {
       // TODO: This will have to change when topics are correct
@@ -45,8 +46,7 @@ export default class ItemView extends React.Component {
     return (
       <div className={classString} onMouseEnter={this.hoverItem.bind(this)} onClick={this.clickItem.bind(this)}>
         <div className="place__pointer"></div>
-        <div className={picClass}>
-          {img}
+        <div className={picClass} style={imgStyle}>
         </div>
         <div className="place__order">{item.i+1}</div>
         <div className="place__text">
