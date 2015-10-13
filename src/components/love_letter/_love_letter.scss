@@ -55,9 +55,7 @@ $small-breakpoint: 320;
 
   &__more {
     @include more();
-
-    text-transform: uppercase;
-    font-family: $font-family;
+    display: inline-block;
     font-style: normal;
   }
 }
