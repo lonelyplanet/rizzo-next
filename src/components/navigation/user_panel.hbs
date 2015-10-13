@@ -47,26 +47,9 @@
       {{#if user.activities}}
         <div class="user-panel__scroll">
           <ul class="user-panel__items">
-            <li>
-              <a href="#">
-                Something happened and this is it.
-                <time>Just now</time>
-              </a>
-            </li>
-
-            <li>
-              <a href="#">
-                Your order <strong>5738432</strong> has been shipped.
-                <time>5 hours ago</time>
-              </a>
-            </li>
-
-            <li>
-              <a href="#">
-                This is another message and it's a bit longer so it wraps to two lines.
-                <time>5 hours ago</time>
-              </a>
-            </li>
+            {{#each user.activities}}
+              {{{text}}}
+            {{/each}}
           </ul>
 
           <a class="user-panel__link" href="#">
