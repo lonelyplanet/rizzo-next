@@ -84,20 +84,13 @@
   }
 
   &__pic {
+    background-size: cover;
     height: 100%;
     width: $image-width;
     overflow: hidden;
     position: absolute;
     top: 0;
     left: 0;
-
-    img {
-      position: absolute;
-      max-width: ($item-width-list * .6);
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
   }
 
   &__order {
