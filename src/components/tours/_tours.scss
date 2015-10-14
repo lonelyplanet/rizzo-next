@@ -18,8 +18,6 @@ $tours-width: 52rem / $tours-width-base * 100%;
 
 .tours__list {
   @include clearfix;
-  display: flex;
-  flex-flow: row wrap;
   margin: 0 auto;
   width: $tours-container-width;
 
@@ -60,7 +58,6 @@ $tours-width: 52rem / $tours-width-base * 100%;
   }
 
   @media (min-width: $min-1290) {
-    float: none;
     width: $tours-width;
   }
 
