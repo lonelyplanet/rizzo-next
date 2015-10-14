@@ -118,8 +118,15 @@ $user-panel: (
   position: relative;
   width: 100%;
 
+
   &:not(:first-child) {
     border-top: .1rem solid $color-gray;
+  }
+}
+
+.user-panel__item {
+  &--unread {
+    background-color: rgb(229, 229, 229);
   }
 }
 

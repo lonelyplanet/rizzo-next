@@ -118,13 +118,17 @@ class NavigationComponent extends Component {
       }).text("Sign In"));
     }
 
-    $li.append(userPanelTemplate({
+    $li.html(userPanelTemplate({
       user
-    }));
-
-    $li.find("time").each((i, el) => {
+    })).find("time").each((i, el) => {
       let $el = $(el);
       $el.text(moment($el.text()).fromNow());
+    });
+
+    $li.find(".js-user-messages li").each((i, el) => {
+      let $message = $(el);
+      $message.addClass("user-panel__item")
+        .toggleClass("user-panel__item--unread", !user.messages[i].read);
     });
 
     this.profileTabs = new Tabs({
