@@ -28,6 +28,7 @@ $item-border-color: #f1f4fb;
       width: $fad-column-width;
       margin-top: auto;
       margin-bottom: auto;
+      z-index: -1;
     }
   }
 
@@ -40,30 +41,43 @@ $item-border-color: #f1f4fb;
   }
 
   &__list {
-    position: relative;
     margin-bottom: ($spacing * 4);
     list-style: none;
 
     @media (min-width: $min-960) {
       overflow: hidden;
-      column-count: 2;
-      column-gap: $gutter;
     }
   }
 
   &__item {
-    display: block;
-    break-inside: avoid-column;
     border-bottom: .1rem solid $item-border-color;
 
-    &:first-child,
-    &:nth-child(6) {
+    @media (min-width: $min-960) {
+      width: calc(50% - #{$gutter});
+      float: left;
+    }
+
+    &:first-child {
       border-top: .1rem solid $item-border-color;
     }
 
-    @media (max-width: $max-960) {
-      &:nth-last-child(-n+5) {
-        display: none;
+    &:nth-child(2) {
+      @media (min-width: $min-960) {
+        border-top: .1rem solid $item-border-color;
+      }
+    }
+
+    &:nth-child(even) {
+      @media (min-width: $min-960) {
+        margin-left: $gutter;
+      }
+    }
+
+    @for $i from 5 through 9 {
+      &[data-index="#{$i}"] {
+        @media (max-width: $max-960) {
+          display: none;
+        }
       }
     }
 
@@ -72,8 +86,6 @@ $item-border-color: #f1f4fb;
      padding-top: 2.1rem;
      padding-bottom: 1.8rem;
      transition: transform $animation-speed;
-     backface-visibility: hidden; // Fix hidden content bug in Chrome, FF, Opera
-     transform: scale(1); // Fix hidden content bug in Safari
     }
 
     &:hover a {
