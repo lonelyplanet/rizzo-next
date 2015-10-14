@@ -22,13 +22,13 @@ class ThingsToDo extends Component {
     this.cards = cards;
 
     this.events = {
-      "click .ttd__more": "loadMore"
+      "click .js-ttd-more": "loadMore"
     };
 
     this.template = require("./thing_to_do_card.hbs");
     this.render(this.nextCards());
 
-    this.clampText();
+    this.clampImageCardTitle();
   }
 
   /**
@@ -48,9 +48,9 @@ class ThingsToDo extends Component {
   }
 
   render(cards) {
-    this.$el.find(".ttd__list").html(cards.join(""));
+    this.$el.find(".js-ttd-list").html(cards.join(""));
 
-    this.loadImages(this.$el.find(".image-card__image"));
+    this.loadImages(this.$el.find(".js-image-card-image"));
   }
 
   loadImages(images) {
@@ -69,7 +69,7 @@ class ThingsToDo extends Component {
           $el.css({
               "background-image": "url(" + url + ")"
             })
-            .addClass("image-card__image--visible");
+            .addClass("is-visible");
         }));
     });
 
@@ -80,9 +80,9 @@ class ThingsToDo extends Component {
    * Load more top things to do. Callback from click on load more button.
    * @param  {jQuery.Event} e The DOM event
    */
-  @publish("ttd.loadmore")
+  @publish("ttd.loadmore");
   loadMore(e) {
-    let $list = this.$el.find(".ttd__list"),
+    let $list = this.$el.find(".js-ttd-list"),
         ttdComponentWidth = this.$el.width();
 
     e.preventDefault();
@@ -96,7 +96,7 @@ class ThingsToDo extends Component {
 
     // Create a new list and place it on top of existing list
     let $nextList = $("<ul />", {
-        "class": "ttd__list"
+        "class": "ttd__list js-ttd-list"
       })
       .css({
         "margin-top": `-${$list.outerHeight(true)}px`,
@@ -105,7 +105,7 @@ class ThingsToDo extends Component {
       .append(cards);
 
     this.animating = true;
-    this.loadImages($nextList.find(".image-card__image")).then(() => {
+    this.loadImages($nextList.find(".js-image-card-image")).then(() => {
       $list.after($nextList)
         .css("transform", `translate3d(-${ttdComponentWidth}px, 0, 0)`);
 
@@ -123,6 +123,7 @@ class ThingsToDo extends Component {
         });
     });
   }
+
   /**
    * Lazy load an image
    * @param  {String} url Image url to lazy load
@@ -157,8 +158,12 @@ class ThingsToDo extends Component {
     return promise;
   }
 
-  clampText() {
-    $.each($(".image-card__title"), function() {
+  /**
+   * Clamp a card title
+   * @return null
+   */
+  clampImageCardTitle() {
+    $.each($(".js-image-card-title"), function() {
       $clamp($(this).get(0), { clamp: 2 });
     });
   }
