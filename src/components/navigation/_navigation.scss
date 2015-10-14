@@ -19,10 +19,10 @@
 
     display: inline-block;
 
-    margin: 0 $gutter / 3;
+    margin-left: $gutter / 3;
 
-    &:last-child {
-      margin-right: 0;
+    &:not(:last-child) {
+      margin-right: ($gutter / 3);
     }
 
     &:first-child {
@@ -36,6 +36,17 @@
     &--active {
       height: $header-height;
       border-bottom: .4rem solid #fff;
+    }
+  }
+
+  &__item--user {
+    .avatar {
+      top: -.4rem;
+    }
+
+    .notification-badge {
+      right: .2rem;
+      top: 5.15rem;
     }
   }
 
@@ -131,12 +142,11 @@
     position: relative;
     font-size: 1.6rem;
     line-height: 1;
-    border-top: .1rem solid #f1f4fb;
     margin-left: $gutter;
     margin-right: $gutter;
 
-    &:first-child {
-      border-top: 0;
+    &:not(:first-child) {
+      border-top: .1rem solid #f1f4fb;
     }
 
     &--current:before {
@@ -176,7 +186,7 @@
     position: absolute;
     right: -#{$gutter};
     top: -.1rem;
-    transition: background-color $animation-speed linear;
+    transition: background-color ($animation-speed / 2) linear;
     width: calc(100% + #{$gutter} + #{$gutter});
     z-index: -1;
   }
@@ -231,5 +241,21 @@
     font-weight: 600;
     margin-top: .4rem;
     text-transform: uppercase;
+  }
+}
+
+.avatar {
+  background-color: #fff;
+  border-radius: 100%;
+  display: inline-block;
+  height: 4rem;
+  vertical-align: middle;
+  width: 4rem;
+
+  img {
+    border-radius: 100%;
+    display: block;
+    height: 100%;
+    width: 100%;
   }
 }

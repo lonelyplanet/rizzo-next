@@ -15,7 +15,7 @@ class Header extends Component {
   initialize() {
     this.search = new SearchComponent();
     this.navigation = new NavigationComponent({
-      el: ".navigation"
+      el: $(".navigation")
     });
 
     this.events = {
