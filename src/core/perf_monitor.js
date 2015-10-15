@@ -13,6 +13,9 @@ export default class PerfMonitor {
   get loadBelow() {
     return `mark_${RizzoEvents.LOAD_BELOW}`;
   }
+  constructor() {
+    this.subscribe();
+  }
   /**
    * Listens for when our critical code is loaded and creates a perf mark
    */
