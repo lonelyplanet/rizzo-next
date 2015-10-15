@@ -2,7 +2,10 @@
 
 .slideshow {
   height: 100%;
-  overflow: hidden;
+
+  @media (max-width: $max-480) {
+    overflow: hidden;
+  }
 
   &__images {
     position: relative;
