@@ -6,7 +6,12 @@ export default class SubNav extends Component {
   initialize() {
     let $subNav = $(".js-sub-nav"),
         $subNavPlaceholder = $(".js-sub-nav-placeholder"),
-        $window = $(window);
+        $window = $(window),
+        contentHeight = 0;
+
+    setTimeout(function() {
+      contentHeight = $(".navigation-wrapper").outerHeight();
+    }, 5000);
 
     /**
      * Checks to see if a given element has been scrolled into view
@@ -60,18 +65,32 @@ export default class SubNav extends Component {
           firstTrigger = false;
         }
 
-        if ($window.scrollTop() >= subNavTop) {
-          if(!fixedState) {
-            $subNav.addClass("is-fixed");
-            fixedState = true;
+        let isFixed = ($window.scrollTop() >= subNavTop) && ($window.scrollTop() <= contentHeight),
+            isBottom = ($window.scrollTop() >= subNavTop) && ($window.scrollTop() >= contentHeight);
 
-            $subNavPlaceholder.addClass("is-fixed");
-          }
-        } else if (fixedState) {
-          $subNav.removeClass("is-fixed");
-          fixedState = false;
+        if (isFixed) {
+          $subNav
+            .addClass("is-fixed")
+            .removeClass("is-bottom");
 
-          $subNavPlaceholder.removeClass("is-fixed");
+          $subNavPlaceholder
+            .addClass("is-fixed");
+
+        } else if (isBottom) {
+          $subNav
+            .addClass("is-bottom")
+            .removeClass("is-fixed");
+
+          $subNavPlaceholder
+            .addClass("is-fixed");
+
+        } else {
+          $subNav
+            .removeClass("is-fixed is-bottom");
+
+          $subNavPlaceholder
+            .removeClass("is-fixed");
+
         }
 
         let $current = $components.map((i, el) => {
@@ -95,7 +114,7 @@ export default class SubNav extends Component {
       }, 10));
 
       $window.resize(debounce(() => {
-        subNavTop = $subNav.offset().top;
+        contentHeight = $(".navigation-wrapper").outerHeight();
       }, 10));
     }
   }

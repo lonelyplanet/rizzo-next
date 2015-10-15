@@ -42,6 +42,7 @@ $navigation-sub-height-mobile: $header-height-mobile;
   background-color: #fff;
   height: ($navigation-sub-height-mobile + .1);
   transform: translateZ(0); // force hardware acceleration for iOS
+  transition: opacity $animation-speed, visibility $animation-speed;
 
   @media (min-width: $min-720) {
     height: ($navigation-sub-height + .1);
@@ -53,6 +54,15 @@ $navigation-sub-height-mobile: $header-height-mobile;
     top: 0;
     left: 0;
     right: 0;
+  }
+
+  &.is-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    visibility: hidden;
   }
 
   &__wrap {
