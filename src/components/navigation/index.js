@@ -4,5 +4,6 @@ import Navigation from "./navigation_component";
 import "./_navigation.scss";
 import "./_mobile-navigation.scss";
 import "./_user-panel.scss";
+import "../avatar/_avatar.scss";
 
 export default Navigation;

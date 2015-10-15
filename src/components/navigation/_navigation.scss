@@ -40,13 +40,9 @@
   }
 
   &__item--user {
-    .avatar {
-      top: -.4rem;
-    }
-
     .notification-badge {
       right: .2rem;
-      top: 5.15rem;
+      top: .5rem;
     }
   }
 
@@ -241,21 +237,5 @@
     font-weight: 600;
     margin-top: .4rem;
     text-transform: uppercase;
-  }
-}
-
-.avatar {
-  background-color: #fff;
-  border-radius: 100%;
-  display: inline-block;
-  height: 4rem;
-  vertical-align: middle;
-  width: 4rem;
-
-  img {
-    border-radius: 100%;
-    display: block;
-    height: 100%;
-    width: 100%;
   }
 }

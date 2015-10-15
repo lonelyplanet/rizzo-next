@@ -1,0 +1,21 @@
+.avatar {
+  background-color: #fff;
+  border-radius: 100%;
+  display: inline-block;
+  height: 4rem;
+  position: relative;
+  vertical-align: middle;
+  width: 4rem;
+
+  img {
+    border-radius: 100%;
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.avatar--navigation {
+  top: -.4rem;
+  position: relative;
+}
