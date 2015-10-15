@@ -1,6 +1,6 @@
 {{!-- notification Widget --}}
 {{#if number}}
-<span class="notification-badge js-notification-badge">
+<span class="notification-badge{{#if className}} {{ className }}{{/if}} js-notification-badge">
   {{ number }}
 </span>
 {{/if}}
