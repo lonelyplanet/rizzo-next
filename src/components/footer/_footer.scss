@@ -44,7 +44,9 @@ $logo-height: 4rem;
       left: 0;
     }
 
-    &:hover {
+    &:hover,
+    &:active,
+    &:focus {
       fill: $color-primary;
     }
 
@@ -92,27 +94,35 @@ $logo-height: 4rem;
     transition-property: color, border, background-color;
     transition-duration: $animation-speed;
 
-    &:hover {
+    &:hover,
+    &:active,
+    &:focus {
       background-color: #e5e7ed;
       color: #fff;
     }
 
     &--facebook {
-      &:hover {
+      &:hover,
+      &:active,
+      &:focus {
         border-color: $color-facebook;
         background-color: $color-facebook;
       }
     }
 
     &--twitter {
-      &:hover {
+      &:hover,
+      &:active,
+      &:focus {
         border-color: $color-twitter;
         background-color: $color-twitter;
       }
     }
 
     &--pinterest {
-      &:hover {
+      &:hover,
+      &:active,
+      &:focus {
         border-color: $color-pinterest;
         background-color: $color-pinterest;
       }
@@ -127,14 +137,19 @@ $logo-height: 4rem;
     font-size: 1.2rem;
     text-align: center;
     color: $footer-copyright-color;
-    line-height: 1;
+    line-height: 1.4;
     margin-top: 1.2rem;
 
+    @media (max-width: $max-960) {
+      margin-left: $spacing;
+      margin-right: $spacing;
+    }
+
     @media (min-width: $min-960) {
+      line-height: 1;
       text-align: left;
     }
   }
-
 }
 
 .links {
@@ -169,12 +184,12 @@ $logo-height: 4rem;
     transition: color $animation-speed;
 
     @media (max-width: $max-960) {
-      padding-top: 1.4rem;
-      padding-bottom: 1.4rem;
-      padding-left: 2rem;
+      padding: 1.4rem $spacing;
     }
 
-    &:hover {
+    &:hover,
+    &:active,
+    &:focus {
       color: $color-primary;
     }
   }
@@ -203,17 +218,17 @@ $logo-height: 4rem;
     transition: max-height $animation-speed linear;
   }
 
-  &:not(:first-of-type) {
-    @media (max-width: $max-960) {
-      @include divider("top");
-    }
-  }
-
   @media (min-width: $min-960) {
     float: left;
     width: percent(22rem, $max-width);
     padding-right: percent($gutter, $max-width);
     max-height: 600px;
+  }
+
+  &:not(:first-of-type) {
+    @media (max-width: $max-960) {
+      @include divider("top");
+    }
   }
 }
 
@@ -235,7 +250,7 @@ $logo-height: 4rem;
   text-transform: uppercase;
 
   @media (max-width: $max-960) {
-    padding: 2.1rem 2rem 1.7rem;
+    padding: 2.1rem $spacing 1.7rem;
   }
 
   @media (min-width: $min-960) {
@@ -246,8 +261,8 @@ $logo-height: 4rem;
   .accordion-target {
     position: relative;
     bottom: 2.1rem;
-    right: -2rem;
-    padding-right: 2rem;
+    right: -#{$spacing};
+    padding-right: $spacing;
     float: right;
     width: 50%;
     height: 5rem;
@@ -272,6 +287,7 @@ $logo-height: 4rem;
     transition-duration: $animation-speed;
 
     &:hover,
+    &:active,
     &:focus {
       color: $color-primary;
     }
@@ -288,7 +304,7 @@ $logo-height: 4rem;
 
 .footer__main__links__list {
   @media (max-width: $max-960) {
-    padding: 0 2rem $spacing;
+    margin: 0 $spacing $spacing;
   }
 }
 
@@ -304,10 +320,12 @@ $logo-height: 4rem;
 
   a {
     color: $font-color-light;
+    display: block;
     transition-property: color, border, background;
     transition-duration: $animation-speed;
 
     &:hover,
+    &:active,
     &:focus {
       color: $color-primary;
     }
@@ -316,7 +334,7 @@ $logo-height: 4rem;
 
 .newsletter-register {
   @media (max-width: $max-960) {
-    padding: 0 2rem $spacing;
+    margin: 0 $spacing $spacing;
   }
 
   label {
@@ -356,7 +374,6 @@ $logo-height: 4rem;
 }
 
 .language {
-  @include clearfix;
   clear: both;
   display: flex;
   align-items: center;
@@ -369,8 +386,8 @@ $logo-height: 4rem;
   .footer & {
     @media (max-width: $max-960) {
       margin-bottom: $gutter;
-      padding-left: 2rem;
-      padding-right: 2rem;
+      margin-left: $spacing;
+      margin-right: $spacing;
     }
 
     @media (min-width: $min-960) {
@@ -386,7 +403,6 @@ $logo-height: 4rem;
   font-size: 1.3rem;
   line-height: 1;
   margin-bottom: 0;
-  float: left;
 
   @media (min-width: $min-960) {
     padding-left: 1.2rem;
@@ -396,7 +412,6 @@ $logo-height: 4rem;
 
 .language__select {
   @include form-control("select");
-  float: left;
 
   @media (max-width: $max-960) {
     margin-left: 2rem;
@@ -404,5 +419,11 @@ $logo-height: 4rem;
 
   @media (min-width: $min-960) {
     width: 11rem;
+  }
+
+  .no-flexbox & {
+    @media (max-width: $max-960) {
+      margin-left: 0;
+    }
   }
 }
