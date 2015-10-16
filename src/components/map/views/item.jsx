@@ -24,8 +24,8 @@ export default class ItemView extends React.Component {
       if (item.highlighted) {
         classString += " is-hovered";
       }
-      if (title.length > 30) {
-        title = title.substr(0, 29) + "...";
+      if (title.length > 36) {
+        title = title.substr(0, 35) + "...";
       }
     }
     if (item.geo.properties.image) {
