@@ -31,6 +31,13 @@
     @media (min-width: $min-720) {
       height: $header-height;
     }
+
+    &:after {
+      @media (max-width: $max-720) {
+        $offset: ($header-height-mobile / 2 + .4rem);
+        @include fade-edge("right", $offset);
+      }
+    }
   }
 
   &__input {
@@ -39,25 +46,29 @@
     bottom: 0;
     margin-top: auto;
     margin-bottom: auto;
-    left: $input-height - 1.2;
-    right: $input-height;
-    width: calc(100% - #{$input-height} - #{$input-height} - 1.2rem);
+    left: ($header-height-mobile / 2);
+    right: ($header-height-mobile + .9rem);
+    width: calc(100% - #{$header-height-mobile} - .9rem);
     height: $input-height;
     font-size: 1.6rem;
     color: #3b4450;
     border: 0;
     outline: 0;
 
-    @include placeholder {
-      color: #bec1c5;
+    @media (max-width: $max-720) {
+      padding-top: .3rem;
     }
 
     @media (min-width: $min-720) {
       left: 4rem;
       right: 4rem;
-      font-size: 2.8rem;
+      font-size: 2.4rem;
       font-weight: 300;
       width: calc(100% - 8rem);
+    }
+
+    @include placeholder {
+      color: #bec1c5;
     }
   }
 
@@ -65,8 +76,8 @@
     display: block;
     position: absolute;
     left: 0;
-    width: 1.8rem;
-    height: 1.8rem;
+    width: 2rem;
+    height: 2rem;
     line-height: 1;
     font-size: 0;
     color: $font-color;
@@ -75,8 +86,12 @@
     top: 0;
     bottom: 0;
 
+    @media (min-width: $min-720) {
+      top: -.4rem;
+    }
+
     &:before {
-      font-size: 1.8rem;
+      font-size: 2rem;
     }
   }
 
@@ -90,11 +105,7 @@
     width: $input-height;
     height: $input-height;
     font-size: 0;
-    color: $font-color;
-  }
-
-  &__close {
-    right: 0;
+    right: -.9rem;
     color: #bdcee3;
     background-color: transparent;
     border: 0;
@@ -102,6 +113,10 @@
     cursor: pointer;
     transition: color $animation-speed;
     outline: 0;
+
+    @media (min-width: $min-720) {
+      right: 0;
+    }
 
     &:hover,
     &:active,

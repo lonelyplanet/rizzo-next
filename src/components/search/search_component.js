@@ -69,10 +69,10 @@ class SearchComponent extends Component {
   build(){
     this.$el = $(template());
 
-    this.$input = this.$el.find("input");
-    this.$searchResults = this.$el.find(".search-results");
-    this.$list = this.$searchResults.find(".search-results__list");
-    this.$resultsLink = this.$searchResults.find(".search-results__more");
+    this.$input = this.$el.find(".js-search-input");
+    this.$searchResults = this.$el.find(".js-search-results");
+    this.$list = this.$searchResults.find(".js-search-results-list");
+    this.$resultsLink = this.$searchResults.find(".js-search-results-more");
   }
 
   show() {

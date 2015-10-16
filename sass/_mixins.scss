@@ -427,3 +427,32 @@
     border-color: darken($color-border, 20%);
   }
 }
+
+/// Apply to a `:before` or `:after` psuedo element to create a soft fade on an
+/// edge. Typically used to hide overflow and therefore best used with
+/// `overflow: hidden;` and `white-space: nowrap;`.
+/// @param {String} $side          - left or right
+/// @param {String} $offset [0]    - Amount of offset
+/// @param {String} $width  [3rem] - Width of the fade
+/// @example scss
+///   .text {
+///     color: #333;
+///     font-size: 1em;
+///     overflow: hidden;
+///     white-space: nowrap;
+///     width: 400px;
+///
+///     &:after {
+///       @include fade-edge("right");
+///     }
+///   }
+@mixin fade-edge($side: "right", $offset: 0, $width: 3rem) {
+  background-image: linear-gradient(to left, #fff 0%, transparent 100%);
+  bottom: 0;
+  content: "";
+  height: 100%;
+  position: absolute;
+  #{$side}: #{$offset};
+  top: 0;
+  width: $width;
+}

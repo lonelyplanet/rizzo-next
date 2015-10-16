@@ -7,13 +7,22 @@
   line-height: $height;
   cursor: pointer;
   transition: background-color ($animation-speed / 2);
+  overflow: hidden;
+  white-space: nowrap;
 
   &:hover,
   &:active,
   &:focus {
     .search-item__name {
-      transform: translateX($spacing / 2);
+      @media (min-width: $min-720) {
+        transform: translateX($spacing / 2);
+      }
     }
+  }
+
+  &:after {
+    @include fade-edge("right");
+    border-bottom: .1rem solid #f1f4fb;
   }
 
   &--selected {
