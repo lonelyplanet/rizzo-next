@@ -2,15 +2,15 @@
   <div class="container">
     <div class="search__inner">
       <label class="search__label icon-search" for="search-input">Search places, cities, countries and continents</label>
-      <input class="search__input" id="search-input" type="text" placeholder="Search places, cities, countries and continents">
+      <input class="search__input js-search-input" id="search-input" type="text" placeholder="Search places, cities, countries and continents" autocapitalize="none" autocomplete="off" autocorrect="off">
       <button class="search__close icon-close-small js-close">Close</button>
     </div>
   </div>
 
   <div class="container">
-    <div class="search-results">
-      <ul class="search-results__list"></ul>
-      <a class="search-results__more">
+    <div class="search-results js-search-results">
+      <ul class="search-results__list js-search-results-list"></ul>
+      <a class="search-results__more js-search-results-more">
         See all results
         <i class="icon-chevron-right" aria-hidden="true"></i>
       </a>
