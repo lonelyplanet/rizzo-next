@@ -80,34 +80,39 @@
   &__search {
     display: none;
 
-    position: absolute;
+    @media (min-width: $min-1080) {
+      display: block;
+      position: absolute;
 
-    top: 50%;
-    left: 0;
+      top: 50%;
+      left: 0;
 
-    margin-top: (-$header-height / 2);
+      margin-top: (-$header-height / 2);
 
-    height: $header-height;
-    line-height: $header-height;
+      height: $header-height;
+      line-height: $header-height;
 
 
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
 
-    font-size: 2.4rem;
-    font-weight: 100;
-    color: #fff;
+      font-size: 2.4rem;
+      font-weight: 100;
+      color: #fff;
 
-    user-select: none;
-    cursor: pointer;
+      user-select: none;
+      cursor: pointer;
+
+      border: 0;
+      background-color: transparent;
+      padding: 0;
+    }
 
     &--fade {
       width: 42%;
       -webkit-mask-image: -webkit-gradient(linear, 70% 0, 100% 0, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
     }
-
-
 
     [class*="icon-"] {
       margin-right: $spacing;
@@ -120,10 +125,6 @@
       [class*="icon-"] {
         margin-right: ($spacing / 4) * 3;
       }
-    }
-
-    @media (min-width: $min-1080){
-      display: block;
     }
   }
 
@@ -157,13 +158,9 @@
 
   &__mobile {
     position: absolute;
-
     top: 0;
     right: (-$gutter / 2);
     bottom: 0;
-
-    //background: #eee;
-
     transition: opacity $animation-speed;
 
     &--left {
@@ -185,21 +182,13 @@
   &__mobile-menu,
   &__mobile-cart {
     position: relative;
-
     display: block;
-    float: left;
-
-    margin-right: .5rem;
-
-    width: $header-height-mobile * .75;
-    height: $header-height-mobile;
-
     color: #fff;
     text-indent: -9999rem;
     line-height: $header-height-mobile;
-
-    //background: #ccc;
-
+    background: transparent;
+    padding: 0;
+    border: 0;
     user-select: none;
     cursor: pointer;
 
@@ -227,57 +216,59 @@
   }
 
   &__mobile-search {
-    margin-left: .5rem;
+    width: $header-height-mobile;
+    height: $header-height-mobile;
+
+    &:before {
+      margin-left: .4rem;
+    }
   }
 
   &__mobile-menu {
-    $size: 4rem;
+    width: $header-height-mobile;
+    height: $header-height-mobile;
 
-    position: relative;
+    .menu-icon {
+      &,
+      &:before,
+      &:after {
+        display: block;
+        position: absolute;
+        height: .2rem;
+        background-color: #fff;
+        width: 2rem;
+      }
 
-    //top: 50%;
-    //float: none;
-    //margin: 0;
+      & {
+        top: ($header-height-mobile / 2 - .1);
+        left: 1.5rem;
+        right: 1.5rem;
+      }
 
-    //margin-top: (-$size / 2);
-    margin-top: .6rem;
-    //margin-left: .5rem;
+      &:before,
+      &:after {
+        content: "";
+        left: 0;
+        right: 0;
+      }
 
-    width: $size;
-    height: $size;
+      &:before {
+        top: -.5rem;
+      }
 
-    //background: #eee;
-
-    .m1,
-    .m2,
-    .m3 {
-      display: block;
-
-      position: absolute;
-
-      top: ($size / 2 - .1);
-      left: 1rem;
-      right: 1rem;
-
-      height: 2px;
-
-      background: #fff;
-    }
-
-    .m1 {
-      margin-top: -.5rem;
-    }
-
-    .m3 {
-      margin-top: .5rem;
+      &:after {
+        top: .5rem;
+      }
     }
   }
 
   &--narrow &__mobile-menu {
-    .m1,
-    .m2,
-    .m3 {
-      background: $font-color;
+    .menu-icon {
+      &,
+      &:before,
+      &:after {
+        background-color: $font-color;
+      }
     }
   }
 }
