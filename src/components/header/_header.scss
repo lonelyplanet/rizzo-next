@@ -7,6 +7,10 @@
   position: relative;
   z-index: 100;
 
+  &--narrow {
+    background-color: #fff;
+  }
+
   &--normal {
     position: absolute;
     z-index: 100;

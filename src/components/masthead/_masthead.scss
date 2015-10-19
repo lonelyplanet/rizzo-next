@@ -12,6 +12,7 @@ $masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
   max-height: 80rem;
   color: #fff;
   background-color: $h2-color;
+  z-index: 6;
 
   &--narrow {
     max-height: 70.8rem;
