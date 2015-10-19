@@ -1,37 +1,30 @@
 @import "../../../sass/webpack_deps";
 
+$notification-badge-size: 1.7rem;
 
-
-$wide-breakpoint: 1000px;
-
-.notification-badge{
-  $size: 1.7rem;
-
-  position: absolute;
-
-  top: $header-height / 2 - $size / 2;
-  right: 0;
-
-  margin: 0;
-
-  width: $size;
-  height: $size;
-
-  font-family: "freight","Helvetica Neue",Arial,Helvetica,sans-serif;
-  //font-size: 10px;
-  //font-size: .71429rem;
+.notification-badge {
+  width: $notification-badge-size;
+  height: $notification-badge-size;
   font-size: 1rem;
   font-weight: bold;
   font-style: normal;
-  line-height: $size - .1rem;
+  line-height: ($notification-badge-size + .1);
   text-align: center;
   color: #fff;
-
   border-radius: 50%;
   background-color: $color-red;
   box-shadow: 0 .1rem .2rem rgba(0,0,0, .2);
-
   user-select: none;
+}
 
-  transform: translate(.6rem, -1rem);
+.notification-badge--shop {
+  position: absolute;
+  top: ($header-height / 2) - ($notification-badge-size / 2) - 1;
+  right: -.6rem;
+}
+
+.notification-badge--user {
+  position: absolute;
+  top: -.3rem;
+  right: -.4rem;
 }

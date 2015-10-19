@@ -18,7 +18,8 @@ class NavigationComponent extends Component {
 
     this.notification = new Notification({
       target: this.$el.find(".js-cart-notification"),
-      content: this.state.cartItemCount
+      content: this.state.cartItemCount,
+      className: "notification-badge--shop"
     });
 
     this.name = "navigation";
