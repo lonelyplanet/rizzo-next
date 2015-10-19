@@ -41,6 +41,7 @@ $navigation-sub-height-mobile: $header-height-mobile;
   font-size: 0;
   background-color: #fff;
   height: ($navigation-sub-height-mobile + .1);
+  transform: translateZ(0); // force hardware acceleration for iOS
 
   @media (min-width: $min-720) {
     height: ($navigation-sub-height + .1);
@@ -74,10 +75,10 @@ $navigation-sub-height-mobile: $header-height-mobile;
 
   &__container {
     overflow: hidden;
-    height: ($navigation-sub-height-mobile + .1);
+    height: $navigation-sub-height-mobile;
 
     @media (min-width: $min-720) {
-      height: ($navigation-sub-height + .1);
+      height: $navigation-sub-height;
     }
 
     &:before,
