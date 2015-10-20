@@ -13,8 +13,8 @@ class MarkerSet extends Component {
 
   initialize({ pois, map, layer }) {
     this.events = {
-      "click.marker .pin": "_poiClick",
-      "click.marker .poi": "_poiClick"
+      // "click.marker .poi": "_poiClick", doesn't work, because marker is z-indexed lower than popup-pane?
+      "click.marker .pin": "_poiClick"
     };
 
     this.pois = pois;
@@ -129,8 +129,11 @@ class MarkerSet extends Component {
   }
 
   _poiHover(layer) {
-    this._fixzIndex(layer);
-
+    layer.off("click");
+    layer.addOneTimeEventListener('click', (e) => {
+        this._poiClick(e);
+      });
+    // this._fixzIndex(layer); Not needed since pop-ups moved off the markers?
     let template = this._createIcon(layer);
     let lat = layer._latlng.lat;
     let lng = layer._latlng.lng;
