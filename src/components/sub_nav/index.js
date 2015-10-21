@@ -1,4 +1,6 @@
 import { Component } from "../../core/bane";
+import RizzoEvents from "../../core/rizzo_events";
+import subscribe from "../../core/decorators/subscribe";
 import debounce from "lodash/function/debounce";
 require("./_sub_nav.scss");
 
@@ -6,12 +8,9 @@ export default class SubNav extends Component {
   initialize() {
     let $subNav = $(".js-sub-nav"),
         $subNavPlaceholder = $(".js-sub-nav-placeholder"),
-        $window = $(window),
-        contentHeight = 0;
+        $window = $(window);
 
-    setTimeout(function() {
-      contentHeight = $(".navigation-wrapper").outerHeight();
-    }, 5000);
+    this.contentHeight = 0;
 
     /**
      * Checks to see if a given element has been scrolled into view
@@ -65,8 +64,8 @@ export default class SubNav extends Component {
           firstTrigger = false;
         }
 
-        let isFixed = ($window.scrollTop() >= subNavTop) && ($window.scrollTop() <= contentHeight),
-            isBottom = ($window.scrollTop() >= subNavTop) && ($window.scrollTop() >= contentHeight);
+        let isFixed = ($window.scrollTop() >= subNavTop) && ($window.scrollTop() <= this.contentHeight),
+            isBottom = ($window.scrollTop() >= subNavTop) && ($window.scrollTop() >= this.contentHeight);
 
         if (isFixed) {
           $subNav
@@ -114,8 +113,16 @@ export default class SubNav extends Component {
       }, 10));
 
       $window.resize(debounce(() => {
-        contentHeight = $(".navigation-wrapper").outerHeight();
+        this.updateContentHeight();
       }, 10));
     }
+
+    this.subscribe();
+  }
+
+  @subscribe(RizzoEvents.LOAD_BELOW, "events");
+
+  updateContentHeight() {
+    this.contentHeight = $(".navigation-wrapper").outerHeight();
   }
 }
