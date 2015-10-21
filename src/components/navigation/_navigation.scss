@@ -39,13 +39,6 @@
     }
   }
 
-  &__item--user {
-    .notification-badge {
-      right: .2rem;
-      top: .5rem;
-    }
-  }
-
   .navigation--narrow &__item--active {
     border-bottom-color: transparent;
   }
