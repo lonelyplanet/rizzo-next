@@ -1,4 +1,6 @@
 import { Component } from "../../core/bane";
+import RizzoEvents from "../../core/rizzo_events";
+import subscribe from "../../core/decorators/subscribe";
 import debounce from "lodash/function/debounce";
 require("./_sub_nav.scss");
 
@@ -7,6 +9,8 @@ export default class SubNav extends Component {
     let $subNav = $(".js-sub-nav"),
         $subNavPlaceholder = $(".js-sub-nav-placeholder"),
         $window = $(window);
+
+    this.contentHeight = 0;
 
     /**
      * Checks to see if a given element has been scrolled into view
@@ -60,18 +64,32 @@ export default class SubNav extends Component {
           firstTrigger = false;
         }
 
-        if ($window.scrollTop() >= subNavTop) {
-          if(!fixedState) {
-            $subNav.addClass("is-fixed");
-            fixedState = true;
+        let isFixed = ($window.scrollTop() >= subNavTop) && ($window.scrollTop() <= this.contentHeight),
+            isBottom = ($window.scrollTop() >= subNavTop) && ($window.scrollTop() >= this.contentHeight);
 
-            $subNavPlaceholder.addClass("is-fixed");
-          }
-        } else if (fixedState) {
-          $subNav.removeClass("is-fixed");
-          fixedState = false;
+        if (isFixed) {
+          $subNav
+            .addClass("is-fixed")
+            .removeClass("is-bottom");
 
-          $subNavPlaceholder.removeClass("is-fixed");
+          $subNavPlaceholder
+            .addClass("is-fixed");
+
+        } else if (isBottom) {
+          $subNav
+            .addClass("is-bottom")
+            .removeClass("is-fixed");
+
+          $subNavPlaceholder
+            .addClass("is-fixed");
+
+        } else {
+          $subNav
+            .removeClass("is-fixed is-bottom");
+
+          $subNavPlaceholder
+            .removeClass("is-fixed");
+
         }
 
         let $current = $components.map((i, el) => {
@@ -95,8 +113,16 @@ export default class SubNav extends Component {
       }, 10));
 
       $window.resize(debounce(() => {
-        subNavTop = $subNav.offset().top;
+        this.updateContentHeight();
       }, 10));
     }
+
+    this.subscribe();
+  }
+
+  @subscribe(RizzoEvents.LOAD_BELOW, "events");
+
+  updateContentHeight() {
+    this.contentHeight = $(".navigation-wrapper").outerHeight();
   }
 }
