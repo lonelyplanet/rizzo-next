@@ -22,6 +22,8 @@ class MapComponent extends Component {
       this.close();
     });
 
+    $("body").on("keyup", this.onKeyup.bind(this));
+
     // TODO: Uncomment to grab sponsored data
     // MapActions.fetchSponsors();
   }
@@ -58,6 +60,12 @@ class MapComponent extends Component {
 
     let path = window.location.pathname.replace(/map\/?/, "");
     history.pushState({}, `${path}`);
+  }
+
+  onKeyup(e) {
+    if (e.keyCode === 27) {
+      this.close();
+    }
   }
 
 }
