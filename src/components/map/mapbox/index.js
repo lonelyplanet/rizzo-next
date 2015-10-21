@@ -15,7 +15,7 @@ class MapProvider extends Component {
   launch() {
     let options = {
       zoomControl: true,
-      scrollWheelZoom: false
+      scrollWheelZoom: true
     };
     this.map = L.mapbox.map(this.$el[0], mapID, options);
   }
