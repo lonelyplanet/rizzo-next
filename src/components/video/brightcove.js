@@ -7,8 +7,8 @@ let template = require("./brightcove.hbs");
 class Brightcove extends VideoPlayer {
   get scripts() {
     return [
-      "http://files.brightcove.com/bc-mapi.js",
-      "http://admin.brightcove.com/js/BrightcoveExperiences.js"
+      "https://files.brightcove.com/bc-mapi.js",
+      "https://admin.brightcove.com/js/BrightcoveExperiences.js"
     ];
   }
   initialize(options) {
