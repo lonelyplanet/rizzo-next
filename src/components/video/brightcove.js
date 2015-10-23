@@ -8,7 +8,7 @@ class Brightcove extends VideoPlayer {
   get scripts() {
     return [
       "https://files.brightcove.com/bc-mapi.js",
-      "https://admin.brightcove.com/js/BrightcoveExperiences.js"
+      "https://sadmin.brightcove.com/js/BrightcoveExperiences.js"
     ];
   }
   initialize(options) {
