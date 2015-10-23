@@ -2,14 +2,15 @@
 
 .ttd {
   overflow: hidden;
-  margin-bottom: $gutter;
   position: relative;
+  // changed margin to padding to allow 'see more' shadow to extend
+  padding-bottom: $gutter;
 
   &.has-more:before {
     content: "";
     display: block;
     height: 100%;
-    width: 2%;
+    width: 2.5rem;
     position: absolute;
     right: 0;
     top: 0;
@@ -20,13 +21,13 @@
   &.has-more:after {
     content: "";
     display: block;
-    height: 93%;
-    width: 4%;
-    margin-top: 3.5%;
+    height: 91%;
+    width: 5rem;
+    margin-top: 4%;
     border-radius: 50%;
     box-shadow: -8px 0px 40px -3px rgba(0, 0, 0, 0.65);
     position: absolute;
-    right: -30px;
+    right: -3rem;
     top: 0;
   }
 
@@ -80,13 +81,23 @@
     }
   }
 
-  &__bottom {
-    margin-bottom: $spacing;
-    text-align: center;
-  }
-
   &__more {
-    @include more();
+    position: absolute;
+    height: 3rem;
+    width: 3rem;
+    padding-left: 7px;
+    padding-top: 3px;
+    right: 10px;
+    bottom: 43%;
+    z-index: 15;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    background: #fff;
+
+    &__icon {
+      font-size: 1.3rem;
+    }
   }
 }
 
