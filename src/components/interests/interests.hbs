@@ -6,9 +6,12 @@
       {{#each interests.cards}}
         <a class="interests__card interests__card--{{ order }}" href="{{ url }}">
           <div class="interests__card--inner" style="background-image: url( https://images-resrc.staticlp.com/S=H350/C=AR350x350,XOF50/O=90/E=S/{{ src }} )">
-            <span class="interests__card__link">
-              {{ interest }}
-            </span>
+            
+            <div class="interests__card__bottom">
+              <span class="interests__card__link">
+                {{ interest }}
+              </span>
+            </div>
           </div>
         </a>
       {{/each}}
