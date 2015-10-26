@@ -1,11 +1,13 @@
 @import "../../../sass/webpack_deps";
 
 $mobile-breakpoint: 717px;
-$square-size: 190px;
+$square-size: 220px;
 $local_gutter: 30px;
 $fluid-max: 427px;
 $fluid-min: $fluid-max + 1;
 $desktop-size: 1170px;
+// When all 9 cards are up
+$max-card-width: 1395px;
 
 /**************************************/
 /********** helper functions **********/
@@ -177,6 +179,10 @@ $desktop-size: 1170px;
   margin: 0 auto;
 
   overflow: hidden;
+
+  @media (min-width: $max-card-width) {
+    margin-left: -1.5rem;
+  }
 
   .interests__card {
     float: left;
