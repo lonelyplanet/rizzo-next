@@ -2,7 +2,7 @@
 
 $mobile-breakpoint: 717px;
 $square-size: 220px;
-$local_gutter: 30px;
+$gutter: 30px;
 $fluid-max: 427px;
 $fluid-min: $fluid-max + 1;
 $desktop-size: 1170px;
@@ -195,8 +195,8 @@ $max-card-width: 1395px;
     .interests__card--inner {
       position: relative;
 
-      width: $square-size - $local_gutter;
-      height: $square-size - $local_gutter;
+      width: $square-size - $gutter;
+      height: $square-size - $gutter;
 
       background: {
         color: #67747c;
@@ -273,7 +273,7 @@ $max-card-width: 1395px;
     $column-count,
     $square-size,
     $first-square-dimension,
-    $local_gutter,
+    $gutter,
     $parity,
     $fluid-max
   );
