@@ -7,83 +7,33 @@
 </a>
 
 <div class="sub-navigation">
-  <a class="user-panel__sign-out icon-sign-out" href="//auth.lonelyplanet.com/users/sign_out">Sign out</a>
+  <ul class="sub-navigation__list">
+    <li class="sub-navigation__item">
+      <a class="sub-navigation__link" href="//www.lonelyplanet.com/thorntree/profiles/{{user.profileSlug}}">Profile</a>
+    </li>
+  
+    <li class="sub-navigation__item">
+      <a class="sub-navigation__link" href="http://www.lonelyplanet.com/thorntree">Thorntree</a>
+    </li> 
 
-  <div class="user-panel__header">
-    <a href="//www.lonelyplanet.com/thorntree/profiles/{{user.profileSlug}}">
-      <img class="user-panel__avatar avatar" src="{{user.avatar}}" alt="{{user.username}} avatar">
-      <span class="user-panel__name">{{user.username}}</span>
-    </a>
-  </div>
+    <li class="sub-navigation__item">
+      <a class="sub-navigation__link" href="//www.lonelyplanet.com/thorntree/profiles/{{user.profileSlug}}/messages">
+        Messages 
+        {{#if user.unread_message_count}}
+          <span class="notification-badge notification-badge--user-inline">
+            {{user.unread_message_count}}
+          </span>
+        {{/if}}
+      </a>
 
-  <div class="tabs tabs--full tabs--small">
-    <ul class="tabs__links">
-      <li>
-        <a href="#activity">
-          Recent activity
-        </a>
-      </li>
+    </li>
 
-      <li>
-        <a href="#messages">
-          Messages
-
-          {{#if user.unread_message_count}}
-            <span class="unread-count">
-              {{user.unread_message_count}}
-            </span>
-          {{/if}}
-        </a>
-      </li>
-    </ul>
-
-    <div class="user-panel__content tabs__content" id="activity">
-      {{#unless user.activities}}
-        <div class="user-panel__empty">
-          No recent activity
-        </div>
-      {{/unless}}
-
-      {{#if user.activities}}
-        <div class="user-panel__scroll">
-          <ul class="user-panel__items">
-            {{#each user.activities}}
-              {{{text}}}
-            {{/each}}
-          </ul>
-
-          <a class="user-panel__link" href="#">
-            See all activity
-          </a>
-        </div>
-      {{/if}}
-    </div>
-
-    <div class="user-panel__content tabs__content" id="messages">
-      {{#unless user.messages}}
-        <div class="user-panel__empty">
-          No new messages
-        </div>
-      {{/unless}}
-
-      {{#if user.messages}}
-        <div class="user-panel__scroll">
-          <ul class="user-panel__items js-user-messages">
-            {{#each user.messages}}
-              {{{text}}}
-            {{/each}}
-          </ul>
-
-          <a class="user-panel__link" href="//www.lonelyplanet.com/thorntree/profiles/{{user.profileSlug}}/messages">
-            See all messages
-          </a>
-        </div>
-      {{/if}}
-    </div>
-  </div>
-
-  <a class="sub-navigation__button" href="//www.lonelyplanet.com/thorntree">
-    Go to Thorn Tree Travel Forum
-    <i class="icon-chevron-right" aria-hidden="true"></i>
-  </a>
+    <li class="sub-navigation__item">
+      <a class="sub-navigation__link" href="//www.lonelyplanet.com/thorntree/profiles/{{user.profileSlug}}/activities">Activity</a>
+    </li>
+  
+    <li class="sub-navigation__item">
+      <a class="sub-navigation__link" href="//auth.lonelyplanet.com/users/sign_out">Sign Out</a>
+    </li>
+  </ul>
 </div>

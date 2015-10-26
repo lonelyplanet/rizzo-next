@@ -28,3 +28,8 @@ $notification-badge-size: 1.7rem;
   top: -.3rem;
   right: -.4rem;
 }
+
+.notification-badge--user-inline {
+  position: absolute;
+  right: 1rem;
+}

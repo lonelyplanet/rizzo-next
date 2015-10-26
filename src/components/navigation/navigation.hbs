@@ -34,10 +34,6 @@
         {{/if}}
       </li>
     {{/each}}
-
-    <li class="js-nav-item navigation__item navigation__item--user">
-      {{! JavaScript will render the ./user_panel }}
-    </li>
   </ul>
 
   <nav class="mobile-navigation">
@@ -45,7 +41,7 @@
 
     <ul class="mobile-navigation__list">
       {{#each navigation}}
-        <li class="js-nav-item mobile-navigation__item" data-lpa-category="Destinations Next" data-lpa-action="Mobile Global Navigation Click" data-lpa-label="{{title}}">
+        <li class="js-nav-item mobile-navigation__item mobile-{{nav_class_names title}}" data-lpa-category="Destinations Next" data-lpa-action="Mobile Global Navigation Click" data-lpa-label="{{title}}">
           <a class="mobile-navigation__link"  href="{{slug}}">{{title}}
             {{#if submenu}}
               <i class="icon icon--chevron-down"></i>
