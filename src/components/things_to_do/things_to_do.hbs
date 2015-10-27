@@ -3,14 +3,17 @@
 <article class="ttd" data-lp-initial-cards="{{cards}}">
   <h2 class="ttd__heading">{{title}}</h2>
 
-  <ul class="ttd__list js-ttd-list">
-  </ul>
+  <div class="ttd__list">
+    <ul class="js-ttd-list">
+    </ul>
 
-  {{#if show_more}}
-    <button class="ttd__more js-ttd-more">
-      <i class="ttd__more__icon icon-chevron-right" aria-hidden="true"></i>
-    </button>
-  {{/if}}
+    {{#if show_more}}
+      <button class="ttd__more js-ttd-more">
+        <i class="ttd__more__icon icon-chevron-right" aria-hidden="true"></i>
+      </button>
+    {{/if}}
+  </div>
+
 </article>
 {{/if}}
 {{/with}}
