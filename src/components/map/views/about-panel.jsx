@@ -20,7 +20,7 @@ export default class AboutPanel extends React.Component {
   render() {
     let place = this.props.location.title,
         description = this.props.location.description,
-        slug = `/${this.props.location.slug}`;
+        slug = `https://www.lonelyplanet.com/${this.props.location.slug}`;
 
     return (
       <div className="panel">
