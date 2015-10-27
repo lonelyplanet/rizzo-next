@@ -13,8 +13,8 @@ class MarkerSet extends Component {
 
   initialize({ pois, map, layer }) {
     this.events = {
-      "click.marker .pin": "_poiClick",
-      "click.marker .poi": "_poiClick"
+      // "click.marker .poi": "_poiClick", doesn't work, because marker is z-indexed lower than popup-pane?
+      "click.marker .pin": "_poiClick"
     };
 
     this.pois = pois;
@@ -126,11 +126,15 @@ class MarkerSet extends Component {
       .on("mouseout", (e) => {
         this._poiUnhover(e.layer);
       });
+    
+    this.layer.off("click");
+    this.layer.on("click", (e) => {
+      this._poiClick(e);
+    });
   }
 
   _poiHover(layer) {
-    this._fixzIndex(layer);
-
+    // this._fixzIndex(layer); Not needed since pop-ups moved off the markers?
     let template = this._createIcon(layer);
     let lat = layer._latlng.lat;
     let lng = layer._latlng.lng;
@@ -156,7 +160,7 @@ class MarkerSet extends Component {
   }
 
   _poiClick(event) {
-    let poiIndex = this.activeLayer.feature.properties.index,
+    let poiIndex = (event.layer || this.activeLayer).feature.properties.index,
         poi = this.pois[poiIndex];
     if (poi.item_type === "Place") {
       MapActions.gotoPlace({ place: poi.slug, placeTitle: poi.title, breadcrumb: poi.subtitle });
