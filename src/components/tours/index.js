@@ -9,7 +9,7 @@ class ToursComponent extends Component {
       this.clampAt = options.clampAt || 3;
       this.blurbs = this.$el.find(".tour__description__blurb");
       this.mobileBreak = options.mobileBreak || 518;
-      this.headingHeight = options.headingHeight || 23; // lovely magic numbers o_O
+      this.headingHeight = options.headingHeight || 18; // lovely magic numbers o_O
       this.nativeSupport = typeof this.$el[0].style.webkitLineClamp !== "undefined";
 
       if (!$("html").hasClass("ie9")) {
@@ -25,7 +25,7 @@ class ToursComponent extends Component {
     this.blurbs.each((index, blurb) => {
       let heading = $(blurb).prev(),
           headingEl = heading[0],
-          headingLines = Math.round(heading.height() / this.headingHeight),
+          headingLines = Math.floor(heading.height() / this.headingHeight),
           blurbClamp = this.clampAt - headingLines + 1,
           headingClamp = 3;
 
