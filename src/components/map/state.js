@@ -49,7 +49,7 @@ let MapState = assign({
 
   sortSets: (sets) => {
     let headings = state.topics.concat([
-      "Experiences", "Countries", "Cities", "Sponsored", "About"
+      "Countries", "Cities", "Sponsored", "About"
     ]);
 
     return headings.reduce((memo, heading) => {
@@ -105,9 +105,6 @@ Arkham.on("place.fetched", (data) => {
   state.currentLocation = data.location;
   state.topics = data.topics;
   state.sets = MapState.sortSets(data.sets.filter((s) => !!s.items.length));
-  if (find(state.sets, (s) => s.type === 'experiences')) {
-    state.topics.unshift("experiences");
-  }
   state.activeSetIndex = 0;
   state.fetchingPlace = "";
   state.isFetching = false;
@@ -130,9 +127,6 @@ Arkham.on("state.setinitial", (data) => {
   state.isFetching = false;
   state.topics = data.topics;
   state.sets = MapState.sortSets(data.sets.filter((s) => !!s.items.length));
-  if (find(state.sets, (s) => s.type === 'experiences')) {
-    state.topics.unshift("experiences");
-  }
   state.currentLocation = data.location;
   MapState.emitChange();
 });

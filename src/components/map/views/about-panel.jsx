@@ -31,7 +31,7 @@ export default class AboutPanel extends React.Component {
         </div>
         <footer className="panel__footer">
           <a className="panel__close" href={slug}>
-            Close map and explore {place}
+            Close map and explore this destination
             <i className="icon-chevron-right" aria-hidden="true"></i>
           </a>
         </footer>
