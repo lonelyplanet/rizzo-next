@@ -46,15 +46,11 @@
       }
 
       @media (min-width: $min-840) {
-        width: 12%;
         right: 0;
       }
 
       @media (min-width: $min-960) {
-        height: 150%;
         width: 2.5rem;
-        right: 0;
-        top: -25%;
       }
     }
 
@@ -78,7 +74,7 @@
       }
 
       @media (min-width: $min-600) {
-        right:  -6.8%;
+        right: -6.8%;
         box-shadow: -8px 0px 45px 8px rgba(0, 0, 0, 0.75);
       }
 
