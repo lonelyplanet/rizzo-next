@@ -27,7 +27,7 @@ export default class SidebarDetailsView extends React.Component{
           <div className="panel__content" dangerouslySetInnerHTML={{__html: poi.description}}></div>
           <div className="panel__footer">
             <a className="panel__close" href={slug}>
-              Close map and explore {poi.title}
+              Close map and explore this destination
               <span className="icon-chevron-right"></span>
             </a>
           </div>
