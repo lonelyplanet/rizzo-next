@@ -1,8 +1,13 @@
 import React from "react";
 import MapActions from "../actions";
+import $clamp from "clamp-js/clamp.js";
 
 export default class SidebarDetailsView extends React.Component{
+  componentDidMount() {
+    let el = this.refs.poiTitle.getDOMNode();
 
+    $clamp(el, { clamp: 2 });
+  }
   render() {
     let poi = this.props.poi;
     let image = "";
@@ -18,7 +23,7 @@ export default class SidebarDetailsView extends React.Component{
       <div className="sidebar details">
         <header className="sidebar__header">
           <a href="#" className="close-poi location-subtitle" onClick={this.closePOI}><i className="icon icon-chevron-left" aria-hidden="true"></i>Back</a>
-          <h1 className="sidebar__title">
+          <h1 ref="poiTitle" className="sidebar__title">
             {poi.title}
           </h1>
         </header>
