@@ -4,6 +4,7 @@ import assign from "lodash/object/assign";
 import filter from "lodash/collection/filter";
 import each from "lodash/collection/each";
 import uniq from "lodash/array/uniq";
+import MapApi from "./map_api";
 
 let MapActions = {
 
@@ -24,17 +25,9 @@ let MapActions = {
     //   return Arkham.trigger("place.fetched", JSON.parse(mapData));
     // }
 
-    $.ajax({
-      url: url
-    }).done((results) => {
+    MapApi.fetch(url).done((results) => {
       // window.localStorage.setItem(url, JSON.stringify(results));
       Arkham.trigger("place.fetched", results);
-    }).error((results) => {
-      let error = {
-        message: "There was an error fetching " + data.placeTitled,
-        type: results.status
-      };
-      Arkham.trigger("place.errorfetching", error);
     });
   },
 

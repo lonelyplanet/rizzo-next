@@ -5,27 +5,23 @@ import MapActions from "./actions";
 import Arkham from "../../core/arkham"
 import { createHistory } from "history";
 import $ from "jquery"; 
+import MapApi from "./map_api";
 
 let history = createHistory();
 
 class MapComponent extends Component {
 
-  initialize({ el } = {}) {
-    let originalState = this.getInitialState();
-    this.el = el;
-
-    MapActions.setState(originalState.data);
-
-    React.render(<MainView />, document.querySelector(this.el));
+  initialize() {
+    MapApi.fetch(`/${window.lp.place.slug}/map.json`).done((results) => {
+      MapActions.setState(results);
+      React.render(<MainView />, this.$el[0]);
+    });
 
     Arkham.on("map.closed", () => {
       this.close();
     });
 
     $("body").on("keyup", this.onKeyup.bind(this));
-
-    // TODO: Uncomment to grab sponsored data
-    // MapActions.fetchSponsors();
   }
 
   open() {
