@@ -8,11 +8,14 @@ import Tabs from "../tabs/tabs_component";
 import subscribe from "../../core/decorators/subscribe";
 import moment from "moment";
 
+
 let userPanelTemplate = require("./user_panel.hbs");
+// Handlebars.registerPartial('submenu', $("#submenu").html());
 
 class NavigationComponent extends Component {
 
   initialize() {
+
     this.state = NavigationState.getState();
     this.overlay = new Overlay();
 
@@ -25,6 +28,10 @@ class NavigationComponent extends Component {
     this.name = "navigation";
     this.$mobileNavigation = this.$el.find(".mobile-navigation").detach();
     this.$mobileNavigation.on("click", ".js-close", this._clickNav.bind(this));
+    this.$mobileNavigation.on("click", ".js-nav-item", this._handleClick.bind(this));
+
+    console.log("Element", this.$el);
+    this.$el.on("click", ".js-nav-item", this._handleClick.bind(this));
 
     // SubNavigation hover
     this.handleHover();
@@ -40,27 +47,45 @@ class NavigationComponent extends Component {
    * Use event delegation here because the user login is dynamically added.
    * @return {[type]} [description]
    */
+
+  _handleClick(e) {
+    let target = e.currentTarget;
+    if (target.text === "Shop")
+      return;
+    e.preventDefault();
+    $(target).hasClass("navigation__link") ? this._openSubNav(target) : this._openMobileSubNav(target);
+  }
+
+  _openMobileSubNav(el) {
+    let $navItem = $(el).find(".mobile-sub-navigation");
+    if ( $(".is-expanded").length && !$navItem.hasClass("is-expanded") ) {
+      this.$mobileNavigation.find(".mobile-sub-navigation").removeClass("is-expanded");
+    }
+    $navItem.toggleClass("is-expanded");
+  }
+
+  _openSubNav(el) {
+    clearTimeout(this.hideTimer);
+
+    // Always clear the currently active one
+    this.$el.find(".sub-navigation").removeClass("sub-navigation--visible");
+
+    this.showTimer = setTimeout(() => {
+      $(el).find(".sub-navigation").addClass("sub-navigation--visible");
+    });
+  }
+
+  _closeSubNav(el) {
+    clearTimeout(this.showTimer);
+
+    this.hideTimer = setTimeout(() => {
+      $(el).find(".sub-navigation").removeClass("sub-navigation--visible");
+    }, 100);
+  }
+
   handleHover() {
-    let hideTimer, showTimer;
-
-    this.$el.on("mouseenter", ".navigation__item", (event) => {
-      clearTimeout(hideTimer);
-
-      // Always clear the currently active one
-      this.$el.find(".sub-navigation").removeClass("sub-navigation--visible");
-
-      showTimer = setTimeout(() => {
-        $(event.currentTarget).find(".sub-navigation").addClass("sub-navigation--visible");
-      }, 0);
-    });
-
-    this.$el.on("mouseleave", ".navigation__item", (event) => {
-      clearTimeout(showTimer);
-
-      hideTimer = setTimeout(() => {
-        $(event.currentTarget).find(".sub-navigation").removeClass("sub-navigation--visible");
-      }, 100);
-    });
+    this.$el.on("mouseenter", ".js-nav-item", (e) => this._openSubNav(e.currentTarget));
+    this.$el.on("mouseleave", ".js-nav-item", (e) => this._closeSubNav(e.currentTarget));
   }
 
   toggleNav() {
