@@ -20,6 +20,12 @@ let MapComponent = Injector({
 
 let $ = require("jquery");
 
+window.lp = {
+  place: {
+    slug: "/foo"
+  }
+};
+
 describe("map component", () => {
   it("should open, close and adjust the url", () => {
     let map = new MapComponent();

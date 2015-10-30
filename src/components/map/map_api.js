@@ -1,4 +1,5 @@
 import Arkham from "../../core/arkham";
+import $ from "jquery";
 
 export default {
   fetch: (url) => {
