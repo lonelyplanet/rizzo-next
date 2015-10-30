@@ -13,8 +13,8 @@ export default class Logger {
   error(err) {
     console.error(err);
     
-    if (ENV_PROD) {
+    // if (ENV_PROD) {
       airbrake.notify(err);
-    }
+    // }
   }
 }
