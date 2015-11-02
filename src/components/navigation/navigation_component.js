@@ -30,7 +30,6 @@ class NavigationComponent extends Component {
     this.$mobileNavigation.on("click", ".js-close", this._clickNav.bind(this));
     this.$mobileNavigation.on("click", ".js-nav-item", this._handleClick.bind(this));
 
-    console.log("Element", this.$el);
     this.$el.on("click", ".js-nav-item", this._handleClick.bind(this));
 
     // SubNavigation hover
@@ -50,8 +49,9 @@ class NavigationComponent extends Component {
 
   _handleClick(e) {
     let target = e.currentTarget;
-    if (target.text === "Shop")
+    if (target.text === "Shop") {
       return;
+    }
     e.preventDefault();
     $(target).hasClass("navigation__link") ? this._openSubNav(target) : this._openMobileSubNav(target);
   }
