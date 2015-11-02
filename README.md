@@ -27,5 +27,9 @@ To use watch mode...
 npm run ci
 ```
 
+### Docs
+Generate documentation locally with
 
-
+```shell
+npm run docs
+```
