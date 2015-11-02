@@ -30,14 +30,10 @@ let NavigationState = {
 
 assign(NavigationState, Events);
 
-Arkham.on("navigation.hover", function(data) {
-  state.isOpen = data.isOpen;
-  NavigationState.trigger(`changed:${data.item}`, state);
-});
-
 Arkham.on("navigation.click", function() {
   state.isNavOpen = !state.isNavOpen;
   NavigationState.trigger("changed:nav", state);
 });
+
 
 export default NavigationState;
