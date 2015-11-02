@@ -37,6 +37,10 @@
     margin-left: $gutter;
     margin-right: $gutter;
 
+    .mobile-sub-navigation & {
+      width: 100%;
+    }
+
     &:not(:first-child) {
       border-top: .1rem solid #f1f4fb;
     }
