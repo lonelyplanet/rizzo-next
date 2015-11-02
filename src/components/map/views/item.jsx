@@ -7,12 +7,11 @@ import MapActions from "../actions";
  */
 export default class ItemView extends React.Component {
   render() {
-    let item = this.props.item;
-    let title = item.title;
-    let classString = "place ";
-    let img = "";
-    let picClass = "place__pic";
-    let imgStyle;
+    let item = this.props.item,
+        title = item.title,
+        classString = "place ",
+        picClass = "place__pic",
+        imgStyle;
 
     if (item.onMap) {
       classString += "pin icon icon--chevron-right";

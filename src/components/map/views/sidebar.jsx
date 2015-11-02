@@ -15,7 +15,6 @@ export default class SidebarView extends React.Component {
         panelContent,
         tabCount = 0,
         sets = this.props.sets,
-        place = location.title,
         backSlug = "",
         backElement = "",
         h1Class = "sidebar__title __continent";

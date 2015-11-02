@@ -1,4 +1,3 @@
-import publish from "./decorators/publish";
 import postal from "postal/lib/postal.lodash";
 import events from "./rizzo_events";
 
