@@ -85,8 +85,8 @@ function addSubscribeMethod(target) {
  *   }
  * }
  */
-export default function subscribe(topic, channel, options) {
-  return function(target, name, descriptor) {
+export default function subscribe(topic, channel) {
+  return function(target, name) {
     let ctor = target.constructor;
     ctor.subscriptions = ctor.subscriptions || {};
     let subs = ctor.subscriptions[topic] = ctor.subscriptions[topic] || [];

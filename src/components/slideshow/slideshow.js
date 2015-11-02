@@ -1,7 +1,6 @@
 import { Component } from "../../core/bane";
 import waitForTransition from "../../core/utils/waitForTransition";
 import SlideComponent from "./slide_component";
-import uniq from "lodash/array/uniq";
 
 /**
  * slideshow Component

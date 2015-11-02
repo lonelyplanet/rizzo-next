@@ -1,7 +1,3 @@
-import pluck from "lodash/collection/pluck";
-
-let _ = { pluck };
-
 let rClass = /\sclass=\"[a-zA-Z_-\s]*\"/g;
 
 export default class User {

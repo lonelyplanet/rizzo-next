@@ -7,7 +7,7 @@ import Alert from "./alert.jsx";
 import MapState from "../state";
 import MapActions from "../actions";
 
-let getMapState = function(props) {
+let getMapState = function() {
   return MapState.getState();
 };
 

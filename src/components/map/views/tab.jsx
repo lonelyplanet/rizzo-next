@@ -15,9 +15,6 @@ export default class TabView extends React.Component {
 
   render() {
     let title = titles[this.props.name.toLowerCase()] || this.props.name,
-        sets = this.props.sets,
-        hideTimer,
-        showTimer,
         sidebarDropdown = "",
         isActive = this.props.active ? "tab active" : "tab",
         classString = `${isActive}`,

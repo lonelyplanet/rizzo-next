@@ -1,5 +1,4 @@
 import React from "react";
-import Item from "./item.jsx";
 import Slideshow from "../../slideshow";
 import $ from "jquery";
 

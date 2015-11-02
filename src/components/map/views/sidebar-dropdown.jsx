@@ -1,9 +1,5 @@
 import React from "react";
 import MapActions from "../actions";
-import unique from "lodash/array/uniq";
-import values from "lodash/object/values"
-import flatten from "lodash/array/flatten"
-import pluck from "lodash/collection/pluck"
 import MapState from "../state";
 import titles from "../tab_titles";
 

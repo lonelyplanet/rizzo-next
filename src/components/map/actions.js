@@ -67,7 +67,7 @@ let MapActions = {
     Arkham.trigger("custompanel.opened", data);
   },
 
-  fetchSponsors: (data) => {
+  fetchSponsors: () => {
     let x = JSON.stringify({
       placements: generatePlacements()
     });
