@@ -1,10 +1,7 @@
 import React from "react";
 import MapActions from "../actions";
-import unique from "lodash/array/uniq";
-import values from "lodash/object/values"
-import flatten from "lodash/array/flatten"
-import pluck from "lodash/collection/pluck"
 import MapState from "../state";
+import titles from "../tab_titles";
 
 export default class SidebarDropdown extends React.Component {
   constructor(data) {
@@ -34,12 +31,15 @@ export default class SidebarDropdown extends React.Component {
 
     let topics = this.state.topics.map((item) => {
       let itemClassString = "tab__sub-nav__list--item";
+      
       if (this.state.topicClicked === item) {
         itemClassString += " is-selected";
       }
 
+      let title = titles[item.toLowerCase()] || item;  
+
       return (
-        <li className={itemClassString} data-item={item} onClick={this.changeTopic.bind(this)}>{item}</li>
+        <li className={itemClassString} data-item={item} onClick={this.changeTopic.bind(this)}>{title}</li>
       );
     });
 

@@ -1,5 +1,4 @@
 import React from "react";
-import Item from "./item.jsx";
 import Slideshow from "../../slideshow";
 import $ from "jquery";
 
@@ -20,7 +19,7 @@ export default class AboutPanel extends React.Component {
   render() {
     let place = this.props.location.title,
         description = this.props.location.description,
-        slug = `/${this.props.location.slug}`;
+        slug = `https://www.lonelyplanet.com/${this.props.location.slug}`;
 
     return (
       <div className="panel">
@@ -31,7 +30,7 @@ export default class AboutPanel extends React.Component {
         </div>
         <footer className="panel__footer">
           <a className="panel__close" href={slug}>
-            Close map and explore {place}
+            Close map and explore this destination
             <i className="icon-chevron-right" aria-hidden="true"></i>
           </a>
         </footer>

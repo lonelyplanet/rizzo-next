@@ -1,5 +1,3 @@
-import postal from "postal/lib/postal.lodash";
-
 /**
  * Sets up the channel for subcriptions. 
  * Keep in mind that after you use it, all other subscriptions underneath will use the same channel

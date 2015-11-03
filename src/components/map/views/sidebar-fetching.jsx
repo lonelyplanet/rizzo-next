@@ -1,5 +1,4 @@
 import React from "react";
-import Tab from "./tab.jsx";
 
 /**
  * Shows when items are being fetched

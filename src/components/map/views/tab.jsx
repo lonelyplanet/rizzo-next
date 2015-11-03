@@ -1,6 +1,7 @@
 import React from "react";
 import MapActions from "../actions";
 import SidebarDropdown from "./sidebar-dropdown.jsx";
+import titles from "../tab_titles";
 
 /**
  * Tabs for the sidebar view
@@ -13,10 +14,7 @@ export default class TabView extends React.Component {
   }
 
   render() {
-    let title = this.props.name,
-        sets = this.props.sets,
-        hideTimer,
-        showTimer,
+    let title = titles[this.props.name.toLowerCase()] || this.props.name,
         sidebarDropdown = "",
         isActive = this.props.active ? "tab active" : "tab",
         classString = `${isActive}`,

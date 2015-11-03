@@ -179,10 +179,13 @@ $max-card-width: 1395px;
   margin: 0 auto;
 
   overflow: hidden;
-
-  @media (min-width: $max-card-width) {
-    margin-left: -1.5rem;
+  
+  &--9 {
+    @media (min-width: $max-card-width) {
+      margin-left: -1.5rem;
+    }  
   }
+  
 
   .interests__card {
     float: left;

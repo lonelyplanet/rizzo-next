@@ -28,8 +28,7 @@ export default class SubNav extends Component {
 
     if ($subNav.length) {
       let subNavTop = $subNav.offset().top,
-          firstTrigger = true,
-          fixedState;
+          firstTrigger = true;
 
       $(document).on("click", ".js-sub-nav-link", function(e) {
         let target = this.hash;
@@ -57,7 +56,6 @@ export default class SubNav extends Component {
           $components = $links.map((i, el) => {
             return document.getElementById(el.href.split("#")[1]);
           });
-      let $last;
 
       $window.scroll(debounce(() => {
         if (firstTrigger) {
