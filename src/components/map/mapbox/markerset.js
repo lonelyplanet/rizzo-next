@@ -35,11 +35,13 @@ class MarkerSet extends Component {
   listen() {
     let _this = this;
 
+    Arkham.off("map.poihover");
     Arkham.on("map.poihover", (data) => {
       let layer = _this._findLayerByIndex(data.poiIndex);
       _this._poiHover(layer);
     });
 
+    Arkham.off("map.poiunhover");
     Arkham.on("map.poiunhover", (data) => {
       let layer = _this._findLayerByIndex(data.poiIndex);
       _this._poiUnhover(layer);
@@ -135,10 +137,11 @@ class MarkerSet extends Component {
 
   _poiHover(layer) {
     // this._fixzIndex(layer); Not needed since pop-ups moved off the markers?
-    let template = this._createIcon(layer);
-    let lat = layer._latlng.lat;
-    let lng = layer._latlng.lng;
+    let template = this._createIcon(layer),
+        lat = layer._latlng.lat,
+        lng = layer._latlng.lng;
 
+    this.activeLayer = layer;
     this.popup = L.popup({
         closeButton: false,
         keepInView: true,
