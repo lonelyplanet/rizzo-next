@@ -98,8 +98,19 @@ $item-border-color: #f1f4fb;
     @include link-transition();
     font-size: 1.4rem;
     font-weight: 700;
-    color: $color-darkblue;
+    color: $fad-color;
     line-height: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  
+  &__name{
+    color: $color-darkblue;
+  }
+
+  &__location {
+    color: $fad-color;
   }
 
   &__item:hover &__title {

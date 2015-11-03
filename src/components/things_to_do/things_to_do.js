@@ -105,23 +105,23 @@ class ThingsToDo extends Component {
       .append(cards);
 
     this.animating = true;
-    this.loadImages($nextList.find(".js-image-card-image")).then(() => {
-      $list.after($nextList)
-        .css("transform", `translate3d(-${ttdComponentWidth}px, 0, 0)`);
 
-      waitForTransition($list, { fallbackTime: 300 })
-        .then(() => {
-          $nextList
-            .css("transform", "translate3d(0, 0, 0)");
+    this.loadImages($nextList.find(".js-image-card-image"));
+    $list.after($nextList)
+      .css("transform", `translate3d(-${ttdComponentWidth}px, 0, 0)`);
 
-          return waitForTransition($nextList, { fallbackTime: 300 });
-        })
-        .then(() => {
-          $list.remove();
-          $nextList.css("margin-top", 0);
-          this.animating = false;
-        });
-    });
+    waitForTransition($list, { fallbackTime: 300 })
+      .then(() => {
+        $nextList
+          .css("transform", "translate3d(0, 0, 0)");
+
+        return waitForTransition($nextList, { fallbackTime: 300 });
+      })
+      .then(() => {
+        $list.remove();
+        $nextList.css("margin-top", 0);
+        this.animating = false;
+      });
   }
 
   /**
