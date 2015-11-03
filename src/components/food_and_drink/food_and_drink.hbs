@@ -10,13 +10,15 @@
 
   <div class="food-and-drink__inner">
     <ol class="food-and-drink__list">
-      {{#each food_and_drink}}
+      {{#each food_and_drink.items}}
         <li class="food-and-drink__item" data-index="{{@index}}">
           <a href="http://www.lonelyplanet.com/{{url}}" itemscope itemtype="http://schema.org/FoodEstablishment">
 
             <div class="food-and-drink__title" itemprop="name">
               <span class="food-and-drink__name">{{name}}</span>
+              {{#if show_neighborhood}}
               <span class="food-and-drink__location" itemprop="name">in {{location_from_provider provider_specific}}</span>
+              {{/if}}
             </div>
             
             <div class="food-and-drink__categories" itemprop="makesOffer" itemscope itemtype="http://schema.org/Offer">
