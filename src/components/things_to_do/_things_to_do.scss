@@ -136,7 +136,7 @@
     padding-left: 7px;
     padding-top: 3px;
     right: -5px;
-    top: calc(50% - 3vw);
+    top: calc(50% - (3vw + #{$gutter} / 8));
     z-index: 15;
     border-radius: 50%;
     border: none;
@@ -145,6 +145,7 @@
 
     @media (min-width: $min-480) {
       right: 2%;
+      top: calc(50% - 3vw);
     }
 
     @media (min-width: $min-720) {
