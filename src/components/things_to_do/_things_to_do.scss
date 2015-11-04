@@ -2,35 +2,99 @@
 
 .ttd {
   overflow: hidden;
-  margin-bottom: $gutter;
+  position: relative;
+  // changed margin to padding to allow 'see more' shadow to extend
+  padding-bottom: $gutter;
+
+  @media (min-width: $min-840) {
+    overflow: hidden;
+  }
 
   &__heading {
     @include h1();
+    z-index: 20;
   }
 
   &__list {
     transition: 120ms transform ease-in;
     margin: 0 (-$gutter/8) $gutter;
     list-style: none;
-
     font-size: 0;
     text-align: center;
     counter-reset: image-card;
     opacity: 1;
+    position: relative;
 
     &--next {
       opacity: 0;
     }
 
     @media (min-width: $min-480) {
-      margin: 0 0 $gutter;
+      margin: 0 0 ($gutter * 2);
+    }
+
+    &.has-more:before {
+      @media (min-width: $min-480) {
+        content: "";
+        display: block;
+        height: 150%;
+        position: absolute;
+        right: -4rem;
+        top: -25%;
+        background: #fff;
+        z-index: 10;
+        width: 12%;
+      }
+
+      @media (min-width: $min-840) {
+        right: 0;
+      }
+
+      @media (min-width: $min-960) {
+        width: 2.5rem;
+      }
+    }
+
+    &.has-more:after {
+      content: "";
+      display: block;
+      height: 120%;
+      width: 4rem;
+      margin-top: -16%;
+      border-radius: 50%;
+      box-shadow: -8px 0px 45px -2px rgba(0, 0, 0, 0.75);
+      position: absolute;
+      right: -4rem;
+      top: 0;
+
+      @media (min-width: $min-480) {
+        height: 112%;
+        width: 12%;
+        right: -9.2%;
+        margin-top: -7.5%;
+      }
+
+      @media (min-width: $min-600) {
+        right: -6.8%;
+        box-shadow: -8px 0px 45px 8px rgba(0, 0, 0, 0.75);
+      }
+
+      @media (min-width: $min-840) {
+        width: 4.5rem;
+        right: 5rem;
+      }
+
+      @media (min-width: $min-960) {
+        height: 130%;
+        margin-top: -6.5%;
+        right: -3rem;
+        box-shadow: -8px 0px 40px -2px rgba(0, 0, 0, 0.75);
+      }
     }
   }
 
   &__item {
     display: inline-block;
-
-    margin-bottom: ($gutter / 4);
     padding-left: ($gutter / 8);
     padding-right: ($gutter / 8);
 
@@ -39,28 +103,71 @@
     vertical-align: top;
     text-align: right;
 
-    &:nth-child(2n) {
-      text-align: left;
-    }
-
     @media (min-width: $min-480) {
-      margin-bottom: $gutter;
       padding-left: ($gutter / 2);
       padding-right: ($gutter / 2);
     }
 
     @media (min-width: $min-960) {
+      margin-bottom: 0;
       width: 25%;
     }
-  }
 
-  &__bottom {
-    margin-bottom: $spacing;
-    text-align: center;
+    &:nth-child(-n+2) {
+      margin-bottom: ($gutter / 4);
+
+      @media (min-width: $min-480) {
+        margin-bottom: ($gutter);
+      }
+    }
+
+    &:nth-child(2n) {
+      text-align: left;
+    }
+
   }
 
   &__more {
-    @include more();
+    cursor: pointer;
+    position: absolute;
+    min-height: 3rem;
+    height: 6vw;
+    min-width: 3rem;
+    width: 6vw;
+    padding-left: 7px;
+    padding-top: 3px;
+    right: -5px;
+    top: calc(50% - (3vw + #{$gutter} / 8));
+    z-index: 15;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    background: #fff;
+
+    @media (min-width: $min-480) {
+      right: 2%;
+      top: calc(50% - 3vw);
+    }
+
+    @media (min-width: $min-720) {
+      right: 4%;
+    }
+
+    @media (min-width: $min-840) {
+      right: 10%;
+    }
+
+    @media (min-width: $min-960) {
+      height: 3rem;
+      width: 3rem;
+      top: calc(50% - 1.5rem);
+      right: 1.5rem;
+    }
+
+    &__icon {
+      font-size: 1.3rem;
+    }
+
   }
 }
 

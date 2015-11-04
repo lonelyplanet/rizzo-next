@@ -19,6 +19,10 @@ class ThingsToDo extends Component {
       return;
     }
 
+    if (cards.length > 4) {
+      this.$el.find(".js-ttd-list-container").addClass("has-more");
+    }
+
     this.cards = cards;
 
     this.events = {
