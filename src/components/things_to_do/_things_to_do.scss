@@ -12,6 +12,7 @@
 
   &__heading {
     @include h1();
+    z-index: 20;
   }
 
   &__list {
