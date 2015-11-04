@@ -35,7 +35,7 @@
       </li>
     {{/each}}
 
-    <li class="navigation__item navigation__item--user">
+    <li class="js-nav-item navigation__item navigation__item--user">
       {{! JavaScript will render the ./user_panel }}
     </li>
   </ul>
@@ -66,14 +66,14 @@
                 <a class="sub-navigation__link" href="/{{slug}}">{{title}}</a>
               </li>
             {{/each}}
-            </ul>
-
             {{#if submenu.call_to_action}}
-            <a class="sub-navigation__button" href="{{submenu.call_to_action.slug}}">
-              {{submenu.call_to_action.title}}
-              <i class="icon-chevron-right" aria-hidden="true"></i>
-            </a>
+              <li class="sub-navigation__item">
+                <a class="sub-navigation__link" href="{{submenu.call_to_action.slug}}">
+                  {{submenu.call_to_action.title}}
+                </a>
+              </li>
             {{/if}}
+            </ul>
           </div>
           {{/if}}
         </li>
