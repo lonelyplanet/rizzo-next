@@ -113,10 +113,6 @@ $item-border-color: #f1f4fb;
     color: $fad-color;
   }
 
-  &__item:hover &__title {
-    color: $color-primary;
-  }
-
   &__categories {
     margin-top: .4rem;
     font-size: 1.1rem;
