@@ -94,5 +94,19 @@
     &--active a {
       color: $color-primary;
     }
+
+    .icon {
+      float: right;
+      width: 1.3rem;
+      height: 1.3rem;
+      margin-top: .6rem;
+      transition: transform $animation-speed linear;
+    }
+
+    &.clicked {
+      .icon {
+        transform: rotateZ(180deg);
+      }
+    }
   }
 }

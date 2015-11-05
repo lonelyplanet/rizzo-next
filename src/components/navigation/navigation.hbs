@@ -46,7 +46,12 @@
     <ul class="mobile-navigation__list">
       {{#each navigation}}
         <li class="js-nav-item mobile-navigation__item">
-          <a class="mobile-navigation__link"  href="{{slug}}">{{title}}</a>
+          <a class="mobile-navigation__link"  href="{{slug}}">{{title}}
+            {{#if submenu}}
+              <i class="icon icon--chevron-down"></i>
+            {{/if}}
+          </a>
+
 
           {{#if submenu.items.length}}
           <div class="mobile-sub-navigation">
