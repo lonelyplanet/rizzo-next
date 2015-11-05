@@ -54,11 +54,13 @@ class NavigationComponent extends Component {
 
   _handleMobileSubNav(el) {
     let $navItem = $(el).find(".mobile-sub-navigation");
-    $(el).toggleClass("clicked");
 
     if ( $(".is-expanded").length && !$navItem.hasClass("is-expanded") ) {
       this.$mobileNavigation.find(".mobile-sub-navigation").removeClass("is-expanded");
+      this.$mobileNavigation.find(".js-nav-item").removeClass("clicked");
     }
+
+    $(el).toggleClass("clicked");
     $navItem.toggleClass("is-expanded");
   }
 
