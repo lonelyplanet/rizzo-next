@@ -30,7 +30,7 @@ class NavigationComponent extends Component {
     this.$mobileNavigation.on("click", ".js-close", this._clickNav.bind(this));
     this.$mobileNavigation.on("click", ".js-nav-item", this._handleClick.bind(this));
 
-    this.$el.on("click", ".js-nav-item", this._handleClick.bind(this));
+    this.$el.on("touchstart", ".js-nav-item", this._handleClick.bind(this));
 
     // SubNavigation hover
     this.handleHover();
@@ -49,19 +49,27 @@ class NavigationComponent extends Component {
 
   _handleClick(e) {
     let target = e.currentTarget;
-    if (target.text === "Shop") {
-      return;
-    }
-    e.preventDefault();
-    $(target).hasClass("navigation__link") ? this._openSubNav(target) : this._openMobileSubNav(target);
+    $(target).hasClass("navigation__item") ? this._handleSubNav(target) : this._handleMobileSubNav(target);
   }
 
-  _openMobileSubNav(el) {
+  _handleMobileSubNav(el) {
     let $navItem = $(el).find(".mobile-sub-navigation");
+
     if ( $(".is-expanded").length && !$navItem.hasClass("is-expanded") ) {
       this.$mobileNavigation.find(".mobile-sub-navigation").removeClass("is-expanded");
+      this.$mobileNavigation.find(".js-nav-item").removeClass("clicked");
     }
+
+    $(el).toggleClass("clicked");
     $navItem.toggleClass("is-expanded");
+  }
+
+  _handleSubNav(el) {
+    if ($(el).find(".sub-navigation").hasClass("sub-navigation--visible")) {
+      this._closeSubNav(el);
+    } else {
+      this._openSubNav(el);
+    }
   }
 
   _openSubNav(el) {
@@ -72,7 +80,7 @@ class NavigationComponent extends Component {
 
     this.showTimer = setTimeout(() => {
       $(el).find(".sub-navigation").addClass("sub-navigation--visible");
-    });
+    }, 0);
   }
 
   _closeSubNav(el) {

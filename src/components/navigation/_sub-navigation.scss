@@ -21,8 +21,7 @@
     padding-bottom: 2.8rem;
 
     .mobile-sub-navigation & {
-      padding-top: 0;
-      padding-bottom: 1rem;
+      padding: 0
     }
   }
 
@@ -117,6 +116,10 @@
     height: auto;
     margin-right: 2.6rem;
     width: 8rem;
+
+    .mobile-sub-navigation & {
+      margin-right: 1rem;
+    }
   }
 
   &__text {
