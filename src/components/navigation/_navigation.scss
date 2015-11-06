@@ -37,6 +37,18 @@
       height: $header-height;
       border-bottom: .4rem solid #fff;
     }
+
+    &--user > a {
+      padding: 1.7rem 2rem 1.7rem;
+      border: 1px solid #fff;
+      border-radius: 2.2rem;
+      line-height: 0;
+
+      &.avatar {
+        padding: 0;
+        border: none;
+      }
+    }
   }
 
   .navigation--narrow &__item--active {
