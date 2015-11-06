@@ -76,6 +76,12 @@
   }
 }
 
+// A 'fake' button that just wraps an element in a rounded border
+@mixin buttonBorder($color: #fff) {
+  padding: 1.7rem 2rem 1.7rem;
+  border: 1px solid $color;
+  border-radius: 2.2rem;
+}
 
 // Legacy
 // do not use

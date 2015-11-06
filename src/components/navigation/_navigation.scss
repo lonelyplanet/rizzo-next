@@ -39,9 +39,7 @@
     }
 
     &--user > a {
-      padding: 1.7rem 2rem 1.7rem;
-      border: 1px solid #fff;
-      border-radius: 2.2rem;
+      @include buttonBorder;
       line-height: 0;
 
       &.avatar {
