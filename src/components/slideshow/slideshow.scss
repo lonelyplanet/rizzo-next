@@ -51,7 +51,7 @@
   }
 
   &--slide {
-    @include container();
+    @include container-padded();
 
     @media (min-width: $min-1290) {
       padding: 0;

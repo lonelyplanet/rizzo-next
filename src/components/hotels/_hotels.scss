@@ -44,7 +44,7 @@ $hotels-max-width: 1170;
 }
 
 .hotels__container {
-  @include container();
+  @include container-padded();
 }
 
 .hotels__header {

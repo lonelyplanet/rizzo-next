@@ -26,7 +26,7 @@ $masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
   }
 
   &--no-images.masthead--narrow {
-    @include container();
+    @include container-padded();
     border: none;
     color: $font-color;
     height: 30rem;

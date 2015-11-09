@@ -6,7 +6,7 @@ $logo-height: 4rem;
   position: relative;
 
   @media (min-width: $min-960) {
-    @include container();
+    @include container-padded();
   }
 
   &__container {

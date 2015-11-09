@@ -32,7 +32,7 @@ body {
 }
 
 .container {
-  @include container();
+  @include container-padded();
 }
 
 .hide-text {
