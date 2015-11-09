@@ -5,6 +5,7 @@ import SearchActions from "./search_actions";
 import SearchState from "./search_state";
 import template from "./search.hbs";
 import "./_search.scss";
+import track from "../../core/decorators/track";
 
 import SearchItemComponent from "./search_item";
 
@@ -112,7 +113,7 @@ class SearchComponent extends Component {
         this.$el.detach();
       });
   }
-
+  @track("Global Search")
   searchComplete(data) {
     let collection = [];
 
@@ -126,6 +127,8 @@ class SearchComponent extends Component {
     });
 
     this.collection = collection;
+
+    return this.$input.val();
   }
 
   onKeyup(e) {

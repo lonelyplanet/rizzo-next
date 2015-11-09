@@ -1,9 +1,12 @@
 import Component from "../../core/component";
 import waitForTransition from "../../core/utils/waitForTransition";
-import publish from "../../core/decorators/publish";
+import track from "../../core/decorators/track";
 import $clamp from "clamp-js/clamp.js";
 import rizzo from "../../rizzo";
 
+/**
+ * Show a list of Top Experiences
+ */
 class ThingsToDo extends Component {
   get title() {
     return `Top experiences in ${window.lp.place.name}`;
@@ -186,7 +189,7 @@ class ThingsToDo extends Component {
    * Load more top things to do. Callback from click on load more button.
    * @param  {jQuery.Event} e The DOM event
    */
-  @publish("ttd.loadmore");
+  @track("topexperiences.loadmore")
   loadMore(e) {
     e.preventDefault();
     if (this.animating || this.currentIndex + 4 >= this.cards.length) {
@@ -203,7 +206,7 @@ class ThingsToDo extends Component {
       "direction": "forward"
     };
   }
-  @publish("ttd.loadmore");
+  @track("topexperiences.loadmore")
   loadPrevious(e) {
     e.preventDefault();
     if (this.animating || this.currentIndex - 4 < 0) {

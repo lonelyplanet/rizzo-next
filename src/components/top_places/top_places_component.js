@@ -1,4 +1,5 @@
 import { Component } from "../../core/bane";
+import track from "../../core/decorators/track";
 import waitForTimeout from "../../core/utils/waitForTransition";
 import Overlay from "../overlay";
 
@@ -27,7 +28,7 @@ class TopPlaces extends Component {
       this.show();
     }
   }
-
+  @track("Top Places Open")
   show() {
     if(this.isOpen) {
       return Promise.all([]);
@@ -46,7 +47,7 @@ class TopPlaces extends Component {
 
     this.isOpen = true;
   }
-
+  @track("Top Places Close")
   hide() {
     if(!this.isOpen) {
       return Promise.all([]);

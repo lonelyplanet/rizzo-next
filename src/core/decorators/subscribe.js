@@ -38,7 +38,7 @@ function addSubscribeMethod(target) {
  * **NOTE:** You have to call `this.subscribe()` in the constructor in order to have postal actually attatch the listeners correctly.
  * @function
  * @param  {String} topic Topic to listen for
- * @param  {Object} options Objects for the subscription
+ * @param  {String} channel The channel to listen on
  * @example <caption>Default Channel</caption>
  * import publish from "path/to/core/decorators/publish"
  * 
