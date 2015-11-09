@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/components/map/map_component.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../../prettify.css">
+    <link rel="stylesheet" href="../../../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header high">
+    <h1>Code coverage report for <span class="entity">src/components/map/map_component.js</span></h1>
+    <h2>
+        Statements: <span class="metric">96.55% <small>(56 / 58)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">78.13% <small>(25 / 32)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">77.78% <small>(7 / 9)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">96.55% <small>(56 / 58)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../index.html">All files</a> &#187; <a href="index.html">src/components/map/</a> &#187; map_component.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">module.exports = function inject(injections) {
+var module = {exports: {}};
+var exports = module.exports;
+"use strict";
+&nbsp;
+var _get = (injections["babel-runtime/helpers/get"] || require("babel-runtime/helpers/get"))["default"];
+&nbsp;
+var _inherits = (injections["babel-runtime/helpers/inherits"] || require("babel-runtime/helpers/inherits"))["default"];
+&nbsp;
+var _createClass = (injections["babel-runtime/helpers/create-class"] || require("babel-runtime/helpers/create-class"))["default"];
+&nbsp;
+var _classCallCheck = (injections["babel-runtime/helpers/class-call-check"] || require("babel-runtime/helpers/class-call-check"))["default"];
+&nbsp;
+var _interopRequireDefault = (injections["babel-runtime/helpers/interop-require-default"] || require("babel-runtime/helpers/interop-require-default"))["default"];
+&nbsp;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+&nbsp;
+var _coreBane = (injections["../../core/bane"] || require("../../core/bane"));
+&nbsp;
+var _react = (injections["react"] || <span class="branch-1 cbranch-no" title="branch not covered" >require("react"))</span>;
+&nbsp;
+var _react2 = _interopRequireDefault(_react);
+&nbsp;
+var _viewsMainJsx = (injections["./views/main.jsx"] || <span class="branch-1 cbranch-no" title="branch not covered" >require("./views/main.jsx"))</span>;
+&nbsp;
+var _viewsMainJsx2 = _interopRequireDefault(_viewsMainJsx);
+&nbsp;
+var _actions = (injections["./actions"] || require("./actions"));
+&nbsp;
+var _actions2 = _interopRequireDefault(_actions);
+&nbsp;
+var _coreArkham = (injections["../../core/arkham"] || require("../../core/arkham"));
+&nbsp;
+var _coreArkham2 = _interopRequireDefault(_coreArkham);
+&nbsp;
+var _history = (injections["history"] || <span class="branch-1 cbranch-no" title="branch not covered" >require("history"))</span>;
+&nbsp;
+var _jquery = (injections["jquery"] || require("jquery"));
+&nbsp;
+var _jquery2 = _interopRequireDefault(_jquery);
+&nbsp;
+var history = (0, _history.createHistory)();
+&nbsp;
+var MapComponent = (function (_Component) {
+  _inherits(MapComponent, _Component);
+&nbsp;
+  function MapComponent() {
+    _classCallCheck(this, MapComponent);
+&nbsp;
+    _get(Object.getPrototypeOf(MapComponent.prototype), "constructor", this).apply(this, arguments);
+  }
+&nbsp;
+  _createClass(MapComponent, [{
+    key: "initialize",
+    value: function initialize() {
+      var _this = this;
+&nbsp;
+      var _ref = arguments.length &lt;= 0 || <span class="branch-1 cbranch-no" title="branch not covered" >arguments[0] === undefined </span>? {} : <span class="branch-1 cbranch-no" title="branch not covered" >arguments[0];</span>
+&nbsp;
+      var el = _ref.el;
+&nbsp;
+      var originalState = this.getInitialState();
+      this.el = el;
+&nbsp;
+      _actions2["default"].setState(originalState.data);
+&nbsp;
+      _react2["default"].render(_react2["default"].createElement(_viewsMainJsx2["default"], null), document.querySelector(this.el));
+&nbsp;
+      _coreArkham2["default"].on("map.closed", <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        _this.close();</span>
+      });
+&nbsp;
+      // TODO: Uncomment to grab sponsored data
+      // MapActions.fetchSponsors();
+    }
+  }, {
+    key: "open",
+    value: function open() {
+      this.$el.addClass("open");
+      (0, _jquery2["default"])("html,body").addClass("noscroll");
+      _actions2["default"].mapOpen();
+&nbsp;
+      <span class="missing-if-branch" title="else path not taken" >E</span>if (!this.isOnMap()) {
+        var pathname = this.getMapPath();
+        history.pushState({}, pathname + "map/");
+      }
+    }
+  }, {
+    key: "isOnMap",
+    value: <span class="fstat-no" title="function not covered" >function isOnMap() {</span>
+<span class="cstat-no" title="statement not covered" >      return (/map\/?$/.test(window.location.pathname)</span>
+      );
+    }
+  }, {
+    key: "getMapPath",
+    value: function getMapPath() {
+      var pathname = window.location.pathname;
+      var lastChar = window.location.pathname.substr(-1); // Selects the last character
+&nbsp;
+      <span class="missing-if-branch" title="else path not taken" >E</span>if (lastChar !== "/") {
+        // If the last character is not a slash
+        pathname = pathname + "/"; // Append a slash to it.
+      }
+&nbsp;
+      return pathname;
+    }
+  }, {
+    key: "close",
+    value: function close() {
+      (0, _jquery2["default"])("html,body").removeClass("noscroll");
+      this.$el.removeClass("open");
+&nbsp;
+      var path = window.location.pathname.replace(/map\/?/, "");
+      history.pushState({}, "" + path);
+    }
+  }]);
+&nbsp;
+  return MapComponent;
+})(_coreBane.Component);
+&nbsp;
+exports["default"] = MapComponent;
+module.exports = exports["default"];
+return module.exports;
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Oct 02 2015 13:02:26 GMT-0500 (CDT)</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

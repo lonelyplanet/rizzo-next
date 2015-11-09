@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for components/map/actions.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../prettify.css">
+    <link rel="stylesheet" href="../../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1>Code coverage report for <span class="entity">components/map/actions.js</span></h1>
+    <h2>
+        Statements: <span class="metric">37.04% <small>(20 / 54)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">0% <small>(0 / 6)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">10% <small>(2 / 20)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">37.04% <small>(20 / 54)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">components/map/</a> &#187; actions.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">"use strict";
+&nbsp;
+var _interopRequireDefault = require("babel-runtime/helpers/interop-require-default")["default"];
+&nbsp;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+&nbsp;
+var _coreArkham = require("../../core/arkham");
+&nbsp;
+var _coreArkham2 = _interopRequireDefault(_coreArkham);
+&nbsp;
+var _lodashUtilityTimes = require("lodash/utility/times");
+&nbsp;
+var _lodashUtilityTimes2 = _interopRequireDefault(_lodashUtilityTimes);
+&nbsp;
+var _lodashObjectAssign = require("lodash/object/assign");
+&nbsp;
+var _lodashObjectAssign2 = _interopRequireDefault(_lodashObjectAssign);
+&nbsp;
+var _lodashCollectionFilter = require("lodash/collection/filter");
+&nbsp;
+var _lodashCollectionFilter2 = _interopRequireDefault(_lodashCollectionFilter);
+&nbsp;
+var _lodashCollectionEach = require("lodash/collection/each");
+&nbsp;
+var _lodashCollectionEach2 = _interopRequireDefault(_lodashCollectionEach);
+&nbsp;
+var _lodashArrayUniq = require("lodash/array/uniq");
+&nbsp;
+var _lodashArrayUniq2 = _interopRequireDefault(_lodashArrayUniq);
+&nbsp;
+var MapActions = {
+&nbsp;
+  viewChange: <span class="fstat-no" title="function not covered" >function viewChange(data) {</span>
+<span class="cstat-no" title="statement not covered" >    _coreArkham2["default"].trigger("view.changed", data);</span>
+  },
+&nbsp;
+  gotoPlace: <span class="fstat-no" title="function not covered" >function gotoPlace(_ref) {</span>
+<span class="cstat-no" title="statement not covered" >    var placeTitle = _ref.placeTitle;</span>
+<span class="cstat-no" title="statement not covered" >    var place = _ref.place;</span>
+<span class="cstat-no" title="statement not covered" >    var breadcrumb = _ref.breadcrumb;</span>
+<span class="cstat-no" title="statement not covered" >    var _ref$topic = _ref.topic;</span>
+<span class="cstat-no" title="statement not covered" >    var topic = _ref$topic === undefined ? "" : _ref$topic;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    var query = topic ? "?topic=" + topic.toLowerCase() : "",</span>
+        url = "/" + place + "/map.json" + query;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    _coreArkham2["default"].trigger("place.fetching", { placeTitle: placeTitle, breadcrumb: breadcrumb, topic: topic });</span>
+&nbsp;
+    // TODO: JC, maybe this is cool, maybe not?
+    // let mapData = window.localStorage.getItem(url);
+&nbsp;
+    // if (mapData) {
+    //   return Arkham.trigger("place.fetched", JSON.parse(mapData));
+    // }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    $.ajax({</span>
+      url: url
+    }).done(<span class="fstat-no" title="function not covered" >function (results) {</span>
+      // window.localStorage.setItem(url, JSON.stringify(results));
+<span class="cstat-no" title="statement not covered" >      _coreArkham2["default"].trigger("place.fetched", results);</span>
+    }).error(<span class="fstat-no" title="function not covered" >function (results) {</span>
+<span class="cstat-no" title="statement not covered" >      var error = {</span>
+        message: "There was an error fetching " + data.placeTitled,
+        type: results.status
+      };
+<span class="cstat-no" title="statement not covered" >      _coreArkham2["default"].trigger("place.errorfetching", error);</span>
+    });
+  },
+&nbsp;
+  poiOpen: <span class="fstat-no" title="function not covered" >function poiOpen(data) {</span>
+<span class="cstat-no" title="statement not covered" >    _coreArkham2["default"].trigger("poi.opened", data);</span>
+  },
+&nbsp;
+  poiClose: <span class="fstat-no" title="function not covered" >function poiClose() {</span>
+<span class="cstat-no" title="statement not covered" >    _coreArkham2["default"].trigger("poi.closed");</span>
+  },
+&nbsp;
+  pinHover: <span class="fstat-no" title="function not covered" >function pinHover(data) {</span>
+<span class="cstat-no" title="statement not covered" >    _coreArkham2["default"].trigger("map.poihover", data);</span>
+  },
+&nbsp;
+  itemHighlight: <span class="fstat-no" title="function not covered" >function itemHighlight(data) {</span>
+<span class="cstat-no" title="statement not covered" >    _coreArkham2["default"].trigger("item.hovered", data);</span>
+  },
+&nbsp;
+  mapOpen: function mapOpen() {
+    _coreArkham2["default"].trigger("map.opened");
+  },
+&nbsp;
+  mapClose: <span class="fstat-no" title="function not covered" >function mapClose() {</span>
+<span class="cstat-no" title="statement not covered" >    _coreArkham2["default"].trigger("map.closed");</span>
+  },
+&nbsp;
+  setState: function setState(state) {
+    _coreArkham2["default"].trigger("state.setinitial", state);
+  },
+&nbsp;
+  initMap: <span class="fstat-no" title="function not covered" >function initMap() {</span>
+<span class="cstat-no" title="statement not covered" >    _coreArkham2["default"].trigger("map.init");</span>
+  },
+&nbsp;
+  customPanel: <span class="fstat-no" title="function not covered" >function customPanel(data) {</span>
+<span class="cstat-no" title="statement not covered" >    _coreArkham2["default"].trigger("custompanel.opened", data);</span>
+  },
+&nbsp;
+  fetchSponsors: <span class="fstat-no" title="function not covered" >function fetchSponsors(data) {</span>
+<span class="cstat-no" title="statement not covered" >    var x = JSON.stringify({</span>
+      placements: generatePlacements()
+    });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    $.ajax({</span>
+      url: "http://engine.adzerk.net/api/v2",
+      method: "POST",
+      contentType: "application/json",
+      data: x,
+      success: <span class="fstat-no" title="function not covered" >function success(response) {</span>
+<span class="cstat-no" title="statement not covered" >        var set = { title: "Sponsored", items: [] },</span>
+            decisions = (0, _lodashArrayUniq2["default"])((0, _lodashCollectionFilter2["default"])(response.decisions, <span class="fstat-no" title="function not covered" >function (d) {</span>
+<span class="cstat-no" title="statement not covered" >          return d;</span>
+        }), "creativeId");
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        (0, _lodashCollectionEach2["default"])(decisions, <span class="fstat-no" title="function not covered" >function (decision) {</span></span>
+<span class="cstat-no" title="statement not covered" >          var poi = JSON.parse(decision.contents[0].body);</span>
+<span class="cstat-no" title="statement not covered" >          set.items.push(poi);</span>
+        });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        if (set.items.length) {</span>
+<span class="cstat-no" title="statement not covered" >          _coreArkham2["default"].trigger("sponsor.fetched", set);</span>
+        }
+      },
+      error: <span class="fstat-no" title="function not covered" >function error() {</span>
+<span class="cstat-no" title="statement not covered" >        console.log("fail");</span>
+      }
+    });
+  }
+&nbsp;
+};
+&nbsp;
+var generatePlacements = <span class="fstat-no" title="function not covered" >function generatePlacements() {</span>
+<span class="cstat-no" title="statement not covered" >  var placement = {</span>
+    divName: "sponsored",
+    networkId: 9807,
+    siteId: 316543,
+    adTypes: [43],
+    eventIds: [31, 32],
+    properties: {
+      "place": window.lp.place.name.toLowerCase()
+    }
+  };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  var placements = [];</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  (0, _lodashUtilityTimes2["default"])(20, <span class="fstat-no" title="function not covered" >function (i) {</span></span>
+<span class="cstat-no" title="statement not covered" >    placements.push((0, _lodashObjectAssign2["default"])({}, placement, {</span>
+      divName: "sponsored" + (i + 1)
+    }));
+  });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  return placements;</span>
+};
+&nbsp;
+exports["default"] = MapActions;
+module.exports = exports["default"];
+&nbsp;</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Oct 05 2015 12:22:32 GMT-0500 (CDT)</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

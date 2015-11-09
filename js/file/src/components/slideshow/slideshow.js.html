@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../../">
+  <title data-ice="title">src/components/slideshow/slideshow.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+<link data-ice="userStyle" rel="stylesheet" href="user/css/0-docs.css">
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <a data-ice="repoURL" href="https://github.com/lonelyplanet/rizzo-next.git" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-rizzo">rizzo</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/articles</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/articles/index.js~ArticlesComponent.html">ArticlesComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-articlesComponent">articlesComponent</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/footer</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/footer/footer_component.js~Footer.html">Footer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-footer">footer</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/header</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/header/header_component.js~Header.html">Header</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-header">header</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/hotels</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/hotels/hotels_widget.js~HotelsWidget.html">HotelsWidget</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-hotelsWidget">hotelsWidget</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/login</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/login/login_manager.js~LoginManager.html">LoginManager</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/login/user.js~User.html">User</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/map</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/map/interactive-map.js~InteractiveMap.html">InteractiveMap</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/map/map_component.js~MapComponent.html">MapComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-MapActions">MapActions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-MapAPI">MapAPI</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-interactiveMap">interactiveMap</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-mapComponent">mapComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-MapState">MapState</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/map/mapbox</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/map/mapbox/index.js~MapProvider.html">MapProvider</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/map/mapbox/markerset.js~MarkerSet.html">MarkerSet</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-mapProvider">mapProvider</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-markerSet">markerSet</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/map/views</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/map/views/about-panel.jsx~AboutPanel.html">AboutPanel</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/map/views/alert.jsx~AlertView.html">AlertView</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/map/views/item.jsx~ItemView.html">ItemView</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/map/views/main.jsx~MainView.html">MainView</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/map/views/map.jsx~MapView.html">MapView</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/map/views/panel.jsx~PanelView.html">PanelView</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/map/views/pin.jsx~PinView.html">PinView</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/map/views/sidebar-details.jsx~SidebarDetailsView.html">SidebarDetailsView</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/map/views/sidebar-dropdown.jsx~SidebarDropdown.html">SidebarDropdown</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/map/views/sidebar-fetching.jsx~SidebarFetchingView.html">SidebarFetchingView</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/map/views/sidebar.jsx~SidebarView.html">SidebarView</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/map/views/tab.jsx~TabView.html">TabView</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/masthead</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/masthead/masthead_component.js~MastheadComponent.html">MastheadComponent</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/navigation</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/navigation/navigation_component.js~NavigationComponent.html">NavigationComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-NavigationActions">NavigationActions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-navigationComponent">navigationComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-NavigationState">NavigationState</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/notification</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/notification/notification.js~Notification.html">Notification</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-notification">notification</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/overlay</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/overlay/index.js~Overlay.html">Overlay</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-overlay">overlay</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/search</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/search/search_component.js~SearchComponent.html">SearchComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SearchActions">SearchActions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SearchApi">SearchApi</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-searchComponent">searchComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SearchServerActions">SearchServerActions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SearchState">SearchState</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/search/search_item</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/search/search_item/index.js~SearchItemComponent.html">SearchItemComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-searchItemComponent">searchItemComponent</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/slideshow</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/slideshow/slide_component.js~SlideComponent.html">SlideComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/slideshow/slideshow.js~Slideshow.html">Slideshow</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-slideComponent">slideComponent</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/stacks</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/stacks/stack_component.js~Stack.html">Stack</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-StackActions">StackActions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-stack">stack</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-StackState">StackState</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/sub_nav</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/sub_nav/index.js~SubNav.html">SubNav</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/tabs</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/tabs/tabs_component.js~Tabs.html">Tabs</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/things_to_do</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/things_to_do/things_to_do.js~ThingsToDo.html">ThingsToDo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-thingsToDo">thingsToDo</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/tooltip</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/tooltip/tooltip.js~Tooltip.html">Tooltip</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-tooltip">tooltip</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/top_places</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/top_places/top_places_component.js~TopPlaces.html">TopPlaces</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-topPlaces">topPlaces</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/tours</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/tours/index.js~ToursComponent.html">ToursComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-toursComponent">toursComponent</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/usabilla</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/usabilla/index.js~Usabilla.html">Usabilla</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-usabilla">usabilla</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/video</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/video/brightcove.js~Brightcove.html">Brightcove</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/video/index.js~Video.html">Video</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/video/video_player.js~VideoPlayer.html">VideoPlayer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-brightcove">brightcove</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-video">video</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-videoPlayer">videoPlayer</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">core</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/component.js~Component.html">Component</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/component_registry.js~ComponentRegistry.html">ComponentRegistry</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/cookie_util.js~CookieUtil.html">CookieUtil</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/logger.js~Logger.html">Logger</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/mobile_util.js~MobileUtil.html">MobileUtil</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/perf_monitor.js~PerfMonitor.html">PerfMonitor</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/rizzo.js~Rizzo.html">Rizzo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/shop_cookie_util.js~ShopCookieUtil.html">ShopCookieUtil</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-Arkham">Arkham</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-mobileUtil">mobileUtil</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-shopCookieUtil">shopCookieUtil</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">core/decorators</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-channel">channel</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-publish">publish</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-subscribe">subscribe</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-track">track</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">core/events</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-trackEvent">trackEvent</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">core/events/trackers</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-analytics">analytics</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-flamsteed">flamsteed</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">core/mixins</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-Events">Events</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">core/utils</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-highlight">highlight</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-getScrollbarWidth">getScrollbarWidth</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-mark">mark</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-measure">measure</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/components/slideshow/slideshow.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { Component } from &quot;../../core/bane&quot;;
+import waitForTransition from &quot;../../core/utils/waitForTransition&quot;;
+import SlideComponent from &quot;./slide_component&quot;;
+
+/**
+ * slideshow Component
+*/
+export default class Slideshow extends Component {
+  static get loopSpeed() {
+    return 6000;
+  }
+
+  get padding() {
+    return this.type === &quot;slide&quot; ? 2 : 1;
+  }
+
+  get slides(){
+    return this._slides || (this._slides = []);
+  }
+
+  get stack(){
+    return this._stack || (this._stack = []);
+  }
+
+  get $images(){
+    if(!this._$images) {
+      this._$images = this.$el.find(&quot;.slideshow__images&quot;);
+
+      if (!this._$images.length) {
+        this._$images = $(&quot;&lt;div /&gt;&quot;, {
+          &quot;class&quot;: &quot;slideshow__images&quot;
+        }).appendTo(this.$el);
+      }
+
+      this._$images.empty();
+    }
+
+    return this._$images;
+  }
+
+  
+
+  get type(){
+    return this.options.type || &quot;fade&quot;;
+  }
+
+  initialize(options){
+    this.options = options;
+    this.$el.addClass(`slideshow--${this.type}`);
+    this.currentSlideIndex = 0;
+
+    this.events = {
+      &quot;click [class*=\&quot;--num_-1\&quot;]&quot;: &quot;goLeft&quot;,
+      &quot;click [class*=\&quot;--num_1\&quot;]&quot;: &quot;goRight&quot;
+    };
+
+    let state = this.getInitialState();
+
+    if (!state.images &amp;&amp; !this.options.images) {
+      return;
+    }
+
+    this.createBaseSlides(state);
+    this.initSlideShow();
+
+    if(this.slides.length &gt; 1) {
+      this.setCssClasses();
+      this.startLoop();
+    }
+  }
+
+  createBaseSlides(state) {
+    
+
+    let images = state.images || this.options.images || [];
+
+    let hasStraplines = false;
+
+    images.forEach((imageData) =&gt; {
+      let slide = new SlideComponent({
+        model: imageData
+      });
+
+      if(imageData.strapline) {
+        hasStraplines = true;
+      }
+
+      this.slides.push(slide);
+    });
+
+    if(!hasStraplines) {
+      this.$el.find(&quot;.slideshow__straplines&quot;).remove();
+    }
+
+    if (this.options.showProgress &amp;&amp; images.length &gt; 1) {
+      this.makeProgress();
+    }
+  }
+
+  initSlideShow() {
+    let state = this.getNewState();
+
+    this.showStraplineByIndex(this.currentSlideIndex);
+
+    state.forEach((index) =&gt; {
+      let $el = this.slides[index].getElement();
+
+      this.stack.push($el);
+
+      $el.appendTo(this.$images);
+    });
+
+    if (this.options.height) {
+      this.$el.height(this.options.height);
+    }
+  }
+
+  startLoop() {
+    return new Promise((resolve) =&gt; {
+        this.loopTimer = setTimeout(resolve, Slideshow.loopSpeed);
+      })
+      .then(() =&gt; {
+        return this.showNext();
+      })
+      .then(this.startLoop.bind(this));
+  }
+
+  goRight(){
+    if(this.isAnimating){
+      return Promise.all([]);
+    }
+
+    clearTimeout(this.loopTimer);
+
+    return this.showNext()
+      .then(this.startLoop.bind(this));
+  }
+
+  goLeft(){
+    if(this.isAnimating){
+      return Promise.all([]);
+    }
+
+    clearTimeout(this.loopTimer);
+
+    return this.showNext({ reverse: true})
+      .then(this.startLoop.bind(this));
+  }
+
+  getNewState() {
+    if (this.slides.length === 1) {
+      return [0];
+    }
+
+    let arr = [];
+
+    for(let i = -this.padding; i &lt;= this.padding; i++) {
+      arr.push(this.getSlideFromIndex(i));
+    }
+
+    // E.G., make sure if the array has [0,0,0], it only returns [0]
+    return arr;
+  }
+
+  // TODO: Fix double overflow (more then one circle)
+  getSlideFromIndex(index){
+    let currentIndex = this.currentSlideIndex;
+    let nextIndex = currentIndex + index;
+    let output = nextIndex;
+
+    if(nextIndex &lt; 0) {
+      output = (this.slides.length) + currentIndex + index;
+    }
+
+    if(nextIndex &gt; this.slides.length - 1){
+      output = nextIndex - (this.slides.length);
+    }
+
+    if(output &lt; 0 || output &gt;= this.slides.length) {
+      return 0;
+    }
+
+    return output;
+  }
+
+  setCssClasses() {
+    let i = -this.padding;
+
+    this.stack.forEach(($el) =&gt; {
+      $el.attr(&quot;class&quot;, &quot;slideshow__slide slideshow__slide--num_&quot; + i++);
+    });
+
+    if (this.options.showProgress) {
+      this.updateProgress();
+    }
+  }
+
+  showNext({ reverse = false } = {}){
+    let currentIndex = this.currentSlideIndex = reverse ?
+      this.getPrevIndex(this.currentSlideIndex) :
+      this.getNextIndex(this.currentSlideIndex);
+
+    let state = this.getNewState();
+
+    this.isAnimating = true;
+
+    // remove first/last element of stack, [0,1,2,3] -&gt; [1,2,3]
+    let toBeRemoved = reverse ? this.stack.pop() : this.stack.shift();
+
+    // add new item to stack, [1,2,3] -&gt; [1,2,3,4]
+    let nextIndexIn = reverse ? state[0] : state[state.length - 1];
+    let nextSlide = this.slides[nextIndexIn];
+    let nextEl = nextSlide.getElement();
+
+    if(reverse){
+      this.stack.unshift(nextEl);
+    } else {
+      this.stack.push(nextEl);
+    }
+
+    // preLoad new image before animating
+    return nextSlide.preload()
+      .then(() =&gt; {
+        // remove old element
+        $(toBeRemoved[0]).remove();
+
+        // insert new element
+        nextEl.addClass(&quot;slideshow__slide--next&quot;).appendTo(this.$images);
+
+        // reset all css classes on stack for positioning / animation
+        this.setCssClasses();
+      })
+      .then(() =&gt; {
+        this.showStraplineByIndex(currentIndex);
+      })
+      .then(() =&gt; {
+        // 5. wait for slide animation on primary slide
+        return waitForTransition(this.stack[this.padding]);
+      })
+      .then(() =&gt; {
+        this.isAnimating = false;
+      });
+  }
+
+  getPrevIndex(index){
+    let prevIndex = index - 1;
+
+    if(prevIndex &lt; 0) {
+      prevIndex = this.slides.length - 1;
+    }
+
+    return prevIndex;
+  }
+
+  getNextIndex(index){
+    let nextIndex = index + 1;
+
+    if(nextIndex &gt; this.slides.length - 1) {
+      nextIndex = 0;
+    }
+
+    return nextIndex;
+  }
+
+  showStraplineByIndex(index){
+    this.trigger(&quot;image.changed&quot;, {
+      index
+    });
+  }
+
+  makeProgress() {
+    this.$progress = $(&quot;&lt;div /&gt;&quot;, {
+      &quot;class&quot;: &quot;slideshow__progress&quot;
+    });
+
+    this.slides.forEach(() =&gt; {
+      this.$progress.append($(&quot;&lt;span /&gt;&quot;, {
+        &quot;class&quot;: &quot;slideshow__progress__dot&quot;
+      }));
+    });
+
+    this.$images.append(this.$progress);
+  }
+
+  updateProgress() {
+    let $dots = this.$progress.find(&quot;.slideshow__progress__dot&quot;);
+      
+    $dots.removeClass(&quot;slideshow__progress__dot--active&quot;);
+
+    $dots.eq(this.currentSlideIndex).addClass(&quot;slideshow__progress__dot--active&quot;);
+  }
+
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.3)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

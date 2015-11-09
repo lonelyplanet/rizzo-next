@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/components/articles/index.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../../prettify.css">
+    <link rel="stylesheet" href="../../../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header high">
+    <h1>Code coverage report for <span class="entity">src/components/articles/index.js</span></h1>
+    <h2>
+        Statements: <span class="metric">96.72% <small>(59 / 61)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">95% <small>(38 / 40)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">90.91% <small>(10 / 11)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">96.72% <small>(59 / 61)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../index.html">All files</a> &#187; <a href="index.html">src/components/articles/</a> &#187; index.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">module.exports = function inject(injections) {
+var module = {exports: {}};
+var exports = module.exports;
+"use strict";
+&nbsp;
+var _get = (injections["babel-runtime/helpers/get"] || require("babel-runtime/helpers/get"))["default"];
+&nbsp;
+var _inherits = (injections["babel-runtime/helpers/inherits"] || require("babel-runtime/helpers/inherits"))["default"];
+&nbsp;
+var _createClass = (injections["babel-runtime/helpers/create-class"] || require("babel-runtime/helpers/create-class"))["default"];
+&nbsp;
+var _classCallCheck = (injections["babel-runtime/helpers/class-call-check"] || require("babel-runtime/helpers/class-call-check"))["default"];
+&nbsp;
+var _interopRequireDefault = (injections["babel-runtime/helpers/interop-require-default"] || require("babel-runtime/helpers/interop-require-default"))["default"];
+&nbsp;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+&nbsp;
+var _coreBane = (injections["../../core/bane"] || require("../../core/bane"));
+&nbsp;
+var _clampJsClampJs = (injections["clamp-js/clamp.js"] || <span class="branch-1 cbranch-no" title="branch not covered" >require("clamp-js/clamp.js"))</span>;
+&nbsp;
+var _clampJsClampJs2 = _interopRequireDefault(_clampJsClampJs);
+&nbsp;
+var _tabsTabs_component = (injections["../tabs/tabs_component"] || require("../tabs/tabs_component"));
+&nbsp;
+var _tabsTabs_component2 = _interopRequireDefault(_tabsTabs_component);
+&nbsp;
+var _jquery = (injections["jquery"] || require("jquery"));
+&nbsp;
+var _jquery2 = _interopRequireDefault(_jquery);
+&nbsp;
+(injections["./_articles.scss"] || require("./_articles.scss"));
+&nbsp;
+var ArticlesComponent = (function (_Component) {
+  _inherits(ArticlesComponent, _Component);
+&nbsp;
+  function ArticlesComponent() {
+    _classCallCheck(this, ArticlesComponent);
+&nbsp;
+    _get(Object.getPrototypeOf(ArticlesComponent.prototype), "constructor", this).apply(this, arguments);
+  }
+&nbsp;
+  _createClass(ArticlesComponent, [{
+    key: "initialize",
+    value: function initialize(options) {
+      this.articles = this.$el.find(".article");
+      this.maxLines = options.maxLines || 6;
+      // Retrieved via getComputedStyle($0)["line-height"] ish
+      this.titleLineHeight = options.titleLineHeight || { desktop: 35, mobile: 23 };
+      this.blurbLineHeight = options.blurbLineHeight || { desktop: 27, mobile: 18 };
+      this.mobileWidth = options.mobileWidth || 717;
+      this.screen = "mobile";
+      this.tabs = new _tabsTabs_component2["default"]({
+        el: (0, _jquery2["default"])(".tabs")
+      });
+&nbsp;
+      <span class="missing-if-branch" title="else path not taken" >E</span>if (!(0, _jquery2["default"])("html").hasClass("ie9")) {
+        this._detectScreen();
+        this._clampText();
+&nbsp;
+        this.listenTo(this.tabs, "tabs.activate", this._reclamp.bind(this));
+        (0, _jquery2["default"])(window).on("resize", this._reclamp.bind(this));
+      }
+    }
+  }, {
+    key: "widthWindow",
+    value: function widthWindow() {
+      return (0, _jquery2["default"])(window).width();
+    }
+  }, {
+    key: "isDesktop",
+    value: function isDesktop() {
+      return this.widthWindow() &gt;= this.mobileWidth;
+    }
+  }, {
+    key: "_reclamp",
+    value: <span class="fstat-no" title="function not covered" >function _reclamp() {</span>
+<span class="cstat-no" title="statement not covered" >      this._detectScreen();</span>
+<span class="cstat-no" title="statement not covered" >      this._clampText();</span>
+    }
+  }, {
+    key: "_detectScreen",
+    value: function _detectScreen() {
+      return this.screen = this.isDesktop() ? "desktop" : "mobile";
+    }
+  }, {
+    key: "_clampText",
+    value: function _clampText() {
+      var _this = this;
+&nbsp;
+      this.articles.each(function (index, article) {
+        var _findElements2 = _this._findElements(article);
+&nbsp;
+        var titleLines = _findElements2.titleLines;
+        var teaserLines = _findElements2.teaserLines;
+        var teaser = _findElements2.teaser;
+        var blurb = _findElements2.blurb;
+&nbsp;
+        // aka 2 + 5 or something
+        if (titleLines + teaserLines &gt; _this.maxLines) {
+          var teaserClamp = Math.ceil(_this.maxLines - titleLines);
+          (0, _clampJsClampJs2["default"])(teaser.get(0), { clamp: teaserClamp });
+          teaser.addClass("article__info__teaser--small");
+          blurb.prop("hidden", true);
+        } else {
+          // Only clamp the blurb
+          var blurbClamp = Math.ceil(_this.maxLines - titleLines - teaserLines);
+          (0, _clampJsClampJs2["default"])(blurb.get(0), { clamp: blurbClamp });
+        }
+      });
+    }
+  }, {
+    key: "_findElements",
+    value: function _findElements(article) {
+      // Select all necessary elements
+      var $article = (0, _jquery2["default"])(article),
+          title = $article.find(".article__info__title"),
+          teaser = $article.find(".article__info__teaser"),
+          blurb = $article.find(".article__info__blurb"),
+&nbsp;
+      // Find elements heights
+      titleHeight = parseInt(title.height(), 10) || 0,
+          teaserHeight = parseInt(teaser.height(), 10) || 0,
+          blurbHeight = parseInt(blurb.height(), 10) || 0,
+&nbsp;
+      // Figure out how many lines each element actually is based on line heights and height
+      blurbLines = blurbHeight / this.blurbLineHeight[this.screen],
+          teaserLines = teaserHeight / this.blurbLineHeight[this.screen],
+          titleLines = titleHeight / this.titleLineHeight[this.screen],
+&nbsp;
+      // Figure out how many lines need to be removed
+      linesAllowed = this.maxLines - titleLines,
+          removeLines = Math.floor(blurbLines + teaserLines - linesAllowed);
+&nbsp;
+      return {
+        removeLines: removeLines,
+        titleLines: titleLines,
+        teaserLines: teaserLines,
+        blurbLines: blurbLines,
+        teaser: teaser,
+        blurb: blurb
+      };
+    }
+  }]);
+&nbsp;
+  return ArticlesComponent;
+})(_coreBane.Component);
+&nbsp;
+exports["default"] = ArticlesComponent;
+module.exports = exports["default"];
+return module.exports;
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Oct 02 2015 13:02:26 GMT-0500 (CDT)</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>
