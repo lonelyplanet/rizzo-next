@@ -1,8 +1,9 @@
 @import "../../../sass/webpack_deps";
 
 .masthead_nav {
-  position: relative;
-  bottom: 6rem;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   z-index: 100;
   color: #fff;
 
