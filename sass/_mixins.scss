@@ -17,6 +17,7 @@
 
 /// Set up a media query passing a value to use for min width
 ///
+/// @deprecated
 /// @param {number} $screen-width - A value for the media query
 /// @param {string} $method ['min'] - 'min' or 'max'
 /// @example sass
@@ -41,7 +42,7 @@
   padding-bottom: #{$ratioPercentage + %};
 }
 
-/// Hack to force GPU rendering (most in the community argue this should be used quite sparingly!!)
+/// Hack to force GPU rendering (most in the community argue this should be used quite sparingly!)
 @mixin hardware-acceleration() {
   z-index: 1;
   transform: translateZ(0);
@@ -80,6 +81,7 @@
 }
 
 /// Sets max width and centers component
+/// @deprecated
 @mixin component-width() {
   max-width: 1290px;
   margin: 0 auto;
