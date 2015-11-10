@@ -9,8 +9,10 @@ export default class SidebarDetailsView extends React.Component{
     $clamp(el, { clamp: 2 });
   }
   render() {
-    let poi = this.props.poi;
-    let image = "";
+    let poi = this.props.poi,
+        image = "";
+        // TODO Switch back to just ${poi.slug} once this is live
+        slug = `https://www.lonelyplanet.com/${poi.slug}`;
 
     if (poi.geo.properties.image) {
       let imgSrc = `http://images-resrc.staticlp.com/s=w470,pd1/o=85/${poi.geo.properties.image}`;
@@ -18,7 +20,7 @@ export default class SidebarDetailsView extends React.Component{
         <img src={imgSrc} ref="img" />
       </div>
     }
-    let slug = `/${poi.slug}`;
+
     return (
       <div className="sidebar details">
         <header className="sidebar__header">
