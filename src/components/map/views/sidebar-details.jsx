@@ -10,7 +10,7 @@ export default class SidebarDetailsView extends React.Component{
   }
   render() {
     let poi = this.props.poi,
-        image = "";
+        image = "",
         // TODO Switch back to just ${poi.slug} once this is live
         slug = `https://www.lonelyplanet.com/${poi.slug}`;
 
