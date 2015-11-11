@@ -1,8 +1,8 @@
 import { Component } from "../../core/bane";
 import Slideshow from "../slideshow";
-import MastheadNav from "./masthead_nav.js";
 import assign from "lodash/object/assign";
 import Overlay from "../overlay";
+import "./masthead_nav.js";
 
 /**
  * Masthead Component
