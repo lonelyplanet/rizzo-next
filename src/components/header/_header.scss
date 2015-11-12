@@ -42,6 +42,10 @@
     border-bottom-color: transparent;
   }
 
+  &--no-images.header--narrow &__inner {
+    border-bottom-color: $color-border;
+  }
+
   &__logo {
     display: block;
     position: relative;
