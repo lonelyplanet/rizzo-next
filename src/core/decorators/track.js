@@ -41,16 +41,26 @@ import trackEvent from "../events/track_event";
  * }
  * 
  */
-export default function track(trackingFn, options) {
+function track(trackingFn, options) {
   return function(target, name, descriptor) {
-    const fn = descriptor.value;
+    const hasDescriptor = typeof descriptor.value !== "undefined";
+    const fn = hasDescriptor ? descriptor.value : target;
 
-    descriptor.value = function() {
+    function trackDecorator() {
       let value = fn.apply(this, arguments);
       
       trackEvent(typeof trackingFn === "string" ? Object.assign({ name: trackingFn, data: value }, options) : trackingFn.apply(this, [value]));
 
       return value;
     };
+
+    if (hasDescriptor) {
+      descriptor.value = trackDecorator;
+    }
+    else {
+      target = trackDecorator;
+    }
   };
 }
+
+export default track;

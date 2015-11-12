@@ -31,8 +31,6 @@ export default class Slideshow extends Component {
           "class": "slideshow__images"
         }).appendTo(this.$el);
       }
-
-      this._$images.empty();
     }
 
     return this._$images;
@@ -70,8 +68,6 @@ export default class Slideshow extends Component {
   }
 
   createBaseSlides(state) {
-    
-
     let images = state.images || this.options.images || [];
 
     let hasStraplines = false;
@@ -102,12 +98,19 @@ export default class Slideshow extends Component {
 
     this.showStraplineByIndex(this.currentSlideIndex);
 
+    this.$firstImage = this.$images.find(".slideshow__slide");
+
     state.forEach((index) => {
       let $el = this.slides[index].getElement();
 
       this.stack.push($el);
 
       $el.appendTo(this.$images);
+      
+      // This removes the original first image to stop a flash when the new ones are added
+      if (index === 0) {
+        this.$firstImage.remove();
+      }
     });
 
     if (this.options.height) {

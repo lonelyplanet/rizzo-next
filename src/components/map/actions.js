@@ -5,6 +5,7 @@ import filter from "lodash/collection/filter";
 import each from "lodash/collection/each";
 import uniq from "lodash/array/uniq";
 import MapApi from "./map_api";
+import track from "../../core/decorators/track";
 
 const generatePlacements = () => {
   let placement = {
@@ -29,68 +30,64 @@ const generatePlacements = () => {
   return placements;
 };
 
-let MapActions = {
+class MapActions {
 
-  viewChange: (data) => {
+  viewChange(data) {
     Arkham.trigger("view.changed", data);
-  },
-
-  gotoPlace: ({ placeTitle, place, breadcrumb, topic="" }) => {
+  }
+  @track("map.goto")
+  gotoPlace({ placeTitle, place, breadcrumb, topic="" }) {
     let query = topic ? `?topic=${topic.toLowerCase()}` : "",
         url = `/${place}/map.json${query}`;
 
     Arkham.trigger("place.fetching", { placeTitle, breadcrumb, topic });
 
-    // TODO: JC, maybe this is cool, maybe not?
-    // let mapData = window.localStorage.getItem(url);
-
-    // if (mapData) {
-    //   return Arkham.trigger("place.fetched", JSON.parse(mapData));
-    // }
-
     MapApi.fetch(url).done((results) => {
-      // window.localStorage.setItem(url, JSON.stringify(results));
       Arkham.trigger("place.fetched", results);
     });
-  },
 
-  poiOpen: (data) => {
+    return {
+      place
+    };
+  }
+
+  poiOpen(data) {
     Arkham.trigger("poi.opened", data);
-  },
+  }
 
-  poiClose: () => {
+  poiClose() {
     Arkham.trigger("poi.closed");
-  },
+  }
 
-  pinHover: (data) => {
+  pinHover(data) {
     Arkham.trigger("map.poihover", data);
-  },
+  }
 
-  itemHighlight: (data) => {
+  itemHighlight(data) {
     Arkham.trigger("item.hovered", data);
-  },
+  }
 
-  mapOpen: () => {
+  mapOpen() {
     Arkham.trigger("map.opened");
-  },
+  }
 
-  mapClose: () => {
+  mapClose() {
     Arkham.trigger("map.closed");
-  },
+  }
 
-  setState: (state) => {
+  setState(state) {
     Arkham.trigger("state.setinitial", state);
-  },
+  }
 
-  initMap: () => {
+  initMap() {
     Arkham.trigger("map.init");
-  },
+  }
 
-  customPanel: (data) => {
+  customPanel(data) {
     Arkham.trigger("custompanel.opened", data);
-  },
+  }
 
-  fetchSponsors: () => {
+  fetchSponsors() {
     let x = JSON.stringify({
       placements: generatePlacements()
     });
@@ -118,7 +115,6 @@ let MapActions = {
       }
     });
   }
+}
 
-};
-
-export default MapActions;
+export default new MapActions();

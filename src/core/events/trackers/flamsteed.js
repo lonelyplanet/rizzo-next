@@ -4,8 +4,6 @@
  */
 export default function({ name, data } = {}) {
   if (window.lp.fs) {
-    window.lp.fs.log({
-      d: typeof arguments[0] === "string" ? arguments[0] : JSON.stringify({ name, data })
-    });
+    window.lp.fs.log({ name, data });
   }
 };
