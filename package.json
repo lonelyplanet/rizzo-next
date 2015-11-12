@@ -36,7 +36,8 @@
     "picturefill": "*",
     "postal": "^1.0.7",
     "react": "^0.13.3",
-    "resrc.js": "^0.9.5"
+    "resrc.js": "^0.9.5",
+    "susy": "^2.2.6"
   },
   "devDependencies": {
     "babel-eslint": "^4.1.3",
@@ -66,12 +67,12 @@
     "node-sass": "^3.4.1",
     "object-assign": "^3.0.0",
     "phantomjs": "^1.9.17",
+    "photoswipe": "^4.1.0",
     "sass-loader": "^3.1.1",
     "sassdoc": "^2.1.15",
     "sassdoc-theme-neat": "0.0.2",
     "sinon": "^1.17.1",
     "style-loader": "^0.13.0",
-    "susy": "^2.2.6",
     "webpack": "^1.12.2"
   }
 }
