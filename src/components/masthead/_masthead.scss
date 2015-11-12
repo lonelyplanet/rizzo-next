@@ -164,10 +164,9 @@ $masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
   }
 
   &__title {
-    margin-bottom: 1rem;
     font-size: 5.6rem;
     font-weight: 600;
-    line-height: 1;
+    line-height: .9;
     letter-spacing: -.3rem;
 
     @media (min-width: $min-560) {
