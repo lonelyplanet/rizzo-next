@@ -126,8 +126,14 @@
     }
 
   }
-
   &__more {
+    right: 0;
+  }
+  &__less {
+    left: 0;
+  }
+
+  &__more, &__less {
     cursor: pointer;
     position: absolute;
     min-height: 3rem;
@@ -136,7 +142,6 @@
     width: 6vw;
     padding-left: 7px;
     padding-top: 3px;
-    right: -5px;
     top: calc(50% - (3vw + #{$gutter} / 8));
     z-index: 15;
     border-radius: 50%;
@@ -161,7 +166,7 @@
       height: 3rem;
       width: 3rem;
       top: calc(50% - 1.5rem);
-      right: 1.5rem;
+      right: 0;
     }
 
     &__icon {

@@ -26,7 +26,8 @@ class ThingsToDo extends Component {
     this.cards = cards;
 
     this.events = {
-      "click .js-ttd-more": "loadMore"
+      "click .js-ttd-more": "loadMore",
+      "click .js-ttd-less": "loadPrevious"
     };
 
     this.template = require("./thing_to_do_card.hbs");
@@ -42,6 +43,8 @@ class ThingsToDo extends Component {
   nextCards() {
     if (this.currentIndex >= this.cards.length) {
       this.currentIndex = 0;
+    } else if (this.currentIndex < 0) {
+      this.currentIndex = this.cards.length - ((this.cards.length % this.options.numOfCards) || this.options.numOfCards);
     }
 
     return this.cards.slice(this.currentIndex, this.currentIndex + this.options.numOfCards)
@@ -96,7 +99,7 @@ class ThingsToDo extends Component {
 
     // Grab the next 4 images
     this.currentIndex += this.options.numOfCards;
-    let cards = this.nextCards();
+    let cards = this.nextCards(true);
 
     // Create a new list and place it on top of existing list
     let $nextList = $("<ul />", {
@@ -113,6 +116,48 @@ class ThingsToDo extends Component {
     this.loadImages($nextList.find(".js-image-card-image"));
     $list.after($nextList)
       .css("transform", `translate3d(-${ttdComponentWidth}px, 0, 0)`);
+
+    waitForTransition($list, { fallbackTime: 300 })
+      .then(() => {
+        $nextList
+          .css("transform", "translate3d(0, 0, 0)");
+
+        return waitForTransition($nextList, { fallbackTime: 300 });
+      })
+      .then(() => {
+        $list.remove();
+        $nextList.css("margin-top", 0);
+        this.animating = false;
+      });
+  }
+  loadPrevious(e) {
+    let $list = this.$el.find(".js-ttd-list"),
+        ttdComponentWidth = this.$el.width();
+
+    e.preventDefault();
+    if (this.animating) {
+      return;
+    }
+
+    // Grab the next 4 images
+    this.currentIndex -= this.options.numOfCards;
+    let cards = this.nextCards();
+
+    // Create a new list and place it on top of existing list
+    let $nextList = $("<ul />", {
+        "class": "ttd__list js-ttd-list"
+      })
+      .css({
+        "margin-top": `-${$list.outerHeight(true)}px`,
+        "transform": `translate3d(-${ttdComponentWidth}px, 0, 0)`
+      })
+      .append(cards);
+
+    this.animating = true;
+
+    this.loadImages($nextList.find(".js-image-card-image"));
+    $list.after($nextList)
+      .css("transform", `translate3d(${ttdComponentWidth}px, 0, 0)`);
 
     waitForTransition($list, { fallbackTime: 300 })
       .then(() => {
