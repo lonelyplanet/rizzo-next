@@ -21,7 +21,7 @@
   }
 
   &__container {
-    @include container();
+    @include container-padded();
   }
 
   &__inner {

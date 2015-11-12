@@ -1,3 +1,4 @@
+/// ----------------------------------------------------------------------------
 /// Use to separate components on the page.
 /// ### Modifiers
 /// * `--grey` modifier to change the background color
@@ -6,6 +7,7 @@
 /// .segment {
 ///   @include segment();
 /// }
+/// ----------------------------------------------------------------------------
 @mixin segment() {
   margin: 0;
   padding-top: ($gutter * 2);
@@ -67,45 +69,127 @@
   }
 }
 
-/// Create a container element to wrap segments
-/// ### Modifiers
+/// ----------------------------------------------------------------------------
+/// Extends Susy by returning a container with gutters; requires
+/// [Susy](http://susy.oddbird.net/).
+///
+/// Includes Susy's container mixin.
+///
+/// Should be used for the outermost container.
+///
+/// ### Modifiers (deprecated)
 /// * `--slim` removes the gutters
 /// * `--narrow` smaller width
 /// * `--half` half of the max width
-@mixin container() {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: $max-width;
+/// ----------------------------------------------------------------------------
+@mixin container-padded {
+  // Include Susy's container mixin
+  @include container;
 
-  @media (max-width: $max-480) {
-    padding-left: ($gutter / 2);
-    padding-right: ($gutter / 2);
+  // Tell Susy to use static values
+  @include with-layout(static) {
+    // Calculate the width of the container plus each gutter (doubled) and then
+    // convert the value to ems for use in the media query.
+    $max-width: container() + gutter-quad();
+    $media-query: #{(strip-units($max-width) * .625)}em;
+
+    @media (max-width: $max-480) {
+      padding-left: gutter-half();
+      padding-right: gutter-half();
+    }
+
+    @media (min-width: $min-480) {
+      margin-left: gutter();
+      margin-right: gutter();
+    }
+
+    @media (min-width: $min-1080) {
+      margin-left: gutter-double();
+      margin-right: gutter-double();
+    }
+
+    @media(min-width: $media-query) {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    // These modifiers are deprecated as it's easy enough to use Susy's span
+    // function to calculate widths on demand.
+    &--slim {
+      max-width: span(10); // $max-width - 12rem - ($gutter * 2)
+    }
+
+    &--narrow {
+      max-width: span(9); // ($max-width - $min-width)
+    }
+
+    &--half {
+      max-width: span(6); // ($max-width / 2)
+    }
+  }
+}
+
+/// ----------------------------------------------------------------------------
+/// Extends Susy by returning a static width container with optional gutters;
+/// requires [Susy](http://susy.oddbird.net/).
+///
+/// @param  {Number} $span                      - Number of columns to span
+/// @param  {String} $position [inside]|outside - Inside: wrapped; outside:
+///                                               wrapping (see @example)
+/// @example:
+/// ```scss
+/// // position: inside (default)
+/// .outer-container {
+///   // Include Susy's default container for the outermost container
+///   @include container;
+///
+///   .inner-container {
+///     // Include the static-container mixin that spans 6 columns and is inside
+///     // of another container; since 'inside' is default, the argument
+///     // doesn't need to be passed.
+///     @include container-static(6);
+///   }
+/// }
+///
+/// // position: outside
+/// .outer-container {
+///   // Include the static container mixin that spans 6 columns and is the
+///   // outermost container. When set to 'outside', Susy's default container
+///   // mixin will be included.
+///   @include container-static(6, outside);
+/// }
+/// ----------------------------------------------------------------------------
+@mixin container-static($span, $position: inside) {
+  // Include Susy's container mixin if the static container is positioned on the
+  // outside, i.e., wrapping.
+  @if $position == outside {
+    @include container;
   }
 
-  @media (min-width: $min-480) {
-    margin-left: $gutter;
-    margin-right: $gutter;
-  }
+  // Tell Susy to use static values
+  @include with-layout(static) {
+    // Calculate the width of the container plus each gutter and then convert
+    // the value to ems for use in the media query.
+    $max-width: span($span) + gutter-double();
+    $mq: #{(strip-units($max-width) * .625)}em;
 
-  @media (min-width: $min-1080) {
-    margin-left: ($gutter * 2);
-    margin-right: ($gutter * 2);
-  }
+    // Add horizontal margins if the static contained is positioned on the
+    // outside, i.e., wrapping.
+    @if $position == outside {
+      margin-left: gutter();
+      margin-right: gutter();
+    }
 
-  @media (min-width: #{strip-units(($max-width + ($gutter * 4)) * .625)}em) {
-    margin-left: auto;
-    margin-right: auto;
-  }
+    @media(min-width: $mq) {
+      // Reset the horizontal margins to center the static container if it's
+      // positioned on the outside, i.e., wrapping.
+      @if $position == outside {
+        margin-left: auto;
+        margin-right: auto;
+      }
 
-  &--slim {
-    max-width: $max-width - 12rem - ($gutter * 2);
-  }
-
-  &--narrow {
-    max-width: $max-width - $min-width;
-  }
-
-  &--half {
-    max-width: ($max-width / 2);
+      // Set a static width with Susy's `span` function
+      width: span($span);
+    }
   }
 }

@@ -75,7 +75,7 @@ $navigation-sub-height-mobile: $header-height-mobile;
     }
 
     @media (min-width: $min-720) {
-      @include container();
+      @include container-padded();
 
       &:after {
         margin: 0;
