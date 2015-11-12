@@ -1,0 +1,113 @@
+@import "../../../sass/webpack_deps";
+
+.article-pagination {
+  @include container;
+  border-top: .1rem solid $color-border;
+  margin-top: 10.4rem;
+
+  @include with-layout(static) {
+    margin-left: -#{gutter-half()};
+    margin-right: -#{gutter-half()};
+  }
+
+  @media (min-width: $min-480) {
+    @include with-layout(static) {
+      margin-left: -#{gutter()};
+      margin-right: -#{gutter()};
+    }
+  }
+
+  @media (min-width: $min-600) {
+    align-items: stretch;
+    display: flex;
+  }
+
+  .no-flexbox & {
+    @media (min-width: $min-600) {
+      display: block;
+    }
+  }
+}
+
+.article-pagination-item {
+  color: #2c3642;
+  display: block;
+  font-size: 2.4rem;
+  font-weight: 300;
+  line-height: (32 / 24);
+  text-align: center;
+  transition: color ($animation-speed / 2) linear;
+
+  @include with-layout(static) {
+    padding: 6.7rem gutter-half() 7.1rem;
+  }
+
+  @media (min-width: $min-480) {
+    @include with-layout(static) {
+      padding-left: gutter();
+      padding-right: gutter();
+    }
+  }
+
+  @media (min-width: $min-600) {
+    width: 50%;
+  }
+
+  @media (min-width: $min-960) {
+    font-size: 2.8rem;
+    line-height: (36 / 28);
+    max-height: 21.4rem;
+  }
+
+  @media (min-width: $min-1200) {
+    padding-left: 8rem;
+    padding-right: 8rem;
+  }
+
+  .no-flexbox & {
+    @media (min-width: $min-600) {
+      float: left;
+    }
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: $color-blue;
+  }
+
+  &:not(:first-child) {
+    @media (max-width: $max-600) {
+      border-top: .1rem solid $color-border;
+    }
+
+    @media (min-width: $min-600) {
+      border-left: .1rem solid $color-border;
+    }
+  }
+
+  &:before {
+    color: #cccdce;
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: .01rem;
+    line-height: 1;
+    position: relative;
+    text-transform: uppercase;
+    top: -.5rem;
+  }
+
+  &:nth-child(1):before {
+    content: "Prev";
+  }
+
+  &:nth-child(2):before {
+    content: "Next";
+  }
+
+  // HACK
+  &:nth-child(3) {
+    display: none;
+  }
+}

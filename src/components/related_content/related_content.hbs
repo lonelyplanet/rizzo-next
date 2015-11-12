@@ -1,0 +1,7 @@
+<div class="article-pagination">
+  {{#each article.related_articles }}
+    <a class="article-pagination-item" href="{{ this.slug }}">
+      {{ this.title }}
+    </a><!-- .article-pagination-item -->
+  {{/each}}
+</div><!-- .article-pagination -->

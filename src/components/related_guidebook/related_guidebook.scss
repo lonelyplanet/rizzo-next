@@ -1,0 +1,126 @@
+@import "../../../sass/webpack_deps";
+
+.related-guidebook {
+  @include container;
+  box-shadow: 0 .3rem 2.9rem 0 rgba(#000, .08);
+  display: flex;
+
+  @include with-layout(static) {
+    max-width: span(6);
+    padding: gutter-half();
+  }
+
+  @media (min-width: $min-600) {
+    padding: 2.8rem 3.4rem;
+  }
+
+  .no-flexbox & {
+    display: block;
+    position: relative;
+  }
+}
+
+.related-guidebook__image {
+  align-self: flex-start;
+  display: block;
+  width: 6.4rem;
+
+  @media (min-width: $min-600) {
+    width: 12.4rem;
+  }
+
+  .no-flexbox & {
+    position: absolute;
+
+    @include with-layout(static) {
+      left: gutter-half();
+      top: gutter-half();
+    }
+
+    @media (min-width: $min-600) {
+      left: 3.4rem;
+      top: 2.8rem;
+    }
+  }
+}
+
+.related-guidebook__container {
+  @include container;
+
+  @include with-layout(static) {
+    margin-left: gutter-half();
+    margin-right: gutter-half();
+
+    @media (min-width: $min-600) {
+      margin-left: gutter();
+      margin-right: gutter();
+    }
+  }
+
+  .no-flexbox & {
+    margin-left: 6.4rem;
+    width: 65%;
+
+    @media (min-width: $min-480) {
+      @include with-layout(static) {
+        margin-left: 6.4rem + gutter-half();
+      }
+    }
+
+    @media (min-width: $min-600) {
+      @include with-layout(static) {
+        margin-left: 12.4rem + gutter();
+      }
+    }
+  }
+}
+
+.related-guidebook__title {
+  color: #2b3642;
+  font-size: 1.8rem;
+  font-weight: 600;
+  letter-spacing: -.02rem;
+  line-height: (22 / 18);
+  margin-top: .2rem;
+
+  @media (min-width: $min-600) {
+    font-size: 2rem;
+    line-height: (24 / 20);
+    margin-top: 1.5rem;
+  }
+}
+
+.related-guidebook__heading {
+  color: #2b3642;
+  font-size: 1.4rem;
+  line-height: 1;
+  margin-top: .7rem;
+
+  @media (min-width: $min-600) {
+    font-size: 1.6rem;
+  }
+}
+
+.related-guidebook__content {
+  color: #2b3642;
+  font-size: 1.2rem;
+  line-height: (20 / 12);
+  margin-bottom: 1.6rem;
+  margin-top: 1.2rem;
+
+  @media (min-width: $min-600) {
+    font-size: 1.4rem;
+    line-height: (22 / 14);
+    margin-bottom: 2.1rem;
+    margin-top: 1.7rem;
+  }
+}
+
+.related-guidebook__link {
+  @include more;
+  display: inline-block;
+
+  @media (max-width: $max-600) {
+    font-size: 1.1rem;
+  }
+}
