@@ -8,6 +8,8 @@ import "./article_body.scss";
  */
 export default class ArticleBodyComponent extends Component {
   initialize() {
+    this.imageContainerSelector = ".stack__article__image-container";
+
     this.loadImages().then(() => {
       this.gallery = new ImageGallery({ el: ".article" });
     });
@@ -19,13 +21,21 @@ export default class ArticleBodyComponent extends Component {
   loadImages() {
     let promises = [];
 
-    this.$el.find(".stack__article__image-container").each((index, el) => {
+    this.$el.find(this.imageContainerSelector).each((index, el) => {
       let $img = $(el).find("img"),
           $a = $(el).find("a"),
           src = $($img).attr("src");
 
       let promise = this.loadImage(src).then((image) => {
-        $a.attr("data-size", `${image.width}x${image.height}`)
+        $a.attr("data-size", `${image.width}x${image.height}`);
+
+        if(image.width > 1000 && $img.hasClass("is-landscape")) {
+          $a.closest(this.imageContainerSelector)
+            .addClass("is-wide");
+        }
+
+        $a.closest(this.imageContainerSelector)
+          .addClass("is-visible");
       });
       promises.push(promise);
     });

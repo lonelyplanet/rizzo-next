@@ -11,28 +11,28 @@
     margin-bottom: 9.8rem;
   }
 
-  &.-narrow {
+  &.is-narrow {
     @include container-static(8);
   }
 
-  &.-flex {
+  &.has-flexbox {
     display: flex;
     flex-direction: column-reverse;
   }
 
-  &.-centered {
+  &.is-centered {
     text-align: center;
   }
 }
 
-.article-title {
+.article-header__title {
   line-height: 1;
 
-  &.-xlarge {
+  &.is-xlarge {
     color: #1c222a;
     font-size: 4rem;
     font-weight: 600;
-    letter-spacing: -2px;
+    letter-spacing: -.2rem;
 
     @media (min-width: $min-480) {
       font-size: 5.4rem;
@@ -43,11 +43,11 @@
     }
   }
 
-  &.-small {
+  &.is-small {
     color: #b6c3ca;
     font-size: 1.4rem;
     font-weight: 400;
-    letter-spacing: 1px;
+    letter-spacing: .1rem;
 
     @media (min-width: $min-480) {
       font-size: 1.6rem;
@@ -62,7 +62,7 @@
     }
   }
 
-  &.-xsmall {
+  &.is-xsmall {
     color: #ca0000;
     font-size: 1.2rem;
     font-weight: 600;
@@ -77,131 +77,9 @@
     }
   }
 
-  &.-padded-bottom {
+  &.is-padded-bottom {
     .article-header & {
       margin-bottom: 2.2rem;
     }
   }
 }
-
-.article-footer {
-  @include container;
-
-  &.-narrow {
-    @include container-static(6);
-  }
-}
-
-.article-footer__top {
-  @include container;
-}
-
-.article-footer__bottom {
-  @include container;
-  border-top: .1rem solid $color-border;
-
-  @include with-layout(static) {
-    margin-top: (gutter() + gutter-half());
-    padding-top: gutter();
-  }
-
-  .auth {
-    @include span(3 of 6);
-    margin-left: 0;
-    background-color: red;
-    height: 100px;
-  }
-
-  .place {
-    @include span(3 of 6);
-    background-color: red;
-    height: 100px;
-  }
-}
-
-$action-sheet: (
-  'background-color': #f0f0f0,
-  'button-size': 30px,
-  'margin-left': 4px,
-  'margin-top': 9px
-);
-
-.action-sheet {
-  margin-left: -#{get($action-sheet, 'margin-left')};
-  margin-top: -#{get($action-sheet, 'margin-top')};
-
-  &.-left {
-    float: left;
-  }
-
-  &.-right {
-    float: right;
-  }
-
-  a {
-    background-color: get($action-sheet, 'background-color');
-    border-radius: 100%;
-    color: #333;
-    display: inline-block;
-    height: get($action-sheet, 'button-size');
-    line-height: 1;
-    margin-left: get($action-sheet, 'margin-left');
-    margin-top: get($action-sheet, 'margin-top');
-    width: get($action-sheet, 'button-size');
-    transition: background-color .4s linear;
-
-    &:hover,
-    &:active,
-    &:focus {
-      background-color: darken(get($action-sheet, 'background-color'), 3);
-    }
-  }
-}
-
-$category-list: (
-  'background-color': #f0f0f0,
-  'margin-left': 4px,
-  'margin-top': 9px
-);
-
-$category-list-background-color: #f0f0f0;
-$category-list-margin-left: 4px;
-$category-list-margin-top: 9px;
-
-.category-list {
-  margin-left: -#{get($category-list, 'margin-left')};
-  margin-top: -#{get($category-list, 'margin-top')};
-
-  &.-left {
-    float: left;
-  }
-
-  &.-right {
-    float: right;
-  }
-
-  &.-constrained {
-    width: 430px;
-  }
-
-  a {
-    background-color: get($category-list, 'background-color');
-    border-radius: 4px;
-    color: #333;
-    display: inline-block;
-    font-size: 12px;
-    line-height: 1;
-    margin-left: get($category-list, 'margin-left');
-    margin-top: get($category-list, 'margin-top');
-    max-height: 30px;
-    padding: 10px 12px 8px;
-    transition: background-color .4s linear;
-
-    &:hover,
-    &:active,
-    &:focus {
-      background-color: darken(get($category-list, 'background-color'), 3);
-    }
-  }
-}
-

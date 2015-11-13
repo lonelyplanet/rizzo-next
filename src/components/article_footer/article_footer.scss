@@ -1,0 +1,31 @@
+.article-footer {
+  @include container;
+
+  &.-narrow {
+    @include container-static(6);
+  }
+}
+
+.article-footer__top {
+  @include container;
+}
+
+.article-footer__bottom {
+  @include container;
+  border-top: .1rem solid $color-border;
+
+  @include with-layout(static) {
+    margin-top: (gutter() + gutter-half());
+    padding-top: gutter();
+  }
+}
+
+.article-footer__author,
+.article-footer__place {
+  float: left;
+  width: span(3 of 6);
+}
+
+.article-footer__place {
+  margin-left: gutter();
+}

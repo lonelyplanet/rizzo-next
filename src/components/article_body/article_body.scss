@@ -6,16 +6,7 @@
   margin-top: 6.9rem;
   position: relative;
 
-  // &.-contained {
-  //   @include container;
-  // }
-
-  // &.-article {
-  //   margin-bottom: 12rem;
-  //   margin-top: 6.9rem;
-  // }
-
-  &.-narrow {
+  &.is-narrow {
     @include container-static(6);
   }
 
@@ -27,7 +18,7 @@
   //
   // Use this modifier when the article body contains content that was formatted
   // within the CMS
-  &.-contains-legacy {
+  &.has-legacy-code .article-body__content {
     .copy--feature {
       @extend %lede;
     }
@@ -63,42 +54,62 @@
       }
     }
 
+    .copy--body__link {
+      @include fancy-link($link-color: #2b3542, $link-color-active: $color-blue);
+    }
+
     .stack__article__image-container {
-      // $margin-left: ($width-content-block-narrow - $width-narrow) / 2;
-      // $width: ($width-narrow / $width-content-block-narrow) * 100%;
+      font-family: "Main", sans-serif !important;
+      font-size: 1.2rem !important;
+      line-height: 1.3 !important;
+      opacity: 0;
+      text-align: center !important;
+      transition: opacity .2s ease;
+      visibility: hidden;
 
-      // @media (min-width: $min-720) {
-      //   margin-left: -#{span(6) + gutter() + gutter-half()};
-      //   width: span(12 of 6);
-      // }
-
-      @media (min-width: $min-1350) {
-        // background-color: rebeccapurple;
-        // margin-left: $margin-left;
-        // width: $width;
-        // margin-left: -#{span(6)};
-        // margin-left: -#{span(12 of 6) / 4};
-        // margin-left: -#{container() / 4};
-        // margin-left: -#{span(isolate 3 at 1)};
-        // margin-left: -#{span(6) + gutter() + gutter-half()};
-        // width: span(12 of 6);
-
-        // @include with-layout(static) {
-        //   margin-left: -#{span(3) + gutter()};
-        //   width: span(12);
-        // }
+      .no-js &,
+      &.is-visible {
+        opacity: 1;
+        visibility: visible;
       }
 
+      &.is-wide {
+        @media (min-width: $min-840) {
+          margin-left: -10%;
+          width: 120%;
+        }
+
+        @media (min-width: $min-1024) {
+          margin-left: -20%;
+          width: 140%;
+        }
+
+        @media (min-width: $min-1290) {
+          margin-left: -40%;
+          width: 180%;
+        }
+
+        @media (min-width: $min-1410) {
+          @include with-layout(static) {
+            margin-left: -#{span(3) + gutter()};
+            width: span(12);
+          }
+        }
+      }
+
+      // This selects the image
       > .copy--body__link:first-of-type {
         display: block;
+        margin-bottom: 1.4rem;
         position: relative;
 
+        // Hold onto this for a later date perhaps
         // &:after {
         //   @include pop-out;
-        //   bottom: 15px;
+        //   bottom: 1.5rem;
         //   content: "";
         //   position: absolute;
-        //   right: 15px;
+        //   right: 1.5rem;
         //   z-index: 2;
         // }
       }
@@ -106,21 +117,10 @@
       .stack__article__image {
         max-width: 100%;
         width: 100%;
-
-        &.aligncenter {}
-
-        &.size-full {}
       }
 
       .copy--caption {
         display: block;
-        font-family: "Main";
-        font-size: 1.2rem;
-        line-height: 1.3;
-        margin-bottom: 1rem;
-        margin-top: 1rem;
-        padding-top: .4rem;
-        text-align: center;
 
         a {
           color: $color-text;
