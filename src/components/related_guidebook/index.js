@@ -1,6 +1,7 @@
 import { Component } from "../../core/bane";
 import $clamp from "clamp-js/clamp.js";
 import $ from "jquery";
+import debounce from "lodash/function/debounce";
 
 import "./related_guidebook.scss";
 
@@ -9,7 +10,7 @@ class RelatedGuidebookComponent extends Component {
     if (!$("html").hasClass("ie9")) {
       this._clampText();
 
-      $(window).on("resize", this._reclamp.bind(this));
+      $(window).resize(debounce(this._reclamp.bind(this), 100));
     }
   }
 

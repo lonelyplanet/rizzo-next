@@ -104,16 +104,6 @@
         display: block;
         margin-bottom: 1.4rem;
         position: relative;
-
-        // Hold onto this for a later date perhaps
-        // &:after {
-        //   @include pop-out;
-        //   bottom: 1.5rem;
-        //   content: "";
-        //   position: absolute;
-        //   right: 1.5rem;
-        //   z-index: 2;
-        // }
       }
 
       .stack__article__image {

@@ -74,7 +74,7 @@ export default class ArticleBodyComponent extends Component {
     let date = this.$el.data("post-date"),
         formattedDate = moment(date).format("MMMM YYYY");
 
-    $(".article-body__content").last()
+    this.$el.find(".article-body__content").last()
       .find("p:not(.stack__article__image-container)").last()
       .append("<span class=\"article-post-date\">Published <time datetime=\"" + date + "\">" + formattedDate + "</time></span>");
   }
