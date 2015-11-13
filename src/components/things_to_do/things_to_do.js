@@ -131,7 +131,7 @@ class ThingsToDo extends Component {
         .css("transform", "translate3d(0, 0, 0)");
     }, 30);
 
-    waitForTransition($nextList, { fallbackTime: 300 })
+    return waitForTransition($nextList, { fallbackTime: 300 })
       .then(() => {
         $list.remove();
         $nextList.css("margin-top", 0);
@@ -162,7 +162,10 @@ class ThingsToDo extends Component {
     
     // Forward
     this.animate();
-    
+
+    return {
+      "direction": "forward"
+    };
   }
   loadPrevious(e) {
     e.preventDefault();
@@ -175,6 +178,10 @@ class ThingsToDo extends Component {
 
     // Reverse
     this.animate(true);
+
+    return {
+      "direction": "reverse"
+    };
   }
   showMoreAndPrevious() {
     this.$el.find(".has-more--left").removeClass("is-invisible");
