@@ -70,6 +70,8 @@ $animation-speed: .4s;
 $animation-speed-ui: .8s;
 
 // Custom breakpoints (Mobile first)
+/// 1410px min width breakpoint
+$min-1410: #{(1410 * 0.0625)}em;
 /// 1350px min width breakpoint
 $min-1350: #{(1350 * 0.0625)}em;
 /// 1290px min width breakpoint
@@ -100,6 +102,7 @@ $min-360: #{(360 * 0.0625)}em;
 $min-320: #{(320 * 0.0625)}em;
 
 // Custom breakpoints
+$max-1410: #{(1409 * 0.0625)}em;
 $max-1350: #{(1349 * 0.0625)}em;
 $max-1290: #{(1289 * 0.0625)}em;
 $max-1200: #{(1199 * 0.0625)}em;

@@ -57,3 +57,36 @@
 
   padding: $gutter;
 }
+
+@mixin underline($color: $color-blue, $weight: .1rem, $offset: .2rem) {
+  background-image: linear-gradient(to top, transparent, transparent $offset, $color $offset, $color ($offset + $weight), transparent ($offset + $weight));
+}
+
+@mixin fancy-link($link-color: $color-blue, $link-color-active: $color-blue + 30, $background-color: #fff, $breaking-underlines: true) {
+  @include underline($link-color);
+  color: $link-color;
+  position: relative;
+  text-decoration: none;
+  transition: color .2s ease;
+  @if $breaking-underlines {
+    text-shadow: -.1rem -.1rem 0 $background-color,
+      .1rem -.1rem 0 $background-color,
+      -.1rem .1rem 0 $background-color,
+      .1rem .1rem 0 $background-color;
+  }
+
+  @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+    @include underline($link-color, .05);
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    @include underline($link-color-active);
+    color: $link-color-active;
+
+    @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+      @include underline($link-color-active, .05);
+    }
+  }
+}
