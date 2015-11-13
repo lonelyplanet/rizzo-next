@@ -4,22 +4,9 @@
   <h2 class="ttd__heading">{{title}}</h2>
 
   <div class="js-ttd-list-container ttd__list">
-    {{#if show_more}}
-      <button class="ttd__less js-ttd-less is-invisible">
-        <i class="ttd__more__icon icon-chevron-left" aria-hidden="true"></i>
-      </button>
-    {{/if}}
-  
     <ul class="js-ttd-list">
     </ul>
-
-    {{#if show_more}}
-      <button class="ttd__more js-ttd-more">
-        <i class="ttd__more__icon icon-chevron-right" aria-hidden="true"></i>
-      </button>
-    {{/if}}
   </div>
-
 </article>
 {{/if}}
 {{/with}}

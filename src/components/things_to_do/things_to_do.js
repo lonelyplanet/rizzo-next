@@ -20,15 +20,16 @@ class ThingsToDo extends Component {
     }
 
     if (cards.length > 4) {
-      this.$el.find(".js-ttd-list").before($("<div />", { "class": "has-more--left is-invisible"}));
-      this.$el.find(".js-ttd-list").after($("<div />", { "class": "has-more--right"}));
+      this.addNavigationButtons();
     }
 
     this.cards = cards;
 
     this.events = {
       "click .js-ttd-more": "loadMore",
-      "click .js-ttd-less": "loadPrevious"
+      "click .js-ttd-less": "loadPrevious",
+      "swiperight": "loadPrevious",
+      "swipeleft": "loadMore"
     };
 
     this.template = require("./thing_to_do_card.hbs");
@@ -36,7 +37,23 @@ class ThingsToDo extends Component {
 
     this.clampImageCardTitle();
   }
+  addNavigationButtons() {
+    let $left = $("<div />", { "class": "has-more--left is-invisible"});
+    $left.html(`
+    <button class="ttd__less js-ttd-less">
+      <i class="ttd__more__icon icon-chevron-left" aria-hidden="true"></i>
+    </button>
+    `);
+    this.$el.find(".js-ttd-list").before($left);
 
+    let $right = $("<div />", { "class": "has-more--right"});
+    $right.html(`
+    <button class="ttd__more js-ttd-more">
+      <i class="ttd__more__icon icon-chevron-right" aria-hidden="true"></i>
+    </button>
+    `);
+    this.$el.find(".js-ttd-list").after($right);
+  }
   /**
    * Get the next 4 cards to render
    * @return {Array} An array of rendered templates
@@ -112,7 +129,7 @@ class ThingsToDo extends Component {
     setTimeout(() => {
       $nextList
         .css("transform", "translate3d(0, 0, 0)");
-    }, 60);
+    }, 30);
 
     waitForTransition($nextList, { fallbackTime: 300 })
       .then(() => {
@@ -136,7 +153,7 @@ class ThingsToDo extends Component {
   @publish("ttd.loadmore");
   loadMore(e) {
     e.preventDefault();
-    if (this.animating) {
+    if (this.animating || this.currentIndex + 4 >= this.cards.length) {
       return;
     }
     // Grab the next 4 images
@@ -149,7 +166,7 @@ class ThingsToDo extends Component {
   }
   loadPrevious(e) {
     e.preventDefault();
-    if (this.animating) {
+    if (this.animating || this.currentIndex - 4 < 0) {
       return;
     }
     // Grab the next 4 images

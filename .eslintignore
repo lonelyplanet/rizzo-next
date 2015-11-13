@@ -1,2 +1,3 @@
 src/components/usabilla/index.js
 src/core/mixins/events.js
+src/core/utils/detect_swipe.js
