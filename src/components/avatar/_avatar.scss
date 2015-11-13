@@ -10,22 +10,20 @@
   vertical-align: middle;
   width: 4rem;
 
-  &.-author {
-    // transition: transform $animation-speed;
-    // transform: scale(1);
+  &.is-author {
     height: auto;
     max-width: 4rem;
     width: 12vw;
   }
 
-  &.-large {
+  &.is-large {
     @media (min-width: $min-720) {
       max-width: none;
       width: 8rem;
     }
   }
 
-  &.-vertical {
+  &.is-vertical {
     margin-bottom: 1.3rem;
 
     @media (min-width: $min-720) {
@@ -33,7 +31,7 @@
     }
   }
 
-  &.-horizontal {
+  &.is-horizontal {
     float: left;
     margin-right: 1.4rem;
   }

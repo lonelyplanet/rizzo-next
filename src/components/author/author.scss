@@ -5,16 +5,16 @@
   letter-spacing: .01rem;
   margin: 0 auto;
 
-  &.-contained {
+  &.is-contained {
     @include container;
     width: span(3);
   }
 
-  &.-vertical {
+  &.is-vertical {
     text-align: center;
   }
 
-  &.-horizontal {
+  &.is-horizontal {
     display: inline-block;
     margin-top: 2.4rem;
     overflow: hidden;
@@ -24,7 +24,7 @@
     }
   }
 
-  &.-bio.-horizontal {
+  &.has-bio.is-horizontal {
     margin-top: 1.2rem;
 
     @media (min-width: $min-720) {
@@ -34,18 +34,11 @@
 
   a {
     display: inline-block;
-
-    // &:hover,
-    // &:focus {
-    //   .avatar {
-    //     transform: scale(1.1);
-    //   }
-    // }
   }
 }
 
 .author-details {
-  .author.-horizontal & {
+  .author.is-horizontal & {
     float: left;
     margin-top: .6rem;
   }
@@ -91,18 +84,14 @@
   &.-inline {
     &:before {
       content: "";
-      // content: "| ";
-      // color: $light-text-color;
       background-color: $light-text-color;
       display: inline-block;
       height: 1.2rem;
       position: relative;
-      // top: -1px;
       top: 2px;
       margin-right: 1px;
       width: 1px;
     }
-    // border-left: 1px solid $light-text-color;
   }
 }
 
