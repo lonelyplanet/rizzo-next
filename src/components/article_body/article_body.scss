@@ -23,7 +23,8 @@
       @extend %lede;
     }
 
-    p:not(.copy--feature) {
+    p:not(.copy--feature),
+    .copy--body__list {
       color: #2b3542;
       font-family: "Secondary";
       font-size: 1.8rem;
@@ -34,7 +35,8 @@
         line-height: (36 / 20);
       }
 
-      + p {
+      + p,
+      + .copy--body__list {
         margin-top: 1.7em;
       }
     }
@@ -128,4 +130,14 @@
       }
     }
   }
+}
+
+.article-post-date {
+  color: $light-text-color;
+  display: inline-block;
+  font-family: "Main", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1;
+  text-transform: uppercase;
 }

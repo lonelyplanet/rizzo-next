@@ -1,7 +1,9 @@
+@import "../../../sass/webpack_deps";
+
 .article-footer {
   @include container;
 
-  &.-narrow {
+  &.is-narrow {
     @include container-static(6);
   }
 }

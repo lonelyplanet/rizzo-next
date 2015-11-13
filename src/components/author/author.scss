@@ -62,8 +62,7 @@
   }
 }
 
-.author-title,
-.author-post-date {
+.author-title {
   color: $light-text-color;
   font-size: 1.4rem;
   letter-spacing: .06rem;
@@ -77,21 +76,6 @@
   &.-inline {
     display: inline;
     font-size: 1.2rem;
-  }
-}
-
-.author-post-date {
-  &.-inline {
-    &:before {
-      content: "";
-      background-color: $light-text-color;
-      display: inline-block;
-      height: 1.2rem;
-      position: relative;
-      top: 2px;
-      margin-right: 1px;
-      width: 1px;
-    }
   }
 }
 

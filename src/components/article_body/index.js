@@ -1,6 +1,7 @@
 import { Component } from "../../core/bane";
 import $ from "jquery";
 import ImageGallery from "../image_gallery";
+import moment from "moment";
 import "./article_body.scss";
 
 /**
@@ -13,6 +14,8 @@ export default class ArticleBodyComponent extends Component {
     this.loadImages().then(() => {
       this.gallery = new ImageGallery({ el: ".article" });
     });
+
+    this.formatAndPositionDate();
   }
   /**
    * Loads all the images in the body of the article
@@ -63,5 +66,16 @@ export default class ArticleBodyComponent extends Component {
         reject();
       }
     });
+  }
+  /**
+   * Format the post date with moment.js and append it to the bottom of the article
+   */
+  formatAndPositionDate() {
+    let date = this.$el.data("post-date"),
+        formattedDate = moment(date).format("MMMM YYYY");
+
+    $(".article-body__content").last()
+      .find("p:not(.stack__article__image-container)").last()
+      .append("<span class=\"article-post-date\">Published <time datetime=\"" + date + "\">" + formattedDate + "</time></span>");
   }
 }

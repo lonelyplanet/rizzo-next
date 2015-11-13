@@ -4,7 +4,7 @@ import urlencode from "urlencode";
 import "./action_sheet.scss";
 
 class ActionSheetComponent extends Component {
-  initialize(options) {
+  initialize() {
     let self = this;
     self.isActionSheetMenuHidden = false;
 
@@ -69,11 +69,11 @@ class ActionSheetComponent extends Component {
             windowSize = "width=" + width + ",height=" + height + ",left=" + left + ",top=" + top;
 
         if (network === "twitter") {
-          window.open("https://twitter.com/intent/tweet?text=" + tweet, "share", 'intent', windowOptions + "," + windowSize);
+          window.open("https://twitter.com/intent/tweet?text=" + tweet, "share", windowOptions + "," + windowSize);
         }
 
         if (network === "facebook") {
-          window.open("https://www.facebook.com/sharer/sharer.php?u=" + url, "share", 'intent', windowOptions + "," + windowSize);
+          window.open("https://www.facebook.com/sharer/sharer.php?u=" + url, "share", windowOptions + "," + windowSize);
         }
       });
     });
