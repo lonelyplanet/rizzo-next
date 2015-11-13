@@ -12,6 +12,14 @@ $item-border-color: #f1f4fb;
   margin-bottom: $spacing;
   font-weight: $medium;
 
+  @media (min-width: $min-960) {
+    min-height: 400px;
+  }
+
+  @media (min-width: $min-1080) {
+    min-height: 425px;
+  }
+
   &__heading {
     @include h1();
   }
