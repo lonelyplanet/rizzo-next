@@ -20,7 +20,7 @@
     margin: 0 (-$gutter/8) $gutter;
     list-style: none;
     font-size: 0;
-    text-align: center;
+    text-align: left;
     counter-reset: image-card;
     opacity: 1;
     position: relative;
@@ -33,7 +33,7 @@
       margin: 0 0 ($gutter * 2);
     }
 
-    &.has-more:before {
+    .has-more--right:before {
       @media (min-width: $min-480) {
         content: "";
         display: block;
@@ -55,7 +55,17 @@
       }
     }
 
-    &.has-more:after {
+    .has-more--left, .has-more--right {
+      transition: 100ms opacity;
+      opacity: 1;
+
+      &.is-invisible {
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+
+    .has-more--right:after {
       content: "";
       display: block;
       height: 120%;
@@ -89,6 +99,65 @@
         margin-top: -6.5%;
         right: -3rem;
         box-shadow: -8px 0px 40px -2px rgba(0, 0, 0, 0.75);
+      }
+    }
+
+    .has-more--left:before {
+      @media (min-width: $min-480) {
+        content: "";
+        display: block;
+        height: 150%;
+        position: absolute;
+        left: -4rem;
+        top: -25%;
+        background: #fff;
+        z-index: 10;
+        width: 12%;
+      }
+
+      @media (min-width: $min-840) {
+        left: 0;
+      }
+
+      @media (min-width: $min-960) {
+        width: 2.5rem;
+      }
+    }
+
+    .has-more--left:after {
+      content: "";
+      display: block;
+      height: 120%;
+      width: 4rem;
+      margin-top: -16%;
+      border-radius: 50%;
+      box-shadow: 8px 0px 45px 2px rgba(0, 0, 0, 0.75);
+      position: absolute;
+      left: -4rem;
+      top: 0;
+
+      @media (min-width: $min-480) {
+        height: 112%;
+        width: 12%;
+        left: -9.2%;
+        margin-top: -7.5%;
+      }
+
+      @media (min-width: $min-600) {
+        left: -6.8%;
+        box-shadow: 8px 0px 45px 8px rgba(0, 0, 0, 0.75);
+      }
+
+      @media (min-width: $min-840) {
+        width: 4.5rem;
+        left: 5rem;
+      }
+
+      @media (min-width: $min-960) {
+        height: 130%;
+        margin-top: -6.5%;
+        left: -3rem;
+        box-shadow: 8px 0px 40px 2px rgba(0, 0, 0, 0.75);
       }
     }
   }
@@ -148,6 +217,8 @@
     border: none;
     outline: none;
     background: #fff;
+    opacity: 1;
+    transition: 100ms opacity;
 
     @media (min-width: $min-480) {
       right: 2%;
@@ -173,6 +244,10 @@
       font-size: 1.3rem;
     }
 
+    &.is-invisible {
+      opacity: 0;
+      pointer-events: none;
+    }
   }
 }
 
