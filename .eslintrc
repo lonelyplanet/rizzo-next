@@ -2,7 +2,8 @@
   "parser": "babel-eslint",
   "globals": {
     "$": true,
-    "Modernizr": true
+    "Modernizr": true,
+    "ENV_PROD": true
   },
   "env": {
     "browser": true,
@@ -18,7 +19,7 @@
     "no-var": [1],
     "no-unused-vars": [2],
     "react/jsx-uses-vars": 1,
-    "semi": [2, "always"],
+    "semi": [1, "always"],
     "no-use-before-define": [2],
     "no-undef": [2]
   },

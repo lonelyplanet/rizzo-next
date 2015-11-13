@@ -6,6 +6,29 @@ import each from "lodash/collection/each";
 import uniq from "lodash/array/uniq";
 import MapApi from "./map_api";
 
+const generatePlacements = () => {
+  let placement = {
+    divName: "sponsored",
+    networkId: 9807,
+    siteId: 316543,
+    adTypes: [ 43 ],
+    eventIds: [31, 32],
+    properties: {
+      "place": window.lp.place.name.toLowerCase()
+    }
+  };
+
+  const placements = [];
+
+  times(20, (i) => {
+    placements.push(assign({}, placement, {
+      divName: `sponsored${i + 1}`
+    }));
+  });
+
+  return placements;
+};
+
 let MapActions = {
 
   viewChange: (data) => {
@@ -96,29 +119,6 @@ let MapActions = {
     });
   }
 
-};
-
-const generatePlacements = () => {
-  let placement = {
-    divName: "sponsored",
-    networkId: 9807,
-    siteId: 316543,
-    adTypes: [ 43 ],
-    eventIds: [31, 32],
-    properties: {
-      "place": window.lp.place.name.toLowerCase()
-    }
-  };
-
-  const placements = [];
-
-  times(20, (i) => {
-    placements.push(assign({}, placement, {
-      divName: `sponsored${i + 1}`
-    }));
-  });
-
-  return placements;
 };
 
 export default MapActions;
