@@ -40,7 +40,7 @@
       }
       if(dir) {
         onTouchEnd.call(this);
-        console.log(dir);
+        
         $(this).trigger('swipe', dir).trigger('swipe' + dir);
       }
     }
