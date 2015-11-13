@@ -46,6 +46,9 @@ found at https://accounts.brightcove.com/en/terms-and-conditions/.
       </div>
     </div>
   </div>
+  {{#if is_continent}}
+    {{> "components/masthead/masthead_nav" }}
+  {{/if}}
 
   {{#if top_places}}
     {{> "components/top_places/top_places" }}

@@ -1,0 +1,42 @@
+@import "../../../sass/webpack_deps";
+
+.masthead_nav {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 100;
+  color: #fff;
+
+  &__container {
+    @include container();
+    border-top: .1rem solid rgba(255,255,255, .3);
+    height: 6rem;
+  }
+
+  &__link {
+    color: #fff;
+    font-size: 1.2rem;
+    line-height: 6rem;
+    text-transform: uppercase;
+
+    [class*="icon-chevron"] {
+      font-size: 6px;
+      vertical-align: 35%;
+    }
+
+  }
+
+  .left {
+    i {
+      margin-right: 1.6rem
+    }
+  }
+
+  .right {
+    float: right;
+
+    i {
+      margin-left: 1.6rem
+    }
+  }
+}
