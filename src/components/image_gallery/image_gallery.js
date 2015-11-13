@@ -15,16 +15,16 @@ export default class ImageGalleryComponent extends Component {
    * @return {jQuery} Returns the gallery element
    */
   get $pswp() {
-    if (this._$pwsp) {
+    if (this._$pswp) {
       return this._$pswp;
     }
 
     return this._$pswp = $(this.template({})).appendTo("body");
   }
-  initialize({ 
-    galleryImageSelector = ".stack__article__image-container" 
+  initialize({
+    galleryImageSelector = ".stack__article__image-container"
   } = {}) {
-    this.template = require("./image_gallery_modal.hbs");
+    this.template = require("./image_gallery.hbs");
 
     this.$images = this.$el.find(galleryImageSelector);
 
@@ -38,7 +38,7 @@ export default class ImageGalleryComponent extends Component {
     });
   }
   _parseThumbnailElements() {
-    if (this._items) { 
+    if (this._items) {
       return this._items;
     }
 
@@ -53,7 +53,7 @@ export default class ImageGalleryComponent extends Component {
           smallImage = $linkEl.find("img").attr("src").replace("http://www.lonelyplanet.com/travel-blog/tip-article/wordpress_uploads/", "");
 
       let item = {
-        src: `https://lonelyplanetwp.imgix.net/${largeImage}`,
+        src: `https://lonelyplanetwp.imgix.net${largeImage}`,
         el: $galleryImage[0],
         w: parseInt(size[0], 10),
         h: parseInt(size[1], 10)
@@ -85,7 +85,7 @@ export default class ImageGalleryComponent extends Component {
         index = this.$images.index(clickedListItem);
 
     if(index >= 0) {
-      this.openPhotoSwipe( index );
+      this.openPhotoSwipe(index);
     }
 
     return false;
@@ -97,7 +97,7 @@ export default class ImageGalleryComponent extends Component {
    */
   openPhotoSwipe(index = 0) {
     let items = this._parseThumbnailElements();
-    
+
     let options = {
       galleryUID: this.$el.attr("data-pswp-uid"),
       getThumbBoundsFn: function(index) {
@@ -112,5 +112,5 @@ export default class ImageGalleryComponent extends Component {
 
     this._gallery = new PhotoSwipe( this.$pswp[0], PhotoSwipeUI_Default, items, options );
     this._gallery.init();
-  };
+  }
 }
