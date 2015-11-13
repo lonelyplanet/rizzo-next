@@ -20,6 +20,13 @@
   }
 }
 
+.related-guidebook--article {
+  @include with-layout(static) {
+    margin-bottom: gutter-double();
+    margin-top: gutter-double();
+  }
+}
+
 .related-guidebook__image {
   align-self: flex-start;
   display: block;
