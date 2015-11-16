@@ -13,6 +13,7 @@ $hotels-max-width: 1170;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  position: relative;
 
   // Override segment() padding
   padding-top: ($gutter*2) - .6rem;
@@ -39,6 +40,21 @@ $hotels-max-width: 1170;
     select,
     tbody {
       color: $font-color;
+    }
+  }
+
+  &__button-container {
+    position: absolute;
+    left: calc(50% - (76px / 2));
+    bottom: 114px;
+  }
+
+  &__more {
+    @include more();
+    color: #fff;
+
+    &:hover {
+      color: #fff;
     }
   }
 }
