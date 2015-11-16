@@ -1,6 +1,6 @@
 <div class="article-pagination">
   {{#each article.related_articles }}
-    <a class="article-pagination__item" href="{{ this.slug }}">
+    <a class="article-pagination__item" href="/{{ this.slug }}">
       {{ this.title }}
     </a><!-- .article-pagination__item -->
   {{/each}}
