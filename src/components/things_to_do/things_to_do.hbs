@@ -1,19 +1,8 @@
-{{#with top_things_to_do}}
-{{#if cards}}
-<article class="ttd" data-lp-initial-cards="{{cards}}">
-  <h2 class="ttd__heading">{{title}}</h2>
+<article class="ttd">
+  <h2 class="ttd__heading">{{top_things_to_do.title}}</h2>
 
   <div class="js-ttd-list-container ttd__list">
     <ul class="js-ttd-list">
     </ul>
-
-    {{#if show_more}}
-      <button class="ttd__more js-ttd-more">
-        <i class="ttd__more__icon icon-chevron-right" aria-hidden="true"></i>
-      </button>
-    {{/if}}
   </div>
-
 </article>
-{{/if}}
-{{/with}}
