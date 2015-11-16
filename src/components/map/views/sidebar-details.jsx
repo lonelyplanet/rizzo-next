@@ -18,7 +18,7 @@ export default class SidebarDetailsView extends React.Component{
       let imgSrc = `http://images-resrc.staticlp.com/s=w470,pd1/o=85/${poi.geo.properties.image}`;
       image = <div className="details__image">
         <img src={imgSrc} ref="img" />
-      </div>
+      </div>;
     }
 
     return (
@@ -40,7 +40,7 @@ export default class SidebarDetailsView extends React.Component{
           </div>
         </div>
       </div>
-    )
+    );
   }
 
   closePOI(e) {

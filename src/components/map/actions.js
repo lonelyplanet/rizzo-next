@@ -110,11 +110,11 @@ let MapActions = {
         });
 
         if (set.items.length) {
-          Arkham.trigger("sponsor.fetched", set)
+          Arkham.trigger("sponsor.fetched", set);
         }
       },
       error: function() {
-        console.log("fail")
+        console.log("fail");
       }
     });
   }

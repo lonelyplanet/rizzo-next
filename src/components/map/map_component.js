@@ -2,7 +2,7 @@ import { Component } from "../../core/bane";
 import React from "react";
 import MainView from "./views/main.jsx";
 import MapActions from "./actions";
-import Arkham from "../../core/arkham"
+import Arkham from "../../core/arkham";
 import { createHistory } from "history";
 import $ from "jquery"; 
 import MapApi from "./map_api";

@@ -21,8 +21,8 @@ export default class TabView extends React.Component {
         iconAfter = "";
 
     if (this.props.showDropdown) {
-      classString += " experiences"
-      sidebarDropdown = <SidebarDropdown tabDropdownOpen={this.state.openDropdown}/>
+      classString += " experiences";
+      sidebarDropdown = <SidebarDropdown tabDropdownOpen={this.state.openDropdown}/>;
       iconAfter = "tab__icon icon--chevron-down icon--white";
     }
 

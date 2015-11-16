@@ -24,7 +24,7 @@ export default class Tabs extends Component {
   initialize() {
     this.events = {
       "click .tabs__links a": "activateTab"
-    }
+    };
 
     this.$links = this.$el.find(".tabs__links a");
     this.$tabs = this.$el.find(".tabs__content");

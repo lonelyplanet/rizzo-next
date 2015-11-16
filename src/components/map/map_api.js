@@ -13,4 +13,4 @@ export default {
       Arkham.trigger("place.errorfetching", error);
     });
   } 
-}
+};

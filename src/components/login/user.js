@@ -32,7 +32,7 @@ export default class User {
         return { 
           text: msg.text.replace(rClass, ""),
           read: msg["read?"]
-        }
+        };
       }) : null;
 
     obj.activity = obj.activity.length ? obj.activity : null;

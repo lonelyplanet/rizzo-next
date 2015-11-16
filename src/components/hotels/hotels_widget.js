@@ -24,7 +24,7 @@ class HotelsWidget extends Component {
       startDate: new Date(this.startDate),
       endDate: new Date(this.endDate),
       guests: parseInt(guests.val(), 10)
-    }
+    };
   }
   get startDate() {
     return this.$startDate.pickadate("picker").get();

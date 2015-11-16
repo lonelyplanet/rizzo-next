@@ -13,7 +13,7 @@ export default class PanelView extends React.Component {
       item.highlighted = i === this.props.highlightedPoi;
       return (
         <Item item={item}/>
-      )
+      );
     });
 
     return (
@@ -22,7 +22,7 @@ export default class PanelView extends React.Component {
           {items}
         </div>
       </div>
-    )
+    );
   }
 
 }

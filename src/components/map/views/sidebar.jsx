@@ -27,14 +27,14 @@ export default class SidebarView extends React.Component {
 
       return (
         <Tab sets={sets} showDropdown={showDropdown} name={set.title} active={isActive} i={i} type={set.type} />
-      )
+      );
     });
 
     if (location.description.length > 0) {
       tabCount++;
       let dropdownOpen = this.props.tabDropdownOpen,
           isActive = tabCount === 1 || tabCount === activeSetIndex ? true : false,
-          aboutTab = <Tab name="About" active={isActive} i={tabCount} customPanel="about" tabDropdownOpen={dropdownOpen}/>
+          aboutTab = <Tab name="About" active={isActive} i={tabCount} customPanel="about" tabDropdownOpen={dropdownOpen}/>;
       tabs.push(aboutTab);
     }
 

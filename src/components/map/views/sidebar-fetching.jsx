@@ -11,7 +11,7 @@ export default class SidebarFetchingView extends React.Component {
         crumbText =  breadcrumb || location.grandparent,
         placeText = this.props.place || location.title;
 
-    let backElement = crumbText ? <div className="location-subtitle" ><i className="icon icon-chevron-left" aria-hidden="true"></i>{crumbText}</div> : ""
+    let backElement = crumbText ? <div className="location-subtitle" ><i className="icon icon-chevron-left" aria-hidden="true"></i>{crumbText}</div> : "";
 
     return (
       <div className="sidebar fetching">
@@ -28,7 +28,7 @@ export default class SidebarFetchingView extends React.Component {
           <div className='spinner'></div>
         </div>
       </div>
-    )
+    );
   }
 
 }

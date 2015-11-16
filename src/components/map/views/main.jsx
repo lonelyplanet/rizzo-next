@@ -45,9 +45,9 @@ export default class MainView extends React.Component {
       sidebar = <SidebarFetching location={this.state.currentLocation} place={this.state.fetchingPlace} breadcrumb={this.state.placeParent} />;
     } else {
       if (this.state.isDetail) {
-        sidebar = <SidebarDetails poi={this.state.poi} />
+        sidebar = <SidebarDetails poi={this.state.poi} />;
       } else {
-        sidebar = <Sidebar location={this.state.currentLocation} sets={this.state.sets} highlightedPoi={ this.state.hoveredItem } activeSetIndex={this.state.activeSetIndex} customPanel={this.state.customPanel} tabDropdownOpen={this.state.tabDropdownOpen}/>
+        sidebar = <Sidebar location={this.state.currentLocation} sets={this.state.sets} highlightedPoi={ this.state.hoveredItem } activeSetIndex={this.state.activeSetIndex} customPanel={this.state.customPanel} tabDropdownOpen={this.state.tabDropdownOpen}/>;
       }
     }
 
@@ -67,7 +67,7 @@ export default class MainView extends React.Component {
 
   // TODO: Trigger an action here, try not to call dispatcher directly
   closeMap() {
-    MapActions.mapClose()
+    MapActions.mapClose();
   }
 
 }

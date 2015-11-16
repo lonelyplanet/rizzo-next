@@ -15,7 +15,7 @@ export default class MapView extends React.Component {
   render() {
     return (
       <div ref="map" className="map-container"></div>
-    )
+    );
   }
 
 }

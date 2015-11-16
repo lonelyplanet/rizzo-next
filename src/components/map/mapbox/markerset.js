@@ -71,7 +71,7 @@ class MarkerSet extends Component {
       let geo = this.pois[i].geo;
 
       if(geo.geometry.coordinates[0] === null || geo.geometry.coordinates[1] === null) {
-        continue
+        continue;
       } else {
         geo.properties.index = i;
         geojson.features.push(geo);
