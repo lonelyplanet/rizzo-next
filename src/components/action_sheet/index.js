@@ -43,7 +43,7 @@ class ActionSheetComponent extends Component {
         url = window.location.href,
         network = $el.data("network");
 
-    let tweet = urlencode(title) + " " + urlencode(url) + " via @lonelyplanet"
+    let tweet = `${urlencode(title)} ${urlencode(url)} via @lonelyplanet`;
 
     left = Math.round((winWidth / 2) - (width / 2));
     top = 0;
