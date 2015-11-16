@@ -1,5 +1,4 @@
 import Component from "../../core/component";
-import assign from "lodash/object/assign";
 import waitForTransition from "../../core/utils/waitForTransition";
 import publish from "../../core/decorators/publish";
 import $clamp from "clamp-js/clamp.js";
@@ -12,25 +11,30 @@ class ThingsToDo extends Component {
       numOfCards: 4
     };
 
-    let { cards } = this.getInitialState();
-
-    // Exit in case there were no experiences
-    if (!cards) {
-      return;
-    }
-
-    if (cards.length > 4) {
-      this.addNavigationButtons();
-    }
-
-    this.cards = cards;
-
     this.events = {
       "click .js-ttd-more": "loadMore",
       "click .js-ttd-less": "loadPrevious",
       "swiperight": "loadPrevious",
       "swipeleft": "loadMore"
     };
+
+    this.fetchCards().done(this.cardsFetched.bind(this));
+  }
+  fetchCards() {
+    return $.ajax({
+      url: `/api/${window.lp.place.slug}/experiences`
+    });
+  }
+  cardsFetched(cards) {
+    if (!cards.length) {
+      // TODO: jc this is... smelly
+      return $("#ttd").remove();
+    }
+    this.cards = cards;
+
+    if (cards.length > 4) {
+      this.addNavigationButtons();
+    }
 
     this.template = require("./thing_to_do_card.hbs");
     this.render(this.nextCards());
@@ -66,10 +70,13 @@ class ThingsToDo extends Component {
     }
 
     return this.cards.slice(this.currentIndex, this.currentIndex + this.options.numOfCards)
-      .map((card, i) => this.template(assign(card, {
+      .map((card, i) => {
+        Object.assign(card.card, {
           card_num: i + this.currentIndex + 1,
           order: i
-        })));
+        });
+        return this.template(card);
+      });
   }
 
   render(cards) {
@@ -167,6 +174,7 @@ class ThingsToDo extends Component {
       "direction": "forward"
     };
   }
+  @publish("ttd.loadmore");
   loadPrevious(e) {
     e.preventDefault();
     if (this.animating || this.currentIndex - 4 < 0) {
