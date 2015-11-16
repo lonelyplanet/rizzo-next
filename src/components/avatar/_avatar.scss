@@ -1,11 +1,40 @@
+@import "../../../sass/webpack_deps";
+
 .avatar {
   background-color: #fff;
   border-radius: 100%;
   display: inline-block;
   height: 4rem;
+  max-width: 4rem;
   position: relative;
   vertical-align: middle;
   width: 4rem;
+
+  &.is-author {
+    height: auto;
+    max-width: 4rem;
+    width: 12vw;
+  }
+
+  &.is-large {
+    @media (min-width: $min-720) {
+      max-width: none;
+      width: 8rem;
+    }
+  }
+
+  &.is-vertical {
+    margin-bottom: 1.3rem;
+
+    @media (min-width: $min-720) {
+      margin-bottom: 3rem;
+    }
+  }
+
+  &.is-horizontal {
+    float: left;
+    margin-right: 1.4rem;
+  }
 
   img {
     border-radius: 100%;

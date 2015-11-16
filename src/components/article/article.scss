@@ -1,0 +1,5 @@
+@import "../../../sass/webpack_deps";
+
+.article {
+  @include container-padded;
+}

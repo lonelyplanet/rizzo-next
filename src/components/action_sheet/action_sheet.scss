@@ -1,0 +1,127 @@
+$action-sheet: (
+  'background-color': #f0f0f0,
+  'button-size': 3rem,
+  'margin-left': .4rem,
+  'margin-top': .9rem
+);
+
+.action-sheet {
+  margin-left: -#{map-get($action-sheet, 'margin-left')};
+  margin-top: -#{map-get($action-sheet, 'margin-top')};
+}
+
+.action-sheet--left {
+  float: left;
+}
+
+.action-sheet--right {
+  float: right;
+}
+
+.action-sheet__item {
+  display: inline-block;
+  position: relative;
+}
+
+.action-sheet__control {
+  background-color: map-get($action-sheet, 'background-color');
+  border: 0;
+  border-radius: 100%;
+  color: #333;
+  cursor: pointer;
+  display: inline-block;
+  height: map-get($action-sheet, 'button-size');
+  line-height: 1;
+  margin-left: map-get($action-sheet, 'margin-left');
+  margin-top: map-get($action-sheet, 'margin-top');
+  outline: 0;
+  padding: 0;
+  position: relative;
+  width: map-get($action-sheet, 'button-size');
+  transition: background-color .4s linear;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: darken(map-get($action-sheet, 'background-color'), 3);
+  }
+
+  .svg-icon {
+    vertical-align: middle;
+  }
+}
+
+.action-sheet__menu {
+  overflow: hidden;
+  padding: 1.5rem;
+  pointer-events: auto;
+  position: relative;
+  z-index: 10;
+
+  &.is-open {
+    position: absolute;
+    left: (-10rem + 1.5rem);
+  }
+}
+
+.action-sheet__menu__inner {
+  background-color: #fff;
+  border-radius: .4rem;
+  box-shadow: 0 .1rem .2rem rgba(#000, .25), 0 0 .1rem rgba(#000, .35);
+  padding: .8rem 0;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .action-sheet__control {
+    background-color: #fff;
+    border-radius: 0;
+    display: block;
+    font-size: 1.3rem;
+    height: auto;
+    line-height: 1.4;
+    margin: 0;
+    padding: .4rem 1.5rem;
+    text-align: left;
+    white-space: nowrap;
+    width: auto;
+    width: 100%;
+
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: #fff;
+    }
+
+    .svg-icon {
+      margin-right: 1rem;
+      position: relative;
+      top: -.2rem;
+    }
+  }
+}
+
+.action-sheet__menu__arrow {
+  clip: rect(0 1.8rem 1.4rem -.4rem);
+  display: inline-block;
+  left: 50%;
+  margin-left: -.7rem;
+  position: absolute;
+  top: .1rem;
+
+  &:after {
+    background-color: #fff;
+    box-shadow: -.1rem -.1rem .1rem -.1rem rgba(#000, .44);
+    content: "";
+    display: block;
+    height: 1.4rem;
+    transform: rotate(45deg) translate(.6rem, .6rem);
+    width: 1.4rem;
+  }
+}
