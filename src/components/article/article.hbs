@@ -1,0 +1,139 @@
+<article class="article" itemscope itemtype="http://schema.org/Article"
+  data-slug="{{ article.slug }}"
+  data-next-slug="spain/barcelona/travel-tips-and-articles/a-perfect-weekend-in-barcelona">
+  <meta content="{{ article.title }}" itemprop="headline">
+  <meta content="{{ article.title }}" itemprop="alternativeHeadline">
+  <meta content="{{ article.post_date }}" itemprop="datePublished">
+
+  <header class="article-header is-narrow is-centered has-flexbox">
+    <h1 class="article-header__title is-xlarge">
+      {{ article.title }}
+    </h1>
+
+    <p class="article-header__title is-xsmall is-padded-bottom">
+      Tips &amp; articles
+    </p>
+  </header><!-- .article-header -->
+
+  <div class="author is-contained is-vertical">
+    {{#if article.author_details.url}}<a href="{{ article.author_details.url }}">{{/if}}
+      <img class="avatar is-author is-large is-vertical"
+        src="{{#if article.author_details.avatar_url}}{{ article.author_details.avatar_url }}{{else}}//assets.staticlp.com/profiles/users/placeholders/large.png{{/if}}"
+        alt="">
+
+      <div class="author-details">
+        {{#if article.author_details.name}}
+          <div class="author-name">
+            {{ article.author_details.name }}
+          </div><!-- .author-name -->
+        {{/if}}
+
+        {{#if article.author_details.title}}
+          <div class="author-title">
+            {{ article.author_details.title }}
+          </div><!-- .author-title -->
+        {{/if}}
+      </div><!-- .author-details -->
+    {{#if article.author_details.url}}</a>{{/if}}
+  </div><!-- .author -->
+
+  <div class="article-body is-narrow has-legacy-code" itemprop="articleBody" data-post-date="{{ article.post_date }}">
+    <div class="article-body__content">
+      {{{ article.content.head }}}
+    </div><!-- .article-body__content -->
+
+    {{#if article.guidebook}}
+      <div class="related-guidebook related-guidebook--article">
+        <img class="related-guidebook__image" src="{{ article.guidebook.image }}" alt="">
+
+        <div class="related-guidebook__container">
+          <h4 class="related-guidebook__title js-related-guidebook-title">
+            {{ article.guidebook.title }}
+          </h4>
+
+          {{#if article.guidebook.price }}
+            <p class="related-guidebook__heading">
+              {{ article.guidebook.price }}
+            </p>
+          {{/if}}
+
+          <p class="related-guidebook__content js-related-guidebook-content">
+            {{ article.guidebook.content }}
+          </p>
+
+          <a class="related-guidebook__link" href="{{ article.guidebook.slug }}">
+            Visit Shop
+            <i class="icon-chevron-right" aria-hidden="true"></i>
+          </a>
+        </div><!-- .related-guidebook__container -->
+      </div><!-- .related-guidebook -->
+    {{/if}}
+
+    <div class="article-body__content">
+      {{{ article.content.tail }}}
+    </div><!-- .article-body__content -->
+  </div><!-- .article-body -->
+
+  <footer class="article-footer is-narrow">
+    <div class="article-footer__top">
+      {{#if article.categories}}
+        <div class="category-list category-list--left category-list--constrained">
+          {{#each article.categories}}
+            <span class="category-list__item">{{ this }}</span>
+          {{/each}}
+        </div><!-- .category-list -->
+      {{/if}}
+
+      <div class="action-sheet action-sheet--right js-action-sheet">
+        <div class="action-sheet__item js-action-sheet-item">
+          <button class="action-sheet__control js-action-sheet-menu-control" title="Share this article on Twitter, Facebook, or email" aria-label="Share this article on Twitter, Facebook, or email" aria-owns="share-action-sheet">
+            <svg class="svg-icon svg-icon--dark" viewBox="0 0 13 16" width="13" height="16">
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lp-svg-share-13px"></use>
+            </svg>
+          </button>
+
+          <div class="action-sheet__menu" id="share-action-sheet" aria-hidden="true" hidden>
+            <div class="action-sheet__menu__inner">
+              <ul>
+                <li>
+                  <button class="action-sheet__control js-action-sheet-share-control" data-network="twitter">
+                    <svg class="svg-icon svg-icon--gray" viewBox="0 0 21 21" width="21" height="21">
+                      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lp-svg-twitter-21px"></use>
+                    </svg>
+                    <span>Share on Twitter</span>
+                  </button>
+                </li>
+                <li>
+                  <button class="action-sheet__control js-action-sheet-share-control" data-network="facebook">
+                    <svg class="svg-icon svg-icon--gray" viewBox="0 0 21 21" width="21" height="21">
+                      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lp-svg-facebook-21px"></use>
+                    </svg>
+                    <span>Share on Facebook</span>
+                  </button>
+                </li>
+                {{!-- <li>
+                  <button class="action-sheet__control js-action-sheet-share-control" data-network="email">
+                    <svg class="svg-icon svg-icon--gray" viewBox="0 0 21 21" width="21" height="21">
+                      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lp-svg-email-21px"></use>
+                    </svg>
+                    <span>Share by email</span>
+                  </button>
+                </li> --}}
+              </ul>
+            </div><!-- .action-sheet__menu__inner -->
+            <div class="action-sheet__menu__arrow"></div>
+          </div><!-- .action-sheet__menu -->
+        </div><!-- .action-sheet__item -->
+      </div><!-- .action-sheet -->
+    </div><!-- .article-footer__top -->
+
+    <div class="article-footer__bottom">
+      <div class="article-footer__author"></div>
+      <div class="article-footer__place"></div>
+    </div><!-- .article-footer__bottom -->
+  </footer><!-- .article-footer -->
+
+  {{!-- {{#if article.related_articles}}
+    {{{ widget "article_pagination" }}}
+  {{/if}} --}}
+</article><!-- .article -->
