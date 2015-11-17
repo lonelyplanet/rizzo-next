@@ -3,6 +3,7 @@ import waitForTransition from "../../core/utils/waitForTransition";
 import track from "../../core/decorators/track";
 import $clamp from "clamp-js/clamp.js";
 import rizzo from "../../rizzo";
+import publish from "../../core/decorators/publish";
 
 /**
  * Show a list of Top Experiences
@@ -189,7 +190,7 @@ class ThingsToDo extends Component {
    * Load more top things to do. Callback from click on load more button.
    * @param  {jQuery.Event} e The DOM event
    */
-  @track("topexperiences.loadmore")
+  @track("Top Experiences More")
   loadMore(e) {
     e.preventDefault();
     if (this.animating || this.currentIndex + 4 >= this.cards.length) {
@@ -201,12 +202,8 @@ class ThingsToDo extends Component {
     
     // Forward
     this.animate();
-
-    return {
-      "direction": "forward"
-    };
   }
-  @track("topexperiences.loadmore")
+  @track("Top Experiences Previous")
   loadPrevious(e) {
     e.preventDefault();
     if (this.animating || this.currentIndex - 4 < 0) {
@@ -218,10 +215,6 @@ class ThingsToDo extends Component {
 
     // Reverse
     this.animate(true);
-
-    return {
-      "direction": "reverse"
-    };
   }
   showMore() {
     this.$el.find(".has-more--right").removeClass("is-invisible");

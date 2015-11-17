@@ -35,7 +35,7 @@ class MapActions {
   viewChange(data) {
     Arkham.trigger("view.changed", data);
   }
-  @track("map.goto")
+  @track("Map goToPlace")
   gotoPlace({ placeTitle, place, breadcrumb, topic="" }) {
     let query = topic ? `?topic=${topic.toLowerCase()}` : "",
         url = `/${place}/map.json${query}`;

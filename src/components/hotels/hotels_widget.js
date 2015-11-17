@@ -57,7 +57,6 @@ class HotelsWidget extends Component {
     tmpDate.setDate(date.getDate() + 1);
     return tmpDate;
   }
-  @track("Change hotel dates")
   changeDate (endDate, startDate){
     let existingEndDate = new Date(endDate),
         newStartDate = new Date(startDate);
