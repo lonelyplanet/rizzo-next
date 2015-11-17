@@ -2,6 +2,7 @@ import Component from "../../core/component";
 import waitForTransition from "../../core/utils/waitForTransition";
 import publish from "../../core/decorators/publish";
 import $clamp from "clamp-js/clamp.js";
+import rizzo from "rizzo-next";
 
 class ThingsToDo extends Component {
   get title() {
@@ -21,17 +22,23 @@ class ThingsToDo extends Component {
       "swipeleft": "loadMore"
     };
 
-    this.fetchCards().done(this.cardsFetched.bind(this));
+    this.fetchCards().done(this.cardsFetched.bind(this)).fail((jqXHR) => {
+      rizzo.logger.error({ error: jqXHR.responseText });
+      return this.nukeIt();
+    });
   }
   fetchCards() {
     return $.ajax({
       url: `/api/${window.lp.place.slug}/experiences`
     });
   }
+  nukeIt() {
+    return $("#ttd").remove();
+  }
   cardsFetched(cards) {
     if (!cards.length) {
       // TODO: jc this is... smelly
-      return $("#ttd").remove();
+      return this.nukeIt();
     }
     this.$el.prepend($(`<h2 class='ttd__heading'>${this.title}</h2>`));
     this.cards = cards;
