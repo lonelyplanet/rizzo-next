@@ -2,4 +2,5 @@
 
 .article {
   @include container-padded;
+  position: relative;
 }
