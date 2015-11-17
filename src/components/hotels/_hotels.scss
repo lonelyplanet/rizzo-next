@@ -45,16 +45,29 @@ $hotels-max-width: 1170;
 
   &__button-container {
     position: absolute;
-    left: calc(50% - (76px / 2));
-    bottom: 114px;
+    left: calc(50% - (252px / 2));
+    bottom: 2.5rem;
+    color: #fff;
+    font-size: 1.2rem;
+
+    @media (min-width: $min-1080) {
+      bottom: 5rem;
+    }
   }
 
   &__more {
-    @include more();
     color: #fff;
 
-    &:hover {
-      color: #fff;
+    .icon-chevron-right {
+      &:before {
+        font-size: 5.5px;
+        position: relative;
+        bottom: .2px;
+      }
+
+      &:first-child {
+        margin-right: -5.5px;
+      }
     }
   }
 }
