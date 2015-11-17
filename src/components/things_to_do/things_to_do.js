@@ -2,7 +2,7 @@ import Component from "../../core/component";
 import waitForTransition from "../../core/utils/waitForTransition";
 import publish from "../../core/decorators/publish";
 import $clamp from "clamp-js/clamp.js";
-import rizzo from "rizzo-next";
+import rizzo from "../../rizzo";
 
 class ThingsToDo extends Component {
   get title() {
