@@ -1,0 +1,866 @@
+{
+  "coverage": "13.46%",
+  "expectCount": 490,
+  "actualCount": 66,
+  "files": {
+    "src/components/top_places/top_places_component.js": {
+      "expectCount": 11,
+      "actualCount": 0,
+      "undocumentLines": [
+        8,
+        7,
+        5,
+        50,
+        6,
+        47,
+        67,
+        14,
+        31,
+        23,
+        75
+      ]
+    },
+    "src/components/video/video_player.js": {
+      "expectCount": 10,
+      "actualCount": 0,
+      "undocumentLines": [
+        18,
+        4,
+        10,
+        5,
+        34,
+        27,
+        23,
+        6,
+        20,
+        46
+      ]
+    },
+    "src/core/component.js": {
+      "expectCount": 11,
+      "actualCount": 6,
+      "undocumentLines": [
+        170,
+        44,
+        43,
+        173,
+        55
+      ]
+    },
+    "src/components/search/search_component.js": {
+      "expectCount": 25,
+      "actualCount": 0,
+      "undocumentLines": [
+        70,
+        72,
+        74,
+        75,
+        73,
+        11,
+        210,
+        69,
+        13,
+        29,
+        37,
+        120,
+        50,
+        194,
+        177,
+        99,
+        47,
+        25,
+        17,
+        131,
+        62,
+        116,
+        223,
+        167,
+        78
+      ]
+    },
+    "src/components/search/search_item/index.js": {
+      "expectCount": 10,
+      "actualCount": 0,
+      "undocumentLines": [
+        11,
+        6,
+        8,
+        9,
+        32,
+        16,
+        38,
+        10,
+        24,
+        28
+      ]
+    },
+    "src/components/hotels/hotels_widget.js": {
+      "expectCount": 13,
+      "actualCount": 0,
+      "undocumentLines": [
+        49,
+        45,
+        19,
+        20,
+        60,
+        32,
+        36,
+        84,
+        35,
+        55,
+        77,
+        29,
+        70
+      ]
+    },
+    "src/components/overlay/index.js": {
+      "expectCount": 10,
+      "actualCount": 0,
+      "undocumentLines": [
+        10,
+        7,
+        13,
+        58,
+        9,
+        41,
+        79,
+        85,
+        31,
+        21
+      ]
+    },
+    "src/components/slideshow/slideshow.js": {
+      "expectCount": 28,
+      "actualCount": 1,
+      "undocumentLines": [
+        25,
+        272,
+        72,
+        50,
+        52,
+        150,
+        255,
+        245,
+        166,
+        139,
+        128,
+        100,
+        47,
+        205,
+        9,
+        120,
+        271,
+        48,
+        13,
+        186,
+        198,
+        265,
+        17,
+        21,
+        118,
+        43,
+        285
+      ]
+    },
+    "src/components/image_gallery/image_gallery.js": {
+      "expectCount": 8,
+      "actualCount": 4,
+      "undocumentLines": [
+        29,
+        31,
+        24,
+        27
+      ]
+    },
+    "src/components/header/header_component.js": {
+      "expectCount": 12,
+      "actualCount": 3,
+      "undocumentLines": [
+        28,
+        27,
+        21,
+        65,
+        15,
+        17,
+        60,
+        54,
+        16
+      ]
+    },
+    "src/components/tabs/tabs_component.js": {
+      "expectCount": 9,
+      "actualCount": 0,
+      "undocumentLines": [
+        29,
+        30,
+        6,
+        39,
+        10,
+        7,
+        25,
+        24,
+        35
+      ]
+    },
+    "src/components/navigation/navigation_component.js": {
+      "expectCount": 17,
+      "actualCount": 0,
+      "undocumentLines": [
+        29,
+        15,
+        94,
+        125,
+        89,
+        17,
+        28,
+        178,
+        22,
+        20,
+        168,
+        107,
+        81,
+        19,
+        99,
+        173,
+        145
+      ]
+    },
+    "src/components/masthead/masthead_component.js": {
+      "expectCount": 14,
+      "actualCount": 3,
+      "undocumentLines": [
+        11,
+        16,
+        15,
+        67,
+        71,
+        20,
+        57,
+        76,
+        21,
+        83,
+        79
+      ]
+    },
+    "src/components/map/views/about-panel.jsx": {
+      "expectCount": 4,
+      "actualCount": 0,
+      "undocumentLines": [
+        5,
+        6,
+        19,
+        8
+      ]
+    },
+    "src/components/action_sheet/index.js": {
+      "expectCount": 7,
+      "actualCount": 0,
+      "undocumentLines": [
+        6,
+        82,
+        16,
+        32,
+        10,
+        7,
+        8
+      ]
+    },
+    "src/components/map/views/alert.jsx": {
+      "expectCount": 2,
+      "actualCount": 1,
+      "undocumentLines": [
+        8
+      ]
+    },
+    "src/core/arkham.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        4
+      ]
+    },
+    "src/components/article_body/index.js": {
+      "expectCount": 7,
+      "actualCount": 4,
+      "undocumentLines": [
+        15,
+        12,
+        11
+      ]
+    },
+    "src/components/articles/index.js": {
+      "expectCount": 12,
+      "actualCount": 0,
+      "undocumentLines": [
+        8,
+        10,
+        94,
+        14,
+        9,
+        32,
+        11,
+        15,
+        16,
+        17,
+        13,
+        29
+      ]
+    },
+    "src/components/video/brightcove.js": {
+      "expectCount": 22,
+      "actualCount": 6,
+      "undocumentLines": [
+        7,
+        156,
+        128,
+        81,
+        14,
+        120,
+        139,
+        136,
+        45,
+        77,
+        125,
+        122,
+        8,
+        30,
+        99,
+        80
+      ]
+    },
+    "src/core/component_registry.js": {
+      "expectCount": 7,
+      "actualCount": 5,
+      "undocumentLines": [
+        12,
+        13
+      ]
+    },
+    "src/core/cookie_util.js": {
+      "expectCount": 5,
+      "actualCount": 3,
+      "undocumentLines": [
+        7,
+        8
+      ]
+    },
+    "src/core/mixins/events.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        51
+      ]
+    },
+    "src/components/footer/footer_component.js": {
+      "expectCount": 4,
+      "actualCount": 0,
+      "undocumentLines": [
+        4,
+        20,
+        5,
+        9
+      ]
+    },
+    "src/components/map/interactive-map.js": {
+      "expectCount": 8,
+      "actualCount": 1,
+      "undocumentLines": [
+        36,
+        52,
+        13,
+        76,
+        32,
+        28,
+        58
+      ]
+    },
+    "src/components/map/views/item.jsx": {
+      "expectCount": 4,
+      "actualCount": 1,
+      "undocumentLines": [
+        59,
+        69,
+        9
+      ]
+    },
+    "src/core/logger.js": {
+      "expectCount": 2,
+      "actualCount": 1,
+      "undocumentLines": [
+        8
+      ]
+    },
+    "src/components/login/login_manager.js": {
+      "expectCount": 15,
+      "actualCount": 6,
+      "undocumentLines": [
+        5,
+        6,
+        93,
+        8,
+        55,
+        7,
+        90,
+        86,
+        31
+      ]
+    },
+    "src/components/map/views/main.jsx": {
+      "expectCount": 7,
+      "actualCount": 1,
+      "undocumentLines": [
+        69,
+        24,
+        28,
+        18,
+        36,
+        21
+      ]
+    },
+    "src/components/map/api.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "src/components/map/actions.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        32
+      ]
+    },
+    "src/components/map/map_component.js": {
+      "expectCount": 8,
+      "actualCount": 0,
+      "undocumentLines": [
+        12,
+        53,
+        42,
+        14,
+        38,
+        69,
+        61,
+        27
+      ]
+    },
+    "src/components/map/mapbox/index.js": {
+      "expectCount": 11,
+      "actualCount": 0,
+      "undocumentLines": [
+        10,
+        27,
+        11,
+        23,
+        15,
+        12,
+        20,
+        46,
+        28,
+        36,
+        40
+      ]
+    },
+    "src/components/map/state.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        32
+      ]
+    },
+    "src/components/map/views/map.jsx": {
+      "expectCount": 4,
+      "actualCount": 1,
+      "undocumentLines": [
+        9,
+        10,
+        15
+      ]
+    },
+    "src/components/map/mapbox/markerset.js": {
+      "expectCount": 10,
+      "actualCount": 0,
+      "undocumentLines": [
+        12,
+        144,
+        15,
+        14,
+        22,
+        35,
+        21,
+        184,
+        20,
+        145
+      ]
+    },
+    "src/core/mobile_util.js": {
+      "expectCount": 4,
+      "actualCount": 1,
+      "undocumentLines": [
+        1,
+        2,
+        11
+      ]
+    },
+    "src/components/navigation/navigation_actions.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "src/components/navigation/navigation_state.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        25
+      ]
+    },
+    "src/components/notification/notification.js": {
+      "expectCount": 8,
+      "actualCount": 0,
+      "undocumentLines": [
+        4,
+        8,
+        6,
+        5,
+        22,
+        12,
+        7,
+        9
+      ]
+    },
+    "src/components/map/views/panel.jsx": {
+      "expectCount": 2,
+      "actualCount": 1,
+      "undocumentLines": [
+        9
+      ]
+    },
+    "src/core/perf_monitor.js": {
+      "expectCount": 6,
+      "actualCount": 3,
+      "undocumentLines": [
+        16,
+        13,
+        10
+      ]
+    },
+    "src/components/map/views/pin.jsx": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        4,
+        6
+      ]
+    },
+    "src/components/related_guidebook/index.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        8,
+        9,
+        29
+      ]
+    },
+    "src/core/rizzo.js": {
+      "expectCount": 8,
+      "actualCount": 3,
+      "undocumentLines": [
+        8,
+        12,
+        10,
+        11,
+        9
+      ]
+    },
+    "src/components/search/search_actions.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        4
+      ]
+    },
+    "src/components/search/search_api.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        4
+      ]
+    },
+    "src/components/search/search_server_actions.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "src/components/search/search_state.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        13
+      ]
+    },
+    "src/core/shop_cookie_util.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        4,
+        11
+      ]
+    },
+    "src/components/map/views/sidebar-details.jsx": {
+      "expectCount": 4,
+      "actualCount": 0,
+      "undocumentLines": [
+        5,
+        46,
+        6,
+        11
+      ]
+    },
+    "src/components/map/views/sidebar-dropdown.jsx": {
+      "expectCount": 6,
+      "actualCount": 0,
+      "undocumentLines": [
+        6,
+        18,
+        13,
+        7,
+        29,
+        10
+      ]
+    },
+    "src/components/map/views/sidebar-fetching.jsx": {
+      "expectCount": 2,
+      "actualCount": 1,
+      "undocumentLines": [
+        8
+      ]
+    },
+    "src/components/map/views/sidebar.jsx": {
+      "expectCount": 3,
+      "actualCount": 1,
+      "undocumentLines": [
+        74,
+        12
+      ]
+    },
+    "src/components/slideshow/slide_component.js": {
+      "expectCount": 12,
+      "actualCount": 0,
+      "undocumentLines": [
+        4,
+        35,
+        76,
+        6,
+        22,
+        26,
+        27,
+        47,
+        28,
+        18,
+        68,
+        82
+      ]
+    },
+    "src/components/stacks/stack_component.js": {
+      "expectCount": 8,
+      "actualCount": 0,
+      "undocumentLines": [
+        8,
+        12,
+        26,
+        9,
+        10,
+        21,
+        31,
+        16
+      ]
+    },
+    "src/components/stacks/stack_actions.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "src/components/stacks/stack_state.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        12
+      ]
+    },
+    "src/components/sub_nav/index.js": {
+      "expectCount": 6,
+      "actualCount": 1,
+      "undocumentLines": [
+        7,
+        121,
+        13,
+        8,
+        130
+      ]
+    },
+    "src/components/map/views/tab.jsx": {
+      "expectCount": 9,
+      "actualCount": 1,
+      "undocumentLines": [
+        11,
+        55,
+        58,
+        16,
+        47,
+        50,
+        13,
+        38
+      ]
+    },
+    "src/components/things_to_do/things_to_do.js": {
+      "expectCount": 30,
+      "actualCount": 4,
+      "undocumentLines": [
+        7,
+        70,
+        150,
+        162,
+        53,
+        48,
+        12,
+        18,
+        38,
+        30,
+        235,
+        239,
+        253,
+        11,
+        116,
+        207,
+        138,
+        44,
+        14,
+        110,
+        223,
+        231,
+        227,
+        65,
+        289,
+        8
+      ]
+    },
+    "src/components/tooltip/tooltip.js": {
+      "expectCount": 8,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        5,
+        4,
+        13,
+        10,
+        21,
+        19,
+        35
+      ]
+    },
+    "src/components/tours/index.js": {
+      "expectCount": 8,
+      "actualCount": 0,
+      "undocumentLines": [
+        6,
+        10,
+        9,
+        12,
+        7,
+        11,
+        13,
+        48
+      ]
+    },
+    "src/components/usabilla/index.js": {
+      "expectCount": 5,
+      "actualCount": 0,
+      "undocumentLines": [
+        5,
+        6,
+        21,
+        17,
+        31
+      ]
+    },
+    "src/components/login/user.js": {
+      "expectCount": 11,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        21,
+        19,
+        4,
+        15,
+        17,
+        14,
+        20,
+        18,
+        23,
+        16
+      ]
+    },
+    "src/components/video/index.js": {
+      "expectCount": 4,
+      "actualCount": 0,
+      "undocumentLines": [
+        8,
+        9,
+        15,
+        34
+      ]
+    },
+    "src/core/decorators/channel.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/core/utils/getScrollbarWidth.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        1
+      ]
+    },
+    "src/core/utils/highlight.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        28
+      ]
+    },
+    "src/core/utils/perf.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        7
+      ]
+    },
+    "src/core/decorators/publish.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/rizzo.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        8
+      ]
+    },
+    "src/core/decorators/subscribe.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    }
+  }
+}

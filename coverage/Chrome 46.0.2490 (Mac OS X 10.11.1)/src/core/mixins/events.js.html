@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/core/mixins/events.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">all files</a> / <a href="index.html">src/core/mixins/</a> events.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">44.44% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>48/108</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">33.33% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>27/81</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">60% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>6/10</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">51.19% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>43/84</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">"use strict";
+&nbsp;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var each = require("lodash/collection/each"),
+    _once = require("lodash/function/once"),
+    keys = require("lodash/object/keys"),
+    isEmpty = require("lodash/lang/isEmpty"),
+    uniqueId = require("lodash/utility/uniqueId"),
+    slice = Array.prototype.slice;
+&nbsp;
+// Regular expression used to split event strings.
+var eventSplitter = /\s+/;
+&nbsp;
+// Implement fancy features of the Events API such as multiple event
+// names `"change blur"` and jQuery-style event maps `{change: action}`
+// in terms of the existing API.
+function eventsApi(obj, action, name, rest) {
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (!name) <span class="cstat-no" title="statement not covered" >return true;</span>
+&nbsp;
+  // Handle event maps.
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (typeof name === "object") {
+<span class="cstat-no" title="statement not covered" >    for (var key in name) {</span>
+<span class="cstat-no" title="statement not covered" >      obj[action].apply(obj, [key, name[key]].concat(rest));</span>
+    }
+<span class="cstat-no" title="statement not covered" >    return false;</span>
+  }
+&nbsp;
+  // Handle space separated event names.
+  if (eventSplitter.test(name)) {
+    var names = name.split(eventSplitter);
+    for (var i = 0, l = names.length; i &lt; l; i++) {
+      obj[action].apply(obj, [names[i]].concat(rest));
+    }
+    return false;
+  }
+&nbsp;
+  return true;
+}
+&nbsp;
+// A difficult-to-believe, but optimized internal dispatch function for
+// triggering events. Tries to keep the usual cases speedy (most internal
+// Backbone events have 3 arguments).
+function triggerEvents(events, args) {
+  var ev = undefined,
+      i = -1,
+      l = events.length,
+      a1 = args[0],
+      a2 = args[1],
+      a3 = args[2];
+  switch (args.length) {
+    case 0:
+      while (++i &lt; l) (ev = events[i]).callback.call(ev.ctx);return;
+<span class="branch-1 cbranch-no" title="branch not covered" >    case 1:</span>
+<span class="cstat-no" title="statement not covered" >      while (++i &lt; l) <span class="cstat-no" title="statement not covered" >(ev = events[i]).callback.call(ev.ctx, a1);<span class="cstat-no" title="statement not covered" >r</span></span>eturn;</span>
+<span class="branch-2 cbranch-no" title="branch not covered" >    case 2:</span>
+<span class="cstat-no" title="statement not covered" >      while (++i &lt; l) <span class="cstat-no" title="statement not covered" >(ev = events[i]).callback.call(ev.ctx, a1, a2);<span class="cstat-no" title="statement not covered" >r</span></span>eturn;</span>
+<span class="branch-3 cbranch-no" title="branch not covered" >    case 3:</span>
+<span class="cstat-no" title="statement not covered" >      while (++i &lt; l) <span class="cstat-no" title="statement not covered" >(ev = events[i]).callback.call(ev.ctx, a1, a2, a3);<span class="cstat-no" title="statement not covered" >r</span></span>eturn;</span>
+<span class="branch-4 cbranch-no" title="branch not covered" >    default:</span>
+<span class="cstat-no" title="statement not covered" >      while (++i &lt; l) <span class="cstat-no" title="statement not covered" >(ev = events[i]).callback.apply(ev.ctx, args);<span class="cstat-no" title="statement not covered" >r</span></span>eturn;</span>
+  }
+}
+&nbsp;
+var Events = {
+  // Bind an event to a `callback` function. Passing `"all"` will bind
+  // the callback to all events fired.
+  on: function on(name, callback, context) {
+    if (!eventsApi(this, "on", name, [callback, context]) || !callback) return this;
+    this._events || (this._events = {});
+    var events = this._events[name] || (this._events[name] = []);
+    events.push({ callback: callback, context: context, ctx: context || this });
+    return this;
+  },
+&nbsp;
+  // Bind an event to only be triggered a single time. After the first time
+  // the callback is invoked, it will be removed.
+  once: <span class="fstat-no" title="function not covered" >function once(name, callback, context) {</span>
+<span class="cstat-no" title="statement not covered" >    if (!eventsApi(this, "once", name, [callback, context]) || !callback) <span class="cstat-no" title="statement not covered" >return this;</span></span>
+<span class="cstat-no" title="statement not covered" >    var self = this;</span>
+<span class="cstat-no" title="statement not covered" >    var onced = _once(<span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >      self.off(name, _once);</span>
+<span class="cstat-no" title="statement not covered" >      callback.apply(this, arguments);</span>
+    });
+<span class="cstat-no" title="statement not covered" >    onced._callback = callback;</span>
+<span class="cstat-no" title="statement not covered" >    return this.on(name, onced, context);</span>
+  },
+&nbsp;
+  // Remove one or many callbacks. If `context` is null, removes all
+  // callbacks with that function. If `callback` is null, removes all
+  // callbacks for the event. If `name` is null, removes all bound
+  // callbacks for all events.
+  off: <span class="fstat-no" title="function not covered" >function off(name, callback, context) {</span>
+<span class="cstat-no" title="statement not covered" >    var retain = undefined,</span>
+        ev = undefined,
+        events = undefined,
+        names = undefined,
+        i = undefined,
+        l = undefined,
+        j = undefined,
+        k = undefined;
+<span class="cstat-no" title="statement not covered" >    if (!this._events || !eventsApi(this, "off", name, [callback, context])) <span class="cstat-no" title="statement not covered" >return this;</span></span>
+<span class="cstat-no" title="statement not covered" >    if (!name &amp;&amp; !callback &amp;&amp; !context) {</span>
+<span class="cstat-no" title="statement not covered" >      this._events = void 0;</span>
+<span class="cstat-no" title="statement not covered" >      return this;</span>
+    }
+<span class="cstat-no" title="statement not covered" >    names = name ? [name] : keys(this._events);</span>
+<span class="cstat-no" title="statement not covered" >    for (i = 0, l = names.length; i &lt; l; i++) {</span>
+<span class="cstat-no" title="statement not covered" >      name = names[i];</span>
+<span class="cstat-no" title="statement not covered" >      if (events = this._events[name]) {</span>
+<span class="cstat-no" title="statement not covered" >        this._events[name] = retain = [];</span>
+<span class="cstat-no" title="statement not covered" >        if (callback || context) {</span>
+<span class="cstat-no" title="statement not covered" >          for (j = 0, k = events.length; j &lt; k; j++) {</span>
+<span class="cstat-no" title="statement not covered" >            ev = events[j];</span>
+<span class="cstat-no" title="statement not covered" >            if (callback &amp;&amp; callback !== ev.callback &amp;&amp; callback !== ev.callback._callback || context &amp;&amp; context !== ev.context) {</span>
+<span class="cstat-no" title="statement not covered" >              retain.push(ev);</span>
+            }
+          }
+        }
+<span class="cstat-no" title="statement not covered" >        if (!retain.length) <span class="cstat-no" title="statement not covered" >delete this._events[name];</span></span>
+      }
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return this;</span>
+  },
+&nbsp;
+  // Trigger one or many events, firing all bound callbacks. Callbacks are
+  // passed the same arguments as `trigger` is, apart from the event name
+  // (unless you're listening on `"all"`, which will cause your callback to
+  // receive the true name of the event as the first argument).
+  trigger: function trigger(name) {
+    if (!this._events) return this;
+    var args = slice.call(arguments, 1);
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (!eventsApi(this, "trigger", name, args)) <span class="cstat-no" title="statement not covered" >return this;</span>
+    var events = this._events[name];
+    var allEvents = this._events.all;
+    if (events) triggerEvents(events, args);
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (allEvents) <span class="cstat-no" title="statement not covered" >triggerEvents(allEvents, arguments);</span>
+    return this;
+  },
+&nbsp;
+  // Tell this object to stop listening to either specific events ... or
+  // to every object it's currently listening to.
+  stopListening: <span class="fstat-no" title="function not covered" >function stopListening(obj, name, callback) {</span>
+<span class="cstat-no" title="statement not covered" >    var listeningTo = this._listeningTo;</span>
+<span class="cstat-no" title="statement not covered" >    if (!listeningTo) <span class="cstat-no" title="statement not covered" >return this;</span></span>
+<span class="cstat-no" title="statement not covered" >    var remove = !name &amp;&amp; !callback;</span>
+<span class="cstat-no" title="statement not covered" >    if (!callback &amp;&amp; typeof name === "object") <span class="cstat-no" title="statement not covered" >callback = this;</span></span>
+<span class="cstat-no" title="statement not covered" >    if (obj) <span class="cstat-no" title="statement not covered" >(listeningTo = {})[obj._listenId] = obj;</span></span>
+<span class="cstat-no" title="statement not covered" >    for (var id in listeningTo) {</span>
+<span class="cstat-no" title="statement not covered" >      obj = listeningTo[id];</span>
+<span class="cstat-no" title="statement not covered" >      obj.off(name, callback, this);</span>
+<span class="cstat-no" title="statement not covered" >      if (remove || isEmpty(obj._events)) <span class="cstat-no" title="statement not covered" >delete this._listeningTo[id];</span></span>
+    }
+<span class="cstat-no" title="statement not covered" >    return this;</span>
+  }
+};
+&nbsp;
+var listenMethods = { listenTo: "on", listenToOnce: "once" };
+&nbsp;
+// Inversion-of-control versions of `on` and `once`. Tell *this* object to
+// listen to an event in another object ... keeping track of what it's
+// listening to.
+each(listenMethods, function (implementation, method) {
+  Events[method] = function (obj, name, callback) {
+    var listeningTo = this._listeningTo || (this._listeningTo = {});
+    var id = obj._listenId || (obj._listenId = uniqueId("l"));
+    listeningTo[id] = obj;
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (!callback &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >typeof name === "object")</span> <span class="cstat-no" title="statement not covered" >callback = this;</span>
+    obj[implementation](name, callback, this);
+    return this;
+  };
+});
+&nbsp;
+// Aliases for backwards compatibility.
+Events.bind = Events.on;
+Events.unbind = Events.off;
+&nbsp;
+exports["default"] = Events;
+module.exports = exports["default"];
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Nov 17 2015 16:45:17 GMT-0600 (CST)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

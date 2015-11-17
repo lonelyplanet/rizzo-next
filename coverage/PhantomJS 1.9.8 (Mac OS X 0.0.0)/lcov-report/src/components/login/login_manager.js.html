@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/components/login/login_manager.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">all files</a> / <a href="index.html">src/components/login/</a> login_manager.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">84.78% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>39/46</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">80% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>16/20</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">71.43% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>10/14</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">84.78% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>39/46</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">module.exports = function inject(injections) {
+var module = {exports: {}};
+var exports = module.exports;
+"use strict";
+&nbsp;
+var _createDecoratedClass = (injections["babel-runtime/helpers/create-decorated-class"] || require("babel-runtime/helpers/create-decorated-class"))["default"];
+&nbsp;
+var _classCallCheck = (injections["babel-runtime/helpers/class-call-check"] || require("babel-runtime/helpers/class-call-check"))["default"];
+&nbsp;
+var _interopRequireDefault = (injections["babel-runtime/helpers/interop-require-default"] || require("babel-runtime/helpers/interop-require-default"))["default"];
+&nbsp;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+&nbsp;
+var _jquery = (injections["jquery"] || <span class="branch-1 cbranch-no" title="branch not covered" >require("jquery"))</span>;
+&nbsp;
+var _jquery2 = _interopRequireDefault(_jquery);
+&nbsp;
+var _coreDecoratorsPublish = (injections["../../core/decorators/publish"] || require("../../core/decorators/publish"));
+&nbsp;
+var _coreDecoratorsPublish2 = _interopRequireDefault(_coreDecoratorsPublish);
+&nbsp;
+var _user = (injections["./user"] || require("./user"));
+&nbsp;
+var _user2 = _interopRequireDefault(_user);
+&nbsp;
+var LoginManager = (function () {
+  function LoginManager() {
+    _classCallCheck(this, LoginManager);
+&nbsp;
+    this.statusUrl = "https://auth.lonelyplanet.com/users/status.json";
+    this.feedUrl = "https://www.lonelyplanet.com/thorntree/users/feed";
+&nbsp;
+    this.checkStatus();
+  }
+&nbsp;
+  /**
+   * Check to see if the user is currently logged in.
+   * @return {jQuery.Deferred}
+   */
+&nbsp;
+  _createDecoratedClass(LoginManager, [{
+    key: "checkStatus",
+    value: function checkStatus() {
+      return _jquery2["default"].ajax({
+        url: this.statusUrl,
+        dataType: "jsonp",
+        success: this.statusFetched.bind(this),
+        error: this.error.bind(this)
+      });
+    }
+&nbsp;
+    /**
+     * Callback from checking the user's login status.
+     * If the user is not logged in, it will publish a user with a null id.
+     * Will check for user notifications if the user is logged in.
+     * @param  {Object} user User login information
+     */
+  }, {
+    key: "statusFetched",
+    value: function statusFetched(user) {
+      var _this = this;
+&nbsp;
+      this.user = user.username ? <span class="branch-0 cbranch-no" title="branch not covered" >new _user2["default"](user) </span>: new _user2["default"]();
+&nbsp;
+      if (!user.id) {
+        return this.updateStatus();
+      }
+&nbsp;
+      this.getNotifications().done(<span class="fstat-no" title="function not covered" >function (data) {</span>
+<span class="cstat-no" title="statement not covered" >        _this.notificationsFetched(data);</span>
+<span class="cstat-no" title="statement not covered" >        _this.updateStatus();</span>
+<span class="cstat-no" title="statement not covered" >        _this.pollForUpdates();</span>
+      });
+    }
+&nbsp;
+    /**
+     * Update the user's notifications with data from Luna
+     * @param  {Object} data The new data
+     */
+  }, {
+    key: "notificationsFetched",
+    value: function notificationsFetched(data) {
+      this.user.activities = data.activities;
+      this.user.messages = data.messages;
+    }
+&nbsp;
+    /**
+     * Set up an interval to check for Luna notification updates.
+     */
+  }, {
+    key: "pollForUpdates",
+    value: <span class="fstat-no" title="function not covered" >function pollForUpdates() {</span>
+<span class="cstat-no" title="statement not covered" >      var _this2 = this;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      this.pollInterval = setInterval(<span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >        _this2.getNotifications().done(_this2.checkNotifications.bind(_this2));</span>
+      }, 15000);
+    }
+&nbsp;
+    /**
+     * Retrieve Thorntree notifications
+     * @return {jQuery.Deferred} A jQuery promise
+     */
+  }, {
+    key: "getNotifications",
+    value: function getNotifications() {
+      return _jquery2["default"].ajax({
+        url: this.feedUrl,
+        dataType: "jsonp"
+      });
+    }
+&nbsp;
+    /**
+     * Check to see if there are new notications from thorntree.
+     * If there are, it will update the user's messages and activity.
+     * @param  {Object} data Notification data from thorntree
+     */
+  }, {
+    key: "checkNotifications",
+    value: function checkNotifications(data) {
+      // Only update if things have changed
+      <span class="missing-if-branch" title="else path not taken" >E</span>if (JSON.stringify(data.messages) !== JSON.stringify(this.user.messages) || <span class="branch-1 cbranch-no" title="branch not covered" >JSON.stringify(data.activities) !== JSON.stringify(this.user.activities))</span> {
+        this.notificationsFetched(data);
+        this.updateNotifications();
+      }
+    }
+  }, {
+    key: "updateStatus",
+    decorators: [(0, _coreDecoratorsPublish2["default"])("user.status.update")],
+    value: function updateStatus() {
+      return this.user.toJSON();
+    }
+  }, {
+    key: "updateNotifications",
+    decorators: [(0, _coreDecoratorsPublish2["default"])("user.notifications.update")],
+    value: function updateNotifications() {
+      return this.user.toJSON();
+    }
+  }, {
+    key: "error",
+    value: <span class="fstat-no" title="function not covered" >function error() {</span>
+<span class="cstat-no" title="statement not covered" >      throw "Error retrieving luna login information";</span>
+    }
+  }]);
+&nbsp;
+  return LoginManager;
+})();
+&nbsp;
+exports["default"] = LoginManager;
+module.exports = exports["default"];
+return module.exports;
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Nov 17 2015 16:48:38 GMT-0600 (CST)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

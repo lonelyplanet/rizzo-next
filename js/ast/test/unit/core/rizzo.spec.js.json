@@ -1,0 +1,471 @@
+{
+  "type": "Program",
+  "start": 0,
+  "end": 146,
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 8,
+      "column": 0
+    }
+  },
+  "sourceType": "module",
+  "body": [
+    {
+      "type": "ImportDeclaration",
+      "start": 0,
+      "end": 44,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 44
+        }
+      },
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "start": 7,
+          "end": 12,
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 7
+            },
+            "end": {
+              "line": 1,
+              "column": 12
+            }
+          },
+          "local": {
+            "type": "Identifier",
+            "start": 7,
+            "end": 12,
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 7
+              },
+              "end": {
+                "line": 1,
+                "column": 12
+              }
+            },
+            "name": "rizzo"
+          }
+        }
+      ],
+      "importKind": "value",
+      "source": {
+        "type": "Literal",
+        "start": 18,
+        "end": 43,
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 18
+          },
+          "end": {
+            "line": 1,
+            "column": 43
+          }
+        },
+        "value": "../../../src/core/rizzo",
+        "rawValue": "../../../src/core/rizzo",
+        "raw": "\"../../../src/core/rizzo\""
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "start": 46,
+      "end": 145,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 7,
+          "column": 3
+        }
+      },
+      "expression": {
+        "type": "CallExpression",
+        "start": 46,
+        "end": 144,
+        "loc": {
+          "start": {
+            "line": 3,
+            "column": 0
+          },
+          "end": {
+            "line": 7,
+            "column": 2
+          }
+        },
+        "callee": {
+          "type": "Identifier",
+          "start": 46,
+          "end": 54,
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 0
+            },
+            "end": {
+              "line": 3,
+              "column": 8
+            }
+          },
+          "name": "describe"
+        },
+        "arguments": [
+          {
+            "type": "Literal",
+            "start": 55,
+            "end": 62,
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 9
+              },
+              "end": {
+                "line": 3,
+                "column": 16
+              }
+            },
+            "value": "rizzo",
+            "rawValue": "rizzo",
+            "raw": "\"rizzo\""
+          },
+          {
+            "type": "ArrowFunctionExpression",
+            "start": 64,
+            "end": 143,
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 18
+              },
+              "end": {
+                "line": 7,
+                "column": 1
+              }
+            },
+            "id": null,
+            "generator": false,
+            "expression": false,
+            "async": false,
+            "params": [],
+            "body": {
+              "type": "BlockStatement",
+              "start": 70,
+              "end": 143,
+              "loc": {
+                "start": {
+                  "line": 3,
+                  "column": 24
+                },
+                "end": {
+                  "line": 7,
+                  "column": 1
+                }
+              },
+              "body": [
+                {
+                  "type": "ExpressionStatement",
+                  "start": 74,
+                  "end": 141,
+                  "loc": {
+                    "start": {
+                      "line": 4,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 6,
+                      "column": 5
+                    }
+                  },
+                  "expression": {
+                    "type": "CallExpression",
+                    "start": 74,
+                    "end": 140,
+                    "loc": {
+                      "start": {
+                        "line": 4,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 6,
+                        "column": 4
+                      }
+                    },
+                    "callee": {
+                      "type": "Identifier",
+                      "start": 74,
+                      "end": 76,
+                      "loc": {
+                        "start": {
+                          "line": 4,
+                          "column": 2
+                        },
+                        "end": {
+                          "line": 4,
+                          "column": 4
+                        }
+                      },
+                      "name": "it"
+                    },
+                    "arguments": [
+                      {
+                        "type": "Literal",
+                        "start": 77,
+                        "end": 96,
+                        "loc": {
+                          "start": {
+                            "line": 4,
+                            "column": 5
+                          },
+                          "end": {
+                            "line": 4,
+                            "column": 24
+                          }
+                        },
+                        "value": "should be a thing",
+                        "rawValue": "should be a thing",
+                        "raw": "\"should be a thing\""
+                      },
+                      {
+                        "type": "ArrowFunctionExpression",
+                        "start": 98,
+                        "end": 139,
+                        "loc": {
+                          "start": {
+                            "line": 4,
+                            "column": 26
+                          },
+                          "end": {
+                            "line": 6,
+                            "column": 3
+                          }
+                        },
+                        "id": null,
+                        "generator": false,
+                        "expression": false,
+                        "async": false,
+                        "params": [],
+                        "body": {
+                          "type": "BlockStatement",
+                          "start": 104,
+                          "end": 139,
+                          "loc": {
+                            "start": {
+                              "line": 4,
+                              "column": 32
+                            },
+                            "end": {
+                              "line": 6,
+                              "column": 3
+                            }
+                          },
+                          "body": [
+                            {
+                              "type": "ExpressionStatement",
+                              "start": 110,
+                              "end": 135,
+                              "loc": {
+                                "start": {
+                                  "line": 5,
+                                  "column": 4
+                                },
+                                "end": {
+                                  "line": 5,
+                                  "column": 29
+                                }
+                              },
+                              "expression": {
+                                "type": "CallExpression",
+                                "start": 110,
+                                "end": 134,
+                                "loc": {
+                                  "start": {
+                                    "line": 5,
+                                    "column": 4
+                                  },
+                                  "end": {
+                                    "line": 5,
+                                    "column": 28
+                                  }
+                                },
+                                "callee": {
+                                  "type": "MemberExpression",
+                                  "start": 110,
+                                  "end": 132,
+                                  "loc": {
+                                    "start": {
+                                      "line": 5,
+                                      "column": 4
+                                    },
+                                    "end": {
+                                      "line": 5,
+                                      "column": 26
+                                    }
+                                  },
+                                  "object": {
+                                    "type": "MemberExpression",
+                                    "start": 110,
+                                    "end": 129,
+                                    "loc": {
+                                      "start": {
+                                        "line": 5,
+                                        "column": 4
+                                      },
+                                      "end": {
+                                        "line": 5,
+                                        "column": 23
+                                      }
+                                    },
+                                    "object": {
+                                      "type": "MemberExpression",
+                                      "start": 110,
+                                      "end": 126,
+                                      "loc": {
+                                        "start": {
+                                          "line": 5,
+                                          "column": 4
+                                        },
+                                        "end": {
+                                          "line": 5,
+                                          "column": 20
+                                        }
+                                      },
+                                      "object": {
+                                        "type": "CallExpression",
+                                        "start": 110,
+                                        "end": 123,
+                                        "loc": {
+                                          "start": {
+                                            "line": 5,
+                                            "column": 4
+                                          },
+                                          "end": {
+                                            "line": 5,
+                                            "column": 17
+                                          }
+                                        },
+                                        "callee": {
+                                          "type": "Identifier",
+                                          "start": 110,
+                                          "end": 116,
+                                          "loc": {
+                                            "start": {
+                                              "line": 5,
+                                              "column": 4
+                                            },
+                                            "end": {
+                                              "line": 5,
+                                              "column": 10
+                                            }
+                                          },
+                                          "name": "expect"
+                                        },
+                                        "arguments": [
+                                          {
+                                            "type": "Identifier",
+                                            "start": 117,
+                                            "end": 122,
+                                            "loc": {
+                                              "start": {
+                                                "line": 5,
+                                                "column": 11
+                                              },
+                                              "end": {
+                                                "line": 5,
+                                                "column": 16
+                                              }
+                                            },
+                                            "name": "rizzo"
+                                          }
+                                        ]
+                                      },
+                                      "property": {
+                                        "type": "Identifier",
+                                        "start": 124,
+                                        "end": 126,
+                                        "loc": {
+                                          "start": {
+                                            "line": 5,
+                                            "column": 18
+                                          },
+                                          "end": {
+                                            "line": 5,
+                                            "column": 20
+                                          }
+                                        },
+                                        "name": "to"
+                                      },
+                                      "computed": false
+                                    },
+                                    "property": {
+                                      "type": "Identifier",
+                                      "start": 127,
+                                      "end": 129,
+                                      "loc": {
+                                        "start": {
+                                          "line": 5,
+                                          "column": 21
+                                        },
+                                        "end": {
+                                          "line": 5,
+                                          "column": 23
+                                        }
+                                      },
+                                      "name": "be"
+                                    },
+                                    "computed": false
+                                  },
+                                  "property": {
+                                    "type": "Identifier",
+                                    "start": 130,
+                                    "end": 132,
+                                    "loc": {
+                                      "start": {
+                                        "line": 5,
+                                        "column": 24
+                                      },
+                                      "end": {
+                                        "line": 5,
+                                        "column": 26
+                                      }
+                                    },
+                                    "name": "ok"
+                                  },
+                                  "computed": false
+                                },
+                                "arguments": []
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "_esdocTestId": 27,
+                    "_esdocTestName": "it27"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "_esdocTestId": 26,
+        "_esdocTestName": "describe26"
+      }
+    }
+  ]
+}
