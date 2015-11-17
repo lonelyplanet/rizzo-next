@@ -116,11 +116,27 @@ export default class SubNav extends Component {
     }
 
     this.subscribe();
+    this.addClientSideComponents();
   }
-
+  addClientSideComponents() {
+    // TODO: Handlebars template perhaps? More dynamic perhaps?
+    $(
+    `<li class="sub-nav__item sub-nav__item--ttd">
+      <a class="sub-nav__link js-sub-nav-link" href="#ttd">see</a>
+    </li>
+    `).prependTo(this.$el.find(".sub-nav__list"));
+  }
   @subscribe(RizzoEvents.LOAD_BELOW, "events");
-
   updateContentHeight() {
     this.contentHeight = $(".navigation-wrapper").outerHeight();
+  }
+  /**
+   * If a component is removed from the DOM, this will remove it's subnav element
+   */
+  @subscribe("*.removed", "components")
+  removeSubNav(data, envelope) {
+    let component = envelope.topic.split(".")[0];
+
+    this.$el.find(`.sub-nav__item--${component}`).remove();
   }
 }

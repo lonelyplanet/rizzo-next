@@ -9,7 +9,7 @@ class ThingsToDo extends Component {
     return `Top experiences in ${window.lp.place.name}`;
   }
   initialize() {
-    this.currentIndex = 0;
+    this.currentIndex = (this.getCurrentIndex()) || 0;
 
     this.options = {
       numOfCards: 4
@@ -27,17 +27,26 @@ class ThingsToDo extends Component {
       return this.nukeIt();
     });
   }
+  getCurrentIndex() {
+    let obj = window.localStorage && JSON.parse(window.localStorage.getItem("ttd.currentIndex"));
+    if (!obj || obj.slug !== window.lp.place.slug) {
+      return;
+    }
+
+    return obj.index;
+  }
   fetchCards() {
     return $.ajax({
       url: `/api/${window.lp.place.slug}/experiences`
     });
   }
+  @publish("ttd.removed")
   nukeIt() {
-    return $("#ttd").remove();
+    $("#ttd").remove();
   }
+  // TODO: jc this is... smelly
   cardsFetched(cards) {
     if (!cards.length) {
-      // TODO: jc this is... smelly
       return this.nukeIt();
     }
     this.$el.prepend($(`<h2 class='ttd__heading'>${this.title}</h2>`));
@@ -45,6 +54,12 @@ class ThingsToDo extends Component {
 
     if (cards.length > 4) {
       this.addNavigationButtons();
+    }
+    if (this.currentIndex >= this.options.numOfCards)  {
+      this.showPrevious();
+    } 
+    if (this.currentIndex + 4 >= this.cards.length) {
+      this.hideShowMore();
     }
 
     this.template = require("./thing_to_do_card.hbs");
@@ -54,6 +69,8 @@ class ThingsToDo extends Component {
   }
   addNavigationButtons() {
     let $left = $("<div />", { "class": "has-more--left is-invisible"});
+    
+    // Lazy? Maybe... awesome? YES
     $left.html(`
     <button class="ttd__less js-ttd-less">
       <i class="ttd__more__icon icon-chevron-left" aria-hidden="true"></i>
@@ -120,6 +137,9 @@ class ThingsToDo extends Component {
   }
   makeNextList() {
     let cards = this.nextCards();
+    if (window.localStorage) {
+      window.localStorage.setItem("ttd.currentIndex", JSON.stringify({ index: this.currentIndex, slug: window.lp.place.slug }));
+    }
 
     // Create a new list and place it on top of existing list
     return $("<ul />", {
@@ -200,12 +220,17 @@ class ThingsToDo extends Component {
       "direction": "reverse"
     };
   }
-  showMoreAndPrevious() {
-    this.$el.find(".has-more--left").removeClass("is-invisible");
+  showMore() {
     this.$el.find(".has-more--right").removeClass("is-invisible");
     this.$el.find(".js-ttd-more").removeClass("is-invisible");
+  }
+  showPrevious() {
+    this.$el.find(".has-more--left").removeClass("is-invisible");
     this.$el.find(".js-ttd-less").removeClass("is-invisible");
-
+  }
+  showMoreAndPrevious() {
+    this.showMore();
+    this.showPrevious();
   }
   hideShowMore() {
     this.$el.find(".js-ttd-more").addClass("is-invisible");
