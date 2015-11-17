@@ -107,6 +107,7 @@ export default class ImageGalleryComponent extends Component {
 
         return { x: rect.left, y: rect.top + pageYScroll, w: rect.width };
       },
+      history: false,
       index
     };
 
