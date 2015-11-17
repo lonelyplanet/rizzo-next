@@ -54,7 +54,7 @@ class MapComponent extends Component {
     $("html,body").removeClass("noscroll");
     this.$el.removeClass("open");
 
-    let path = window.location.pathname.replace(/map\/?/, "");
+    let path = window.location.pathname.replace(/map\/?$/, "");
     history.pushState({}, `${path}`);
   }
 

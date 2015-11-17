@@ -4,6 +4,9 @@ import publish from "../../core/decorators/publish";
 import $clamp from "clamp-js/clamp.js";
 
 class ThingsToDo extends Component {
+  get title() {
+    return `Top experiences in ${window.lp.place.name}`;
+  }
   initialize() {
     this.currentIndex = 0;
 
@@ -30,6 +33,7 @@ class ThingsToDo extends Component {
       // TODO: jc this is... smelly
       return $("#ttd").remove();
     }
+    this.$el.prepend($(`<h2 class='ttd__heading'>${this.title}</h2>`));
     this.cards = cards;
 
     if (cards.length > 4) {
@@ -138,19 +142,17 @@ class ThingsToDo extends Component {
         .css("transform", "translate3d(0, 0, 0)");
     }, 30);
 
+    if (!reverse && this.currentIndex + 4 >= this.cards.length) {
+      this.hideShowMore();
+    } else if (reverse && this.currentIndex - 4 < 0) {
+      this.hideShowPrevious();
+    }
+
     return waitForTransition($nextList, { fallbackTime: 300 })
       .then(() => {
         $list.remove();
         $nextList.css("margin-top", 0);
         this.animating = false;
-
-        if (!reverse && this.currentIndex + 4 >= this.cards.length) {
-          this.hideShowMore();
-          return;
-        } else if (reverse && this.currentIndex - 4 < 0) {
-          this.hideShowPrevious();
-          return;
-        }
       });
   }
   /**
