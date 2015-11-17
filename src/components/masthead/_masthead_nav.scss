@@ -8,7 +8,7 @@
   color: #fff;
 
   &__container {
-    @include container();
+    @include container-padded();
     border-top: .1rem solid rgba(255,255,255, .3);
     height: 6rem;
   }
