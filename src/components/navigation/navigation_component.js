@@ -149,7 +149,7 @@ class NavigationComponent extends Component {
       return $li.html($("<a />", {
         "class": "navigation__link",
         "href": "https://auth.lonelyplanet.com/users/sign_in"
-      }).text("Sign In"));
+      }).text("Sign in"));
     }
 
     $li.html(userPanelTemplate({

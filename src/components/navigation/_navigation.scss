@@ -46,6 +46,19 @@
         padding: 0;
         border: none;
       }
+
+      .navigation--narrow & {
+        @include buttonBorder($font-color)
+
+        &:hover {
+          border-color: $color-primary;
+        }
+
+        &.avatar {
+          padding: 0;
+          border: none;
+        }
+      }
     }
   }
 
