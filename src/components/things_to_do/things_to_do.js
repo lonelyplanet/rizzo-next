@@ -171,7 +171,7 @@ class ThingsToDo extends Component {
     
     // Forward
     this.animate();
-    
+
     return {
       "direction": "forward"
     };
