@@ -29,6 +29,7 @@
     "history": "^1.11.1",
     "imagesloaded": "*",
     "jquery": "^2.1.4",
+    "jquery.dfp": "^2.4.1",
     "lodash": "^3.10.0",
     "mapbox.js": "^2.2.2",
     "moment": "^2.10.6",
