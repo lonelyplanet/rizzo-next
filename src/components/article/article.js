@@ -19,8 +19,6 @@ export default class ArticleComponent extends Component {
   initialize() {
     this.$window = $(window);
 
-    // this.articleBodyComponent = new ArticleBodyComponent();
-
     this.articleHeight;
     this.articlePaginationHeight;
     this.footerHeight;
@@ -53,8 +51,6 @@ export default class ArticleComponent extends Component {
       title: this.$activeArticle.data("title"),
       slug: this.$activeArticle.data("slug")
     });
-
-    // console.log(this.articles);
 
     // Check on load
     if(this.windowScrollTop >= this.articleScrollTop) {
@@ -91,13 +87,7 @@ export default class ArticleComponent extends Component {
           this.$activeArticle.data("slug")
         );
       }
-
-      // console.log(this.windowScrollTop, this.articleScrollTop);
     }, 100));
-  }
-
-  _loadFirstArticle() {
-    //
   }
 
   _getNextArticle() {
@@ -107,28 +97,21 @@ export default class ArticleComponent extends Component {
       success: (data) => {
         this.hasNextArticleLoaded = true;
 
-        // console.log("success", this.hasNextArticleLoaded);
-
         // Add data to template and append to page
         let $newArticle = $(this.template(data)).appendTo(".page-container");
         $newArticle.addClass("is-active");
         $newArticle.data("nextSlug", data.article.related_articles[0].slug);
-        this.articles.set($newArticle[0], data.article); // Array
-
-        // console.log(this.articles);
+        this.articles.set($newArticle[0], data.article);
 
         this._updateHistory(window.location.pathname, data.article.title, data.article.slug);
 
         this._reset();
 
-        // let articleBodyComponent = new ArticleBodyComponent({el: this.$activeArticle});
-        // console.log(articleBodyComponent);
-        // console.log(articleBodyComponent.initialize());
         new ArticleBodyComponent({el: $newArticle});
       },
       error: () => {
         this.hasNextArticleLoaded = false;
-        // console.log("error", this.hasNextArticleLoaded);
+        console.log("ajax error");
       }
    });
   }
@@ -140,9 +123,6 @@ export default class ArticleComponent extends Component {
     this.hasNextArticleLoaded = false;
     this.windowScrollTop = this.$window.scrollTop();
     this.articleScrollTop = this.windowScrollTop + this.articleHeight - this.scrollOffset;
-
-    // console.log("reset", this.hasNextArticleLoaded);
-    // console.log(this.windowScrollTop, this.articleScrollTop);
   }
 
   _updateHistory(pathname, title, slug) {

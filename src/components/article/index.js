@@ -1,4 +1,4 @@
-import ArticleComponent from "./article_component";
+import ArticleComponent from "./article";
 
 require("./article.scss");
 
