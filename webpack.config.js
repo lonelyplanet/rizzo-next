@@ -28,8 +28,8 @@ module.exports = {
       {
         // For some reason the sass-loader borks karma
         test: /\.scss$/,
-        loader: "file"
-        // loader: "style!css!sass"
+        // loader: "file"
+        loader: "style!css!sass?includePaths[]=" + path.join(__dirname, "node_modules")
       },
       {
         test: /\.hbs$/,
