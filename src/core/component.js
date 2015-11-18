@@ -182,7 +182,7 @@ export default class Component {
    * @param  {Object} data Data to publish on the channel
    */
   publish(topic, data) {
-    postal.channel("components").publish(topic, data);
+    return postal.channel("components").publish(topic, data);
   }
 }
 

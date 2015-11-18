@@ -18,4 +18,5 @@ require("./unit/components/video.spec.js");
 require("./unit/decorators/publish.spec.js");
 require("./unit/decorators/subscribe.spec.js");
 require("./unit/decorators/channel.spec.js");
+require("./unit/decorators/track.spec.js");
 require("./unit/util/cookie_util.spec.js");

@@ -13,7 +13,14 @@ let MapComponent = Injector({
     createHistory: function() {
       return {
         pushState: pushState
-      }
+      };
+    }
+  },
+  "./map_api": {
+    fetch: () => {
+      return {
+        done: sinon.spy()
+      };
     }
   }
 });
@@ -31,7 +38,7 @@ describe("map component", () => {
     let map = new MapComponent();
     
     sinon.stub(map, "isOnMap")
-      .returns(false)
+      .returns(false);
 
     map.open();
 

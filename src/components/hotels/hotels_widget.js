@@ -1,10 +1,10 @@
 import { Component } from "../../core/bane";
-import assign from "lodash/object/assign";
 import "pickadate/lib/picker.date";
 import HotelsEvents from "./hotels.events";
+import HotelsTracking from "./hotels.tracking";
 import publish from "../../core/decorators/publish";
+import track from "../../core/decorators/track";
 import $ from "jquery";
-let _ = { assign };
 
 const dateDefaults = {
   format: "mm/d/yyyy",
@@ -42,11 +42,11 @@ class HotelsWidget extends Component {
         endDate = $(dates[1]),
         today = new Date();
 
-    this.$startDate = startDate.pickadate(_.assign({
+    this.$startDate = startDate.pickadate(Object.assign({
       min: today,
     }, dateDefaults));
 
-    this.$endDate = endDate.pickadate(_.assign({
+    this.$endDate = endDate.pickadate(Object.assign({
       min: this.nextDate(today)
     }, dateDefaults));
 
@@ -73,6 +73,7 @@ class HotelsWidget extends Component {
       "select": date
     });
   }
+  @track(HotelsTracking.search)
   @publish(HotelsEvents.SEARCH)
   searchHotels() {
     return {

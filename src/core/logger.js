@@ -8,7 +8,7 @@ let airbrake = new airbrakeJs({
 export default class Logger {
   /**
    * Log an error
-   * @param {Error|Object|String} message Either string or object containing error details
+   * @param {Error|Object|String} err Either string or object containing error details
    */
   error(err) {
     console.error(err);
