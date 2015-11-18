@@ -16,8 +16,8 @@ export default {
     }).join("&");
 
     return {
-      name: "Partner Search", 
+      name: "Partner Search",
       data: `partner=booking&${serialized}`
     };
   }
-}
+};
