@@ -1,0 +1,47 @@
+@import "../../../sass/webpack_deps";
+
+.alert {
+
+  &__container {
+    text-align: center;
+  }
+
+  &__inner {
+    font-size: 1.4rem;
+    font-weight: $font-weight-light;
+    padding: {
+      top: 2.2rem;
+      bottom: 2.2rem;
+    }
+
+    &--link {
+      color: $font-color;
+      font-weight: $font-weight-light;
+      text-decoration: underline;
+    }
+  }
+
+  &__close {
+    font-size: 0;
+    color: $font-color;
+    font-weight: $font-weight-light;
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    height: 2rem;
+    cursor: pointer;
+    transition: color $animation-speed;
+    outline: 0;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $color-primary;
+    }
+
+    &:before {
+      font-size: 1.2rem;
+    }
+  }
+
+}
