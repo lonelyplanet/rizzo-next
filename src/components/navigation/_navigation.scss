@@ -48,7 +48,7 @@
       }
 
       .navigation--narrow & {
-        @include buttonBorder($font-color)
+        @include buttonBorder(#BEBEBE)
 
         &:hover {
           border-color: $color-primary;
