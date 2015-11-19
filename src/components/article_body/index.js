@@ -15,7 +15,7 @@ export default class ArticleBodyComponent extends Component {
       this.gallery = new ImageGallery({ el: ".article" });
     });
 
-    this.formatAndPositionDate();
+    this.formatDate();
   }
   /**
    * Loads all the images in the body of the article
@@ -70,12 +70,13 @@ export default class ArticleBodyComponent extends Component {
   /**
    * Format the post date with moment.js and append it to the bottom of the article
    */
-  formatAndPositionDate() {
-    let date = this.$el.data("post-date"),
+  formatDate() {
+    let $footer = this.$el.siblings(".js-article-footer"),
+        date = $footer.find("time").attr("datetime"),
         formattedDate = moment(date).format("MMMM YYYY");
 
-    this.$el.find(".article-body__content").last()
-      .find("p:not(.stack__article__image-container)").last()
-      .append("<span class=\"article-post-date\">Published <time datetime=\"" + date + "\">" + formattedDate + "</time></span>");
+    $footer
+      .find("time").html(formattedDate)
+      .closest(".js-article-post-date").removeProp("hidden");
   }
 }
