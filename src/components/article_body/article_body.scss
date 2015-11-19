@@ -2,9 +2,14 @@
 
 .article-body {
   @include container;
-  margin-bottom: 12rem;
-  margin-top: 6.9rem;
+  padding-bottom: 5.8rem;
+  padding-top: 5.3rem;
   position: relative;
+
+  @media (min-width: $min-720) {
+    padding-bottom: 5.8rem;
+    padding-top: 5.3rem;
+  }
 
   &.is-narrow {
     @include container-static(6);
@@ -64,10 +69,16 @@
       font-family: "Main", sans-serif !important;
       font-size: 1.2rem !important;
       line-height: 1.3 !important;
+      margin-bottom: 6.6rem !important;
+      margin-top: 6.6rem !important;
       opacity: 0;
       text-align: center !important;
       transition: opacity .2s ease;
       visibility: hidden;
+
+      @media (min-width: $min-600) {
+        font-size: 1.4rem !important;
+      }
 
       .no-js &,
       &.is-visible {
@@ -102,13 +113,34 @@
       // This selects the image
       > .copy--body__link:first-of-type {
         display: block;
-        margin-bottom: 1.4rem;
+        margin-bottom: 1.6rem;
         position: relative;
       }
 
       .stack__article__image {
-        max-width: 100%;
-        width: 100%;
+        margin-left: percent(-15px, 290px);
+        margin-right: percent(-15px, 290px);
+        max-width: none;
+        width: percent(320px, 290px);
+
+        @media(min-width: $min-480) {
+          margin-left: percent(-30px, 420px);
+          margin-right: percent(-30px, 420px);
+          width: percent(480px, 420px);
+        }
+
+        @media(min-width: $min-720) {
+          margin-left: percent(-45px, 630px);
+          margin-right: percent(-45px, 630px);
+          width: percent(720px, 630px);
+        }
+
+        @media(min-width: $min-840) {
+          margin-left: 0;
+          margin-right: 0;
+          max-width: 100%;
+          width: 100%;
+        }
       }
 
       .copy--caption {
