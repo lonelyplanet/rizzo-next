@@ -7,8 +7,7 @@ let template = require("./brightcove.hbs");
 class Brightcove extends VideoPlayer {
   get scripts() {
     return [
-      "https://files.brightcove.com/bc-mapi.js",
-      "https://sadmin.brightcove.com/js/BrightcoveExperiences.js"
+      "https://files.brightcove.com/bc-mapi.js"
     ];
   }
   initialize(options) {
@@ -97,7 +96,7 @@ class Brightcove extends VideoPlayer {
     });
   }
   setup() {
-    brightcove.createExperiences();
+    // brightcove.createExperiences();
 
     window.BCL["player" + this.playerId] = this;
     this.onTemplateLoad = this.onTemplateLoad.bind(this);
@@ -110,6 +109,7 @@ class Brightcove extends VideoPlayer {
     BCMAPI.callback = `BCL.player${this.playerId}.onSearchResponse`;
 
     window.onresize = this.calculateDimensions.bind(this);
+    this.trigger("ready");
   }
 
   /**
@@ -129,12 +129,16 @@ class Brightcove extends VideoPlayer {
     let resizeWidth = document.getElementById("masthead-video-player").clientWidth,
         resizeHeight = document.getElementById("masthead-video-player").clientHeight;
 
-      if (this.experienceModule.experience.type === "html"){
+    if (this.experienceModule && this.experienceModule.experience.type === "html") {
         this.experienceModule.setSize(resizeWidth, resizeHeight);
     }
   }
   onTemplateReady() {
-    this.trigger("ready");
+    this.videoPlayer.addEventListener(brightcove.api.events.MediaEvent.CHANGE, () => {
+      this.searchResolver(this.mastheadVideoIds);
+    });
+
+    this.videoPlayer.cueVideoByID(this.mastheadVideoIds[0]);
   }
   onSearchResponse(jsonData) {
     let mastheadVideoIds = [];
@@ -143,12 +147,10 @@ class Brightcove extends VideoPlayer {
       mastheadVideoIds.push(jsonData.items[index].id);
     }
 
+    // Only load the brightcove player when there's videos for a place
     if (mastheadVideoIds.length) {
-      this.videoPlayer.addEventListener(brightcove.api.events.MediaEvent.CHANGE, () => {
-        this.searchResolver(mastheadVideoIds);
-      });
-
-      this.videoPlayer.cueVideoByID(mastheadVideoIds[0]);
+      this.mastheadVideoIds = mastheadVideoIds;
+      $.getScript("https://sadmin.brightcove.com/js/BrightcoveExperiences.js");
     }
   }
 }
