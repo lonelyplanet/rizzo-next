@@ -6,7 +6,11 @@ import "./index.scss";
 
 class Overlay extends Component {
 
-  initialize(){
+  initialize(options = {}){
+    this.options = Object.assign(options, {
+      preventScroll: false
+    });
+
     this.$html = $("html");
     this.$el.addClass("overlay");
 
@@ -46,7 +50,9 @@ class Overlay extends Component {
           this.$el.addClass("overlay--visible");
         }, 10);
 
-        this.$html.addClass("no-scroll");
+        if (this.options.preventScroll) {
+          this.$html.addClass("no-scroll");
+        }
         this.$html.css({
           "margin-right": scrollWidth
         });
@@ -69,7 +75,10 @@ class Overlay extends Component {
       .then(() => {
         this.$el.detach();
 
-        this.$html.removeClass("no-scroll");
+        if (this.options.preventScroll) {
+          this.$html.removeClass("no-scroll");
+        }
+
         this.$html.css({
           "margin-right": 0
         });
