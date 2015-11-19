@@ -1,0 +1,19 @@
+@import "../../../sass/webpack_deps";
+
+
+.travel-alert {
+  background: $color-warning;
+  padding: 2rem;
+  font-size: 1.4rem;
+  text-align: center;
+
+  &__content {
+    max-width: $max-width;
+    margin: 0 auto;
+  }
+
+  &--narrow {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+}
