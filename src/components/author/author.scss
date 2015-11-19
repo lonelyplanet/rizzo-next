@@ -7,7 +7,13 @@
 
   &.is-contained {
     @include container;
-    width: span(3);
+    width: auto;
+
+    @media (min-width: $min-480) {
+      @include with-layout(static) {
+        width: span(3);
+      }
+    }
   }
 
   &.is-vertical {
