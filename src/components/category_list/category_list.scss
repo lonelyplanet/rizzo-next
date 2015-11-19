@@ -1,3 +1,5 @@
+@import "../../../sass/webpack_deps";
+
 $category-list: (
   'background-color': #f0f0f0,
   'margin-left': .4rem,
@@ -5,38 +7,44 @@ $category-list: (
 );
 
 .category-list {
-  margin-left: -#{map-get($category-list, 'margin-left')};
-  margin-top: -#{map-get($category-list, 'margin-top')};
+  margin-left: -#{get($category-list, 'margin-left')};
+  margin-top: -#{get($category-list, 'margin-top')};
+
+  &.is-constrained {
+    @media (min-width: $min-720) {
+      width: 43rem;
+    }
+  }
 }
 
 .category-list--left {
-  float: left;
+  @media (min-width: $min-720) {
+    float: left;
+  }
 }
 
 .category-list--right {
-  float: right;
-}
-
-.category-list--constrained {
-  width: 43rem;
+  @media (min-width: $min-720) {
+    float: right;
+  }
 }
 
 .category-list__item {
-  background-color: map-get($category-list, 'background-color');
+  background-color: get($category-list, 'background-color');
   border-radius: .4rem;
   color: #333;
   display: inline-block;
   font-size: 1.2rem;
   line-height: 1;
-  margin-left: map-get($category-list, 'margin-left');
-  margin-top: map-get($category-list, 'margin-top');
+  margin-left: get($category-list, 'margin-left');
+  margin-top: get($category-list, 'margin-top');
   max-height: 3rem;
   padding: 1rem 1.2rem .8rem;
-  // transition: background-color $animation-speed ease;
+  transition: background-color $animation-speed ease;
 
-  // &:hover,
-  // &:active,
-  // &:focus {
-  //   background-color: darken(get($category-list, 'background-color'), 3);
-  // }
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: darken(get($category-list, 'background-color'), 3);
+  }
 }

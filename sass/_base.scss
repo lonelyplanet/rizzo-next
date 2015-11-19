@@ -2,17 +2,6 @@ html {
   overflow: hidden;
   overflow-y: scroll;
   font-size: 62.5%;
-
-  &.no-scroll {
-    body {
-      position: fixed;
-
-      height: 100%;
-      width: 100%;
-
-      overflow: hidden;
-    }
-  }
 }
 
 body {
@@ -25,6 +14,15 @@ body {
 
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+
+  .no-scroll > & {
+    position: fixed;
+
+    height: 100%;
+    width: 100%;
+
+    overflow: hidden;
+  }
 }
 
 .segment {
@@ -37,11 +35,56 @@ body {
 
 .hide-text {
   position: absolute !important;
-  clip: rect(1px 1px 1px 1px); // IE6, IE7
   clip: rect(1px, 1px, 1px, 1px);
-  padding:0 !important;
-  border:0 !important;
+  padding: 0 !important;
+  border: 0 !important;
   height: 1px !important;
   width: 1px !important;
   overflow: hidden;
+}
+
+.content-wrapper {
+  outline: 0;
+}
+
+.skip-link {
+  @media (max-width: $max-720) {
+    display: none;
+  }
+
+  @media (min-width: $min-720) {
+    clip: rect(.1rem, .1rem, .1rem, .1rem);
+    height: .1rem;
+    margin: 0;
+    overflow: hidden;
+    position: absolute;
+    width: .1rem;
+  }
+
+  &:focus {
+    @media (min-width: $min-720) {
+      background-color: #fff;
+      border: .1rem solid $color-border;
+      clip: auto;
+      color: $color-blue;
+      height: auto;
+      line-height: 4rem;
+      outline: 0;
+      padding: 1rem 2rem .8rem;
+      text-decoration: none;
+      width: auto;
+      z-index: 100;
+    }
+
+    @include with-layout(static) {
+      @media (min-width: $min-720) {
+        left: gutter();
+        top: 13rem + gutter();
+      }
+
+      @media (min-width: $min-1080) {
+        left: gutter-double();
+      }
+    }
+  }
 }

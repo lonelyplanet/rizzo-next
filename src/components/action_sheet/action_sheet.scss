@@ -1,3 +1,5 @@
+@import "../../../sass/webpack_deps";
+
 $action-sheet: (
   'background-color': #f0f0f0,
   'button-size': 3rem,
@@ -6,16 +8,29 @@ $action-sheet: (
 );
 
 .action-sheet {
-  margin-left: -#{map-get($action-sheet, 'margin-left')};
-  margin-top: -#{map-get($action-sheet, 'margin-top')};
+  margin-left: -#{get($action-sheet, 'margin-left')};
+  margin-top: -#{get($action-sheet, 'margin-top')};
+}
+
+.action-sheet--left,
+.action-sheet--right {
+  @media (max-width: $max-720) {
+    @include with-layout(static) {
+      margin-top: (gutter() - get($action-sheet, 'margin-top'));
+    }
+  }
 }
 
 .action-sheet--left {
-  float: left;
+  @media (min-width: $min-720) {
+    float: left;
+  }
 }
 
 .action-sheet--right {
-  float: right;
+  @media (min-width: $min-720) {
+    float: right;
+  }
 }
 
 .action-sheet__item {
@@ -24,26 +39,26 @@ $action-sheet: (
 }
 
 .action-sheet__control {
-  background-color: map-get($action-sheet, 'background-color');
+  background-color: get($action-sheet, 'background-color');
   border: 0;
   border-radius: 100%;
   color: #333;
   cursor: pointer;
   display: inline-block;
-  height: map-get($action-sheet, 'button-size');
+  height: get($action-sheet, 'button-size');
   line-height: 1;
-  margin-left: map-get($action-sheet, 'margin-left');
-  margin-top: map-get($action-sheet, 'margin-top');
+  margin-left: get($action-sheet, 'margin-left');
+  margin-top: get($action-sheet, 'margin-top');
   outline: 0;
   padding: 0;
   position: relative;
-  width: map-get($action-sheet, 'button-size');
+  width: get($action-sheet, 'button-size');
   transition: background-color .4s linear;
 
   &:hover,
   &:active,
   &:focus {
-    background-color: darken(map-get($action-sheet, 'background-color'), 3);
+    background-color: darken(get($action-sheet, 'background-color'), 3);
   }
 
   .svg-icon {
