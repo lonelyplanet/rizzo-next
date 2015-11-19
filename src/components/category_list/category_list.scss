@@ -9,18 +9,24 @@ $category-list: (
 .category-list {
   margin-left: -#{get($category-list, 'margin-left')};
   margin-top: -#{get($category-list, 'margin-top')};
+
+  &.is-constrained {
+    @media (min-width: $min-720) {
+      width: 43rem;
+    }
+  }
 }
 
 .category-list--left {
-  float: left;
+  @media (min-width: $min-720) {
+    float: left;
+  }
 }
 
 .category-list--right {
-  float: right;
-}
-
-.category-list--constrained {
-  width: 43rem;
+  @media (min-width: $min-720) {
+    float: right;
+  }
 }
 
 .category-list__item {
