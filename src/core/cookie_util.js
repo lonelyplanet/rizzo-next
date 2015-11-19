@@ -23,7 +23,7 @@ export default class CookieUtil {
   /**
    * Set a cookie
    * @param {String} k Cookie name
-   * @param {String} v Cookie value      
+   * @param {String} v Cookie value
    * @param {[Number]} days Expiration in days
    * @param {[String]} domain Domain of the cookie
    * @param {[String]} path Path of the cookie
@@ -41,11 +41,19 @@ export default class CookieUtil {
     path = ";path=" + (path || "/");
 
     let cookie = k + "=" + v + exp + domain + path;
-    
+
     // Explicit test for null here because of default argument above
-    return (this.cookies !== null ? 
-      (this.cookies = cookie) : 
+    return (this.cookies !== null ?
+      (this.cookies = cookie) :
       (document.cookie = cookie)
     );
+  }
+  removeCookie(name) {
+    let cookieString = `${name}=`;
+    let expiryDate = new Date();
+    expiryDate.setTime(expiryDate.getTime() - 86400 * 1000);
+    cookieString += ";max-age=0";
+    cookieString += `;expires=${expiryDate.toUTCString()}`;
+    document.cookie = cookieString;
   }
 }

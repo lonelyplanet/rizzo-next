@@ -4,10 +4,10 @@
   $alert-font-color: #fff;
   max-height: 0;
   overflow-y: hidden;
-  transition: max-height 500ms;
+  transition: max-height 600ms;
 
   &--is-visible {
-    max-height: 8rem;
+    max-height: 6.5rem;
   }
 
   &__container {
@@ -58,7 +58,7 @@
     &:hover,
     &:active,
     &:focus {
-      color: $color-primary;
+      color: #BEBEBE;
     }
 
     &:before {
