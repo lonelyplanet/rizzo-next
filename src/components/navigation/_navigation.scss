@@ -22,7 +22,7 @@
     margin-left: $gutter / 3;
 
     &:not(:last-child) {
-      margin-right: ($gutter / 3);
+      margin-right: 4rem;
     }
 
     &:first-child {
@@ -68,8 +68,6 @@
 
   &__link {
     display: block;
-
-    padding: 0 $gutter / 4;
 
     font-size: 1.4rem;
     font-weight: 600;

@@ -9,7 +9,7 @@
       <div class="top_places__column">
 
         <div class="tlist">
-          <h2 class="tlist__heading">Top countries in {{ place.name }}</h2>
+          <h2 class="tlist__heading">countries in {{ place.name }}</h2>
           <div class="tlist__content">
 
             <ul class="tlist__primary">
@@ -43,7 +43,7 @@
           </div>
 
           <a class="tlist__more" href="//lonelyplanet.com/{{ slug }}/places">
-            More top countries in {{ place.name }}
+            More countries in {{ place.name }}
             <span class="icon-chevron-right"></span>
           </a>
         </div>
@@ -52,13 +52,13 @@
 
       {{/if}}
 
-      {{!-- top cities --}}
+      {{!-- cities --}}
       {{#if top_places.top_cities}}
 
       <div class="top_places__column">
 
         <div class="tlist">
-          <h2 class="tlist__heading">Top cities in {{ place.name }}</h2>
+          <h2 class="tlist__heading">cities in {{ place.name }}</h2>
           <div class="tlist__content">
 
             <ul class="tlist__primary">
@@ -101,13 +101,13 @@
 
       {{/if}}
 
-      {{!-- generic top places (for regions) --}}
+      {{!-- generic places (for regions) --}}
       {{#if top_places.top_places}}
 
       <div class="top_places__column">
 
         <div class="tlist">
-          <h2 class="tlist__heading">Top places in {{ place.name }}</h2>
+          <h2 class="tlist__heading">places in {{ place.name }}</h2>
           <div class="tlist__content">
 
             <ul class="tlist__primary">
@@ -141,7 +141,7 @@
           </div>
 
           <a class="tlist__more" href="//lonelyplanet.com/{{ slug }}/places">
-            More top places in {{ place.name }}
+            More places in {{ place.name }}
             <span class="icon-chevron-right"></span>
           </a>
         </div>
@@ -150,12 +150,12 @@
 
       {{/if}}
 
-      {{!-- top neighborhoods --}}
+      {{!-- neighborhoods --}}
       {{#if top_places.top_neighborhoods}}
       <div class="top_places__column">
 
         <div class="tlist">
-          <h2 class="tlist__heading">Top neighborhoods in {{ place.name }}</h2>
+          <h2 class="tlist__heading">neighborhoods in {{ place.name }}</h2>
           <div class="tlist__content">
 
             <ul class="tlist__primary">
@@ -189,7 +189,7 @@
           </div>
 
           <a class="tlist__more" href="//lonelyplanet.com/{{ slug }}/places">
-            More top neighborhoods in {{ place.name }}
+            More neighborhoods in {{ place.name }}
             <span class="icon-chevron-right"></span>
           </a>
         </div>
