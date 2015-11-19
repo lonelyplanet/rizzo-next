@@ -2,17 +2,17 @@
 
 .article-header {
   @include container;
-  padding-bottom: 6.8rem;
+  padding-bottom: 3.4rem;
   padding-top: 6.6rem;
   position: relative;
 
   @media (min-width: $min-720) {
-    padding-top: 13.2rem;
-    padding-bottom: 9.8rem;
+    padding-top: 13rem;
+    padding-bottom: 4.2rem;
   }
 
   &.is-narrow {
-    @include container-static(8);
+    @include container-static(10);
   }
 
   &.has-flexbox {
@@ -29,7 +29,7 @@
   line-height: 1;
 
   &.is-xlarge {
-    color: #1c222a;
+    color: #2b3642;
     font-size: 4rem;
     font-weight: 600;
     letter-spacing: -.2rem;
@@ -73,13 +73,17 @@
     }
 
     @media (min-width: $min-600) {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
     }
   }
 
   &.is-padded-bottom {
     .article-header & {
-      margin-bottom: 2.2rem;
+      margin-bottom: 1.8rem;
+
+      @media(min-width: $min-600) {
+        margin-bottom: 3.9rem;
+      }
     }
   }
 }
