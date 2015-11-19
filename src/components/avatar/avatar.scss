@@ -17,17 +17,9 @@
   }
 
   &.is-large {
-    @media (min-width: $min-720) {
+    @media (min-width: $min-600) {
       max-width: none;
       width: 8rem;
-    }
-  }
-
-  &.is-vertical {
-    margin-bottom: 1.3rem;
-
-    @media (min-width: $min-720) {
-      margin-bottom: 3rem;
     }
   }
 

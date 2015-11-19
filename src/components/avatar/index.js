@@ -1,1 +1,1 @@
-require("./_avatar.scss");
+require("./avatar.scss");
