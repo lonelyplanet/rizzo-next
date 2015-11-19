@@ -2,13 +2,13 @@
 
 .article-header {
   @include container;
-  margin-bottom: 6.8rem;
-  margin-top: 6.6rem;
+  padding-bottom: 6.8rem;
+  padding-top: 6.6rem;
   position: relative;
 
   @media (min-width: $min-720) {
-    margin-top: 13.2rem;
-    margin-bottom: 9.8rem;
+    padding-top: 13.2rem;
+    padding-bottom: 9.8rem;
   }
 
   &.is-narrow {
