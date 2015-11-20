@@ -1,6 +1,7 @@
 import { Component } from "../../core/bane";
 import $ from "jquery";
 import urlencode from "urlencode";
+import track from "../../core/decorators/track";
 import "./action_sheet.scss";
 
 class ActionSheetComponent extends Component {
@@ -13,6 +14,7 @@ class ActionSheetComponent extends Component {
     };
   }
 
+  @track("Article Share Menu Click")
   actionSheetMenuControlClicked(event) {
     let $el = $(event.currentTarget);
     let id = "#" + $el.attr("aria-owns"),
@@ -29,6 +31,7 @@ class ActionSheetComponent extends Component {
     event.preventDefault();
   }
 
+  @track("Article Share Button Click")
   actionSheetShareControlClicked(event) {
     let $el = $(event.currentTarget);
 
