@@ -458,3 +458,14 @@
   top: 0;
   width: $width;
 }
+
+// alert component background colors
+$alert-colors: (
+  "warning": red,
+  "notice": yellow,
+  "default": #3b444f
+);
+
+@mixin alert-background($color: "default") {
+  background-color: map-get($alert-colors, $color);
+}
