@@ -1,0 +1,69 @@
+@import "../../../sass/webpack_deps";
+
+.alert {
+  $alert-font-color: #fff;
+  max-height: 0;
+  overflow-y: hidden;
+  transition: max-height 600ms;
+
+  &--is-visible {
+    max-height: 6.5rem;
+  }
+
+  &__container {
+    text-align: center;
+    padding: {
+      right: 2rem;
+      left: 2rem;
+    }
+
+    &--default {
+      @include alert-background($color:"default");
+    }
+    &--warning {
+      @include alert-background($color:"warning");
+    }
+    &--notice {
+      @include alert-background($color:"notice");
+    }
+  }
+
+  &__inner {
+    color: $alert-font-color;
+    font-size: 1.4rem;
+    padding: {
+      top: 2.2rem;
+      bottom: 2.2rem;
+    }
+
+    &--link {
+      color: $alert-font-color;
+      text-decoration: underline;
+    }
+  }
+
+  &__close {
+    font-size: 0;
+    float: right;
+    color: $alert-font-color;
+    font-weight: $font-weight-light;
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    height: 2rem;
+    cursor: pointer;
+    transition: color $animation-speed;
+    outline: 0;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: #BEBEBE;
+    }
+
+    &:before {
+      font-size: 1.2rem;
+    }
+  }
+
+}
