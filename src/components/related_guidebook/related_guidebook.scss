@@ -53,6 +53,7 @@
 
 .related-guidebook__container {
   @include container;
+  max-width: 22rem;
 
   @include with-layout(static) {
     margin-left: gutter-half();
@@ -62,6 +63,14 @@
       margin-left: gutter();
       margin-right: gutter();
     }
+  }
+
+  @media (min-width: $min-480) {
+    max-width: 36rem;
+  }
+
+  @media (min-width: $min-720) {
+    max-width: none;
   }
 
   .no-flexbox & {
