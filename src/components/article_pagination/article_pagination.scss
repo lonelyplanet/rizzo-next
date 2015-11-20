@@ -17,6 +17,11 @@
     }
   }
 
+  @media (min-width: $min-960) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   @media (min-width: $min-600) {
     align-items: stretch;
     display: flex;
