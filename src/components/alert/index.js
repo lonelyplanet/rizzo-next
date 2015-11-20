@@ -31,6 +31,7 @@ class Alert extends Component {
 
     this.subscribe();
   }
+
   @subscribe(RizzoEvents.LOAD_BELOW, "events")
   show() {
     this.$alert.addClass("alert--is-visible");
