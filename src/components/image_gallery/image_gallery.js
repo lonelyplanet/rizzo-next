@@ -2,6 +2,7 @@ import { Component } from "../../core/bane";
 import $ from "jquery";
 import PhotoSwipe from "photoswipe";
 import PhotoSwipeUI_Default from "photoswipe/dist/photoswipe-ui-default";
+import track from "../../core/decorators/track";
 
 // Keep track of instance IDs
 let instanceId = 0;
@@ -78,6 +79,7 @@ export default class ImageGalleryComponent extends Component {
    * @param  {Event} e Event
    * @return {Boolean} Returns false to prevent bubbling and cancel event
    */
+  @track("Article Photo Gallery Click")
   onGalleryClick(e) {
     e.preventDefault();
 
