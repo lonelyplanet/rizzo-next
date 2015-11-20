@@ -247,13 +247,17 @@ $masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
   &__button--play {
     position: absolute;
     bottom: (2.6rem - 1rem);
-    display: block;
+    display: none;
     padding: 1rem;
     border: 0;
     background-color: transparent;
     color: #fff;
     line-height: 1;
     cursor: pointer;
+    
+    .is-visible {
+      display: block;
+    }
 
     @media (max-width: $max-720) {
       left: 0;
