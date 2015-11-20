@@ -3,14 +3,12 @@ import CookieUtil from "../../core/cookie_util";
 import subscribe from "../../core/decorators/subscribe";
 import waitForTransition from "../../core/utils/waitForTransition";
 import RizzoEvents from "../../core/rizzo_events";
-// import $ from "jquery";
 
 require("./_alert.scss");
 
 class Alert extends Component {
 
   initialize() {
-
     this.cookieUtil = new CookieUtil();
     if (this.cookieUtil.getCookie("dn-opt-in")) {
       return;
@@ -25,8 +23,6 @@ class Alert extends Component {
     this.template = require("./alert.hbs");
     this.$el.prepend($(this.template(this.alert)));
     this.$alert = this.$el.find(".alert");
-    // setTimeout(this.show.bind(this), 0);
-    // this.$alert.addClass("alert--is-visible");
 
     this.events = {
       "click .js-close": "hideAlert",
@@ -42,10 +38,10 @@ class Alert extends Component {
 
   hideAlert() {
     this.cookieUtil.setCookie("dn-opt-in", "true", 30);
-    alert.removeClass("alert--is-visible");
-    return waitForTransition(alert, { fallbackTime: 1000 })
+    this.$alert.removeClass("alert--is-visible");
+    return waitForTransition(this.$alert, { fallbackTime: 1000 })
       .then(() => {
-        alert.detach();
+        this.$alert.detach();
       });
   }
 
