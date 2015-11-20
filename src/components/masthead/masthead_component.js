@@ -75,7 +75,10 @@ export default class MastheadComponent extends Component {
 
   searchDone(videos) {
     if (videos.length) {
-      this.$el.find(".js-play-video").removeAttr("hidden");
+      this.$el.find(".js-play-video")
+        .removeAttr("hidden")
+        .addClass("is-visible");
+        
       this.videoId = videos[0];
     }
   }

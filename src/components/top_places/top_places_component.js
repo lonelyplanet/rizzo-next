@@ -59,7 +59,7 @@ class TopPlaces extends Component {
 
     this.$el.removeClass("top_places--visible");
 
-    return waitForTimeout(this.$el)
+    waitForTimeout(this.$el)
       .then(() => {
         this.$el.detach();
       });

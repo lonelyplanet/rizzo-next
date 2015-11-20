@@ -6,6 +6,7 @@ import trackEvent from "../events/track_event";
  * If a function is used for the `trackingFn`, it must return an object w/ a `name`, and optional `data`
  * @param  {Function|String} trackingFn Either a function to build up the event data or a string event name.
  * @param  {Object} [options] An opject of options
+ * @param  {Boolean} [options.returnValue] Whether or not to send the return value
  * @return {Function} The decorator function
  * @example <caption>String Tracking</caption>
  *
@@ -41,7 +42,7 @@ import trackEvent from "../events/track_event";
  * }
  * 
  */
-function track(trackingFn, options) {
+function track(trackingFn, options={ returnValue: true }) {
   return function(target, name, descriptor) {
     const hasDescriptor = typeof descriptor.value !== "undefined";
     const fn = hasDescriptor ? descriptor.value : target;
@@ -51,7 +52,7 @@ function track(trackingFn, options) {
       
       trackEvent(typeof trackingFn === "string" ? Object.assign({ name: trackingFn, data: value }, options) : trackingFn.apply(this, [value]));
 
-      return value;
+      return options.returnValue ? value : null;
     };
 
     if (hasDescriptor) {
