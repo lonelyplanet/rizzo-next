@@ -1,3 +1,5 @@
+@import "../../../sass/webpack_deps";
+
 $pswp__show-hide-transition-duration: 333ms !default;
 $pswp__controls-transition-duration: 333ms !default;
 $pswp__background-color: #fff !default;
@@ -313,16 +315,24 @@ $pswp__include-minimal-style: true !default;
 // }
 
 .pswp__button--close {
-  // background-position: 0 -44px;
   background-image: url("icon-image-gallery-close.svg");
   background-position: center center;
   background-repeat: no-repeat;
-  background-size: 3.2rem 3.2rem;
-  height: 3.2rem;
-  padding: 4.4rem;
-  margin-right: 1.6rem;
-  width: 3.2rem;
+  background-size: 1.6rem 1.6rem;
+  height: 1.6rem;
+  margin-right: .8rem;
+  margin-top: .8rem;
+  padding: 2.2rem;
+  width: 1.6rem;
   float: right;
+
+  @media(min-width: $min-720) {
+    background-size: 3.2rem 3.2rem;
+    height: 3.2rem;
+    padding: 4.4rem;
+    margin-right: 1.6rem;
+    width: 3.2rem;
+  }
 }
 
 // .pswp__button--share {
@@ -597,11 +607,16 @@ a.pswp__share--download {
   max-width: 42rem;
   margin-left: auto;
   margin-right: auto;
-  font-size: 1.4rem;
-  padding: 1rem;
-  line-height: (22 / 14);
+  font-size: 1.2rem;
+  padding: 2rem;
+  line-height: (20 / 12);
   color: rgba(#2c3642, .8);
   letter-spacing: -.02rem;
+
+  @media(min-width: $min-720) {
+    font-size: 1.4rem;
+    line-height: (22 / 14);
+  }
 }
 
 .pswp__caption--empty {

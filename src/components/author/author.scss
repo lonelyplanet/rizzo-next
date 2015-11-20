@@ -1,5 +1,12 @@
 @import "../../../sass/webpack_deps";
 
+/// Author component
+///
+/// .is-contained: Used for article; or when the author is not inside of a `container`
+/// .is-vertical: Used for love-letter, article; or when the `avatar` and `author-details` are stacked
+/// .is-horizontal: Used for articles on highlight pages; or when the `avatar` and `author-details` are inline
+/// .is-small: Used for love-letter; changes fonts and margins for `author-name`, `author-title`; doesn't effect `avatar`
+
 .author {
   font-size: 1.4rem;
   letter-spacing: .01rem;
@@ -25,7 +32,7 @@
     margin-top: 2.4rem;
     overflow: hidden;
 
-    @media (min-width: $min-720) {
+    @media (min-width: $min-600) {
       margin-top: 3rem;
     }
   }
@@ -33,7 +40,7 @@
   &.has-bio.is-horizontal {
     margin-top: 1.2rem;
 
-    @media (min-width: $min-720) {
+    @media (min-width: $min-600) {
       margin-top: 1.2rem;
     }
   }
@@ -48,23 +55,52 @@
     float: left;
     margin-top: .6rem;
   }
+
+  .author.is-vertical & {
+    margin-top: 1.3rem;
+
+    @media (min-width: $min-600) {
+      margin-top: 1.8rem;
+    }
+  }
+
+  .author.is-vertical.is-small & {
+    @media (min-width: $min-600) {
+      margin-top: 3rem;
+    }
+  }
 }
 
 .author-name {
   color: $body-color;
   font-size: 1.2rem;
   font-weight: $semibold;
-  letter-spacing: .06rem;
   line-height: 1;
 
-  &:not(.-inline) {
-    margin-bottom: .5rem;
-    text-transform: uppercase;
+  @media(min-width: $min-600) {
+    font-size: 1.4rem;
   }
 
-  &.-inline {
+  &:not(.is-inline) {
+    margin-bottom: .8rem;
+    text-transform: uppercase;
+
+    .author.is-small & {
+      margin-bottom: .5rem;
+    }
+  }
+
+  &.is-inline {
     display: inline;
     font-size: 1.4rem;
+  }
+
+  .author.is-small & {
+    letter-spacing: .06rem;
+
+    @media(min-width: $min-600) {
+      font-size: 1.2rem;
+    }
   }
 }
 
@@ -74,12 +110,12 @@
   letter-spacing: .06rem;
   line-height: 1;
 
-  &:not(.-inline) {
+  &:not(.is-inline) {
     font-family: $serif;
     font-style: italic;
   }
 
-  &.-inline {
+  &.is-inline {
     display: inline;
     font-size: 1.2rem;
   }
@@ -87,5 +123,5 @@
 
 .author-bio {
   margin-top: .4rem;
-  max-width: 400px;
+  max-width: 40rem;
 }
