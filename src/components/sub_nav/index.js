@@ -75,8 +75,7 @@ export default class SubNav extends Component {
 
         } else if (isBottom) {
           $subNav
-            .addClass("is-bottom")
-            .removeClass("is-fixed");
+            .addClass("is-bottom");
 
           $subNavPlaceholder
             .addClass("is-fixed");
