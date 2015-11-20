@@ -16,7 +16,7 @@ class Alert extends Component {
 
     this.alert = {
       alert_type: "default",
-      alert_text: "Rerturn to old Experience",
+      alert_text: "Return to old experience",
       alert_link_text: "Leave beta"
     };
 
