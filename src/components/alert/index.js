@@ -34,12 +34,12 @@ class Alert extends Component {
 
   @subscribe(RizzoEvents.LOAD_BELOW, "events")
   show() {
-    this.$alert.find(".alert__inner").addClass("alert__inner--is-visible");
+    this.$alert.find(".alert__inner").addClass("is-visible");
   }
 
   hideAlert() {
     this.cookieUtil.setCookie("dn-opt-in", "true", 30);
-    this.$alert.removeClass("alert--is-visible");
+    this.$alert.removeClass("is-visible");
     return waitForTransition(this.$alert, { fallbackTime: 1000 })
       .then(() => {
         this.$alert.detach();
