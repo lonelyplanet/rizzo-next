@@ -17,6 +17,7 @@ export default class ArticleBodyComponent extends Component {
 
     this.formatDate();
   }
+
   /**
    * Loads all the images in the body of the article
    * @return {Promise} A promise for when all of the images have loaded
@@ -30,21 +31,27 @@ export default class ArticleBodyComponent extends Component {
           src = $($img).attr("src");
 
       let promise = this.loadImage(src).then((image) => {
-        $a.attr("data-size", `${image.width}x${image.height}`);
+        if (!$a.length) {
+          $img.wrap(`<a class="copy--body__link" href="${src}" data-size="${image.width}x${image.height}" />`);
+        } else {
+          $a.attr("data-size", `${image.width}x${image.height}`);
+        }
 
         if(image.width > 1000 && $img.hasClass("is-landscape")) {
-          $a.closest(this.imageContainerSelector)
+          $img.closest(this.imageContainerSelector)
             .addClass("is-wide");
         }
 
-        $a.closest(this.imageContainerSelector)
+        $img.closest(this.imageContainerSelector)
           .addClass("is-visible");
       });
+
       promises.push(promise);
     });
 
     return Promise.all(promises);
   }
+
   /**
    * Preload an image
    * @param  {String} url Url of the image to load
@@ -67,6 +74,7 @@ export default class ArticleBodyComponent extends Component {
       }
     });
   }
+
   /**
    * Format the post date with moment.js and append it to the bottom of the article
    */
