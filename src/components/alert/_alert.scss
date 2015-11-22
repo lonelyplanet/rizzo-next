@@ -4,9 +4,13 @@
   $alert-font-color: #fff;
   max-height: 0;
   overflow-y: hidden;
-  transition: max-height 600ms;
+  transition: max-height $animation-speed;
 
-  &--is-visible {
+  .no-js & {
+    display: none;
+  }
+
+  &.is-visible {
     max-height: 6.5rem;
   }
 
@@ -31,9 +35,15 @@
   &__inner {
     color: $alert-font-color;
     font-size: 1.4rem;
+    opacity: 0;
+    transition: opacity 100ms;
     padding: {
       top: 2.2rem;
       bottom: 2.2rem;
+    }
+
+    &.is-visible {
+      opacity: 1;
     }
 
     &--link {
