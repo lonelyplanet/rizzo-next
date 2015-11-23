@@ -43,10 +43,6 @@ body {
   overflow: hidden;
 }
 
-.page-container {
-  outline: 0;
-}
-
 .skip-link {
   @media (max-width: $max-720) {
     display: none;
