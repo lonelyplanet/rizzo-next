@@ -347,7 +347,7 @@
     width: 100%;
 
     &:not(:first-child) {
-      @media (max-width: $max-960) {
+      @media (max-width: $max-720) {
         margin-top: ($gutter * 2);
       }
     }
