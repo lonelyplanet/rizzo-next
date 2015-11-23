@@ -18,9 +18,7 @@ export default class AboutPanel extends React.Component {
   }
   render() {
     let place = this.props.location.title,
-        description = this.props.location.description,
-        // TODO Switch back to just ${this.props.location.slug} once this is live
-        slug = `https://www.lonelyplanet.com/${this.props.location.slug}`;
+        description = this.props.location.description;
 
     return (
       <div className="panel">
@@ -29,12 +27,6 @@ export default class AboutPanel extends React.Component {
         <header className="panel__header">Welcome to {place}</header>
         <div className="panel__content" dangerouslySetInnerHTML={{__html: description}}>
         </div>
-        <footer className="panel__footer">
-          <a className="panel__close" href={slug}>
-            Close map and explore this destination
-            <i className="icon-chevron-right" aria-hidden="true"></i>
-          </a>
-        </footer>
       </div>
     );
   }
