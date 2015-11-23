@@ -21,6 +21,8 @@ export default class SidebarDetailsView extends React.Component{
       </div>;
     }
 
+    let footer = <div className="panel__footer dooda"><a className="panel__close" href={slug}>Close map and explore this destination<span className="icon-chevron-right"></span></a></div>;
+
     return (
       <div className="sidebar details">
         <header className="sidebar__header">
@@ -32,13 +34,8 @@ export default class SidebarDetailsView extends React.Component{
         <div className="panel">
           {image}
           <div className="panel__content" dangerouslySetInnerHTML={{__html: poi.description}}></div>
-          <div className="panel__footer">
-            <a className="panel__close" href={slug}>
-              Close map and explore this destination
-              <span className="icon-chevron-right"></span>
-            </a>
-          </div>
         </div>
+        {footer}
       </div>
     );
   }

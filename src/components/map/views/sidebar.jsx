@@ -17,7 +17,10 @@ export default class SidebarView extends React.Component {
         sets = this.props.sets,
         backSlug = "",
         backElement = "",
-        h1Class = "sidebar__title __continent";
+        h1Class = "sidebar__title __continent",
+        footer,
+        // TODO Switch back to just ${this.props.location.slug} once this is live
+        slug = `https://www.lonelyplanet.com/${this.props.location.slug}`;
 
     let tabs = sets.map((set, i) => {
       tabCount++;
@@ -43,6 +46,7 @@ export default class SidebarView extends React.Component {
     } else {
       if( this.props.customPanel === "about" ) {
         panelContent = <AboutPanel location={location} />;
+        footer = <footer className="panel__footer monkey"><a className="panel__close" href={slug}>Close map and explore this destination<i className="icon-chevron-right" aria-hidden="true"></i></a></footer>;
       } else {
         let activePanel = sets[this.props.activeSetIndex];
         panelContent = <Panel highlightedPoi={this.props.highlightedPoi} set={activePanel} />;
@@ -67,6 +71,7 @@ export default class SidebarView extends React.Component {
           </ul>
         </header>
         {panelContent}
+        {footer}
       </div>
     );
   }

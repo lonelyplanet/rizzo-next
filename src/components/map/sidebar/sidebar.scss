@@ -271,7 +271,7 @@ $panel-height: calc(100% - #{$sidebar-header-height});
       position: absolute;
       top: auto;
       bottom: 0;
-      width: 100%;
+      width: $sidebar-width;
       box-shadow: 0 0 6rem 0 rgba(0,0,0,.08);
     }
 
