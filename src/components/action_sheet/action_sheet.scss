@@ -74,19 +74,31 @@ $action-sheet: (
   z-index: 10;
 
   &.is-open {
+    left: 3.5rem;
     position: absolute;
-    left: (-10rem + 1.5rem);
+
+    @media (max-width: $max-720) {
+      top: -3rem;
+    }
+
+    @media (min-width: $min-720) {
+      left: (-10rem + 1.5rem);
+    }
   }
 }
 
 .action-sheet__menu__inner {
   background-color: #fff;
   border-radius: .4rem;
-  box-shadow: 0 .1rem .2rem rgba(#000, .25), 0 0 .1rem rgba(#000, .35);
+  box-shadow: .1rem 0 .2rem rgba(#000, .25), 0 0 .1rem rgba(#000, .35);
   padding: .8rem 0;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   position: relative;
+
+  @media (min-width: $min-720) {
+    box-shadow: 0 .1rem .2rem rgba(#000, .25), 0 0 .1rem rgba(#000, .35);
+  }
 
   ul {
     list-style: none;
@@ -123,20 +135,33 @@ $action-sheet: (
 }
 
 .action-sheet__menu__arrow {
-  clip: rect(0 1.8rem 1.4rem -.4rem);
+  clip: rect(-.4rem 1.4rem 1.8rem -.4rem);
   display: inline-block;
-  left: 50%;
-  margin-left: -.7rem;
+  left: .1rem;
+  margin-top: -.7rem;
   position: absolute;
-  top: .1rem;
+  top: 50%;
+
+  @media (min-width: $min-720) {
+    clip: rect(0 1.8rem 1.4rem -.4rem);
+    left: 50%;
+    margin-left: -.7rem;
+    margin-top: 0;
+    top: .1rem;
+  }
 
   &:after {
     background-color: #fff;
-    box-shadow: -.1rem -.1rem .1rem -.1rem rgba(#000, .44);
+    box-shadow: -.1rem .1rem .1rem -.1rem rgba(#000, .44);
     content: "";
     display: block;
     height: 1.4rem;
-    transform: rotate(45deg) translate(.6rem, .6rem);
+    transform: rotate(45deg) translate(.6rem, -.6rem);
     width: 1.4rem;
+
+    @media (min-width: $min-720) {
+      box-shadow: -.1rem -.1rem .1rem -.1rem rgba(#000, .44);
+      transform: rotate(45deg) translate(.6rem, .6rem);
+    }
   }
 }
