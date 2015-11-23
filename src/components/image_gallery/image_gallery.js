@@ -22,6 +22,7 @@ export default class ImageGalleryComponent extends Component {
 
     return this._$pswp = $(this.template({})).appendTo("body");
   }
+
   initialize({
     galleryImageSelector = ".stack__article__image-container"
   } = {}) {
@@ -38,6 +39,7 @@ export default class ImageGalleryComponent extends Component {
       "data-gallery": this
     });
   }
+
   _parseThumbnailElements() {
     if (this._items) {
       return this._items;
@@ -50,11 +52,11 @@ export default class ImageGalleryComponent extends Component {
           $linkEl = $galleryImage.find("a"),
           size = $linkEl.attr("data-size").split("x"),
           // TODO: Do this on the Ruby side
-          largeImage = $linkEl.attr("href").replace("travel-blog/tip-article/wordpress_uploads/", ""),
-          smallImage = $linkEl.find("img").attr("src").replace("http://www.lonelyplanet.com/travel-blog/tip-article/wordpress_uploads/", "");
+          image = $linkEl.find("img").attr("src").replace("http://www.lonelyplanet.com/travel-blog/tip-article/wordpress_uploads/", "");
 
       let item = {
-        src: `https://lonelyplanetwp.imgix.net${largeImage}`,
+        src: `https://lonelyplanetwp.imgix.net${image}`,
+        msrc: `https://lonelyplanetwp.imgix.net/${image}`,
         el: $galleryImage[0],
         w: parseInt(size[0], 10),
         h: parseInt(size[1], 10)
@@ -63,10 +65,10 @@ export default class ImageGalleryComponent extends Component {
       let $caption;
       if(($caption = $galleryImage.find("span")).length) {
         item.title = $caption.html();
-      }
-
-      if(smallImage) {
-        item.msrc = `https://lonelyplanetwp.imgix.net/${smallImage}`;
+      } else if(($caption = $galleryImage.next(".copy--caption")).length) {
+        item.title = $caption.html();
+      } else if(($caption = $galleryImage.next("p").find(".caption")).length) {
+        item.title = $caption.html();
       }
 
       items.push(item);
@@ -74,12 +76,13 @@ export default class ImageGalleryComponent extends Component {
 
     return items;
   }
+
   /**
    * Callback from clicking on a gallery image
    * @param  {Event} e Event
    * @return {Boolean} Returns false to prevent bubbling and cancel event
    */
-  @track("Article Photo Gallery Click")
+  @track("Article Photo Gallery Click");
   onGalleryClick(e) {
     e.preventDefault();
 
@@ -92,6 +95,7 @@ export default class ImageGalleryComponent extends Component {
 
     return false;
   }
+
   /**
    * Open the photo gallery
    * @param  {[type]} index [description]

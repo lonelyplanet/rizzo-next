@@ -62,7 +62,11 @@
 /// @param {Color} $color [$color-blue] - Color of the underline (usually same as the text color)
 /// @param {Dimension} $weight [.1rem] - Width of the underline
 /// @param {Dimension} $offset [.2rem] - Amount of padding above the underline
-@mixin underline($color: $color-blue, $weight: .1rem, $offset: .2rem) {
+@mixin underline(
+  $color: $color-blue,
+  $weight: .1rem,
+  $offset: .2rem
+) {
   background-image: linear-gradient(to top, transparent, transparent $offset, $color $offset, $color ($offset + $weight), transparent ($offset + $weight));
 }
 
@@ -71,8 +75,13 @@
 /// @param {Color} $link-color-active [$color-blue + 30] Link color for hover, active and focus states
 /// @param {Color} $background-color [#fff] Background color of the link, usually the same color as the page
 /// @param {Boolean} $breaking-underlines [true] If the underline should "break" as it passes thru a descender
-@mixin fancy-link($link-color: $color-blue, $link-color-active: $color-blue + 30, $background-color: #fff, $breaking-underlines: true) {
-  @include underline($link-color);
+@mixin fancy-link(
+  $link-color: $color-blue,
+  $link-color-active: $color-blue + 30,
+  $background-color: #fff,
+  $breaking-underlines: true
+) {
+  @include underline(rgba($link-color, .4));
   color: $link-color;
   position: relative;
   text-decoration: none;
@@ -91,7 +100,7 @@
   &:hover,
   &:active,
   &:focus {
-    @include underline($link-color-active);
+    @include underline(rgba($link-color-active, .4));
     color: $link-color-active;
 
     @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {

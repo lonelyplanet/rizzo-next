@@ -1,5 +1,12 @@
 @import "../../../sass/webpack_deps";
 
+@mixin copy-caption {
+  font-family: "Main", sans-serif !important;
+  font-size: 1.2rem !important;
+  line-height: 1.3 !important;
+  text-align: center !important;
+}
+
 .article-body {
   @include container;
   padding-bottom: 5.8rem;
@@ -61,18 +68,17 @@
       }
     }
 
-    .copy--body__link {
+    li > a,
+    p:not(.stack__article__image-container) > a,
+    p:not(.copy--caption) > a {
       @include fancy-link($link-color: #2b3542, $link-color-active: $color-blue);
     }
 
     .stack__article__image-container {
-      font-family: "Main", sans-serif !important;
-      font-size: 1.2rem !important;
-      line-height: 1.3 !important;
+      @include copy-caption;
       margin-bottom: 6.6rem !important;
       margin-top: 6.6rem !important;
       opacity: 0;
-      text-align: center !important;
       transition: opacity .2s ease;
       visibility: hidden;
 
@@ -117,13 +123,42 @@
         position: relative;
       }
 
-      .copy--caption {
-        display: block;
+      .stack__article__image {
+        &.aligncenter {
+          margin-left: auto;
+          margin-right: auto;
+        }
 
-        a {
-          color: $color-text;
+        &.size-full {
+          width: 100%;
         }
       }
+    }
+
+    .stack__article__image-container + p.copy--caption,
+    .stack__article__image-container + p > span.caption {
+      margin-bottom: 6.6rem;
+      margin-top: -6.6rem;
+      padding-top: 1.6rem;
+    }
+
+    .copy--caption,
+    p > span.caption {
+      @include copy-caption;
+
+      a {
+        color: $color-text;
+      }
+    }
+
+    span.copy--caption,
+    p > span.caption {
+      display: block;
+    }
+
+    p.copy--caption {
+      margin-bottom: 0;
+      margin-top: 1.6rem;
     }
   }
 }
