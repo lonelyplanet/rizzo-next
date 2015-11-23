@@ -1,0 +1,94 @@
+@media print {
+  // Global resets
+
+  * {
+    background: transparent !important;
+    box-shadow: none !important;
+    color: #000 !important;
+    text-shadow: none !important; // Black prints faster: h5bp.com/s
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  thead { // h5bp.com/t
+    display: table-header-group;
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  img {
+    max-width: 100% !important;
+  }
+
+  @page {
+    margin: .5cm;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+
+
+  // Global component resets
+
+  .alert,
+  .skip-link,
+  .header,
+  .sub-nav,
+  .footer {
+    display: none;
+  }
+
+
+  // Article-specific component resets
+
+  .author .avatar,
+  .related-guidebook--article,
+  .article-pagination,
+  .article-footer__top,
+  .article-footer__bottom {
+    display: none !important;
+  }
+
+  .author > a {
+    text-decoration: none !important;
+  }
+
+  .stack__article__image-container {
+    img {
+      margin-left: auto !important;
+      margin-right: auto !important;
+      width: 80% !important;
+    }
+  }
+
+  .article-body.has-legacy-code {
+    .article-body__content li,
+    .article-body__content p:not(.stack__article__image-container),
+    .article-body__content p:not(.copy--caption) {
+      > a {
+        text-decoration: underline !important;
+      }
+    }
+  }
+}
