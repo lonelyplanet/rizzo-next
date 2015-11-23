@@ -448,8 +448,8 @@
 ///       @include fade-edge("right");
 ///     }
 ///   }
-@mixin fade-edge($side: "right", $offset: 0, $width: 3rem) {
-  background-image: linear-gradient(to left, #fff 0%, transparent 100%);
+@mixin fade-edge($side: "right", $offset: 0, $width: 3rem, $color: #fff) {
+  background-image: linear-gradient(to left, $color 0%, rgba($color, 0) 100%);
   bottom: 0;
   content: "";
   height: 100%;
