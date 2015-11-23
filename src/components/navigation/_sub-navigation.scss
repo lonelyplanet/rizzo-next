@@ -97,6 +97,19 @@
     padding-top: 2.3rem;
     padding-bottom: 1.9rem;
   }
+
+  .navigation__item:last-child & {
+    @media (max-width: $max-1530) {
+      &:before {
+        right: 1.6rem;
+        left: auto;
+      }
+
+      left: auto;
+      right: 0;
+      margin-left: 0;
+    }
+  }
 }
 
 .sub-navigation-feature {
