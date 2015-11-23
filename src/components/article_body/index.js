@@ -1,8 +1,10 @@
 import { Component } from "../../core/bane";
 import $ from "jquery";
 import ImageGallery from "../image_gallery";
+import PoiCallout from "../poi_callout";
 import moment from "moment";
-import "./article_body.scss";
+
+require("./article_body.scss");
 
 /**
  * Enhances the body of articles with a gallery and more
@@ -13,6 +15,7 @@ export default class ArticleBodyComponent extends Component {
 
     this.loadImages().then(() => {
       this.gallery = new ImageGallery({ el: ".article" });
+      this.pois = new PoiCallout({ el: this.$el });
     });
 
     this.formatDate();
