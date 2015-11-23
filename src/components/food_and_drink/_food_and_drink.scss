@@ -38,6 +38,10 @@ $item-border-color: #f1f4fb;
       margin-bottom: auto;
       z-index: -1;
     }
+
+    @media (min-width: $min-1410) {
+      top: -5rem
+    }
   }
 
   &__image + &__inner {
