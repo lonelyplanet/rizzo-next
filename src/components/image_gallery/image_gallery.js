@@ -55,7 +55,7 @@ export default class ImageGalleryComponent extends Component {
           image = $linkEl.find("img").attr("src").replace("http://www.lonelyplanet.com/travel-blog/tip-article/wordpress_uploads/", "");
 
       let item = {
-        src: `https://lonelyplanetwp.imgix.net${image}`,
+        src: `https://lonelyplanetwp.imgix.net/${image}`,
         msrc: `https://lonelyplanetwp.imgix.net/${image}`,
         el: $galleryImage[0],
         w: parseInt(size[0], 10),
