@@ -12,7 +12,7 @@
           <h2 class="tlist__heading">countries in {{ place.name }}</h2>
           <div class="tlist__content">
 
-            <ul class="tlist__primary">
+            <ul class="tlist__primary" data-lpa-category="Navigation Click" data-lpa-action="Top Countries">
               {{#each top_places.top_countries}}
               <li class="tlist__primary-item">
                 <a class="tlist__primary-link" href="/{{ slug }}">
@@ -25,7 +25,7 @@
             </ul>
 
             {{#if top_places.countries }}
-            <ul class="tlist__secondary">
+            <ul class="tlist__secondary" data-lpa-category="Navigation Click" data-lpa-action="Top Countries">
 
               {{#each top_places.top_countries}}
               <li class="tlist__secondary-item tlist__secondary-item--top">
@@ -61,7 +61,7 @@
           <h2 class="tlist__heading">cities in {{ place.name }}</h2>
           <div class="tlist__content">
 
-            <ul class="tlist__primary">
+            <ul class="tlist__primary" data-lpa-category="Navigation Click" data-lpa-action="Top Cities">
               {{#each top_places.top_cities}}
                 <li class="tlist__primary-item">
                   <a class="tlist__primary-link" href="/{{ slug }}">
@@ -75,7 +75,7 @@
             </ul>
 
             {{#if top_places.cities}}
-              <ul class="tlist__secondary">
+              <ul class="tlist__secondary" data-lpa-category="Navigation Click" data-lpa-action="Top Cities">
                 {{#each top_places.top_cities}}
                   <li class="tlist__secondary-item tlist__secondary-item--top">
                     <a class="tlist__secondary-link" href="/{{ slug }}">{{ name }}</a>
@@ -110,7 +110,7 @@
           <h2 class="tlist__heading">places in {{ place.name }}</h2>
           <div class="tlist__content">
 
-            <ul class="tlist__primary">
+            <ul class="tlist__primary" data-lpa-category="Navigation Click" data-lpa-action="Top Places">
               {{#each top_places.top_places}}
                 <li class="tlist__primary-item">
                   <a class="tlist__primary-link" href="/{{ slug }}">
@@ -124,7 +124,7 @@
             </ul>
 
             {{#if top_places.places}}
-              <ul class="tlist__secondary">
+              <ul class="tlist__secondary" data-lpa-category="Navigation Click" data-lpa-action="Top Places">
                 {{#each top_places.top_places}}
                   <li class="tlist__secondary-item tlist__secondary-item--top">
                     <a class="tlist__secondary-link" href="/{{ slug }}">{{ name }}</a>
@@ -158,7 +158,7 @@
           <h2 class="tlist__heading">neighborhoods in {{ place.name }}</h2>
           <div class="tlist__content">
 
-            <ul class="tlist__primary">
+            <ul class="tlist__primary" data-lpa-category="Navigation Click" data-lpa-action="Top Neighborhoods">
               {{#each top_places.top_neighborhoods}}
                 <li class="tlist__primary-item">
                   <a class="tlist__primary-link" href="/{{ slug }}">
@@ -172,7 +172,7 @@
             </ul>
 
             {{#if top_places.neighborhoods}}
-              <ul class="tlist__secondary">
+              <ul class="tlist__secondary" data-lpa-category="Navigation Click" data-lpa-action="Top Neighborhoods">
                 {{#each top_places.top_neighborhoods}}
                   <li class="tlist__secondary-item tlist__secondary-item--top">
                     <a class="tlist__secondary-link" href="/{{ slug }}">{{ name }}</a>
