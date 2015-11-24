@@ -121,7 +121,7 @@ export default class SubNav extends Component {
     // TODO: Handlebars template perhaps? More dynamic perhaps?
     $(
     `<li class="sub-nav__item sub-nav__item--ttd">
-      <a class="sub-nav__link js-sub-nav-link" href="#ttd">see</a>
+      <a class="sub-nav__link js-sub-nav-link" href="#ttd">experiences</a>
     </li>
     `).prependTo(this.$el.find(".sub-nav__list"));
   }
