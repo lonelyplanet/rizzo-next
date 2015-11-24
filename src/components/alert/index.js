@@ -1,8 +1,6 @@
 import Component from "../../core/component";
 import CookieUtil from "../../core/cookie_util";
-import subscribe from "../../core/decorators/subscribe";
 import waitForTransition from "../../core/utils/waitForTransition";
-import RizzoEvents from "../../core/rizzo_events";
 
 require("./_alert.scss");
 
@@ -23,18 +21,13 @@ class Alert extends Component {
     this.template = require("./alert.hbs");
     this.$el.prepend($(this.template(this.alert)));
     this.$alert = this.$el.find(".alert");
+    this.$alert.find(".alert__inner").addClass("is-visible");
 
     this.events = {
       "click .js-close": "hideAlert",
       "click .js-alert-link": "removeCookies"
     };
 
-    this.subscribe();
-  }
-
-  @subscribe(RizzoEvents.LOAD_BELOW, "events")
-  show() {
-    this.$alert.find(".alert__inner").addClass("is-visible");
   }
 
   hideAlert() {
