@@ -180,6 +180,11 @@ $hotels-max-width: 1170;
     border-color: rgba($hotels-color, .66);
   }
 
+  // hide select dropdown arrow in IE10 +
+  &::-ms-expand {
+    display: none;
+  }
+
   option {
     color: $darkgray;
   }
@@ -202,6 +207,6 @@ $hotels-max-width: 1170;
 
   @media (min-width: $hotels-breakpoint-large-min) {
     width: 180px;
-    margin-left: 21px;
+    margin-left: 20px;
   }
 }
