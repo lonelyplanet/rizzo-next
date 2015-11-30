@@ -16,11 +16,11 @@
  * });
  */
 export default function(query, callback) {
-  let query = window.matchMedia(query);
+  let media = window.matchMedia(query);
 
   if (typeof callback === "function") {
-    query.addListener(callback);
+    media.addListener(callback);
 
-    callback(query);
+    callback(media);
   }
 }
