@@ -6,7 +6,7 @@ import trackEvent from "../events/track_event";
  * If a function is used for the `trackingFn`, it must return an object w/ a `name`, and optional `data`
  * @param  {Function|String} trackingFn Either a function to build up the event data or a string event name.
  * @param  {Object} [options] An opject of options
- * @param  {Boolean} [options.returnValue] Whether or not to send the return value
+ * @param  {Boolean} [options.sendReturnValue] Whether or not to send the return value as data
  * @return {Function} The decorator function
  * @example <caption>String Tracking</caption>
  *
@@ -40,19 +40,34 @@ import trackEvent from "../events/track_event";
  *     data
  *   };
  * }
- * 
+ * @example <caption>String Tracking w/ sendReturnValue false</caption>
+ *
+ * class Foo {
+ *   @track("Button Clicked").sendReturnValue(false)
+ *   buttonClicked() {
+ *     // ...
+ *     return { some: "data" };
+ *   }
+ * }
  */
-function track(trackingFn, options={ returnValue: true }) {
-  return function(target, name, descriptor) {
+function track(trackingFn, options={ sendReturnValue: true }) {
+  let decorator = function(target, name, descriptor) {
     const hasDescriptor = typeof descriptor.value !== "undefined";
     const fn = hasDescriptor ? descriptor.value : target;
 
     function trackDecorator() {
-      let value = fn.apply(this, arguments);
+      let fnReturnValue = fn.apply(this, arguments),
+          value = null;
       
-      trackEvent(typeof trackingFn === "string" ? Object.assign({ name: trackingFn, data: value }, options) : trackingFn.apply(this, [value]));
+      if (options.sendReturnValue) {
+        value = fnReturnValue;
+      }
 
-      return options.returnValue ? value : null;
+      trackEvent(typeof trackingFn === "string" ? 
+        Object.assign({ name: trackingFn, data: value }, options) : 
+        trackingFn.apply(this, [value]));
+
+      return fnReturnValue;
     };
 
     if (hasDescriptor) {
@@ -62,6 +77,13 @@ function track(trackingFn, options={ returnValue: true }) {
       target = trackDecorator;
     }
   };
+
+  decorator.sendReturnValue = function(value = true) {
+    options.sendReturnValue = !!value;
+    return this;
+  };
+
+  return decorator;
 }
 
 export default track;

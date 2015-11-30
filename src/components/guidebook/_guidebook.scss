@@ -125,6 +125,7 @@
   font-size: 0;
   box-shadow: 2rem 1rem 6rem rgba(0, 0, 0, .4);
   backface-visibility: hidden;
+  transition: 200ms transform;
 
   @media (min-width: $min-480) {
     width: 20rem;
@@ -158,6 +159,10 @@
     left: 0;
     margin-left: -5rem;
   }
+
+ .guidebook__pictures:hover & {
+   transform: translate(4rem, 0) rotateZ(-1deg);
+ } 
 }
 
 .guidebook__picture--secondary {
@@ -168,6 +173,10 @@
     top: 2rem;
     left: 11rem;
   }
+
+  .guidebook__pictures:hover & {
+     transform: translate(-18rem, -1rem) rotateZ(-19deg) scale(.8);
+   } 
 }
 
 .guidebook__image {

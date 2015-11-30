@@ -28,7 +28,7 @@ class TopPlaces extends Component {
       this.show();
     }
   }
-  @track("Top Places Open")
+  @track("Top Places Open").sendReturnValue(false)
   show() {
     if(this.isOpen) {
       return Promise.all([]);
@@ -47,7 +47,7 @@ class TopPlaces extends Component {
 
     this.isOpen = true;
   }
-  @track("Top Places Close")
+  @track("Top Places Close").sendReturnValue(false)
   hide() {
     if(!this.isOpen) {
       return Promise.all([]);
@@ -67,7 +67,7 @@ class TopPlaces extends Component {
 
   onKeyup(e){
     // ESC
-    if(e.keyCode === 27) {
+    if(e.keyCode === 27 && this.isOpen) {
       this.hide();
     }
   }
