@@ -16,10 +16,32 @@ $h2-secondary-color: #dc221a !default;
 $light-text-color: #898e95 !default;
 $linkblue: #288ad6 !default;
 $lpblue: #297cbb !default;
-$nav-primary-type: #bccee3 !default;
 $subduedgray: #dbe6ec !default;
 $tours-blurb-color: #a0a6ad !default;
 $tours-price-background: #dc1b10 !default;
 $tours-title-color: #474f5a !default;
 $tours-type-color: #c4c7cb !default;
 $dark-blue: #2b3542 !default;
+
+$color-warning: #ffc83f;
+$color-blue: #287bbb;
+$color-lightblue: #e9f2f8;
+$color-darkblue: #2c3642;
+
+$color-red: #dc221a;
+$color-purpleish: #3b4450;
+
+$color-gray: #e4e4e4;
+$color-lightgrey: #f5f5f5;
+
+// Color shortcuts
+$color-border: $color-gray;
+/// LP Primary blue color
+$color-primary: $color-blue;
+/// Main Text Color
+$color-text: #474f5a;
+
+// Social Network Colors
+$color-facebook: #3b5998;
+$color-twitter: #00aced;
+$color-pinterest: #cb2027;

@@ -64,12 +64,3 @@
     }
   }
 }
-
-// Legacy
-// do not use
-@mixin button-props($mobile) {
-  @include respond-to($mobile) {
-    letter-spacing: .1rem;
-    padding: 1.4rem 3.1rem;
-  }
-}
