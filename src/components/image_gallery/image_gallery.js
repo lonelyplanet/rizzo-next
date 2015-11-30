@@ -51,12 +51,11 @@ export default class ImageGalleryComponent extends Component {
       let $galleryImage = $(el),
           $linkEl = $galleryImage.find("a"),
           size = $linkEl.attr("data-size").split("x"),
-          // TODO: Do this on the Ruby side
-          image = $linkEl.find("img").attr("src").replace("http://www.lonelyplanet.com/travel-blog/tip-article/wordpress_uploads/", "");
+          image = $linkEl.find("img").attr("src");
 
       let item = {
-        src: `https://lonelyplanetwp.imgix.net/${image}`,
-        msrc: `https://lonelyplanetwp.imgix.net/${image}`,
+        src: image,
+        msrc: image,
         el: $galleryImage[0],
         w: parseInt(size[0], 10),
         h: parseInt(size[1], 10)
