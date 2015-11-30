@@ -59,33 +59,70 @@
 }
 
 /// Provides the underline for the fancy link
-/// @param {Color} $color [$color-blue] - Color of the underline (usually same as the text color)
+/// @param {Color} $color [$color-blue] - Color of the underline, usually the same as the text color
+/// @param {Color} $background-color [#fff] Background color of the underline, usually the same color as the page; used for underline styles not solid
 /// @param {Dimension} $weight [.1rem] - Width of the underline
 /// @param {Dimension} $offset [.2rem] - Amount of padding above the underline
+/// @param {String} $style [solid] The underline style can be solid, dashed or dotted
 @mixin underline(
   $color: $color-blue,
+  $background-color: #fff,
   $weight: .1rem,
-  $offset: .2rem
+  $offset: .2rem,
+  $style: solid
 ) {
-  background-image: linear-gradient(to top, transparent, transparent $offset, $color $offset, $color ($offset + $weight), transparent ($offset + $weight));
+  $underline: linear-gradient(to top, transparent, transparent $offset, $color $offset, $color ($offset + $weight), transparent ($offset + $weight));
+
+  @if $style == solid {
+    background-image: $underline;
+  }
+
+  @if $style == dashed {
+    background-image:
+      repeating-linear-gradient(to right, rgba($background-color, 0), rgba($background-color, 0) .3rem, $background-color .3rem, $background-color .6rem),
+      $underline;
+  }
+
+  @if $style == dotted {
+    background-image:
+      repeating-linear-gradient(to right, rgba($background-color, 0), rgba($background-color, 0) .1rem, $background-color .1rem, $background-color .2rem),
+      $underline;
+  }
 }
 
 /// Creates a nicely underlined hyperlink
 /// @param {Color} $link-color [$color-blue] Link color
 /// @param {Color} $link-color-active [$color-blue + 30] Link color for hover, active and focus states
 /// @param {Color} $background-color [#fff] Background color of the link, usually the same color as the page
+/// @param {Color} $background-color-active [#fff] Background color for hover, active and focus states
+/// @param {String} $underline-style [solid] The underline style can be solid or dashed
 /// @param {Boolean} $breaking-underlines [true] If the underline should "break" as it passes thru a descender
-@mixin fancy-link(
+@mixin underlined-link(
   $link-color: $color-blue,
   $link-color-active: $color-blue + 30,
   $background-color: #fff,
+  $background-color-active: #fff,
+  $underline-style: solid,
   $breaking-underlines: true
 ) {
-  @include underline(rgba($link-color, .4));
+  $transition: .2s ease;
+
+  @include underline(
+    $color: rgba($link-color, .4),
+    $background-color: $background-color,
+    $style: $underline-style
+  );
+
   color: $link-color;
   position: relative;
   text-decoration: none;
-  transition: color .2s ease;
+
+  @if $background-color-active != $background-color {
+    transition: background-color $transition, color $transition, text-shadow $transition;
+  } @else {
+    transition: color $transition;
+  }
+
   @if $breaking-underlines {
     text-shadow: -.1rem -.1rem 0 $background-color,
       .1rem -.1rem 0 $background-color,
@@ -94,17 +131,52 @@
   }
 
   @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
-    @include underline($link-color, .05);
+    @include underline(
+      $color: $link-color,
+      $background-color: $background-color,
+      $weight: .05,
+      $style: $underline-style
+    );
   }
 
   &:hover,
   &:active,
-  &:focus {
-    @include underline(rgba($link-color-active, .4));
+  &:focus,
+  &.is-active {
     color: $link-color-active;
 
+    @if $underline-style == solid {
+      @include underline(
+        $color: rgba($link-color-active, .4)
+      );
+    }
+
+    @if $underline-style == dashed or $underline-style == dotted {
+      background-image: none;
+    }
+
+    @if $background-color-active != $background-color {
+      background-color: $background-color-active;
+    }
+
+    @if $breaking-underlines && $background-color-active != $background-color {
+      text-shadow: -.1rem -.1rem 0 $background-color-active,
+        .1rem -.1rem 0 $background-color-active,
+        -.1rem .1rem 0 $background-color-active,
+        .1rem .1rem 0 $background-color-active;
+    }
+
     @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
-      @include underline($link-color-active, .05);
+      @if $underline-style == solid {
+        @include underline(
+          $color: $link-color-active,
+          $weight: .05
+        );
+      }
+
+      @if $underline-style == dashed or $underline-style == dotted {
+        background-image: none;
+      }
     }
   }
 }
