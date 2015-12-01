@@ -4,18 +4,6 @@ import $clamp from "clamp-js/clamp.js";
 import debounce from "lodash/function/debounce";
 
 export default class PoiCalloutComponent extends Component {
-  /**
-   * Render the POI callout
-   * @return {jQuery} Returns the poi-callout element
-   */
-  // get $poi() {
-  //   if (this._$poi) {
-  //     return this._$poi;
-  //   }
-
-  //   return this._$poi = $(this.template({})).appendTo("body");
-  // }
-
   initialize(options, {
     poiLinkSelector = "a[data-poi-slug]"
   } = {}) {
@@ -28,18 +16,22 @@ export default class PoiCalloutComponent extends Component {
     this.pois = options.pois;
 
     this.events = {
-      ["mouseenter " + poiLinkSelector]: "_createPoiCallout",
-      ["mouseleave " + poiLinkSelector]: "_destroyPoiCallout"
+      ["mouseenter.poi " + poiLinkSelector]: "_createPoiCallout",
+      ["mouseleave.poi " + poiLinkSelector]: "_destroyPoiCallout"
     };
 
-    // Append template
-    $(this.template({})).appendTo("body");
+    this.$callout = $("<a />", {
+      "class": "poi-callout",
+      "attr": {
+        tabindex: -1,
+        role: "dialog",
+        "aria-hidden": "true"
+      }
+    }).appendTo("body");
 
-    // Cache jQuery objects
+    this.$callout.html(this.template({}));
+
     this.$window = $(window);
-    this.$callout = $(".poi-callout");
-
-    // Set variables
     this.calloutWidth = this.$callout.outerWidth();
     this.left = this.$el.offset().left - this.calloutWidth - 35;
     this.top = 0;
@@ -47,7 +39,7 @@ export default class PoiCalloutComponent extends Component {
     this.mouseoutTimeout;
     this.$activeLink;
 
-    this.$window.resize(debounce(() => {
+    this.$window.on("resize.poi", debounce(() => {
       this.left = (this.$window.width() >= 1370)
         ? this.$el.offset().left - this.calloutWidth - 35
         : this.$el.offset().left - this.calloutWidth;
@@ -55,13 +47,13 @@ export default class PoiCalloutComponent extends Component {
       this._windowEvents();
     }, 10));
 
-    this.$window.scroll(debounce(() => {
+    this.$window.on("scroll.poi", debounce(() => {
       this._windowEvents();
     }, 10));
 
-    this.$callout.on("mouseenter", () => {
+    this.$callout.on("mouseenter.poi", () => {
       clearTimeout(this.mouseoutTimeout);
-    }).on("mouseleave", (event) => {
+    }).on("mouseleave.poi", (event) => {
       this._destroyPoiCallout(event);
     });
   }
@@ -72,9 +64,9 @@ export default class PoiCalloutComponent extends Component {
   destroy() {
     this._resetPoiCallout();
     this.$callout.detach();
-    this.$el.off("mouseenter mouseleave");
-    this.$callout.off("mouseenter mouseleave");
-    this.$window.off("resize scroll");
+    this.$el.off("mouseenter.poi mouseleave.poi");
+    this.$callout.off("mouseenter.poi mouseleave.poi");
+    this.$window.off("resize.poi scroll.poi");
   }
 
   /**
@@ -166,10 +158,12 @@ export default class PoiCalloutComponent extends Component {
         "top": `${this.top}px`,
         "left": `${this.left}px`
       })
-      .find("h3").html(poiData.name).end()
-      .find("h5").html(poiData.topic).end()
-      .find("p").html(poiData.excerpt).end()
-      .find("img").attr("src", src);
+      .html(this.template({
+        name: poiData.name,
+        topic: poiData.topic,
+        excerpt: poiData.excerpt,
+        image: src
+      }));
 
     $clamp(this.$callout.find("p").get(0), { clamp: 3 });
   }
