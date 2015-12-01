@@ -25,6 +25,7 @@
   @media (min-width: $min-600) {
     align-items: stretch;
     display: flex;
+    flex-direction: row-reverse;
   }
 
   .no-flexbox & {
@@ -71,7 +72,7 @@
 
   .no-flexbox & {
     @media (min-width: $min-600) {
-      float: left;
+      float: right;
     }
   }
 
@@ -85,7 +86,9 @@
     @media (max-width: $max-600) {
       border-top: .1rem solid $color-border;
     }
+  }
 
+  &:first-child {
     @media (min-width: $min-600) {
       border-left: .1rem solid $color-border;
     }
