@@ -1,9 +1,10 @@
 @import "../../../sass/webpack_deps";
 
+// !important is needed to override specificity in article-body__content
 @mixin copy-caption {
   font-family: "Main", sans-serif !important;
   font-size: 1.2rem !important;
-  line-height: 1.3 !important;
+  line-height: 1.6 !important;
   text-align: center !important;
 }
 
@@ -40,7 +41,7 @@
       color: #2b3542;
       font-family: "Secondary";
       font-size: 1.8rem;
-      line-height: (25 / 18);
+      line-height: (32 / 18);
 
       @media (min-width: $min-720) {
         font-size: 2rem;
