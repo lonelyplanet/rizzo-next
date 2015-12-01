@@ -2,19 +2,17 @@
   color: $dark-blue;
   font-size: 1.8rem;
   font-weight: 300;
-  line-height: 1.8;
-  // margin: 0 auto 5.5rem;
-  margin-bottom: 5.5rem;
-  // text-align: center;
+  line-height: (28 / 18);
+  margin-bottom: 2.5rem;
 
   @media (min-width: $min-480) {
     font-size: 2rem;
-    // max-width: 86%;
   }
 
   @media (min-width: $min-600) {
     font-size: 2.8rem;
     line-height: (42 / 28);
+    margin-bottom: 5.5rem;
   }
 }
 
