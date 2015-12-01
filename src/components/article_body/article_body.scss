@@ -1,16 +1,22 @@
 @import "../../../sass/webpack_deps";
 
+// !important is needed to override specificity in article-body__content
 @mixin copy-caption {
   font-family: "Main", sans-serif !important;
-  font-size: 1.2rem !important;
-  line-height: 1.3 !important;
+  font-size: 1.1rem !important;
+  line-height: 1.4 !important;
   text-align: center !important;
+
+  @media (min-width: $min-600) {
+    font-size: 1.2rem !important;
+    line-height: 1.6 !important;
+  }
 }
 
 .article-body {
   @include container;
-  padding-bottom: 5.8rem;
-  padding-top: 5.3rem;
+  padding-bottom: 4.4rem;
+  padding-top: 4.6rem;
   position: relative;
 
   @media (min-width: $min-720) {
@@ -38,9 +44,9 @@
     p:not(.copy--feature),
     .copy--body__list {
       color: $dark-blue;
-      font-family: "Secondary";
-      font-size: 1.8rem;
-      line-height: (25 / 18);
+      font-family: "Secondary", serif;
+      font-size: 1.6rem;
+      line-height: (26 / 16);
 
       @media (min-width: $min-720) {
         font-size: 2rem;
@@ -49,18 +55,26 @@
 
       + p,
       + .copy--body__list {
-        margin-top: 1.7em;
+        margin-top: 1rem;
+
+        @media (min-width: $min-600) {
+          margin-top: 1.7em;
+        }
       }
     }
 
     .copy--h3 {
       color: #2b3642;
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       font-weight: 600;
       letter-spacing: -.02rem;
-      line-height: (25 / 18);
-      margin-bottom: (1.7em * .5);
-      margin-top: (1.7em * 1.5);
+      line-height: (26 / 16);
+      margin-bottom: 1rem;
+
+      @media (min-width: $min-600) {
+        margin-bottom: (1.7em * .5);
+        margin-top: (1.7em * 1.5);
+      }
 
       @media (min-width: $min-720) {
         font-size: 2rem;
@@ -79,14 +93,16 @@
 
     .stack__article__image-container {
       @include copy-caption;
-      margin-bottom: 6.6rem !important;
-      margin-top: 6.6rem !important;
+      margin-bottom: 3.2rem !important;
+      margin-top: 3.2rem !important;
       opacity: 0;
       transition: opacity .2s ease;
       visibility: hidden;
 
       @media (min-width: $min-600) {
         font-size: 1.4rem !important;
+        margin-bottom: 6.6rem !important;
+        margin-top: 6.6rem !important;
       }
 
       .no-js &,
@@ -122,8 +138,12 @@
       // This selects the image
       > .copy--body__link:first-of-type {
         display: block;
-        margin-bottom: 1.6rem;
+        margin-bottom: 1rem;
         position: relative;
+
+        @media (min-width: $min-600) {
+          margin-bottom: 1.6rem;
+        }
       }
 
       .stack__article__image {
@@ -140,9 +160,15 @@
 
     .stack__article__image-container + p.copy--caption,
     .stack__article__image-container + p > span.caption {
-      margin-bottom: 6.6rem;
-      margin-top: -6.6rem;
-      padding-top: 1.6rem;
+      margin-bottom: 3.2rem;
+      margin-top: -3.2rem;
+      padding-top: 1rem;
+
+      @media (min-width: $min-600) {
+        margin-bottom: 6.6rem;
+        margin-top: -6.6rem;
+        padding-top: 1.6rem;
+      }
     }
 
     .copy--caption,
