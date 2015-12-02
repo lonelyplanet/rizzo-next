@@ -137,6 +137,7 @@
 
       // This selects the image
       > .copy--body__link:first-of-type {
+        background-image: none; // Reset underlined-link mixin
         display: block;
         margin-bottom: 1rem;
         position: relative;
@@ -147,13 +148,36 @@
       }
 
       .stack__article__image {
+        &.size-full {
+          // Break the image out of the container; .article container needs overflow: hidden
+          margin-left: percent(-15px, 290px);
+          margin-right: percent(-15px, 290px);
+          max-width: none;
+          width: percent(320px, 290px);
+
+          @media(min-width: $min-480) {
+            margin-left: percent(-30px, 420px);
+            margin-right: percent(-30px, 420px);
+            width: percent(480px, 420px);
+          }
+
+          @media(min-width: $min-720) {
+            margin-left: percent(-45px, 630px);
+            margin-right: percent(-45px, 630px);
+            width: percent(720px, 630px);
+          }
+
+          @media(min-width: $min-840) {
+            margin-left: 0;
+            margin-right: 0;
+            max-width: 100%;
+            width: 100%;
+          }
+        }
+
         &.aligncenter {
           margin-left: auto;
           margin-right: auto;
-        }
-
-        &.size-full {
-          width: 100%;
         }
       }
     }
