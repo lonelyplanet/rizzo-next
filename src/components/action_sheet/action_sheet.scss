@@ -1,5 +1,15 @@
 @import "../../../sass/webpack_deps";
 
+/// ----------------------------------------------------------------------------
+/// Settings map
+///
+/// Settings are called via the `get` method, which is simply an alias for
+/// Sass's `map-get` method.
+///
+/// @usage
+/// `get($map-name, 'setting-name')`
+/// ----------------------------------------------------------------------------
+
 $action-sheet: (
   'background-color': #f0f0f0,
   'button-size': 3rem,
@@ -7,37 +17,56 @@ $action-sheet: (
   'margin-top': .9rem
 );
 
+
+
+
+
+/// ----------------------------------------------------------------------------
+/// Base
+/// ----------------------------------------------------------------------------
+
 .action-sheet {
-  margin-left: -#{get($action-sheet, 'margin-left')};
-  margin-top: -#{get($action-sheet, 'margin-top')};
+  margin-left: -#{get($action-sheet, 'margin-left')}; // Negative margin to offset first item's margin
 }
 
-.action-sheet--left,
-.action-sheet--right {
+
+
+
+
+/// ----------------------------------------------------------------------------
+/// Modifiers
+/// ----------------------------------------------------------------------------
+
+// Used for when an action sheet is at the end of an `.article` and inside of
+// the `.article-footer`
+.action-sheet--article {
+  float: left;
+
   @media (max-width: $max-720) {
-    @include with-layout(static) {
-      margin-top: (gutter() - get($action-sheet, 'margin-top'));
-    }
+    margin-right: 1.2rem;
   }
-}
 
-.action-sheet--left {
-  @media (min-width: $min-720) {
-    float: left;
-  }
-}
-
-.action-sheet--right {
   @media (min-width: $min-720) {
     float: right;
+    margin-top: -#{get($action-sheet, 'margin-top')}; // Negative margin to offset first row of items' margin
   }
 }
 
+
+
+
+
+/// ----------------------------------------------------------------------------
+/// Elements
+/// ----------------------------------------------------------------------------
+
+// Each action item; it wraps the control and menu, and should be a `div`
 .action-sheet__item {
   display: inline-block;
   position: relative;
 }
 
+// A `button` element that expects an SVG icon to be inside of it
 .action-sheet__control {
   background-color: get($action-sheet, 'background-color');
   border: 0;
@@ -66,6 +95,9 @@ $action-sheet: (
   }
 }
 
+// The menu that holds each control's options; it wraps the menu-inner and
+// menu-arrow, and should be a `div`. It has the stateful class `is-open`
+// which is added by JavaScript and positions the menu.
 .action-sheet__menu {
   overflow: hidden;
   padding: 1.5rem;
@@ -87,6 +119,9 @@ $action-sheet: (
   }
 }
 
+// An inner wrapper for the menu items; it should be a `div` and it expects a
+// `ul` of items to be inside of it. The action-sheet__control is also
+// reposed and used for each menu item.
 .action-sheet__menu__inner {
   background-color: #fff;
   border-radius: .4rem;
@@ -134,6 +169,7 @@ $action-sheet: (
   }
 }
 
+// An empty `div` to create the menu's arrow; contains a pseudo element
 .action-sheet__menu__arrow {
   clip-path: rect(-.4rem 1.4rem 1.8rem -.4rem);
   display: inline-block;
