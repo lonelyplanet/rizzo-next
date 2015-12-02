@@ -39,12 +39,36 @@
   @return (gutter() / 4);
 }
 
-// Double gutter; requires [Susy](http://susy.oddbird.net/)
+/// Double gutter; requires [Susy](http://susy.oddbird.net/)
 @function gutter-double() {
   @return (gutter() * 2);
 }
 
-// Quadruple gutter; requires [Susy](http://susy.oddbird.net/)
+/// Quadruple gutter; requires [Susy](http://susy.oddbird.net/)
 @function gutter-quad() {
   @return (gutter() * 4);
+}
+
+/// Create a unitless line-height variable
+///
+/// @param  {Value}  $font-size   - Font size value in px or rem
+/// @param  {Value}  $line-height - Line height value in px or rem
+/// @return {String}              - Unitless value
+@function create-unitless-line-height($font-size, $line-height) {
+  // Check the font-size units and strip them
+  @if unit($font-size) == "rem" {
+    $font-size: strip-units($font-size) * 10;
+  } @else {
+    $font-size: strip-units($font-size);
+  }
+
+  // Check the line-height units and strip them
+  @if unit($line-height) == "rem" {
+    $line-height: strip-units($line-height) * 10;
+  } @else {
+    $line-height: strip-units($line-height);
+  }
+
+  // Calculate unitless line-height and return it
+  @return ($line-height / $font-size);
 }
