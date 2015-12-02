@@ -36,11 +36,12 @@
 }
 
 .poi-callout__content p {
-  font-size: 1.4rem;
+  @include line-clamp(
+    $font-size: 1.4rem,
+    $line-height: (22 / 14),
+    $lines-to-show: 3
+  );
   font-weight: 300;
-  height: 7rem;
-  line-height: (22 / 14);
-  overflow: hidden;
   margin-bottom: 0;
   margin-top: 1.6rem;
 }
