@@ -37,7 +37,7 @@
 
     p:not(.copy--feature),
     .copy--body__list {
-      color: #2b3542;
+      color: $dark-blue;
       font-family: "Secondary";
       font-size: 1.8rem;
       line-height: (25 / 18);
@@ -68,10 +68,13 @@
       }
     }
 
-    li > a,
-    p:not(.stack__article__image-container) > a,
-    p:not(.copy--caption) > a {
-      @include fancy-link($link-color: #2b3542, $link-color-active: $color-blue);
+    li > a:not([data-poi-slug]),
+    p:not(.stack__article__image-container) > a:not([data-poi-slug]),
+    p:not(.copy--caption) > a:not([data-poi-slug]) {
+      @include underlined-link(
+        $link-color: $dark-blue,
+        $link-color-active: $color-blue
+      );
     }
 
     .stack__article__image-container {
@@ -159,6 +162,23 @@
     p.copy--caption {
       margin-bottom: 0;
       margin-top: 1.6rem;
+    }
+  }
+
+  a[data-poi-slug] {
+    @include underlined-link(
+      $link-color: $dark-blue,
+      $link-color-active: $color-blue
+    );
+
+    @media(min-width: $min-1200) {
+      @include underlined-link(
+        $link-color: $dark-blue,
+        $link-color-active: $dark-blue,
+        $background-color: #fff,
+        $background-color-active: #f0f0f0,
+        $underline-style: dashed
+      );
     }
   }
 }
