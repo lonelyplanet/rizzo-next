@@ -12,10 +12,10 @@
           <h2 class="tlist__heading">countries in {{ place.name }}</h2>
           <div class="tlist__content">
 
-            <ul class="tlist__primary" data-lpa-category="Navigation Click" data-lpa-action="Top Countries">
+            <ul class="tlist__primary">
               {{#each top_places.top_countries}}
               <li class="tlist__primary-item">
-                <a class="tlist__primary-link" href="/{{ slug }}">
+                <a class="tlist__primary-link" href="/{{ slug }}" data-lpa-category="Destinations Next" data-lpa-action="Navigation Click" data-lpa-label="Top Countries {{name}}">
                   <div class="tlist__image" title="{{ name }} thumb image" style="background-image: url({{ thumbnail }});"></div>
                   <div class="tlist__number"></div>
                   <div class="tlist__title">{{ name }}</div>
@@ -25,16 +25,16 @@
             </ul>
 
             {{#if top_places.countries }}
-            <ul class="tlist__secondary" data-lpa-category="Navigation Click" data-lpa-action="Top Countries">
+            <ul class="tlist__secondary">
 
               {{#each top_places.top_countries}}
               <li class="tlist__secondary-item tlist__secondary-item--top">
-                <a class="tlist__secondary-link" href="/{{ slug }}">{{ name }}</a>
+                <a class="tlist__secondary-link" href="/{{ slug }}" data-lpa-category="Destinations Next" data-lpa-action="Navigation Click" data-lpa-label="Top Countries {{name}}">{{ name }}</a>
               </li>
               {{/each}}
               {{#each top_places.countries}}
               <li class="tlist__secondary-item">
-                <a class="tlist__secondary-link" href="/{{ slug }}">{{ name }}</a>
+                <a class="tlist__secondary-link" href="/{{ slug }}" data-lpa-category="Destinations Next" data-lpa-action="Navigation Click" data-lpa-label="Top Countries {{name}}">{{ name }}</a>
               </li>
               {{/each}}
             </ul>
@@ -61,10 +61,10 @@
           <h2 class="tlist__heading">cities in {{ place.name }}</h2>
           <div class="tlist__content">
 
-            <ul class="tlist__primary" data-lpa-category="Navigation Click" data-lpa-action="Top Cities">
+            <ul class="tlist__primary">
               {{#each top_places.top_cities}}
                 <li class="tlist__primary-item">
-                  <a class="tlist__primary-link" href="/{{ slug }}">
+                  <a class="tlist__primary-link" href="/{{ slug }}" data-lpa-category="Destinations Next" data-lpa-action="Navigation Click" data-lpa-label="Top Cities {{ name }}">
                     <div class="tlist__image" title="{{ name }} thumb image" style="background-image: url({{ thumbnail }});"></div>
                     <div class="tlist__number"></div>
                     <div class="tlist__title">{{ name }}</div>
@@ -75,15 +75,15 @@
             </ul>
 
             {{#if top_places.cities}}
-              <ul class="tlist__secondary" data-lpa-category="Navigation Click" data-lpa-action="Top Cities">
+              <ul class="tlist__secondary" data-lpa-category="Destinations Next" data-lpa-action="Navigation Click" data-lpa-label="Top Cities">
                 {{#each top_places.top_cities}}
                   <li class="tlist__secondary-item tlist__secondary-item--top">
-                    <a class="tlist__secondary-link" href="/{{ slug }}">{{ name }}</a>
+                    <a class="tlist__secondary-link" href="/{{ slug }}" data-lpa-category="Destinations Next" data-lpa-action="Navigation Click" data-lpa-label="Top Cities {{ name }}">{{ name }}</a>
                   </li>
                 {{/each}}
                 {{#each top_places.cities}}
                   <li class="tlist__secondary-item">
-                    <a class="tlist__secondary-link" href="/{{ slug }}">{{ name }}</a>
+                    <a class="tlist__secondary-link" href="/{{ slug }}" data-lpa-category="Destinations Next" data-lpa-action="Navigation Click" data-lpa-label="Top Cities {{ name }}">{{ name }}</a>
                   </li>
                 {{/each}}
               </ul>
@@ -110,10 +110,10 @@
           <h2 class="tlist__heading">places in {{ place.name }}</h2>
           <div class="tlist__content">
 
-            <ul class="tlist__primary" data-lpa-category="Navigation Click" data-lpa-action="Top Places">
+            <ul class="tlist__primary">
               {{#each top_places.top_places}}
                 <li class="tlist__primary-item">
-                  <a class="tlist__primary-link" href="/{{ slug }}">
+                  <a class="tlist__primary-link" href="/{{ slug }}" data-lpa-category="Destinations Next" data-lpa-action="Navigation Click" data-lpa-label="Top Places {{ name }}">
                     <div class="tlist__image" title="{{ name }} thumb image" style="background-image: url({{ thumbnail }});"></div>
                     <div class="tlist__number"></div>
                     <div class="tlist__title">{{ name }}</div>
@@ -124,15 +124,15 @@
             </ul>
 
             {{#if top_places.places}}
-              <ul class="tlist__secondary" data-lpa-category="Navigation Click" data-lpa-action="Top Places">
+              <ul class="tlist__secondary" data-lpa-category="Destinations Next">
                 {{#each top_places.top_places}}
                   <li class="tlist__secondary-item tlist__secondary-item--top">
-                    <a class="tlist__secondary-link" href="/{{ slug }}">{{ name }}</a>
+                    <a class="tlist__secondary-link" href="/{{ slug }}" data-lpa-category="Destinations Next" data-lpa-action="Navigation Click" data-lpa-label="Top Places">{{ name }}</a>
                   </li>
                 {{/each}}
                 {{#each top_places.places}}
                   <li class="tlist__secondary-item">
-                    <a class="tlist__secondary-link" href="/{{ slug }}">{{ name }}</a>
+                    <a class="tlist__secondary-link" href="/{{ slug }}" data-lpa-category="Destinations Next" data-lpa-action="Navigation Click" data-lpa-label="Top Places">{{ name }}</a>
                   </li>
                 {{/each}}
               </ul>
@@ -158,10 +158,10 @@
           <h2 class="tlist__heading">neighborhoods in {{ place.name }}</h2>
           <div class="tlist__content">
 
-            <ul class="tlist__primary" data-lpa-category="Navigation Click" data-lpa-action="Top Neighborhoods">
+            <ul class="tlist__primary">
               {{#each top_places.top_neighborhoods}}
                 <li class="tlist__primary-item">
-                  <a class="tlist__primary-link" href="/{{ slug }}">
+                  <a class="tlist__primary-link" href="/{{ slug }}" data-lpa-category="Destinations Next" data-lpa-action="Navigation Click" data-lpa-label="Top Neighborhoods {{ name }}">
                     <div class="tlist__image" title="{{ name }} thumb image" style="background-image: url({{ thumbnail }});"></div>
                     <div class="tlist__number"></div>
                     <div class="tlist__title">{{ name }}</div>
@@ -172,15 +172,15 @@
             </ul>
 
             {{#if top_places.neighborhoods}}
-              <ul class="tlist__secondary" data-lpa-category="Navigation Click" data-lpa-action="Top Neighborhoods">
+              <ul class="tlist__secondary">
                 {{#each top_places.top_neighborhoods}}
                   <li class="tlist__secondary-item tlist__secondary-item--top">
-                    <a class="tlist__secondary-link" href="/{{ slug }}">{{ name }}</a>
+                    <a class="tlist__secondary-link" href="/{{ slug }}" data-lpa-category="Destinations Next" data-lpa-action="Navigation Click" data-lpa-label="Top Neighborhoods {{ name }}">{{ name }}</a>
                   </li>
                 {{/each}}
                 {{#each top_places.neighborhoods}}
                   <li class="tlist__secondary-item">
-                    <a class="tlist__secondary-link" href="/{{ slug }}">{{ name }}</a>
+                    <a class="tlist__secondary-link" href="/{{ slug }}" data-lpa-category="Destinations Next" data-lpa-action="Navigation Click" data-lpa-label="Top Neighborhoods {{ name }}">{{ name }}</a>
                   </li>
                 {{/each}}
               </ul>
