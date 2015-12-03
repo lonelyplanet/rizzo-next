@@ -143,7 +143,8 @@
   }
 
   &__list {
-    transition: 120ms transform ease-in;
+    // Controls the speed of the more and less
+    transition: 500ms transform ease-in-out;
     margin: 0 (-$gutter/8) $gutter;
     list-style: none;
     font-size: 0;
