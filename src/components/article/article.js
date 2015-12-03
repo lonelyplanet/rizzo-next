@@ -3,133 +3,340 @@ import $ from "jquery";
 import debounce from "lodash/function/debounce";
 import ArticleBodyComponent from "../article_body";
 
-// 1. Set hasLoaded = false
-// 2. When ajax call is success, set hasLoaded to true
-// 3. Reset windowScrollTop; add height of previous article and pagination to windowScrollTop
-// 4. Repeat
-//
-// Should articles be added to an array? (We can use each index to get new offset top.)
-//
-// Need an "up scroll" method to go "back" and change HTML5 pushState with previous article slug
-// - get bottom of article position, check window scroll, change URL
-//
-// Need to make sure photos load and photo gallery works for each new article
-
 export default class ArticleComponent extends Component {
   initialize() {
+    this._resetWindowScrollPosition();
+
     this.$window = $(window);
 
-    this.articleHeight;
-    this.articlePaginationHeight;
-    this.footerHeight;
-
-    this.scrollOffset = 500;
     this.windowScrollTop = this.$window.scrollTop();
-    this.articleScrollTop;
+    this.articleOffsetTop = this.$el.offset().top;
+    this.articleHeight = this.$el.height();
+    this.articleScrollTop = this.articleHeight;
+    this.heightOfAllArticles = 0;
+    this.isNextArticleLoading = false;
 
     this.template = require("./article.hbs");
 
-    this.hasNextArticleLoaded = false;
-
     this.articles = new Map();
+    this.viewedArticles = [];
+    this.listOfArticles = [];
+    this.paginatedArticles = {};
 
-    // setTimeout is because of webfonts and images
-    // Probably need to use hasImagesLoaded and a
-    // webfont loader
-    setTimeout(() => {
-      this.articleHeight = this.$el.height();
-      this.articlePaginationHeight = this.$el.find(".article-pagination").height();
-      this.footerHeight = this.$el.closest(".footer").height();
-      this.scrollOffset += this.articlePaginationHeight + this.footerHeight;
-      this.articleScrollTop = this.articleHeight - this.scrollOffset;
-    }, 1500);
+    this.delay = 1500;
 
-    this.$activeArticle = this.$el;
-    this.$activeArticle.addClass("is-active");
+    this._updateValuesAfterTimeout();
+    this._setFirstArticle();
+    this._createInitialListOfArticles();
+  }
 
+  /**
+   * Reset the window's previous scroll position when the page loads
+   */
+  _resetWindowScrollPosition() {
+    window.onunload = function() {
+      $(window).scrollTop(0);
+    };
+  }
+
+  /**
+   * Set the first article
+   */
+  _setFirstArticle() {
+    this.howManyArticlesHaveLoaded = 1;
+    this.$activeArticle = this.$el.addClass("is-active");
+
+    // Add the first article to the map
     this.articles.set(this.$el[0], {
       title: this.$activeArticle.data("title"),
       slug: this.$activeArticle.data("slug")
     });
 
-    // Check on load
-    if(this.windowScrollTop >= this.articleScrollTop) {
-      console.log("Load Next");
-    }
-
-    // Check on scroll
-    this.$window.scroll(debounce(() => {
-      this.windowScrollTop = this.$window.scrollTop();
-
-      if(this.windowScrollTop >= this.articleScrollTop) {
-        console.log("Load Next");
-        this._getNextArticle();
-      }
-
-      // check scroll top against each value in the map
-      this.articles.forEach((data, article) => {
-        if (this.windowScrollTop) {
-          let top = article.offsetTop,
-              bottom = top + article.offsetHeight;
-
-          if (this.windowScrollTop < bottom && this.windowScrollTop > top) {
-            this.$activeArticle = $(article).addClass("is-active");
-          } else {
-            $(article).removeClass("is-active");
-          }
-        }
-      });
-
-      if (this.$activeArticle.hasClass("is-active")) {
-        this._updateHistory(
-          window.location.pathname,
-          this.$activeArticle.data("title"),
-          this.$activeArticle.data("slug")
-        );
-      }
-    }, 100));
+    // Add the first article to the list of viewed articles
+    this.viewedArticles.push({
+      slug: this.$el.data("slug"),
+      title: this.$el.data("title")
+    });
   }
 
-  _getNextArticle() {
-    let slug = `/${this.$activeArticle.data("nextSlug")}`;
+  /**
+   * Use a timeout to wait for all of the article's assets to load and then
+   * update the values needed for accurate scrolling calculations
+   */
+  _updateValuesAfterTimeout() {
+    // setTimeout is because of webfonts and images; probably need to use
+    // hasImagesLoaded and a webfont loader
+    setTimeout(() => {
+      this.articleHeight = this.$el.height();
+      this.articlePaginationHeight = this.$el.find(".article-pagination").outerHeight(true);
+      this.articleOffsetBottom = $(document).height() - this.articleHeight - this.articleOffsetTop;
+      this.scrollOffset = this.articleOffsetBottom + this.articleOffsetTop + this.articlePaginationHeight;
+      this.articleScrollTop = this.articleHeight - this.scrollOffset;
+      this.heightOfAllArticles += this.articleScrollTop;
+    }, this.delay);
+  }
+
+  /**
+   * Get related articles via AJAX
+   * @param  {String}  url Article URL to query
+   * @return {Promise}     A promise for when the AJAX request finishes
+   */
+  _getRelatedArticles(url) {
+    return new Promise((resolve, reject) => {
+      $.ajax(url, {
+        success: (response) => {
+          resolve(response.article.related_articles.articles);
+        },
+        error: (xhrObj, textStatus, error) => {
+          reject(Error(error));
+        }
+      });
+    });
+  }
+
+  /**
+   * Creates the initial list of articles and sets the next article that will be
+   * loaded; this method is to be called when the component initializes
+   */
+  _createInitialListOfArticles() {
+    this._getRelatedArticles(window.location.pathname).then((response) => {
+      this.listOfArticles = response;
+      this.windowScrollTop = this.$window.scrollTop();
+      this._setNextArticle();
+      this._setArticlePagination(1);
+      this._createArticlePagination(this.$el);
+      this._scrollToNextArticle();
+    });
+  }
+
+  /**
+   * Sets the next and previous articles for the pagination element
+   * @param {Integer} offset The number to be subtracted from each count to get
+   *                         the correct index
+   */
+  _setArticlePagination(offset) {
+    let nextCount = (this.howManyArticlesHaveLoaded * 2);
+    let previousCount = (this.howManyArticlesHaveLoaded * 2) + 1;
+
+    this.paginatedArticles.next = this.listOfArticles[nextCount - offset];
+    this.paginatedArticles.previous = this.listOfArticles[previousCount - offset];
+  }
+
+  /**
+   * Adds data to the next and previous pagination links
+   * @param {Object} $article The article that contains the pagination element
+   *                          that is to be updated
+   */
+  _createArticlePagination($article) {
+    let $pagination = $article.find(".article-pagination");
+    let next = this.paginatedArticles.next;
+    let previous = this.paginatedArticles.previous;
+
+    if (next && previous) {
+      $pagination.find(".is-prev").attr("href", `/${previous.slug}`).html(previous.title);
+      $pagination.find(".is-next").attr("href", `/${next.slug}`).html(next.title);
+      $pagination.removeClass("is-hidden");
+    }
+  }
+
+  /**
+   * Sets the next article by subtracting one from the number of articles loaded
+   */
+  _setNextArticle() {
+    this.nextArticle = this.listOfArticles[this.howManyArticlesHaveLoaded - 1];
+  }
+
+  /**
+   * Runs methods when scrolling
+   */
+  _scrollToNextArticle() {
+    console.log("Ready");
+
+    this.$window.on("scroll.article", debounce(() => {
+      this.windowScrollTop = this.$window.scrollTop();
+
+      // Determine if a new article should be loaded. There are two ways to do
+      // this:
+      //
+      // 1. When scrolled a certain amount past the beginning of an article `this.windowScrollTop >= (this.articleOffsetTop + 300)`
+      // 2. When scrolled to the end of the article `this.windowScrollTop >= this.articleScrollTop`
+      if(this.windowScrollTop >= (this.articleOffsetTop + 300)) {
+        if (this.isNextArticleLoading === false) {
+          if (this.nextArticle) {
+            this._getNextArticle(`/${this.nextArticle.slug}`);
+          }
+        }
+      }
+
+      this.articles.forEach((data, article) => {
+        this._toggleActiveClassForArticle(article);
+      });
+
+      this._updateHistoryForActiveArticle();
+    }, 10));
+  }
+
+  /**
+   * Check scroll top against each value in the map and add or remove the active
+   * class to the `$article` element
+   * @param  {Object} article The article object from the map
+   */
+  _toggleActiveClassForArticle(article) {
+    if (this.windowScrollTop) {
+      let top = article.offsetTop;
+      let bottom = top + article.offsetHeight;
+      let shouldActiveClassBeAdded = this.windowScrollTop < bottom && this.windowScrollTop > top;
+
+      if (shouldActiveClassBeAdded) {
+        this.$activeArticle = $(article)
+          .addClass("is-active");
+
+      } else {
+        $(article)
+          .removeClass("is-active");
+
+      }
+    }
+  }
+
+  /**
+   * Find the active article and update the browser history
+   */
+  _updateHistoryForActiveArticle() {
+    if (this.$activeArticle.hasClass("is-active")) {
+      this._updateHistory(
+        window.location.pathname,
+        this.$activeArticle.data("title"),
+        this.$activeArticle.data("slug")
+      );
+    }
+  }
+
+  /**
+   * Loops through a given array and compares each slug in the given array with
+   * a predefined slug that's passed in.
+   * @param  {Array}  array An array of articles to loop through
+   * @param  {String} slug  A slug to compare each item of the array against
+   * @return {Boolean}
+   */
+  _doesItemExist(array, slug) {
+    for (let i = 0; i < array.length; i++) {
+      return slug === array[i].slug;
+    }
+  }
+
+  /**
+   * Use an AJAX call to get data for a new article
+   * @param {String} slug Pathname of article to get
+   */
+  _getNextArticle(slug) {
+    console.log(`Article ${this.howManyArticlesHaveLoaded + 1} is loading…`);
+
+    this.isNextArticleLoading = true;
+
+    this.$activeArticle.after(`<div class="article-loading"><span></span></div>`);
 
     $.ajax(slug, {
       success: (data) => {
-        this.hasNextArticleLoaded = true;
+        this.$newArticle = $(this.template(data))
+          .appendTo(".page-container");
 
-        // Add data to template and append to page
-        let $newArticle = $(this.template(data)).appendTo(".page-container");
-        $newArticle.addClass("is-active");
-        $newArticle.data("nextSlug", data.article.related_articles[0].slug);
-        this.articles.set($newArticle[0], data.article);
+        // Set the new article element and data to the articles map
+        this.articles.set(this.$newArticle[0], data.article);
 
-        this._updateHistory(window.location.pathname, data.article.title, data.article.slug);
+        this._addNewArticlesToArray(data.article.related_articles.articles);
+        this._updateNewArticle();
+        this._resetArticleDimensions();
 
-        this._reset();
+        this.isNextArticleLoading = false;
 
-        new ArticleBodyComponent({el: $newArticle});
+        $(".article-loading").remove();
+
+        console.log(`Article ${this.howManyArticlesHaveLoaded} is done`);
       },
       error: () => {
-        this.hasNextArticleLoaded = false;
-        console.log("ajax error");
+        this.isNextArticleLoading = false;
+
+        // @TODO Maybe do something more substantial here
+        console.log(`Article ${this.howManyArticlesHaveLoaded + 1} is done with errors`);
       }
-   });
+    });
   }
 
-  _reset() {
-    // This will be called after a new article loads in
-    // It will reset windowScrollTop to the offset top of
-    // the new article
-    this.hasNextArticleLoaded = false;
+  /**
+   * Updates a newly created article
+   */
+  _updateNewArticle() {
+    new ArticleBodyComponent({el: this.$newArticle});
+
+    // Set the scrollTop for the new article; this will not be accurate because
+    // the article has not fully loaded (due to fonts and images), therefore,
+    // the scrollTop will be set again inside of a timeout that's in the reset
+    // method. Even though it's incorrect, the scrollTop needs to be set here
+    // intially so that the new article's scrollTop is greater than the
+    // previous.
+    this.articleScrollTop = this.articleHeight + this.$newArticle.height();
+
+    this.articleOffsetTop = this.$newArticle.offset().top;
+
+    this.howManyArticlesHaveLoaded += 1;
+
+    let previousArticle = this.listOfArticles[this.howManyArticlesHaveLoaded - 2];
+    this.viewedArticles.push(previousArticle);
+
+    this._setNextArticle();
+    this._setArticlePagination(2);
+    this._createArticlePagination(this.$newArticle);
+  }
+
+  /**
+   * Array of new items to add; loop through the new array of articles and check
+   * that each item doesn't already exist in the `viewedArticles` array or the
+   * `listOfArticles` array; push each unique item to the `listOfArticles` Array
+   * @param {Array} array Array of new articles to add
+   */
+  _addNewArticlesToArray(array) {
+    for (let i = 0; i < array.length; i++) {
+      let slug = array[i].slug;
+      let hasItemBeenViewed = this._doesItemExist(this.viewedArticles, slug);
+      let isItemInList = this._doesItemExist(this.listOfArticles, slug);
+
+      if (!hasItemBeenViewed && !isItemInList) {
+        this.listOfArticles.push(array[i]);
+      }
+    }
+  }
+
+  /**
+   * Recalculate the article dimensions; called after a new article is loaded
+   * into view
+   */
+  _resetArticleDimensions() {
     this.windowScrollTop = this.$window.scrollTop();
-    this.articleScrollTop = this.windowScrollTop + this.articleHeight - this.scrollOffset;
+
+    // Use a timeout to get the actual dimensions after the article has fully
+    // loaded into place
+    setTimeout(() => {
+      this.articleHeight = this.$newArticle.height();
+      this.heightOfAllArticles += this.articleHeight;
+      this.articleScrollTop = this.heightOfAllArticles;
+    }, this.delay);
   }
 
+  /**
+   * Use HTML5 pushState to update the browser's history
+   * @param {String} pathname The window's current pathname
+   * @param {String} title    Title of the new "page"
+   * @param {String} slug     Pathname of the new "page"
+   */
   _updateHistory(pathname, title, slug) {
     // @TODO Use modernizr to check support
     if (pathname !== `/${slug}`) {
       history.pushState(null, title, `/${slug}`);
-      console.log(`History updated: ${slug}`);
+      this._notifyAnalytics();
     }
   }
+
+  // @TODO Notify analytics of a new page view
+  _notifyAnalytics() {}
 }
