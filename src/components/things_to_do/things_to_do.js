@@ -179,7 +179,7 @@ class ThingsToDo extends Component {
       this.hideShowPrevious();
     }
 
-    return waitForTransition($nextList, { fallbackTime: 300 })
+    return waitForTransition($nextList, { fallbackTime: 600 })
       .then(() => {
         $list.remove();
         $nextList.css("margin-top", 0);
