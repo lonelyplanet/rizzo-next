@@ -1,6 +1,5 @@
 import { Component } from "../../core/bane";
 import $clamp from "clamp-js/clamp.js";
-import Tabs from "../tabs/tabs_component";
 import $ from "jquery";
 
 import "./_articles.scss";
@@ -14,15 +13,11 @@ class ArticlesComponent extends Component {
     this.blurbLineHeight = options.blurbLineHeight || { desktop: 27, mobile: 18 };
     this.mobileWidth = options.mobileWidth || 717;
     this.screen = "mobile";
-    this.tabs = new Tabs({
-      el: $(".articles").find(".tabs")
-    });
 
     if (!$("html").hasClass("ie9")) {
       this._detectScreen();
       this._clampText();
 
-      this.listenTo(this.tabs, "tabs.activate", this._reclamp.bind(this));
       $(window).on("resize", this._reclamp.bind(this));
     }
   }
