@@ -100,17 +100,11 @@ $max-card-width: 1395px;
           @if $parity == "odd" {
             .interests__card__link {
               text-transform: capitalize;
-              //text-align: left;
-              //font-size: 40px;
-
               left: $gutter;
               bottom: $gutter;
               right: $gutter;
-
-              padding-top: 1.8rem;
-
               font-size: 3.6rem;
-              line-height: 1;
+              line-height: 1.5;
               text-align: left;
             }
           }
@@ -179,13 +173,13 @@ $max-card-width: 1395px;
   margin: 0 auto;
 
   overflow: hidden;
-  
+
   &--9 {
     @media (min-width: $max-card-width) {
       margin-left: -1.5rem;
-    }  
+    }
   }
-  
+
 
   .interests__card {
     float: left;
@@ -218,7 +212,7 @@ $max-card-width: 1395px;
         right: 0;
         bottom: 0;
 
-        background: linear-gradient(to top, rgba(0, 0, 0, 0.4) 0%, transparent 32%); 
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.4) 0%, transparent 32%);
       }
 
       .interests__card__bottom {
@@ -238,7 +232,7 @@ $max-card-width: 1395px;
         width: 90%;
         margin: 0 auto;
       }
-  
+
       .interests__card__link {
         display: table-cell;
         vertical-align: middle;
