@@ -10,6 +10,11 @@
   &__content {
     max-width: $max-width;
     margin: 0 auto;
+
+    a {
+      text-decoration: underline;
+      color: #333;
+    }
   }
 
   &--narrow {
