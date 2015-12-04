@@ -1,84 +1,75 @@
 <article class="articles">
-  <div class="tabs">
-    <ul class="tabs__links">
-      <li><a href="#articles-top">{{articles_title}}</a></li>
-      {{#if top_news_articles.cards}}
-      {{! Uncomment when the news stuff is ready}}
-      {{! <li><a href="#articles-news">news_title/a></li> }}
-      {{/if}}
-    </ul>
-    <div class="tabs__content" id="articles-top">
-      <div class="articles__list">
-      {{#each articles}}
-        <article class="article">
-          <div class="article__info">
-            <a class="article__info__link" href="{{url}}">
-              <h2 class="article__info__title">{{title}}</h2>
-              <p class="article__info__teaser">{{teaser1}}</p>
-              <p class="article__info__blurb">{{teaser2}}</p>
-            </a>
+  <div id="articles-top">
+    <h2 class="articles__heading">{{articles_title}}</h2>
+    <div class="articles__list">
+    {{#each articles}}
+      <article class="article">
+        <div class="article__info">
+          <a class="article__info__link" href="{{url}}">
+            <h2 class="article__info__title">{{title}}</h2>
+            <p class="article__info__teaser">{{teaser1}}</p>
+            <p class="article__info__blurb">{{teaser2}}</p>
+          </a>
 
-            <a class="article__info__author" href="{{author_url}}">
-              {{#if author_image}}
-                <img class="article__info__author__image" src="{{author_image}}">
-              {{/if}}
-              <div class="article__info__author__creds">
-                <div class="article__info__author__creds__name">{{author_name}}</div>
-                <div class="article__info__author__creds__title">{{author_title}}</div>
-              </div>
-            </a>
-          </div>
-          {{#if src}}
-            <a class="article__imagery" href="{{url}}" tabindex="-1">
-              <div class="article__imagery__image" aria-label="Image for {{title}}" style="background-image: url({{src}})"></div>
-            </a>
-          {{/if}}
-        </article>
-      {{/each}}
-      </div>
+          <a class="article__info__author" href="{{author_url}}">
+            {{#if author_image}}
+              <img class="article__info__author__image" src="{{author_image}}">
+            {{/if}}
+            <div class="article__info__author__creds">
+              <div class="article__info__author__creds__name">{{author_name}}</div>
+              <div class="article__info__author__creds__title">{{author_title}}</div>
+            </div>
+          </a>
+        </div>
+        {{#if src}}
+          <a class="article__imagery" href="{{url}}" tabindex="-1">
+            <div class="article__imagery__image" aria-label="Image for {{title}}" style="background-image: url({{src}})"></div>
+          </a>
+        {{/if}}
+      </article>
+    {{/each}}
+    </div>
 
-      <div class="articles__button-container">
-        <a class="articles__more" href="{{see_more_url}}">
-          Read more articles
-          <span class="icon-chevron-right"></span>
-        </a>
-      </div>
-    </div> <!-- /tabs__content -->
+    <div class="articles__button-container">
+      <a class="articles__more" href="{{see_more_url}}">
+        Read more articles
+        <span class="icon-chevron-right"></span>
+      </a>
+    </div>
+  </div> <!-- /tabs__content -->
 
-    {{#if top_news_articles.cards}}
-    <div class="tabs__content" id="articles-news">
-      <div class="articles__list">
-      {{#each top_news_articles.cards}}
-        <article class="article">
-          <div class="article__info">
-            <a href="http://www.lonelyplanet.com/{{slug}}">
-              <h2 class="article__info__title">{{title}}</h2>
-              <p class="article__info__blurb">{{description}}</p>
-            </a>
+  {{#if top_news_articles.cards}}
+  <div class="tabs__content" id="articles-news">
+    <div class="articles__list">
+    {{#each top_news_articles.cards}}
+      <article class="article">
+        <div class="article__info">
+          <a href="http://www.lonelyplanet.com/{{slug}}">
+            <h2 class="article__info__title">{{title}}</h2>
+            <p class="article__info__blurb">{{description}}</p>
+          </a>
 
-            <a class="article__info__author" href="{{author_url}}">
-              <div class="article__info__author__creds">
-                <div class="article__info__author__creds__name">{{author}}</div>
-                <div class="article__info__author__creds__title">{{date}}</div>
-              </div>
-            </a>
-          </div>
-          {{#if image_url}}
-            <a href="{{slug}}">
-              <div class="article__imagery" style="background-image: url({{image_url}})"></div>
-            </a>
-          {{/if}}
-        </article>
-      {{/each}}
-      </div>
+          <a class="article__info__author" href="{{author_url}}">
+            <div class="article__info__author__creds">
+              <div class="article__info__author__creds__name">{{author}}</div>
+              <div class="article__info__author__creds__title">{{date}}</div>
+            </div>
+          </a>
+        </div>
+        {{#if image_url}}
+          <a href="{{slug}}">
+            <div class="article__imagery" style="background-image: url({{image_url}})"></div>
+          </a>
+        {{/if}}
+      </article>
+    {{/each}}
+    </div>
 
-      <div class="articles__button-container">
-        <a class="articles__more" href="{{see_more_news}}">
-          Read more articles
-          <span class="icon-chevron-right"></span>
-        </a>
-      </div>
-    </div> <!-- /tabs__content -->
-  </div>
+    <div class="articles__button-container">
+      <a class="articles__more" href="{{see_more_news}}">
+        Read more articles
+        <span class="icon-chevron-right"></span>
+      </a>
+    </div>
   {{/if}}
 </article>
