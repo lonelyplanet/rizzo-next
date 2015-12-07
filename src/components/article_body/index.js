@@ -47,7 +47,7 @@ export default class ArticleBodyComponent extends Component {
         if (!$a.length) {
           $img.wrap(`<a class="copy--body__link" href="${src}" data-size="${image.width}x${image.height}" />`);
         } else {
-          $a.attr({ 
+          $a.attr({
             href: src,
             "data-size": `${image.width}x${image.height}`
           });
@@ -110,7 +110,7 @@ export default class ArticleBodyComponent extends Component {
    */
   loadPoiData() {
     return new Promise((resolve, reject) => {
-      $.ajax(window.location.pathname, {
+      $.ajax(`${window.location.pathname}.json`, {
         success: (response) => {
           resolve(response.article.content.pois);
         },
