@@ -3,7 +3,6 @@
 .article-pagination {
   @include container;
   border-top: .1rem solid $color-border;
-  margin-top: 10.4rem;
 
   @include with-layout(static) {
     margin-left: -#{gutter-half()};
@@ -17,21 +16,25 @@
     }
   }
 
-  @media (min-width: $min-960) {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
   @media (min-width: $min-600) {
     align-items: stretch;
     display: flex;
     flex-direction: row-reverse;
   }
 
+  @media (min-width: $min-960) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .no-flexbox & {
     @media (min-width: $min-600) {
       display: block;
     }
+  }
+
+  &.is-hidden {
+    opacity: 0;
   }
 }
 
@@ -92,25 +95,5 @@
     @media (min-width: $min-600) {
       border-left: .1rem solid $color-border;
     }
-  }
-
-  &:before {
-    color: #cccdce;
-    display: block;
-    font-size: 1.2rem;
-    font-weight: 600;
-    letter-spacing: .01rem;
-    line-height: 1;
-    position: relative;
-    text-transform: uppercase;
-    top: -.5rem;
-  }
-
-  &.is-prev:before {
-    content: "Prev";
-  }
-
-  &.is-next:before {
-    content: "Next";
   }
 }
