@@ -54,9 +54,9 @@ export default class ImageGalleryComponent extends Component {
           image = $linkEl.find("img").attr("src");
 
       let item = {
-        src: image,
-        msrc: image,
-        el: $galleryImage[0],
+        src: $linkEl.attr("href"),
+        msrc: image,  
+        el: $linkEl.find("img")[0],
         w: parseInt(size[0], 10),
         h: parseInt(size[1], 10)
       };
