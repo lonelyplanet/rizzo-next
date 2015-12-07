@@ -99,7 +99,7 @@ export default class ArticleComponent extends Component {
    * loaded; this method is to be called when the component initializes
    */
   _createInitialListOfArticles() {
-    this._getRelatedArticles(window.location.pathname).then((response) => {
+    this._getRelatedArticles(`${window.location.pathname}.json`).then((response) => {
       this.listOfArticles = response;
       this.windowScrollTop = this.$window.scrollTop();
       this._setNextArticle();
@@ -163,7 +163,7 @@ export default class ArticleComponent extends Component {
       if(this.windowScrollTop >= (this.articleOffsetTop + 300)) {
         if (this.isNextArticleLoading === false) {
           if (this.nextArticle) {
-            this._getNextArticle(`/${this.nextArticle.slug}`);
+            this._getNextArticle(`/${this.nextArticle.slug}.json`);
           }
         }
       }
@@ -330,13 +330,21 @@ export default class ArticleComponent extends Component {
    * @param {String} slug     Pathname of the new "page"
    */
   _updateHistory(pathname, title, slug) {
-    // @TODO Use modernizr to check support
-    if (pathname !== `/${slug}`) {
-      history.pushState(null, title, `/${slug}`);
-      this._notifyAnalytics();
+    if (window.history && window.history.pushState) {
+      if (pathname !== `/${slug}`) {
+        history.pushState(null, title, `/${slug}`);
+        this._notifyAnalytics(`/${slug}`);
+      }
     }
   }
 
-  // @TODO Notify analytics of a new page view
-  _notifyAnalytics() {}
+  /**
+   * Send a page view for analytics
+   * @param {String} path Pathname of page to track
+   */
+  _notifyAnalytics(path) {
+    utag.view({
+      ga_location_override: path
+    });
+  }
 }
