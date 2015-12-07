@@ -1,4 +1,5 @@
 /// Mixin for main headers
+// TODO: Rename this because it's not always being used as an actual `h1`
 @mixin h1($margin-bottom: $gutter * 2, $color: $h2-color) {
   position: relative;
 
@@ -42,4 +43,90 @@
 
 @mixin h3(){
   font-size: 1.4rem;
+}
+
+@mixin details-header() {
+  @include container;
+  padding-bottom: 3.4rem;
+  padding-top: 6.6rem;
+  position: relative;
+
+  @media (min-width: $min-720) {
+    padding-top: 13rem;
+    padding-bottom: 4.2rem;
+  }
+
+  &.is-narrow {
+    @include container-static(10);
+  }
+
+  &.has-flexbox {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  &.is-centered {
+    text-align: center;
+  }
+
+  &__title {
+    line-height: 1;
+
+    &.is-xlarge {
+      color: #2b3642;
+      font-size: 4rem;
+      font-weight: 600;
+      letter-spacing: -.2rem;
+
+      @media (min-width: $min-480) {
+        font-size: 5.4rem;
+      }
+
+      @media (min-width: $min-600) {
+        font-size: 6.4rem;
+      }
+    }
+
+    &.is-small {
+      color: #b6c3ca;
+      font-size: 1.4rem;
+      font-weight: 400;
+      letter-spacing: .1rem;
+
+      @media (min-width: $min-480) {
+        font-size: 1.6rem;
+      }
+
+      @media (min-width: $min-560) {
+        display: inline-block;
+      }
+
+      @media (min-width: $min-600) {
+        font-size: 1.8rem;
+      }
+    }
+
+    &.is-xsmall {
+      color: #ca0000;
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-transform: uppercase;
+
+      @media (min-width: $min-560) {
+        display: inline-block;
+      }
+
+      @media (min-width: $min-600) {
+        font-size: 1.3rem;
+      }
+    }
+
+    &.is-padded-bottom {
+      margin-bottom: 1.8rem;
+
+      @media(min-width: $min-600) {
+        margin-bottom: 3.9rem;
+      }
+    }
+  }
 }

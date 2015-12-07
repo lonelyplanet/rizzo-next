@@ -57,6 +57,10 @@
   display: inline-block;
 
   padding: $gutter;
+
+  &--small {
+    font-size: 1rem;
+  }
 }
 
 /// Provides the underline for the fancy link

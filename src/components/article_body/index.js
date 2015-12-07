@@ -47,7 +47,10 @@ export default class ArticleBodyComponent extends Component {
         if (!$a.length) {
           $img.wrap(`<a class="copy--body__link" href="${src}" data-size="${image.width}x${image.height}" />`);
         } else {
-          $a.attr("data-size", `${image.width}x${image.height}`);
+          $a.attr({ 
+            href: src,
+            "data-size": `${image.width}x${image.height}`
+          });
         }
 
         if(image.width > 1000 && $img.hasClass("is-landscape")) {
