@@ -1,9 +1,9 @@
 import { Component } from "../../core/bane";
 import $ from "jquery";
 import ImageGallery from "../image_gallery";
-import PoiCallout from "../poi_callout";
+// import PoiCallout from "../poi_callout";
 import moment from "moment";
-import matchMedia from "../../core/utils/matchMedia";
+// import matchMedia from "../../core/utils/matchMedia";
 
 /**
  * Enhances the body of articles with a gallery and more
@@ -16,15 +16,15 @@ export default class ArticleBodyComponent extends Component {
       this.gallery = new ImageGallery({ el: this.$el });
     });
 
-    matchMedia("(min-width: 1200px)", (query) => {
-      if (query.matches) {
-        this.loadPoiCallout();
-      } else {
-        if (typeof this.poiCallout !== "undefined") {
-          this.poiCallout.destroy();
-        }
-      }
-    });
+    // matchMedia("(min-width: 1200px)", (query) => {
+    //   if (query.matches) {
+    //     this.loadPoiCallout();
+    //   } else {
+    //     if (typeof this.poiCallout !== "undefined") {
+    //       this.poiCallout.destroy();
+    //     }
+    //   }
+    // });
 
     this.formatDate();
   }
@@ -103,39 +103,39 @@ export default class ArticleBodyComponent extends Component {
    * Load POI data via AJAX
    * @return {Promise} A promise for when the AJAX request finishes
    */
-  loadPoiData() {
-    return new Promise((resolve, reject) => {
-      $.ajax(window.location.pathname, {
-        success: (response) => {
-          resolve(response.article.content.pois);
-        },
-        error: (xhrObj, textStatus, error) => {
-          reject(Error(error));
-        }
-      });
-    });
-  }
+  // loadPoiData() {
+  //   return new Promise((resolve, reject) => {
+  //     $.ajax(window.location.pathname, {
+  //       success: (response) => {
+  //         resolve(response.article.content.pois);
+  //       },
+  //       error: (xhrObj, textStatus, error) => {
+  //         reject(Error(error));
+  //       }
+  //     });
+  //   });
+  // }
 
   /**
    * Creates a new instance of the POI callout; checks to see if the data
    * already exists and if not, caches it in a variable.
    * @return {[type]} [description]
    */
-  loadPoiCallout() {
-    if (typeof this.poiData === "undefined") {
-      this.loadPoiData().then((response) => {
-        this.poiCallout = new PoiCallout({
-          el: this.$el,
-          pois: response
-        });
+  // loadPoiCallout() {
+  //   if (typeof this.poiData === "undefined") {
+  //     this.loadPoiData().then((response) => {
+  //       this.poiCallout = new PoiCallout({
+  //         el: this.$el,
+  //         pois: response
+  //       });
 
-        this.poiData = response;
-      });
-    } else {
-      this.poiCallout = new PoiCallout({
-        el: this.$el,
-        pois: this.poiData
-      });
-    }
-  }
+  //       this.poiData = response;
+  //     });
+  //   } else {
+  //     this.poiCallout = new PoiCallout({
+  //       el: this.$el,
+  //       pois: this.poiData
+  //     });
+  //   }
+  // }
 }
