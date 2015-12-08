@@ -1,30 +1,31 @@
+import isJson from "../../utils/is_json";
+
 /** 
- * Track an event with our analytics library. 
- * This will post to tealium with the name of the event as the action, the category as Destinations Next
- * and the label will be the stringified data
- * @example <caption>Standard Tracking</caption>
- *
- * analytics("Some Event", { some: "data" });
- * // Will send to google analytics as...
- * // { category: "Destinations Next", action: "Some Event", label: "{ some: 'data' }" } 
- * 
+ * Track an event with our analytics library
  * @param {Object} options An object with event data
  */
 export default function({ name, data } = {}) {
-  if (!window.lp.analytics || !window.lp.analytics.api.trackEvent) {
-    return;
-  }
+  /* global utag */
+  if (utag && typeof utag.link === "function") {
+    data = (isJson(data) ? JSON.parse(data) : data) || {};
+    
+    let category, action;
 
-  let eventData = {
-    action: name
-  };
-  
-  if (data) {
-    eventData.label = data;
-  }
+    if (name.toLowerCase() === "partner search") {
+        category = "Partner";
+        action = "Search";
+    }
 
-  window.lp.analytics.api.trackEvent({ 
-    category: "Destinations Next",
-    action: JSON.stringify(eventData)
-  });
+    let event = {
+        ga_event_category: category || "Destinations Next",
+        ga_event_action: action || name,
+        ga_event_label: JSON.stringify(data)
+    };
+
+    if (typeof ENV_PROD !== "undefined" && !ENV_PROD) {
+      console.log(`utag: ${JSON.stringify(event)}`);
+    } else {
+      utag.link(event);      
+    }
+  }
 };
