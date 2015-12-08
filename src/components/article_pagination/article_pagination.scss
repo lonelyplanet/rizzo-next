@@ -1,8 +1,15 @@
 @import "../../../sass/webpack_deps";
 
 .article-pagination {
-  @include container;
   border-top: .1rem solid $color-border;
+
+  &.is-hidden {
+    opacity: 0;
+  }
+}
+
+.article-pagination__container {
+  @include container;
 
   @include with-layout(static) {
     margin-left: -#{gutter-half()};
@@ -31,10 +38,6 @@
     @media (min-width: $min-600) {
       display: block;
     }
-  }
-
-  &.is-hidden {
-    opacity: 0;
   }
 }
 

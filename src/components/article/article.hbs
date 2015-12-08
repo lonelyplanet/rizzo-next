@@ -1,6 +1,4 @@
-<article class="article" itemscope itemtype="http://schema.org/Article"
-  data-title="{{ article.title }}"
-  data-slug="{{ article.slug }}">
+<article class="article" data-title="{{ article.title }}" data-slug="{{ article.slug }}">
   <meta content="{{ article.title }}" itemprop="headline">
   <meta content="{{ article.title }}" itemprop="alternativeHeadline">
   <meta content="{{ article.post_date }}" itemprop="datePublished">
@@ -83,16 +81,6 @@
       </div><!-- .article-post-date -->
 
       <div class="article-footer__top">
-        {{#if article.categories}}
-          <div class="category-list category-list--left is-constrained">
-            {{#each article.categories}}
-              <a class="category-list__item" href="{{ this.slug }}">
-                {{ this.name }}
-              </a>
-            {{/each}}
-          </div><!-- .category-list -->
-        {{/if}}
-
         <div class="action-sheet action-sheet--right js-action-sheet">
           <div class="action-sheet__item js-action-sheet-item">
             <button class="action-sheet__control js-action-sheet-menu-control" title="Share this article on Twitter, Facebook, or email" aria-label="Share this article on Twitter, Facebook, or email" aria-owns="share-action-sheet">
@@ -134,13 +122,25 @@
             </div><!-- .action-sheet__menu -->
           </div><!-- .action-sheet__item -->
         </div><!-- .action-sheet -->
+
+        {{#if article.categories}}
+          <div class="category-list category-list--left is-constrained">
+            {{#each article.categories}}
+              <a class="category-list__item" href="{{ this.slug }}">
+                {{ this.name }}
+              </a>
+            {{/each}}
+          </div><!-- .category-list -->
+        {{/if}}
       </div><!-- .article-footer__top -->
     </footer><!-- .article-footer -->
 
     {{#if article.related_articles}}
       <div class="article-pagination is-hidden">
-        <a class="article-pagination__item is-prev"></a>
-        <a class="article-pagination__item is-next"></a>
+        <div class="article-pagination__container">
+          <a class="article-pagination__item is-prev"></a>
+          <a class="article-pagination__item is-next"></a>
+        </div><!-- .article-pagination__container -->
       </div><!-- .article-pagination -->
     {{/if}}
 
