@@ -50,10 +50,8 @@ export default class CookieUtil {
   }
   removeCookie(name) {
     let cookieString = `${name}=`;
-    let expiryDate = new Date();
-    expiryDate.setTime(expiryDate.getTime() - 86400 * 1000);
     cookieString += ";max-age=0";
-    cookieString += `;expires=${expiryDate.toUTCString()}`;
+    cookieString += `;expires=jan 1 1973`;
     document.cookie = cookieString;
   }
 }
