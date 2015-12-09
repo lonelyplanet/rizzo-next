@@ -54,11 +54,11 @@ module.exports = function(config) {
         module: {
             noParse: webpackConfig.module.noParse,
             loaders: webpackConfig.module.loaders,
-            postLoaders: [{ 
-                test: /\.jsx?$/,
-                exclude: /(spec|node_modules|bower_components)\//,
-                loader: "istanbul-instrumenter"
-            }]
+            // postLoaders: [{ 
+            //     test: /\.jsx?$/,
+            //     exclude: /(spec|node_modules|bower_components)\//,
+            //     loader: "istanbul-instrumenter"
+            // }]
         }
     },
     webpackMiddleware: {
