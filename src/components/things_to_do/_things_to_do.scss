@@ -3,8 +3,6 @@
 .ttd {
   overflow: hidden;
   position: relative;
-  // changed margin to padding to allow 'see more' shadow to extend
-  padding-bottom: $gutter;
 
   @media (min-width: $min-840) {
     overflow: hidden;

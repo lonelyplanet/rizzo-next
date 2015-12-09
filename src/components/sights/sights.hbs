@@ -1,0 +1,16 @@
+<article class="sights">
+  <h2 class=sights__title>{{sights_title}}</h2>
+  <ul class="sights__list">
+    {{#each sights}}
+      <li class="sights__item">
+        <div class="sights__item__img" style="background-image: url('http://images-resrc.staticlp.com/O=60/S=W80/{{this.hero_image_url}}')"></div>
+        <div class="sights__item__order">{{@index}}</div>
+        <div class="sights__item__text">
+          <div class="title">{{this.name}}</div>
+          <div class="subtitle">{{subtitle}}</div>
+        </div>
+      </li>
+    {{/each}}
+  </ul>
+
+</article>

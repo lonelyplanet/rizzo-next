@@ -10,7 +10,6 @@ import moment from "moment";
 
 
 let userPanelTemplate = require("./user_panel.hbs");
-// Handlebars.registerPartial('submenu', $("#submenu").html());
 
 class NavigationComponent extends Component {
 

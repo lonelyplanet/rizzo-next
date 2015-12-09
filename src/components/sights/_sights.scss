@@ -1,0 +1,107 @@
+@import "../../../sass/webpack_deps";
+$item-width: 41rem;
+$image-width: 8rem;
+$order-width: 6rem;
+$toggle-width: 10vw;
+
+.sights {
+  margin-left: 2.5rem;
+
+  &__list {
+
+  }
+
+  &__item {
+    height: 6rem;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    width: $item-width;
+    margin-top: ($gutter / 3);
+    margin-bottom: ($gutter / 3);
+
+    &:before,
+    &:after {
+      position: absolute;
+      display: block;
+      height: 0;
+      width: $item-width;
+      border-top: .1rem solid $divider-color;
+      content: "";
+    }
+
+    &:after {
+      bottom: 0;
+      left: 0;
+    }
+
+    &:before {
+      top: 0;
+      left: 0;
+    }
+
+    &__img {
+      background-size: cover;
+      background-repeat: no-repeat;
+      height: 100%;
+      width: 8rem;
+      overflow: hidden;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    &__text {
+      position: absolute;
+      top: 50%;
+      transform: translate(0, -50%);
+      width: ($item-width - $image-width - $gutter);
+      padding-right: 1rem;
+      left: 10.7rem;
+
+      .title {
+        font-size: 1.6rem;
+        color: $color-darkblue;
+        transition: color $animation-speed ease;
+      }
+    }
+
+    &.is-hovered {
+      .title {
+        color: $color-blue;
+      }
+    }
+
+
+    &__order {
+      position: absolute;
+      width: $order-width;
+      height: $order-width;
+      display: block;
+      left: $image-width;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      line-height: $order-width;
+      font-weight: bold;
+      color: $feature-copy;
+      font-size: 1.2rem;
+      padding-top: .2rem;
+
+      &:before {
+        position: absolute;
+        display: block;
+        background-color: #fff;
+        top: 50%;
+        left: 50%;
+        width: 40%;
+        height: 40%;
+        transform: translate(-50%, -50%) rotate(45deg);
+        content: "";
+        z-index: -1;
+        box-shadow: .2rem .1rem .4rem -.2rem #333;
+        border-radius: .4rem;
+      }
+    }`
+  }
+}
