@@ -1,10 +1,15 @@
+/* global googletag */
+/* global utag */
 import { Component } from "../../core/bane";
 import $ from "jquery";
 import debounce from "lodash/function/debounce";
 import ArticleBodyComponent from "../article_body";
+// import track from "../../core/decorators/track";
 
 export default class ArticleComponent extends Component {
   initialize() {
+    this.canUseScrollFeature = (window.history && window.history.pushState) ? true : false;
+
     this._resetWindowScrollPosition();
 
     this.$window = $(window);
@@ -17,6 +22,7 @@ export default class ArticleComponent extends Component {
     this.isNextArticleLoading = false;
 
     this.template = require("./article.hbs");
+    this.loader = require("./article-loading.hbs");
 
     this.articles = new Map();
     this.viewedArticles = [];
@@ -28,6 +34,43 @@ export default class ArticleComponent extends Component {
     this._updateValuesAfterTimeout();
     this._setFirstArticle();
     this._createInitialListOfArticles();
+
+    this.nextSlotId = 1;
+
+    this.adConfig = {
+      adThm: "",
+      adTnm: "",
+      continent: window.lp.article.continentName,
+      country: window.lp.article.countryName,
+      destination: "",
+      interest: "",
+      keyValues: "",
+      layers: ["LonelyPlanet.com", "Articles"],
+      networkId: 9885583,
+      theme: "",
+      template: "tips-and-articles-detail",
+      topic: "tips-and-articles"
+    };
+
+    /*
+      adTnm: "tip-article, tip-article-49561"
+      continent: "europe"
+      country: "spain"
+      destination: "madrid"
+      interest: "architecture-and-buildings,art-and-literature,business-travel,cities,festivals-and-events,food-and-drink,history-heritage-and-tradition,honeymoons-and-romance,luxury-travel,music,shopping,train-travel-and-railways"
+      keyValues: Object
+      layers: Array[5]
+      template: "tips-and-articles-detail"
+      topic: "tips-and-articles"
+    */
+
+    this.adPath = `/${this.adConfig.networkId}/${this.adConfig.layers.join("/")}`;
+    // this.adPath = "/9885583/LonelyPlanet.com/Articles";
+    // this.adPath = "/9885583/2009.lonelyplanet";
+
+    this._loadFirstAd();
+
+    console.log(window.lp.article);
   }
 
   /**
@@ -46,10 +89,19 @@ export default class ArticleComponent extends Component {
     this.howManyArticlesHaveLoaded = 1;
     this.$activeArticle = this.$el.addClass("is-active");
 
+    let article = window.lp.article;
+
     // Add the first article to the map
     this.articles.set(this.$el[0], {
       title: this.$activeArticle.data("title"),
-      slug: this.$activeArticle.data("slug")
+      slug: this.$activeArticle.data("slug"),
+      place: {
+        atlas_id: article.atlasId,
+        cd3_City: article.cityName,
+        cd1_Continent: article.continentName,
+        cd2_Country: article.countryName,
+        page_type: article.type
+      }
     });
 
     // Add the first article to the list of viewed articles
@@ -105,7 +157,10 @@ export default class ArticleComponent extends Component {
       this._setNextArticle();
       this._setArticlePagination(1);
       this._createArticlePagination(this.$el);
-      this._scrollToNextArticle();
+
+      if (this.canUseScrollFeature) {
+        this._scrollToNextArticle();
+      }
     });
   }
 
@@ -115,8 +170,8 @@ export default class ArticleComponent extends Component {
    *                         the correct index
    */
   _setArticlePagination(offset) {
-    let nextCount = (this.howManyArticlesHaveLoaded * 2);
-    let previousCount = (this.howManyArticlesHaveLoaded * 2) + 1;
+    let nextCount = (this.howManyArticlesHaveLoaded * 2),
+        previousCount = (this.howManyArticlesHaveLoaded * 2) + 1;
 
     this.paginatedArticles.next = this.listOfArticles[nextCount - offset];
     this.paginatedArticles.previous = this.listOfArticles[previousCount - offset];
@@ -128,9 +183,9 @@ export default class ArticleComponent extends Component {
    *                          that is to be updated
    */
   _createArticlePagination($article) {
-    let $pagination = $article.find(".article-pagination");
-    let next = this.paginatedArticles.next;
-    let previous = this.paginatedArticles.previous;
+    let $pagination = $article.find(".article-pagination"),
+        next = this.paginatedArticles.next,
+        previous = this.paginatedArticles.previous;
 
     if (next && previous) {
       $pagination.find(".is-prev").attr("href", `/${previous.slug}`).html(previous.title);
@@ -168,11 +223,13 @@ export default class ArticleComponent extends Component {
         }
       }
 
+      // if(this.windowScrollTop >= this.articleScrollTop) {}
+
       this.articles.forEach((data, article) => {
         this._toggleActiveClassForArticle(article);
       });
 
-      this._updateHistoryForActiveArticle();
+      this._checkIfHistoryShouldBeUpdated();
     }, 10));
   }
 
@@ -183,9 +240,9 @@ export default class ArticleComponent extends Component {
    */
   _toggleActiveClassForArticle(article) {
     if (this.windowScrollTop) {
-      let top = article.offsetTop;
-      let bottom = top + article.offsetHeight;
-      let shouldActiveClassBeAdded = this.windowScrollTop < bottom && this.windowScrollTop > top;
+      let top = article.offsetTop,
+          bottom = top + article.offsetHeight,
+          shouldActiveClassBeAdded = this.windowScrollTop < bottom && this.windowScrollTop > top;
 
       if (shouldActiveClassBeAdded) {
         this.$activeArticle = $(article)
@@ -202,7 +259,7 @@ export default class ArticleComponent extends Component {
   /**
    * Find the active article and update the browser history
    */
-  _updateHistoryForActiveArticle() {
+  _checkIfHistoryShouldBeUpdated() {
     if (this.$activeArticle.hasClass("is-active")) {
       this._updateHistory(
         window.location.pathname,
@@ -220,9 +277,17 @@ export default class ArticleComponent extends Component {
    * @return {Boolean}
    */
   _doesItemExist(array, slug) {
+    let exists = false;
+
     for (let i = 0; i < array.length; i++) {
-      return slug === array[i].slug;
+      exists = slug === array[i].slug;
+
+      if (exists) {
+        break;
+      }
     }
+
+    return exists;
   }
 
   /**
@@ -234,7 +299,8 @@ export default class ArticleComponent extends Component {
 
     this.isNextArticleLoading = true;
 
-    this.$activeArticle.after(`<div class="article-loading"><span></span></div>`);
+    $(this.loader({}))
+      .appendTo(this.$activeArticle);
 
     $.ajax(slug, {
       success: (data) => {
@@ -250,7 +316,7 @@ export default class ArticleComponent extends Component {
 
         this.isNextArticleLoading = false;
 
-        $(".article-loading").remove();
+        // $(".article-loading").remove();
 
         console.log(`Article ${this.howManyArticlesHaveLoaded} is done`);
       },
@@ -267,7 +333,7 @@ export default class ArticleComponent extends Component {
    * Updates a newly created article
    */
   _updateNewArticle() {
-    new ArticleBodyComponent({el: this.$newArticle});
+    this.articleBody = new ArticleBodyComponent({ el: this.$newArticle });
 
     // Set the scrollTop for the new article; this will not be accurate because
     // the article has not fully loaded (due to fonts and images), therefore,
@@ -281,12 +347,26 @@ export default class ArticleComponent extends Component {
 
     this.howManyArticlesHaveLoaded += 1;
 
-    let previousArticle = this.listOfArticles[this.howManyArticlesHaveLoaded - 2];
-    this.viewedArticles.push(previousArticle);
+    // this._updateListOfViewedArticles();
+    // console.log(this.viewedArticles);
 
     this._setNextArticle();
     this._setArticlePagination(2);
     this._createArticlePagination(this.$newArticle);
+    this._updateAd();
+  }
+
+  /**
+   * Finds the previously viewed article and adds it to the array of viewed
+   * articles
+   */
+  // @track("AP scroll");
+  _updateListOfViewedArticles() {
+    let previousArticle = this.listOfArticles[this.howManyArticlesHaveLoaded - 2];
+
+    if (previousArticle) {
+      this.viewedArticles.push(previousArticle);
+    }
   }
 
   /**
@@ -297,9 +377,9 @@ export default class ArticleComponent extends Component {
    */
   _addNewArticlesToArray(array) {
     for (let i = 0; i < array.length; i++) {
-      let slug = array[i].slug;
-      let hasItemBeenViewed = this._doesItemExist(this.viewedArticles, slug);
-      let isItemInList = this._doesItemExist(this.listOfArticles, slug);
+      let slug = array[i].slug,
+          hasItemBeenViewed = this._doesItemExist(this.viewedArticles, slug),
+          isItemInList = this._doesItemExist(this.listOfArticles, slug);
 
       if (!hasItemBeenViewed && !isItemInList) {
         this.listOfArticles.push(array[i]);
@@ -330,21 +410,158 @@ export default class ArticleComponent extends Component {
    * @param {String} slug     Pathname of the new "page"
    */
   _updateHistory(pathname, title, slug) {
-    if (window.history && window.history.pushState) {
-      if (pathname !== `/${slug}`) {
-        history.pushState(null, title, `/${slug}`);
-        this._notifyAnalytics(`/${slug}`);
+    if (pathname !== `/${slug}`) {
+      history.pushState(null, title, `/${slug}`);
+
+      this._updateData();
+
+      if(!this._doesItemExist(this.viewedArticles, slug)) {
+        this._trackEvent(`/${slug}`);
+        this._updateListOfViewedArticles();
       }
     }
   }
 
   /**
-   * Send a page view for analytics
-   * @param {String} path Pathname of page to track
+   * Track event for analytics
+   * @param {String} pathname Pathname to send to analytics
    */
-  _notifyAnalytics(path) {
-    utag.view({
-      ga_location_override: path
+  _trackEvent(pathname) {
+    console.log(`${pathname} tracked`);
+
+    utag && typeof utag.view === "function" && utag.view({
+      ga_location_override: pathname
     });
+  }
+
+  /**
+   * Update data and track events for analytics
+   */
+  _updateData() {
+    let article = this.articles.get(this.$activeArticle[0]);
+
+    window.lp.article = {
+      atlasId: article.place.atlas_id,
+      name: article.title,
+      cityName: article.place.cd3_City,
+      continentName: article.place.cd1_Continent,
+      countryName: article.place.cd2_Country,
+      type: article.place.page_type,
+      slug: article.slug
+    };
+
+    console.log(window.lp.article);
+  }
+
+  /**
+   * Generate unique names for slots
+   * @return {String} Unique ID
+   */
+  _generateNextSlotName() {
+    let id = this.nextSlotId++;
+    return `adunit-${id}`;
+  }
+
+  /**
+   * Define a size mapping object. The first parameter to addSize is a viewport
+   * size, while the second is a list of allowed ad sizes.
+   * @return {Object} Size map
+   */
+  _adSizes() {
+    return googletag.sizeMapping()
+      .addSize([980, 0], [[970, 250], [940, 40], [728, 90]])
+      .addSize([728, 0], [[728, 90]])
+      .addSize([0, 0], [[300, 250]])
+      .build();
+  }
+
+  _loadFirstAd() {
+    let adSlots = [];
+    let $adUnit = $("#adunit-0");
+
+    googletag.cmd.push(() => {
+      // Declare any slots initially present on the page
+      adSlots[0] = googletag.defineSlot(this.adPath, [300, 250], "adunit-0")
+        .defineSizeMapping(this._adSizes())
+        .setTargeting("theme", this.adConfig.theme)
+        .setTargeting("template", this.adConfig.template)
+        .setTargeting("topic", this.adConfig.topic)
+        .setTargeting("adThm", this.adConfig.adThm)
+        .setTargeting("adTnm", this.adConfig.adTnm)
+        .setTargeting("continent", this.adConfig.continent)
+        .setTargeting("country", this.adConfig.country)
+        .setTargeting("destination", this.adConfig.destination)
+        .addService(googletag.pubads());
+
+      // Infinite scroll requires SRA
+      googletag.pubads().enableSingleRequest();
+
+      // Disable initial load, we will use `refresh()` to fetch ads. Calling
+      // this function means that `display()` calls just register the slot as
+      // ready, but do not fetch ads for it.
+      googletag.pubads().disableInitialLoad();
+
+      googletag.enableServices();
+    });
+
+    // Call `display()` to register the slot as ready and `refresh()` to fetch
+    // an ad
+    googletag.cmd.push(() => {
+      googletag.display("adunit-0");
+      googletag.pubads().refresh([adSlots[0]]);
+    });
+
+    if ($adUnit.length) {
+      console.log(`analytics ${$adUnit[0].id}`);
+      // window.lp.analytics.api.trackEvent({
+      //   category: "advertising",
+      //   action: "page-load-impression",
+      //   label: $adUnit.data().sizeMapping
+      // });
+    }
+  }
+
+  _updateAd() {
+    let slotName = this._generateNextSlotName();
+    let $slot = $("<div />", {
+      "id": slotName,
+      "class": "adunit adunit--leaderboard",
+      "attr": {
+        "data-size-mapping": "leaderboard",
+        "data-targeting": ""
+      }
+    });
+
+    $slot.appendTo(this.$newArticle.find(".ad--leaderboard__container"));
+
+    // Define the slot itself; call `display()` to register the div and
+    // `refresh()` to fetch ad
+    googletag.cmd.push(() => {
+      let slot = googletag.defineSlot(this.adPath, [300, 250], slotName)
+        .defineSizeMapping(this._adSizes())
+        .setTargeting("theme", this.adConfig.theme)
+        .setTargeting("template", this.adConfig.template)
+        .setTargeting("topic", this.adConfig.topic)
+        .setTargeting("adThm", this.adConfig.adThm)
+        .setTargeting("adTnm", this.adConfig.adTnm)
+        .setTargeting("continent", this.adConfig.continent)
+        .setTargeting("country", this.adConfig.country)
+        .setTargeting("destination", this.adConfig.destination)
+        .addService(googletag.pubads());
+
+      // `display()` has to be called before `refresh()` and after the slot
+      // `div` is in the page
+      googletag.display(slotName);
+      googletag.pubads().refresh([slot]);
+    });
+
+    if ($slot.length) {
+      console.log(`analytics ${$slot[0].id}`);
+      // window.lp.analytics.api.trackEvent({
+      //   category: "advertising",
+      //   action: "page-load-impression",
+      //   label: $slot.data().sizeMapping
+      // });
+    }
   }
 }
