@@ -18,10 +18,8 @@ window.lp.fs = {
   }
 };
 
-if (window.location.protocol !== "https:") {
-  window.lp.fs = new Flamsteed({
-    events: window.lp.fs.buffer,
-    u: new CookieUtil().getCookie("lpUid") || "",
-    schema: "0.3"
-  });
-}
+window.lp.fs = new Flamsteed({
+  events: window.lp.fs.buffer,
+  u: new CookieUtil().getCookie("lpUid") || "",
+  schema: "0.3"
+});
