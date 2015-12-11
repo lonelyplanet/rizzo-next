@@ -1,0 +1,12 @@
+.article-loading {
+  border-top: .1rem solid $color-border;
+  padding-top: gutter();
+  padding-bottom: gutter();
+  text-align: center;
+
+  span {
+    color: #ccc;
+    display: block;
+    font-size: 1.2rem;
+  }
+}
