@@ -7,7 +7,7 @@ import track from "../../core/decorators/track";
 
 export default class ArticleComponent extends Component {
   initialize() {
-    this.canUseScrollFeature = (window.history && window.history.pushState) ? true : false;
+    this.canUseScrollFeature = window.history && window.history.pushState;
 
     this._resetWindowScrollPosition();
 
@@ -199,16 +199,20 @@ export default class ArticleComponent extends Component {
    */
   _createInitialListOfArticles() {
     this._getRelatedArticles(`${window.location.pathname}.json`).then((response) => {
-      this.listOfArticles = response;
-      this.windowScrollTop = this.$window.scrollTop();
-      this._setNextArticle();
-      this._setArticlePagination(1);
-      this._createArticlePagination(this.$el);
-
-      if (this.canUseScrollFeature) {
-        this._scrollToNextArticle();
-      }
+      this._setInitialListOfArticles(response);
     });
+  }
+
+  _setInitialListOfArticles(response) {
+    this.listOfArticles = response;
+    this.windowScrollTop = this.$window.scrollTop();
+    this._setNextArticle();
+    this._setArticlePagination(1);
+    this._createArticlePagination(this.$el);
+
+    if (this.canUseScrollFeature) {
+      this._scrollToNextArticle();
+    }
   }
 
   /**
@@ -252,8 +256,6 @@ export default class ArticleComponent extends Component {
    * Runs methods when scrolling
    */
   _scrollToNextArticle() {
-    console.log("Ready");
-
     this.$window.on("scroll.article", debounce(() => {
       this.windowScrollTop = this.$window.scrollTop();
 
@@ -340,8 +342,6 @@ export default class ArticleComponent extends Component {
    * @param {String} slug Pathname of article to get
    */
   _getNextArticle(slug) {
-    console.log(`Article ${this.howManyArticlesHaveLoaded + 1} is loading…`);
-
     this.isNextArticleLoading = true;
 
     $(this.loader({}))
@@ -362,14 +362,9 @@ export default class ArticleComponent extends Component {
         this.isNextArticleLoading = false;
 
         $(".article-loading").remove();
-
-        console.log(`Article ${this.howManyArticlesHaveLoaded} is done`);
       },
       error: () => {
         this.isNextArticleLoading = false;
-
-        // @TODO Maybe do something more substantial here
-        console.log(`Article ${this.howManyArticlesHaveLoaded + 1} is done with errors`);
       }
     });
   }

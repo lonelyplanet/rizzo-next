@@ -81,7 +81,7 @@
       </div><!-- .article-post-date -->
 
       <div class="article-footer__top">
-        <div class="action-sheet action-sheet--right js-action-sheet">
+        <div class="action-sheet action-sheet--article js-action-sheet">
           <div class="action-sheet__item js-action-sheet-item">
             <button class="action-sheet__control js-action-sheet-menu-control" title="Share this article on Twitter, Facebook, or email" aria-label="Share this article on Twitter, Facebook, or email" aria-owns="share-action-sheet">
               <svg class="svg-icon svg-icon--dark" viewBox="0 0 13 16" width="13" height="16">
@@ -124,7 +124,7 @@
         </div><!-- .action-sheet -->
 
         {{#if article.categories}}
-          <div class="category-list category-list--left is-constrained">
+          <div class="category-list category-list--article">
             {{#each article.categories}}
               <a class="category-list__item" href="{{ this.slug }}">
                 {{ this.name }}
