@@ -522,7 +522,7 @@ export default class ArticleComponent extends Component {
    */
   _adSizes() {
     return googletag.sizeMapping()
-      .addSize([980, 0], [[970, 250], [940, 40], [728, 90]])
+      .addSize([980, 0], [[970, 250], [728, 90]])
       .addSize([728, 0], [[728, 90]])
       .addSize([0, 0], [[300, 250]])
       .build();
