@@ -3,6 +3,8 @@ import Slideshow from "../slideshow";
 import assign from "lodash/object/assign";
 import Overlay from "../overlay";
 import "./masthead_nav.js";
+import coverVid from "../../core/utils/covervid";
+import MobilUtil from "../../core/mobile_util";
 
 /**
  * Masthead Component
@@ -18,11 +20,6 @@ export default class MastheadComponent extends Component {
     };
 
     this.overlay = new Overlay();
-    this.slideshow = new Slideshow(assign({
-      el: this.$el.find(".slideshow")
-    }, options.slideshow));
-
-    this.listenTo(this.slideshow, "image.changed", this.updateStrapline);
 
     $.each(this.$straplines, function(index, strapline) {
       if (!$(strapline).html()) {
@@ -33,12 +30,22 @@ export default class MastheadComponent extends Component {
     });
 
      // import Video from "../video";
-    require([
-        "../video"
-      ], (Video) => {
-        Video.addPlayer(document.body)
-          .then(this.playerReady.bind(this));
-      });
+    this.$video = this.$el.find(".js-video").on("playing", () => {
+      $(event.target).addClass("is-playing");
+    });
+    
+    if (this.$video.length && !MobilUtil.isMobile()) {
+      coverVid(this.$video[0], 1440, 680);
+      return;
+    } else if (this.$video.length && MobilUtil.isMobile()) {
+      this.$video.closest(".js-video-container").remove();
+    }
+    
+    this.slideshow = new Slideshow(assign({
+      el: this.$el.find(".slideshow")
+    }, options.slideshow));
+    
+    this.listenTo(this.slideshow, "image.changed", this.updateStrapline);
   }
    /**
    * Play the video, callback from click handler
