@@ -1,92 +1,147 @@
 @import "../../../sass/webpack_deps";
-$item-width: 41rem;
-$image-width: 8rem;
-$order-width: 6rem;
+$image-width: 5.5rem;
+$order-width: 4.5rem;
 $toggle-width: 10vw;
 
 .sights {
-  margin-left: 2.5rem;
+  @include container-static(12);
+  padding: 0 1rem;
+  counter-reset: sight-count;
 
-  &__list {
+  &__title {
+    text-align: center;
+    padding-bottom: 1rem;
 
+    @media (min-width: $min-600) {
+      text-align: left;
+    }
+  }
+
+  &__list, &__title {
+    margin: 0 auto;
+
+    @media (min-width: $min-720) {
+      width: 90%;
+    }
+
+    @media (min-width: $min-840) {
+      width: 80%;
+    }
+
+    @media (min-width: $min-960) {
+      width: 100%;
+    }
+  }
+
+  &__column {
+    @media (min-width: $min-600) {
+      @include gallery(6 of 12);
+    }
+
+    @media (min-width: $min-960) {
+      @include gallery(4 of 12);
+    }
+
+    .sights__item:first-child:before {
+      content: "";
+      position: absolute;
+      top: -.3rem;
+      left: 0;
+      display: block;
+      height: 0;
+      width: 100%;
+      border-top: .1rem solid $divider-color;
+    }
+  }
+
+  &__column--3 {
+    display: none;
+
+    @media (min-width: $min-960) {
+      display: inline-block;
+    }
   }
 
   &__item {
-    height: 6rem;
-    display: inline-block;
+    height: 5rem;
     position: relative;
     cursor: pointer;
-    width: $item-width;
-    margin-top: ($gutter / 3);
-    margin-bottom: ($gutter / 3);
+    margin-top: .5rem;
 
-    &:before,
     &:after {
       position: absolute;
       display: block;
       height: 0;
-      width: $item-width;
+      width: 100%;
       border-top: .1rem solid $divider-color;
       content: "";
-    }
-
-    &:after {
-      bottom: 0;
-      left: 0;
-    }
-
-    &:before {
-      top: 0;
+      bottom: -.3rem;
       left: 0;
     }
 
     &__img {
       background-size: cover;
       background-repeat: no-repeat;
-      height: 100%;
-      width: 8rem;
+      height: 4rem;
+      width: $image-width;
       overflow: hidden;
       position: absolute;
-      top: 0;
+      top: calc(50% - 2rem);
       left: 0;
+
+      &:before {
+        width: $image-width;
+        background-position: center -63px;
+      }
     }
 
     &__text {
       position: absolute;
       top: 50%;
       transform: translate(0, -50%);
-      width: ($item-width - $image-width - $gutter);
-      padding-right: 1rem;
-      left: 10.7rem;
+      left: $image-width + 2rem;
+      width: calc(100% - #{$image-width} - #{$order-width});
 
       .title {
-        font-size: 1.6rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 1.2rem;
+        font-weight: 600;
         color: $color-darkblue;
         transition: color $animation-speed ease;
       }
+
+      .subtitle {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        color: $footer-bottom-link-color;
+        font-size: .9rem;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
     }
 
-    &.is-hovered {
+    &:hover {
       .title {
         color: $color-blue;
       }
     }
-
 
     &__order {
       position: absolute;
       width: $order-width;
       height: $order-width;
       display: block;
-      left: $image-width;
+      left: $image-width - .1rem;
       top: 50%;
       transform: translate(-50%, -50%);
       text-align: center;
       line-height: $order-width;
       font-weight: bold;
       color: $feature-copy;
-      font-size: 1.2rem;
-      padding-top: .2rem;
+      font-size: 1rem;
 
       &:before {
         position: absolute;
@@ -102,6 +157,11 @@ $toggle-width: 10vw;
         box-shadow: .2rem .1rem .4rem -.2rem #333;
         border-radius: .4rem;
       }
-    }`
+
+      &:after {
+        counter-increment: sight-count;
+        content: counter(sight-count);
+      }
+    }
   }
 }

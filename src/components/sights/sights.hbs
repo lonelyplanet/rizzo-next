@@ -1,16 +1,57 @@
 <article class="sights">
-  <h2 class=sights__title>{{sights_title}}</h2>
-  <ul class="sights__list">
-    {{#each sights}}
-      <li class="sights__item">
-        <div class="sights__item__img" style="background-image: url('http://images-resrc.staticlp.com/O=60/S=W80/{{this.hero_image_url}}')"></div>
-        <div class="sights__item__order">{{@index}}</div>
+  <h3 class=sights__title>{{sights_title}}</h3>
+  <div class="sights__list">
+  {{#if show}}
+    <div class="sights__column sights__column--1">
+    {{#each first_column}}
+      <div class="sights__item">
+        {{#if this.hero_image_url}}
+          <div class="sights__item__img" style="background-image: url('http://images-resrc.staticlp.com/O=60/S=W80/{{this.hero_image_url}}')"></div>
+          {{else}}
+          <div class="sights__item__img topic__image--sight"></div>
+        {{/if}}
+        <div class="sights__item__order"></div>
         <div class="sights__item__text">
           <div class="title">{{this.name}}</div>
-          <div class="subtitle">{{subtitle}}</div>
+          <div class="subtitle">HONG KONG ISLAND</div>
         </div>
-      </li>
+      </div>
     {{/each}}
-  </ul>
-
+    </div>
+    <div class="sights__column sights__column--2">
+    {{#each second_column}}
+      <div class="sights__item">
+        {{#if this.hero_image_url}}
+          <div class="sights__item__img" style="background-image: url('http://images-resrc.staticlp.com/O=60/S=W80/{{this.hero_image_url}}')"></div>
+          {{else}}
+          <div class="sights__item__img topic__image--sight"></div>
+        {{/if}}
+        <div class="sights__item__order"></div>
+        <div class="sights__item__text">
+          <div class="title">{{this.name}}</div>
+          <div class="subtitle">HONG KONG ISLAND</div>
+        </div>
+      </div>
+    {{/each}}
+    </div>
+    {{#if third_column}}
+    <div class="sights__column sights__column--3">
+      {{#each third_column}}
+      <div class="sights__item">
+        {{#if this.hero_image_url}}
+          <div class="sights__item__img" style="background-image: url('http://images-resrc.staticlp.com/O=60/S=W80/{{this.hero_image_url}}')"></div>
+          {{else}}
+          <div class="sights__item__img topic__image--sight"></div>
+        {{/if}}
+        <div class="sights__item__order"></div>
+        <div class="sights__item__text">
+          <div class="title">{{this.name}}</div>
+          <div class="subtitle">HONG KONG ISLAND</div>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+    {{/if}}
+  {{/if}}
+  </div>
 </article>
