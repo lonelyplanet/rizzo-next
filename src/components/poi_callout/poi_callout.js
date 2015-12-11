@@ -1,6 +1,5 @@
 import { Component } from "../../core/bane";
 import $ from "jquery";
-import $clamp from "clamp-js/clamp.js";
 import debounce from "lodash/function/debounce";
 
 export default class PoiCalloutComponent extends Component {
@@ -164,8 +163,6 @@ export default class PoiCalloutComponent extends Component {
         excerpt: poiData.excerpt,
         image: src
       }));
-
-    $clamp(this.$callout.find("p").get(0), { clamp: 3 });
   }
 
   /**

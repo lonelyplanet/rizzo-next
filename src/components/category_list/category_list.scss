@@ -1,34 +1,60 @@
 @import "../../../sass/webpack_deps";
 
+/// ----------------------------------------------------------------------------
+/// Settings map
+///
+/// Settings are called via the `get` method, which is simply an alias for
+/// Sass's `map-get` method.
+///
+/// @usage
+/// `get($map-name, 'setting-name')`
+/// ----------------------------------------------------------------------------
+
 $category-list: (
   'background-color': #f0f0f0,
   'margin-left': .4rem,
   'margin-top': .9rem
 );
 
-.category-list {
-  margin-left: -#{get($category-list, 'margin-left')};
-  margin-top: -#{get($category-list, 'margin-top')};
 
-  &.is-constrained {
-    @media (min-width: $min-720) {
-      width: 43rem;
-    }
-  }
+
+
+
+/// ----------------------------------------------------------------------------
+/// Base
+/// ----------------------------------------------------------------------------
+
+.category-list {
+  margin-left: -#{get($category-list, 'margin-left')}; // Negative margin to offset first item's margin
+  margin-top: -#{get($category-list, 'margin-top')}; // Negative margin to offset first row of items' margin
 }
 
-.category-list--left {
+
+
+
+
+/// ----------------------------------------------------------------------------
+/// Modifiers
+/// ----------------------------------------------------------------------------
+
+// Used for when a category list is at the end of an `.article` and inside of
+// the `.article-footer`
+.category-list--article {
   @media (min-width: $min-720) {
     float: left;
+    width: 43rem;
   }
 }
 
-.category-list--right {
-  @media (min-width: $min-720) {
-    float: right;
-  }
-}
 
+
+
+
+/// ----------------------------------------------------------------------------
+/// Elements
+/// ----------------------------------------------------------------------------
+
+// Each category in the list; it should be an `a`
 .category-list__item {
   background-color: get($category-list, 'background-color');
   border-radius: .4rem;
