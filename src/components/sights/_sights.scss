@@ -8,13 +8,17 @@ $toggle-width: 10vw;
   padding: 0 1rem;
   counter-reset: sight-count;
 
-  &__title {
+  &__heading--small {
     text-align: center;
     padding-bottom: 1rem;
 
     @media (min-width: $min-600) {
       text-align: left;
     }
+  }
+
+  &__heading--large {
+    @include h1();
   }
 
   &__list, &__title {
