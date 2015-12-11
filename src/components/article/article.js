@@ -91,10 +91,7 @@ export default class ArticleComponent extends Component {
         if (layers.country) {
           window.lp.ads.layers.push(layers.country);
 
-          if (layers.city) {
-            window.lp.ads.layers.push(layers.city);
-          }
-        } else {
+        } else if (layers.city !== layers.destination) {
           window.lp.ads.layers.push(layers.destination);
         }
       } else {
