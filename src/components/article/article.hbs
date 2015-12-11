@@ -28,11 +28,11 @@
           {{/if}}
 
           {{#if article.author_details.title}}
-            <div class="author-title">
+            <div class="author__title">
               {{ article.author_details.title }}
-            </div><!-- .author-title -->
+            </div><!-- .author__title -->
           {{/if}}
-        </div><!-- .author-details -->
+        </div><!-- .author__details -->
       {{#if article.author_details.url}}</a>{{/if}}
     </div><!-- .author -->
 
@@ -134,19 +134,19 @@
         {{/if}}
       </div><!-- .article-footer__top -->
     </footer><!-- .article-footer -->
-
-    {{#if article.related_articles}}
-      <div class="article-pagination is-hidden">
-        <div class="article-pagination__container">
-          <a class="article-pagination__item is-prev"></a>
-          <a class="article-pagination__item is-next"></a>
-        </div><!-- .article-pagination__container -->
-      </div><!-- .article-pagination -->
-    {{/if}}
-
-    <div class="ad ad--leaderboard ad--article">
-      <div class="ad--leaderboard__container">
-      </div><!-- .container -->
-    </div><!-- .ad -->
   </div><!-- .article__container -->
+
+  {{#if article.related_articles}}
+    <div class="article-pagination is-hidden">
+      <div class="article-pagination__container">
+        <a class="article-pagination__item is-prev"></a>
+        <a class="article-pagination__item is-next"></a>
+      </div><!-- .article-pagination__container -->
+    </div><!-- .article-pagination -->
+  {{/if}}
+
+  <div class="ad ad--leaderboard ad--article">
+    <div class="ad--leaderboard__container">
+    </div><!-- .container -->
+  </div><!-- .ad -->
 </article><!-- .article -->

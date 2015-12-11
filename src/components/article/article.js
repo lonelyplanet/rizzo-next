@@ -1,10 +1,9 @@
-/* global googletag */
-/* global utag */
+/* global googletag, utag */
 import { Component } from "../../core/bane";
 import $ from "jquery";
 import debounce from "lodash/function/debounce";
 import ArticleBodyComponent from "../article_body";
-// import track from "../../core/decorators/track";
+import track from "../../core/decorators/track";
 
 export default class ArticleComponent extends Component {
   initialize() {
@@ -31,46 +30,77 @@ export default class ArticleComponent extends Component {
 
     this.delay = 1500;
 
-    this._updateValuesAfterTimeout();
-    this._setFirstArticle();
-    this._createInitialListOfArticles();
-
     this.nextSlotId = 1;
 
-    this.adConfig = {
-      adThm: "",
-      adTnm: "",
+    this._slugifyPlaceData();
+
+    window.lp.ads = {
+      adThm: `tip-article, ${window.lp.article.id}`,
       continent: window.lp.article.continentName,
       country: window.lp.article.countryName,
-      destination: "",
-      interest: "",
-      keyValues: "",
-      layers: ["LonelyPlanet.com", "Articles"],
+      destination: window.lp.article.destination,
+      interest: window.lp.article.interests.replace(/,\s*$/, ""),
+      layers: ["2009.lonelyplanet"],
       networkId: 9885583,
-      theme: "",
       template: "tips-and-articles-detail",
       topic: "tips-and-articles"
     };
 
-    /*
-      adTnm: "tip-article, tip-article-49561"
-      continent: "europe"
-      country: "spain"
-      destination: "madrid"
-      interest: "architecture-and-buildings,art-and-literature,business-travel,cities,festivals-and-events,food-and-drink,history-heritage-and-tradition,honeymoons-and-romance,luxury-travel,music,shopping,train-travel-and-railways"
-      keyValues: Object
-      layers: Array[5]
-      template: "tips-and-articles-detail"
-      topic: "tips-and-articles"
-    */
+    this._updateAdLayers({
+      section: window.lp.article.siteSection,
+      continent: window.lp.article.continentName,
+      country: window.lp.article.countryName,
+      city: window.lp.article.cityName,
+      destination: window.lp.article.destination
+    });
 
-    this.adPath = `/${this.adConfig.networkId}/${this.adConfig.layers.join("/")}`;
-    // this.adPath = "/9885583/LonelyPlanet.com/Articles";
-    // this.adPath = "/9885583/2009.lonelyplanet";
+    this._updateAdPath(window.lp.ads.layers);
 
+    this._updateValuesAfterTimeout();
+    this._setFirstArticle();
+    this._createInitialListOfArticles();
     this._loadFirstAd();
+  }
 
-    console.log(window.lp.article);
+  _slugifyPlaceData() {
+    window.lp.article.cityName = this._slugify(window.lp.article.cityName);
+    window.lp.article.continentName = this._slugify(window.lp.article.continentName);
+    window.lp.article.countryName = this._slugify(window.lp.article.countryName);
+    window.lp.article.destination = this._slugify(window.lp.article.destination);
+    window.lp.article.interests = window.lp.article.interests.replace(/,\s*$/, "");
+  }
+
+  _updateAdPath(layers) {
+    this.adPath = `/${window.lp.ads.networkId}/${layers.join("/")}`;
+  }
+
+  /**
+   * Checks each layer and updates the layers array accordingly; currently a
+   * mess, but for now, it works.
+   * @param {Object} layers Layers to push to the array
+   */
+  _updateAdLayers(layers) {
+    window.lp.ads.layers = ["2009.lonelyplanet"];
+
+    if (layers.section) {
+      window.lp.ads.layers.push(layers.section);
+
+      if (layers.continent) {
+        window.lp.ads.layers.push(layers.continent);
+
+        if (layers.country) {
+          window.lp.ads.layers.push(layers.country);
+
+          if (layers.city) {
+            window.lp.ads.layers.push(layers.city);
+          }
+        } else {
+          window.lp.ads.layers.push(layers.destination);
+        }
+      } else {
+        window.lp.ads.layers.push("the-world");
+      }
+    }
   }
 
   /**
@@ -80,6 +110,15 @@ export default class ArticleComponent extends Component {
     window.onunload = function() {
       $(window).scrollTop(0);
     };
+  }
+
+  /**
+   * Take a given string and turn it into a slug
+   * @param  {String} string String to slugify
+   * @return {String}
+   */
+  _slugify(string) {
+    return string.toLowerCase().replace(" ", "-");
   }
 
   /**
@@ -95,12 +134,20 @@ export default class ArticleComponent extends Component {
     this.articles.set(this.$el[0], {
       title: this.$activeArticle.data("title"),
       slug: this.$activeArticle.data("slug"),
-      place: {
-        atlas_id: article.atlasId,
-        cd3_City: article.cityName,
-        cd1_Continent: article.continentName,
-        cd2_Country: article.countryName,
-        page_type: article.type
+      tealium: {
+        article: {
+          atlas_id: article.atlasId,
+          cd1_Continent: article.continentName,
+          cd2_Country: article.countryName,
+          cd3_City: article.cityName,
+          page_type: article.type,
+          site_section: article.siteSection,
+          interests: article.interests
+        },
+        place: {
+          id: article.id,
+          destination: article.destination
+        }
       }
     });
 
@@ -223,8 +270,6 @@ export default class ArticleComponent extends Component {
         }
       }
 
-      // if(this.windowScrollTop >= this.articleScrollTop) {}
-
       this.articles.forEach((data, article) => {
         this._toggleActiveClassForArticle(article);
       });
@@ -316,7 +361,7 @@ export default class ArticleComponent extends Component {
 
         this.isNextArticleLoading = false;
 
-        // $(".article-loading").remove();
+        $(".article-loading").remove();
 
         console.log(`Article ${this.howManyArticlesHaveLoaded} is done`);
       },
@@ -347,9 +392,6 @@ export default class ArticleComponent extends Component {
 
     this.howManyArticlesHaveLoaded += 1;
 
-    // this._updateListOfViewedArticles();
-    // console.log(this.viewedArticles);
-
     this._setNextArticle();
     this._setArticlePagination(2);
     this._createArticlePagination(this.$newArticle);
@@ -360,7 +402,6 @@ export default class ArticleComponent extends Component {
    * Finds the previously viewed article and adds it to the array of viewed
    * articles
    */
-  // @track("AP scroll");
   _updateListOfViewedArticles() {
     let previousArticle = this.listOfArticles[this.howManyArticlesHaveLoaded - 2];
 
@@ -427,11 +468,14 @@ export default class ArticleComponent extends Component {
    * @param {String} pathname Pathname to send to analytics
    */
   _trackEvent(pathname) {
-    console.log(`${pathname} tracked`);
-
-    utag && typeof utag.view === "function" && utag.view({
+    utag.view({
       ga_location_override: pathname
     });
+    // window.lp.analytics.api.trackEvent({
+    //   category: "page view",
+    //   action: "location override",
+    //   location: pathname
+    // });
   }
 
   /**
@@ -441,16 +485,33 @@ export default class ArticleComponent extends Component {
     let article = this.articles.get(this.$activeArticle[0]);
 
     window.lp.article = {
-      atlasId: article.place.atlas_id,
       name: article.title,
-      cityName: article.place.cd3_City,
-      continentName: article.place.cd1_Continent,
-      countryName: article.place.cd2_Country,
-      type: article.place.page_type,
-      slug: article.slug
+      slug: article.slug,
+      atlasId: article.tealium.article.atlas_id,
+      continentName: article.tealium.article.cd1_Continent ? this._slugify(article.tealium.article.cd1_Continent) : "",
+      countryName: article.tealium.article.cd2_Country ? this._slugify(article.tealium.article.cd2_Country) : "",
+      cityName: article.tealium.article.cd3_City ? this._slugify(article.tealium.article.cd3_City) : "",
+      type: article.tealium.article.page_type,
+      siteSection: article.tealium.article.site_section,
+      interests: article.tealium.article.interests.join(", ").replace(/,\s*$/, ""),
+      id: article.tealium.place.id,
+      destination: this._slugify(article.tealium.place.destination)
     };
 
-    console.log(window.lp.article);
+    window.lp.ads.adThm = `tip-article, ${window.lp.article.id}`;
+    window.lp.ads.continent = window.lp.article.continentName;
+    window.lp.ads.country = window.lp.article.countryName;
+    window.lp.ads.destination = window.lp.article.destination;
+    window.lp.ads.interest = window.lp.article.interests.replace(/,\s*$/, "");
+
+    this._updateAdLayers({
+      section: window.lp.article.siteSection,
+      continent: window.lp.article.continentName,
+      country: window.lp.article.countryName,
+      city: window.lp.article.cityName
+    });
+
+    this._updateAdPath(window.lp.ads.layers);
   }
 
   /**
@@ -475,6 +536,7 @@ export default class ArticleComponent extends Component {
       .build();
   }
 
+  @track("ad page load impression");
   _loadFirstAd() {
     let adSlots = [];
     let $adUnit = $("#adunit-0");
@@ -483,14 +545,12 @@ export default class ArticleComponent extends Component {
       // Declare any slots initially present on the page
       adSlots[0] = googletag.defineSlot(this.adPath, [300, 250], "adunit-0")
         .defineSizeMapping(this._adSizes())
-        .setTargeting("theme", this.adConfig.theme)
-        .setTargeting("template", this.adConfig.template)
-        .setTargeting("topic", this.adConfig.topic)
-        .setTargeting("adThm", this.adConfig.adThm)
-        .setTargeting("adTnm", this.adConfig.adTnm)
-        .setTargeting("continent", this.adConfig.continent)
-        .setTargeting("country", this.adConfig.country)
-        .setTargeting("destination", this.adConfig.destination)
+        .setTargeting("template", window.lp.ads.template)
+        .setTargeting("topic", window.lp.ads.topic)
+        .setTargeting("adThm", window.lp.ads.adThm)
+        .setTargeting("continent", window.lp.ads.continent)
+        .setTargeting("country", window.lp.ads.country)
+        .setTargeting("destination", window.lp.ads.destination)
         .addService(googletag.pubads());
 
       // Infinite scroll requires SRA
@@ -512,15 +572,11 @@ export default class ArticleComponent extends Component {
     });
 
     if ($adUnit.length) {
-      console.log(`analytics ${$adUnit[0].id}`);
-      // window.lp.analytics.api.trackEvent({
-      //   category: "advertising",
-      //   action: "page-load-impression",
-      //   label: $adUnit.data().sizeMapping
-      // });
+      return `${$adUnit.data().sizeMapping}, ${this.$el.data().slug}, ${$adUnit[0].id}`;
     }
   }
 
+  @track("ad ajax load impression");
   _updateAd() {
     let slotName = this._generateNextSlotName();
     let $slot = $("<div />", {
@@ -539,14 +595,12 @@ export default class ArticleComponent extends Component {
     googletag.cmd.push(() => {
       let slot = googletag.defineSlot(this.adPath, [300, 250], slotName)
         .defineSizeMapping(this._adSizes())
-        .setTargeting("theme", this.adConfig.theme)
-        .setTargeting("template", this.adConfig.template)
-        .setTargeting("topic", this.adConfig.topic)
-        .setTargeting("adThm", this.adConfig.adThm)
-        .setTargeting("adTnm", this.adConfig.adTnm)
-        .setTargeting("continent", this.adConfig.continent)
-        .setTargeting("country", this.adConfig.country)
-        .setTargeting("destination", this.adConfig.destination)
+        .setTargeting("template", window.lp.ads.template)
+        .setTargeting("topic", window.lp.ads.topic)
+        .setTargeting("adThm", window.lp.ads.adThm)
+        .setTargeting("continent", window.lp.ads.continent)
+        .setTargeting("country", window.lp.ads.country)
+        .setTargeting("destination", window.lp.ads.destination)
         .addService(googletag.pubads());
 
       // `display()` has to be called before `refresh()` and after the slot
@@ -556,12 +610,7 @@ export default class ArticleComponent extends Component {
     });
 
     if ($slot.length) {
-      console.log(`analytics ${$slot[0].id}`);
-      // window.lp.analytics.api.trackEvent({
-      //   category: "advertising",
-      //   action: "page-load-impression",
-      //   label: $slot.data().sizeMapping
-      // });
+      return `${$slot.data().sizeMapping}, ${this.$newArticle.data().slug}, ${$slot[0].id}`;
     }
   }
 }
