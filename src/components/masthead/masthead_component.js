@@ -35,6 +35,7 @@ export default class MastheadComponent extends Component {
     });
     
     if (this.$video.length && !MobilUtil.isMobile()) {
+      this.$el.find(".slideshow").remove();
       coverVid(this.$video[0], 1440, 680);
       return;
     } else if (this.$video.length && MobilUtil.isMobile()) {
