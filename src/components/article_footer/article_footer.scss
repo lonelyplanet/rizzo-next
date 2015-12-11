@@ -2,6 +2,7 @@
 
 .article-footer {
   @include container;
+  padding-bottom: 10.4rem;
 
   &.is-narrow {
     @include container-static(6);

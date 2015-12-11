@@ -221,15 +221,15 @@
       $link-color-active: $color-blue
     );
 
-    @media(min-width: $min-1200) {
-      @include underlined-link(
-        $link-color: $dark-blue,
-        $link-color-active: $dark-blue,
-        $background-color: #fff,
-        $background-color-active: #f0f0f0,
-        $underline-style: dashed
-      );
-    }
+    // @media(min-width: $min-1200) {
+    //   @include underlined-link(
+    //     $link-color: $dark-blue,
+    //     $link-color-active: $dark-blue,
+    //     $background-color: #fff,
+    //     $background-color-active: #f0f0f0,
+    //     $underline-style: dashed
+    //   );
+    // }
   }
 }
 

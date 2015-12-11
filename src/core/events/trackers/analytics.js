@@ -1,19 +1,25 @@
 import isJson from "../../utils/is_json";
 import isDev from "../../utils/is_dev";
 
-/** 
+/**
  * Track an event with our analytics library
  * @param {Object} options An object with event data
  */
 export default function({ name, data } = {}) {
   /* global utag */
   data = (isJson(data) ? JSON.parse(data) : data) || {};
-    
+
   let category, action;
 
   if (name.toLowerCase() === "partner search") {
-      category = "Partner";
-      action = "Search";
+    category = "Partner";
+    action = "Search";
+  } else if (name.toLowerCase() === "ad page load impression") {
+    category = "advertising";
+    action = "page-load-impression";
+  } else if (name.toLowerCase() === "ad ajax load impression") {
+    category = "advertising";
+    action = "ajax-page-load-impression";
   }
 
   let event = {
@@ -26,5 +32,5 @@ export default function({ name, data } = {}) {
     console.log(`utag: ${JSON.stringify(event)}`);
   } else if (utag && typeof utag.link === "function") {
     utag.link(event);
-  } 
+  }
 };

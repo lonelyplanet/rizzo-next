@@ -1,6 +1,11 @@
 @import "../../../sass/webpack_deps";
+@import "article-loading";
 
 .article {
+  position: relative;
+}
+
+.article__container {
   @include container-padded;
   overflow: hidden; // Prevent horizontal movement in iOS caused by .size-full images
   position: relative;
