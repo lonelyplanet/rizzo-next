@@ -3,8 +3,18 @@ By use of this code snippet, I agree to the Brightcove Publisher T and C
 found at https://accounts.brightcove.com/en/terms-and-conditions/.
 -->
 <article class="masthead masthead--{{type}}{{#if images}} masthead--has-images{{else}} masthead--no-images{{/if}}">
+  {{#if video}}
+  <div class="masthead__video-container js-video-container">
+    <div class="masthead__video-wrap">
+      <video class="masthead__video js-video" autoplay loop preload="auto">
+        <source src="{{video.source}}" type="video/mp4">
+      </video>
+    </div>
+  </div>
+  {{/if}}
+  
   {{#if masthead.first}}
-    <div class="slideshow" data-lp-initial-images="{{masthead.json}}">
+    <div class="slideshow js-slideshow" data-lp-initial-images="{{masthead.json}}">
       <div class="slideshow__images">
         {{#with masthead.first}}
           <div class="slideshow__slide slideshow__slide--num_0" style="background-image: url({{large.hq}})"></div>

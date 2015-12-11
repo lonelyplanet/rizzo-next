@@ -13,6 +13,7 @@ $masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
   color: #fff;
   background-color: $h2-color;
   z-index: 6;
+  overflow: hidden;
 
   &--narrow {
     max-height: 70.8rem;
@@ -335,6 +336,43 @@ $masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
     @media (max-height: em(679px)) {
       display: inline-block;
       margin-top: 0;
+    }
+  }
+  
+  &__video-container {
+    width: 100%; 
+    height: 100%;
+
+    .masthead--narrow & {
+      @include container-padded();
+
+      @media (min-width: $min-1290) {
+        padding: 0;
+        max-width: 90%;
+        position: relative;
+      }
+    }
+  }
+
+  &__video-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__video {
+    display: block;
+    position: relative;
+    // above slideshow
+    z-index: 4;
+    opacity: 0;
+    transition: .2s opacity; 
+
+    &.is-playing {
+      display: block;
+      opacity: 1;
     }
   }
 }
