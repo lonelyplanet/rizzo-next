@@ -21,7 +21,7 @@ $toggle-width: 10vw;
     @include h1();
   }
 
-  &__list, &__title {
+  &__list, &__heading--small {
     margin: 0 auto;
 
     @media (min-width: $min-720) {
