@@ -1,7 +1,26 @@
+@import "../../../sass/webpack_deps";
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .svg-icon--dark {
   fill: #2c3642;
 }
 
 .svg-icon--gray {
   fill: rgba(#000, .6);
+}
+
+.svg-icon--light-gray {
+  fill: rgba(#000, .25);
+}
+
+.svg-icon--spin {
+  animation: spin .5s linear infinite;
 }
