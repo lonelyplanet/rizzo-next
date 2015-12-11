@@ -128,13 +128,13 @@
   &__more, &__less {
     cursor: pointer;
     position: absolute;
-    min-height: 3rem;
+    min-height: 4rem;
     height: 6vw;
-    min-width: 3rem;
+    min-width: 4rem;
     width: 6vw;
     padding-left: 7px;
     padding-top: 3px;
-    top: calc(50% - (3vw + #{$gutter} / 8));
+    top: calc(50% - (4vw + #{$gutter} / 8));
     z-index: 15;
     border-radius: 50%;
     border: none;

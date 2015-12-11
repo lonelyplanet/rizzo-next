@@ -6,16 +6,16 @@
     <div class="sights__column sights__column--1">
     {{#each first_column}}
       <div class="sights__item">
-        <a href="http://www.lonelyplanet.com/{{this.slug}}">
-          {{#if this.hero_image_url}}
-            <div class="sights__item__img" style="background-image: url('http://images-resrc.staticlp.com/O=60/S=W80/{{this.hero_image_url}}')"></div>
+        <a href="http://www.lonelyplanet.com/{{slug}}">
+          {{#if img_url}}
+            <div class="sights__item__img" style="background-image: url('http://images-resrc.staticlp.com/O=60/S=W80/{{img_url}}')"></div>
             {{else}}
             <div class="sights__item__img topic__image--sight"></div>
           {{/if}}
           <div class="sights__item__order"></div>
           <div class="sights__item__text">
-            <div class="title">{{this.name}}</div>
-            <div class="subtitle">HONG KONG ISLAND</div>
+            <div class="title">{{title}}</div>
+            <div class="subtitle">{{subtitle}}</div>
           </div>
         </a>
       </div>
@@ -24,16 +24,16 @@
     <div class="sights__column sights__column--2">
     {{#each second_column}}
       <div class="sights__item">
-        <a href="http://www.lonelyplanet.com/{{this.slug}}">
-          {{#if this.hero_image_url}}
-            <div class="sights__item__img" style="background-image: url('http://images-resrc.staticlp.com/O=60/S=W80/{{this.hero_image_url}}')"></div>
+        <a href="http://www.lonelyplanet.com/{{slug}}">
+          {{#if img_url}}
+            <div class="sights__item__img" style="background-image: url('http://images-resrc.staticlp.com/O=60/S=W80/{{img_url}}')"></div>
             {{else}}
             <div class="sights__item__img topic__image--sight"></div>
           {{/if}}
           <div class="sights__item__order"></div>
           <div class="sights__item__text">
-            <div class="title">{{this.name}}</div>
-            <div class="subtitle">HONG KONG ISLAND</div>
+            <div class="title">{{title}}</div>
+            <div class="subtitle">{{subtitle}}</div>
           </div>
         </a>
       </div>
@@ -43,16 +43,16 @@
     <div class="sights__column sights__column--3">
       {{#each third_column}}
       <div class="sights__item">
-        <a href="http://www.lonelyplanet.com/{{this.slug}}">
-          {{#if this.hero_image_url}}
-            <div class="sights__item__img" style="background-image: url('http://images-resrc.staticlp.com/O=60/S=W80/{{this.hero_image_url}}')"></div>
+        <a href="http://www.lonelyplanet.com/{{slug}}">
+          {{#if img_url}}
+            <div class="sights__item__img" style="background-image: url('http://images-resrc.staticlp.com/O=60/S=W80/{{img_url}}')"></div>
             {{else}}
             <div class="sights__item__img topic__image--sight"></div>
           {{/if}}
           <div class="sights__item__order"></div>
           <div class="sights__item__text">
-            <div class="title">{{this.name}}</div>
-            <div class="subtitle">HONG KONG ISLAND</div>
+            <div class="title">{{title}}</div>
+            <div class="subtitle">{{subtitle}}</div>
           </div>
         </a>
       </div>
