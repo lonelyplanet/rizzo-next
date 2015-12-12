@@ -261,7 +261,7 @@ export default class ArticleComponent extends Component {
       //
       // 1. When scrolled a certain amount past the beginning of an article `this.windowScrollTop >= (this.articleOffsetTop + 300)`
       // 2. When scrolled to the end of the article `this.windowScrollTop >= this.articleScrollTop`
-      if(this.windowScrollTop >= this.articleScrollTop) {
+      if(this.windowScrollTop >= (this.articleOffsetTop + 1000)) {
         if (this.isNextArticleLoading === false) {
           if (this.nextArticle) {
             this._getNextArticle(`/${this.nextArticle.slug}.json`);
