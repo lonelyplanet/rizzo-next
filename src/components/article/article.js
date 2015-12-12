@@ -59,7 +59,7 @@ export default class ArticleComponent extends Component {
     this._updateValuesAfterTimeout();
     this._setFirstArticle();
     this._createInitialListOfArticles();
-    this._loadFirstAd();
+    // this._loadFirstAd();
   }
 
   _slugifyPlaceData() {
@@ -261,7 +261,7 @@ export default class ArticleComponent extends Component {
       //
       // 1. When scrolled a certain amount past the beginning of an article `this.windowScrollTop >= (this.articleOffsetTop + 300)`
       // 2. When scrolled to the end of the article `this.windowScrollTop >= this.articleScrollTop`
-      if(this.windowScrollTop >= (this.articleOffsetTop + 300)) {
+      if(this.windowScrollTop >= (this.articleOffsetTop + 800)) {
         if (this.isNextArticleLoading === false) {
           if (this.nextArticle) {
             this._getNextArticle(`/${this.nextArticle.slug}.json`);
@@ -387,7 +387,7 @@ export default class ArticleComponent extends Component {
     this._setNextArticle();
     this._setArticlePagination(2);
     this._createArticlePagination(this.$newArticle);
-    this._updateAd();
+    // this._updateAd();
   }
 
   /**

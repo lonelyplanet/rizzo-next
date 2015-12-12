@@ -1,6 +1,7 @@
 @import "../../../sass/webpack_deps";
 
 .article-pagination {
+  border-bottom: .1rem solid $color-border;
   border-top: .1rem solid $color-border;
 
   &.is-hidden {
