@@ -42,14 +42,19 @@ class ActionSheetComponent extends Component {
         left,
         top;
 
-    let title = $el.closest(".article").find("meta[itemprop=\"headline\"]")[0].content,
+    let $title = $el.closest(".article").find("meta[itemprop=\"headline\"]"),
+        title,
         url = window.location.href,
         network = $el.data("network");
+
+    if ($title.length) {
+      title = $title[0].content;
+    }
 
     let tweet = `${urlencode(title)} ${urlencode(url)} via @lonelyplanet`;
 
     left = Math.round((winWidth / 2) - (width / 2));
-    top = 0;
+    top = winHeight > height ? Math.round((winHeight / 2) - (height / 2)) : 0;
 
     if (winHeight > height) {
       top = Math.round((winHeight / 2) - (height / 2));
