@@ -3,6 +3,7 @@ import { Component } from "../../core/bane";
 import $ from "jquery";
 import debounce from "lodash/function/debounce";
 import ArticleBodyComponent from "../article_body";
+import ActionSheetComponent from "../action_sheet";
 import track from "../../core/decorators/track";
 
 export default class ArticleComponent extends Component {
@@ -152,6 +153,10 @@ export default class ArticleComponent extends Component {
     this.viewedArticles.push({
       slug: this.$el.data("slug"),
       title: this.$el.data("title")
+    });
+
+    this.actionSheet = new ActionSheetComponent({
+      el: this.$el.find(".js-action-sheet")
     });
   }
 
@@ -370,7 +375,13 @@ export default class ArticleComponent extends Component {
    * Updates a newly created article
    */
   _updateNewArticle() {
-    this.articleBody = new ArticleBodyComponent({ el: this.$newArticle });
+    this.articleBody = new ArticleBodyComponent({
+      el: this.$newArticle
+    });
+
+    this.actionSheet = new ActionSheetComponent({
+      el: this.$newArticle.find(".js-action-sheet")
+    });
 
     // Set the scrollTop for the new article; this will not be accurate because
     // the article has not fully loaded (due to fonts and images), therefore,
