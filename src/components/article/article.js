@@ -1,4 +1,3 @@
-/* global googletag, utag */
 import { Component } from "../../core/bane";
 import $ from "jquery";
 import debounce from "lodash/function/debounce";
@@ -69,6 +68,7 @@ export default class ArticleComponent extends Component {
     window.lp.article.countryName = this._slugify(window.lp.article.countryName);
     window.lp.article.destination = this._slugify(window.lp.article.destination);
     window.lp.article.interests = window.lp.article.interests.replace(/,\s*$/, "");
+    window.lp.article.categories = window.lp.article.categories.replace(/,\s*$/, "");
   }
 
   _updateAdPath(layers) {
@@ -130,8 +130,14 @@ export default class ArticleComponent extends Component {
 
     // Add the first article to the map
     this.articles.set(this.$el[0], {
-      title: this.$activeArticle.data("title"),
-      slug: this.$activeArticle.data("slug"),
+      title: article.name,
+      slug: article.slug,
+      image: article.image,
+      post_date: article.postDate,
+      categories: article.categories,
+      author_details: {
+        name: article.author
+      },
       tealium: {
         article: {
           atlas_id: article.atlasId,
@@ -474,38 +480,54 @@ export default class ArticleComponent extends Component {
     utag.view({
       ga_location_override: pathname
     });
-    // window.lp.analytics.api.trackEvent({
-    //   category: "page view",
-    //   action: "location override",
-    //   location: pathname
-    // });
   }
 
   /**
-   * Update data and track events for analytics
+   * Update data for ads and analytics
    */
   _updateData() {
-    let article = this.articles.get(this.$activeArticle[0]);
+    let article = this.articles.get(this.$activeArticle[0]),
+        interests = article.tealium.article.interests,
+        categories = [],
+        regex = /,\s*$/;
 
     window.lp.article = {
       name: article.title,
       slug: article.slug,
+      image: article.image,
+      postDate: article.post_date,
+      author: article.author_details.name,
       atlasId: article.tealium.article.atlas_id,
       continentName: article.tealium.article.cd1_Continent ? this._slugify(article.tealium.article.cd1_Continent) : "",
       countryName: article.tealium.article.cd2_Country ? this._slugify(article.tealium.article.cd2_Country) : "",
       cityName: article.tealium.article.cd3_City ? this._slugify(article.tealium.article.cd3_City) : "",
       type: article.tealium.article.page_type,
       siteSection: article.tealium.article.site_section,
-      interests: article.tealium.article.interests.join(", ").replace(/,\s*$/, ""),
       id: article.tealium.place.id,
       destination: this._slugify(article.tealium.place.destination)
     };
+
+    if (typeof interests === "object") {
+      window.lp.article.interests = interests.join(", ").replace(regex, "");
+    } else {
+      window.lp.article.interests = interests;
+    }
+
+    if (typeof article.categories === "object") {
+      $.each(article.categories, (index, value) => {
+        categories.push(value.name);
+      });
+
+      window.lp.article.categories = categories.join(", ").replace(regex, "");
+    } else {
+      window.lp.article.categories = article.categories;
+    }
 
     window.lp.ads.adThm = `tip-article, ${window.lp.article.id}`;
     window.lp.ads.continent = window.lp.article.continentName;
     window.lp.ads.country = window.lp.article.countryName;
     window.lp.ads.destination = window.lp.article.destination;
-    window.lp.ads.interest = window.lp.article.interests.replace(/,\s*$/, "");
+    window.lp.ads.interest = window.lp.article.interests;
 
     this._updateAdLayers({
       section: window.lp.article.siteSection,
@@ -515,6 +537,41 @@ export default class ArticleComponent extends Component {
     });
 
     this._updateAdPath(window.lp.ads.layers);
+
+    this._updateMetaData(window.lp.article);
+  }
+
+  /**
+   * Update meta data
+   * @param {Object} article Article data from window.lp.article
+   */
+  _updateMetaData(article) {
+    let documentTitle = `${article.name} - Lonely Planet`,
+        description = `Read ${article.name}`,
+        url = `https://www.lonelyplanet.com/${article.slug}`;
+
+    // Title
+    document.title = documentTitle;
+    $("meta[name=title]").attr("content", documentTitle);
+    $(`meta[property="og:title"]`).attr("content", documentTitle);
+
+    // Description
+    $("meta[name=description]").attr("content", description);
+    $("meta[itemprop=description]").attr("content", description);
+    $(`meta[property="og:description"]`).attr("content", description);
+
+    // URL
+    $(`meta[property="og:url"]`).attr("content", url);
+    $("link[rel=canonical]").attr("href", url);
+
+    // Image
+    $("meta[itemprop=image]").attr("content", article.image);
+    $(`meta[property="og:image"]`).attr("content", article.image);
+
+    // Article
+    $(`meta[property="article:tag"]`).attr("content", article.categories);
+    $(`meta[property="article:published_time"]`).attr("content", article.postDate);
+    $(`meta[property="article:author"]`).attr("content", article.author);
   }
 
   /**
@@ -533,7 +590,7 @@ export default class ArticleComponent extends Component {
    */
   _adSizes() {
     return googletag.sizeMapping()
-      .addSize([980, 0], [[970, 250], [728, 90]])
+      .addSize([980, 0], [[970, 250], [940, 40], [728, 90]])
       .addSize([728, 0], [[728, 90]])
       .addSize([0, 0], [[300, 250]])
       .build();
