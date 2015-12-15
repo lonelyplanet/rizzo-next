@@ -3,7 +3,10 @@
   "globals": {
     "$": true,
     "Modernizr": true,
-    "ENV_PROD": true
+    "ENV_PROD": true,
+    "ga": true,
+    "googletag": true,
+    "utag": true
   },
   "env": {
     "browser": true,
