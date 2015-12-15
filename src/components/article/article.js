@@ -408,12 +408,12 @@ export default class ArticleComponent extends Component {
    */
   _updateHistory(pathname, title, slug) {
     if (pathname !== `/${slug}`) {
-      history.pushState(null, title, `/${slug}`);
+      history.pushState(null, `${title} - Lonely Planet`, `/${slug}`);
 
       this._updateData();
 
       if(!this._doesItemExist(this.viewedArticles, slug)) {
-        this._trackEvent(`/${slug}`);
+        this._trackEvent(`/${slug}`, title);
         this._updateListOfViewedArticles();
       }
     }
@@ -421,12 +421,20 @@ export default class ArticleComponent extends Component {
 
   /**
    * Track event for analytics
-   * @param {String} pathname Pathname to send to analytics
+   * @param  {String} pathname Pathname to send to analytics
+   * @param  {String} title    Title to send to analytics
+   * @return {Object}          Data to send to analytics
    */
-  _trackEvent(pathname) {
+  @track("Article pageview");
+  _trackEvent(pathname, title) {
     utag.view({
-      ga_location_override: pathname
+      ga_location_override: pathname,
+      title: `${title} - AJAX`
     });
+
+    return {
+      type: "AJAX"
+    };
   }
 
   /**
