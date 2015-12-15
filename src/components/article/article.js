@@ -549,6 +549,7 @@ export default class ArticleComponent extends Component {
         .setTargeting("continent", window.lp.ads.continent)
         .setTargeting("country", window.lp.ads.country)
         .setTargeting("destination", window.lp.ads.destination)
+        .setCollapseEmptyDiv(true)
         .addService(googletag.pubads());
 
       // Infinite scroll requires SRA
@@ -599,6 +600,7 @@ export default class ArticleComponent extends Component {
         .setTargeting("continent", window.lp.ads.continent)
         .setTargeting("country", window.lp.ads.country)
         .setTargeting("destination", window.lp.ads.destination)
+        .setCollapseEmptyDiv(true)
         .addService(googletag.pubads());
 
       // `display()` has to be called before `refresh()` and after the slot
