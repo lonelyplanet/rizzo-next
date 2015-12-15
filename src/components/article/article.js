@@ -4,6 +4,7 @@ import debounce from "lodash/function/debounce";
 import ArticleBodyComponent from "../article_body";
 import ActionSheetComponent from "../action_sheet";
 import track from "../../core/decorators/track";
+import waitForTransition from "../../core/utils/waitForTransition";
 
 export default class ArticleComponent extends Component {
   initialize() {
@@ -11,13 +12,10 @@ export default class ArticleComponent extends Component {
 
     this._resetWindowScrollPosition();
 
+    this.$document = $(document);
     this.$window = $(window);
+    this.$footer = $(".footer");
 
-    this.windowScrollTop = this.$window.scrollTop();
-    this.articleOffsetTop = this.$el.offset().top;
-    this.articleHeight = this.$el.height();
-    this.articleScrollTop = this.articleHeight;
-    this.heightOfAllArticles = 0;
     this.isNextArticleLoading = false;
 
     this.template = require("./article.hbs");
@@ -28,14 +26,10 @@ export default class ArticleComponent extends Component {
     this.listOfArticles = [];
     this.paginatedArticles = {};
 
-    this.delay = 1500;
-
     this.nextSlotId = 1;
     this.adPath = `/${window.lp.ads.networkId}/${window.lp.ads.layers.join("/")}`;
 
     this._slugifyPlaceDataForAds();
-
-    this._updateValuesAfterTimeout();
     this._setFirstArticle();
     this._createInitialListOfArticles();
 
@@ -123,24 +117,7 @@ export default class ArticleComponent extends Component {
   }
 
   /**
-   * Use a timeout to wait for all of the article's assets to load and then
-   * update the values needed for accurate scrolling calculations
-   */
-  _updateValuesAfterTimeout() {
-    // setTimeout is because of webfonts and images; probably need to use
-    // hasImagesLoaded and a webfont loader
-    setTimeout(() => {
-      this.articleHeight = this.$el.height();
-      this.articlePaginationHeight = this.$el.find(".article-pagination").outerHeight(true);
-      this.articleOffsetBottom = $(document).height() - this.articleHeight - this.articleOffsetTop;
-      this.scrollOffset = this.articleOffsetBottom + this.articleOffsetTop + this.articlePaginationHeight;
-      this.articleScrollTop = this.articleHeight - this.scrollOffset;
-      this.heightOfAllArticles += this.articleScrollTop;
-    }, this.delay);
-  }
-
-  /**
-   * Get related articles via AJAX
+   * Create a promise for the AJAX call to get related articles
    * @param  {String}  url Article URL to query
    * @return {Promise}     A promise for when the AJAX request finishes
    */
@@ -149,6 +126,24 @@ export default class ArticleComponent extends Component {
       $.ajax(url, {
         success: (response) => {
           resolve(response.article.related_articles.articles);
+        },
+        error: (xhrObj, textStatus, error) => {
+          reject(Error(error));
+        }
+      });
+    });
+  }
+
+  /**
+   * Create a promise for the AJAX call to get a new article
+   * @param  {String}  slug Pathname of request
+   * @return {Promise}      A promise for when the AJAX request finishes
+   */
+  _promiseForNextArticle(slug) {
+    return new Promise((resolve, reject) => {
+      $.ajax(slug, {
+        success: (response) => {
+          resolve(response);
         },
         error: (xhrObj, textStatus, error) => {
           reject(Error(error));
@@ -169,13 +164,19 @@ export default class ArticleComponent extends Component {
 
   _setInitialListOfArticles(response) {
     this.listOfArticles = response;
-    this.windowScrollTop = this.$window.scrollTop();
     this._setNextArticle();
     this._setArticlePagination(1);
     this._createArticlePagination(this.$el);
 
     if (this.canUseScrollFeature) {
-      this._scrollToNextArticle();
+      let roomToScroll = this._getRoomToScroll(),
+          amountNeededToScroll = this._getAmountNeededToScroll();
+
+      if (roomToScroll < amountNeededToScroll) {
+        this._scrollToNextArticle(amountNeededToScroll - roomToScroll);
+      } else {
+        this._scrollToNextArticle();
+      }
     }
   }
 
@@ -226,17 +227,15 @@ export default class ArticleComponent extends Component {
   /**
    * Runs methods when scrolling
    */
-  _scrollToNextArticle() {
-    this.$window.on("scroll.article", debounce(() => {
-      this.windowScrollTop = this.$window.scrollTop();
+  _scrollToNextArticle(offsetDifference) {
+    offsetDifference = offsetDifference ? offsetDifference : 0;
 
-      // Determine if a new article should be loaded. There are two ways to do
-      // this:
-      //
-      // 1. When scrolled a certain amount past the beginning of an article `this.windowScrollTop >= (this.articleOffsetTop + 300)`
-      // 2. When scrolled to the end of the article `this.windowScrollTop >= this.articleScrollTop`
-      if(this.windowScrollTop >= (this.articleOffsetTop + 1000)) {
-        if (this.isNextArticleLoading === false) {
+    this.$window.on("scroll.article", debounce(() => {
+      let amountNeededToScroll = this._getAmountNeededToScroll(),
+          shouldGetNextArticle = this.$window.scrollTop() >= (amountNeededToScroll - offsetDifference);
+
+      if (shouldGetNextArticle) {
+        if (!this.isNextArticleLoading) {
           if (this.nextArticle) {
             this._getNextArticle(`/${this.nextArticle.slug}.json`);
           }
@@ -252,15 +251,34 @@ export default class ArticleComponent extends Component {
   }
 
   /**
+   * Return how much room is available to scroll
+   * @return {Number}
+   */
+  _getRoomToScroll() {
+    return this.$document.height() - this.$window.height();
+  }
+
+  /**
+   * Return the amount needed to scroll in order to load a new article
+   * @return {Number}
+   */
+  _getAmountNeededToScroll() {
+    let roomToScroll = this._getRoomToScroll(),
+        amountToScrollPastEndOfArticle = 100;
+
+    return roomToScroll - this.$footer.height() + amountToScrollPastEndOfArticle;
+  }
+
+  /**
    * Check scroll top against each value in the map and add or remove the active
    * class to the `$article` element
    * @param  {Object} article The article object from the map
    */
   _toggleActiveClassForArticle(article) {
-    if (this.windowScrollTop) {
+    if (this.$window.scrollTop()) {
       let top = article.offsetTop,
           bottom = top + article.offsetHeight,
-          shouldActiveClassBeAdded = this.windowScrollTop < bottom && this.windowScrollTop > top;
+          shouldActiveClassBeAdded = this.$window.scrollTop() < bottom && this.$window.scrollTop() > top;
 
       if (shouldActiveClassBeAdded) {
         this.$activeArticle = $(article)
@@ -315,29 +333,41 @@ export default class ArticleComponent extends Component {
   _getNextArticle(slug) {
     this.isNextArticleLoading = true;
 
-    $(this.loader({}))
+    this.$loader = $(this.loader({}))
       .appendTo(this.$activeArticle);
 
-    $.ajax(slug, {
-      success: (data) => {
-        this.$newArticle = $(this.template(data))
-          .appendTo(".page-container");
+    this._promiseForNextArticle(slug).then((data) => {
+      this.$newArticle = $(this.template(data))
+        .appendTo(".page-container")
+        .addClass("is-loading");
 
-        // Set the new article element and data to the articles map
-        this.articles.set(this.$newArticle[0], data.article);
+      // Set the new article element and data to the articles map
+      this.articles.set(this.$newArticle[0], data.article);
 
-        this._addNewArticlesToArray(data.article.related_articles.articles);
-        this._updateNewArticle();
-        this._resetArticleDimensions();
+      this._addNewArticlesToArray(data.article.related_articles.articles);
+      this._updateNewArticle();
 
-        this.isNextArticleLoading = false;
+      this.isNextArticleLoading = false;
 
-        $(".article-loading").remove();
-      },
-      error: () => {
-        this.isNextArticleLoading = false;
-      }
+      this._hideLoader({showArticle: true});
+    }, () => {
+      this.isNextArticleLoading = false;
+
+      this._hideLoader({showArticle: false});
     });
+  }
+
+  _hideLoader(options) {
+    this.$loader.addClass("is-invisible");
+
+    return waitForTransition(this.$loader, { fallbackTime: 1000 })
+      .then(() => {
+        this.$loader.remove();
+
+        if (options.showArticle) {
+          this.$newArticle.removeClass("is-loading");
+        }
+      });
   }
 
   /**
@@ -352,16 +382,6 @@ export default class ArticleComponent extends Component {
       el: this.$newArticle.find(".js-action-sheet"),
       trackCategoryModifier: "article"
     });
-
-    // Set the scrollTop for the new article; this will not be accurate because
-    // the article has not fully loaded (due to fonts and images), therefore,
-    // the scrollTop will be set again inside of a timeout that's in the reset
-    // method. Even though it's incorrect, the scrollTop needs to be set here
-    // intially so that the new article's scrollTop is greater than the
-    // previous.
-    this.articleScrollTop = this.articleHeight + this.$newArticle.height();
-
-    this.articleOffsetTop = this.$newArticle.offset().top;
 
     this.howManyArticlesHaveLoaded += 1;
 
@@ -399,22 +419,6 @@ export default class ArticleComponent extends Component {
         this.listOfArticles.push(array[i]);
       }
     }
-  }
-
-  /**
-   * Recalculate the article dimensions; called after a new article is loaded
-   * into view
-   */
-  _resetArticleDimensions() {
-    this.windowScrollTop = this.$window.scrollTop();
-
-    // Use a timeout to get the actual dimensions after the article has fully
-    // loaded into place
-    setTimeout(() => {
-      this.articleHeight = this.$newArticle.height();
-      this.heightOfAllArticles += this.articleHeight;
-      this.articleScrollTop = this.heightOfAllArticles;
-    }, this.delay);
   }
 
   /**
