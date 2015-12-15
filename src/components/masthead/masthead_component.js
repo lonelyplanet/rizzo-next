@@ -30,7 +30,7 @@ export default class MastheadComponent extends Component {
     });
 
      // import Video from "../video";
-    this.$video = this.$el.find(".js-video").on("playing", () => {
+    this.$video = this.$el.find(".js-video").on("playing", (event) => {
       $(event.target).addClass("is-playing");
     });
     
