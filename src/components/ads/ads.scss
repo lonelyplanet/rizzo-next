@@ -31,14 +31,15 @@
 
 /// Leaderboard
 
-.ad--leaderboard {
-  display: none;
-  padding-bottom: 1.8rem;
-  padding-top: 1.8rem;
-}
-
 .ad--leaderboard__container {
   display: table;
   margin-left: auto;
   margin-right: auto;
+}
+
+/// Adunit
+
+.adunit--leaderboard > div {
+  padding-bottom: 1.8rem;
+  padding-top: 1.8rem;
 }
