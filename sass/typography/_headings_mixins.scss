@@ -46,7 +46,7 @@
 }
 
 // Very basic navigation header for Destinations sub-pages, i.e. photo credits
-@mixin details-nav() {
+@mixin narrative-nav() {
   text-align: left;
     max-width: $max-width;
     margin: $gutter auto 0 auto;
