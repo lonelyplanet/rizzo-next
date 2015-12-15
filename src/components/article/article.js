@@ -31,74 +31,21 @@ export default class ArticleComponent extends Component {
     this.delay = 1500;
 
     this.nextSlotId = 1;
+    this.adPath = `/${window.lp.ads.networkId}/${window.lp.ads.layers.join("/")}`;
 
-    this._slugifyPlaceData();
-
-    window.lp.ads = {
-      adThm: `tip-article, ${window.lp.article.id}`,
-      continent: window.lp.article.continentName,
-      country: window.lp.article.countryName,
-      destination: window.lp.article.destination,
-      interest: window.lp.article.interests.replace(/,\s*$/, ""),
-      layers: ["2009.lonelyplanet"],
-      networkId: 9885583,
-      template: "tips-and-articles-detail",
-      topic: "tips-and-articles"
-    };
-
-    this._updateAdLayers({
-      section: window.lp.article.siteSection,
-      continent: window.lp.article.continentName,
-      country: window.lp.article.countryName,
-      city: window.lp.article.cityName,
-      destination: window.lp.article.destination
-    });
-
-    this._updateAdPath(window.lp.ads.layers);
+    this._slugifyPlaceDataForAds();
 
     this._updateValuesAfterTimeout();
     this._setFirstArticle();
     this._createInitialListOfArticles();
-    // this._loadFirstAd();
+    this._loadFirstAd();
   }
 
-  _slugifyPlaceData() {
-    window.lp.article.cityName = this._slugify(window.lp.article.cityName);
-    window.lp.article.continentName = this._slugify(window.lp.article.continentName);
-    window.lp.article.countryName = this._slugify(window.lp.article.countryName);
-    window.lp.article.destination = this._slugify(window.lp.article.destination);
-    window.lp.article.interests = window.lp.article.interests.replace(/,\s*$/, "");
-    window.lp.article.categories = window.lp.article.categories.replace(/,\s*$/, "");
-  }
-
-  _updateAdPath(layers) {
-    this.adPath = `/${window.lp.ads.networkId}/${layers.join("/")}`;
-  }
-
-  /**
-   * Checks each layer and updates the layers array accordingly; currently a
-   * mess, but for now, it works.
-   * @param {Object} layers Layers to push to the array
-   */
-  _updateAdLayers(layers) {
-    window.lp.ads.layers = ["2009.lonelyplanet"];
-
-    if (layers.section) {
-      window.lp.ads.layers.push(layers.section);
-
-      if (layers.continent) {
-        window.lp.ads.layers.push(layers.continent);
-
-        if (layers.country) {
-          window.lp.ads.layers.push(layers.country);
-
-        } else if (layers.city !== layers.destination) {
-          window.lp.ads.layers.push(layers.destination);
-        }
-      } else {
-        window.lp.ads.layers.push("the-world");
-      }
-    }
+  _slugifyPlaceDataForAds() {
+    window.lp.ads.continent = this._slugify(window.lp.ads.continent);
+    window.lp.ads.country = this._slugify(window.lp.ads.country);
+    window.lp.ads.destination = this._slugify(window.lp.ads.destination);
+    window.lp.ads.interest = window.lp.ads.interest.replace(/,\s*$/, "");
   }
 
   /**
@@ -404,7 +351,7 @@ export default class ArticleComponent extends Component {
     this._setNextArticle();
     this._setArticlePagination(2);
     this._createArticlePagination(this.$newArticle);
-    // this._updateAd();
+    this._updateAd();
   }
 
   /**
@@ -498,13 +445,13 @@ export default class ArticleComponent extends Component {
       postDate: article.post_date,
       author: article.author_details.name,
       atlasId: article.tealium.article.atlas_id,
-      continentName: article.tealium.article.cd1_Continent ? this._slugify(article.tealium.article.cd1_Continent) : "",
-      countryName: article.tealium.article.cd2_Country ? this._slugify(article.tealium.article.cd2_Country) : "",
-      cityName: article.tealium.article.cd3_City ? this._slugify(article.tealium.article.cd3_City) : "",
+      continentName: article.tealium.article.cd1_Continent,
+      countryName: article.tealium.article.cd2_Country,
+      cityName: article.tealium.article.cd3_City,
       type: article.tealium.article.page_type,
       siteSection: article.tealium.article.site_section,
       id: article.tealium.place.id,
-      destination: this._slugify(article.tealium.place.destination)
+      destination: article.tealium.place.destination
     };
 
     if (typeof interests === "object") {
@@ -523,20 +470,11 @@ export default class ArticleComponent extends Component {
       window.lp.article.categories = article.categories;
     }
 
-    window.lp.ads.adThm = `tip-article, ${window.lp.article.id}`;
-    window.lp.ads.continent = window.lp.article.continentName;
-    window.lp.ads.country = window.lp.article.countryName;
-    window.lp.ads.destination = window.lp.article.destination;
-    window.lp.ads.interest = window.lp.article.interests;
-
-    this._updateAdLayers({
-      section: window.lp.article.siteSection,
-      continent: window.lp.article.continentName,
-      country: window.lp.article.countryName,
-      city: window.lp.article.cityName
-    });
-
-    this._updateAdPath(window.lp.ads.layers);
+    window.lp.ads.adThm = `tip-article, ${article.tealium.place.id}`;
+    window.lp.ads.continent = article.tealium.article.cd1_Continent ? this._slugify(article.tealium.article.cd1_Continent) : "";
+    window.lp.ads.country = article.tealium.article.cd2_Country ? this._slugify(article.tealium.article.cd2_Country) : "";
+    window.lp.ads.destination = this._slugify(article.tealium.place.destination);
+    window.lp.ads.interest = article.tealium.article.interests.join(", ").replace(/,\s*$/, "");
 
     this._updateMetaData(window.lp.article);
   }
