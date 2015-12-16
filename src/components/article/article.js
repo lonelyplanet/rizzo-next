@@ -39,6 +39,10 @@ export default class ArticleComponent extends Component {
     this._setFirstArticle();
     this._createInitialListOfArticles();
     this._loadFirstAd();
+
+    this.events = {
+      "click .article-pagination__item": "_trackArticlePagination"
+    };
   }
 
   _slugifyPlaceDataForAds() {
@@ -109,7 +113,8 @@ export default class ArticleComponent extends Component {
     });
 
     this.actionSheet = new ActionSheetComponent({
-      el: this.$el.find(".js-action-sheet")
+      el: this.$el.find(".js-action-sheet"),
+      trackCategoryModifier: "article"
     });
   }
 
@@ -198,6 +203,13 @@ export default class ArticleComponent extends Component {
       $pagination.find(".is-next").attr("href", `/${next.slug}`).html(next.title);
       $pagination.removeClass("is-hidden");
     }
+  }
+
+  @track("article pageview click");
+  _trackArticlePagination() {
+    let href = $(event.target).attr("href");
+
+    return href;
   }
 
   /**
@@ -333,7 +345,8 @@ export default class ArticleComponent extends Component {
     });
 
     this.actionSheet = new ActionSheetComponent({
-      el: this.$newArticle.find(".js-action-sheet")
+      el: this.$newArticle.find(".js-action-sheet"),
+      trackCategoryModifier: "article"
     });
 
     // Set the scrollTop for the new article; this will not be accurate because
@@ -425,16 +438,14 @@ export default class ArticleComponent extends Component {
    * @param  {String} title    Title to send to analytics
    * @return {Object}          Data to send to analytics
    */
-  @track("Article pageview");
+  @track("article pageview scroll");
   _trackEvent(pathname, title) {
     utag.view({
       ga_location_override: pathname,
       title: `${title} - AJAX`
     });
 
-    return {
-      type: "AJAX"
-    };
+    return pathname;
   }
 
   /**
@@ -538,14 +549,20 @@ export default class ArticleComponent extends Component {
     return googletag.sizeMapping()
       .addSize([980, 0], [[970, 250], [940, 40], [728, 90]])
       .addSize([728, 0], [[728, 90]])
-      .addSize([0, 0], [[300, 250]])
+      .addSize([0, 0], [[300, 250], [300, 50]])
       .build();
   }
 
-  @track("ad page load impression");
+  @track("article ad impression load");
   _loadFirstAd() {
     let adSlots = [];
     let $adUnit = $("#adunit-0");
+
+    if (this.$window.width() >= 728) {
+      $adUnit.data("sizeMapping", "leaderboard");
+    } else {
+      $adUnit.data("sizeMapping", "mpu");
+    }
 
     googletag.cmd.push(() => {
       // Declare any slots initially present on the page
@@ -579,11 +596,11 @@ export default class ArticleComponent extends Component {
     });
 
     if ($adUnit.length) {
-      return `${$adUnit.data().sizeMapping}, ${this.$el.data().slug}, ${$adUnit[0].id}`;
+      return `${$adUnit.data().sizeMapping}-${$adUnit[0].id}-default`;
     }
   }
 
-  @track("ad ajax load impression");
+  @track("article ad impression scroll");
   _updateAd() {
     let slotName = this._generateNextSlotName();
     let $slot = $("<div />", {
@@ -618,7 +635,7 @@ export default class ArticleComponent extends Component {
     });
 
     if ($slot.length) {
-      return `${$slot.data().sizeMapping}, ${this.$newArticle.data().slug}, ${$slot[0].id}`;
+      return `${$slot.data().sizeMapping}-${$slot[0].id}-ajax`;
     }
   }
 }

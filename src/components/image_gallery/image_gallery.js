@@ -23,7 +23,7 @@ export default class ImageGalleryComponent extends Component {
     return this._$pswp = $(this.template({})).appendTo("body");
   }
 
-  initialize({
+  initialize(options, {
     galleryImageSelector = ".stack__article__image-container"
   } = {}) {
     this.template = require("./image_gallery.hbs");
@@ -38,6 +38,8 @@ export default class ImageGalleryComponent extends Component {
       "data-pswp-uid": ++instanceId,
       "data-gallery": this
     });
+
+    this.trackCategory = (options.trackCategoryModifier) ? `gallery-${options.trackCategoryModifier}` : "gallery";
   }
 
   _parseThumbnailElements() {
@@ -78,21 +80,25 @@ export default class ImageGalleryComponent extends Component {
 
   /**
    * Callback from clicking on a gallery image
-   * @param  {Event} e Event
-   * @return {Boolean} Returns false to prevent bubbling and cancel event
+   * @param  {Event}  event Event
+   * @return {Object}       Returns an object to send data to GA for tracking
    */
-  @track("Article Photo Gallery Click");
-  onGalleryClick(e) {
-    e.preventDefault();
+  @track("gallery click");
+  onGalleryClick(event) {
+    event.preventDefault();
 
-    let clickedListItem = e.currentTarget,
-        index = this.$images.index(clickedListItem);
+    let clickedListItem = event.currentTarget,
+        index = this.$images.index(clickedListItem),
+        href = $(clickedListItem).find("img").attr("src");
 
     if(index >= 0) {
       this.openPhotoSwipe(index);
     }
 
-    return false;
+    return {
+      category: this.trackCategory,
+      label: href
+    };
   }
 
   /**
