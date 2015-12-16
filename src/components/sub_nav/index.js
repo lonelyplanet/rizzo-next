@@ -130,12 +130,20 @@ export default class SubNav extends Component {
     this.contentHeight = $(".navigation-wrapper").outerHeight();
   }
   /**
-   * If a component is removed from the DOM, this will remove it's subnav element
+   * If a component is removed from the DOM, this will remove its subnav element
    */
   @subscribe("*.removed", "components")
   removeSubNav(data, envelope) {
     let component = envelope.topic.split(".")[0];
 
     this.$el.find(`.sub-nav__item--${component}`).remove();
+  }
+  @subscribe("ttd.removed", "components")
+  addSights() {
+    $(
+    `<li class="sub-nav__item sub-nav__item--sights">
+      <a class="sub-nav__link js-sub-nav-link" href="#sights">sights</a>
+    </li>
+    `).prependTo(this.$el.find(".sub-nav__list"));
   }
 }

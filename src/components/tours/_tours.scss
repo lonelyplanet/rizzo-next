@@ -198,6 +198,7 @@ $tours-width: 52rem / $tours-width-base * 100%;
 
 .tours__button-container {
   @include see-more-link;
+  margin-top: 0;
 }
 
 .tours__more {
