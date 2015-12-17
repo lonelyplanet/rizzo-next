@@ -8,7 +8,7 @@ import gaEventMap from "./ga_event_map";
  */
 export default function({ name, data } = {}) {
   /* global utag */
-  data = (isJson(data) ? JSON.parse(data) : data) || {};
+  data = (isJson(data) ? JSON.parse(data) : data) || "";
 
   let mappedEvent,
       gaEventData = {
@@ -21,6 +21,8 @@ export default function({ name, data } = {}) {
     for (let name in mappedEvent) {
       gaEventData[name] = mappedEvent[name];
     }
+  } else {
+    mappedEvent = gaEventData;
   }
 
   let utagEvent = Object.keys(gaEventData).reduce((memo, key) => {
