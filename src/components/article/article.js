@@ -558,11 +558,7 @@ export default class ArticleComponent extends Component {
     let adSlots = [];
     let $adUnit = $("#adunit-0");
 
-    if (this.$window.width() >= 728) {
-      $adUnit.data("sizeMapping", "leaderboard");
-    } else {
-      $adUnit.data("sizeMapping", "mpu");
-    }
+    $adUnit.data("sizeMapping", this.$window.width() >= 728 ? "leaderboard" : "mpu");
 
     googletag.cmd.push(() => {
       // Declare any slots initially present on the page
