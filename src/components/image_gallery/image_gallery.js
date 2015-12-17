@@ -23,7 +23,7 @@ export default class ImageGalleryComponent extends Component {
     return this._$pswp = $(this.template({})).appendTo("body");
   }
 
-  initialize(options, {
+  initialize({
     galleryImageSelector = ".stack__article__image-container"
   } = {}) {
     this.template = require("./image_gallery.hbs");
@@ -38,8 +38,6 @@ export default class ImageGalleryComponent extends Component {
       "data-pswp-uid": ++instanceId,
       "data-gallery": this
     });
-
-    this.trackCategory = (options.trackCategoryModifier) ? `gallery-${options.trackCategoryModifier}` : "gallery";
   }
 
   _parseThumbnailElements() {
@@ -89,16 +87,13 @@ export default class ImageGalleryComponent extends Component {
 
     let clickedListItem = event.currentTarget,
         index = this.$images.index(clickedListItem),
-        href = $(clickedListItem).find("img").attr("src");
+        src = $(clickedListItem).find("img").attr("src");
 
     if(index >= 0) {
       this.openPhotoSwipe(index);
     }
 
-    return {
-      category: this.trackCategory,
-      label: href
-    };
+    return src;
   }
 
   /**

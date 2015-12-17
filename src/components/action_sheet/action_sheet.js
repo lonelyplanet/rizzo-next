@@ -5,15 +5,13 @@ import track from "../../core/decorators/track";
 import "./action_sheet.scss";
 
 class ActionSheetComponent extends Component {
-  initialize(options) {
+  initialize() {
     this.isActionSheetMenuHidden = false;
 
     this.events = {
       "click .js-action-sheet-menu-control": "actionSheetMenuControlClicked",
       "click .js-action-sheet-share-control": "actionSheetShareControlClicked"
     };
-
-    this.trackCategory = (options.trackCategoryModifier) ? `share-${options.trackCategoryModifier}` : "share";
   }
 
   actionSheetMenuControlClicked(event) {
@@ -40,10 +38,7 @@ class ActionSheetComponent extends Component {
     this._showActionSheetMenu($menu);
     this.isActionSheetMenuHidden = true;
 
-    return {
-      category: `${this.trackCategory}-menu`,
-      label: window.location.pathname
-    };
+    return window.location.pathname;
   }
 
   @track("share button click");
@@ -81,19 +76,13 @@ class ActionSheetComponent extends Component {
     if (network === "twitter") {
       window.open(`https://twitter.com/intent/tweet?text=${tweet}`, "share", `${windowOptions},${windowSize}`);
 
-      return {
-        category: `${this.trackCategory}-button`,
-        label: "twitter"
-      };
+      return "twitter";
     }
 
     if (network === "facebook") {
       window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, "share", `${windowOptions},${windowSize}`);
 
-      return {
-        category: `${this.trackCategory}-button`,
-        label: "facebook"
-      };
+      return "facebook";
     }
   }
 
