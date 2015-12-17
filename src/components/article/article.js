@@ -476,7 +476,7 @@ export default class ArticleComponent extends Component {
     if (typeof interests === "object") {
       window.lp.article.interests = interests.join(", ").replace(regex, "");
     } else {
-      window.lp.article.interests = interests;
+      window.lp.article.interests = interests.replace(regex, "");
     }
 
     if (typeof article.categories === "object") {
@@ -493,7 +493,7 @@ export default class ArticleComponent extends Component {
     window.lp.ads.continent = article.tealium.article.cd1_Continent ? this._slugify(article.tealium.article.cd1_Continent) : "";
     window.lp.ads.country = article.tealium.article.cd2_Country ? this._slugify(article.tealium.article.cd2_Country) : "";
     window.lp.ads.destination = this._slugify(article.tealium.place.destination);
-    window.lp.ads.interest = article.tealium.article.interests.join(", ").replace(/,\s*$/, "");
+    window.lp.ads.interest = window.lp.article.interests;
 
     this._updateMetaData(window.lp.article);
   }
