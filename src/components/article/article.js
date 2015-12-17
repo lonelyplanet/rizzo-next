@@ -426,20 +426,20 @@ export default class ArticleComponent extends Component {
       this._updateData();
 
       if(!this._doesItemExist(this.viewedArticles, slug)) {
-        this._trackEvent(`/${slug}`, title);
+        this._trackAjaxPageView(`/${slug}`, title);
         this._updateListOfViewedArticles();
       }
     }
   }
 
   /**
-   * Track event for analytics
+   * Track a virtual pageview for analytics
    * @param  {String} pathname Pathname to send to analytics
    * @param  {String} title    Title to send to analytics
-   * @return {Object}          Data to send to analytics
+   * @return {String}          Data to send to analytics
    */
   @track("article pageview scroll");
-  _trackEvent(pathname, title) {
+  _trackAjaxPageView(pathname, title) {
     utag.view({
       ga_location_override: pathname,
       title: `${title} - AJAX`
