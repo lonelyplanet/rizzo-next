@@ -14,24 +14,34 @@ class ActionSheetComponent extends Component {
     };
   }
 
-  @track("Share Menu Click");
   actionSheetMenuControlClicked(event) {
     let $el = $(event.currentTarget);
     let id = "#" + $el.attr("aria-owns"),
         $menu = $el.siblings(id);
 
     if (this.isActionSheetMenuHidden) {
-      this._hideActionSheetMenu($menu);
-      this.isActionSheetMenuHidden = false;
+      this.makeActionSheetMenuVisible($menu);
     } else {
-      this._showActionSheetMenu($menu);
-      this.isActionSheetMenuHidden = true;
+      this.makeActionSheetMenuHidden($menu);
     }
 
     event.preventDefault();
   }
 
-  @track("Share Button Click");
+  makeActionSheetMenuVisible($menu) {
+    this._hideActionSheetMenu($menu);
+    this.isActionSheetMenuHidden = false;
+  }
+
+  @track("share menu click");
+  makeActionSheetMenuHidden($menu) {
+    this._showActionSheetMenu($menu);
+    this.isActionSheetMenuHidden = true;
+
+    return window.location.pathname;
+  }
+
+  @track("share button click");
   actionSheetShareControlClicked(event) {
     let $el = $(event.currentTarget);
 
@@ -65,10 +75,14 @@ class ActionSheetComponent extends Component {
 
     if (network === "twitter") {
       window.open(`https://twitter.com/intent/tweet?text=${tweet}`, "share", `${windowOptions},${windowSize}`);
+
+      return "twitter";
     }
 
     if (network === "facebook") {
       window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, "share", `${windowOptions},${windowSize}`);
+
+      return "facebook";
     }
   }
 

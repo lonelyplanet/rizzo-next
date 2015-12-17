@@ -11,7 +11,10 @@ export default class ArticleBodyComponent extends Component {
     this.imageContainerSelector = ".stack__article__image-container";
 
     this.loadImages().then(() => {
-      this.gallery = new ImageGallery({ el: this.$el });
+      this.gallery = new ImageGallery({
+        el: this.$el,
+        trackCategoryModifier: "article"
+      });
     });
 
     this.formatDate();

@@ -1,5 +1,6 @@
 import isJson from "../../utils/is_json";
 import isDev from "../../utils/is_dev";
+import gaEventMap from "./ga_event_map";
 
 /**
  * Track an event with our analytics library
@@ -7,30 +8,31 @@ import isDev from "../../utils/is_dev";
  */
 export default function({ name, data } = {}) {
   /* global utag */
-  data = (isJson(data) ? JSON.parse(data) : data) || {};
+  data = (isJson(data) ? JSON.parse(data) : data) || "";
 
-  let category, action;
+  let mappedEvent,
+      gaEventData = {
+        category: "Destinations Next",
+        action: name,
+        label: isJson(data) ? JSON.stringify(data) : data
+      };
 
-  if (name.toLowerCase() === "partner search") {
-    category = "Partner";
-    action = "Search";
-  } else if (name.toLowerCase() === "ad page load impression") {
-    category = "advertising";
-    action = "page-load-impression";
-  } else if (name.toLowerCase() === "ad ajax load impression") {
-    category = "advertising";
-    action = "ajax-page-load-impression";
+  if (mappedEvent = gaEventMap[name]) {
+    for (let name in mappedEvent) {
+      gaEventData[name] = mappedEvent[name];
+    }
+  } else {
+    mappedEvent = gaEventData;
   }
 
-  let event = {
-    ga_event_category: category || "Destinations Next",
-    ga_event_action: action || name,
-    ga_event_label: JSON.stringify(data)
-  };
+  let utagEvent = Object.keys(gaEventData).reduce((memo, key) => {
+    memo["ga_event_" + key] = mappedEvent[key] || gaEventData[key];
+    return memo;
+  }, {});
 
   if (isDev()) {
-    console.log(`utag: ${JSON.stringify(event)}`);
+    console.log(`utag: ${JSON.stringify(utagEvent)}`);
   } else if (utag && typeof utag.link === "function") {
-    utag.link(event);
+    utag.link(utagEvent);
   }
 };

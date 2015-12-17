@@ -78,21 +78,22 @@ export default class ImageGalleryComponent extends Component {
 
   /**
    * Callback from clicking on a gallery image
-   * @param  {Event} e Event
-   * @return {Boolean} Returns false to prevent bubbling and cancel event
+   * @param  {Event}  event Event
+   * @return {Object}       Returns an object to send data to GA for tracking
    */
-  @track("Article Photo Gallery Click");
-  onGalleryClick(e) {
-    e.preventDefault();
+  @track("gallery click");
+  onGalleryClick(event) {
+    event.preventDefault();
 
-    let clickedListItem = e.currentTarget,
-        index = this.$images.index(clickedListItem);
+    let clickedListItem = event.currentTarget,
+        index = this.$images.index(clickedListItem),
+        src = $(clickedListItem).find("img").attr("src");
 
     if(index >= 0) {
       this.openPhotoSwipe(index);
     }
 
-    return false;
+    return src;
   }
 
   /**
