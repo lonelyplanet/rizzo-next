@@ -38,7 +38,11 @@ export default class ArticleComponent extends Component {
     this._updateValuesAfterTimeout();
     this._setFirstArticle();
     this._createInitialListOfArticles();
-    this._loadFirstAd();
+
+    // Wait for utag
+    setTimeout(() => {
+      this._loadFirstAd();
+    }, 500);
 
     this.events = {
       "click .article-pagination__item": "_trackArticlePagination"
