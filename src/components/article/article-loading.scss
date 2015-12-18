@@ -1,12 +1,14 @@
+@import "../../../sass/webpack_deps";
+
 .article-loading {
   // border-top: .1rem solid $color-border;
+  opacity: 1;
   padding-top: gutter();
   padding-bottom: gutter();
   text-align: center;
+  transition: opacity $animation-speed ease;
 
-  span {
-    color: #ccc;
-    display: block;
-    font-size: 1.2rem;
+  &.is-invisible {
+    opacity: 0;
   }
 }
