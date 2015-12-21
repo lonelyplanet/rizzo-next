@@ -469,3 +469,22 @@ $alert-colors: (
 @mixin alert-background($color: "default") {
   background-color: map-get($alert-colors, $color);
 }
+
+@mixin pop-out {
+  background-color: rgba(#000, .6);
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCAxNiAxNiI+CiAgPHBhdGggZmlsbD0iI2ZmZiIgZD0iTTYuMiw5LjFMMSwxNC4zdi0zLjhDMSwxMC4yLDAuOCwxMCwwLjUsMTBDMC4yLDEwLDAsMTAuMiwwLDEwLjV2NWMwLDAsMCwwLDAsMGMwLDAsMCwwLDAsMAogICAgYzAsMC4xLDAuMSwwLjIsMC4xLDAuM2MwLDAsMCwwLDAsMGMwLDAsMCwwLDAsMEMwLjIsMTUuOSwwLjQsMTYsMC41LDE2YzAsMCwwLDAsMCwwaDVDNS44LDE2LDYsMTUuOCw2LDE1LjVDNiwxNS4yLDUuOCwxNSw1LjUsMTUKICAgIEgxLjdsNS4yLTUuMmMwLjItMC4yLDAuMi0wLjUsMC0wLjdDNi43LDksNi4zLDksNi4yLDkuMXogTTE2LDAuNWMwLTAuMS0wLjEtMC4yLTAuMS0wLjNjMCwwLDAsMCwwLDBzMCwwLDAsMAogICAgQzE1LjgsMC4xLDE1LjYsMCwxNS41LDBjMCwwLDAsMCwwLDBoLTVDMTAuMiwwLDEwLDAuMiwxMCwwLjVDMTAsMC44LDEwLjIsMSwxMC41LDFoMy44TDkuMSw2LjJjLTAuMiwwLjItMC4yLDAuNSwwLDAuNwogICAgYzAuMiwwLjIsMC41LDAuMiwwLjcsMEwxNSwxLjd2My44QzE1LDUuOCwxNS4yLDYsMTUuNSw2QzE1LjgsNiwxNiw1LjgsMTYsNS41TDE2LDAuNUMxNiwwLjUsMTYsMC41LDE2LDAuNXoiLz4KPC9zdmc+Cg==");
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: 1.6rem;
+  border-radius: .4rem;
+  display: block;
+  height: 2.4rem;
+  transition: background-color $animation-speed linear;
+  width: 2.4rem;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: rgba(#000, .9);
+  }
+}

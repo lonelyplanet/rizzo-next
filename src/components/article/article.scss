@@ -2,6 +2,7 @@
 @import "article-loading";
 
 .article {
+  overflow: hidden; // Prevent horizontal movement in iOS caused by .size-full images
   position: relative;
   opacity: 1;
   transform: translateY(0);
@@ -15,6 +16,5 @@
 
 .article__container {
   @include container-padded;
-  overflow: hidden; // Prevent horizontal movement in iOS caused by .size-full images
   position: relative;
 }

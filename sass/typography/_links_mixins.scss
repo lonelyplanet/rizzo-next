@@ -107,6 +107,7 @@
   $link-color-active: $color-blue + 30,
   $background-color: #fff,
   $background-color-active: #fff,
+  $underline-offset: .2rem,
   $underline-style: solid,
   $breaking-underlines: true
 ) {
@@ -115,6 +116,7 @@
   @include underline(
     $color: rgba($link-color, .4),
     $background-color: $background-color,
+    $offset: $underline-offset,
     $style: $underline-style
   );
 
@@ -140,6 +142,7 @@
       $color: $link-color,
       $background-color: $background-color,
       $weight: .05,
+      $offset: $underline-offset,
       $style: $underline-style
     );
   }
@@ -152,7 +155,8 @@
 
     @if $underline-style == solid {
       @include underline(
-        $color: rgba($link-color-active, .4)
+        $color: rgba($link-color-active, .4),
+        $offset: $underline-offset
       );
     }
 
@@ -175,7 +179,8 @@
       @if $underline-style == solid {
         @include underline(
           $color: $link-color-active,
-          $weight: .05
+          $weight: .05,
+          $offset: $underline-offset
         );
       }
 

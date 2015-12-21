@@ -41,6 +41,20 @@
       @extend %lede;
     }
 
+    > address {
+      color: $light-text-color;
+      font-size: 1.4rem;
+      font-style: normal;
+      line-height: (24 / 14);
+      margin-bottom: 3.2rem;
+
+      @media (min-width: $min-600) {
+        font-size: 1.8rem;
+        line-height: (34 / 18);
+        margin-bottom: 6.6rem;
+      }
+    }
+
     p:not(.copy--feature),
     .copy--body__list {
       color: $dark-blue;
@@ -63,18 +77,18 @@
       }
     }
 
-    .copy--h3 {
+    .copy--h3,
+    .copy--h4 {
       color: #2b3642;
-      font-size: 1.6rem;
       font-weight: 600;
       letter-spacing: -.02rem;
-      line-height: (26 / 16);
       margin-bottom: 1rem;
+      margin-top: 2.5rem;
+    }
 
-      @media (min-width: $min-600) {
-        margin-bottom: (1.7em * .5);
-        margin-top: (1.7em * 1.5);
-      }
+    .copy--h3 {
+      font-size: 1.6rem;
+      line-height: (26 / 16);
 
       @media (min-width: $min-720) {
         font-size: 2rem;
@@ -82,9 +96,20 @@
       }
     }
 
-    li > a:not([data-poi-slug]),
-    p:not(.stack__article__image-container) > a:not([data-poi-slug]),
-    p:not(.copy--caption) > a:not([data-poi-slug]) {
+    .copy--h4 {
+      font-size: 1.4rem;
+      line-height: (24 / 14);
+
+      @media (min-width: $min-720) {
+        font-size: 1.6rem;
+        line-height: (24 / 16);
+      }
+    }
+
+    li a:not([data-callout-slug]),
+    p:not(.stack__article__image-container) a:not([data-callout-slug]),
+    p:not(.copy--caption) > a:not([data-callout-slug]),
+    .client-body a {
       @include underlined-link(
         $link-color: $dark-blue,
         $link-color-active: $color-blue
@@ -129,8 +154,8 @@
 
         @media (min-width: $min-1410) {
           @include with-layout(static) {
-            margin-left: -#{span(3) + gutter()};
-            width: span(12);
+            margin-left: -#{span(2) + gutter()};
+            width: span(10);
           }
         }
       }
@@ -145,34 +170,41 @@
         @media (min-width: $min-600) {
           margin-bottom: 1.6rem;
         }
+
+        &:after {
+          @include pop-out;
+          bottom: 1.5rem;
+          content: "";
+          position: absolute;
+          right: 1.5rem;
+          z-index: 2;
+        }
       }
 
       .stack__article__image {
-        &.size-full {
-          // Break the image out of the container; .article container needs overflow: hidden
-          margin-left: percent(-15px, 290px);
-          margin-right: percent(-15px, 290px);
-          max-width: none;
-          width: percent(320px, 290px);
+        // Break the image out of the container; .article needs overflow: hidden
+        margin-left: percent(-15px, 290px);
+        margin-right: percent(-15px, 290px);
+        max-width: none;
+        width: percent(320px, 290px);
 
-          @media(min-width: $min-480) {
-            margin-left: percent(-30px, 420px);
-            margin-right: percent(-30px, 420px);
-            width: percent(480px, 420px);
-          }
+        @media(min-width: $min-480) {
+          margin-left: percent(-30px, 420px);
+          margin-right: percent(-30px, 420px);
+          width: percent(480px, 420px);
+        }
 
-          @media(min-width: $min-720) {
-            margin-left: percent(-45px, 630px);
-            margin-right: percent(-45px, 630px);
-            width: percent(720px, 630px);
-          }
+        @media(min-width: $min-720) {
+          margin-left: percent(-45px, 630px);
+          margin-right: percent(-45px, 630px);
+          width: percent(720px, 630px);
+        }
 
-          @media(min-width: $min-840) {
-            margin-left: 0;
-            margin-right: 0;
-            max-width: 100%;
-            width: 100%;
-          }
+        @media(min-width: $min-840) {
+          margin-left: 0;
+          margin-right: 0;
+          max-width: 100%;
+          width: 100%;
         }
 
         &.aligncenter {
@@ -200,7 +232,11 @@
       @include copy-caption;
 
       a {
-        color: $color-text;
+        @include underlined-link(
+          $link-color: $color-text,
+          $link-color-active: $color-blue,
+          $underline-offset: .1rem
+        );
       }
     }
 
@@ -215,7 +251,7 @@
     }
   }
 
-  a[data-poi-slug] {
+  a[data-callout-slug] {
     @include underlined-link(
       $link-color: $dark-blue,
       $link-color-active: $color-blue
@@ -230,6 +266,55 @@
     //     $underline-style: dashed
     //   );
     // }
+  }
+
+  .client-strap {
+    @include container;
+    border-bottom: 1px solid $color-border;
+    border-top: 1px solid $color-border;
+    color: #2b3642;
+    font-size: 1.4rem;
+    line-height: (24 / 14);
+    margin-bottom: 3.2rem;
+    margin-top: 3.2rem;
+    padding-bottom: 3.2rem;
+    padding-top: 3.2rem;
+
+    @media(min-width: $min-720) {
+      font-size: 1.8rem;
+      line-height: (34 / 18);
+      margin-bottom: 6.6rem;
+      margin-top: 6.6rem;
+      padding-bottom: 6.6rem;
+      padding-top: 6.6rem;
+    }
+  }
+
+  .client-body {
+    @media (min-width: $min-720) {
+      float: left;
+      width: 70%;
+    }
+  }
+
+  .client-logo {
+    @media(max-width: $max-720) {
+      margin-top: 3rem;
+    }
+
+    @media(min-width: $min-720) {
+      float: right;
+      margin-left: 10%;
+      width: 20%;
+    }
+
+    > img {
+      display: block;
+
+      @media(max-width: $max-720) {
+        max-width: 200px;
+      }
+    }
   }
 }
 

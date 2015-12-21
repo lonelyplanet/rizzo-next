@@ -183,6 +183,7 @@ $author: (
   &:not(.is-inline) {
     font-family: $serif;
     font-style: italic;
+    letter-spacing: 0;
   }
 
   &.is-inline {
