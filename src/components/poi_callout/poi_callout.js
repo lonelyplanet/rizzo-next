@@ -4,7 +4,7 @@ import debounce from "lodash/function/debounce";
 
 export default class PoiCalloutComponent extends Component {
   initialize(options, {
-    poiLinkSelector = "a[data-poi-slug]"
+    poiLinkSelector = "a[data-callout-slug]"
   } = {}) {
     this.template = require("./poi_callout.hbs");
 

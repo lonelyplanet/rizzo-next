@@ -106,9 +106,9 @@
       }
     }
 
-    li a:not([data-poi-slug]),
-    p:not(.stack__article__image-container) a:not([data-poi-slug]),
-    p:not(.copy--caption) > a:not([data-poi-slug]),
+    li a:not([data-callout-slug]),
+    p:not(.stack__article__image-container) a:not([data-callout-slug]),
+    p:not(.copy--caption) > a:not([data-callout-slug]),
     .client-body a {
       @include underlined-link(
         $link-color: $dark-blue,
@@ -251,7 +251,7 @@
     }
   }
 
-  a[data-poi-slug] {
+  a[data-callout-slug] {
     @include underlined-link(
       $link-color: $dark-blue,
       $link-color-active: $color-blue
