@@ -70,6 +70,9 @@
   position: relative;
   padding-bottom: 3.2rem;
 
+  padding-bottom: .44rem;
+  padding-top: 4.4rem;
+
   @media (min-width: $min-720) {
     padding-bottom: 4.2rem;
     padding-top: 12rem;
@@ -93,10 +96,10 @@
 
     &.is-xlarge {
       color: #2b3642;
-      font-size: 2.4rem;
+      font-size: 2.7rem;
       font-weight: 600;
       letter-spacing: -.2rem;
-      line-height: (30 / 24);
+      line-height: (36.5 / 27);
 
       @media (min-width: $min-600) {
         font-size: 6.4rem;
@@ -139,7 +142,7 @@
     }
 
     &.is-padded-bottom {
-      margin-bottom: .9rem;
+      margin-bottom: 1.4rem;
 
       @media(min-width: $min-600) {
         margin-bottom: 3.9rem;
