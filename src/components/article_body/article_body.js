@@ -29,7 +29,8 @@ export default class ArticleBodyComponent extends Component {
 
     this.$el.find(this.imageContainerSelector).each((index, el) => {
       let $img = $(el).find("img"),
-          $a = $(el).find("a"),
+          $a = $(el).find("a").eq(0),
+          $span = $(el).find("span"),
           src = $($img).attr("src");
 
       let promise = this.loadImage(src).then((image) => {
@@ -40,12 +41,16 @@ export default class ArticleBodyComponent extends Component {
         }
 
         if(image.width > 1000 && $img.hasClass("is-landscape")) {
-          $img.closest(this.imageContainerSelector)
-            .addClass("is-wide");
+          $(el).addClass("is-wide");
         }
 
-        $img.closest(this.imageContainerSelector)
-          .addClass("is-visible");
+        $(el).addClass("is-visible");
+
+        if (!$span.length) {
+          $(el).contents().filter(function() {
+            return this.nodeType === 3 && $.trim(this.nodeValue).length;
+          }).wrap(`<span class="copy--caption" />`);
+        }
       });
 
       promises.push(promise);
