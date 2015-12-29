@@ -63,7 +63,7 @@
   }
 }
 
-/// Provides the underline for the fancy link
+/// Provides the underline for the `underlined-link` mixin
 /// @param {Color} $color [$color-blue] - Color of the underline, usually the same as the text color
 /// @param {Color} $background-color [#fff] Background color of the underline, usually the same color as the page; used for underline styles not solid
 /// @param {Dimension} $weight [.1rem] - Width of the underline
