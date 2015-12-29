@@ -31,7 +31,6 @@ export default class ArticleComponent extends Component {
 
     this._slugifyPlaceDataForAds();
     this._setFirstArticle();
-    this._createInitialListOfArticles();
 
     // Wait for utag
     setTimeout(() => {
@@ -111,21 +110,25 @@ export default class ArticleComponent extends Component {
     });
 
     this.actionSheet = new ActionSheetComponent({
-      el: this.$el.find(".js-action-sheet"),
-      trackCategoryModifier: "article"
+      el: this.$el.find(".js-action-sheet")
+    });
+
+    this._getDataForInitialArticle(`${window.location.pathname}.json`).then((response) => {
+      this._setInitialListOfArticles(response.related_articles.articles);
+      this._setInitialCallouts(response.content.callouts);
     });
   }
 
   /**
-   * Create a promise for the AJAX call to get related articles
+   * Create a promise for the AJAX call to get data for the first article
    * @param  {String}  url Article URL to query
    * @return {Promise}     A promise for when the AJAX request finishes
    */
-  _getRelatedArticles(url) {
+  _getDataForInitialArticle(url) {
     return new Promise((resolve, reject) => {
       $.ajax(url, {
         success: (response) => {
-          resolve(response.article.related_articles.articles);
+          resolve(response.article);
         },
         error: (xhrObj, textStatus, error) => {
           reject(Error(error));
@@ -152,13 +155,10 @@ export default class ArticleComponent extends Component {
     });
   }
 
-  /**
-   * Creates the initial list of articles and sets the next article that will be
-   * loaded; this method is to be called when the component initializes
-   */
-  _createInitialListOfArticles() {
-    this._getRelatedArticles(`${window.location.pathname}.json`).then((response) => {
-      this._setInitialListOfArticles(response);
+  _setInitialCallouts(response) {
+    this.articleBody = new ArticleBodyComponent({
+      el: this.$el.find(".article-body"),
+      poiData: response
     });
   }
 
@@ -345,7 +345,7 @@ export default class ArticleComponent extends Component {
       this.articles.set(this.$newArticle[0], data.article);
 
       this._addNewArticlesToArray(data.article.related_articles.articles);
-      this._updateNewArticle();
+      this._updateNewArticle(data.article);
 
       this.isNextArticleLoading = false;
 
@@ -373,14 +373,14 @@ export default class ArticleComponent extends Component {
   /**
    * Updates a newly created article
    */
-  _updateNewArticle() {
+  _updateNewArticle(data) {
     this.articleBody = new ArticleBodyComponent({
-      el: this.$newArticle
+      el: this.$newArticle.find(".article-body"),
+      poiData: data.content.callouts
     });
 
     this.actionSheet = new ActionSheetComponent({
-      el: this.$newArticle.find(".js-action-sheet"),
-      trackCategoryModifier: "article"
+      el: this.$newArticle.find(".js-action-sheet")
     });
 
     this.howManyArticlesHaveLoaded += 1;

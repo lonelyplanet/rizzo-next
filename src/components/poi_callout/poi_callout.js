@@ -110,7 +110,7 @@ export default class PoiCalloutComponent extends Component {
       this.$callout
         .attr("aria-hidden", "true")
         .removeClass("is-visible");
-    }, 1000);
+    }, 250);
 
     return false;
   }
@@ -136,7 +136,7 @@ export default class PoiCalloutComponent extends Component {
    * Updates the callout content, makes it visible and positions it
    */
   _updatePoiCallout() {
-    let poiData = this.pois[this.$activeLink.data("poiSlug")];
+    let poiData = this.pois[this.$activeLink.data("calloutSlug")];
     let image, src;
 
     if (poiData.image) {

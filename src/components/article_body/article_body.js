@@ -1,21 +1,35 @@
 import { Component } from "../../core/bane";
 import $ from "jquery";
 import ImageGallery from "../image_gallery";
+import PoiCallout from "../poi_callout";
 import moment from "moment";
+import matchMedia from "../../core/utils/matchMedia";
 
 /**
  * Enhances the body of articles with a gallery and more
  */
 export default class ArticleBodyComponent extends Component {
-  initialize() {
+  initialize(options) {
     this.imageContainerSelector = ".stack__article__image-container";
+    this.poiData = options.poiData;
 
     this.loadImages().then(() => {
       this.gallery = new ImageGallery({
-        el: this.$el,
-        trackCategoryModifier: "article"
+        el: this.$el
       });
     });
+
+    if (this.poiData) {
+      matchMedia("(min-width: 1200px)", (query) => {
+        if (query.matches) {
+          this.loadPoiCallout(this.poiData);
+        } else {
+          if (typeof this.poiCallout !== "undefined") {
+            this.poiCallout.destroy();
+          }
+        }
+      });
+    }
 
     this.formatDate();
   }
@@ -93,5 +107,16 @@ export default class ArticleBodyComponent extends Component {
     $footer
       .find("time").html(formattedDate)
       .closest(".js-article-post-date").removeProp("hidden");
+  }
+
+  /**
+   * Creates a new instance of the POI callout
+   * @param {Object} data POI data
+   */
+  loadPoiCallout(data) {
+    this.poiCallout = new PoiCallout({
+      el: this.$el,
+      pois: data
+    });
   }
 }
