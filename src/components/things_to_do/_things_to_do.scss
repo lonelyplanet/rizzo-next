@@ -35,48 +35,15 @@
       top: 0%;
       background: #fff;
       z-index: 10;
-      width: 4%;
-
-
-      @media (min-width: $min-480) {
-        width: 8%;
-      }
-
-      @media (min-width: $min-1410) {
-        width: 25%;
-      }
+      width: 50%;
     }
 
     &:before {
-      left: -2rem;
-
-      @media (min-width: $min-480) {
-        left: -3rem;
-      }
-
-      @media (min-width: $min-840) {
-        left: -7%;
-      }
-
-      @media (min-width: $min-1410) {
-        left: -25%;
-      }
+      left: -50%;
     }
 
     &:after {
-      right: -2rem;
-
-      @media (min-width: $min-480) {
-        right: -3rem;
-      }
-
-      @media (min-width: $min-840) {
-        right: -7%;
-      }
-
-      @media (min-width: $min-1410) {
-        right: -25%;
-      }
+      right: -50%;
     }
   }
 
