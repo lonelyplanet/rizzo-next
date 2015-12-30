@@ -29,7 +29,7 @@
 
   &.is-visible {
     opacity: 1;
-    transform: translate3d(-15px, 0, 0);
+    transform: translateX(-15px);
     transition: 0.2s ease 0.15s;
     visibility: visible;
   }
