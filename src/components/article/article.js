@@ -2,7 +2,7 @@ import { Component } from "../../core/bane";
 import $ from "jquery";
 import debounce from "lodash/function/debounce";
 import ArticleBodyComponent from "../article_body";
-import ActionSheetComponent from "../action_sheet";
+import SocialShareComponent from "../social_share";
 import track from "../../core/decorators/track";
 import waitForTransition from "../../core/utils/waitForTransition";
 
@@ -109,7 +109,7 @@ export default class ArticleComponent extends Component {
       title: this.$el.data("title")
     });
 
-    this.actionSheet = new ActionSheetComponent({
+    this.socialShare = new SocialShareComponent({
       el: this.$el.find(".js-action-sheet")
     });
 
@@ -379,7 +379,7 @@ export default class ArticleComponent extends Component {
       poiData: data.content.callouts
     });
 
-    this.actionSheet = new ActionSheetComponent({
+    this.socialShare = new SocialShareComponent({
       el: this.$newArticle.find(".js-action-sheet")
     });
 

@@ -2,47 +2,46 @@ import { Component } from "../../core/bane";
 import $ from "jquery";
 import urlencode from "urlencode";
 import track from "../../core/decorators/track";
-import "./action_sheet.scss";
 
-class ActionSheetComponent extends Component {
+class SocialShareComponent extends Component {
   initialize() {
-    this.isActionSheetMenuHidden = false;
+    this.isSocialShareMenuHidden = false;
 
     this.events = {
-      "click .js-action-sheet-menu-control": "actionSheetMenuControlClicked",
-      "click .js-action-sheet-share-control": "actionSheetShareControlClicked"
+      "click .js-action-sheet-menu-control": "socialShareMenuControlClicked",
+      "click .js-action-sheet-share-control": "socialShareControlClicked"
     };
   }
 
-  actionSheetMenuControlClicked(event) {
+  socialShareMenuControlClicked(event) {
     let $el = $(event.currentTarget);
     let id = "#" + $el.attr("aria-owns"),
         $menu = $el.siblings(id);
 
-    if (this.isActionSheetMenuHidden) {
-      this.makeActionSheetMenuVisible($menu);
+    if (this.isSocialShareMenuHidden) {
+      this.makeSocialShareMenuVisible($menu);
     } else {
-      this.makeActionSheetMenuHidden($menu);
+      this.makeSocialShareMenuHidden($menu);
     }
 
     event.preventDefault();
   }
 
-  makeActionSheetMenuVisible($menu) {
-    this._hideActionSheetMenu($menu);
-    this.isActionSheetMenuHidden = false;
+  makeSocialShareMenuVisible($menu) {
+    this._hideSocialShareMenu($menu);
+    this.isSocialShareMenuHidden = false;
   }
 
   @track("share menu click");
-  makeActionSheetMenuHidden($menu) {
-    this._showActionSheetMenu($menu);
-    this.isActionSheetMenuHidden = true;
+  makeSocialShareMenuHidden($menu) {
+    this._showSocialShareMenu($menu);
+    this.isSocialShareMenuHidden = true;
 
     return window.location.pathname;
   }
 
   @track("share button click");
-  actionSheetShareControlClicked(event) {
+  socialShareControlClicked(event) {
     let $el = $(event.currentTarget);
 
     let width = 550,
@@ -61,7 +60,7 @@ class ActionSheetComponent extends Component {
       title = $title[0].content;
     }
 
-    let tweet = `${urlencode(title)} ${urlencode(url)} via @lonelyplanet`;
+    let tweet = `${urlencode(title)} ${urlencode(url)} @lonelyplanet`;
 
     left = Math.round((winWidth / 2) - (width / 2));
     top = winHeight > height ? Math.round((winHeight / 2) - (height / 2)) : 0;
@@ -86,14 +85,14 @@ class ActionSheetComponent extends Component {
     }
   }
 
-  _showActionSheetMenu($menu) {
+  _showSocialShareMenu($menu) {
     $menu
       .addClass("is-open")
       .prop("hidden", false)
       .attr("aria-hidden", "false");
   }
 
-  _hideActionSheetMenu($menu) {
+  _hideSocialShareMenu($menu) {
     $menu
       .removeClass("is-open")
       .prop("hidden", true)
@@ -101,4 +100,4 @@ class ActionSheetComponent extends Component {
   }
 }
 
-export default ActionSheetComponent;
+export default SocialShareComponent;
