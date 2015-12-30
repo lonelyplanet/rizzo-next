@@ -10,7 +10,7 @@
 /// `get($map-name, 'setting-name')`
 /// ----------------------------------------------------------------------------
 
-$action-sheet: (
+$social-share: (
   'background-color': #f0f0f0,
   'button-size': 3rem,
   'margin-left': .4rem,
@@ -25,8 +25,8 @@ $action-sheet: (
 /// Base
 /// ----------------------------------------------------------------------------
 
-.action-sheet {
-  margin-left: -#{get($action-sheet, 'margin-left')}; // Negative margin to offset first item's margin
+.social-share {
+  margin-left: -#{get($social-share, 'margin-left')}; // Negative margin to offset first item's margin
 }
 
 
@@ -39,7 +39,7 @@ $action-sheet: (
 
 // Used for when an action sheet is at the end of an `.article` and inside of
 // the `.article-footer`
-.action-sheet--article {
+.social-share--article {
   float: left;
 
   @media (max-width: $max-720) {
@@ -48,7 +48,7 @@ $action-sheet: (
 
   @media (min-width: $min-720) {
     float: right;
-    margin-top: -#{get($action-sheet, 'margin-top')}; // Negative margin to offset first row of items' margin
+    margin-top: -#{get($social-share, 'margin-top')}; // Negative margin to offset first row of items' margin
   }
 }
 
@@ -61,33 +61,33 @@ $action-sheet: (
 /// ----------------------------------------------------------------------------
 
 // Each action item; it wraps the control and menu, and should be a `div`
-.action-sheet__item {
+.social-share__item {
   display: inline-block;
   position: relative;
 }
 
 // A `button` element that expects an SVG icon to be inside of it
-.action-sheet__control {
-  background-color: get($action-sheet, 'background-color');
+.social-share__control {
+  background-color: get($social-share, 'background-color');
   border: 0;
   border-radius: 100%;
   color: #333;
   cursor: pointer;
   display: inline-block;
-  height: get($action-sheet, 'button-size');
+  height: get($social-share, 'button-size');
   line-height: 1;
-  margin-left: get($action-sheet, 'margin-left');
-  margin-top: get($action-sheet, 'margin-top');
+  margin-left: get($social-share, 'margin-left');
+  margin-top: get($social-share, 'margin-top');
   outline: 0;
   padding: 0;
   position: relative;
-  width: get($action-sheet, 'button-size');
+  width: get($social-share, 'button-size');
   transition: background-color .4s linear;
 
   &:hover,
   &:active,
   &:focus {
-    background-color: darken(get($action-sheet, 'background-color'), 3);
+    background-color: darken(get($social-share, 'background-color'), 3);
   }
 
   .svg-icon {
@@ -98,7 +98,7 @@ $action-sheet: (
 // The menu that holds each control's options; it wraps the menu-inner and
 // menu-arrow, and should be a `div`. It has the stateful class `is-open`
 // which is added by JavaScript and positions the menu.
-.action-sheet__menu {
+.social-share__menu {
   overflow: hidden;
   padding: 1.5rem;
   pointer-events: auto;
@@ -120,9 +120,9 @@ $action-sheet: (
 }
 
 // An inner wrapper for the menu items; it should be a `div` and it expects a
-// `ul` of items to be inside of it. The action-sheet__control is also
+// `ul` of items to be inside of it. The social-share__control is also
 // reposed and used for each menu item.
-.action-sheet__menu__inner {
+.social-share__menu__inner {
   background-color: #fff;
   border-radius: .4rem;
   box-shadow: .1rem 0 .2rem rgba(#000, .25), 0 0 .1rem rgba(#000, .35);
@@ -141,7 +141,7 @@ $action-sheet: (
     padding: 0;
   }
 
-  .action-sheet__control {
+  .social-share__control {
     background-color: #fff;
     border-radius: 0;
     display: block;
@@ -170,7 +170,7 @@ $action-sheet: (
 }
 
 // An empty `div` to create the menu's arrow; contains a pseudo element
-.action-sheet__menu__arrow {
+.social-share__menu__arrow {
   clip-path: rect(-.4rem 1.4rem 1.8rem -.4rem);
   display: inline-block;
   left: .1rem;
