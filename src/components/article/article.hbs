@@ -81,19 +81,19 @@
       </div><!-- .article-post-date -->
 
       <div class="article-footer__top">
-        <div class="action-sheet action-sheet--article js-action-sheet">
-          <div class="action-sheet__item js-action-sheet-item">
-            <button class="action-sheet__control js-action-sheet-menu-control" title="Share this article on Twitter, Facebook, or email" aria-label="Share this article on Twitter, Facebook, or email" aria-owns="share-action-sheet">
+        <div class="social-share social-share--article js-action-sheet">
+          <div class="social-share__item js-action-sheet-item">
+            <button class="social-share__control js-action-sheet-menu-control" title="Share this article on Twitter, Facebook, or email" aria-label="Share this article on Twitter, Facebook, or email" aria-owns="social-share-menu">
               <svg class="svg-icon svg-icon--dark" viewBox="0 0 13 16" width="13" height="16">
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lp-svg-share-13px"></use>
               </svg>
             </button>
 
-            <div class="action-sheet__menu" id="share-action-sheet" aria-hidden="true" hidden>
-              <div class="action-sheet__menu__inner">
+            <div class="social-share__menu" id="social-share-menu" aria-hidden="true" hidden>
+              <div class="social-share__menu__inner">
                 <ul>
                   <li>
-                    <button class="action-sheet__control js-action-sheet-share-control" data-network="twitter">
+                    <button class="social-share__control js-action-sheet-share-control" data-network="twitter">
                       <svg class="svg-icon svg-icon--gray" viewBox="0 0 21 21" width="21" height="21">
                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lp-svg-twitter-21px"></use>
                       </svg>
@@ -101,7 +101,7 @@
                     </button>
                   </li>
                   <li>
-                    <button class="action-sheet__control js-action-sheet-share-control" data-network="facebook">
+                    <button class="social-share__control js-action-sheet-share-control" data-network="facebook">
                       <svg class="svg-icon svg-icon--gray" viewBox="0 0 21 21" width="21" height="21">
                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lp-svg-facebook-21px"></use>
                       </svg>
@@ -109,7 +109,7 @@
                     </button>
                   </li>
                   {{!-- <li>
-                    <button class="action-sheet__control js-action-sheet-share-control" data-network="email">
+                    <button class="social-share__control js-action-sheet-share-control" data-network="email">
                       <svg class="svg-icon svg-icon--gray" viewBox="0 0 21 21" width="21" height="21">
                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lp-svg-email-21px"></use>
                       </svg>
@@ -117,11 +117,11 @@
                     </button>
                   </li> --}}
                 </ul>
-              </div><!-- .action-sheet__menu__inner -->
-              <div class="action-sheet__menu__arrow"></div>
-            </div><!-- .action-sheet__menu -->
-          </div><!-- .action-sheet__item -->
-        </div><!-- .action-sheet -->
+              </div><!-- .social-share__menu__inner -->
+              <div class="social-share__menu__arrow"></div>
+            </div><!-- .social-share__menu -->
+          </div><!-- .social-share__item -->
+        </div><!-- .social-share -->
 
         {{#if article.categories}}
           <div class="category-list category-list--article">
