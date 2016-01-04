@@ -80,9 +80,9 @@ $small-breakpoint: 320;
 
 .article__info__title {
   color: $h2-color;
-  font-family: $sans-serif;
+  font-family: $benton-sans;
   font-size: 1.9rem;
-  font-weight: $semibold;
+  font-weight: $font-weight-semibold;
   line-height: (27 / 19);
   letter-spacing: -.2px;
 
@@ -96,9 +96,9 @@ $small-breakpoint: 320;
 .article__info__teaser {
   margin-top: 1.9rem;
   color: $tours-title-color;
-  font-family: $sans-serif;
+  font-family: $benton-sans;
   font-size: 1.6rem;
-  font-weight: $medium;
+  font-weight: $font-weight-medium;
   line-height: (24 / 16);
   letter-spacing: .1px;
 
@@ -120,9 +120,9 @@ $small-breakpoint: 320;
 
 .article__info__blurb {
   color: $articles-blurb-color;
-  font-family: $sans-serif;
+  font-family: $benton-sans;
   font-size: 1.4rem;
-  font-weight: $medium;
+  font-weight: $font-weight-medium;
   line-height: (24 / 14);
   letter-spacing: .1px;
   margin-top: .8rem;

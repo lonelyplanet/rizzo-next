@@ -124,7 +124,7 @@
 @mixin author-name($mobile) {
   margin-bottom: .5rem;
   font: {
-    weight: $semibold;
+    weight: $font-weight-semibold;
     size: 4vw;
   }
   line-height: 1;
@@ -141,7 +141,7 @@
 /// @param {boolean} $mobile
 @mixin author-title($mobile) {
   font: {
-    family: $serif;
+    family: $miller-daily;
     style: italic;
     size: 4vw;
   }

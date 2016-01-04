@@ -15,8 +15,8 @@
   color: $h2-color;
   font: {
     size: 19px;
-    family: $sans-serif;
-    weight: $semibold;
+    family: $benton-sans;
+    weight: $font-weight-semibold;
   }
 
   @include respond-to($mobile) {
@@ -31,8 +31,8 @@
   color: $tours-title-color;
   font: {
     size: 16px;
-    family: $sans-serif;
-    weight: $medium;
+    family: $benton-sans;
+    weight: $font-weight-medium;
   }
 
   @include respond-to($mobile) {
@@ -47,8 +47,8 @@
   color: $articles-blurb-color;
   font: {
     size: 14px;
-    family: $sans-serif;
-    weight: $medium;
+    family: $benton-sans;
+    weight: $font-weight-medium;
   }
 
   @include respond-to($mobile) {

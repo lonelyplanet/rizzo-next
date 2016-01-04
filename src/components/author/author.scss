@@ -137,7 +137,7 @@ $author: (
 .author__name {
   color: $body-color;
   font-size: 1.2rem;
-  font-weight: $semibold;
+  font-weight: $font-weight-semibold;
   line-height: 1;
 
   @media(#{get($author, 'mq-min')}) {
@@ -181,7 +181,7 @@ $author: (
   line-height: 1;
 
   &:not(.is-inline) {
-    font-family: $serif;
+    font-family: $miller-daily;
     font-style: italic;
     letter-spacing: 0;
   }

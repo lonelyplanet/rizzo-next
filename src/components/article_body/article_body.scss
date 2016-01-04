@@ -2,7 +2,7 @@
 
 // !important is needed to override specificity in article-body__content
 @mixin copy-caption {
-  font-family: "Main", sans-serif !important;
+  font-family: $benton-sans !important;
   font-size: 1.1rem !important;
   line-height: 1.4 !important;
   text-align: center !important;
@@ -58,7 +58,7 @@
     p:not(.copy--feature),
     .copy--body__list {
       color: $dark-blue;
-      font-family: "Secondary", serif;
+      font-family: $miller-daily;
       font-size: 1.6rem;
       line-height: (26 / 16);
 
@@ -346,7 +346,7 @@
 
 .article-post-date {
   color: $light-text-color;
-  font-family: "Main", sans-serif;
+  font-family: $benton-sans !important;
   font-size: 1.2rem;
   font-weight: 600;
   line-height: 1;

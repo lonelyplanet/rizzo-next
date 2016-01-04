@@ -89,7 +89,7 @@ $tours-width: 52rem / $tours-width-base * 100%;
 }
 
 .tour__description {
-  font-weight: $medium;
+  font-weight: $font-weight-medium;
   color: $tours-title-color;
 
   @media (min-width: $min-960) {
@@ -133,7 +133,7 @@ $tours-width: 52rem / $tours-width-base * 100%;
   margin-right: $gutter - .5rem;
   padding: .5rem .8rem .4rem;
   font-size: 1.2rem;
-  font-weight: $semibold;
+  font-weight: $font-weight-semibold;
   line-height: 1;
   background-color: $tours-price-background;
   text-align: center;
@@ -148,7 +148,7 @@ $tours-width: 52rem / $tours-width-base * 100%;
 
 .tour__imagery__caption__type {
   font-size: 1.1rem;
-  font-weight: $semibold;
+  font-weight: $font-weight-semibold;
   text-transform: uppercase;
   color: $tours-title-color;
   overflow: hidden;

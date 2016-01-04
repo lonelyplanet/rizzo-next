@@ -10,7 +10,7 @@ $item-border-color: #f1f4fb;
 .food-and-drink {
   position: relative;
   margin-bottom: $spacing;
-  font-weight: $medium;
+  font-weight: $font-weight-medium;
 
   @media (min-width: $min-960) {
     min-height: 400px;
@@ -116,7 +116,7 @@ $item-border-color: #f1f4fb;
     white-space: nowrap;
     overflow: hidden;
   }
-  
+
   &__name{
     color: $color-darkblue;
   }
