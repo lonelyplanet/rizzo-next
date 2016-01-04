@@ -18,8 +18,11 @@ $radius: .2rem;
 $base-size: 1.8em;
 
 // Typography
-$font-family: 'Main', sans-serif;
-$font-family-special: 'Secondary', serif;
+$sans-serif: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+$serif: "Georgia", "Times", "Times New Roman", serif;
+$benton-sans: "Benton Sans", $sans-serif;
+$miller-daily: "Miller Daily", $serif;
+
 $font-size: #{strip-units($base-size)}rem;
 $font-color: #333;
 $font-color-light: #959aa0;
@@ -29,10 +32,9 @@ $font-weight-semibold: 600;
 $font-weight-bold: 700;
 $line-height: 1.5;
 
-
-// Typography legacy
-$sans-serif: $font-family;
-$serif: $font-family-special;
+// Typography (deprecated)
+$font-family: $benton-sans; // deprecated; use $benton-sans
+$font-family-special: $miller-daily; // deprecated; use $miller-daily
 $light: $font-weight-light;
 $medium: $font-weight-medium;
 $semibold: $font-weight-semibold;
