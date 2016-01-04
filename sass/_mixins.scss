@@ -122,7 +122,7 @@
   color: $body-color;
   font: {
     size: 4vw;
-    weight: $semibold;
+    weight: $font-weight-semibold;
   }
   line-height: 1;
   margin-bottom: .5rem;
@@ -139,7 +139,7 @@
 @mixin author-title($mobile) {
   color: $light-text-color;
   font: {
-    family: $serif;
+    family: $miller-daily;
     size: 4vw;
     style: italic;
   }

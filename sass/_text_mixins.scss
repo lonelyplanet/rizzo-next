@@ -14,9 +14,9 @@
 @mixin h3-props($mobile) {
   color: $h2-color;
   font: {
-    family: $sans-serif;
+    family: $benton-sans;
     size: 1.9rem;
-    weight: $semibold;
+    weight: $font-weight-semibold;
   }
 
   @include respond-to($mobile) {
@@ -30,9 +30,9 @@
 @mixin h4-props($mobile) {
   color: $tours-title-color;
   font: {
-    family: $sans-serif;
+    family: $benton-sans;
     size: 1.6rem;
-    weight: $medium;
+    weight: $font-weight-medium;
   }
 
   @include respond-to($mobile) {
@@ -46,9 +46,9 @@
 @mixin h5-props($mobile) {
   color: $articles-blurb-color;
   font: {
-    family: $sans-serif;
+    family: $benton-sans;
     size: 1.4rem;
-    weight: $medium;
+    weight: $font-weight-medium;
   }
 
   @include respond-to($mobile) {

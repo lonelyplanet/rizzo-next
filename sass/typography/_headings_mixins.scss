@@ -2,7 +2,7 @@
 // TODO: Rename this because it's not always being used as an actual `h1`
 @mixin h1($margin-bottom: $gutter * 2, $color: $h2-color) {
   color: $color;
-  font-family: $sans-serif;
+  font-family: $benton-sans;
   font-size: 2.8rem;
   font-weight: 100;
   line-height: 1.3;
