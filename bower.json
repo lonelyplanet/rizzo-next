@@ -1,0 +1,21 @@
+{
+  "name": "rizzo-next",
+  "description": "The next generation of Lonely Planet's style guide and pattern library.",
+  "main": "src/rizzo",
+  "authors": [
+    "Lonely Planet"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/lonelyplanet/rizzo-next",
+  "moduleType": [
+    "amd",
+    "es6"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
