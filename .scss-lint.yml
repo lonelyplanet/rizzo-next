@@ -20,6 +20,8 @@ linters:
     space_after_bang: false
 
   BemDepth:
+    exclude:
+      - 'sass/_print.scss' # temporary exclusion until `stack__article__image-container` is refactored
     enabled: true
     max_elements: 1
 
@@ -124,6 +126,8 @@ linters:
     convention: hyphenated_lowercase # or 'camel_case', or 'snake_case', or a regex pattern
 
   NestingDepth:
+    exclude:
+      - 'sass/docs.scss' # allowing deeper nesting layout-container > header rather than 1) violating MergeableSelector rule or 2) unnesting anchor pseudo classes
     enabled: true
     max_depth: 3
     ignore_parent_selectors: false
@@ -195,6 +199,11 @@ linters:
       right: ['px', 'rem', '%', 'vw']
     }
 
+  PseudoElement:
+    exclude:
+      - 'sass/_reset.scss' # temporary exclusion until some webkit pseudo elements are added
+    enabled: true
+
   QualifyingElement:
     exclude:
       - 'src/components/article_body/article_body.scss' # need to override legacy styles
@@ -204,6 +213,8 @@ linters:
     allow_element_with_id: false
 
   SelectorDepth:
+    exclude:
+      - 'sass/_print.scss' # need for article-body styles
     enabled: true
     max_depth: 3
 
@@ -276,7 +287,7 @@ linters:
     enabled: true
 
   UrlFormat:
-    enabled: true
+    enabled: false # because of too many instances of https://assets.staticlp.com
 
   UrlQuotes:
     enabled: true
