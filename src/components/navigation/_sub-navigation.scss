@@ -17,8 +17,8 @@
   }
 
   &__list {
-    padding-top: 2.8rem;
     padding-bottom: 2.8rem;
+    padding-top: 2.8rem;
 
     .mobile-sub-navigation & {
       padding: 0
@@ -30,16 +30,16 @@
   }
 
   &__item {
-    position: relative;
     font-size: 1.6rem;
     line-height: 1;
     margin-left: $gutter;
     margin-right: $gutter;
+    position: relative;
 
     .mobile-sub-navigation & {
-      width: 100%;
       margin-left: 0;
       margin-right: 0;
+      width: 100%;
     }
 
     &:not(:first-child) {
@@ -47,27 +47,27 @@
     }
 
     &--current:before {
-      display: block;
+      background-color: $color-red;
+      border-radius: 100%;
+      bottom: 0;
       content: "";
+      display: block;
+      height: .4rem;
+      left: -1.7rem;
+      margin-bottom: auto;
+      margin-top: auto;
       position: absolute;
       top: 0;
-      bottom: 0;
-      left: -1.7rem;
-      margin-top: auto;
-      margin-bottom: auto;
       width: .4rem;
-      height: .4rem;
-      border-radius: 100%;
-      background-color: $color-red;
       z-index: 1;
     }
   }
 
   &__link {
-    display: block;
     color: $color-darkblue;
-    padding-top: 1rem;
+    display: block;
     padding-bottom: .8rem;
+    padding-top: 1rem;
     position: relative;
 
     .mobile-sub-navigation & {
@@ -105,20 +105,20 @@
     @include button;
     border-radius: 0 0 $radius $radius;
     display: block;
-    padding-top: 2.3rem;
     padding-bottom: 1.9rem;
+    padding-top: 2.3rem;
   }
 
   .navigation__item:last-child & {
     @media (max-width: $max-1530) {
       &:before {
-        right: 1.6rem;
         left: auto;
+        right: 1.6rem;
       }
 
       left: auto;
-      right: 0;
       margin-left: 0;
+      right: 0;
     }
   }
 }
@@ -131,9 +131,9 @@
   position: relative;
 
   .mobile-sub-navigation & {
-    padding-top: 0;
     padding-left: 0;
     padding-right: 0;
+    padding-top: 0;
   }
 
   &__image {
@@ -179,9 +179,9 @@
 }
 
 .mobile-sub-navigation {
-  transition: max-height 300ms;
   max-height: 0;
   overflow: hidden;
+  transition: max-height 300ms;
 
   &.is-expanded {
     max-height: 700px;

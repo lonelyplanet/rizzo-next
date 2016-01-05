@@ -1,30 +1,41 @@
-@import "../../../sass/webpack_deps";
-
+@import '../../../sass/webpack_deps';
 
 $mobile-breakpoint: 717;
 $small-breakpoint: 320;
 
 @keyframes heartbeat {
-  0%  { transform: scale(1);   }
-  5% { transform: scale(1.3); }
-  10% { transform: scale(1);   }
-  15% { transform: scale(1.3); }
-  20% { transform: scale(1);   }
+  0% {
+    transform: scale(1);
+  }
+
+  5% {
+    transform: scale(1.3);
+  }
+
+  10% {
+    transform: scale(1);
+  }
+
+  15% {
+    transform: scale(1.3);
+  }
+
+  20% {
+    transform: scale(1);
+  }
 }
 
 .intro-narrative {
   &__heading {
     @include h1();
 
-    [class*="icon-"] {
+    [class*='icon-'] {
+      color: #f01516;
       display: inline-block;
       font-size: 0;
-
-      color: #f01516;
-
       transform-origin: 50% 60%;
 
-      &:before {
+      &::before {
         font-size: 1.6rem;
 
         @media (min-width: $min-720) {
@@ -33,23 +44,21 @@ $small-breakpoint: 320;
       }
     }
 
-    &:hover [class*="icon-"] {
-      animation: heartbeat 3s infinite;
+    &:hover [class*='icon-'] {
+      animation: heartbeat 300ms infinite;
     }
   }
 
   &__text {
-    margin: 0 auto 3rem;
-
-    font-style: italic;
-    font-size: $font-size;
     color: #67747d;
-    text-align: center;
+    font-size: $font-size;
+    font-style: italic;
     line-height: 1.8;
+    margin: 0 auto 3rem;
+    text-align: center;
 
     @media (min-width: $min-480) {
       font-size: 2.1rem;
-
       max-width: 80%;
     }
   }
@@ -61,10 +70,9 @@ $small-breakpoint: 320;
   }
 }
 
-
 .intro-narrative__author {
-  font-size: 14px;
-  letter-spacing: 1px;
+  font-size: 1.4rem;
+  letter-spacing: .01rem;
   margin: 0 auto;
   width: 93%;
 
@@ -75,7 +83,7 @@ $small-breakpoint: 320;
 
 .intro-narrative__author__image {
   @include author-image($mobile-breakpoint);
-  margin-right: 0px;
+  margin-right: 0;
 }
 
 .intro-narrative__author__creds {

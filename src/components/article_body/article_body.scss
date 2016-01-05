@@ -1,4 +1,4 @@
-@import "../../../sass/webpack_deps";
+@import '../../../sass/webpack_deps';
 
 // !important is needed to override specificity in article-body__content
 @mixin copy-caption {
@@ -121,7 +121,7 @@
       margin-bottom: 3.2rem !important;
       margin-top: 3.2rem !important;
       opacity: 0;
-      transition: opacity .2s ease;
+      transition: opacity 200ms ease;
       visibility: hidden;
 
       @media (min-width: $min-600) {
@@ -171,10 +171,10 @@
           margin-bottom: 1.6rem;
         }
 
-        &:after {
+        &::after {
           @include pop-out;
           bottom: 1.5rem;
-          content: "";
+          content: '';
           position: absolute;
           right: 1.5rem;
           z-index: 2;
@@ -261,33 +261,33 @@
 
     @media(min-width: $min-1200) {
       backface-visibility: hidden;
-      border-bottom: 1px dashed #bbb;
+      border-bottom: .1rem dashed #bbb;
       color: #2b3542;
       position: relative;
       text-decoration: none;
       transform: translateZ(0);
-      transition: color .3, border-bottom .2s ease;
+      transition: color 300ms, border-bottom 200ms ease;
 
-      &:before {
+      &::before {
         background: #f0f0f0;
         bottom: 0;
-        content: "";
+        content: '';
         left: 0;
         position: absolute;
         right: 0;
         top: 0;
         transform: scaleY(0);
         transform-origin: 50% 100%;
-        transition: transform .1s ease, border-bottom .1s ease;
+        transition: transform 100ms ease, border-bottom 100ms ease;
         z-index: -1;
       }
 
       &:hover,
       &:focus,
       &.is-active {
-        border-bottom: 1px solid  #f0f0f0;
+        border-bottom: .1rem solid #f0f0f0;
 
-        &:before {
+        &::before {
           transform: scaleY(1);
         }
       }
@@ -296,8 +296,8 @@
 
   .client-strap {
     @include container;
-    border-bottom: 1px solid $color-border;
-    border-top: 1px solid $color-border;
+    border-bottom: .1rem solid $color-border;
+    border-top: .1rem solid $color-border;
     color: #2b3642;
     font-size: 1.4rem;
     line-height: (24 / 14);
@@ -338,7 +338,7 @@
       display: block;
 
       @media(max-width: $max-720) {
-        max-width: 200px;
+        max-width: 20rem;
       }
     }
   }
@@ -346,7 +346,7 @@
 
 .article-post-date {
   color: $light-text-color;
-  font-family: $benton-sans !important;
+  font-family: $benton-sans;
   font-size: 1.2rem;
   font-weight: 600;
   line-height: 1;

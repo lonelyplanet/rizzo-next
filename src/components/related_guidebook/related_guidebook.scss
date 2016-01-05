@@ -1,4 +1,4 @@
-@import "../../../sass/webpack_deps";
+@import '../../../sass/webpack_deps';
 
 .related-guidebook {
   @include container;
@@ -79,13 +79,13 @@
 
     @media (min-width: $min-480) {
       @include with-layout(static) {
-        margin-left: 6.4rem + gutter-half();
+        margin-left: (6.4rem + gutter-half());
       }
     }
 
     @media (min-width: $min-600) {
       @include with-layout(static) {
-        margin-left: 12.4rem + gutter();
+        margin-left: (12.4rem + gutter());
       }
     }
   }

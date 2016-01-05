@@ -1,4 +1,4 @@
-@import "../../../sass/webpack_deps";
+@import '../../../sass/webpack_deps';
 
 /// ----------------------------------------------------------------------------
 /// Settings map
@@ -40,9 +40,20 @@ $author: (
 
 /// ----------------------------------------------------------------------------
 /// Modifiers
+///
+/// - .author--contained: Used for article component; or when the author is not
+///   inside of a `container`
+/// - .author--vertical: Used for love-letter and article components; or when
+///   the `avatar` and `author-details` are stacked
+/// - .author--horizontal: Used for related articles on highlight pages; or when
+///   the `avatar` and `author-details` are inline
+/// - .author--small: Used for love-letter component; while it has no styles of
+///   its own, it changes font size and margins for `author-name` and
+///   `author-title`; it doesn't effect `avatar`
+/// - .author--article: Used for article component; it changes font size and
+///   display for `author-name` and `author-title`; hides `avatar`
 /// ----------------------------------------------------------------------------
 
-// Used for article component; or when the author is not inside of a `container`
 .author--contained {
   @include container;
   width: auto;
@@ -54,14 +65,10 @@ $author: (
   }
 }
 
-// Used for love-letter and article components; or when the `avatar` and
-// `author-details` are stacked
 .author--vertical {
   text-align: center;
 }
 
-// Used for related articles on highlight pages; or when the `avatar` and
-// `author-details` are inline
 .author--horizontal {
   display: inline-block;
   margin-top: 2.4rem;
@@ -80,13 +87,6 @@ $author: (
   }
 }
 
-// Used for love-letter component; while it has no styles of its own, it changes
-// font size and margins for `author-name` and `author-title`; it doesn't effect
-// `avatar`
-.author--small {}
-
-// Used for article component; it changes font size and display for
-// `author-name` and `author-title`; hides `avatar`
 .author--article {
   @media (#{get($author, 'mq-max')}) {
     margin-top: .6rem;

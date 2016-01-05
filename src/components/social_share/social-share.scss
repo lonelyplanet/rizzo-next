@@ -1,4 +1,4 @@
-@import "../../../sass/webpack_deps";
+@import '../../../sass/webpack_deps';
 
 /// ----------------------------------------------------------------------------
 /// Settings map
@@ -81,8 +81,8 @@ $social-share: (
   outline: 0;
   padding: 0;
   position: relative;
+  transition: background-color $animation-speed linear;
   width: get($social-share, 'button-size');
-  transition: background-color .4s linear;
 
   &:hover,
   &:active,
@@ -126,9 +126,9 @@ $social-share: (
   background-color: #fff;
   border-radius: .4rem;
   box-shadow: .1rem 0 .2rem rgba(#000, .25), 0 0 .1rem rgba(#000, .35);
-  padding: .8rem 0;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
+  padding: .8rem 0;
   position: relative;
 
   @media (min-width: $min-720) {
@@ -152,7 +152,6 @@ $social-share: (
     padding: .4rem 1.5rem;
     text-align: left;
     white-space: nowrap;
-    width: auto;
     width: 100%;
 
     &:hover,
@@ -186,10 +185,10 @@ $social-share: (
     top: .1rem;
   }
 
-  &:after {
+  &::after {
     background-color: #fff;
     box-shadow: -.1rem .1rem .1rem -.1rem rgba(#000, .44);
-    content: "";
+    content: '';
     display: block;
     height: 1.4rem;
     transform: rotate(45deg) translate(.6rem, -.6rem);

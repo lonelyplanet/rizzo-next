@@ -1,4 +1,4 @@
-@import "../../../sass/webpack_deps";
+@import '../../../sass/webpack_deps';
 
 /// ----------------------------------------------------------------------------
 /// Settings map
@@ -72,6 +72,6 @@ $avatar: (
 
 // Used for the logged in user's avatar in the site's navigation
 .avatar--navigation {
-  top: -.4rem;
   position: relative;
+  top: -.4rem;
 }

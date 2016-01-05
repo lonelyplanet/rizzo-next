@@ -1,4 +1,4 @@
-@import "../../../sass/webpack_deps";
+@import '../../../sass/webpack_deps';
 
 $mobile-breakpoint: $min-480;
 $tours-image-width: 19rem;
@@ -21,10 +21,8 @@ $tours-width: 52rem / $tours-width-base * 100%;
   margin: 0 auto;
   width: $tours-container-width;
 
-
   @media (min-width: $min-1290) {
     text-align: center;
-
   }
 }
 
@@ -36,25 +34,25 @@ $tours-width: 52rem / $tours-width-base * 100%;
 
 .tour {
   display: block;
-  position: relative;
   margin: 0 auto ($gutter * 1);
-  padding-left: $tours-image-width-mobile + $gutter;
-  max-width: 50rem + $gutter * 2;
+  max-width: 50rem + ($gutter * 2);
   min-height: 10rem;
+  padding-left: ($tours-image-width-mobile + $gutter);
+  position: relative;
   text-align: left;
   vertical-align: top;
 
   @media (min-width: $min-480) {
-    padding-left: $tours-image-width + $gutter;
     min-height: 14rem;
+    padding-left: ($tours-image-width + $gutter);
   }
 
   @media (min-width: $min-960) {
     display: inline-block;
-    margin: 0 0 ($gutter * 2);
-    width: 50%;
-    max-width: none;
     float: left;
+    margin: 0 0 ($gutter * 2);
+    max-width: none;
+    width: 50%;
   }
 
   @media (min-width: $min-1290) {
@@ -74,9 +72,9 @@ $tours-width: 52rem / $tours-width-base * 100%;
 }
 
 .tour__imagery {
+  left: 0;
   position: absolute;
   top: 0;
-  left: 0;
   width: $tours-image-width-mobile;
 
   @media (min-width: $min-480) {
@@ -89,8 +87,8 @@ $tours-width: 52rem / $tours-width-base * 100%;
 }
 
 .tour__description {
-  font-weight: $font-weight-medium;
   color: $tours-title-color;
+  font-weight: $font-weight-medium;
 
   @media (min-width: $min-960) {
     margin-left: $gutter;
@@ -98,11 +96,11 @@ $tours-width: 52rem / $tours-width-base * 100%;
 }
 
 .tour__imagery__caption {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  padding-bottom: .3rem;
   margin-top: -.3rem;
+  overflow: hidden;
+  padding-bottom: .3rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 
   @media (max-width: $max-480) {
     position: absolute;
@@ -110,51 +108,51 @@ $tours-width: 52rem / $tours-width-base * 100%;
 
   @media (min-width: $min-480) {
     border-bottom: .1rem solid $divider-color;
-    margin-top: .3rem;
     color: $tours-type-color;
+    margin-top: .3rem;
   }
 }
 
 .tour__imagery__image {
-  width: $tours-image-width-mobile;
-  height: $tours-image-width-mobile + .7rem;
   background-position: center center;
   background-size: cover;
+  height: $tours-image-width-mobile + .7rem;
+  width: $tours-image-width-mobile;
 
   @media (min-width: $min-480) {
-    width: 19rem;
     height: 10rem;
+    width: 19rem;
   }
 }
 
 .tour__imagery__caption__price {
+  background-color: $tours-price-background;
+  color: #fff;
   display: inline-block;
-  min-width: $tours-image-width-mobile;
-  margin-right: $gutter - .5rem;
-  padding: .5rem .8rem .4rem;
   font-size: 1.2rem;
   font-weight: $font-weight-semibold;
   line-height: 1;
-  background-color: $tours-price-background;
+  margin-right: $gutter - .5rem;
+  min-width: $tours-image-width-mobile;
+  padding: .5rem .8rem .4rem;
   text-align: center;
-  color: #fff;
   vertical-align: middle;
 
   @media (min-width: $min-480) {
-    min-width: 5rem;
     margin-right: .5rem;
+    min-width: 5rem;
   }
 }
 
 .tour__imagery__caption__type {
+  color: $tours-title-color;
+  display: inline;
   font-size: 1.1rem;
   font-weight: $font-weight-semibold;
-  text-transform: uppercase;
-  color: $tours-title-color;
   overflow: hidden;
-  white-space: nowrap;
   text-overflow: ellipsis;
-  display: inline;
+  text-transform: uppercase;
+  white-space: nowrap;
 
   @media (min-width: $min-480) {
     color: $tours-type-color;
@@ -162,12 +160,10 @@ $tours-width: 52rem / $tours-width-base * 100%;
 }
 
 .tour__description__title {
-  margin: {
-    top: -.2rem;
-    bottom: .5rem;
-  }
   font-size: 1.7rem;
   line-height: 1.1;
+  margin-bottom: .5rem;
+  margin-top: -.2rem;
 
   @media (min-width: $min-480) {
     font-size: 1.8rem;
@@ -176,9 +172,9 @@ $tours-width: 52rem / $tours-width-base * 100%;
 }
 
 .tour__description__blurb {
+  color: $tours-blurb-color;
   font-size: 1.3rem;
   line-height: 1.4;
-  color: $tours-blurb-color;
 
   @media (min-width: $min-480) {
     font-size: 1.4rem;

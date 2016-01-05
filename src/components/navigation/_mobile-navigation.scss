@@ -1,32 +1,25 @@
 @import "../../../sass/webpack_deps";
 
 .mobile-navigation {
-  position: fixed;
-  z-index: 10000;
-
-  top: 0;
-  right: 0;
+  background-color: #fff;
   bottom: 0;
-
-  padding: $gutter;
-
-  width: 25rem;
-  max-width: 75vw;
   height: 100vh;
-
-  background: #fff;
-
+  max-width: 75vw;
   overflow: hidden;
   overflow-y: auto;
-
   -webkit-overflow-scrolling: touch;
+  padding: $gutter;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 25rem;
+  z-index: 10000;
 
   &,
   &__list {
     opacity: 0;
     transform: translateX(30%);
-
-    transition: transform $animation-speed / 2, opacity $animation-speed / 2;
+    transition: transform ($animation-speed / 2), opacity ($animation-speed / 2);
   }
 
   &--visible,
@@ -37,37 +30,30 @@
 
   &__close {
     $size: 5rem;
-
-    display: none;
-    position: absolute;
-
-    top: 1.5rem;
-    right: 1.5rem;
-
-    width: $size;
-    height: $size;
-
-    text-indent: -9999px;
-    text-align: center;
-    line-height: $size;
     color: $font-color;
-
     cursor: pointer;
+    display: none;
+    height: $size;
+    line-height: $size;
+    position: absolute;
+    right: 1.5rem;
+    text-align: center;
+    text-indent: -9999px;
+    top: 1.5rem;
+    width: $size;
 
     &:before {
-      position: absolute;
-
-      top: 0;
-      left: 0;
-      right: 0;
       bottom: 0;
-
+      left: 0;
+      position: absolute;
+      right: 0;
       text-indent: 0;
+      top: 0;
     }
   }
 
   &__list {
-    transition: transform $animation-speed $animation-speed / 4, opacity $animation-speed $animation-speed / 4;
+    transition: transform $animation-speed ($animation-speed / 4), opacity $animation-speed ($animation-speed / 4);
   }
 
   &__item {
@@ -89,10 +75,10 @@
 
     .icon {
       float: right;
-      width: 1.3rem;
       height: 1.3rem;
       margin-top: .6rem;
       transition: transform $animation-speed linear;
+      width: 1.3rem;
     }
 
     &.clicked {
@@ -103,9 +89,9 @@
   }
 
   &__link {
+    color: $font-color;
     display: block;
     padding: ($spacing + .1) 0 ($spacing - .4);
-    color: $font-color;
     position: relative;
   }
 }

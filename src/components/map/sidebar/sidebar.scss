@@ -5,43 +5,48 @@ $unit: $size / 16;
 $panel-height: calc(100% - #{$sidebar-header-height});
 
 @keyframes spinner {
-  0% { transform: rotate(0); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .spinner {
-  display: block;
-  width: $size;
-  height: $size;
-  border-radius: 50%;
-  border: $unit solid $inactive;
   animation: spinner $animation-speed-ui linear infinite;
-  position: relative;
-  top: calc(50% - (#{$size} / 2);
+  border: $unit solid $inactive;
+  border-radius: 50%;
+  display: block;
+  height: $size;
   margin: 0 auto;
+  position: relative;
+  top: calc(50% - (#{$size} / 2));
+  width: $size;
 
-  &:before,
-  &:after {
-    content: "";
+  &::before,
+  &::after {
+    background-color: $active;
+    border-radius: 50%;
+    content: '';
+    height: ($unit * 2);
+    left: ($size / 2) - $unit;
     position: absolute;
     top: (-$unit * 1.5);
-    left: ($size / 2) - $unit;
     width: ($unit * 2);
-    height: ($unit * 2);
-    border-radius: 50%;
-    background: $active;
   }
 }
 
 .sidebar {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
   background-color: #fff;
-  width: $sidebar-width;
-  overflow: visible;
+  bottom: 0;
   height: 100vh;
+  overflow: visible;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: $sidebar-width;
 
   .no-content {
     padding: $gutter;
@@ -59,12 +64,12 @@ $panel-height: calc(100% - #{$sidebar-header-height});
     }
 
     .sidebar__title {
-      margin-top: .8rem;
       color: #fff;
-      font-weight: bold;
       font-size: 4rem;
+      font-weight: bold;
       letter-spacing: -.2px;
       line-height: 1;
+      margin-top: .8rem;
 
       &.__continent {
         margin-top: 3.5rem;
@@ -72,44 +77,45 @@ $panel-height: calc(100% - #{$sidebar-header-height});
     }
 
     .location-subtitle {
-      display: inline-block;
       color: #92b5d6;
+      display: inline-block;
       font-size: 2.2rem;
       letter-spacing: -1.5px;
       line-height: 1;
       transition: color $animation-speed;
 
       &:hover,
+      &:active,
       &:focus {
         color: #cbdaea;
       }
 
       .icon {
-        top: -2px;
-        position: relative;
-        padding-right: 5px;
         font-size: 1.25rem;
+        padding-right: .5rem;
+        position: relative;
+        top: -.2rem;
       }
     }
   }
 
   &__tabs {
+    border-top: .1rem solid rgba(#fff, .2);
+    line-height: 1;
     list-style: none;
     margin-top: 2.6rem;
-    border-top: .1rem solid rgba(255,255,255,.2);
-    line-height: 1;
 
     .tab {
-      position: relative;
-      display: inline-block;
       color: #fff;
-      text-align: center;
-      padding-top: 1.7rem;
-      padding-bottom: 1.7rem;
-      font-size: 1.4rem;
       cursor: pointer;
+      display: inline-block;
+      font-size: 1.4rem;
       font-weight: bold;
-      letter-spacing: -.3px;
+      letter-spacing: -.03rem;
+      padding-bottom: 1.7rem;
+      padding-top: 1.7rem;
+      position: relative;
+      text-align: center;
 
       + .tab {
         margin-left: $gutter;
@@ -122,11 +128,11 @@ $panel-height: calc(100% - #{$sidebar-header-height});
         $margin-left: 0;
         $padding-top: ($gutter * 1.5) - 1.3rem;
         @include dropdown-menu($top, $left, $width, $margin-left, $padding-top);
-        padding-left: ($gutter + .8rem);
         padding-bottom: ($gutter - 1.3rem);
+        padding-left: ($gutter + .8rem);
         padding-right: $gutter;
 
-        &:before {
+        &::before {
           $size: 1.2rem;
           $left: 5.8rem;
           @include dropdown-menu-arrow($size, $left);
@@ -138,20 +144,21 @@ $panel-height: calc(100% - #{$sidebar-header-height});
       }
 
       &__sub-nav__list {
-        text-align: left;
         list-style: none;
+        text-align: left;
 
         &--item {
+          color: $color-darkblue;
           font-size: 1.4rem;
           line-height: 1;
-          text-transform: capitalize;
-          color: $color-darkblue;
-          padding-top: 1.3rem;
           padding-bottom: 1.3rem;
+          padding-top: 1.3rem;
           position: relative;
+          text-transform: capitalize;
           transition: color $animation-speed;
 
           &:hover,
+          &:active,
           &:focus {
             color: $lpblue;
           }
@@ -159,10 +166,10 @@ $panel-height: calc(100% - #{$sidebar-header-height});
           &.is-selected {
             color: $lpblue;
 
-            &:before {
+            &::before {
               background-color: $lpblue;
               border-radius: 100%;
-              content: "";
+              content: '';
               height: .6rem;
               left: -2.1rem;
               margin-top: .3rem;
@@ -173,44 +180,46 @@ $panel-height: calc(100% - #{$sidebar-header-height});
         }
       }
 
-      &:after {
+      &::after {
         $height: .4rem;
-        display: block;
-        width: 100%;
-        height: $height;
-        position: absolute;
+        background: #fff;
         bottom: 0;
+        content: '';
+        display: block;
+        height: $height;
         left: 0;
+        position: absolute;
         transform: translate(0, $height);
         transition: transform ($animation-speed / 2) linear;
-        background: #fff;
-        content: "";
+        width: 100%;
       }
 
       &:hover,
-      &.active {
-        &:after {
-          transform: translate(0,0);
+      &:active,
+      &:focus,
+      &.active, {
+        &::after {
+          transform: translate(0, 0);
         }
       }
 
       .tab__icon {
         float: right;
-        margin-top: .2rem;
-        margin-left: 1rem;
         height: .8rem;
-        width: .8rem;
+        margin-left: 1rem;
+        margin-top: .2rem;
         position: relative;
+        width: .8rem;
 
         // covers up the border
-        &:after {
-          content: "";
-          position: absolute;
-          width: 2rem;
-          height: .4rem;
+        &::after {
           background-color: $color-blue;
           bottom: -2.1rem;
+          content: '';
+          height: .4rem;
+          position: absolute;
           right: -.2rem;
+          width: 2rem;
           z-index: 1;
         }
       }
@@ -222,70 +231,70 @@ $panel-height: calc(100% - #{$sidebar-header-height});
     overflow: auto;
 
     .listing {
+      border-top: .1rem solid $divider-color;
+      margin: $gutter auto;
       position: relative;
       width: (($sidebar-width - ($gutter * 2)) / $sidebar-width) * 100%;
-      margin: $gutter auto;
-      border-top: .1rem solid $divider-color;
     }
 
     &__header {
-      padding: ($gutter + .7rem) $gutter 0;
+      color: #2b3642;
       font-size: 3rem;
       font-weight: 300;
       line-height: 1.2;
-      color: #2b3642;
+      padding: ($gutter + .7rem) $gutter 0;
     }
 
     &__content {
-      padding: ($gutter - .5rem) 5rem ($gutter * 2) $gutter;
       font-size: 1.5rem;
+      padding: ($gutter - .5rem) 5rem ($gutter * 2) $gutter;
 
       h2 {
         color: rgba($color-text, .7);
         font-size: 2rem;
+
+        + p {
+          margin-top: .7rem;
+        }
       }
 
       p {
-        margin: $gutter 0;
+        color: rgba($color-text, .7);
         font-size: 1.6rem;
         line-height: (22 / 16);
-        color: rgba($color-text, .7);
+        margin: $gutter 0;
       }
 
       .copy--feature {
         margin-top: 0;
       }
 
-      h2 + p {
-        margin-top: .7rem;
-      }
-
       ul {
-        margin-left: 1rem;
         font-size: 1.8rem;
         line-height: (24 / 18);
+        margin-left: 1rem;
       }
     }
 
     &__footer {
+      bottom: 0;
+      box-shadow: 0 0 6rem 0 rgba(#000, .08);
       position: absolute;
       top: auto;
-      bottom: 0;
       width: $sidebar-width;
-      box-shadow: 0 0 6rem 0 rgba(0,0,0,.08);
     }
 
     &__close {
-      @include button("inverse");
-      display: block;
+      @include button('inverse');
       border-radius: 0;
-      padding-top: 2.5rem;
+      display: block;
       padding-bottom: 2.3rem;
+      padding-top: 2.5rem;
     }
   }
 
   .slideshow__progress__dot {
-    width: .7rem;
     height: .7rem;
+    width: .7rem;
   }
 }

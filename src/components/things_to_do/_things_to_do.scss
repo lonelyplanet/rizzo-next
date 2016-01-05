@@ -1,4 +1,4 @@
-@import "../../../sass/webpack_deps";
+@import '../../../sass/webpack_deps';
 
 $image-card-hover-movement: .5rem;
 
@@ -19,9 +19,9 @@ $image-card-hover-movement: .5rem;
     position: relative;
 
     @media (max-width: $max-840) {
-      max-width: 61.5rem;
       margin-left: auto;
       margin-right: auto;
+      max-width: 61.5rem;
     }
 
     @media (min-width: $min-840) {
@@ -39,12 +39,12 @@ $image-card-hover-movement: .5rem;
   }
 
   &__list {
-    transition: 500ms transform ease-in-out; // Controls the speed of the more and less
-    list-style: none;
     counter-reset: image-card;
+    display: flex; // Controls the speed of the more and less
+    list-style: none;
     opacity: 1;
     position: relative;
-    display: flex;
+    transition: 500ms transform ease-in-out;
 
     @media (max-width: $max-840) {
       flex-wrap: wrap;
@@ -100,13 +100,6 @@ $image-card-hover-movement: .5rem;
     @media (min-width: $min-840) {
       right: -2rem;
     }
-
-    &:hover,
-    &:active {
-      .ttd__more-icon {
-        color: $color-blue;
-      }
-    }
   }
 
   &__less {
@@ -119,29 +112,22 @@ $image-card-hover-movement: .5rem;
     @media (min-width: $min-840) {
       left: -2rem;
     }
-
-    &:hover,
-    &:active {
-      .ttd__less-icon {
-        color: $color-blue;
-      }
-    }
   }
 
   &__more,
   &__less {
-    display: block;
-    cursor: pointer;
-    position: absolute;
-    height: 5rem;
-    width: 5rem;
-    top: 50%;
-    z-index: 15;
-    border-radius: 50%;
-    border: none;
-    outline: none;
     background-color: #fff;
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    display: block;
+    height: 5rem;
+    outline: none;
     padding: 0;
+    position: absolute;
+    top: 50%;
+    width: 5rem;
+    z-index: 15;
 
     @media (min-width: $min-480) {
       height: 6rem;
@@ -158,8 +144,8 @@ $image-card-hover-movement: .5rem;
 
     @media (min-width: $min-840) {
       height: 4rem;
-      width: 4rem;
       transition: box-shadow $animation-speed ease-in-out;
+      width: 4rem;
     }
 
     &:hover,
@@ -188,11 +174,16 @@ $image-card-hover-movement: .5rem;
     }
   }
 
-  &__more-icon  {
+  &__more-icon {
     right: .3rem;
 
     @media (min-width: $min-720) {
       right: -.1rem;
+    }
+
+    .ttd__more:hover,
+    .ttd__more:active {
+      color: $color-blue;
     }
   }
 
@@ -202,18 +193,20 @@ $image-card-hover-movement: .5rem;
     @media (min-width: $min-720) {
       left: -.1rem;
     }
+
+    .ttd__less:hover,
+    .ttd__less:active {
+      color: $color-blue;
+    }
   }
 }
 
 .image-card {
+  background-color: #ccc;
   display: block;
   position: relative;
-
-  width: 100%;
-
-  background-color: #ccc;
-
   transition: transform $animation-speed;
+  width: 100%;
 
   &:hover,
   &:active,
@@ -224,14 +217,11 @@ $image-card-hover-movement: .5rem;
   }
 
   &__image {
-    padding-top: 150%;
-
-    width: 100%;
-
     background-size: cover;
-
     opacity: 1;
+    padding-top: 150%;
     transition: opacity $animation-speed-ui;
+    width: 100%;
 
     &.is-visible {
       opacity: 1;
@@ -239,19 +229,15 @@ $image-card-hover-movement: .5rem;
   }
 
   &__content {
-    position: absolute;
-
-    left: 0;
+    background: linear-gradient(to top, rgba(#000, .5) 0%, rgba(#000, 0) 100%);
     bottom: 0;
-    right: 0;
-
-    padding: 0 ($gutter / 3) ($gutter / 2);
-
-    font-size: $font-size;
     color: #fff;
+    font-size: $font-size;
+    left: 0;
+    padding: 0 ($gutter / 3) ($gutter / 2);
+    position: absolute;
+    right: 0;
     text-align: center;
-
-    background: linear-gradient(to top, rgba(0,0,0, .5) 0%, rgba(0,0,0, 0) 100%);
 
     @media (min-width: $min-480) {
       padding: 0 ($gutter / 2) ($gutter - 1);
@@ -264,27 +250,21 @@ $image-card-hover-movement: .5rem;
 
   &__number {
     $size: 2.7rem;
-
+    backface-visibility: hidden;
+    background-color: #fff;
+    border-radius: .4rem;
+    box-shadow: 0 .2rem .2rem rgba(#000, .3);
+    color: #3b444f;
     display: inline-block;
-    position: relative;
-
-    margin-bottom: (($spacing / 2) + .5);
-
-    width: $size;
-    height: $size;
-
     font-family: $miller-daily;
     font-size: 1.4rem;
+    height: $size;
     line-height: $size;
+    margin-bottom: (($spacing / 2) + .5);
+    position: relative;
     text-align: center;
-    color: #3b444f;
-
-    border-radius: .4rem;
-    background: #fff;
-    box-shadow: 0 .2rem .2rem rgba(0,0,0, .3);
-
     transform: rotate(45deg);
-    backface-visibility: hidden;
+    width: $size;
 
     .num {
       display: block;
@@ -293,38 +273,34 @@ $image-card-hover-movement: .5rem;
 
     @media (min-width: $min-480) {
       $size: 3.7rem;
-
-      margin-bottom: 2.1rem;
-
-      width: $size;
-      height: $size;
-
-      line-height: $size;
-
       font-size: 2rem;
+      height: $size;
+      line-height: $size;
+      margin-bottom: 2.1rem;
+      width: $size;
     }
   }
 
   &__title {
-    margin-top: .6rem;
     font-size: 1.2rem;
     font-weight: 600;
     line-height: (18 / 12);
-    text-transform: uppercase;
+    margin-top: .6rem;
     overflow: hidden;
+    text-transform: uppercase;
 
     @media (min-width: $min-480) {
-      margin-top: 1.2rem;
       font-size: 1.4rem;
+      letter-spacing: .06rem;
       line-height: (19 / 14);
-      letter-spacing: .6px;
+      margin-top: 1.2rem;
     }
   }
 
   &__subtitle {
     font-family: $miller-daily;
-    font-style: italic;
     font-size: 1.2rem;
+    font-style: italic;
     line-height: 1;
     overflow: hidden;
     text-overflow: ellipsis;

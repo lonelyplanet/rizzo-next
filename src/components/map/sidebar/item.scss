@@ -1,8 +1,8 @@
 .place {
-  height: 6rem;
-  background: #fff;
-  position: relative;
+  background-color: #fff;
   cursor: pointer;
+  height: 6rem;
+  position: relative;
 
   .title {
     color: $color-darkblue;
@@ -16,19 +16,19 @@
   }
 
   &.list {
-    width: 100%;
-    margin-top: ($gutter / 3);
     margin-bottom: ($gutter / 3);
+    margin-top: ($gutter / 3);
+    width: 100%;
 
-    &:after {
-      position: absolute;
+    &::after {
+      border-top: .1rem solid $divider-color;
       bottom: 0;
-      right: 0;
+      content: '';
       display: block;
       height: 0;
+      position: absolute;
+      right: 0;
       width: ($item-width-list - $image-width - ($order-width / 2));
-      border-top: .1rem solid $divider-color;
-      content: "";
     }
 
     .title {
@@ -41,8 +41,8 @@
   }
 
   &.pin {
-    width: $item-width-pin;
     box-shadow: 0 4.4rem 8.7rem -2.2rem #000;
+    width: $item-width-pin;
 
     .title {
       font-size: 1.5rem;
@@ -58,54 +58,54 @@
     }
 
     .place__pointer {
-      position: absolute;
-      bottom: -1rem;
-      left: 0;
-      right: 0;
-      margin-left: auto;
-      margin-right: auto;
-      width: 0;
-      height: 0;
       border-left: 1rem solid transparent;
       border-right: 1rem solid transparent;
       border-top: 1rem solid #fff;
+      bottom: -1rem;
+      height: 0;
+      left: 0;
+      margin-left: auto;
+      margin-right: auto;
+      position: absolute;
+      right: 0;
+      width: 0;
     }
 
-    &:after {
+    &::after {
+      background-position: .3rem 61%;
+      border-left: .1rem solid #eef1fa;
+      height: ($order-width * .6);
       position: absolute;
       right: 1rem;
       top: 50%;
-      height: ($order-width * .6);
-      border-left: .1rem solid #eef1fa;
       transform: translate(0, -50%);
-      background-position: .3rem 61%;
       width: 1.7rem;
     }
   }
 
   &__pic {
-    background-size: cover;
     background-repeat: no-repeat;
+    background-size: cover;
     height: 100%;
-    width: $image-width;
+    left: 0;
     overflow: hidden;
     position: absolute;
     top: 0;
-    left: 0;
+    width: $image-width;
   }
 
   &__order {
-    position: absolute;
-    width: $order-width;
-    height: $order-width;
+    color: $feature-copy;
     display: block;
+    font-weight: bold;
+    height: $order-width;
     left: $image-width;
+    line-height: $order-width;
+    position: absolute;
+    text-align: center;
     top: 50%;
     transform: translate(-50%, -50%);
-    text-align: center;
-    line-height: $order-width;
-    font-weight: bold;
-    color: $feature-copy;
+    width: $order-width;
 
     .pin & {
       font-size: 1rem;
@@ -116,19 +116,19 @@
       padding-top: .2rem;
     }
 
-    &:before {
-      position: absolute;
-      display: block;
+    &::before {
       background-color: #fff;
-      top: 50%;
-      left: 50%;
-      width: 40%;
-      height: 40%;
-      transform: translate(-50%, -50%) rotate(45deg);
-      content: "";
-      z-index: -1;
-      box-shadow: .2rem .1rem .4rem -.2rem #333;
       border-radius: .4rem;
+      box-shadow: .2rem .1rem .4rem -.2rem #333;
+      content: '';
+      display: block;
+      height: 40%;
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+      width: 40%;
+      z-index: -1;
     }
   }
 
@@ -145,16 +145,16 @@
     }
 
     .list & {
-      width: ($item-width-list - $image-width - $gutter);
-      padding-right: 1rem;
       left: 10.7rem;
+      padding-right: 1rem;
+      width: ($item-width-list - $image-width - $gutter);
     }
 
     .pin & {
-      width: ($item-width-pin - $image-width - $gutter);
-      word-spacing: -.1em;
       padding-right: $gutter;
       right: 0;
+      width: ($item-width-pin - $image-width - $gutter);
+      word-spacing: -.1em;
     }
   }
 }
