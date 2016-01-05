@@ -33,7 +33,6 @@ npm-debug.log
 public
 
 tmp
-docs
 sassdoc
-dist
 .vscode
+.idea
