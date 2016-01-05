@@ -43,4 +43,4 @@ Linting will be done locally before you commit via a pre-commit hook.
 1. Install [scss_lint gem](https://github.com/brigade/scss-lint#installation)
 2. Run `npm install` to install new dependencies
 3. Write your SCSS to conform with the rules in .scss-lint.yml (a proper styleguide will follow)
-4. Check your code; manually by running `npm run lint` or automatically via the precommit hook when you `git commit`
+4. Check your code; manually by running `npm run scsslint` or automatically via the precommit hook when you `git commit`
