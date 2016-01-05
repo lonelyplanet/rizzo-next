@@ -4,10 +4,7 @@ import Notification from "../notification/notification";
 import waitForTransition from "../../core/utils/waitForTransition";
 import NavigationActions from "./navigation_actions";
 import NavigationState from "./navigation_state";
-import Tabs from "../tabs/tabs_component";
 import subscribe from "../../core/decorators/subscribe";
-import moment from "moment";
-
 
 let userPanelTemplate = require("./user_panel.hbs");
 
@@ -155,7 +152,7 @@ class NavigationComponent extends Component {
 
     $liMobile.find("a")
       .text("Profile")
-      .attr("href", `//www.lonelyplanet.com/thorntree/profiles/${user.profileSlug}`)
+      .attr("href", `//www.lonelyplanet.com/thorntree/profiles/${user.profileSlug}`);
   }
   @subscribe("user.notifications.update")
   userNotificationUpdate(user) {
