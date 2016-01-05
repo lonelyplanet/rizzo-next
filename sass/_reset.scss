@@ -2,7 +2,9 @@
 // Html5 Elements
 // -----------------------------------------------------------------------------
 
-article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, summary, iframe {
+article, aside, details, figcaption, figure,
+footer, header, hgroup, nav, section, summary,
+iframe {
   display: block;
 }
 
@@ -19,10 +21,19 @@ time {
 // -----------------------------------------------------------------------------
 
 html {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
   overflow-y: scroll;
   -webkit-tap-highlight-color: transparent;
+  text-rendering: optimizeLegibility;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 // Fixes jank with scrolling on iOS devices
@@ -30,11 +41,16 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
-form, input, button, select, textarea {
+form,
+input,
+button,
+select,
+textarea {
   font-size: 100%;
 }
 
-b, strong {
+b,
+strong {
   font-weight: bold;
 }
 
@@ -49,24 +65,25 @@ img {
   max-width: 100%;
 }
 
-button, input, select, textarea {
+button,
+input,
+select,
+textarea {
   border-radius: 0;
   font-family: inherit;
   font-size: 100%;
   vertical-align: baseline;
-  *vertical-align: middle;
 }
 
-button, input {
+button,
+input {
   line-height: normal;
-}
-
-button, input {
-  overflow: visible;
   margin: 0;
+  overflow: visible;
 }
 
-input[type="checkbox"], input[type="radio"] {
+[type='checkbox'],
+[type='radio'] {
   box-sizing: border-box;
 }
 
@@ -88,11 +105,11 @@ sup {
 }
 
 sup {
-  top: -0.45em;
+  top: -.45em;
 }
 
 sub {
-  bottom: -0.25em;
+  bottom: -.25em;
 }
 
 button::-moz-focus-inner,
@@ -103,7 +120,7 @@ input::-moz-focus-inner {
 
 // Override Chrome's agressive defaults
 hr {
-  border: none;
+  border: 0;
   border-bottom: 1px solid #dbe6ec;
 }
 
@@ -118,7 +135,14 @@ template {
 // Slim Reset
 // -----------------------------------------------------------------------------
 
-html, body, div, span, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,a, abbr, acronym, address, cite, code,em, img,q, strong, sub, sup,dl, dt, dd, ol, ul, li,fieldset, form, label, table, tbody, tfoot, thead, tr, th, td,article, aside, canvas, figure, figcaption, footer, header, hgroup, nav, section, time, mark, audio, video, input, textarea {
+html, body, div, span, iframe, h1, h2, h3, h4, h5,
+h6, p, blockquote, pre, a, abbr, acronym, address,
+cite, code, em, img, q, strong, sub, sup, dl, dt,
+dd, ol, ul, li, fieldset, form, label, table,
+tbody, tfoot, thead, tr, th, td, article, aside,
+canvas, figure, figcaption, footer, header,
+hgroup, nav, section, time, mark, audio, video,
+input, textarea {
   margin: 0;
   padding: 0;
 }
@@ -131,12 +155,12 @@ a > img {
   display: block;
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
 }
 
 fieldset {
-  border: none;
+  border: 0;
 }
 
 // ----------------------------------------------------------------------------
@@ -145,33 +169,25 @@ fieldset {
 //
 // ----------------------------------------------------------------------------
 
-input[type=text], input[type=email], input[type=search], input[type=submit] {
+[type=text],
+[type=email],
+[type=search],
+[type=submit] {
   @extend %webkit-appearance-reset;
 }
 
-input[type=search]::-webkit-search-cancel-button {
+[type=search]::-webkit-search-cancel-button {
   @extend %webkit-appearance-reset;
 }
 
-input[type=search]::-webkit-search-decoration {
+[type=search]::-webkit-search-decoration {
   @extend %webkit-appearance-reset;
 }
 
-input[type=search]::-webkit-search-results-button {
+[type=search]::-webkit-search-results-button {
   @extend %webkit-appearance-reset;
 }
 
-input[type=search]::-webkit-search-results-decoration {
+[type=search]::-webkit-search-results-decoration {
   @extend %webkit-appearance-reset;
 }
-
-html {
-  box-sizing: border-box;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
-
-*, *:before, *:after {
-  box-sizing: border-box;
-}
-

@@ -2,10 +2,10 @@
   display: none !important;
 }
 
-.is-relative{
+.is-relative {
   position: relative;
 }
 
 %transition--nav {
-  transition: transform 0.4s ease;
+  transition: transform $animation-speed ease;
 }

@@ -1,4 +1,4 @@
-@import "headings_mixins";
+@import 'headings_mixins';
 
 .h1 {
   @include h1();
@@ -17,41 +17,40 @@
 // Legacy
 // should not be used
 
-$mobile-breakpoint: 717;
-$tablet-breakpoint: 1025;
+$mobile-breakpoint: 717px;
+$tablet-breakpoint: 1025px;
 
 .secondary-heading {
   color: $h2-color;
   font: {
-    size: 28px;
     family: $sans-serif;
+    size: 2.8rem;
     weight: $light;
   }
   line-height: 1.8;
+  padding-top: 4rem;
   text-align: center;
-  padding-top: 40px;
 
-  &:after {
-    border-bottom: 2px solid $h2-secondary-color;
-    width: 31px;
+  &::after {
+    border-bottom: .2rem solid $h2-secondary-color;
+    content: '';
     display: block;
-    content: "";
-    margin: 0 auto;
-    margin-bottom: 24px;
+    margin-bottom: 2.4rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 3.1rem;
   }
 
-  @include respond-to($mobile-breakpoint) {
-    font-size: 50px;
-    padding-top: 80px;
+  @media (min-width: $mobile-breakpoint) {
+    font-size: 5rem;
+    padding-top: 8rem;
 
-    &:after {
-      margin-bottom: 35px;
+    &::after {
+      margin-bottom: 3.5rem;
     }
   }
 
-  @include respond-to($tablet-breakpoint) {
-    padding-top: 125px;
+  @media (min-width: $tablet-breakpoint) {
+    padding-top: 12.5rem;
   }
 }
-
-
