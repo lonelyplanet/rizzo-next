@@ -7,6 +7,8 @@ exclude:
 - 'docs/**'
 - 'node_modules/**'
 - 'tmp/**'
+- 'src/components/image_gallery/image_gallery.scss' # plugin code
+- 'src/components/map/**' # temporary exclusion; needs refactored
 plugin_directories: ['.scss-linters']
 
 # List of gem names to load custom linters from (make sure they are already installed)
@@ -22,6 +24,15 @@ linters:
   BemDepth:
     exclude:
       - 'sass/_print.scss' # temporary exclusion until `stack__article__image-container` is refactored
+      - 'src/components/article_body/article_body.scss' # because markup from WP has more than one max element
+      - 'src/components/articles/_articles.scss' # temporary exclusion, needs refactored; 2, 3 and 4 deep
+      - 'src/components/footer/_footer.scss' # temporary exclusion, needs refactored; 2, 3 and 4 deep
+      - 'src/components/hotels/_hotels.scss' # temporary exclusion, needs refactored; 2 deep
+      - 'src/components/interests/_interests.scss' # temporary exclusion, needs refactored; 2 deep
+      - 'src/components/intro_narrative/_intro_narrative.scss' # temporary exclusion, needs refactored; 2 and 3 deep
+      - 'src/components/love_letter/_love_letter.scss' # temporary exclusion, needs refactored; 2 and 3 deep
+      - 'src/components/navigation/_hamburger.scss' # temporary exclusion, needs refactored; 2 and 3 deep
+      - 'src/components/social_share/social-share.scss' # temporary exclusion, needs refactored; 2 deep
     enabled: true
     max_elements: 1
 
@@ -33,7 +44,7 @@ linters:
     enabled: true
 
   ColorVariable:
-    enabled: true
+    enabled: false # disabled until colors and variables are figured out
 
   Comment:
     enabled: true
@@ -128,6 +139,12 @@ linters:
   NestingDepth:
     exclude:
       - 'sass/docs.scss' # allowing deeper nesting layout-container > header rather than 1) violating MergeableSelector rule or 2) unnesting anchor pseudo classes
+      - 'src/components/article_body/article_body.scss' # because markup from WP is messy and overspecificity is needed
+      - 'src/components/footer/_footer.scss' # temporary exclusion; 4 deep, needs refactored
+      - 'src/components/header/_header.scss' # temporary exclusion; 4 deep, needs refactored
+      - 'src/components/hotels/_hotels.scss' # temporary exclusion; 4 deep, needs refactored
+      - 'src/components/interests/_interests.scss' # temporary exclusion; 4 deep, needs refactored
+      - 'src/components/navigation/_user-panel.scss' # temporary exclusion; 4 deep, needs refactored
     enabled: true
     max_depth: 3
     ignore_parent_selectors: false
@@ -172,12 +189,12 @@ linters:
       border-left: ['rem'],
       border-spacing: ['rem'],
       border-radius: ['rem', '%'],
-      font-size: ['rem', 'vw', '%'],
+      font-size: ['px', 'rem', 'vw', '%'],
       height: ['px', 'em', 'rem', '%', 'vw', 'vh'],
       max-height: ['px', 'em', 'rem', '%', 'vh'],
       min-height: ['px', 'em', 'rem', '%', 'vh'],
       letter-spacing: ['rem'],
-      line-height: [],
+      line-height: ['' ,'rem'], # allowing rems to vertically center text
       margin: ['em', 'rem', '%', 'vw'],
       margin-top: ['em', 'rem', '%', 'vw'],
       margin-right: ['em', 'rem', '%', 'vw'],
@@ -215,12 +232,17 @@ linters:
   SelectorDepth:
     exclude:
       - 'sass/_print.scss' # need for article-body styles
+      - 'src/components/article_body/article_body.scss' # because markup from WP is messy and overspecificity is needed
+      - 'src/components/interests/_interests.scss' # temporary exclusion; 4 deep, needs refactored
+      - 'src/components/navigation/_user-panel.scss' # temporary exclusion; 4 deep, needs refactored
     enabled: true
     max_depth: 3
 
   SelectorFormat:
     exclude:
       - 'src/components/video/video_player.scss' # because of Brightcove
+      - 'src/components/masthead/_masthead_nav.scss' # temporary exclusion because `masthead_nav` needs refactored
+      - 'src/components/top_places/_top_places.scss' # temporary exclusion because `top_places` needs refactored
     enabled: true
     convention: hyphenated_BEM # 'hyphenated_lowercase', or 'strict_BEM', or 'hyphenated_BEM', or 'snake_case', or 'camel_case', or a regex pattern
 
@@ -266,7 +288,7 @@ linters:
 
   StringQuotes:
     enabled: true
-    style: single_quotes # or double_quotes
+    style: double_quotes # or single_quotes
 
   TrailingSemicolon:
     enabled: true
@@ -299,6 +321,7 @@ linters:
   VendorPrefix:
     exclude:
       - 'sass/_reset.scss' # because of unstandard properties
+      - 'src/components/header/_header.scss' # because of -webkit-mask-image; revisit to see if this is needed
     enabled: true
     identifier_list: base
     additional_identifiers: []
