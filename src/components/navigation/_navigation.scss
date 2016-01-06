@@ -39,7 +39,7 @@
     }
 
     &--user > a {
-      @include buttonBorder;
+      @include button-border;
       line-height: 0;
 
       &.avatar {
@@ -48,7 +48,7 @@
       }
 
       .navigation--narrow & {
-        @include buttonBorder(#BEBEBE)
+        @include button-border(#bebebe);
 
         &:hover {
           border-color: $color-primary;
@@ -129,10 +129,10 @@
   $width: 29rem;
   $margin-left: -($width / 2);
   $padding-top: 0;
-  @include dropdownMenu($top, $left, $width, $margin-left, $padding-top);
+  @include dropdown-menu($top, $left, $width, $margin-left, $padding-top);
 
   &:before {
-    @include dropdownMenuArrow;
+    @include dropdown-menu-arrow;
   }
 
   // The last subnav item gets hidden when the screen smaller
@@ -144,14 +144,14 @@
         left: auto;
       }
 
-      left: auto; 
+      left: auto;
       right: 0;
       margin-left: 0;
     }
   }
 
   &--visible {
-    @include dropdownMenuVisible;
+    @include dropdown-menu-visible;
   }
 
   &__list {

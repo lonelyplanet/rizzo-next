@@ -12,11 +12,11 @@ $user-panel: (
   $width: 29rem;
   $margin-left: -($width / 2);
   $padding-top: 0;
-  @include dropdownMenu($top, $left, $width, $margin-left, $padding-top);
-  @include dropdownMenuVisible;
+  @include dropdown-menu($top, $left, $width, $margin-left, $padding-top);
+  @include dropdown-menu-visible;
 
   &:before {
-    @include dropdownMenuArrow;
+    @include dropdown-menu-arrow;
   }
 }
 
