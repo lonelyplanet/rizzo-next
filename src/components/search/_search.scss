@@ -40,6 +40,10 @@
     }
   }
 
+  &__container {
+    @include container-padded();
+  }
+
   &__input {
     position: absolute;
     top: 0;
