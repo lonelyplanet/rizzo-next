@@ -1,0 +1,107 @@
+@import "../../../sass/webpack_deps";
+
+$height: 6rem;
+
+// Topic
+//
+// Create images for things to do topics
+//
+// .topic__image--activity    - The runnin' man
+// .topic__image--activity    - The runnin' man
+// .topic__image--article     - Readin' stuff
+// .topic__image--collection  - I don't even
+//
+// Markup:
+// <div class="topic">
+//   <div class="topic__image topic__image--activity"></div>
+// </div>
+//
+// Style guide: doodads.topic
+.topic {
+  position: relative;
+
+  &__image {
+    background: {
+      color: #ccc;
+      repeat: no-repeat;
+      size: cover;
+    }
+    height: $height;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 8rem;
+
+    &--activity {
+      @include icon-before('https://assets.staticlp.com/destinations-next/icons/activity--line.svg');
+
+      background: {
+        image: url('https://assets.staticlp.com/destinations-next/images/search-category-image-activities.jpg');
+        repeat: no-repeat;
+      }
+    }
+
+    &--article {
+      @include icon-before('https://assets.staticlp.com/destinations-next/icons/article--line.svg');
+
+      background: {
+        image: url('https://assets.staticlp.com/destinations-next/images/search-category-image-articles.jpg');
+        repeat: no-repeat;
+      }
+    }
+
+    &--collection {
+      @include icon-before('https://assets.staticlp.com/destinations-next/icons/image--line.svg');
+
+      background: {
+        image: url('https://assets.staticlp.com/destinations-next/images/search-category-image-collection.jpg');
+        repeat: no-repeat;
+      }
+    }
+
+    &--guide {
+      @include icon-before('https://assets.staticlp.com/destinations-next/icons/book.svg');
+
+      background: {
+        image: url('https://assets.staticlp.com/destinations-next/images/search-category-image-guides.jpg');
+        repeat: no-repeat;
+      }
+    }
+
+    &--hotel {
+      @include icon-before('https://assets.staticlp.com/destinations-next/icons/hotel--line.svg');
+
+      background: {
+        image: url('https://assets.staticlp.com/destinations-next/images/search-category-image-hotels.jpg');
+        repeat: no-repeat;
+      }
+    }
+
+    &--place {
+      @include icon-before('https://assets.staticlp.com/destinations-next/icons/place.svg');
+
+      background: {
+        image: url('https://assets.staticlp.com/destinations-next/images/search-category-image-place.jpg');
+        repeat: no-repeat;
+      }
+    }
+
+    &--sight {
+      @include icon-before('https://assets.staticlp.com/destinations-next/icons/sight--line.svg');
+
+      background: {
+        image: url('https://assets.staticlp.com/destinations-next/images/search-category-image-sights.jpg');
+        repeat: no-repeat;
+      }
+    }
+
+    &--tour {
+      @include icon-before('https://assets.staticlp.com/destinations-next/icons/tour--line.svg');
+
+      background: {
+        image: url('https://assets.staticlp.com/destinations-next/images/search-category-image-tours.jpg');
+        repeat: no-repeat;
+      }
+    }
+  }
+}
