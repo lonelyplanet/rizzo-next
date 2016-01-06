@@ -1,46 +1,42 @@
-@mixin link-transition(){
+@mixin link-transition() {
+  transition-duration: 300ms;
   transition-property: color, border, background;
-  transition-duration: .3s;
 
-  &:after,
-  &:before {
+  &::after,
+  &::before {
+    transition-duration: 300ms;
     transition-property: color, border, background;
-    transition-duration: .3s;
   }
 
   &:hover {
-    transition-duration: 0ms;
+    transition-duration: 0;
 
-    &:after,
-    &:before {
-      transition-duration: 0ms;
+    &::after,
+    &::before {
+      transition-duration: 0;
     }
   }
 }
 
 @mixin more() {
-  font-size: 1.3rem;
-  line-height: 1;
-  font-weight: 600;
-  text-transform: uppercase;
-
   @include link-transition();
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1;
+  text-transform: uppercase;
 
   &:hover {
     color: $color-primary + 30;
   }
 
   [class*="icon-"] {
-    display: inline-block;
-
-    font-size: 6px;
-    vertical-align: 20%;
-    line-height: 1.6;
-
-    transition: transform 500ms;
-
-    transform: translateX(.6rem);
     backface-visibility: hidden;
+    display: inline-block;
+    font-size: .6rem;
+    line-height: 1.6;
+    transform: translateX(.6rem);
+    transition: transform 500ms;
+    vertical-align: 20%;
   }
 
   &:hover {
@@ -52,11 +48,9 @@
 
 @mixin see-more() {
   @include more();
-
-  position: relative;
   display: inline-block;
-
   padding: $gutter;
+  position: relative;
 
   &--small {
     font-size: 1rem;
@@ -83,15 +77,21 @@
   }
 
   @if $style == dashed {
-    background-image:
-      repeating-linear-gradient(to right, rgba($background-color, 0), rgba($background-color, 0) .3rem, $background-color .3rem, $background-color .6rem),
-      $underline;
+    background-image: repeating-linear-gradient(
+      to right,
+      rgba($background-color, 0),
+      rgba($background-color, 0) .3rem,
+      $background-color .3rem,
+      $background-color .6rem), $underline;
   }
 
   @if $style == dotted {
-    background-image:
-      repeating-linear-gradient(to right, rgba($background-color, 0), rgba($background-color, 0) .1rem, $background-color .1rem, $background-color .2rem),
-      $underline;
+    background-image: repeating-linear-gradient(
+      to right,
+      rgba($background-color, 0),
+      rgba($background-color, 0) .1rem,
+      $background-color .1rem,
+      $background-color .2rem), $underline;
   }
 }
 

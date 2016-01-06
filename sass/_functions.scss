@@ -56,14 +56,14 @@
 /// @return {String}              - Unitless value
 @function create-unitless-line-height($font-size, $line-height) {
   // Check the font-size units and strip them
-  @if unit($font-size) == "rem" {
+  @if unit($font-size) == 'rem' {
     $font-size: strip-units($font-size) * 10;
   } @else {
     $font-size: strip-units($font-size);
   }
 
   // Check the line-height units and strip them
-  @if unit($line-height) == "rem" {
+  @if unit($line-height) == 'rem' {
     $line-height: strip-units($line-height) * 10;
   } @else {
     $line-height: strip-units($line-height);

@@ -1,9 +1,9 @@
-@import "buttons_mixins";
+@import 'buttons_mixins';
 
 .button {
   @include button();
 }
 
 .button--inverse {
-  @include button("inverse");
+  @include button('inverse');
 }

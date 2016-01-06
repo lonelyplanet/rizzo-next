@@ -1,34 +1,35 @@
-$pickerWidth: 320px;
+$picker-width: 32rem;
 
 .picker__holder {
   @include z-layer(modal);
-  width: 100%;
+  clear: both;
   height: 0;
   position: relative;
-  clear: both;
+  width: 100%;
 }
 
 .picker__frame {
   @extend %transition--slower;
   @extend %rounded-corners;
-  top: 0;
+  background-color: #fff;
   left: 0;
-  background: white;
-  position: relative;
-  max-width: $pickerWidth;
-  min-width: 256px;
   max-height: 0;
+  max-width: $picker-width;
+  min-width: 256px;
   overflow-y: hidden;
+  position: relative;
+  top: 0;
+
   .picker--opened & {
-    max-height: 25em;
     @extend %fly-out-shadow;
+    max-height: 25em;
   }
 }
 
 .picker__box {
-  padding: 10px;
+  border: .1rem solid $subduedgray;
+  padding: 1rem;
   text-align: center;
-  border: 1px solid $subduedgray;
 }
 
 .picker__month--wrap,
@@ -37,123 +38,128 @@ $pickerWidth: 320px;
 }
 
 .picker__month--wrap {
-  margin-right: 4px;
+  margin-right: .4rem;
 }
 
 .picker__month {
-  margin-right: 10px;
+  margin-right: 1rem;
 }
 
 .picker__month,
 .picker__year {
+  color: $darkgray;
   display: inline-block;
   font-size: 1.8rem;
   font-weight: bold;
   line-height: 1.4;
-  color: $darkgray;
 }
 
 .picker__header {
+  padding-bottom: 1rem;
+  padding-top: .8rem;
   position: relative;
-  padding: 8px 0 10px;
 }
 
 .picker__nav--prev,
 .picker__nav--next {
-  position: absolute;
   background-size: cover;
-  top: 8px;
-  width: 20px;
-  height: 20px;
   cursor: pointer;
-  background-size: cover;
+  height: 2rem;
+  position: absolute;
+  top: .8rem;
+  width: 2rem;
+
   .no-background-size & {
     background: none;
   }
-  .no-background-size &:after,
-  .no-js &:after {
-    font-size: 32px;
+
+  .no-background-size &::after,
+  .no-js &::after {
+    font-size: 3.2rem;
     font-weight: bold;
-    line-height: 0.5;
+    line-height: .5;
   }
 }
 
 .picker__nav--prev {
   @extend %left-icon;
-  left: 10px;
-  .no-background-size &:after,
-  .no-js &:after {
-    content: "\2039";
+  left: 1rem;
+
+  .no-background-size &::after,
+  .no-js &::after {
+    content: '\2039';
   }
 }
 
 .picker__nav--next {
   @extend %right-icon;
-  right: 10px;
-  .no-background-size &:after,
-  .no-js &:after {
-    content: "\203a";
+  right: 1rem;
+
+  .no-background-size &::after,
+  .no-js &::after {
+    content: '\203a';
   }
 }
 
 .picker__nav--disabled {
   background: none;
   cursor: auto;
-  .no-background-size &:after,
-  .no-js &:after {
+
+  .no-background-size &::after,
+  .no-js &::after {
     content: initial;
   }
 }
 
 .picker__table {
   border-collapse: separate;
-  border-spacing: 4px;
+  border-spacing: .4rem;
   width: 100%;
 }
 
 .picker__weekday {
-  font-size: 12px;
+  font-size: 1.2rem;
   font-weight: bold;
+  opacity: .5;
   text-transform: uppercase;
-  opacity: 0.5;
 }
 
 .picker__day {
   @extend %inline-block;
-  font-size: 1.1rem;
+  border: .1rem solid #d7dee3;
   border-radius: 3rem;
+  color: $darkgray;
+  cursor: pointer;
+  font-size: 1.1rem;
   font-weight: bold;
-  width: 2.6rem;
   height: 2.6rem;
   line-height: 2.4;
   text-align: center;
-  border: 1px solid #d7dee3;
-  cursor: pointer;
-  color: $darkgray;
+  width: 2.6rem;
 }
 
 .picker__day--selected,
 .picker__day--selected:hover {
-  border-color: $active;
   background-color: $active;
-  color: white;
+  border-color: $active;
+  color: #fff;
 }
 
 .picker__day--outfocus,
 .picker__day--disabled {
-  border: none;
-  opacity: 0.25;
+  border: 0;
+  opacity: .25;
 }
 
 .picker__day--disabled {
-  opacity: 0.5;
-  color: #dddddd;
+  color: #ddd;
   cursor: default;
+  opacity: .5;
 }
 
 .picker__footer {
-  margin-top: 10px;
   display: none;
+  margin-top: 1rem;
 }
 
 .picker__button--clear {
@@ -161,25 +167,28 @@ $pickerWidth: 320px;
 }
 
 .picker__button--today {
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: .1rem solid rgba(#fff, .2);
+  margin-left: auto;
+  margin-right: auto;
   width: 95%;
-  margin: 0 auto;
 }
 
 // -----------------------------------------------------------------------------
 // Datepickers with an arrow above (icon classes to be defined in JS)
 // -----------------------------------------------------------------------------
 
-.picker__holder[class*="arrow-up"] {
+.picker__holder[class*='arrow-up'] {
   .picker--opened & {
-    @include css-arrow-central(top, $size: 30px);
-    &:after {
+    @include css-arrow-central(top, $size: 3rem);
+
+    &::after {
       position: absolute;
-      top: -11px;
+      top: -1.1rem;
     }
   }
+
   .picker__frame {
-    top: 10px;
+    top: 1rem;
   }
 }
 
@@ -192,7 +201,7 @@ $pickerWidth: 320px;
 .picker--centered {
   .picker__frame {
     left: 50%;
-    margin-left: -#{$pickerWidth / 2};
+    margin-left: -#{$picker-width / 2};
   }
 }
 
@@ -213,23 +222,28 @@ $pickerWidth: 320px;
 
 .picker__theme-blue {
   .picker__frame {
+    background-color: $linkblue;
+    color: #fff;
     transition: none;
-    color: white;
-    background: $linkblue;
   }
+
   .picker__box,
   .picker__day--selected {
-    border: none;
+    border: 0;
   }
+
   .picker__day--selected {
-    &, &:hover {
-      background: white;
+    &,
+    &:hover {
+      background-color: #fff;
       color: $linkblue;
     }
   }
+
   .picker__day--infocus {
-    border-color: rgba(255, 255, 255, 0.25);
+    border-color: rgba(#fff, .25);
   }
+
   .picker__footer {
     display: block;
   }

@@ -11,7 +11,7 @@ $max-width: 129rem;
 /// Text and inline spacing
 $spacing: 1.5rem;
 /// Gutter and block level spacing
-$gutter: 3.0rem;
+$gutter: 3rem;
 /// Default border radius
 $radius: .2rem;
 
@@ -39,7 +39,7 @@ $semibold: $font-weight-semibold;
 
 
 // Colors
-$color-warning: #FFC83F;
+$color-warning: #ffc83f;
 $color-blue: #287bbb;
 $color-lightblue: #e9f2f8;
 $color-darkblue: #2c3642;
@@ -67,58 +67,58 @@ $color-pinterest: #cb2027;
 $header-height: 13rem;
 $header-height-mobile: 5rem;
 
-$animation-speed: .4s;
-$animation-speed-ui: .8s;
+$animation-speed: 400ms;
+$animation-speed-ui: 800ms;
 
 // Custom breakpoints (Mobile first)
 /// 1410px min width breakpoint
-$min-1410: #{(1410 * 0.0625)}em;
+$min-1410: #{(1410 * .0625)}em;
 /// 1350px min width breakpoint
-$min-1350: #{(1350 * 0.0625)}em;
+$min-1350: #{(1350 * .0625)}em;
 /// 1290px min width breakpoint
-$min-1290: #{(1290 * 0.0625)}em;
+$min-1290: #{(1290 * .0625)}em;
 /// 1200px min width breakpoint
-$min-1200: #{(1200 * 0.0625)}em;
+$min-1200: #{(1200 * .0625)}em;
 /// 1080px min width breakpoint
-$min-1080: #{(1080 * 0.0625)}em;
+$min-1080: #{(1080 * .0625)}em;
 /// 1024px min width breakpoint
-$min-1024: #{(1024 * 0.0625)}em;
+$min-1024: #{(1024 * .0625)}em;
 /// 960px min width breakpoint
-$min-960: #{(960 * 0.0625)}em;
+$min-960: #{(960 * .0625)}em;
 /// 840px min width breakpoint
-$min-840: #{(840 * 0.0625)}em;
+$min-840: #{(840 * .0625)}em;
 /// 768px min width breakpoint
-$min-768: #{(768 * 0.0625)}em;
+$min-768: #{(768 * .0625)}em;
 /// 720px min width breakpoint
-$min-720: #{(720 * 0.0625)}em;
+$min-720: #{(720 * .0625)}em;
 /// 600px min width breakpoint
-$min-600: #{(600 * 0.0625)}em;
+$min-600: #{(600 * .0625)}em;
 /// 560px min width breakpoint
-$min-560: #{(560 * 0.0625)}em;
+$min-560: #{(560 * .0625)}em;
 /// 480px min width breakpoint
-$min-480: #{(480 * 0.0625)}em;
+$min-480: #{(480 * .0625)}em;
 /// 360px min width breakpoint
-$min-360: #{(360 * 0.0625)}em;
+$min-360: #{(360 * .0625)}em;
 /// 320px min width breakpoint
-$min-320: #{(320 * 0.0625)}em;
+$min-320: #{(320 * .0625)}em;
 
 // Custom breakpoints
-$max-1530: #{(1530 * 0.0625)}em;
-$max-1410: #{(1409 * 0.0625)}em;
-$max-1350: #{(1349 * 0.0625)}em;
-$max-1290: #{(1289 * 0.0625)}em;
-$max-1200: #{(1199 * 0.0625)}em;
-$max-1080: #{(1079 * 0.0625)}em;
-$max-1024: #{(1023 * 0.0625)}em;
-$max-960: #{(959 * 0.0625)}em;
-$max-840: #{(839 * 0.0625)}em;
-$max-768: #{(767 * 0.0625)}em;
-$max-720: #{(719 * 0.0625)}em;
-$max-600: #{(599 * 0.0625)}em;
-$max-560: #{(559 * 0.0625)}em;
-$max-480: #{(479 * 0.0625)}em;
-$max-360: #{(359 * 0.0625)}em;
-$max-320: #{(319 * 0.0625)}em;
+$max-1530: #{(1530 * .0625)}em;
+$max-1410: #{(1409 * .0625)}em;
+$max-1350: #{(1349 * .0625)}em;
+$max-1290: #{(1289 * .0625)}em;
+$max-1200: #{(1199 * .0625)}em;
+$max-1080: #{(1079 * .0625)}em;
+$max-1024: #{(1023 * .0625)}em;
+$max-960: #{(959 * .0625)}em;
+$max-840: #{(839 * .0625)}em;
+$max-768: #{(767 * .0625)}em;
+$max-720: #{(719 * .0625)}em;
+$max-600: #{(599 * .0625)}em;
+$max-560: #{(559 * .0625)}em;
+$max-480: #{(479 * .0625)}em;
+$max-360: #{(359 * .0625)}em;
+$max-320: #{(319 * .0625)}em;
 
 /// ----------------------------------------------------------------------------
 /// Layouts
@@ -134,7 +134,7 @@ $default-layout: (
   column-width: 8rem,
   container: $max-width,
   gutter-position: before,
-  gutters: 3/8,
+  gutters: 3 / 8,
   math: fluid,
   output: float
 );

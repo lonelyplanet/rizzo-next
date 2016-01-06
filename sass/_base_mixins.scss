@@ -10,36 +10,33 @@
 /// ----------------------------------------------------------------------------
 @mixin segment() {
   margin: 0;
-  padding-top: ($gutter * 2);
   padding-bottom: ($gutter * 2) - $spacing;
+  padding-top: ($gutter * 2);
 
   @media (min-width: $min-720) {
-    padding-top: ($gutter * 3);
     padding-bottom: ($gutter * 3) - $spacing;
+    padding-top: ($gutter * 3);
   }
 
   @media (min-width: $min-1080) {
-    padding-top: ($gutter * 4.5);
     padding-bottom: ($gutter * 4.5) - $spacing;
+    padding-top: ($gutter * 4.5);
   }
 
   &--grey {
     background-color: $color-lightgrey;
   }
 
-  &--border-bottom:after, &--border-top:before {
+  &--border-bottom::after,
+  &--border-top::before {
     box-sizing: content-box;
-
+    content: '';
     display: block;
-    content: "";
-
-    position: relative;
-    
+    height: 0;
     margin-left: ($gutter / 2);
     margin-right: ($gutter / 2);
-
     max-width: $max-width;
-    height: 0;
+    position: relative;
 
     @media (min-width: $min-480) {
       margin-left: $gutter;
@@ -57,14 +54,15 @@
     }
   }
 
-  &--border-bottom:last-of-type:after {
+  &--border-bottom:last-of-type::after {
     border-bottom: 0;
   }
-  &--border-top:last-of-type:after {
+
+  &--border-top:last-of-type::after {
     border-top: 0;
   }
 
-  &--border-bottom:after {
+  &--border-bottom::after {
     border-bottom: .1rem solid $color-border;
     bottom: -($gutter * 2) + $spacing;
 
@@ -72,13 +70,12 @@
       bottom: -($gutter * 3) + $spacing;
     }
 
-
     @media (min-width: $min-1080) {
       bottom: -($gutter * 3.5) + $spacing;
     }
   }
-  
-  &--border-top:before {
+
+  &--border-top::before {
     border-top: .1rem solid $color-border;
     top: -($gutter * 2);
 

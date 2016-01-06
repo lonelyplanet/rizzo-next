@@ -1,17 +1,17 @@
 /// Use in an icon to add it to the before selector
 /// @param {string} $uri The icon uri to add
 @mixin icon-before($uri) {
-  &:before{
-    content: "";
-    position: relative;
-    width: 82px;
-    height: 59px;
-    display: block;
-    background:{
+  &::before {
+    background: {
       image: url($uri);
+      position: center -94px;
       repeat: no-repeat;
       size: 50%;
-      position: center -94px;
     }
+    content: '';
+    display: block;
+    height: 59px;
+    position: relative;
+    width: 82px;
   }
 }
