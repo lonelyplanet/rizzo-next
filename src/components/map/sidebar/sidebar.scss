@@ -121,7 +121,7 @@ $panel-height: calc(100% - #{$sidebar-header-height});
         $width: 28rem;
         $margin-left: 0;
         $padding-top: ($gutter * 1.5) - 1.3rem;
-        @include dropdownMenu($top, $left, $width, $margin-left, $padding-top);
+        @include dropdown-menu($top, $left, $width, $margin-left, $padding-top);
         padding-left: ($gutter + .8rem);
         padding-bottom: ($gutter - 1.3rem);
         padding-right: $gutter;
@@ -129,11 +129,11 @@ $panel-height: calc(100% - #{$sidebar-header-height});
         &:before {
           $size: 1.2rem;
           $left: 5.8rem;
-          @include dropdownMenuArrow($size, $left);
+          @include dropdown-menu-arrow($size, $left);
         }
 
         &.is-visible {
-          @include dropdownMenuVisible;
+          @include dropdown-menu-visible;
         }
       }
 
