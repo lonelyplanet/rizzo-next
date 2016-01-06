@@ -122,3 +122,149 @@
     user-select: none;
   }
 }
+
+.sub-navigation {
+  $top: ($header-height - $gutter);
+  $left: 50%;
+  $width: 29rem;
+  $margin-left: -($width / 2);
+  $padding-top: 0;
+  @include dropdownMenu($top, $left, $width, $margin-left, $padding-top);
+
+  &:before {
+    @include dropdownMenuArrow;
+  }
+
+  // The last subnav item gets hidden when the screen smaller
+  // Make sure it works at large as well though
+  .navigation__item:last-child & {
+    @media (max-width: $max-1530) {
+      &:before {
+        right: 1.6rem;
+        left: auto;
+      }
+
+      left: auto; 
+      right: 0;
+      margin-left: 0;
+    }
+  }
+
+  &--visible {
+    @include dropdownMenuVisible;
+  }
+
+  &__list {
+    padding-top: 2.8rem;
+    padding-bottom: 2.8rem;
+  }
+
+  .sub-navigation-feature + &__list {
+    padding-top: 0;
+  }
+
+  &__item {
+    position: relative;
+    font-size: 1.6rem;
+    line-height: 1;
+    margin-left: $gutter;
+    margin-right: $gutter;
+
+    &:not(:first-child) {
+      border-top: .1rem solid #f1f4fb;
+    }
+
+    &--current:before {
+      display: block;
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: -1.7rem;
+      margin-top: auto;
+      margin-bottom: auto;
+      width: .4rem;
+      height: .4rem;
+      border-radius: 100%;
+      background-color: $color-red;
+      z-index: 1;
+    }
+  }
+
+  &__link {
+    display: block;
+    color: $color-darkblue;
+    padding-top: 1rem;
+    padding-bottom: .8rem;
+    position: relative;
+  }
+
+  &__item--current &__link:hover:after {
+    background-color: transparent;
+  }
+
+  &__link:after {
+    background-color: transparent;
+    content: "";
+    height: calc(100% + .2rem);
+    left: -#{$gutter};
+    position: absolute;
+    right: -#{$gutter};
+    top: -.1rem;
+    transition: background-color ($animation-speed / 2) linear;
+    width: calc(100% + #{$gutter} + #{$gutter});
+    z-index: -1;
+  }
+
+  &__link:hover:after {
+    background-color: #f4f5f8;
+  }
+
+  &__button {
+    @include button;
+    border-radius: 0 0 $radius $radius;
+    display: block;
+    padding-top: 2.3rem;
+    padding-bottom: 1.9rem;
+  }
+}
+
+.sub-navigation-feature {
+  border-bottom: 1px solid #e1e3e7;
+  display: block;
+  overflow: hidden;
+  padding: $gutter $gutter 2rem;
+  position: relative;
+
+  &__image {
+    display: block;
+    float: left;
+    height: auto;
+    margin-right: 2.6rem;
+    width: 8rem;
+  }
+
+  &__text {
+    float: left;
+    line-height: 1;
+    padding-top: 1.5rem;
+  }
+
+  &__title {
+    color: $color-darkblue;
+    font-size: 1.6rem;
+    transition: color $animation-speed linear;
+  }
+
+  &:hover &__title {
+    color: $color-blue;
+  }
+
+  &__subtitle {
+    color: #8d9197;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: .4rem;
+    text-transform: uppercase;
+  }
+}

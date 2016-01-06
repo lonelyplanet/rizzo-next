@@ -13,8 +13,16 @@ $notification-badge-size: 1.7rem;
   color: #fff;
   border-radius: 50%;
   background-color: $color-red;
-  box-shadow: 0 .1rem .2rem rgba(0,0,0, .2);
   user-select: none;
+  
+  // Use when you need it directly on a word, aka
+  // <span class="notification-badge__wrap">Messages  
+  //   <span class="notification-badge notification-badge--user-inline">
+  //   </span>
+  // </span>
+  &__wrap {
+    position: relative;
+  }
 }
 
 .notification-badge--shop {
@@ -23,8 +31,18 @@ $notification-badge-size: 1.7rem;
   right: -.6rem;
 }
 
-.notification-badge--user {
+.notification-badge--user, .notification-badge--user-inline {
   position: absolute;
-  top: -.3rem;
-  right: -.4rem;
+  top: 0;
+  right: -.2rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 3px solid #FFF;
+}
+
+.notification-badge--user-inline {
+  top: -.5rem;
+  right: -1.1rem;
+  width: 1.2rem;
+  height: 1.2rem;
 }

@@ -19,7 +19,7 @@ module.exports = {
   ],
   // Component entries will be built dynamically
   entry: {
-    common: ["jquery", "moment", "./sass/core.scss", "handlebars"]
+    common: ["jquery", "./sass/core.scss", "handlebars"]
   },
   progress: true,
   

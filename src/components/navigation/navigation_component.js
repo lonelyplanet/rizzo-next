@@ -4,10 +4,7 @@ import Notification from "../notification/notification";
 import waitForTransition from "../../core/utils/waitForTransition";
 import NavigationActions from "./navigation_actions";
 import NavigationState from "./navigation_state";
-import Tabs from "../tabs/tabs_component";
 import subscribe from "../../core/decorators/subscribe";
-import moment from "moment";
-
 
 let userPanelTemplate = require("./user_panel.hbs");
 
@@ -142,31 +139,20 @@ class NavigationComponent extends Component {
 
   @subscribe("user.status.update")
   userStatusUpdate(user) {
-    let $li = this.$el.find(".navigation__item--user");
+    let $li = this.$el.find(".navigation__item--user"),
+        $liMobile = this.$mobileNavigation.find(".mobile-navigation__item--user");
 
     if (!user.id) {
-      return $li.html($("<a />", {
-        "class": "navigation__link",
-        "href": "https://auth.lonelyplanet.com/users/sign_in"
-      }).text("Sign in"));
+      return;
     }
 
     $li.html(userPanelTemplate({
       user
-    })).find("time").each((i, el) => {
-      let $el = $(el);
-      $el.text(moment($el.text()).fromNow());
-    });
+    }));
 
-    $li.find(".js-user-messages li").each((i, el) => {
-      let $message = $(el);
-      $message.addClass("user-panel__item")
-        .toggleClass("user-panel__item--unread", !user.messages[i].read);
-    });
-
-    this.profileTabs = new Tabs({
-      el: $(".navigation").find(".tabs")
-    });
+    $liMobile.find("a")
+      .text("Profile")
+      .attr("href", `//www.lonelyplanet.com/thorntree/profiles/${user.profileSlug}`);
   }
   @subscribe("user.notifications.update")
   userNotificationUpdate(user) {

@@ -25,7 +25,8 @@
   },
   "version": "0.11.2",
   "pre-commit": [
-    "scsslint"
+    "scsslint",
+    "lint"
   ],
   "dependencies": {
     "airbrake-js": "^0.5.2",
