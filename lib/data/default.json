@@ -2,7 +2,7 @@
   "dest": "/dist",
   "components": {
     "header": {
-      "type": "normal",
+      "type": "narrow",
       "items": [
         {
           "title": "Search",
