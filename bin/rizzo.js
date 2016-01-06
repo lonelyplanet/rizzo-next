@@ -12,14 +12,28 @@ program
 program
   .command("build [components]")
   .description("Builds given components")
-  .option("-d, --dest [dest]", "Which setup mode to use")
+  .option("-d, --dest [dest]", "Where to output the compiled files")
+  .option("-c, --config [config]", "Pass in a JSON configuration file")
   .action(function(components, options){
-    let dest = path.join(__dirname, "../", options.dest || "/dist/components"),
-        componentsToBuild = components ? components.split(",") : ["header"];
-    
     const build = require("../lib/commands/build");
-        
-    build(componentsToBuild, { dest }).then(() => {
+    
+    let config;
+    if (options.config) {
+      try {
+        config = require(options.conf);
+      } catch(e) {
+        console.log("No config file found at %s", options.config);
+        return program.exit(0);
+      }
+    } else {
+      config = require("../lib/data/default.json");
+    }
+    
+    if (options.dest) {
+      config.dest = options.dest;
+    }
+
+    build(components ? components.split(",") : [], config).then(() => {
       console.log("Done!");
     });
   });
@@ -27,12 +41,6 @@ program
 program
   .command("create [name]")
   .description("Create a new rizzo component")
-  .action(function(name, options){
-    const create = require("../lib/commands/create");
-        
-    create(name, {}).then(() => {
-      console.log("Done!");
-    });
-  });
+  .action(require("../lib/commands/create"));
 
 program.parse(process.argv);

@@ -12,7 +12,7 @@ var path = require("path"),
 module.exports = {
   plugins: [
     new webpack.optimize.UglifyJsPlugin(),
-    new ExtractTextPlugin("components/[name].css"),
+    new ExtractTextPlugin("[name].css"),
     new CommonsPlugin({
       name: "common"
     })
@@ -25,7 +25,7 @@ module.exports = {
   
   output: {
     path: path.join(__dirname, "dist"),
-    filename: "components/[name].js",
+    filename: "[name].js",
     libraryTarget: "umd"
   },
   module: {
