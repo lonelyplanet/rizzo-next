@@ -1,64 +1,90 @@
 <article class="sights">
-  <h3 class="sights__heading sights__heading--small">{{sights_title}}</h3>
-  <h2 class="sights__heading sights__heading--large is-hidden">{{sights_title}}</h2>
+  <h3 class="sights__heading">
+    {{sights_title}}
+  </h3>
+
   <div class="sights__list">
-  {{#if show}}
-    <div class="sights__column sights__column--1">
-    {{#each first_column}}
-      <div class="sights__item">
-        <a href="http://www.lonelyplanet.com/{{slug}}">
-          {{#if img_url}}
-            <div class="sights__item__img" style="background-image: url('http://images-resrc.staticlp.com/O=60/S=W80/{{img_url}}')"></div>
+    {{#if show}}
+
+      <div class="sights__column{{#unless third_column}} sights__column--half{{/unless}}">
+        {{#each first_column}}
+          <a class="sights__item" href="/{{slug}}">
+            {{#if img_url}}
+              <img src="http://images-resrc.staticlp.com/O=60/S=W80,H60/{{img_url}}" alt="">
             {{else}}
-            <div class="sights__item__img topic__image--sight"></div>
-          {{/if}}
-          <div class="sights__item__order"></div>
-          <div class="sights__item__text">
-            <div class="title">{{title}}</div>
-            <div class="subtitle">{{subtitle}}</div>
-          </div>
-        </a>
-      </div>
-    {{/each}}
-    </div>
-    <div class="sights__column sights__column--2">
-    {{#each second_column}}
-      <div class="sights__item">
-        <a href="http://www.lonelyplanet.com/{{slug}}">
-          {{#if img_url}}
-            <div class="sights__item__img" style="background-image: url('http://images-resrc.staticlp.com/O=60/S=W80/{{img_url}}')"></div>
+              <div class="topic__image--sight"></div>
+            {{/if}}
+
+            <div class="sights__text">
+              <h5 class="sights__title">
+                {{title}}
+              </h5><!-- .sights__title -->
+
+              <div class="sights__location">
+                {{subtitle}}
+              </div><!-- .sights__location -->
+            </div><!-- .sights__text -->
+
+            <div class="sights__count"></div>
+          </a><!-- .sights__item -->
+        {{/each}}
+      </div><!-- .sights__column -->
+
+      <div class="sights__column{{#unless third_column}} sights__column--half{{/unless}}">
+        {{#each second_column}}
+          <a class="sights__item" href="/{{slug}}">
+            {{#if img_url}}
+              <img src="http://images-resrc.staticlp.com/O=60/S=W80,H60/{{img_url}}" alt="">
             {{else}}
-            <div class="sights__item__img topic__image--sight"></div>
-          {{/if}}
-          <div class="sights__item__order"></div>
-          <div class="sights__item__text">
-            <div class="title">{{title}}</div>
-            <div class="subtitle">{{subtitle}}</div>
-          </div>
-        </a>
-      </div>
-    {{/each}}
-    </div>
-    {{#if third_column}}
-    <div class="sights__column sights__column--3">
-      {{#each third_column}}
-      <div class="sights__item">
-        <a href="http://www.lonelyplanet.com/{{slug}}">
-          {{#if img_url}}
-            <div class="sights__item__img" style="background-image: url('http://images-resrc.staticlp.com/O=60/S=W80/{{img_url}}')"></div>
-            {{else}}
-            <div class="sights__item__img topic__image--sight"></div>
-          {{/if}}
-          <div class="sights__item__order"></div>
-          <div class="sights__item__text">
-            <div class="title">{{title}}</div>
-            <div class="subtitle">{{subtitle}}</div>
-          </div>
-        </a>
-      </div>
-      {{/each}}
-    </div>
+              <div class="topic__image--sight"></div>
+            {{/if}}
+
+            <div class="sights__text">
+              <h5 class="sights__title">
+                {{title}}
+              </h5><!-- .sights__title -->
+
+              <div class="sights__location">
+                {{subtitle}}
+              </div><!-- .sights__location -->
+            </div><!-- .sights__text -->
+
+            <div class="sights__count"></div>
+          </a><!-- .sights__item -->
+        {{/each}}
+      </div><!-- .sights__column -->
+
+      {{#if third_column}}
+        <div class="sights__column">
+          {{#each third_column}}
+            <a class="sights__item" href="/{{slug}}">
+              {{#if img_url}}
+                <img src="http://images-resrc.staticlp.com/O=60/S=W80,H60/{{img_url}}" alt="">
+              {{else}}
+                <div class="topic__image--sight"></div>
+              {{/if}}
+
+              <div class="sights__text">
+                <h5 class="sights__title">
+                  {{title}}
+                </h5><!-- .sights__title -->
+
+                <div class="sights__location">
+                  {{subtitle}}
+                </div><!-- .sights__location -->
+              </div><!-- .sights__text -->
+
+              <div class="sights__count"></div>
+            </a><!-- .sights__item -->
+          {{/each}}
+        </div><!-- .sights__column -->
+      {{/if}}
+
     {{/if}}
-  {{/if}}
-  </div>
-</article>
+  </div><!-- .sights__list -->
+
+  <a class="sights__more" href="#">
+    See all sights
+    <i class="icon-chevron-right" aria-hidden="true"></i>
+  </a>
+</article><!-- .sights -->

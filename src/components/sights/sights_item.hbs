@@ -1,0 +1,19 @@
+<a class="sights__item" href="https://www.lonelyplanet.com/{{slug}}">
+  {{#if img_url}}
+    <img src="http://images-resrc.staticlp.com/O=60/S=W80,H60/{{img_url}}" alt="">
+  {{else}}
+    <div class="topic__image--sight"></div>
+  {{/if}}
+
+  <div class="sights__text">
+    <h5 class="sights__title">
+      {{title}}
+    </h5><!-- .sights__title -->
+
+    <div class="sights__location">
+      {{subtitle}}
+    </div><!-- .sights__location -->
+  </div><!-- .sights__text -->
+
+  <div class="sights__count"></div>
+</a><!-- .sights__item -->
