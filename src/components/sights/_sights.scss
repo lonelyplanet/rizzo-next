@@ -21,21 +21,27 @@
 }
 
 .sights__heading {
-  color: #3b444f;
-  font-size: 2rem;
-  font-weight: 300;
-  line-height: 1;
-  letter-spacing: -.01rem;
-  padding-bottom: 2.4rem;
-  padding-top: 3rem;
+  &:not(.sights__heading--large) {
+    color: $h2-color;
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -.01rem;
+    padding-bottom: 2.4rem;
+    padding-top: 3rem;
 
-  @media (max-width: $max-960) {
-    text-align: center;
-  }
+    @media (max-width: $max-960) {
+      text-align: center;
+    }
 
-  @media (min-width: $min-960) {
-    font-size: 2.6rem;
+    @media (min-width: $min-960) {
+      font-size: 2.6rem;
+    }
   }
+}
+
+.sights__heading--large {
+  @include h1();
 }
 
 .sights__list {
