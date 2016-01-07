@@ -3,6 +3,9 @@ import subscribe from "../../core/decorators/subscribe";
 
 export default class Sights extends Component {
   initialize() {
+    let sights = this.getInitialState();
+    this.sightsList = require("./sights_list.hbs");
+    this.$el.find(".js-sights-list").replaceWith(this.sightsList(sights));
     this.subscribe();
   }
 
