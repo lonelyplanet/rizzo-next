@@ -32,9 +32,9 @@
   [class*="icon-"] {
     backface-visibility: hidden;
     display: inline-block;
-    font-size: .6rem;
+    font-size: 6px;
     line-height: 1.6;
-    transform: translateX(.6rem);
+    transform: translateX(6px);
     transition: transform 500ms;
     vertical-align: 20%;
   }
