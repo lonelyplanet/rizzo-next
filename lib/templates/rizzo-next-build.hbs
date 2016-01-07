@@ -1,0 +1,11 @@
+{{#each components}}
+import {{name}} from "{{path}}";
+{{/each}}
+
+let rizzo = {};
+
+{{#each components}}
+rizzo["{{capitalize name}}"] = {{name}};
+{{/each}}
+
+export default rizzo;

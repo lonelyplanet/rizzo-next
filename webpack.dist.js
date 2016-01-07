@@ -13,13 +13,12 @@ module.exports = {
   plugins: [
     // new webpack.optimize.UglifyJsPlugin(),
     new ExtractTextPlugin("[name].css"),
-    new CommonsPlugin({
-      name: "common"
-    })
+    // new CommonsPlugin({
+    //   name: "common"
+    // })
   ],
   // Component entries will be built dynamically
   entry: {
-    common: ["jquery", "./sass/core.scss", "handlebars"]
   },
   progress: true,
   
