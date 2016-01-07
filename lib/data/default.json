@@ -3,7 +3,7 @@
   "components": {
     "header": {
       "type": "narrow",
-      "items": [
+      "navigation": [
         {
           "title": "Search",
           "slug": "//www.lonelyplanet.com/search",
@@ -106,10 +106,15 @@
         {
           "title": "Shop",
           "slug": "//shop.lonelyplanet.com"
+        },
+        {
+          "title": "Sign In",
+          "slug": "//auth.lonelyplanet.com/users/sign_in"
         }
       ]
     },
     "topic": true,
-    "search": true
+    "search": true,
+    "login": true
   }
 }
