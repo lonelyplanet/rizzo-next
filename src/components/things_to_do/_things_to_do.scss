@@ -30,7 +30,7 @@ $image-card-hover-movement: .5rem;
   }
 
   &__list-container {
-    overflow: hidden; // hide transitioning slides, which is an completely new ul element
+    overflow: hidden; // hide transitioning slides, which is a completely new ul element
 
     @media (min-width: $min-840) {
       margin-top: -#{$image-card-hover-movement}; // reset the position and offset the padding-top
