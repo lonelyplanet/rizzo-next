@@ -3,6 +3,9 @@
   "components": {
     "header": {
       "type": "narrow",
+      "search": {
+        "title": "Lonely Planet"
+      },
       "navigation": [
         {
           "title": "Search",
@@ -114,7 +117,9 @@
       ]
     },
     "topic": true,
-    "search": true,
+    "search": {
+      "title": "Lonely Planet"
+    },
     "login": true
   }
 }
