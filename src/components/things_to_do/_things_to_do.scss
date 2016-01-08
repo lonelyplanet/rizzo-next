@@ -1,62 +1,54 @@
 @import "../../../sass/webpack_deps";
 
+$image-card-hover-movement: .5rem;
+
 .ttd {
-  overflow: visible;
   position: relative;
+
+  @media (max-width: $max-480) {
+    overflow: hidden;
+  }
 
   &__heading {
     @include h1();
     z-index: 15;
   }
 
-  &__list-container {
-    position: relative;
+  &__container {
     margin-bottom: $gutter;
+    position: relative;
 
-    @media (min-width: $min-960) {
+    @media (max-width: $max-840) {
+      max-width: 61.5rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @media (min-width: $min-840) {
       margin-bottom: 2rem;
     }
+  }
 
-    .has-more--left, .has-more--right {
-      transition: 50ms opacity;
-      opacity: 1;
+  &__list-container {
+    overflow: hidden; // hide transitioning slides, which is an completely new ul element
 
-      &.is-invisible {
-        opacity: 0;
-        pointer-events: none;
-      }
-    }
-
-    &:before, &:after {
-      background: #fff;
-      content: "";
-      display: block;
-      height: 100%;
-      position: absolute;
-      top: 0%;
-      width: 50%;
-      z-index: 10;
-    }
-
-    &:before {
-      left: -50%;
-    }
-
-    &:after {
-      right: -50%;
+    @media (min-width: $min-840) {
+      margin-top: -#{$image-card-hover-movement}; // reset the position and offset the padding-top
+      padding-top: $image-card-hover-movement; // becuase of overflow: hidden, this gives the .image-card room to move for hover transition
     }
   }
 
   &__list {
-    // Controls the speed of the more and less
-    transition: 500ms transform ease-in-out;
-    margin: 0 (-$gutter/8);
+    transition: 500ms transform ease-in-out; // Controls the speed of the more and less
     list-style: none;
-    font-size: 0;
-    text-align: left;
     counter-reset: image-card;
     opacity: 1;
     position: relative;
+    display: flex;
+
+    @media (max-width: $max-840) {
+      flex-wrap: wrap;
+    }
 
     &--next {
       opacity: 0;
@@ -64,96 +56,160 @@
   }
 
   &__item {
-    display: inline-block;
-    padding-left: ($gutter / 8);
-    padding-right: ($gutter / 8);
+    width: span(6);
 
-    width: 50%;
-
-    vertical-align: top;
-    text-align: right;
-
-    @media (min-width: $min-480) {
-      padding-left: ($gutter / 2);
-      padding-right: ($gutter / 2);
+    @media (min-width: $min-840) {
+      width: span(4);
     }
 
-    @media (min-width: $min-960) {
-      margin-bottom: 0;
-      width: 25%;
+    &:not(:first-child) {
+      margin-left: gutter();
     }
 
-    &:nth-child(-n+2) {
-      margin-bottom: ($gutter / 4);
-
-      @media (min-width: $min-480) {
-        margin-bottom: ($gutter);
+    &:nth-child(3) {
+      @media (max-width: $max-840) {
+        margin-left: 0;
       }
     }
 
-    &:nth-child(2n) {
-      text-align: left;
+    &:nth-child(3),
+    &:nth-child(4) {
+      @media (max-width: $max-840) {
+        margin-top: gutter();
+      }
+    }
+  }
+
+  &__more {
+    right: -2.5rem;
+
+    @media (min-width: $min-480) {
+      right: -3rem;
     }
 
-  }
-  &__more {
-    right: -0.5rem;
-    box-shadow: .2rem .1rem .4rem -.3rem #333;
-  }
-  &__less {
-    left: -0.5rem;
-    box-shadow: -.2rem .1rem .4rem -.3rem #333;
+    @media (min-width: $min-840) {
+      right: -2rem;
+    }
+
+    &:hover,
+    &:active {
+      .ttd__more-icon {
+        color: $color-blue;
+      }
+    }
   }
 
-  &__more, &__less {
+  &__less {
+    left: -2.5rem;
+
+    @media (min-width: $min-480) {
+      left: -3rem;
+    }
+
+    @media (min-width: $min-840) {
+      left: -2rem;
+    }
+
+    &:hover,
+    &:active {
+      .ttd__less-icon {
+        color: $color-blue;
+      }
+    }
+  }
+
+  &__more,
+  &__less {
+    display: block;
     cursor: pointer;
     position: absolute;
-    min-height: 4rem;
-    height: 6vw;
-    min-width: 4rem;
-    width: 6vw;
-    top: calc(50% - (4vw + #{$gutter} / 8));
+    height: 5rem;
+    width: 5rem;
+    top: 50%;
     z-index: 15;
     border-radius: 50%;
     border: none;
     outline: none;
-    background: #fff;
+    background-color: #fff;
+    padding: 0;
 
     @media (min-width: $min-480) {
-      top: calc(50% - 3.5vw);
+      height: 6rem;
+      width: 6rem;
     }
 
-    @media (min-width: $min-960) {
-      height: 3rem;
-      width: 3rem;
-      top: calc(50% - 1.5rem);
-      display: block;
+    @media (min-width: $min-720) {
+      box-shadow: 0 .2rem 1rem .15rem rgba(#000, .07);
     }
 
-    &__icon {
-      font-size: 1rem;
+    @media (max-width: $max-840) {
+      transform: translateY(-50%);
     }
 
-    &.is-invisible {
+    @media (min-width: $min-840) {
+      height: 4rem;
+      width: 4rem;
+      transition: box-shadow $animation-speed ease-in-out;
+    }
+
+    &:hover,
+    &:active {
+      @media (min-width: $min-840) {
+        box-shadow: 0 .2rem 1rem .15rem rgba(#000, .1);
+      }
+    }
+
+    &[disabled] {
+      opacity: 0;
       pointer-events: none;
+    }
+  }
+
+  &__more-icon,
+  &__less-icon {
+    color: #324355;
+    font-size: 1.1rem;
+    font-weight: 700;
+    position: relative;
+    transition: color $animation-speed ease-in-out;
+
+    @media (min-width: $min-840) {
+      font-size: .9rem;
+    }
+  }
+
+  &__more-icon  {
+    right: .3rem;
+
+    @media (min-width: $min-720) {
+      right: -.1rem;
+    }
+  }
+
+  &__less-icon {
+    left: .3rem;
+
+    @media (min-width: $min-720) {
+      left: -.1rem;
     }
   }
 }
 
 .image-card {
-  display: inline-block;
+  display: block;
   position: relative;
 
   width: 100%;
-  max-width: 30rem;
 
   background-color: #ccc;
 
   transition: transform $animation-speed;
 
-  &:hover {
-    @media (min-width: $min-720) {
-      transform: translateY(-.5rem);
+  &:hover,
+  &:active,
+  &:focus {
+    @media (min-width: $min-840) {
+      transform: translateY(-#{$image-card-hover-movement});
     }
   }
 
@@ -202,7 +258,7 @@
     display: inline-block;
     position: relative;
 
-    margin-bottom: ($spacing/2 + .5);
+    margin-bottom: (($spacing / 2) + .5);
 
     width: $size;
     height: $size;
@@ -211,7 +267,7 @@
     font-size: 1.4rem;
     line-height: $size;
     text-align: center;
-    color: $font-color;
+    color: #3b444f;
 
     border-radius: .4rem;
     background: #fff;

@@ -9,9 +9,6 @@ import publish from "../../core/decorators/publish";
  * Show a list of Top Experiences
  */
 class ThingsToDo extends Component {
-  get title() {
-    return `Top experiences in ${window.lp.place.name}`;
-  }
   initialize() {
     this.currentIndex = (this.getCurrentIndex()) || 0;
 
@@ -30,6 +27,8 @@ class ThingsToDo extends Component {
       rizzo.logger.error({ error: jqXHR.responseText });
       return this.nukeIt();
     });
+
+    this.navigation = require("./things_to_do_navigation.hbs");
   }
   getCurrentIndex() {
     let obj = window.localStorage && JSON.parse(window.localStorage.getItem("ttd.currentIndex"));
@@ -53,7 +52,6 @@ class ThingsToDo extends Component {
     if (!cards.length) {
       return this.nukeIt();
     }
-    this.$el.prepend($(`<h2 class='ttd__heading'>${this.title}</h2>`));
     this.cards = cards;
 
     if (cards.length > 4) {
@@ -61,7 +59,7 @@ class ThingsToDo extends Component {
     }
     if (this.currentIndex >= this.options.numOfCards)  {
       this.showPrevious();
-    } 
+    }
     if (this.currentIndex + 4 >= this.cards.length) {
       this.hideShowMore();
     }
@@ -72,23 +70,7 @@ class ThingsToDo extends Component {
     this.clampImageCardTitle();
   }
   addNavigationButtons() {
-    let $left = $("<div />", { "class": "has-more--left is-invisible"});
-    
-    // Lazy? Maybe... awesome? YES
-    $left.html(`
-    <button class="ttd__less js-ttd-less">
-      <i class="ttd__more__icon icon-chevron-left" aria-hidden="true"></i>
-    </button>
-    `);
-    this.$el.find(".js-ttd-list").before($left);
-
-    let $right = $("<div />", { "class": "has-more--right"});
-    $right.html(`
-    <button class="ttd__more js-ttd-more">
-      <i class="ttd__more__icon icon-chevron-right" aria-hidden="true"></i>
-    </button>
-    `);
-    this.$el.find(".js-ttd-list").after($right);
+    this.$el.find(".js-ttd-navigation").html(this.navigation());
   }
   /**
    * Get the next 4 cards to render
@@ -167,7 +149,7 @@ class ThingsToDo extends Component {
 
     $list.after($nextList)
       .css("transform", `translate3d(${reverse ? "" : "-"}${ttdComponentWidth}px, 0, 0)`);
-    
+
     setTimeout(() => {
       $nextList
         .css("transform", "translate3d(0, 0, 0)");
@@ -199,7 +181,7 @@ class ThingsToDo extends Component {
     // Grab the next 4 images
     this.showMoreAndPrevious();
     this.currentIndex += this.options.numOfCards;
-    
+
     // Forward
     this.animate();
   }
@@ -217,24 +199,20 @@ class ThingsToDo extends Component {
     this.animate(true);
   }
   showMore() {
-    this.$el.find(".has-more--right").removeClass("is-invisible");
-    this.$el.find(".js-ttd-more").removeClass("is-invisible");
+    this.$el.find(".js-ttd-more").prop("disabled", false);
   }
   showPrevious() {
-    this.$el.find(".has-more--left").removeClass("is-invisible");
-    this.$el.find(".js-ttd-less").removeClass("is-invisible");
+    this.$el.find(".js-ttd-less").prop("disabled", false);
   }
   showMoreAndPrevious() {
     this.showMore();
     this.showPrevious();
   }
   hideShowMore() {
-    this.$el.find(".js-ttd-more").addClass("is-invisible");
-    this.$el.find(".has-more--right").addClass("is-invisible");
+    this.$el.find(".js-ttd-more").prop("disabled", true);
   }
   hideShowPrevious() {
-    this.$el.find(".js-ttd-less").addClass("is-invisible");
-    this.$el.find(".has-more--left").addClass("is-invisible");
+    this.$el.find(".js-ttd-less").prop("disabled", true);
   }
 
   /**
