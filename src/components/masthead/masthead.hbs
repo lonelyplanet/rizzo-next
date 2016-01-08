@@ -2,7 +2,7 @@
 By use of this code snippet, I agree to the Brightcove Publisher T and C
 found at https://accounts.brightcove.com/en/terms-and-conditions/.
 -->
-<article class="masthead masthead--{{type}}{{#if images}} masthead--has-images{{else}} masthead--no-images{{/if}}">
+<article class="masthead masthead--{{type}}{{#if masthead.first}} masthead--has-images{{else}} masthead--no-images{{/if}}">
   {{#if video}}
   <div class="masthead__video-container js-video-container">
     <div class="masthead__video-wrap">
@@ -33,7 +33,7 @@ found at https://accounts.brightcove.com/en/terms-and-conditions/.
           {{/if}}
           <a href="{{masthead.parent.slug}}">{{masthead.parent.place}}</a>
         </div>
-        <h1 class="masthead__title">{{place.name}}</h1>
+        <h1 class="masthead__title">{{masthead.title}}</h1>
 
         {{#if masthead.images}}
         <div class="masthead__straplines">
