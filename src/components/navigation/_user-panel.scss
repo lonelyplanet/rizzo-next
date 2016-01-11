@@ -133,63 +133,63 @@ $user-panel: (
       background-color: #f4f5f8;
     }
   }
+
+  // avatar
+  > div:nth-of-type(1) {
+    height: 3.5rem;
+    position: absolute;
+    right: $spacing;
+    top: $spacing;
+    width: 3.5rem;
+
+    a {
+      display: block;
+    }
+
+    img {
+      border-radius: 100%;
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  // timestamp
+  > div:nth-of-type(2) {
+    bottom: $spacing;
+    position: absolute;
+    width: 18rem;
+
+    time {
+      color: $light-text-color;
+      display: block;
+      font-size: 1.1rem;
+    }
+  }
+
+  // subject text
+  > span {
+    display: block;
+    padding-bottom: ($spacing + .5);
+    width: 18rem;
+
+    a {
+      color: $font-color;
+      font-weight: bold;
+      transition: color $animation-speed linear;
+
+      &:hover,
+      &:active,
+      &:focus {
+        color: $color-blue;
+      }
+    }
+  }
 }
 
 .user-panel__item {
   &--unread {
     background-color: #e5e5e5;
-  }
-}
-
-// avatar
-.user-panel__items li > div:nth-of-type(1) {
-  height: 3.5rem;
-  position: absolute;
-  right: $spacing;
-  top: $spacing;
-  width: 3.5rem;
-
-  a {
-    display: block;
-  }
-
-  img {
-    border-radius: 100%;
-    display: block;
-    height: 100%;
-    width: 100%;
-  }
-}
-
-// timestamp
-.user-panel__items li > div:nth-of-type(2) {
-  bottom: $spacing;
-  position: absolute;
-  width: 18rem;
-
-  time {
-    color: $light-text-color;
-    display: block;
-    font-size: 1.1rem;
-  }
-}
-
-// subject text
-.user-panel__items li > span {
-  display: block;
-  padding-bottom: ($spacing + .5);
-  width: 18rem;
-
-  a {
-    color: $font-color;
-    font-weight: bold;
-    transition: color $animation-speed linear;
-
-    &:hover,
-    &:active,
-    &:focus {
-      color: $color-blue;
-    }
   }
 }
 
