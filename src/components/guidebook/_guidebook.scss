@@ -59,11 +59,15 @@
 
 .guidebook__title {
   @include h1();
-  margin: 0;
-  padding: 0;
-  line-height: 1;
+  margin-bottom: 3rem;
+  padding-bottom: 0;
   color: $color-red;
-  font-size: 5rem;
+
+  @media (min-width: $min-720) {
+    font-size: 5rem;
+    line-height: 1;
+    margin-bottom: 0;
+  }
 
   &:after {
     display: none;
@@ -162,7 +166,7 @@
 
  .guidebook__pictures:hover & {
    transform: translate(4rem, 0) rotateZ(-1deg);
- } 
+ }
 }
 
 .guidebook__picture--secondary {
@@ -176,7 +180,7 @@
 
   .guidebook__pictures:hover & {
      transform: translate(-18rem, -1rem) rotateZ(-19deg) scale(.8);
-   } 
+   }
 }
 
 .guidebook__image {
