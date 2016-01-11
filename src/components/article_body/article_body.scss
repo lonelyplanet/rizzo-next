@@ -1,4 +1,4 @@
-@import '../../../sass/webpack_deps';
+@import "../../../sass/webpack_deps";
 
 // !important is needed to override specificity in article-body__content
 @mixin copy-caption {
@@ -174,7 +174,7 @@
         &::after {
           @include pop-out;
           bottom: 1.5rem;
-          content: '';
+          content: "";
           position: absolute;
           right: 1.5rem;
           z-index: 2;
@@ -271,7 +271,7 @@
       &::before {
         background: #f0f0f0;
         bottom: 0;
-        content: '';
+        content: "";
         left: 0;
         position: absolute;
         right: 0;

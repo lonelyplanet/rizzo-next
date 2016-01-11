@@ -1,4 +1,4 @@
-@import '../../../sass/webpack_deps';
+@import "../../../sass/webpack_deps";
 
 $logo-height: 4rem;
 
@@ -193,7 +193,7 @@ $logo-height: 4rem;
 }
 
 .footer__main {
-  @include divider('top');
+  @include divider("top");
 
   @media (min-width: $min-960) {
     overflow: hidden;
@@ -224,7 +224,7 @@ $logo-height: 4rem;
 
   &:not(:first-of-type) {
     @media (max-width: $max-960) {
-      @include divider('top');
+      @include divider("top");
     }
   }
 }
@@ -335,7 +335,7 @@ $logo-height: 4rem;
   }
 
   label {
-    @include visuallyhidden('focusable');
+    @include visuallyhidden("focusable");
   }
 }
 
@@ -352,7 +352,7 @@ $logo-height: 4rem;
 }
 
 .newsletter-register__country {
-  @include form-control('select');
+  @include form-control("select");
   margin-top: 1rem;
 }
 
@@ -408,7 +408,7 @@ $logo-height: 4rem;
 }
 
 .language__select {
-  @include form-control('select');
+  @include form-control("select");
 
   @media (max-width: $max-960) {
     margin-left: 2rem;

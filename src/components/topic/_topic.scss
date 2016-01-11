@@ -33,73 +33,73 @@ $height: 6rem;
     width: 8rem;
 
     &--activity {
-      @include icon-before('https://assets.staticlp.com/destinations-next/icons/activity--line.svg');
+      @include icon-before("https://assets.staticlp.com/destinations-next/icons/activity--line.svg");
 
       background: {
-        image: url('https://assets.staticlp.com/destinations-next/images/search-category-image-activities.jpg');
+        image: url("https://assets.staticlp.com/destinations-next/images/search-category-image-activities.jpg");
         repeat: no-repeat;
       }
     }
 
     &--article {
-      @include icon-before('https://assets.staticlp.com/destinations-next/icons/article--line.svg');
+      @include icon-before("https://assets.staticlp.com/destinations-next/icons/article--line.svg");
 
       background: {
-        image: url('https://assets.staticlp.com/destinations-next/images/search-category-image-articles.jpg');
+        image: url("https://assets.staticlp.com/destinations-next/images/search-category-image-articles.jpg");
         repeat: no-repeat;
       }
     }
 
     &--collection {
-      @include icon-before('https://assets.staticlp.com/destinations-next/icons/image--line.svg');
+      @include icon-before("https://assets.staticlp.com/destinations-next/icons/image--line.svg");
 
       background: {
-        image: url('https://assets.staticlp.com/destinations-next/images/search-category-image-collection.jpg');
+        image: url("https://assets.staticlp.com/destinations-next/images/search-category-image-collection.jpg");
         repeat: no-repeat;
       }
     }
 
     &--guide {
-      @include icon-before('https://assets.staticlp.com/destinations-next/icons/book.svg');
+      @include icon-before("https://assets.staticlp.com/destinations-next/icons/book.svg");
 
       background: {
-        image: url('https://assets.staticlp.com/destinations-next/images/search-category-image-guides.jpg');
+        image: url("https://assets.staticlp.com/destinations-next/images/search-category-image-guides.jpg");
         repeat: no-repeat;
       }
     }
 
     &--hotel {
-      @include icon-before('https://assets.staticlp.com/destinations-next/icons/hotel--line.svg');
+      @include icon-before("https://assets.staticlp.com/destinations-next/icons/hotel--line.svg");
 
       background: {
-        image: url('https://assets.staticlp.com/destinations-next/images/search-category-image-hotels.jpg');
+        image: url("https://assets.staticlp.com/destinations-next/images/search-category-image-hotels.jpg");
         repeat: no-repeat;
       }
     }
 
     &--place {
-      @include icon-before('https://assets.staticlp.com/destinations-next/icons/place.svg');
+      @include icon-before("https://assets.staticlp.com/destinations-next/icons/place.svg");
 
       background: {
-        image: url('https://assets.staticlp.com/destinations-next/images/search-category-image-place.jpg');
+        image: url("https://assets.staticlp.com/destinations-next/images/search-category-image-place.jpg");
         repeat: no-repeat;
       }
     }
 
     &--sight {
-      @include icon-before('https://assets.staticlp.com/destinations-next/icons/sight--line.svg');
+      @include icon-before("https://assets.staticlp.com/destinations-next/icons/sight--line.svg");
 
       background: {
-        image: url('https://assets.staticlp.com/destinations-next/images/search-category-image-sights.jpg');
+        image: url("https://assets.staticlp.com/destinations-next/images/search-category-image-sights.jpg");
         repeat: no-repeat;
       }
     }
 
     &--tour {
-      @include icon-before('https://assets.staticlp.com/destinations-next/icons/tour--line.svg');
+      @include icon-before("https://assets.staticlp.com/destinations-next/icons/tour--line.svg");
 
       background: {
-        image: url('https://assets.staticlp.com/destinations-next/images/search-category-image-tours.jpg');
+        image: url("https://assets.staticlp.com/destinations-next/images/search-category-image-tours.jpg");
         repeat: no-repeat;
       }
     }

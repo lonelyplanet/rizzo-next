@@ -1,4 +1,4 @@
-@import '../../../sass/webpack_deps';
+@import "../../../sass/webpack_deps";
 
 $small-breakpoint: 320;
 
@@ -152,7 +152,7 @@ $small-breakpoint: 320;
 }
 
 .article__info__author__image {
-  @include author-image(9999999, 'horizontal'); // massive number here because we don't want it resizing ever
+  @include author-image(9999999, "horizontal"); // massive number here because we don't want it resizing ever
   margin-right: 1rem;
 }
 

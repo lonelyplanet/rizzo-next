@@ -1,4 +1,4 @@
-@import '../../../sass/webpack_deps';
+@import "../../../sass/webpack_deps";
 
 .header {
   position: relative;
@@ -250,7 +250,7 @@
 
       &::before,
       &::after {
-        content: '';
+        content: "";
         left: 0;
         right: 0;
       }

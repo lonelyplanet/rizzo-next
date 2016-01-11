@@ -1,4 +1,4 @@
-@import '../../../sass/webpack_deps';
+@import "../../../sass/webpack_deps";
 
 .tabs {
   .articles & {
@@ -76,7 +76,7 @@
     &::after {
       background-color: $color-blue;
       bottom: -.1rem;
-      content: '';
+      content: "";
       display: block;
       height: .3rem;
       left: 0;

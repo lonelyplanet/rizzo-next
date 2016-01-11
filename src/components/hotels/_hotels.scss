@@ -1,5 +1,5 @@
-@import '../../../sass/webpack_deps';
-@import '../../../sass/datepicker';
+@import "../../../sass/webpack_deps";
+@import "../../../sass/datepicker";
 
 $hotels-breakpoint-large-min: em(860px);
 $hotels-color: #fff;
@@ -9,7 +9,7 @@ $hotels-max-width: 1170;
 
 .hotels {
   @include segment();
-  background-image: url('https://assets.staticlp.com/destinations-next/images/hotels-default.jpg');
+  background-image: url("https://assets.staticlp.com/destinations-next/images/hotels-default.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -146,13 +146,13 @@ $hotels-max-width: 1170;
 }
 
 .hotels__search__label {
-  @include visuallyhidden('focusable');
+  @include visuallyhidden("focusable");
 }
 
 .hotels__search__control {
   -webkit-appearance: none;
   background-color: transparent;
-  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iN3B4IiBoZWlnaHQ9IjdweCIgdmlld0JveD0iMCAwIDcgNCI+DQogIDxwb2x5Z29uIGZpbGw9IiNmZmZmZmYiIHBvaW50cz0iNywwIDAsMCAzLjUsNCAiLz4NCjwvc3ZnPg0K');
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iN3B4IiBoZWlnaHQ9IjdweCIgdmlld0JveD0iMCAwIDcgNCI+DQogIDxwb2x5Z29uIGZpbGw9IiNmZmZmZmYiIHBvaW50cz0iNywwIDAsMCAzLjUsNCAiLz4NCjwvc3ZnPg0K");
   background-position: calc(100% - 15px) 50%;
   background-repeat: no-repeat;
   border: 1px rgba($hotels-color, .44) solid;

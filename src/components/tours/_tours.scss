@@ -1,4 +1,4 @@
-@import '../../../sass/webpack_deps';
+@import "../../../sass/webpack_deps";
 
 $mobile-breakpoint: $min-480;
 $tours-image-width: 19rem;
@@ -6,6 +6,8 @@ $tours-image-width-mobile: 7rem;
 $tours-width-base: 52rem * 2 + $gutter;
 $tours-container-width: $tours-width-base / $max-width * 100%;
 $tours-width: 52rem / $tours-width-base * 100%;
+
+/// Tours
 
 .tours {
   @include clearfix;
@@ -31,6 +33,19 @@ $tours-width: 52rem / $tours-width-base * 100%;
     margin-bottom: 6.5rem;
   }
 }
+
+.tours__button-container {
+  @include see-more-link;
+  margin-top: 0;
+}
+
+.tours__more {
+  @include see-more();
+}
+
+
+
+/// Tour
 
 .tour {
   display: block;
@@ -95,7 +110,7 @@ $tours-width: 52rem / $tours-width-base * 100%;
   }
 }
 
-.tour__imagery__caption {
+.tour__caption {
   margin-top: -.3rem;
   overflow: hidden;
   padding-bottom: .3rem;
@@ -113,7 +128,7 @@ $tours-width: 52rem / $tours-width-base * 100%;
   }
 }
 
-.tour__imagery__image {
+.tour__image {
   background-position: center center;
   background-size: cover;
   height: $tours-image-width-mobile + .7rem;
@@ -125,7 +140,7 @@ $tours-width: 52rem / $tours-width-base * 100%;
   }
 }
 
-.tour__imagery__caption__price {
+.tour__price {
   background-color: $tours-price-background;
   color: #fff;
   display: inline-block;
@@ -144,7 +159,7 @@ $tours-width: 52rem / $tours-width-base * 100%;
   }
 }
 
-.tour__imagery__caption__type {
+.tour__type {
   color: $tours-title-color;
   display: inline;
   font-size: 1.1rem;
@@ -159,7 +174,7 @@ $tours-width: 52rem / $tours-width-base * 100%;
   }
 }
 
-.tour__description__title {
+.tour__title {
   font-size: 1.7rem;
   line-height: 1.1;
   margin-bottom: .5rem;
@@ -171,7 +186,7 @@ $tours-width: 52rem / $tours-width-base * 100%;
   }
 }
 
-.tour__description__blurb {
+.tour__blurb {
   color: $tours-blurb-color;
   font-size: 1.3rem;
   line-height: 1.4;
@@ -183,20 +198,11 @@ $tours-width: 52rem / $tours-width-base * 100%;
 }
 
 // IE9 can't use Clamp.js, so we have to force it to hide the paragraph at a specific height
-.ie9 .tour__description__blurb {
+.ie9 .tour__blurb {
   height: 5.5rem;
   overflow: hidden;
 
   @media (min-width: $min-480) {
     height: 7.4rem;
   }
-}
-
-.tours__button-container {
-  @include see-more-link;
-  margin-top: 0;
-}
-
-.tours__more {
-  @include see-more();
 }

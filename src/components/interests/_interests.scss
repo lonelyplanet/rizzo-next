@@ -1,4 +1,4 @@
-@import '../../../sass/webpack_deps';
+@import "../../../sass/webpack_deps";
 
 $mobile-breakpoint: 717px;
 $square-size: 220px;
@@ -25,15 +25,15 @@ $max-card-width: 1395px; // When all 9 cards are up
 // figure out odd or even based on card numbers .. (1 to 9)
 @function determine-parity($card-count) {
   @if $card-count % 2 == 0 {
-    @return 'even';
+    @return "even";
   } @else {
-    @return 'odd';
+    @return "odd";
   }
 }
 
 // calculate first cards size depending on odd/even
 @function calculate-first-square-size($parity) {
-  @if $parity == 'odd' {
+  @if $parity == "odd" {
     @return $square-size * 2;
   } @else {
     @return $square-size;
@@ -44,7 +44,7 @@ $max-card-width: 1395px; // When all 9 cards are up
 // odd numbered grid size equals card numbers plus 3
 // (big card == 4x small card)
 @function calculate-blueprint-size($parity, $card-count) {
-  @if $parity == 'odd' {
+  @if $parity == "odd" {
     @return $card-count + 3;
   } @else {
     @return $card-count;
@@ -92,7 +92,7 @@ $max-card-width: 1395px; // When all 9 cards are up
           height: ($first-square-dimension - $g);
           width: ($first-square-dimension - $g);
 
-          @if $parity == 'odd' {
+          @if $parity == "odd" {
             .interests__card__link {
               bottom: $gutter;
               font-size: 3.6rem;
@@ -114,7 +114,7 @@ $max-card-width: 1395px; // When all 9 cards are up
         width: 50%;
 
         &:first-child {
-          @if $parity == 'odd' {
+          @if $parity == "odd" {
             height: auto;
             width: 100%;
 
@@ -140,7 +140,7 @@ $max-card-width: 1395px; // When all 9 cards are up
           width: 100%;
         }
 
-        &:nth-child(#{ if($parity == 'odd', 'even', 'odd')}) {
+        &:nth-child(#{ if($parity == "odd", "even", "odd")}) {
           .interests__card--inner {
             margin-right: .1rem;
             width: calc(100% - 1px);
@@ -198,7 +198,7 @@ $max-card-width: 1395px; // When all 9 cards are up
       &::before {
         background: linear-gradient(to top, rgba(#000, .4) 0%, rgba(#000, 0) 32%);
         bottom: 0;
-        content: '';
+        content: "";
         display: block;
         left: 0;
         position: absolute;

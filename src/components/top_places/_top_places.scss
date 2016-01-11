@@ -1,4 +1,4 @@
-@import '../../../sass/webpack_deps';
+@import "../../../sass/webpack_deps";
 
 .tlist {
   $height: 6rem;
@@ -153,7 +153,7 @@
 
     &::before {
       color: #a7a9ae;
-      content: counter(tlist) '.';
+      content: counter(tlist) ".";
       counter-increment: tlist;
       display: block;
       font-family: $miller-daily;

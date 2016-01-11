@@ -1,4 +1,4 @@
-@import '../../../sass/webpack_deps';
+@import "../../../sass/webpack_deps";
 
 /// ----------------------------------------------------------------------------
 /// Settings map
@@ -7,12 +7,12 @@
 /// Sass's `map-get` method.
 ///
 /// @usage
-/// `get($map-name, 'setting-name')`
+/// `get($map-name, "setting-name")`
 /// ----------------------------------------------------------------------------
 
 $author: (
-  'mq-min': 'min-width: #{$min-600}',
-  'mq-max': 'max-width: #{$max-600}'
+  "mq-min": "min-width: #{$min-600}",
+  "mq-max": "max-width: #{$max-600}"
 );
 
 
@@ -74,26 +74,26 @@ $author: (
   margin-top: 2.4rem;
   overflow: hidden;
 
-  @media (#{get($author, 'mq-min')}) {
+  @media (#{get($author, "mq-min")}) {
     margin-top: 3rem;
   }
 
   &.has-bio {
     margin-top: 1.2rem;
 
-    @media (#{get($author, 'mq-min')}) {
+    @media (#{get($author, "mq-min")}) {
       margin-top: 1.2rem;
     }
   }
 }
 
 .author--article {
-  @media (#{get($author, 'mq-max')}) {
+  @media (#{get($author, "mq-max")}) {
     margin-top: .6rem;
   }
 
   .avatar {
-    @media (#{get($author, 'mq-max')}) {
+    @media (#{get($author, "mq-max")}) {
       display: none;
     }
   }
@@ -116,19 +116,19 @@ $author: (
   .author--vertical & {
     margin-top: 1.3rem;
 
-    @media (#{get($author, 'mq-min')}) {
+    @media (#{get($author, "mq-min")}) {
       margin-top: 1.8rem;
     }
   }
 
   .author--vertical.author--article & {
-    @media (#{get($author, 'mq-max')}) {
+    @media (#{get($author, "mq-max")}) {
       margin-top: 0;
     }
   }
 
   .author--vertical.author--small & {
-    @media (#{get($author, 'mq-min')}) {
+    @media (#{get($author, "mq-min")}) {
       margin-top: 3rem;
     }
   }
@@ -140,7 +140,7 @@ $author: (
   font-weight: $font-weight-semibold;
   line-height: 1;
 
-  @media(#{get($author, 'mq-min')}) {
+  @media(#{get($author, "mq-min")}) {
     font-size: 1.4rem;
   }
 
@@ -161,13 +161,13 @@ $author: (
   .author--small & {
     letter-spacing: .06rem;
 
-    @media(#{get($author, 'mq-min')}) {
+    @media(#{get($author, "mq-min")}) {
       font-size: 1.2rem;
     }
   }
 
   .author--article & {
-    @media(#{get($author, 'mq-max')}) {
+    @media(#{get($author, "mq-max")}) {
       display: inline;
       font-size: 1.1rem;
     }
@@ -192,7 +192,7 @@ $author: (
   }
 
   .author--article & {
-    @media(#{get($author, 'mq-max')}) {
+    @media(#{get($author, "mq-max")}) {
       display: inline;
       font-size: 1.1rem;
       margin-left: 1.2rem;

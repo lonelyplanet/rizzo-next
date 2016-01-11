@@ -1,4 +1,4 @@
-@import '../../../sass/webpack_deps';
+@import "../../../sass/webpack_deps";
 
 $navigation-sub-height: 8rem;
 $navigation-sub-height-mobile: $header-height-mobile;
@@ -68,7 +68,7 @@ $navigation-sub-height-mobile: $header-height-mobile;
   &__wrap {
     &::after {
       border-bottom: .1rem solid #e4e4e4;
-      content: '';
+      content: "";
       display: block;
       margin: 0 ($gutter / 2);
       max-width: $max-width;
@@ -94,7 +94,7 @@ $navigation-sub-height-mobile: $header-height-mobile;
     &::before,
     &::after {
       bottom: 0;
-      content: '';
+      content: "";
       display: block;
       position: absolute;
       top: 0;

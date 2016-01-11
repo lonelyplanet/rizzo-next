@@ -1,4 +1,4 @@
-@import '../../../sass/webpack_deps';
+@import "../../../sass/webpack_deps";
 
 .map_static {
   position: relative;
@@ -38,7 +38,7 @@
     width: $btn-width;
 
     .icon--open {
-      content: '';
+      content: "";
       display: inline-block;
       height: 18px;
       margin-left: 2.5rem;

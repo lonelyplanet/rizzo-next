@@ -1,4 +1,4 @@
-@import '../../../sass/webpack_deps';
+@import "../../../sass/webpack_deps";
 
 $tablet-breakpoint: 700;
 $mobile-breakpoint: 400;
@@ -37,7 +37,7 @@ $mobile-breakpoint: 400;
     vertical-align: top;
     width: 100%;
 
-    @include respond-to($mobile-breakpoint - 1, 'max') {
+    @include respond-to($mobile-breakpoint - 1, "max") {
       margin-top: 4.5rem;
 
       &:first-child {
@@ -54,7 +54,7 @@ $mobile-breakpoint: 400;
     }
 
     &:nth-child(-n+2) {
-      @media only screen and (min-width: $mobile-breakpoint + 'px') and (max-width: $tablet-breakpoint - 1px) {
+      @media only screen and (min-width: $mobile-breakpoint + "px") and (max-width: $tablet-breakpoint - 1px) {
         margin-bottom: 4.5rem;
       }
     }

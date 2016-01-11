@@ -1,4 +1,4 @@
-@import '../../../sass/webpack_deps';
+@import "../../../sass/webpack_deps";
 
 $small-breakpoint: 600;
 $mobile-breakpoint: 717;
@@ -86,7 +86,7 @@ $item-border-color: #f1f4fb;
     }
 
     @for $i from 5 through 9 {
-      &[data-index='#{$i}'] {
+      &[data-index="#{$i}"] {
         @media (max-width: $max-960) {
           display: none;
         }

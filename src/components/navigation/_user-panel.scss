@@ -1,9 +1,9 @@
-@import '../../../sass/webpack_deps';
+@import "../../../sass/webpack_deps";
 
 $user-panel: (
-  'tabs-height': 5rem,
-  'icon-size': 3rem,
-  'icon-spacing': .25rem
+  "tabs-height": 5rem,
+  "icon-size": 3rem,
+  "icon-spacing": .25rem
 );
 
 .user-panel {
@@ -52,13 +52,13 @@ $user-panel: (
 
 .user-panel__sign-out {
   color: $font-color-light;
-  height: map-get($user-panel, 'icon-size');
+  height: map-get($user-panel, "icon-size");
   position: absolute;
-  right: map-get($user-panel, 'icon-spacing');
+  right: map-get($user-panel, "icon-spacing");
   text-indent: -9999rem;
-  top: map-get($user-panel, 'icon-spacing');
+  top: map-get($user-panel, "icon-spacing");
   transition: color $animation-speed;
-  width: map-get($user-panel, 'icon-size');
+  width: map-get($user-panel, "icon-size");
   z-index: 1;
 
   &::before {
@@ -66,7 +66,7 @@ $user-panel: (
     display: block;
     font-size: 1.6rem;
     left: 0;
-    line-height: map-get($user-panel, 'icon-size');
+    line-height: map-get($user-panel, "icon-size");
     position: absolute;
     right: 0;
     text-align: center;
@@ -194,7 +194,7 @@ $user-panel: (
 }
 
 .user-panel__link {
-  @include button('inverse');
+  @include button("inverse");
   border-radius: 0;
   box-shadow: 0 0 3rem 0 rgba(#000, .08);
   text-transform: none;

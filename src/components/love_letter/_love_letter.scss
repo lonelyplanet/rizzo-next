@@ -1,4 +1,4 @@
-@import '../../../sass/webpack_deps';
+@import "../../../sass/webpack_deps";
 
 $mobile-breakpoint: 717;
 $small-breakpoint: 320;
@@ -29,7 +29,7 @@ $small-breakpoint: 320;
   &__heading {
     @include h1(3.1rem);
 
-    [class*='icon-'] {
+    [class*="icon-"] {
       color: #f01516;
       display: inline-block;
       font-size: 0;
@@ -44,7 +44,7 @@ $small-breakpoint: 320;
       }
     }
 
-    &:hover [class*='icon-'] {
+    &:hover [class*="icon-"] {
       animation: heartbeat 300ms infinite;
     }
   }

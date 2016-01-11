@@ -29,7 +29,7 @@ $panel-height: calc(100% - #{$sidebar-header-height});
   &::after {
     background-color: $active;
     border-radius: 50%;
-    content: '';
+    content: "";
     height: ($unit * 2);
     left: ($size / 2) - $unit;
     position: absolute;
@@ -169,7 +169,7 @@ $panel-height: calc(100% - #{$sidebar-header-height});
             &::before {
               background-color: $lpblue;
               border-radius: 100%;
-              content: '';
+              content: "";
               height: .6rem;
               left: -2.1rem;
               margin-top: .3rem;
@@ -184,7 +184,7 @@ $panel-height: calc(100% - #{$sidebar-header-height});
         $height: .4rem;
         background: #fff;
         bottom: 0;
-        content: '';
+        content: "";
         display: block;
         height: $height;
         left: 0;
@@ -215,7 +215,7 @@ $panel-height: calc(100% - #{$sidebar-header-height});
         &::after {
           background-color: $color-blue;
           bottom: -2.1rem;
-          content: '';
+          content: "";
           height: .4rem;
           position: absolute;
           right: -.2rem;
@@ -285,7 +285,7 @@ $panel-height: calc(100% - #{$sidebar-header-height});
     }
 
     &__close {
-      @include button('inverse');
+      @include button("inverse");
       border-radius: 0;
       display: block;
       padding-bottom: 2.3rem;

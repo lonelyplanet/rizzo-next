@@ -7,7 +7,7 @@ class ToursComponent extends Component {
   initialize(options) {
     if (this.$el[0]) {
       this.clampAt = options.clampAt || 3;
-      this.blurbs = this.$el.find(".tour__description__blurb");
+      this.blurbs = this.$el.find(".js-tour-blurb");
       this.mobileBreak = options.mobileBreak || 518;
       this.headingHeight = options.headingHeight || 18; // lovely magic numbers o_O
       this.nativeSupport = typeof this.$el[0].style.webkitLineClamp !== "undefined";

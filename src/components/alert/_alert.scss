@@ -1,7 +1,7 @@
-@import '../../../sass/webpack_deps';
+@import "../../../sass/webpack_deps";
 
 $alert: (
-  'font-color': #fff
+  "font-color": #fff
 );
 
 .alert {
@@ -23,20 +23,20 @@ $alert: (
     text-align: center;
 
     &--default {
-      @include alert-background($color: 'default');
+      @include alert-background($color: "default");
     }
 
     &--warning {
-      @include alert-background($color: 'warning');
+      @include alert-background($color: "warning");
     }
 
     &--notice {
-      @include alert-background($color: 'notice');
+      @include alert-background($color: "notice");
     }
   }
 
   &__inner {
-    color: get($alert, 'font-color');
+    color: get($alert, "font-color");
     font-size: 1.4rem;
     opacity: 0;
     padding-bottom: 2.2rem;
@@ -48,7 +48,7 @@ $alert: (
     }
 
     &--link {
-      color: get($alert, 'font-color');
+      color: get($alert, "font-color");
       text-decoration: underline;
     }
   }
@@ -56,7 +56,7 @@ $alert: (
   &__close {
     background-color: transparent;
     border: 0;
-    color: get($alert, 'font-color');
+    color: get($alert, "font-color");
     cursor: pointer;
     float: right;
     font-size: 0;
