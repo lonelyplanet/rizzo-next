@@ -1,25 +1,21 @@
 <div class="sights__list">
-  {{#if sights.show}}
+  <div class="sights__column{{#unless sights.third_column}} sights__column--half{{/unless}}">
+    {{#each sights.first_column}}
+      {{> "sights_item"}}
+    {{/each}}
+  </div><!-- .sights__column -->
 
-    <div class="sights__column{{#unless sights.third_column}} sights__column--half{{/unless}}">
-      {{#each sights.first_column}}
+  <div class="sights__column{{#unless sights.third_column}} sights__column--half{{/unless}}">
+    {{#each sights.second_column}}
+      {{> "sights_item"}}
+    {{/each}}
+  </div><!-- .sights__column -->
+
+  {{#if sights.third_column}}
+    <div class="sights__column">
+      {{#each sights.third_column}}
         {{> "sights_item"}}
       {{/each}}
     </div><!-- .sights__column -->
-
-    <div class="sights__column{{#unless sights.third_column}} sights__column--half{{/unless}}">
-      {{#each sights.second_column}}
-        {{> "sights_item"}}
-      {{/each}}
-    </div><!-- .sights__column -->
-
-    {{#if sights.third_column}}
-      <div class="sights__column">
-        {{#each sights.third_column}}
-          {{> "sights_item"}}
-        {{/each}}
-      </div><!-- .sights__column -->
-    {{/if}}
-
   {{/if}}
 </div><!-- .sights__list -->
