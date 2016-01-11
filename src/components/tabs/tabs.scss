@@ -43,7 +43,7 @@
   }
 }
 
-.tabs__links li {
+.tabs__item {
   line-height: 1;
 
   .no-flexbox & {
@@ -61,7 +61,7 @@
   }
 }
 
-.tabs__links a {
+.tabs__link {
   color: $h2-color;
   display: block;
   font-size: 1.2rem;
@@ -86,13 +86,13 @@
   }
 }
 
-.tabs:not(.tabs--small) .tabs__links a {
+.tabs:not(.tabs--small) .tabs__link {
   letter-spacing: .06rem;
   padding-bottom: 2.6rem;
   text-transform: uppercase;
 }
 
-.tabs--small .tabs__links a {
+.tabs--small .tabs__link {
   padding-bottom: 1.7rem;
   padding-top: 2rem;
 
@@ -109,9 +109,9 @@
   .no-flexbox & {
     display: block;
   }
+}
 
-  a {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
+.tabs--full .tabs__link {
+  padding-left: 1rem;
+  padding-right: 1rem;
 }

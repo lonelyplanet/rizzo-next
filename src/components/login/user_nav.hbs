@@ -11,14 +11,14 @@
 
   <div class="tabs tabs--full tabs--small">
     <ul class="tabs__links">
-      <li>
-        <a href="#activity">
+      <li class="tabs__item">
+        <a class="tabs__link js-tabs-link" href="#activity">
           Recent activity
         </a>
       </li>
 
-      <li>
-        <a href="#messages">
+      <li class="tabs__item">
+        <a class="tabs__link js-tabs-link" href="#messages">
           Messages
 
           {{#if user.unread_message_count}}
@@ -30,7 +30,7 @@
       </li>
     </ul>
 
-    <div class="user-panel__content tabs__content" id="activity">
+    <div class="user-panel__content tabs__content js-tabs-content" id="activity">
       {{#unless user.activities}}
         <div class="user-panel__empty">
           No recent activity
@@ -52,7 +52,7 @@
       {{/if}}
     </div>
 
-    <div class="user-panel__content tabs__content" id="messages">
+    <div class="user-panel__content tabs__content js-tabs-content" id="messages">
       {{#unless user.messages}}
         <div class="user-panel__empty">
           No new messages
