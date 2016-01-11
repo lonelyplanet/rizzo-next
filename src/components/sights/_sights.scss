@@ -1,4 +1,5 @@
 @import '../../../sass/webpack_deps';
+@import '../topic/topic';
 
 .sights {
   counter-reset: sights-count;
@@ -120,6 +121,10 @@
       }
     }
   }
+}
+
+.sights__image {
+  position: static;
 }
 
 .sights__text {
