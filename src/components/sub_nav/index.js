@@ -11,6 +11,9 @@ export default class SubNav extends Component {
         $window = $(window);
 
     this.contentHeight = 0;
+    this.$subNavList = this.$el.find(".js-sub-nav-list");
+
+    this.subNavItem = require("./sub_nav_item.hbs");
 
     /**
      * Checks to see if a given element has been scrolled into view
@@ -29,6 +32,9 @@ export default class SubNav extends Component {
     if ($subNav.length) {
       let subNavTop = $subNav.offset().top,
           firstTrigger = true;
+
+      this.subscribe();
+      this.addClientSideComponents();
 
       $(document).on("click", ".js-sub-nav-link", function(e) {
         let target = this.hash;
@@ -57,7 +63,7 @@ export default class SubNav extends Component {
             return document.getElementById(el.href.split("#")[1]);
           });
 
-      $window.scroll(debounce(() => {
+      $window.on("scroll", debounce(() => {
         if (firstTrigger) {
           firstTrigger = false;
         }
@@ -109,21 +115,16 @@ export default class SubNav extends Component {
 
       }, 10));
 
-      $window.resize(debounce(() => {
+      $window.on("resize", debounce(() => {
         this.updateContentHeight();
       }, 10));
     }
-
-    this.subscribe();
-    this.addClientSideComponents();
   }
   addClientSideComponents() {
-    // TODO: Handlebars template perhaps? More dynamic perhaps?
-    $(
-    `<li class="sub-nav__item sub-nav__item--ttd">
-      <a class="sub-nav__link js-sub-nav-link" href="#ttd">experiences</a>
-    </li>
-    `).prependTo(this.$el.find(".sub-nav__list"));
+    $(this.subNavItem({
+      id: "experiences",
+      title: "Experiences"
+    })).prependTo(this.$subNavList);
   }
   @subscribe(RizzoEvents.LOAD_BELOW, "events");
   updateContentHeight() {
@@ -132,18 +133,17 @@ export default class SubNav extends Component {
   /**
    * If a component is removed from the DOM, this will remove its subnav element
    */
-  @subscribe("*.removed", "components")
+  @subscribe("*.removed", "components");
   removeSubNav(data, envelope) {
     let component = envelope.topic.split(".")[0];
 
     this.$el.find(`.sub-nav__item--${component}`).remove();
   }
-  @subscribe("ttd.removed", "components")
+  @subscribe("ttd.removed", "components");
   addSights() {
-    $(
-    `<li class="sub-nav__item sub-nav__item--sights">
-      <a class="sub-nav__link js-sub-nav-link" href="#sights">sights</a>
-    </li>
-    `).prependTo(this.$el.find(".sub-nav__list"));
+    $(this.subNavItem({
+      id: "sights",
+      title: "Sights"
+    })).prependTo(this.$subNavList);
   }
 }
