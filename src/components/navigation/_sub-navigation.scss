@@ -59,7 +59,7 @@
       position: absolute;
       top: 0;
       width: .4rem;
-      z-index: 1;
+      z-index: z("default");
     }
   }
 
@@ -92,7 +92,7 @@
     top: -.1rem;
     transition: background-color ($animation-speed / 2) linear;
     width: calc(100% + #{$gutter} + #{$gutter});
-    z-index: -1;
+    z-index: z("below");
   }
 
   &__link:hover:after,

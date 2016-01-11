@@ -13,7 +13,7 @@
   right: 0;
   top: 0;
   width: 25rem;
-  z-index: 10000;
+  z-index: z("modal") + 1;
 
   &,
   &__list {

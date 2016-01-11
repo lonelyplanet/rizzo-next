@@ -220,7 +220,7 @@ $panel-height: calc(100% - #{$sidebar-header-height});
           position: absolute;
           right: -.2rem;
           width: 2rem;
-          z-index: 1;
+          z-index: z("default");
         }
       }
     }

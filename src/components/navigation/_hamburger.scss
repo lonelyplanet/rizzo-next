@@ -12,7 +12,7 @@
   top: 15px;
   transition: transform 400ms ease;
   width: 50px;
-  z-index: 2;
+  z-index: z("default") + 1;
 
   @include respond-to($mobile-breakpoint) {
     display: none;

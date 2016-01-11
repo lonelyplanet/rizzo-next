@@ -13,7 +13,7 @@ $masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
   overflow: hidden;
   position: relative;
   top: 0;
-  z-index: 6;
+  z-index: z("slideshow-slide") + 3;
 
   &--narrow {
     background-color: transparent;
@@ -56,7 +56,7 @@ $masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
     position: absolute;
     right: ($gutter * .5);
     top: $header-height-mobile;
-    z-index: 10;
+    z-index: z("middle");
 
     @media (min-width: $min-480) {
       left: $gutter;
@@ -238,7 +238,7 @@ $masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
   &__button {
     @include button();
     position: relative;
-    z-index: 2;
+    z-index: z("default") + 1;
   }
 
   &__button--play {
@@ -361,7 +361,7 @@ $masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
     opacity: 0;
     position: relative;
     transition: 200ms opacity;
-    z-index: 4; // above slideshow
+    z-index: z("slideshow-slide") + 1; // above slideshow
 
     &.is-playing {
       display: block;

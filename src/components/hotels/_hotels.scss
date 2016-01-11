@@ -166,7 +166,7 @@ $hotels-max-width: 1170;
   position: relative;
   transition: border-color $animation-speed;
   width: 100%;
-  z-index: 1;
+  z-index: z("default");
 
   @include placeholder {
     color: $hotels-color;

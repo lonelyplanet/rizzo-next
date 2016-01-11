@@ -25,7 +25,7 @@ $max-video-width: 129rem;
     position: absolute;
     right: 3.5rem;
     top: 3.5rem;
-    z-index: 1000;
+    z-index: z("video-overlay-close");
   }
 
   &__close__button {

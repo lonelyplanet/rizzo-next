@@ -13,7 +13,7 @@
   transition: 1000ms ease;
   visibility: hidden;
   width: 25rem;
-  z-index: 1000;
+  z-index: z("middle");
 
   .no-js & {
     display: none;

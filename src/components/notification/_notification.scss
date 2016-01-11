@@ -65,5 +65,5 @@ $notification-badge-size: 1.7rem;
   right: 1.2rem;
   top: 1.6rem;
   width: .6rem;
-  z-index: 2;
+  z-index: z("default") + 1;
 }

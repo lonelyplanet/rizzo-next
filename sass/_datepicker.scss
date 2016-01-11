@@ -1,11 +1,11 @@
 $picker-width: 32rem;
 
 .picker__holder {
-  @include z-layer(modal);
   clear: both;
   height: 0;
   position: relative;
   width: 100%;
+  z-index: z("modal");
 }
 
 .picker__frame {

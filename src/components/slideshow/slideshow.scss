@@ -21,7 +21,7 @@
     right: 0;
     top: 0;
     transition: opacity $animation-speed-ui, transform $animation-speed-ui;
-    z-index: 3;
+    z-index: z("slideshow-slide");
   }
 
   &--fade &__slide {
@@ -31,17 +31,17 @@
 
     &--num_-1 {
       opacity: 1;
-      z-index: 1;
+      z-index: z("default");
     }
 
     &--num_1 {
       opacity: 0;
-      z-index: 5;
+      z-index: z("slideshow-slide") + 2;
     }
 
     &--next {
       opacity: 0;
-      z-index: -1;
+      z-index: z("below");
     }
   }
 
@@ -90,7 +90,7 @@
     text-align: center;
     top: auto;
     width: 100%;
-    z-index: 4; // Put above the slides
+    z-index: z("slideshow-slide") + 1; // Put above the slides
   }
 
   &__progress__dot {

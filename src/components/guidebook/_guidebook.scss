@@ -11,7 +11,7 @@
 
 .guidebook__info {
   position: relative;
-  z-index: 5;
+  z-index: z("middle") - 5;
 
   @media (min-width: $min-1080) {
     float: right;
@@ -52,7 +52,7 @@
   margin-bottom: $spacing;
   position: relative;
   text-align: center;
-  z-index: 5;
+  z-index: z("middle") - 5;
 
   @media (min-width: $min-1080) {
     float: right;
@@ -164,7 +164,7 @@
   position: relative;
   top: 0;
   transform: translate(3rem, 0) rotateZ(1deg);
-  z-index: 1;
+  z-index: z("default");
 
   @media (min-width: $min-560) {
     left: 50%;

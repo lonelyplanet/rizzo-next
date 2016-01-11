@@ -11,7 +11,7 @@ $image-card-hover-movement: .5rem;
 
   &__heading {
     @include h1();
-    z-index: 15;
+    z-index: z("middle") + 5;
   }
 
   &__container {
@@ -127,7 +127,7 @@ $image-card-hover-movement: .5rem;
     position: absolute;
     top: 50%;
     width: 5rem;
-    z-index: 15;
+    z-index: z("middle") + 5;
 
     @media (min-width: $min-480) {
       height: 6rem;
