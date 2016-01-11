@@ -5,7 +5,7 @@ import "mapbox.js";
 let L = window.L;
 let mapID = "lonelyplanet.04cf7895";
 
-L.mapbox.accessToken = "pk.eyJ1IjoibG9uZWx5cGxhbmV0IiwiYSI6Imh1ODUtdUEifQ.OLLon0V6rcoTyayXzzUzsg";
+L.mapbox.accessToken = "pk.eyJ1IjoibG9uZWx5cGxhbmV0IiwiYSI6ImNpajYyZW1iMjAwOG51bWx2YW50ejNmN2IifQ.neyeEEzBkaNKcKUzCe3s2Q";
 
 class MapProvider extends Component {
   initialize() {
