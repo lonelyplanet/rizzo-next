@@ -1,6 +1,6 @@
 @import "../../../sass/webpack_deps";
 
-.map_static {
+.map-static {
   position: relative;
 
   @media (max-width: $max-960) {
@@ -27,11 +27,11 @@
     }
   }
 
-  &__btn {
+  &__button {
     $btn-width: 268px;
     @include button();
     bottom: 38px;
-    letter-spacing: .05em;
+    letter-spacing: .05rem;
     margin-left: calc(50% - #{$btn-width / 2});
     padding-bottom: 1.8rem;
     position: absolute;
@@ -48,12 +48,12 @@
       vertical-align: sub;
       width: 18px;
     }
+  }
 
-    &__text {
-      font-size: 1.25rem;
-      font-weight: bold;
-      margin-right: 2.5rem;
-      text-transform: uppercase;
-    }
+  &__button-text {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-right: 2.5rem;
+    text-transform: uppercase;
   }
 }
