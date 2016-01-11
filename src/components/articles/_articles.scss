@@ -132,13 +132,13 @@ $small-breakpoint: 320;
     line-height: (26 / 16);
     margin-top: 1rem;
   }
-}
 
-.article__info__title + .article__info__blurb {
-  margin-top: 2rem;
+  .article__info__title + & {
+    margin-top: 2rem;
 
-  @media (min-width: $min-720) {
-    margin-top: 2.5rem;
+    @media (min-width: $min-720) {
+      margin-top: 2.5rem;
+    }
   }
 }
 
