@@ -275,13 +275,6 @@ $masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
       transform: translateX(-50%);
       width: auto;
     }
-
-    &:hover,
-    &:focus {
-      .masthead__button--play__icon {
-        background-color: rgba(#fff, .2);
-      }
-    }
   }
 
   &__button--play__icon {
@@ -310,6 +303,11 @@ $masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
       padding-left: .2rem;
       padding-top: .2rem;
       width: 1.8rem;
+    }
+
+    .masthead__button--play:hover &,
+    .masthead__button--play:focus & {
+      background-color: rgba(#fff, .2);
     }
   }
 

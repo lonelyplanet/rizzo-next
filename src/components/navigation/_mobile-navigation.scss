@@ -81,10 +81,8 @@
       width: 1.3rem;
     }
 
-    &.clicked {
-      .icon {
-        transform: rotateZ(180deg);
-      }
+    &.clicked .icon {
+      transform: rotateZ(180deg);
     }
   }
 

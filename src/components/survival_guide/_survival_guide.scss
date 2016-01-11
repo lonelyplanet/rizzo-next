@@ -18,17 +18,6 @@ $mobile-breakpoint: 400;
   &__link {
     color: $body-color;
     display: block;
-
-    &:hover,
-    &:focus {
-      .survival-guide__icon {
-        transform: translateY(-.5rem);
-      }
-
-      .survival-guide__title {
-        color: $color-primary;
-      }
-    }
   }
 
   &__item {
@@ -71,6 +60,11 @@ $mobile-breakpoint: 400;
       height: 80px;
       width: 80px;
     }
+
+    .survival-guide__link:hover &,
+    .survival-guide__link:focus & {
+      transform: translateY(-.5rem);
+    }
   }
 
   &__title {
@@ -82,6 +76,11 @@ $mobile-breakpoint: 400;
 
     @include respond-to($mobile-breakpoint) {
       margin-top: 2.8rem;
+    }
+
+    .survival-guide__link:hover &,
+    .survival-guide__link:focus & {
+      color: $color-primary;
     }
   }
 

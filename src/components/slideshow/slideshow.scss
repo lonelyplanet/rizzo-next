@@ -54,35 +54,33 @@
     }
   }
 
-  &--slide &__slide {
-    &--num_-2 {
-      transform: translateX(calc(-200% - #{$gutter * 2}));
-    }
+  &--slide &__slide--num_-2 {
+    transform: translateX(calc(-200% - #{$gutter * 2}));
+  }
 
-    &--num_-1 {
-      transform: translateX(calc(-100% - #{$gutter * 1}));
-    }
+  &--slide &__slide--num_-1 {
+    transform: translateX(calc(-100% - #{$gutter * 1}));
+  }
 
-    &--num_1 {
-      transform: translateX(calc(100% + #{$gutter * 1}));
-    }
+  &--slide &__slide--num_1 {
+    transform: translateX(calc(100% + #{$gutter * 1}));
+  }
 
-    &--num_2 {
-      transform: translateX(calc(200% + #{$gutter * 2}));
-    }
+  &--slide &__slide--num_2 {
+    transform: translateX(calc(200% + #{$gutter * 2}));
+  }
 
-    &--num_-2,
-    &--num_-1,
-    &--num_1,
-    &--num_2 {
-      cursor: pointer;
-      opacity: .75;
+  &--slide &__slide--num_-2,
+  &--slide &__slide--num_-1,
+  &--slide &__slide--num_1,
+  &--slide &__slide--num_2 {
+    cursor: pointer;
+    opacity: .75;
 
-      &:hover,
-      &:active,
-      &:focus {
-        opacity: 1;
-      }
+    &:hover,
+    &:active,
+    &:focus {
+      opacity: 1;
     }
   }
 
