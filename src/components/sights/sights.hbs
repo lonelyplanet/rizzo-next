@@ -1,12 +1,14 @@
-<article class="sights" data-lp-initial-sights="{{sights.json}}">
-  <h2 class="sights__heading js-sights-heading">
-    {{sights_title}}
-  </h2>
+{{#if sights_show}}
+  <article class="sights" data-lp-initial-sights="{{sights.json}}">
+    <h2 class="sights__heading js-sights-heading">
+      {{sights_title}}
+    </h2>
 
-  <div class="js-sights-list"></div>
+    <div class="js-sights-list"></div>
 
-  <a class="sights__more" href="#">
-    See all sights
-    <i class="icon-chevron-right" aria-hidden="true"></i>
-  </a>
-</article><!-- .sights -->
+    <a class="sights__more" href="#">
+      See all sights
+      <i class="icon-chevron-right" aria-hidden="true"></i>
+    </a>
+  </article><!-- .sights -->
+{{/if}}
