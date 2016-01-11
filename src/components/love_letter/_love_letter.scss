@@ -25,50 +25,48 @@ $small-breakpoint: 320;
   }
 }
 
-.love-letter {
-  &__heading {
-    @include h1(3.1rem);
+.love-letter__heading {
+  @include h1(3.1rem);
 
-    [class*="icon-"] {
-      color: #f01516;
-      display: inline-block;
-      font-size: 0;
-      transform-origin: 50% 60%;
+  [class*="icon-"] {
+    color: #f01516;
+    display: inline-block;
+    font-size: 0;
+    transform-origin: 50% 60%;
 
-      &::before {
-        font-size: 1.6rem;
+    &::before {
+      font-size: 1.6rem;
 
-        @media (min-width: $min-720) {
-          font-size: 2.8rem;
-        }
+      @media (min-width: $min-720) {
+        font-size: 2.8rem;
       }
     }
-
-    &:hover [class*="icon-"] {
-      animation: heartbeat 300ms infinite;
-    }
   }
 
-  &__text {
-    color: #67747d;
-    font-family: $benton-sans;
-    font-size: $font-size;
-    font-style: italic;
-    line-height: 1.8;
-    margin: 0 auto 5.5rem;
-    text-align: center;
-
-    @media (min-width: $min-480) {
-      font-size: 2rem;
-      max-width: 86%;
-    }
+  &:hover [class*="icon-"] {
+    animation: heartbeat 300ms infinite;
   }
+}
 
-  &__more {
-    @include more();
-    display: inline-block;
-    font-style: normal;
+.love-letter__text {
+  color: #67747d;
+  font-family: $benton-sans;
+  font-size: $font-size;
+  font-style: italic;
+  line-height: 1.8;
+  margin: 0 auto 5.5rem;
+  text-align: center;
+
+  @media (min-width: $min-480) {
+    font-size: 2rem;
+    max-width: 86%;
   }
+}
+
+.love-letter__more {
+  @include more();
+  display: inline-block;
+  font-style: normal;
 }
 
 .love-letter__author {
@@ -84,13 +82,6 @@ $small-breakpoint: 320;
 
   a {
     display: inline-block;
-
-    &:hover,
-    &:focus {
-      .love-letter__author__image {
-        transform: scale(1.1);
-      }
-    }
   }
 }
 
@@ -98,6 +89,11 @@ $small-breakpoint: 320;
   @include author-image($mobile-breakpoint);
   transform: scale(1);
   transition: transform $animation-speed;
+
+  .love-letter__author a:hover &,
+  .love-letter__author a:focus & {
+    transform: scale(1.1);
+  }
 }
 
 .love-letter__author__creds {

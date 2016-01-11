@@ -25,49 +25,47 @@ $small-breakpoint: 320;
   }
 }
 
-.intro-narrative {
-  &__heading {
-    @include h1();
+.intro-narrative__heading {
+  @include h1();
 
-    [class*="icon-"] {
-      color: #f01516;
-      display: inline-block;
-      font-size: 0;
-      transform-origin: 50% 60%;
+  [class*="icon-"] {
+    color: #f01516;
+    display: inline-block;
+    font-size: 0;
+    transform-origin: 50% 60%;
 
-      &::before {
-        font-size: 1.6rem;
+    &::before {
+      font-size: 1.6rem;
 
-        @media (min-width: $min-720) {
-          font-size: 2.8rem;
-        }
+      @media (min-width: $min-720) {
+        font-size: 2.8rem;
       }
     }
-
-    &:hover [class*="icon-"] {
-      animation: heartbeat 300ms infinite;
-    }
   }
 
-  &__text {
-    color: #67747d;
-    font-size: $font-size;
-    font-style: italic;
-    line-height: 1.8;
-    margin: 0 auto 3rem;
-    text-align: center;
-
-    @media (min-width: $min-480) {
-      font-size: 2.1rem;
-      max-width: 80%;
-    }
+  &:hover [class*="icon-"] {
+    animation: heartbeat 300ms infinite;
   }
+}
 
-  &__more {
-    @include more();
-    display: inline-block;
-    font-style: normal;
+.intro-narrative__text {
+  color: #67747d;
+  font-size: $font-size;
+  font-style: italic;
+  line-height: 1.8;
+  margin: 0 auto 3rem;
+  text-align: center;
+
+  @media (min-width: $min-480) {
+    font-size: 2.1rem;
+    max-width: 80%;
   }
+}
+
+.intro-narrative__more {
+  @include more();
+  display: inline-block;
+  font-style: normal;
 }
 
 .intro-narrative__author {
