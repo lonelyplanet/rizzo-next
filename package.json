@@ -23,13 +23,14 @@
     "scsslint": "scss-lint . --config .scss-lint.yml",
     "prepublish": "node bin/rizzo build"
   },
-  "version": "0.11.10",
+  "version": "0.11.11",
   "pre-commit": [
     "scsslint",
     "lint"
   ],
   "dependencies": {
     "airbrake-js": "^0.5.2",
+    "babel-polyfill": "^6.3.14",
     "babel-runtime": "^5.8.25",
     "clamp-js": "*",
     "commander": "^2.9.0",
