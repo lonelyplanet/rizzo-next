@@ -103,7 +103,7 @@ $social-share: (
   padding: 1.5rem;
   pointer-events: auto;
   position: relative;
-  z-index: 10;
+  z-index: z("middle");
 
   &.is-open {
     left: 3.5rem;

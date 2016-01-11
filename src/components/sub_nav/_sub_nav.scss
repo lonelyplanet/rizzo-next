@@ -23,7 +23,7 @@ $navigation-sub-height-mobile: $header-height-mobile;
   padding: 0;
   position: relative;
   visibility: hidden;
-  z-index: -1;
+  z-index: z("below");
 
   &.is-fixed {
     height: ($navigation-sub-height-mobile + .1);
@@ -49,11 +49,11 @@ $navigation-sub-height-mobile: $header-height-mobile;
   }
 
   &.is-fixed {
-    @include z-layer(top);
     left: 0;
     position: fixed;
     right: 0;
     top: 0;
+    z-index: z("top");
   }
 
   &.is-bottom {

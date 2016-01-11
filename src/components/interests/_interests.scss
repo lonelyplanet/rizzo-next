@@ -218,7 +218,7 @@ $max-card-width: 1395px; // When all 9 cards are up
         right: 0;
         text-align: center;
         width: 90%;
-        z-index: 1;
+        z-index: z("default");
       }
 
       .interests__card__link {

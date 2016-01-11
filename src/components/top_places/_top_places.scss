@@ -211,7 +211,7 @@
   top: 0;
   transform: translateY(15%);
   transition: transform 400ms, opacity 400ms;
-  z-index: 9999;
+  z-index: z("modal");
 
   @media (min-width: $min-720) {
     top: auto;
@@ -238,7 +238,7 @@
     text-indent: -9999px;
     top: ($gutter / 2);
     width: 4rem;
-    z-index: 10000;
+    z-index: z("modal") + 1;
 
     &::before {
       bottom: 0;
@@ -265,7 +265,7 @@
       transition: transform 400ms 1000ms;
       user-select: none;
       width: $close-button-size;
-      z-index: 9998;
+      z-index: z("modal") - 1;
     }
   }
 
@@ -288,7 +288,7 @@
     position: absolute;
     right: 0;
     top: 0;
-    z-index: 9999;
+    z-index: z("modal");
 
     @media (min-width: $min-720) {
       bottom: auto;

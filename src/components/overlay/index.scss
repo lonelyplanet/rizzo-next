@@ -9,7 +9,7 @@
   right: 0;
   top: 0;
   transition: opacity $animation-speed;
-  z-index: 9997;
+  z-index: z("modal") - 2;
 
   &--visible {
     opacity: 1;

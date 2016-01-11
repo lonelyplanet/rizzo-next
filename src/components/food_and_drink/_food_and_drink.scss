@@ -36,7 +36,7 @@ $item-border-color: #f1f4fb;
       position: absolute;
       top: 0;
       width: $fad-column-width;
-      z-index: -1;
+      z-index: z("below");
     }
 
     @media (min-width: $min-1410) {

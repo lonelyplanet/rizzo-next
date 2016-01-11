@@ -59,7 +59,7 @@ $user-panel: (
   top: map-get($user-panel, "icon-spacing");
   transition: color $animation-speed;
   width: map-get($user-panel, "icon-size");
-  z-index: 1;
+  z-index: z("default");
 
   &::before {
     bottom: 0;
