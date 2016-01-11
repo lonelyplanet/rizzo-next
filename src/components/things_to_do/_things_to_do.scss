@@ -50,6 +50,12 @@ $image-card-hover-movement: .5rem;
       flex-wrap: wrap;
     }
 
+    .no-flexbox & {
+      @include clearfix;
+      float: left;
+      width: 100%;
+    }
+
     &--next {
       opacity: 0;
     }
@@ -59,7 +65,11 @@ $image-card-hover-movement: .5rem;
     width: span(6);
 
     @media (min-width: $min-840) {
-      width: span(4);
+      width: span(3);
+    }
+
+    .no-flexbox & {
+      float: left;
     }
 
     &:not(:first-child) {
