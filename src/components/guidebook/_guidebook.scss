@@ -21,11 +21,17 @@
 }
 
 .guidebook__blurb {
+  color: $color-text;
   width: 90%;
   margin: 0 auto;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: $font-weight-medium;
-  line-height: (32 / 18);
+  line-height: (24 / 16);
+
+  @media (min-width: $min-720) {
+    font-size: 1.8rem;
+    line-height: (32 / 18);
+  }
 
   @media (min-width: $min-1080) {
     width: 100%;
@@ -59,13 +65,17 @@
 
 .guidebook__title {
   @include h1();
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
   padding-bottom: 0;
   color: $color-red;
 
   @media (min-width: $min-720) {
     font-size: 5rem;
     line-height: 1;
+    margin-bottom: 6rem;
+  }
+
+  @media (min-width: $min-1080) {
     margin-bottom: 0;
   }
 
@@ -139,7 +149,11 @@
     width: 25rem;
   }
 
-  @media (min-width: $min-720) {
+  @media (min-width: $min-768) {
+    width: 30rem;
+  }
+
+  @media (min-width: $min-960) {
     width: 35rem;
   }
 }
@@ -155,8 +169,16 @@
     margin-left: (-25rem / 2);
   }
 
-  @media (min-width: $min-720) {
-    margin-left: (-35rem / 2);
+  @media (min-width: $min-768) {
+    margin-left: -28rem;
+  }
+
+  @media (min-width: $min-960) {
+    margin-left: -35rem;
+  }
+
+  @media (min-width: $min-1080) {
+    margin-left: -18rem;
   }
 
   .guidebook__pictures--single & {
@@ -165,8 +187,10 @@
   }
 
  .guidebook__pictures:hover & {
-   transform: translate(4rem, 0) rotateZ(-1deg);
- }
+    @media (min-width: $min-960) {
+      transform: translate(4rem, 0) rotateZ(-1deg);
+    }
+  }
 }
 
 .guidebook__picture--secondary {
@@ -179,8 +203,10 @@
   }
 
   .guidebook__pictures:hover & {
-     transform: translate(-18rem, -1rem) rotateZ(-19deg) scale(.8);
-   }
+    @media (min-width: $min-960) {
+      transform: translate(-18rem, -1rem) rotateZ(-19deg) scale(.8);
+    }
+  }
 }
 
 .guidebook__image {
