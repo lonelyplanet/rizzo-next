@@ -25,7 +25,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, "dist"),
     filename: "[name].js",
-    libraryTarget: "amd",
+    libraryTarget: "umd",
     library: "rizzo-next"
   },
   module: {
