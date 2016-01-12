@@ -1,12 +1,13 @@
-<section class="masthead_nav" data-lpa-category="Navigation Click" data-lpa-action="Masthead">
+<div class="masthead_nav" data-lpa-category="Navigation Click" data-lpa-action="Masthead">
   <div class="masthead_nav__container">
-  <a href="/{{prev.slug}}" class="masthead_nav__link left">
-    <i class="icon-chevron-left"></i>
-    {{prev.title}}
-  </a>
-  <a href="/{{next.slug}}" class="masthead_nav__link right">
-    {{next.title}}
-    <i class="icon-chevron-right"></i>
-  </a>
+    <a class="masthead_nav__link" href="/{{prev.slug}}">
+      <i class="icon-chevron-left" aria-hidden="true"></i>
+      {{prev.title}}
+    </a>
+
+    <a class="masthead_nav__link" href="/{{next.slug}}">
+      {{next.title}}
+      <i class="icon-chevron-right" aria-hidden="true"></i>
+    </a>
   </div>
-</section>
+</div>
