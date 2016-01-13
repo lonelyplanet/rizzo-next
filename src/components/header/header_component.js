@@ -19,8 +19,8 @@ class Header extends Component {
     });
 
     this.events = {
-      "click .js-search": "onSearchClick",
-      "click .js-search .navigation__link": "onSearchClick",
+      "click .js-lp-search": "onSearchClick",
+      "click .js-lp-search .navigation__link": "onSearchClick",
       "click .js-menu": "onMobileMenuClick"
     };
 
@@ -45,12 +45,12 @@ class Header extends Component {
   }
   /**
    * If the search box is too big based on the screen width
-   * @return {Boolean} 
+   * @return {Boolean}
    */
   isTooBig() {
     return this.$search.width() > this.$inner.width() * .42;
   }
-  
+
   onSearchClick(e) {
     e.preventDefault();
 
