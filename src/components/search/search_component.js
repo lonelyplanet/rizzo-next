@@ -12,7 +12,7 @@ import SearchItemComponent from "./search_item";
 class SearchComponent extends Component {
 
   static get className() {
-    return "search";
+    return "lp-search";
   }
 
   get isOpen() {
@@ -39,9 +39,9 @@ class SearchComponent extends Component {
     this._collection = arr;
 
     if(this._collection.length > 0) {
-      this.$searchResults.addClass("search-results--visible");
+      this.$searchResults.addClass("lp-search-results--visible");
     } else {
-      this.$searchResults.removeClass("search-results--visible");
+      this.$searchResults.removeClass("lp-search-results--visible");
     }
   }
 
@@ -49,18 +49,20 @@ class SearchComponent extends Component {
     this.build();
 
     this.events = {
-      "click .js-close": (e) => {
+      "click .js-lp-search-close": (e) => {
         e.preventDefault();
 
         this.hide();
       },
 
-      "keydown .search__input": "onKeyup"
+      "keydown .lp-search__input": "onKeyup"
     };
     //$(document.body).on("keyup", this.onKeyup.bind(this));
 
     this.collection = [];
-    this.overlay = new Overlay();
+    this.overlay = new Overlay({
+      preventScroll: true
+    });
 
     this.listenTo(this.overlay, "click", this.hide);
 
@@ -70,10 +72,10 @@ class SearchComponent extends Component {
   build(){
     this.$el = $(template());
 
-    this.$input = this.$el.find(".js-search-input");
-    this.$searchResults = this.$el.find(".js-search-results");
-    this.$list = this.$searchResults.find(".js-search-results-list");
-    this.$resultsLink = this.$searchResults.find(".js-search-results-more");
+    this.$input = this.$el.find(".js-lp-search-input");
+    this.$searchResults = this.$el.find(".js-lp-search-results");
+    this.$list = this.$searchResults.find(".js-lp-search-results-list");
+    this.$resultsLink = this.$searchResults.find(".js-lp-search-results-more");
   }
 
   show() {

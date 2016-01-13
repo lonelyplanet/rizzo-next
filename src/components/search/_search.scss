@@ -1,6 +1,6 @@
 @import "../../../sass/webpack_deps";
 
-.search {
+.lp-search {
   $input-height: 3.8rem;
   position: absolute;
   z-index: 9999;
@@ -138,7 +138,7 @@
   }
 }
 
-.search-results {
+.lp-search-results {
   opacity: 0;
   height: 0;
   overflow: hidden;
