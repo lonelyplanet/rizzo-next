@@ -60,7 +60,9 @@ class SearchComponent extends Component {
     //$(document.body).on("keyup", this.onKeyup.bind(this));
 
     this.collection = [];
-    this.overlay = new Overlay();
+    this.overlay = new Overlay({
+      preventScroll: true
+    });
 
     this.listenTo(this.overlay, "click", this.hide);
 

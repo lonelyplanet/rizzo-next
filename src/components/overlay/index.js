@@ -6,10 +6,8 @@ import "./index.scss";
 
 class Overlay extends Component {
 
-  initialize(options = {}){
-    this.options = Object.assign(options, {
-      preventScroll: true
-    });
+  initialize(options = { preventScroll: false }){
+    this.options = options;
 
     this.$html = $("html");
     this.$el.addClass("overlay");
