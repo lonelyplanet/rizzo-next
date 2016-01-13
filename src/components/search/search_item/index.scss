@@ -1,6 +1,6 @@
 @import "../../../../sass/webpack_deps";
 
-.search-item {
+.lp-search-item {
   $height: 6rem;
   position: relative;
   margin-bottom: 1rem;
@@ -13,7 +13,7 @@
   &:hover,
   &:active,
   &:focus {
-    .search-item__name {
+    .lp-search-item__name {
       @media (min-width: $min-720) {
         transform: translateX($spacing / 2);
       }

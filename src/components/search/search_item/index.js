@@ -9,7 +9,7 @@ class SearchItemComponent extends Component {
     this.model = options.model;
     this.searchString = options.searchString;
     this.$el = $("<li />", {
-      "class": "search-item"
+      "class": "lp-search-item"
     });
   }
 
@@ -22,11 +22,11 @@ class SearchItemComponent extends Component {
   }
 
   select(){
-    this.$el.addClass("search-item--selected");
+    this.$el.addClass("lp-search-item--selected");
   }
 
   unselect() {
-    this.$el.removeClass("search-item--selected");
+    this.$el.removeClass("lp-search-item--selected");
   }
 
   navigate(){
