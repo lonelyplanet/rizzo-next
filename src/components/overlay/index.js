@@ -8,7 +8,7 @@ class Overlay extends Component {
 
   initialize(options = {}){
     this.options = Object.assign(options, {
-      preventScroll: false
+      preventScroll: true
     });
 
     this.$html = $("html");
