@@ -43,9 +43,9 @@ class ThingsToDo extends Component {
       url: `/api/${window.lp.place.slug}/experiences`
     });
   }
-  @publish("ttd.removed")
+  @publish("experiences.removed")
   nukeIt() {
-    $("#ttd").remove();
+    $("#experiences").remove();
   }
   // TODO: jc this is... smelly
   cardsFetched(cards) {

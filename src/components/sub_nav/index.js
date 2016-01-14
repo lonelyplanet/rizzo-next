@@ -139,11 +139,15 @@ export default class SubNav extends Component {
 
     this.$el.find(`.sub-nav__item--${component}`).remove();
   }
-  @subscribe("ttd.removed", "components");
+  @subscribe("experiences.removed", "components");
   addSights() {
-    $(this.subNavItem({
-      id: "sights",
-      title: "Sights"
-    })).prependTo(this.$subNavList);
+    if ($(".sights").length) {
+      $(this.subNavItem({
+        id: "sights",
+        title: "Sights"
+      })).prependTo(this.$subNavList);
+    } else {
+      $("#sights").closest(".segment").remove();
+    }
   }
 }
