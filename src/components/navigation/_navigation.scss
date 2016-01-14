@@ -81,10 +81,6 @@
       color: #eee;
       transition: color $animation-speed / 3;
     }
-
-    &[hidden] {
-      display: none;
-    }
   }
 
   .navigation--narrow &__link {

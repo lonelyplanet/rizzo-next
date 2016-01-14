@@ -168,7 +168,6 @@ class NavigationComponent extends Component {
         $liMobile = this.$mobileNavigation.find(".mobile-navigation__item--user");
 
     if (!user.id) {
-      $li.find(".navigation__link").prop("hidden", false);
       return;
     }
 
