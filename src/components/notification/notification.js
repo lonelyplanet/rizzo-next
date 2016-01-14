@@ -6,13 +6,15 @@ class Notification extends Component {
     this.content = options.content;
     this.target = options.target;
     this.className = options.className;
+    this.label = options.label;
     this.template = require("./notification.hbs");
     this.render();
   }
   render() {
     let notification = this.build({
       number: this.content,
-      className: this.className
+      className: this.className,
+      label: this.label
     });
     this.target.append(notification);
     return this;

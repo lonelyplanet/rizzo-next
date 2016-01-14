@@ -1,4 +1,4 @@
-<header class="header header--{{type}} {{#if images}}header--has-images{{else}} header--no-images{{/if}}">
+<header class="header header--{{type}}{{#if images}} header--has-images{{else}} header--no-images{{/if}}">
   <div class="header__container">
     <div class="header__inner">
 
@@ -27,7 +27,7 @@
         <button class="header__mobile-search icon-search-thin js-lp-search">Search</button>
       </div>
 
-      <div class="header__mobile">
+      <div class="header__mobile js-header-mobile">
         {{!--
         <a class="header__mobile-cart icon-cart js-mobile-cart">Cart</a>
         --}}

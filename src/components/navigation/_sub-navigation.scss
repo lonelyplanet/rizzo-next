@@ -38,6 +38,8 @@
 
     .mobile-sub-navigation & {
       width: 100%;
+      margin-left: 0;
+      margin-right: 0;
     }
 
     &:not(:first-child) {
@@ -67,9 +69,16 @@
     padding-top: 1rem;
     padding-bottom: .8rem;
     position: relative;
+
+    .mobile-sub-navigation & {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
   }
 
-  &__item--current &__link:hover:after {
+  &__item--current &__link:hover:after,
+  &__item--current &__link:active:after,
+  &__item--current &__link:focus:after {
     background-color: transparent;
   }
 
@@ -86,7 +95,9 @@
     z-index: -1;
   }
 
-  &__link:hover:after {
+  &__link:hover:after,
+  &__link:active:after,
+  &__link:focus:after {
     background-color: #f4f5f8;
   }
 
@@ -121,6 +132,8 @@
 
   .mobile-sub-navigation & {
     padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   &__image {
@@ -131,7 +144,8 @@
     width: 8rem;
 
     .mobile-sub-navigation & {
-      margin-right: 1rem;
+      margin-right: 1.4rem;
+      width: 6rem;
     }
   }
 
@@ -139,6 +153,10 @@
     float: left;
     line-height: 1;
     padding-top: 1.5rem;
+
+    .mobile-sub-navigation & {
+      padding-top: .8rem;
+    }
   }
 
   &__title {

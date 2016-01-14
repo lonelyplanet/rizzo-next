@@ -1,29 +1,23 @@
-<a class="avatar avatar--navigation" href="//www.lonelyplanet.com/thorntree/profiles/{{user.profileSlug}}{{#if user.notification_count}}/messages{{/if}}">
-  {{#if user.notification_count}}
-    <span class="notification-badge notification-badge--user"></span>
-  {{/if}}
-
-  <img src="{{user.avatar}}" alt="{{user.username}} avatar">
-</a>
-
-<div class="sub-navigation">
+<div class="{{className}}">
   <ul class="sub-navigation__list">
     <li class="sub-navigation__item">
       <a class="sub-navigation__link" href="//www.lonelyplanet.com/thorntree/profiles/{{user.profileSlug}}">Profile</a>
     </li>
-  
+
     <li class="sub-navigation__item">
       <a class="sub-navigation__link" href="http://www.lonelyplanet.com/thorntree">Thorn Tree</a>
-    </li> 
+    </li>
 
     <li class="sub-navigation__item">
       <a class="sub-navigation__link" href="//www.lonelyplanet.com/thorntree/messages">
-        <span class="notification-badge__wrap">Messages 
         {{#if user.unread_message_count}}
-          <span class="notification-badge notification-badge--user-inline">
+          <span class="notification-badge__wrap">
+            Messages
+            <span class="notification-badge notification-badge--user-inline" aria-label="Unread messages"></span>
           </span>
+        {{else}}
+          Messages
         {{/if}}
-        </span>
       </a>
 
     </li>
@@ -31,7 +25,7 @@
     <li class="sub-navigation__item">
       <a class="sub-navigation__link" href="//www.lonelyplanet.com/thorntree/profiles/{{user.profileSlug}}/activities">Activity</a>
     </li>
-  
+
     <li class="sub-navigation__item">
       <a class="sub-navigation__link" href="//auth.lonelyplanet.com/users/sign_out">Sign Out</a>
     </li>
