@@ -5,6 +5,7 @@ import Overlay from "../overlay";
 import "./masthead_nav.js";
 import coverVid from "../../core/utils/covervid";
 import MobilUtil from "../../core/mobile_util";
+import fitText from "../../core/utils/fitText";
 
 /**
  * Masthead Component
@@ -33,7 +34,7 @@ export default class MastheadComponent extends Component {
     this.$video = this.$el.find(".js-video").on("playing", (event) => {
       $(event.target).addClass("is-playing");
     });
-    
+
     if (this.$video.length && !MobilUtil.isMobile()) {
       this.$el.find(".slideshow").remove();
       coverVid(this.$video[0], 1440, 680);
@@ -41,12 +42,16 @@ export default class MastheadComponent extends Component {
     } else if (this.$video.length && MobilUtil.isMobile()) {
       this.$video.closest(".js-video-container").remove();
     }
-    
+
     this.slideshow = new Slideshow(assign({
       el: this.$el.find(".slideshow")
     }, options.slideshow));
-    
+
     this.listenTo(this.slideshow, "image.changed", this.updateStrapline);
+
+    fitText(this.$el.find(".js-masthead-title"), {
+      minFontSize: 56
+    });
   }
    /**
    * Play the video, callback from click handler
@@ -86,7 +91,7 @@ export default class MastheadComponent extends Component {
       this.$el.find(".js-play-video")
         .removeAttr("hidden")
         .addClass("is-visible");
-        
+
       this.videoId = videos[0];
     }
   }
