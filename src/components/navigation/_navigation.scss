@@ -75,9 +75,15 @@
 
     transition: color $animation-speed;
 
-    &:hover {
+    &:hover,
+    &:active,
+    &:focus {
       color: #eee;
       transition: color $animation-speed / 3;
+    }
+
+    &[hidden] {
+      display: none;
     }
   }
 

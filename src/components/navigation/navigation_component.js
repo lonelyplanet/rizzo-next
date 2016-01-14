@@ -5,8 +5,11 @@ import waitForTransition from "../../core/utils/waitForTransition";
 import NavigationActions from "./navigation_actions";
 import NavigationState from "./navigation_state";
 import subscribe from "../../core/decorators/subscribe";
+import matchMedia from "../../core/utils/matchMedia";
 
-let userPanelTemplate = require("./user_panel.hbs");
+let userPanelTemplate = require("./user_panel.hbs"),
+    userAvatarTemplate = require("./user_avatar.hbs"),
+    userLinkTemplate = require("./user_link.hbs");
 
 class NavigationComponent extends Component {
 
@@ -15,10 +18,26 @@ class NavigationComponent extends Component {
     this.state = NavigationState.getState();
     this.overlay = new Overlay();
 
+    let notificationLabel = this.state.cartItemCount === 1 ? "item" : "items";
+
     this.notification = new Notification({
       target: this.$el.find(".js-cart-notification"),
       content: this.state.cartItemCount,
-      className: "notification-badge--shop"
+      className: "notification-badge--shop",
+      label: `${this.state.cartItemCount} ${notificationLabel} in your cart`
+    });
+
+    matchMedia("(min-width: 720px)", (query) => {
+      if (query.matches) {
+        this.notification.$el.find(".js-notification-badge")
+          .removeClass("notification-badge--shop-inline")
+          .addClass("notification-badge--shop");
+      } else {
+        this.notification.$el.find(".js-notification-badge")
+          .removeClass("notification-badge--shop")
+          .addClass("notification-badge--shop-inline")
+          .text("");
+      }
     });
 
     this.name = "navigation";
@@ -44,8 +63,14 @@ class NavigationComponent extends Component {
    */
 
   _handleClick(e) {
-    let target = e.currentTarget;
+    let target = e.currentTarget,
+        href = $(target).find("a").attr("href");
+
     $(target).hasClass("navigation__item") ? this._handleSubNav(target) : this._handleMobileSubNav(target);
+
+    if (href === "#") {
+      e.preventDefault();
+    }
   }
 
   _handleMobileSubNav(el) {
@@ -143,16 +168,23 @@ class NavigationComponent extends Component {
         $liMobile = this.$mobileNavigation.find(".mobile-navigation__item--user");
 
     if (!user.id) {
+      $li.find(".navigation__link").prop("hidden", false);
       return;
     }
 
-    $li.html(userPanelTemplate({
+    $li.html(userAvatarTemplate({
+      user
+    })).append(userPanelTemplate({
+      className: "sub-navigation",
       user
     }));
 
-    $liMobile.find("a")
-      .text("Profile")
-      .attr("href", `//www.lonelyplanet.com/thorntree/profiles/${user.profileSlug}`);
+    $liMobile.html(userLinkTemplate({
+      user
+    })).append(userPanelTemplate({
+      className: "mobile-sub-navigation",
+      user
+    }));
   }
   @subscribe("user.notifications.update")
   userNotificationUpdate(user) {

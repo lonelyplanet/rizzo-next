@@ -1,7 +1,9 @@
 import { Component } from "../../core/bane";
 import SearchComponent from "../search";
 import NavigationComponent from "../navigation";
+import NavigationState from "../navigation/navigation_state";
 import $ from "jquery";
+import subscribe from "../../core/decorators/subscribe";
 
 import debounce from "lodash/function/debounce";
 
@@ -13,6 +15,7 @@ import debounce from "lodash/function/debounce";
 class Header extends Component {
 
   initialize() {
+    this.state = NavigationState.getState();
     this.search = new SearchComponent();
     this.navigation = new NavigationComponent({
       el: $(".navigation")
@@ -29,6 +32,9 @@ class Header extends Component {
 
     $(window).resize(debounce(this.render.bind(this), 100));
     this.render();
+    this.subscribe();
+
+    this.$mobileNotificationBadge = require("./mobile_notification_badge.hbs");
   }
   /**
    * Add a class to the search when it's too big for the screen
@@ -59,6 +65,13 @@ class Header extends Component {
 
   onMobileMenuClick(){
     this.navigation._clickNav();
+  }
+
+  @subscribe("user.status.update");
+  appendMenuIcon(user) {
+    if(this.state.cartItemCount || user.notification_count) {
+      $(".js-header-mobile").prepend(this.$mobileNotificationBadge);
+    }
   }
 }
 
