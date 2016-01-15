@@ -8,9 +8,9 @@ class Usabilla {
     this.setupScript();
 
     if(MobileUtil.isMobile()){
-      usabillaLiveScript = "cd92fa18ad96";
+      usabillaLiveScript = "e1dec7f181cb";
     } else{
-      usabillaLiveScript = "fcbe92690840";
+      usabillaLiveScript = "544db14c3746";
     }
     window.usabilla_live = lightningjs.require("usabilla_live", `//w.usabilla.com/${usabillaLiveScript}.js`);
   }
