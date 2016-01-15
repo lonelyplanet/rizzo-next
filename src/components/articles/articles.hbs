@@ -32,10 +32,12 @@
     {{/each}}
   </div>
 
-  <div class="articles__button-container">
-    <a class="articles__more" href="{{see_more_url}}">
-      Read more articles
-      <span class="icon-chevron-right" aria-hidden="true"></span>
-    </a>
-  </div>
+  {{#if local_articles}}
+    <div class="articles__button-container">
+      <a class="articles__more" href="{{see_more_url}}">
+        Read more articles
+        <span class="icon-chevron-right" aria-hidden="true"></span>
+      </a>
+    </div>
+  {{/if}}
 </article>
