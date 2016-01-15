@@ -152,7 +152,7 @@
     }
   }
 
-  &--visible {
+  &--visible, .navigation__item:hover & {
     @include dropdown-menu-visible;
   }
 
