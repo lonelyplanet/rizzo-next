@@ -11,9 +11,7 @@ export default class Logger {
    * @param {Error|Object|String} err Either string or object containing error details
    */
   error(err) {
-    if (!ENV_PROD) {
-      console.error(err);
-    }
+    console.log(JSON.stringify(err));
     
     if (ENV_PROD) {
       airbrake.notify(err);
