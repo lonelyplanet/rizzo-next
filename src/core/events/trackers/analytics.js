@@ -32,7 +32,9 @@ export default function({ name, data } = {}) {
 
   if (isDev()) {
     console.log(`utag: ${JSON.stringify(utagEvent)}`);
-  } else if (utag && typeof utag.link === "function") {
-    utag.link(utagEvent);
+  } else if (
+    typeof window.utag !== "undefined" && 
+    typeof window.utag.link === "function") {
+    window.utag.link(utagEvent);
   }
 };
