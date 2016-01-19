@@ -9,18 +9,14 @@
   right: 0;
   background-color: #fff;
   opacity: 0;
-  transition: opacity ($animation-speed-ui / 2), box-shadow $animation-speed-ui;
-
-  &--visible {
-    opacity: 1;
-  }
+  transition: opacity ($animation-speed-ui / 2);
 
   @media (min-width: $min-720) {
     box-shadow: -5rem 0 15rem rgba(0,0,0,.5);
+  }
 
-    &--visible {
-      box-shadow: .5rem 0 23rem rgba(0,0,0,.5);
-    }
+  &--visible {
+    opacity: 1;
   }
 
   &__inner {
@@ -64,15 +60,15 @@
     }
 
     @media (min-width: $min-720) {
-      left: 4rem;
-      right: 4rem;
+      left: 3.4rem;
+      right: 3.4rem;
       font-size: 2.4rem;
       font-weight: 300;
       width: calc(100% - 8rem);
     }
 
     @include placeholder {
-      color: #bec1c5;
+      color: rgba($body-color, .38);
     }
   }
 
@@ -84,7 +80,7 @@
     height: 2rem;
     line-height: 1;
     font-size: 0;
-    color: $font-color;
+    color: $body-color;
     margin-top: auto;
     margin-bottom: auto;
     top: 0;
