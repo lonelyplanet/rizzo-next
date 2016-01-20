@@ -17,7 +17,7 @@ let state = {
             { name: "Southeast Asia on a Shoes", price: "$29.99",
               image: "http://www.trentcap.com/wp/wp-content/uploads/2012/02/sample-img.png",
               alt: "Thailand Travel Guide" } ],
-    action: "//shop.lonelyplanet.com/cart/view",
+    action: "http://shop.lonelyplanet.com/cart/view",
     actiontitle: "PROCEED TO CHECKOUT"
   }
 };
