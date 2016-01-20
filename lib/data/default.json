@@ -20,7 +20,7 @@
               "image": "https://lonelyplanetstatic.imgix.net/gonzo/best-in-travel-2016/BIT2016-bg-main.jpg?w=80&h=60&fit=crop",
               "title": "Best in Travel",
               "subtitle": "Featured",
-              "link": "http://www.lonelyplanet.com/best-in-travel"
+              "link": "//www.lonelyplanet.com/best-in-travel"
             },
             "items": [
               {
@@ -65,7 +65,7 @@
               }
             ],
             "call_to_action": {
-              "slug": "http://www.lonelyplanet.com/places",
+              "slug": "//www.lonelyplanet.com/places",
               "title": "See All Countries"
             }
           }
@@ -108,7 +108,7 @@
         },
         {
           "title": "Shop",
-          "slug": "//shop.lonelyplanet.com"
+          "slug": "http://shop.lonelyplanet.com"
         },
         {
           "title": "Sign In",
