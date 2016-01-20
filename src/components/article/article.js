@@ -33,9 +33,7 @@ export default class ArticleComponent extends Component {
     this._setFirstArticle();
 
     // Wait for utag
-    setTimeout(() => {
-      this._loadFirstAd();
-    }, 500);
+    this._loadFirstAd();
 
     this.events = {
       "click .article-pagination__item": "_trackArticlePagination"
@@ -616,7 +614,8 @@ export default class ArticleComponent extends Component {
       }
     });
 
-    $slot.appendTo(this.$newArticle.find(".ad--leaderboard__container"));
+    let $adContainer = this.$newArticle.find(".ad--leaderboard__container");
+    $adContainer.html($slot);
 
     // Define the slot itself; call `display()` to register the div and
     // `refresh()` to fetch ad

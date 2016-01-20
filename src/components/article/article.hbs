@@ -13,67 +13,10 @@
         Tips &amp; articles
       </p>
     </header><!-- .article-header -->
+    
+    {{> "components/author/author"}}
 
-    <div class="author author--article author--contained author--vertical">
-      {{#if article.author_details.url}}<a href="{{ article.author_details.url }}">{{/if}}
-        <img class="avatar avatar--author avatar--large avatar--vertical"
-          src="{{#if article.author_details.avatar_url}}{{ article.author_details.avatar_url }}{{else}}//assets.staticlp.com/profiles/users/placeholders/large.png{{/if}}"
-          alt="">
-
-        <div class="author__details">
-          {{#if article.author_details.name}}
-            <div class="author__name">
-              {{ article.author_details.name }}
-            </div><!-- .author__name -->
-          {{/if}}
-
-          {{#if article.author_details.title}}
-            <div class="author__title">
-              {{ article.author_details.title }}
-            </div><!-- .author__title -->
-          {{/if}}
-        </div><!-- .author__details -->
-      {{#if article.author_details.url}}</a>{{/if}}
-    </div><!-- .author -->
-
-    <div class="article-body is-narrow has-legacy-code" itemprop="articleBody" data-post-date="{{ article.post_date }}">
-      <div class="article-body__content">
-        {{{ article.content.head }}}
-      </div><!-- .article-body__content -->
-
-      {{#if article.guidebook}}
-        <a class="related-guidebook related-guidebook--article" href="{{ article.guidebook.url }}">
-          <img class="related-guidebook__image" src="{{ article.guidebook.image }}" alt="">
-
-          <div class="related-guidebook__container">
-            <h4 class="related-guidebook__title js-related-guidebook-title">
-              {{ article.guidebook.title }}
-            </h4>
-
-            {{#if article.guidebook.price }}
-              <p class="related-guidebook__heading">
-                {{ article.guidebook.price }}
-              </p>
-            {{/if}}
-
-            <p class="related-guidebook__content js-related-guidebook-content">
-              {{ article.guidebook.content }}
-            </p>
-
-            {{#if article.guidebook.url}}
-              <span class="related-guidebook__link">
-                Visit Shop
-                <i class="icon-chevron-right" aria-hidden="true"></i>
-              </span>
-            {{/if}}
-          </div><!-- .related-guidebook__container -->
-        </a><!-- .related-guidebook -->
-      {{/if}}
-
-      <div class="article-body__content">
-        {{{ article.content.tail }}}
-      </div><!-- .article-body__content -->
-    </div><!-- .article-body -->
+    {{> "components/article_body/article_body"}}
 
     <footer class="article-footer js-article-footer is-narrow">
       <div class="article-post-date js-article-post-date" hidden>
@@ -81,56 +24,10 @@
       </div><!-- .article-post-date -->
 
       <div class="article-footer__top">
-        <div class="social-share social-share--article js-action-sheet">
-          <div class="social-share__item js-action-sheet-item">
-            <button class="social-share__control js-action-sheet-menu-control" title="Share this article on Twitter, Facebook, or email" aria-label="Share this article on Twitter, Facebook, or email" aria-owns="social-share-menu">
-              <svg class="svg-icon svg-icon--dark" viewBox="0 0 13 16" width="13" height="16">
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lp-svg-share-13px"></use>
-              </svg>
-            </button>
-
-            <div class="social-share__menu" id="social-share-menu" aria-hidden="true" hidden>
-              <div class="social-share__menu__inner">
-                <ul>
-                  <li>
-                    <button class="social-share__control js-action-sheet-share-control" data-network="twitter">
-                      <svg class="svg-icon svg-icon--gray" viewBox="0 0 21 21" width="21" height="21">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lp-svg-twitter-21px"></use>
-                      </svg>
-                      <span>Share on Twitter</span>
-                    </button>
-                  </li>
-                  <li>
-                    <button class="social-share__control js-action-sheet-share-control" data-network="facebook">
-                      <svg class="svg-icon svg-icon--gray" viewBox="0 0 21 21" width="21" height="21">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lp-svg-facebook-21px"></use>
-                      </svg>
-                      <span>Share on Facebook</span>
-                    </button>
-                  </li>
-                  {{!-- <li>
-                    <button class="social-share__control js-action-sheet-share-control" data-network="email">
-                      <svg class="svg-icon svg-icon--gray" viewBox="0 0 21 21" width="21" height="21">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lp-svg-email-21px"></use>
-                      </svg>
-                      <span>Share by email</span>
-                    </button>
-                  </li> --}}
-                </ul>
-              </div><!-- .social-share__menu__inner -->
-              <div class="social-share__menu__arrow"></div>
-            </div><!-- .social-share__menu -->
-          </div><!-- .social-share__item -->
-        </div><!-- .social-share -->
+        {{> "components/social/social"}}
 
         {{#if article.categories}}
-          <div class="category-list category-list--article">
-            {{#each article.categories}}
-              <a class="category-list__item" href="{{ this.slug }}">
-                {{ this.name }}
-              </a>
-            {{/each}}
-          </div><!-- .category-list -->
+          {{> "components/category_list/category_list"}}
         {{/if}}
       </div><!-- .article-footer__top -->
     </footer><!-- .article-footer -->
@@ -147,6 +44,7 @@
 
   <div class="ad ad--leaderboard ad--article">
     <div class="ad--leaderboard__container">
+      <div id="adunit-0" class="adunit adunit--leaderboard" data-size-mapping="leaderboard" data-targeting=""></div>
     </div><!-- .container -->
   </div><!-- .ad -->
 </article><!-- .article -->
