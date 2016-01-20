@@ -70,7 +70,7 @@
     }
 
     @media (min-width: $min-720) {
-      width: 15rem;
+      width: 14.2rem;
 
       margin: 0;
     }
@@ -106,14 +106,21 @@
 
       font-size: 2.4rem;
       font-weight: 100;
-      color: #fff;
+      color: rgba(#fff, .38);
+      text-align: left;
 
       user-select: none;
       cursor: pointer;
 
       border: 0;
       background-color: transparent;
+      width: percent(447px, 1155px); // So it doesn't get too close to the logo
       padding: 0;
+    }
+
+    @media (min-width: $min-1290) {
+      text-align: center;
+      width: auto;
     }
 
     &--fade {
@@ -122,7 +129,8 @@
     }
 
     [class*="icon-"] {
-      margin-right: $spacing;
+      color: #fff;
+      margin-right: 1.2rem;
       font-size: 2rem;
 
       transition: margin $animation-speed;
@@ -132,7 +140,7 @@
     &:active,
     &:focus {
       [class*="icon-"] {
-        margin-right: ($spacing / 4) * 3;
+        margin-right: (1.2rem - .3);
       }
     }
 
@@ -142,18 +150,26 @@
   }
 
   &__search-text {
-    transition: opacity $animation-speed;
+    color: #fff;
+    transition: color $animation-speed;
   }
 
-  &__search-beyond,
   &__search:hover &__search-text,
   &__search:active &__search-text,
   &__search:focus &__search-text {
-    opacity: .4;
+    color: rgba(#fff, .38);
   }
 
-  &--narrow &__search {
-    color: $font-color;
+  &--narrow &__search,
+  &--narrow &__search:hover &__search-text,
+  &--narrow &__search:active &__search-text,
+  &--narrow &__search:focus &__search-text {
+    color: rgba($body-color, .38);
+  }
+
+  &--narrow &__search [class*="icon-"],
+  &--narrow &__search-text {
+    color: $body-color;
   }
 
   &__navigation {
@@ -166,7 +182,7 @@
     right: 0;
     bottom: 0;
 
-    @media (min-width: $min-720){
+    @media (min-width: $min-720) {
       display: block;
     }
   }
@@ -227,7 +243,7 @@
   &--narrow &__mobile-search,
   &--narrow &__mobile-menu,
   &--narrow &__mobile-cart {
-    color: $font-color;
+    color: $body-color;
   }
 
   &__mobile-search {
@@ -282,7 +298,7 @@
       &,
       &:before,
       &:after {
-        background-color: $font-color;
+        background-color: $body-color;
       }
     }
   }

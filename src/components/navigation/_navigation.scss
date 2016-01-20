@@ -19,10 +19,10 @@
 
     display: inline-block;
 
-    margin-left: $gutter / 3;
+    margin-left: 1.7rem;
 
     &:not(:last-child) {
-      margin-right: 4rem;
+      margin-right: 1.7rem;
     }
 
     &:first-child {
@@ -38,25 +38,30 @@
       border-bottom: .4rem solid #fff;
     }
 
-    &--user > a {
-      @include button-border;
+    &--user > .navigation__link {
+      border: .1rem solid rgba(#fff, .6);
+      border-radius: 1.7rem;
       line-height: 0;
+      padding: 1.7rem 2rem 1.5rem;
+      transition: background-color $animation-speed, border-color $animation-speed;
 
-      &.avatar {
-        padding: 0;
-        border: none;
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: rgba(#fff, .1);
+        border-color: rgba(#fff, .38);
+        color: #fff;
       }
 
       .navigation--narrow & {
-        @include button-border(#bebebe);
+        border-color: rgba($body-color, .6);
 
-        &:hover {
-          border-color: $color-primary;
-        }
-
-        &.avatar {
-          padding: 0;
-          border: none;
+        &:hover,
+        &:active,
+        &:focus {
+          background-color: rgba($body-color, .02);
+          border-color: rgba($body-color, .15);
+          color: $body-color;
         }
       }
     }
@@ -78,16 +83,25 @@
     &:hover,
     &:active,
     &:focus {
-      color: #eee;
-      transition: color $animation-speed / 3;
+      color: rgba(#fff, .6);
+    }
+  }
+
+  &__item--active &__link {
+    &:hover,
+    &:active,
+    &:focus {
+      color: #fff;
     }
   }
 
   .navigation--narrow &__link {
-    color: $font-color;
+    color: $body-color;
 
-    &:hover {
-      color: $color-primary;
+    &:hover,
+    &:active,
+    &:focus {
+      color: rgba($body-color, .38);
     }
   }
 
