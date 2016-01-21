@@ -265,14 +265,15 @@ export default class ArticleComponent extends Component {
     let nextArticle = new ArticleModel({ url: slug });
 
     nextArticle.fetch().then(() => {
-      this.$newArticle = $(this.template({
-        article: nextArticle.get()
-      }))
+        this.$newArticle = $(this.template({
+          article: nextArticle.get()
+        }))
         .appendTo(".page-container")
         .addClass("is-loading");
 
       // Set the new article element and data to the articles map
       this.articles.set(this.$newArticle[0], nextArticle);
+      nextArticle.set("articleNumber", this.articles.size);
 
       this._addNewArticlesToArray(nextArticle.get("related_articles").articles);
       this._updateNewArticle(nextArticle);
@@ -316,6 +317,7 @@ export default class ArticleComponent extends Component {
     this._setNextArticle();
     this._setArticlePagination(2);
     this._createArticlePagination(this.$newArticle);
+    this._checkIfHistoryShouldBeUpdated();
     this._newArticleLoaded();
   }
 
@@ -387,6 +389,7 @@ export default class ArticleComponent extends Component {
   /**
    * Update data for ads and analytics
    */
+  @publish("reload", "ads")
   _updateData() {
     let article = this.articles.get(this.$activeArticle[0]).get(),
         interests = article.tealium.article.interests,
@@ -430,6 +433,7 @@ export default class ArticleComponent extends Component {
     window.lp.ads.country = article.tealium.article.cd2_Country ? this._slugify(article.tealium.article.cd2_Country) : "";
     window.lp.ads.destination = this._slugify(article.tealium.place.destination);
     window.lp.ads.interest = window.lp.article.interests;
+    window.lp.ads.position = article.articleNumber;
 
     this._updateMetaData(window.lp.article);
   }
@@ -467,12 +471,15 @@ export default class ArticleComponent extends Component {
     $(`meta[property="article:author"]`).attr("content", article.author);
   }
 
-  @publish("reload", "ads")
   _newArticleLoaded() {
     let $slot = this.$newArticle.find(".adunit");
 
     if ($slot.length) {
-      $slot.data("adType", "ajax");
+      $slot.data({
+        adType: "ajax",
+        targeting: null
+      })
+      .removeAttr("data-targeting");
     }
   }
 }

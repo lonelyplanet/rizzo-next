@@ -35,7 +35,7 @@ export default class AdManager {
       setTargeting: this.formatKeywords(this.config),
       namespace: this.config.layers.join("/"),
       sizeMapping: this.config.sizeMapping,
-      collapseEmptyDivs: true,
+      // collapseEmptyDivs: true,
       enableSingleRequest: false,
       afterEachAdLoaded: ($adunit) => {
         this._adCallback.call(this, $adunit);
