@@ -114,7 +114,7 @@
 
       border: 0;
       background-color: transparent;
-      width: percent(447px, 1155px); // So it doesn't get too close to the logo
+      width: percentage(447px / 1155px); // So it doesn't get too close to the logo
       padding: 0;
     }
 
