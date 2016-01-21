@@ -2,7 +2,14 @@
 
 .article-footer {
   @include container;
-  padding-bottom: 10.4rem;
+
+  @include with-layout(static) {
+    padding-bottom: gutter();
+  }
+
+  @media (min-width: $min-600) {
+    padding-bottom: 10.4rem;
+  }
 
   &.is-narrow {
     @include container-static(6);
