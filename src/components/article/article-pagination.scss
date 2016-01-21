@@ -4,25 +4,34 @@
   border-bottom: .1rem solid $color-border;
   border-top: .1rem solid $color-border;
 
+  @media (max-width: $max-600) {
+    padding-bottom: 4.4rem;
+    padding-top: 2.9rem;
+  }
+
   &.is-hidden {
     opacity: 0;
   }
 }
 
+.article-pagination__heading {
+  @include container-padded;
+  color: $light-text-color;
+  font-size: 1.1rem;
+  line-height: 1;
+  text-transform: uppercase;
+
+  @media (max-width: $max-600) {
+    padding-bottom: 1.4rem;
+  }
+
+  @media (min-width: $min-600) {
+    display: none;
+  }
+}
+
 .article-pagination__container {
   @include container;
-
-  @include with-layout(static) {
-    margin-left: -#{gutter-half()};
-    margin-right: -#{gutter-half()};
-  }
-
-  @media (min-width: $min-480) {
-    @include with-layout(static) {
-      margin-left: -#{gutter()};
-      margin-right: -#{gutter()};
-    }
-  }
 
   @media (min-width: $min-600) {
     align-items: stretch;
@@ -43,16 +52,15 @@
 }
 
 .article-pagination__item {
-  color: #2c3642;
+  color: $color-darkblue;
   display: block;
-  font-size: 2.4rem;
+  font-size: 1.6rem;
   font-weight: 300;
-  line-height: (32 / 24);
-  text-align: center;
+  line-height: (20 / 16);
   transition: color ($animation-speed / 2) linear;
 
   @include with-layout(static) {
-    padding: 6.7rem gutter-half() 7.1rem;
+    padding: 1.1rem gutter-half();
   }
 
   @media (min-width: $min-480) {
@@ -63,6 +71,11 @@
   }
 
   @media (min-width: $min-600) {
+    font-size: 2.4rem;
+    line-height: (32 / 24);
+    padding-top: 6.7rem;
+    padding-bottom: 7.1rem;
+    text-align: center;
     width: 50%;
   }
 
@@ -87,12 +100,6 @@
   &:active,
   &:focus {
     color: $color-blue;
-  }
-
-  &:not(:first-child) {
-    @media (max-width: $max-600) {
-      border-top: .1rem solid $color-border;
-    }
   }
 
   &:first-child {
