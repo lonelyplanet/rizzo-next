@@ -127,7 +127,7 @@ $hotels-max-width: 1170;
 
   @media (min-width: $min-720) {
     float: left;
-    width: percent(175, $hotels-form-width);
+    width: percentage(175 / $hotels-form-width);
   }
 
   @media (min-width: $hotels-breakpoint-large-min) {
@@ -136,7 +136,7 @@ $hotels-max-width: 1170;
 
   + .hotels__search__field {
     @media (min-width: $min-720) {
-      margin-left: percent(29, $hotels-form-width);
+      margin-left: percentage(29 / $hotels-form-width);
     }
 
     @media (min-width: $hotels-breakpoint-large-min) {
@@ -198,9 +198,9 @@ $hotels-max-width: 1170;
 
   @media (min-width: $min-720) {
     float: left;
-    margin-left: percent(21, $hotels-form-width);
+    margin-left: percentage(21 / $hotels-form-width);
     max-width: 18rem;
-    width: percent(180, $hotels-form-width);
+    width: percentage(180 / $hotels-form-width);
   }
 
   @media (min-width: $hotels-breakpoint-large-min) {

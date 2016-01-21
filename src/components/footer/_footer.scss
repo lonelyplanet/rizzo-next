@@ -218,8 +218,8 @@ $logo-height: 4rem;
   @media (min-width: $min-960) {
     float: left;
     max-height: 600px;
-    padding-right: percent($gutter, $max-width);
-    width: percent(22rem, $max-width);
+    padding-right: percentage($gutter / $max-width);
+    width: percentage(22rem / $max-width);
   }
 
   &:not(:first-of-type) {
@@ -236,7 +236,7 @@ $logo-height: 4rem;
   @media (min-width: $min-960) {
     float: right;
     padding-right: 0;
-    width: percent(19rem, $max-width);
+    width: percentage(19rem / $max-width);
   }
 }
 

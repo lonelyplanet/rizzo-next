@@ -183,21 +183,21 @@
 
       .stack__article__image {
         // Break the image out of the container; .article needs overflow: hidden
-        margin-left: percent(-15px, 290px);
-        margin-right: percent(-15px, 290px);
+        margin-left: percentage(-15px / 290px);
+        margin-right: percentage(-15px / 290px);
         max-width: none;
-        width: percent(320px, 290px);
+        width: percentage(320px / 290px);
 
         @media(min-width: $min-480) {
-          margin-left: percent(-30px, 420px);
-          margin-right: percent(-30px, 420px);
-          width: percent(480px, 420px);
+          margin-left: percentage(-30px / 420px);
+          margin-right: percentage(-30px / 420px);
+          width: percentage(480px / 420px);
         }
 
         @media(min-width: $min-720) {
-          margin-left: percent(-45px, 630px);
-          margin-right: percent(-45px, 630px);
-          width: percent(720px, 630px);
+          margin-left: percentage(-45px / 630px);
+          margin-right: percentage(-45px / 630px);
+          width: percentage(720px / 630px);
         }
 
         @media(min-width: $min-840) {

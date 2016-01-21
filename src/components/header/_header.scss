@@ -96,7 +96,7 @@
       top: 50%;
       user-select: none;
       white-space: nowrap;
-      width: percent(447px, 1155px); // So it doesn't get too close to the logo
+      width: percentage(447px / 1155px); // So it doesn't get too close to the logo
     }
 
     @media (min-width: $min-1290) {
