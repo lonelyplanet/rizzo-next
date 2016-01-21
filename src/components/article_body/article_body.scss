@@ -57,7 +57,7 @@
 
     p:not(.copy--feature),
     .copy--body__list {
-      color: $dark-blue;
+      color: $color-darkblue;
       font-family: $miller-daily;
       font-size: 1.6rem;
       line-height: (26 / 16);
@@ -111,7 +111,7 @@
     p:not(.copy--caption) > a:not([data-callout-slug]),
     .client-body a {
       @include underlined-link(
-        $link-color: $dark-blue,
+        $link-color: $color-darkblue,
         $link-color-active: $color-blue
       );
     }
@@ -254,7 +254,7 @@
   a[data-callout-slug] {
     @media(max-width: $max-1200) {
       @include underlined-link(
-        $link-color: $dark-blue,
+        $link-color: $color-darkblue,
         $link-color-active: $color-blue
       );
     }
