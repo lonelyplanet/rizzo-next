@@ -36,5 +36,7 @@ export default function({ name, data } = {}) {
     typeof window.utag !== "undefined" && 
     typeof window.utag.link === "function") {
     window.utag.link(utagEvent);
+  } else {
+    console.log(`utag: not loaded yet`);
   }
 };

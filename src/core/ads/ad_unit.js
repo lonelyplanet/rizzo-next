@@ -2,7 +2,7 @@ export default class AdUnit {
   constructor($target) {
     this.$target = $target;
     this.$iframe = $target.find("iframe");
-    this._init();
+    this.initialize();
   }
 
   initialize() {
@@ -32,7 +32,7 @@ export default class AdUnit {
   }
 
   getType() {
-    let patterns = /(leaderboard|mpu-bottomboard|mpu|trafficDriver|adSense|sponsorTile)/,
+    let patterns = /(leaderboard|leaderboar\-responsive|mpu-bottomboard|mpu|trafficDriver|adSense|sponsorTile)/,
         matches = this.$target.attr("class").match(patterns);
 
     return matches ? matches[1] : null;
