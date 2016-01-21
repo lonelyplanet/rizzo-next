@@ -52,12 +52,6 @@ $small-breakpoint: 320;
 
       max-width: 80%;
     }
-
-    //@include p-props($mobile-breakpoint);
-    @include respond-to($mobile-breakpoint) {
-
-      //max-width: 790px;
-    }
   }
 
   &__more {
