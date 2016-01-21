@@ -40,36 +40,6 @@
     border-bottom-color: $color-gray;
   }
 
-  &__logo {
-    display: block;
-    fill: $color-white;
-    height: 100%;
-    margin: 0 auto;
-    position: relative;
-    top: 0;
-    width: 7.2rem;
-    z-index: z("default");
-
-    @media (min-width: $min-720) {
-      margin: 0;
-      width: 14.2rem;
-    }
-
-    @media (min-width: $min-1080) {
-      margin: 0 auto;
-    }
-
-    svg {
-      display: block;
-      height: 100%;
-      width: 100%;
-    }
-  }
-
-  &--narrow &__logo {
-    fill: $lpblue;
-  }
-
   &__search {
     display: none;
 
