@@ -43,23 +43,24 @@
   padding-bottom: 1.8rem;
   padding-top: 1.8rem;
 
-  &--sponsor-logo, &--sponsor-logo-masthead {
-    width: 15rem;
-    height: 12rem;
+  &--sponsor-logo,
+  &--sponsor-logo-masthead {
     display: inline-block;
-    margin-left: $gutter * 2;
+    height: 12rem;
+    margin-left: ($gutter * 2);
+    width: 15rem;
   }
 
   &--sponsor-logo-masthead {
+    bottom: 0;
     position: absolute;
     right: 0;
-    bottom: 0;
 
     @media (max-width: $max-720) {
       left: 0;
-      right: 0;
       margin-left: auto;
       margin-right: auto;
+      right: 0;
     }
   }
 

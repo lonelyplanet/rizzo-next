@@ -12,8 +12,8 @@ $notification-badge-size: 1.7rem;
   height: $notification-badge-size;
   line-height: ($notification-badge-size + .1);
   text-align: center;
-  width: $notification-badge-size;
   user-select: none;
+  width: $notification-badge-size;
 
   // Use when you need it directly on a word, aka
   // <span class="notification-badge__wrap">Messages
@@ -41,7 +41,7 @@ $notification-badge-size: 1.7rem;
 
 .notification-badge--user,
 .notification-badge--user-inline {
-  border: 3px solid #fff;
+  border: .3rem solid #fff;
   position: absolute;
 }
 

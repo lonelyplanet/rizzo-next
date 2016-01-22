@@ -24,11 +24,11 @@ $author: (
 /// ----------------------------------------------------------------------------
 
 .author {
+  display: inline-block;
   font-size: 1.4rem;
   letter-spacing: .01rem;
   margin-left: auto;
   margin-right: auto;
-  display: inline-block;
 
   a {
     display: inline-block;

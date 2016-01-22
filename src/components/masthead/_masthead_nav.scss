@@ -9,69 +9,69 @@
 
   &__container {
     @include container-padded();
-    border-top: .1rem solid rgba(255,255,255, .3);
+    border-top: .1rem solid rgba(#fff, .3);
     height: 6rem;
   }
+}
 
-  &__link {
-    color: #fff;
-    font-size: 1.2rem;
+.masthead_nav__link {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 6rem;
+  text-transform: uppercase;
+
+  [class*="icon-chevron"] {
+    backface-visibility: hidden;
+    display: inline-block;
+    font-size: 6px;
     font-weight: 600;
-    line-height: 6rem;
-    text-transform: uppercase;
+    line-height: 1.6;
+    transition: transform 500ms;
+    vertical-align: 20%;
+  }
+}
 
-    &:first-child {
-      float: left;
+.masthead_nav__link:first-child {
+  float: left;
 
-      &:hover,
-      &:active,
-      &:focus {
-        @media (min-width: $min-960) {
-          [class*="icon-chevron"] {
-            transform: translateX(.4rem);
-          }
-        }
-      }
-
+  &:hover,
+  &:active,
+  &:focus {
+    @media (min-width: $min-960) {
       [class*="icon-chevron"] {
-        margin-right: .4rem;
-
-        @media (min-width: $min-960) {
-          margin-right: .8rem;
-        }
+        transform: translateX(.4rem);
       }
     }
+  }
 
-    &:last-child {
-      float: right;
+  [class*="icon-chevron"] {
+    margin-right: .4rem;
 
-      &:hover,
-      &:active,
-      &:focus {
-        @media (min-width: $min-960) {
-          [class*="icon-chevron"] {
-            transform: translateX(-.4rem);
-          }
-        }
-      }
+    @media (min-width: $min-960) {
+      margin-right: .8rem;
+    }
+  }
+}
 
+.masthead_nav__link:last-child {
+  float: right;
+
+  &:hover,
+  &:active,
+  &:focus {
+    @media (min-width: $min-960) {
       [class*="icon-chevron"] {
-        margin-left: .4rem;
-
-        @media (min-width: $min-960) {
-          margin-left: .8rem;
-        }
+        transform: translateX(-.4rem);
       }
     }
+  }
 
-    [class*="icon-chevron"] {
-      backface-visibility: hidden;
-      display: inline-block;
-      font-size: 6px;
-      font-weight: 600;
-      line-height: 1.6;
-      transition: transform 500ms;
-      vertical-align: 20%;
+  [class*="icon-chevron"] {
+    margin-left: .4rem;
+
+    @media (min-width: $min-960) {
+      margin-left: .8rem;
     }
   }
 }

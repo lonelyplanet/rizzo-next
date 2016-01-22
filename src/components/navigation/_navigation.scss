@@ -107,13 +107,13 @@
     $size: 1.7rem;
     background: #dc221a;
     border-radius: 50%;
-    box-shadow: 0 .1rem .2rem rgba(0,0,0, .2);
+    box-shadow: 0 .1rem .2rem rgba(#000, .2);
     color: #fff;
     font-family: $benton-sans;
     font-size: 1.3rem;
     font-weight: 600;
     height: $size;
-    line-height: 13px;
+    line-height: 1;
     margin-top: -($size);
     position: absolute;
     right: -($size / 3);
@@ -133,7 +133,7 @@
   $padding-top: 0;
   @include dropdown-menu($top, $left, $width, $margin-left, $padding-top);
 
-  &:before {
+  &::before {
     @include dropdown-menu-arrow;
   }
 
@@ -141,18 +141,19 @@
   // Make sure it works at large as well though
   .navigation__item:last-child & {
     @media (max-width: $max-1530) {
-      &:before {
-        left: auto;
-        right: 1.6rem;
-      }
-
       left: auto;
       margin-left: 0;
       right: 0;
+
+      &::before {
+        left: auto;
+        right: 1.6rem;
+      }
     }
   }
 
-  &--visible, .navigation__item:hover & {
+  &--visible,
+  .navigation__item:hover & {
     @include dropdown-menu-visible;
   }
 
@@ -176,7 +177,7 @@
       border-top: .1rem solid #f1f4fb;
     }
 
-    &--current:before {
+    &--current::before {
       background-color: $color-red;
       border-radius: 100%;
       bottom: 0;
@@ -201,11 +202,11 @@
     position: relative;
   }
 
-  &__item--current &__link:hover:after {
+  &__item--current &__link:hover::after {
     background-color: transparent;
   }
 
-  &__link:after {
+  &__link::after {
     background-color: transparent;
     content: "";
     height: calc(100% + .2rem);
@@ -218,7 +219,7 @@
     z-index: -1;
   }
 
-  &__link:hover:after {
+  &__link:hover::after {
     background-color: #f4f5f8;
   }
 
@@ -232,7 +233,7 @@
 }
 
 .sub-navigation-feature {
-  border-bottom: 1px solid #e1e3e7;
+  border-bottom: .1rem solid #e1e3e7;
   display: block;
   overflow: hidden;
   padding: $gutter $gutter 2rem;

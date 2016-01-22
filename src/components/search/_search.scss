@@ -28,7 +28,7 @@
       height: $header-height;
     }
 
-    &:after {
+    &::after {
       @media (max-width: $max-720) {
         $offset: ($header-height-mobile / 2 + .4rem);
         @include fade-edge("right", $offset);
@@ -90,7 +90,7 @@
       top: -.4rem;
     }
 
-    &:before {
+    &::before {
       font-size: 2rem;
     }
   }
@@ -124,7 +124,7 @@
       color: $color-primary;
     }
 
-    &:before {
+    &::before {
       font-size: 1.8rem;
 
       @media (min-width: $min-720) {

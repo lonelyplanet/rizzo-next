@@ -6,8 +6,8 @@
   height: 100vh;
   max-width: 75vw;
   overflow: hidden;
-  overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
   padding: $gutter;
   position: fixed;
   right: 0;
@@ -42,7 +42,7 @@
     top: 1.5rem;
     width: $size;
 
-    &:before {
+    &::before {
       bottom: 0;
       left: 0;
       position: absolute;

@@ -8,7 +8,7 @@
   $padding-top: 0;
   @include dropdown-menu($top, $left, $width, $margin-left, $padding-top);
 
-  &:before {
+  &::before {
     @include dropdown-menu-arrow;
   }
 
@@ -21,7 +21,7 @@
     padding-top: 2.8rem;
 
     .mobile-sub-navigation & {
-      padding: 0
+      padding: 0;
     }
   }
 
@@ -46,7 +46,7 @@
       border-top: .1rem solid #f1f4fb;
     }
 
-    &--current:before {
+    &--current::before {
       background-color: $color-red;
       border-radius: 100%;
       bottom: 0;
@@ -76,13 +76,13 @@
     }
   }
 
-  &__item--current &__link:hover:after,
-  &__item--current &__link:active:after,
-  &__item--current &__link:focus:after {
+  &__item--current &__link:hover::after,
+  &__item--current &__link:active::after,
+  &__item--current &__link:focus::after {
     background-color: transparent;
   }
 
-  &__link:after {
+  &__link::after {
     background-color: transparent;
     content: "";
     height: calc(100% + .2rem);
@@ -95,9 +95,9 @@
     z-index: -1;
   }
 
-  &__link:hover:after,
-  &__link:active:after,
-  &__link:focus:after {
+  &__link:hover::after,
+  &__link:active::after,
+  &__link:focus::after {
     background-color: #f4f5f8;
   }
 
@@ -111,20 +111,20 @@
 
   .navigation__item:last-child & {
     @media (max-width: $max-1530) {
-      &:before {
-        left: auto;
-        right: 1.6rem;
-      }
-
       left: auto;
       margin-left: 0;
       right: 0;
+
+      &::before {
+        left: auto;
+        right: 1.6rem;
+      }
     }
   }
 }
 
 .sub-navigation-feature {
-  border-bottom: 1px solid #e1e3e7;
+  border-bottom: .1rem solid #e1e3e7;
   display: block;
   overflow: hidden;
   padding: $gutter $gutter 2rem;

@@ -22,11 +22,11 @@
 
 .guidebook__blurb {
   color: $color-text;
-  width: 90%;
-  margin: 0 auto;
   font-size: 1.6rem;
   font-weight: $font-weight-medium;
   line-height: (24 / 16);
+  margin: 0 auto;
+  width: 90%;
 
   @media (min-width: $min-720) {
     font-size: 1.8rem;
@@ -188,7 +188,7 @@
     margin-left: -5rem;
   }
 
- .guidebook__pictures:hover & {
+  .guidebook__pictures:hover & {
     @media (min-width: $min-960) {
       transform: translate(4rem, 0) rotateZ(-1deg);
     }
