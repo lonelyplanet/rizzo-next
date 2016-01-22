@@ -22,7 +22,7 @@ export default class AdUnit {
   }
 
   isEmpty() {
-    if (this.$target.css("display") === "none") {
+    if (this.$target.css("display") === "none" || !$.trim(this.$target.html())) {
       return true;
     }
 
@@ -32,7 +32,7 @@ export default class AdUnit {
   }
 
   getType() {
-    let patterns = /(leaderboard|leaderboar\-responsive|mpu-bottomboard|mpu|trafficDriver|adSense|sponsorTile)/,
+    let patterns = /(leaderboard|leaderboard\-responsive|mpu-bottomboard|mpu|trafficDriver|adSense|sponsorTile)/,
         matches = this.$target.attr("class").match(patterns);
 
     return matches ? matches[1] : null;

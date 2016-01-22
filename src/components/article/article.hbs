@@ -14,7 +14,10 @@
       </p>
     </header><!-- .article-header -->
     
-    {{> "components/author/author"}}
+    <div class="article__attribution">
+      {{> "components/author/author"}}
+      <div id="sponsor-logo" class="adunit adunit--sponsor-logo" data-size-mapping="sponsor-logo" data-targeting="{ position: 'article-attribution' }" style="display: none;"></div>
+    </div>
 
     {{> "components/article_body/article_body"}}
 

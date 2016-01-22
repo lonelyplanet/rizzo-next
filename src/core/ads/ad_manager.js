@@ -19,7 +19,8 @@ export default class AdManager {
       adTnm: "",
       continent: "",
       country: "",
-      destination: ""
+      destination: "",
+      city: ""
     };
 
     this.config = $.extend({}, this.defaultConfig, config);
@@ -35,8 +36,8 @@ export default class AdManager {
       setTargeting: this.formatKeywords(this.config),
       namespace: this.config.layers.join("/"),
       sizeMapping: this.config.sizeMapping,
-      // collapseEmptyDivs: true,
       enableSingleRequest: false,
+      collapseEmptyDivs: true,
       afterEachAdLoaded: ($adunit) => {
         this._adCallback.call(this, $adunit);
       }
@@ -82,6 +83,7 @@ export default class AdManager {
       thm: config.adThm,
       ctt: this._slugify(config.continent),
       cnty: this._slugify(config.country),
+      city: this._slugify(config.city),
       dest: this._slugify(config.destination),
       destination: this._slugify(config.destination)
     };
