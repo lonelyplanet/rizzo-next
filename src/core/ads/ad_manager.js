@@ -44,6 +44,7 @@ export default class AdManager {
     };
 
     this.load();
+    return this;
   }
 
   @subscribe("reload", "ads")
