@@ -7,11 +7,11 @@
 /// Sass's `map-get` method.
 ///
 /// @usage
-/// `get($map-name, 'setting-name')`
+/// `get($map-name, "setting-name")`
 /// ----------------------------------------------------------------------------
 
 $avatar: (
-  'size': 4rem
+  "size": 4rem
 );
 
 
@@ -26,11 +26,11 @@ $avatar: (
   background-color: #fff;
   border-radius: 100%;
   display: inline-block;
-  height: get($avatar, 'size');
-  max-width: get($avatar, 'size');
+  height: get($avatar, "size");
+  max-width: get($avatar, "size");
   position: relative;
   vertical-align: middle;
-  width: get($avatar, 'size');
+  width: get($avatar, "size");
 
   // If the avatar component isn't an `img`
   img {
@@ -52,7 +52,7 @@ $avatar: (
 // Used for when the avatar belongs to an author, either in an article or love-letter component
 .avatar--author {
   height: auto;
-  max-width: get($avatar, 'size');
+  max-width: get($avatar, "size");
   width: 12vw;
 }
 
@@ -60,7 +60,7 @@ $avatar: (
 .avatar--large {
   @media (min-width: $min-600) {
     max-width: none;
-    width: (2 * get($avatar, 'size'));
+    width: (2 * get($avatar, "size"));
   }
 }
 
@@ -72,6 +72,6 @@ $avatar: (
 
 // Used for the logged in user's avatar in the site's navigation
 .avatar--navigation {
-  top: -.4rem;
   position: relative;
+  top: -.4rem;
 }

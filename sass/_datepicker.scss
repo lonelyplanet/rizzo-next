@@ -87,7 +87,7 @@ $picker-width: 32rem;
 
   .no-background-size &::after,
   .no-js &::after {
-    content: '\2039';
+    content: "\2039";
   }
 }
 
@@ -97,7 +97,7 @@ $picker-width: 32rem;
 
   .no-background-size &::after,
   .no-js &::after {
-    content: '\203a';
+    content: "\203a";
   }
 }
 
@@ -177,7 +177,7 @@ $picker-width: 32rem;
 // Datepickers with an arrow above (icon classes to be defined in JS)
 // -----------------------------------------------------------------------------
 
-.picker__holder[class*='arrow-up'] {
+.picker__holder[class*="arrow-up"] {
   .picker--opened & {
     @include css-arrow-central(top, $size: 3rem);
 
@@ -211,10 +211,10 @@ $picker-width: 32rem;
 // This class should be added in the js when the datepicker is created
 //
 // $input_datepicker.pickadate({
-//   klass: {
+//   class: {
 //     picker: "picker picker__theme-blue",
-//     navPrev: 'picker__nav--prev icon--white',
-//     navNext: 'picker__nav--next icon--white'
+//     navPrev: "picker__nav--prev icon--white",
+//     navNext: "picker__nav--next icon--white"
 //   }
 // });
 //

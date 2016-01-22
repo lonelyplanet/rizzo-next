@@ -7,13 +7,13 @@
 /// Sass's `map-get` method.
 ///
 /// @usage
-/// `get($map-name, 'setting-name')`
+/// `get($map-name, "setting-name")`
 /// ----------------------------------------------------------------------------
 
 $category-list: (
-  'background-color': #f0f0f0,
-  'margin-left': .4rem,
-  'margin-top': .9rem
+  "background-color": #f0f0f0,
+  "margin-left": .4rem,
+  "margin-top": .9rem
 );
 
 
@@ -25,8 +25,8 @@ $category-list: (
 /// ----------------------------------------------------------------------------
 
 .category-list {
-  margin-left: -#{get($category-list, 'margin-left')}; // Negative margin to offset first item's margin
-  margin-top: -#{get($category-list, 'margin-top')}; // Negative margin to offset first row of items' margin
+  margin-left: -#{get($category-list, "margin-left")}; // Negative margin to offset first item's margin
+  margin-top: -#{get($category-list, "margin-top")}; // Negative margin to offset first row of items' margin
 }
 
 
@@ -56,14 +56,14 @@ $category-list: (
 
 // Each category in the list; it should be an `a`
 .category-list__item {
-  background-color: get($category-list, 'background-color');
+  background-color: get($category-list, "background-color");
   border-radius: .4rem;
   color: #333;
   display: inline-block;
   font-size: 1.2rem;
   line-height: 1;
-  margin-left: get($category-list, 'margin-left');
-  margin-top: get($category-list, 'margin-top');
+  margin-left: get($category-list, "margin-left");
+  margin-top: get($category-list, "margin-top");
   max-height: 3rem;
   padding: 1rem 1.2rem .8rem;
   transition: background-color $animation-speed ease;
@@ -71,6 +71,6 @@ $category-list: (
   &:hover,
   &:active,
   &:focus {
-    background-color: darken(get($category-list, 'background-color'), 3);
+    background-color: darken(get($category-list, "background-color"), 3);
   }
 }

@@ -8,9 +8,9 @@ $fad-column-width: (100% / 3);
 $item-border-color: #f1f4fb;
 
 .food-and-drink {
-  position: relative;
-  margin-bottom: $spacing;
   font-weight: $font-weight-medium;
+  margin-bottom: $spacing;
+  position: relative;
 
   @media (min-width: $min-960) {
     min-height: 400px;
@@ -28,19 +28,19 @@ $item-border-color: #f1f4fb;
     display: none;
 
     @media (min-width: $min-480) {
+      bottom: 0;
       display: block;
+      left: 0;
+      margin-bottom: auto;
+      margin-top: auto;
       position: absolute;
       top: 0;
-      left: 0;
-      bottom: 0;
       width: $fad-column-width;
-      margin-top: auto;
-      margin-bottom: auto;
       z-index: -1;
     }
 
     @media (min-width: $min-1410) {
-      top: -5rem
+      top: -5rem;
     }
   }
 
@@ -53,8 +53,8 @@ $item-border-color: #f1f4fb;
   }
 
   &__list {
-    margin-bottom: ($spacing * 4);
     list-style: none;
+    margin-bottom: ($spacing * 4);
 
     @media (min-width: $min-960) {
       overflow: hidden;
@@ -65,8 +65,8 @@ $item-border-color: #f1f4fb;
     border-bottom: .1rem solid $item-border-color;
 
     @media (min-width: $min-960) {
-      width: calc(50% - #{$gutter});
       float: left;
+      width: calc(50% - #{$gutter});
     }
 
     &:first-child {
@@ -94,30 +94,30 @@ $item-border-color: #f1f4fb;
     }
 
     a {
-     display: block;
-     padding-top: 2.1rem;
-     padding-bottom: 1.8rem;
-     transition: transform $animation-speed;
+      display: block;
+      padding-bottom: 1.8rem;
+      padding-top: 2.1rem;
+      transition: transform $animation-speed;
     }
 
     &:hover a {
-     transform: translateX(1rem);
+      transform: translateX(1rem);
     }
   }
 
 
   &__title {
     @include link-transition();
+    color: $fad-color;
     font-size: 1.4rem;
     font-weight: 700;
-    color: $fad-color;
     line-height: 1;
+    overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    overflow: hidden;
   }
 
-  &__name{
+  &__name {
     color: $color-darkblue;
   }
 
@@ -126,11 +126,11 @@ $item-border-color: #f1f4fb;
   }
 
   &__categories {
-    margin-top: .4rem;
+    color: $fad-color;
     font-size: 1.1rem;
     font-weight: 700;
-    color: $fad-color;
     line-height: 1;
+    margin-top: .4rem;
     text-transform: uppercase;
   }
 

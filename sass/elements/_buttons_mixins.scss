@@ -1,4 +1,4 @@
-@mixin button($type: '') {
+@mixin button($type: "") {
   appearance: none;
   backface-visibility: hidden;
   border: 0;
@@ -18,12 +18,12 @@
   vertical-align: middle;
   white-space: nowrap;
 
-  @if $type == '' {
+  @if $type == "" {
     background-color: $color-primary;
     color: #fff;
   }
 
-  @if $type == 'inverse' {
+  @if $type == "inverse" {
     background-color: #fff;
     color: $color-primary;
   }
@@ -31,7 +31,7 @@
   [class*="icon-"] {
     display: inline-block;
     font-size: 6px;
-    margin-left: 6px;
+    margin-left: .6rem;
     transform: translate3d(0, 0, 0);
     transition: transform 500ms;
     vertical-align: 20%;
@@ -41,17 +41,17 @@
   &:focus {
     text-decoration: none;
 
-    @if $type == '' {
+    @if $type == "" {
       background-color: $color-primary + 15;
       color: #fff;
     }
 
-    @if $type == 'inverse' {
+    @if $type == "inverse" {
       background-color: #fff;
       color: $color-primary + 30;
     }
 
-    [class*='icon-'] {
+    [class*="icon-"] {
       transform: translate3d(-.4rem, 0, 0);
     }
 

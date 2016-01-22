@@ -1,18 +1,18 @@
 @import "rizzo/app/assets/stylesheets/rizzo_next/mixins";
 
 .hamburger-menu {
+  appearance: none;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  height: 50px;
+  outline: none;
+  padding: 0;
   position: relative;
   top: 15px;
-  z-index: 2;
+  transition: transform 400ms ease;
   width: 50px;
-  height: 50px;
-  padding: 0;
-  border: 0;
-  background-color: transparent;
-  transition: transform .4s ease;
-  outline: none;
-  cursor: pointer;
-  appearance: none;
+  z-index: 2;
 
   @include respond-to($mobile-breakpoint) {
     display: none;
@@ -26,8 +26,8 @@
 
 .hamburger-menu__svg__toggle {
   cursor: pointer;
-  pointer-events: all;
   fill: #fff;
+  pointer-events: all;
 }
 
 .navigation--narrow .hamburger-menu__svg__toggle {
@@ -36,9 +36,9 @@
 
 .hamburger-menu__svg__toggle__bar {
   opacity: 1;
-  transition: transform .4s ease-in-out, opacity .2s ease-in-out;
   transform: rotate(0) translateY(0) translateX(0);
   transform-origin: 20px 10px;
+  transition: transform 400ms ease-in-out, opacity 200ms ease-in-out;
 }
 
 .hamburger-menu__svg__toggle__bar:nth-of-type(1) {

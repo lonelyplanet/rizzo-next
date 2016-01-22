@@ -4,22 +4,20 @@ $mobile-breakpoint: 717px;
 $square-size: 220px;
 $gutter: 30px;
 $fluid-max: 427px;
-$fluid-min: $fluid-max + 1;
+$fluid-min: ($fluid-max + 1);
 $desktop-size: 1170px;
-// When all 9 cards are up
-$max-card-width: 1395px;
+$max-card-width: 1395px; // When all 9 cards are up
 
-/**************************************/
-/********** helper functions **********/
-/**************************************/
+// -----------------------------------------------------------------------------
+// Helper functions
+// -----------------------------------------------------------------------------
 
 // column size should be half of the blueprint-size
 // 2 and 4 cards should show up in a single row
 @function calculate-columns($blueprint-size, $card-count) {
   @if $card-count == 2 or $card-count == 4 {
     @return $card-count;
-  }
-  @else {
+  } @else {
     @return $blueprint-size / 2;
   }
 }
@@ -28,8 +26,7 @@ $max-card-width: 1395px;
 @function determine-parity($card-count) {
   @if $card-count % 2 == 0 {
     @return "even";
-  }
-  @else {
+  } @else {
     @return "odd";
   }
 }
@@ -38,8 +35,7 @@ $max-card-width: 1395px;
 @function calculate-first-square-size($parity) {
   @if $parity == "odd" {
     @return $square-size * 2;
-  }
-  @else {
+  } @else {
     @return $square-size;
   }
 }
@@ -50,15 +46,14 @@ $max-card-width: 1395px;
 @function calculate-blueprint-size($parity, $card-count) {
   @if $parity == "odd" {
     @return $card-count + 3;
-  }
-  @else {
+  } @else {
     @return $card-count;
   }
 }
 
-/***********************************/
-/********** helper mixins **********/
-/***********************************/
+// -----------------------------------------------------------------------------
+// Helper mixins
+// -----------------------------------------------------------------------------
 
 // outputs a media query dynamicaly
 // for each whole quotient of blueprint
@@ -86,26 +81,26 @@ $max-card-width: 1395px;
 // outputs distinct styles for all card number permutations 1-9
 @mixin generate-style-permutations($card-count, $column-count, $square-size, $first-square-dimension, $g, $parity, $fluid-max) {
   .interests__cards--#{$card-count} {
-    width: $column-count * $square-size;
+    width: ($column-count * $square-size);
 
     .interests__card {
       &:first-child {
-        width: $first-square-dimension;
         height: $first-square-dimension;
+        width: $first-square-dimension;
 
         .interests__card--inner {
-          width: $first-square-dimension - $g;
-          height: $first-square-dimension - $g;
+          height: ($first-square-dimension - $g);
+          width: ($first-square-dimension - $g);
 
           @if $parity == "odd" {
             .interests__card__link {
-              text-transform: capitalize;
-              left: $gutter;
               bottom: $gutter;
-              right: $gutter;
               font-size: 3.6rem;
+              left: $gutter;
               line-height: 1.5;
+              right: $gutter;
               text-align: left;
+              text-transform: capitalize;
             }
           }
         }
@@ -114,41 +109,40 @@ $max-card-width: 1395px;
 
     @media screen and (max-width: $fluid-max) {
       .interests__card {
-        width: 50%;
         height: auto;
-        margin-bottom: 2px;
+        margin-bottom: .2rem;
+        width: 50%;
 
         &:first-child {
           @if $parity == "odd" {
+            height: auto;
             width: 100%;
-            height: auto;
 
             .interests__card--inner {
+              height: 100%;
               width: 100%;
-              height: 100%;
             }
-          }
-          @else {
-            width: 50%;
+          } @else {
             height: auto;
+            width: 50%;
 
             .interests__card--inner {
-              margin-right: 1px;
-              width: calc(100% - 1px);
               height: 100%;
+              margin-right: .1rem;
+              width: calc(100% - 1px);
             }
           }
         }
 
         .interests__card--inner {
-          width: 100%;
           height: 100%;
           padding-bottom: 100%;
+          width: 100%;
         }
 
         &:nth-child(#{ if($parity == "odd", "even", "odd")}) {
           .interests__card--inner {
-            margin-right: 1px;
+            margin-right: .1rem;
             width: calc(100% - 1px);
           }
         }
@@ -157,9 +151,9 @@ $max-card-width: 1395px;
   }
 }
 
-/******************************************/
-/********** BEM component styles **********/
-/******************************************/
+// -----------------------------------------------------------------------------
+// BEM component styles
+// -----------------------------------------------------------------------------
 
 .interests {
   margin-bottom: $gutter;
@@ -171,7 +165,6 @@ $max-card-width: 1395px;
 
 .interests__cards {
   margin: 0 auto;
-
   overflow: hidden;
 
   &--9 {
@@ -180,79 +173,63 @@ $max-card-width: 1395px;
     }
   }
 
-
   .interests__card {
     float: left;
-
-    width: $square-size;
     height: $square-size;
-
     overflow: hidden;
-
-    .interests__card--inner {
-      position: relative;
-
-      width: $square-size - $gutter;
-      height: $square-size - $gutter;
-
-      background: {
-        color: #67747c;
-        position: 0;
-        size: cover;
-      }
-
-      &:before {
-        display: block;
-        content: "";
-
-        position: absolute;
-
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-
-        background: linear-gradient(to top, rgba(0, 0, 0, 0.4) 0%, transparent 32%);
-      }
-
-      .interests__card__bottom {
-        height: 4rem;
-
-        position: absolute;
-        z-index: 1;
-
-        left: 0;
-        bottom: 1rem;
-        right: 0;
-
-        padding-top: 1rem;
-        border-top: .1rem solid rgba(#fff, .6);
-        display: table;
-        text-align: center;
-        width: 90%;
-        margin: 0 auto;
-      }
-
-      .interests__card__link {
-        display: table-cell;
-        vertical-align: middle;
-        text-align: center;
-
-        font-size: 1.2rem;
-        font-weight: 600;
-        color: #fff;
-
-        line-height: 1.5rem;
-        text-align: center;
-        text-transform: uppercase;
-      }
-    }
+    width: $square-size;
 
     @include respond-to($fluid-min) {
       transition: transform $animation-speed;
 
       &:hover {
         transform: translateY(-.5rem);
+      }
+    }
+
+    .interests__card--inner {
+      background-color: #67747c;
+      background-position: 0;
+      background-size: cover;
+      height: $square-size - $gutter;
+      position: relative;
+      width: $square-size - $gutter;
+
+      &::before {
+        background: linear-gradient(to top, rgba(#000, .4) 0%, rgba(#000, 0) 32%);
+        bottom: 0;
+        content: "";
+        display: block;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+
+      .interests__card__bottom {
+        border-top: .1rem solid rgba(#fff, .6);
+        bottom: 1rem;
+        display: table;
+        height: 4rem;
+        left: 0;
+        margin: 0 auto;
+        padding-top: 1rem;
+        position: absolute;
+        right: 0;
+        text-align: center;
+        width: 90%;
+        z-index: 1;
+      }
+
+      .interests__card__link {
+        color: #fff;
+        display: table-cell;
+        font-size: 1.2rem;
+        font-weight: 600;
+        line-height: (15 / 12);
+        text-align: center;
+        text-transform: uppercase;
+        vertical-align: middle;
       }
     }
   }
@@ -283,28 +260,28 @@ $max-card-width: 1395px;
   );
 }
 
-/**************************************/
-/*********  FLUID STYLES  *************/
-/**************************************/
+// -----------------------------------------------------------------------------
+// Fluid styles
+// -----------------------------------------------------------------------------
 
 @media screen and (max-width: $fluid-max) {
   .interests .interests__cards {
-    width: calc(100% - 2px);
-    margin: 0 auto;
     font-size: 0;
+    margin: 0 auto;
     text-align: center;
+    width: calc(100% - 2px);
 
     .interests__card {
-      float: none;
       display: inline-block;
+      float: none;
     }
   }
 }
 
 @include respond-to($fluid-min) {
   .interests__card--inner {
-    top: 50%;
     left: 50%;
+    top: 50%;
     transform: translate(-50%, -50%);
   }
 }

@@ -2,8 +2,8 @@
 
 .article-loading {
   opacity: 1;
-  padding-top: gutter();
   padding-bottom: gutter();
+  padding-top: gutter();
   text-align: center;
   transition: opacity $animation-speed ease;
 

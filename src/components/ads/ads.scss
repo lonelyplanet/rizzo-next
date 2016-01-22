@@ -9,23 +9,23 @@
 .ad--mpu {
   height: 25rem;
   width: 30rem;
-}
 
-.ad--mpu.ad--article {
-  @media (max-width: $max-600) {
-    display: none !important;
-  }
+  &.ad--article {
+    @media (max-width: $max-600) {
+      display: none !important;
+    }
 
-  @media (min-width: $min-600) {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 7.7rem;
-  }
+    @media (min-width: $min-600) {
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 7.7rem;
+    }
 
-  @media (min-width: $min-1350) {
-    position: absolute;
-    right: 0;
-    top: auto;
+    @media (min-width: $min-1350) {
+      position: absolute;
+      right: 0;
+      top: auto;
+    }
   }
 }
 

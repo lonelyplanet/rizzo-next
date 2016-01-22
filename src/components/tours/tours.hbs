@@ -7,18 +7,18 @@
         <a class="tour" href="{{url}}">
           <div class="tour__imagery">
             <figure>
-              <div class="tour__imagery__image" style="background-image: url({{image}})"></div>
+              <div class="tour__image" style="background-image: url({{image}})"></div>
 
-              <figcaption class="tour__imagery__caption">
-                <span class="tour__imagery__caption__price">{{price}}</span>
-                <span class="tour__imagery__caption__type">{{caption}}</span>
+              <figcaption class="tour__caption">
+                <span class="tour__price">{{price}}</span>
+                <span class="tour__type">{{caption}}</span>
               </figcaption>
             </figure>
           </div>
 
           <div class="tour__description">
-            <h3 class="tour__description__title">{{title}}</h3>
-            <p class="tour__description__blurb">{{{blurb}}}</p>
+            <h3 class="tour__title">{{title}}</h3>
+            <p class="tour__blurb js-tour-blurb">{{{blurb}}}</p>
           </div>
         </a>
       {{/each}}
@@ -27,7 +27,7 @@
     <div class="tours__button-container">
       <a class="tours__more" href="{{see_more_url}}">
         See More Adventures
-        <span class="icon-chevron-right"></span>
+        <span class="icon-chevron-right" aria-hidden="true"></span>
       </a>
     </div>
 

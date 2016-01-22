@@ -1,17 +1,15 @@
-.overlay{
-  position: fixed;
-  z-index: 9997;
+@import "../../../sass/webpack_deps";
 
-  top: 0;
-  left: 0;
-  right: 0;
+.overlay {
+  background-color: rgba(#000, .4);
   bottom: 0;
-
-  background: rgba(0,0,0,.4);
-
+  left: 0;
   opacity: 0;
-
-  transition: opacity .4s;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transition: opacity $animation-speed;
+  z-index: 9997;
 
   &--visible {
     opacity: 1;

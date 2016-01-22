@@ -2,17 +2,17 @@
 
 .lp-search {
   $input-height: 3.8rem;
-  position: absolute;
-  z-index: 9999;
-  top: 0;
-  left: 0;
-  right: 0;
   background-color: #fff;
+  left: 0;
   opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
   transition: opacity ($animation-speed-ui / 2);
+  z-index: 9999;
 
   @media (min-width: $min-720) {
-    box-shadow: -5rem 0 15rem rgba(0,0,0,.5);
+    box-shadow: -5rem 0 15rem rgba(#000, .5);
   }
 
   &--visible {
@@ -20,9 +20,9 @@
   }
 
   &__inner {
-    position: relative;
     height: $header-height-mobile;
     line-height: $input-height;
+    position: relative;
 
     @media (min-width: $min-720) {
       height: $header-height;
@@ -41,29 +41,29 @@
   }
 
   &__input {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    margin-top: auto;
-    margin-bottom: auto;
-    left: ($header-height-mobile / 2);
-    right: ($header-height-mobile + .9rem);
-    width: calc(100% - #{$header-height-mobile} - .9rem);
-    height: $input-height;
-    font-size: 1.6rem;
-    color: #3b4450;
     border: 0;
+    bottom: 0;
+    color: #3b4450;
+    font-size: 1.6rem;
+    height: $input-height;
+    left: ($header-height-mobile / 2);
+    margin-bottom: auto;
+    margin-top: auto;
     outline: 0;
+    position: absolute;
+    right: ($header-height-mobile + .9rem);
+    top: 0;
+    width: calc(100% - #{$header-height-mobile} - .9rem);
 
     @media (max-width: $max-720) {
       padding-top: .3rem;
     }
 
     @media (min-width: $min-720) {
-      left: 3.4rem;
-      right: 3.4rem;
       font-size: 2.4rem;
       font-weight: 300;
+      left: 3.4rem;
+      right: 3.4rem;
       width: calc(100% - 8rem);
     }
 
@@ -73,18 +73,18 @@
   }
 
   &__label {
-    display: block;
-    position: absolute;
-    left: 0;
-    width: 2rem;
-    height: 2rem;
-    line-height: 1;
-    font-size: 0;
-    color: $body-color;
-    margin-top: auto;
-    margin-bottom: auto;
-    top: 0;
     bottom: 0;
+    color: $body-color;
+    display: block;
+    font-size: 0;
+    height: 2rem;
+    left: 0;
+    line-height: 1;
+    margin-bottom: auto;
+    margin-top: auto;
+    position: absolute;
+    top: 0;
+    width: 2rem;
 
     @media (min-width: $min-720) {
       top: -.4rem;
@@ -96,23 +96,23 @@
   }
 
   &__close {
-    display: block;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    margin-top: auto;
-    margin-bottom: auto;
-    width: $input-height;
-    height: $input-height;
-    font-size: 0;
-    right: -.9rem;
-    color: #bdcee3;
     background-color: transparent;
     border: 0;
-    padding: 0;
+    bottom: 0;
+    color: #bdcee3;
     cursor: pointer;
-    transition: color $animation-speed;
+    display: block;
+    font-size: 0;
+    height: $input-height;
+    margin-bottom: auto;
+    margin-top: auto;
     outline: 0;
+    padding: 0;
+    position: absolute;
+    right: -.9rem;
+    top: 0;
+    transition: color $animation-speed;
+    width: $input-height;
 
     @media (min-width: $min-720) {
       right: 0;
@@ -135,11 +135,11 @@
 }
 
 .lp-search-results {
-  opacity: 0;
   height: 0;
+  opacity: 0;
   overflow: hidden;
-  transition: opacity $animation-speed, transform $animation-speed;
   transform: translateY(-2rem);
+  transition: opacity $animation-speed, transform $animation-speed;
 
   &--visible {
     height: auto;
@@ -148,17 +148,17 @@
   }
 
   &__list {
+    border-top: .1rem solid #e4eaf8;
     display: block;
+    list-style: none;
     margin-bottom: ($gutter * 1.5);
     padding-top: 1rem;
-    list-style: none;
-    border-top: .1rem solid #e4eaf8;
   }
 
   &__more {
     @include more();
     display: inline-block;
-    margin-bottom: ($gutter * 1.5);
     font-size: 1.2rem;
+    margin-bottom: ($gutter * 1.5);
   }
 }

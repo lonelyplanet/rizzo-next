@@ -20,18 +20,17 @@
 
 // Needs an :after fix
 .map_holder {
-  position: fixed;
-  top: 0;
-  right: 0;
+  background-color: rgba(#000, .8);
   bottom: 0;
-  left: 0;
   height: 100vh;
-  width: 100vw;
-
-  background-color: rgba(0,0,0,.8);
+  left: 0;
   opacity: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transition: 500ms ease-in-out;
+  width: 100vw;
   z-index: 0;
-  transition: .5s ease-in-out;
 
   &.open {
     opacity: 1;
@@ -41,10 +40,10 @@
 
 .map {
   display: block;
-  width: 100%;
   height: 100%;
   transform: translate(100%);
   transition: transform $animation-speed ease-in-out;
+  width: 100%;
 
   &.open {
     transform: translate(0);
@@ -57,9 +56,9 @@
 }
 
 .map-container {
-  width: $map-container-width;
-  height: 100%;
   background-color: $color-lightgrey;
+  height: 100%;
+  width: $map-container-width;
 
   .leaflet-popup-tip-container {
     display: none;
@@ -71,40 +70,32 @@
   }
 
   .leaflet-popup-content-wrapper {
-    padding: 0;
     border-radius: 0;
+    padding: 0;
   }
 }
 
 .close-map {
+  background-color: #fff;
+  border: 0;
+  border-radius: 50%;
+  box-shadow: 0 1.2rem 2.5rem rgba(#000, .75);
+  cursor: pointer;
   float: left;
+  font-size: 2.6rem;
+  height: $close-button;
+  line-height: $close-button;
+  margin-left: .5rem;
+  margin-right: .5rem;
+  margin-top: $close-margin;
+  overflow: hidden;
+  text-align: center;
+  text-indent: 100%; // Move 'Close' text out of sight but keep for screen readers
+  white-space: nowrap;
+  width: $close-button;
   z-index: 10000;
 
-  height: $close-button;
-  width: $close-button;
-  margin: {
-    top: $close-margin;
-    left: .5rem;
-    right: .5rem;
-  }
-  font-size: 2.6rem;
-  line-height: $close-button;
-  text-align: center;
-
-  // Move 'Close' text out of sight but keep for screen readers
-  text-indent: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-
-  border: none;
-  border-radius: 50%;
-
-  box-shadow: 0 1.2rem 2.5rem rgba(0,0,0,.75);
-  background-color: #fff;
-
-  cursor: pointer;
-
-  &:before {
+  &::before {
     display: block;
     text-indent: 0;
   }

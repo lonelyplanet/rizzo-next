@@ -10,7 +10,7 @@
   opacity: 0;
   padding: 2rem;
   position: absolute;
-  transition: 1s ease;
+  transition: 1000ms ease;
   visibility: hidden;
   width: 25rem;
   z-index: 1000;
@@ -30,7 +30,7 @@
   &.is-visible {
     opacity: 1;
     transform: translateX(-15px);
-    transition: 0.2s ease 0.15s;
+    transition: 200ms ease 150ms;
     visibility: visible;
   }
 }

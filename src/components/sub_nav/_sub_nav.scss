@@ -5,15 +5,15 @@ $navigation-sub-height-mobile: $header-height-mobile;
 
 @keyframes fly-in-sub-nav {
   0% {
-    width: 150%;
     opacity: 0;
     transform: translate(-25rem);
+    width: 150%;
   }
 
   100% {
-    width: 150%;
     opacity: 1;
     transform: translate(0);
+    width: 150%;
   }
 }
 
@@ -26,21 +26,21 @@ $navigation-sub-height-mobile: $header-height-mobile;
   z-index: -1;
 
   &.is-fixed {
-    height: $navigation-sub-height-mobile + .1;
+    height: ($navigation-sub-height-mobile + .1);
 
     @media (min-width: $min-720) {
-      height: $navigation-sub-height + .1;
+      height: ($navigation-sub-height + .1);
     }
   }
 }
 
 .sub-nav {
-  position: relative;
+  background-color: #fff;
+  font-size: 0;
+  height: ($navigation-sub-height-mobile + .1);
   margin: 0;
   padding: 0;
-  font-size: 0;
-  background-color: #fff;
-  height: ($navigation-sub-height-mobile + .1);
+  position: relative;
   transform: translateZ(0); // force hardware acceleration for iOS
   transition: opacity $animation-speed, visibility $animation-speed;
 
@@ -50,80 +50,80 @@ $navigation-sub-height-mobile: $header-height-mobile;
 
   &.is-fixed {
     @include z-layer(top);
-    position: fixed;
-    top: 0;
     left: 0;
+    position: fixed;
     right: 0;
+    top: 0;
   }
 
   &.is-bottom {
-    position: absolute;
     bottom: 0;
     left: 0;
-    right: 0;
     opacity: 0;
+    position: absolute;
+    right: 0;
     visibility: hidden;
   }
 
   &__wrap {
-    &:after {
-      display: block;
-      max-width: $max-width;
-      margin: 0 ($gutter / 2);
+    &::after {
       border-bottom: .1rem solid #e4e4e4;
       content: "";
+      display: block;
+      margin: 0 ($gutter / 2);
+      max-width: $max-width;
     }
 
     @media (min-width: $min-720) {
       @include container-padded();
 
-      &:after {
+      &::after {
         margin: 0;
       }
     }
   }
 
   &__container {
-    overflow: hidden;
     height: $navigation-sub-height-mobile;
+    overflow: hidden;
 
     @media (min-width: $min-720) {
       height: $navigation-sub-height;
     }
 
-    &:before,
-    &:after {
+    &::before,
+    &::after {
+      bottom: 0;
+      content: "";
+      display: block;
       position: absolute;
       top: 0;
-      bottom: 0;
-      display: block;
-      width: $gutter / 2;
-      content: "";
+      width: ($gutter / 2);
     }
 
-    &:before {
-      left: 0;
+    &::before {
       background: linear-gradient(to right, rgba(#fff, 1) 0%, rgba(#fff, 0) 100%);
+      left: 0;
     }
 
-    &:after {
-      right: 0;
+    &::after {
       background: linear-gradient(to left, rgba(#fff, 1) 0%, rgba(#fff, 0) 100%);
+      right: 0;
     }
   }
 
   &__list {
-    width: 100%;
+    animation: fly-in-sub-nav $animation-speed-ui;
     height: ($navigation-sub-height-mobile + 2); // to push horizontal scrollbar out of view
     margin: 0;
-    padding: 0;
+    -webkit-overflow-scrolling: touch;
     overflow-x: auto;
     overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    transition: opacity $animation-speed;
-    animation: fly-in-sub-nav $animation-speed-ui;
+    padding: 0;
     text-align: center;
+    transition: opacity $animation-speed;
     white-space: nowrap;
+    width: 100%;
 
     @media (min-width: $min-480) {
       animation: none;
@@ -136,9 +136,9 @@ $navigation-sub-height-mobile: $header-height-mobile;
 
   &__item {
     display: inline-block;
+    line-height: $navigation-sub-height-mobile;
     margin: 0;
     padding: 0;
-    line-height: $navigation-sub-height-mobile;
 
     @media (min-width: $min-720) {
       height: 100%;
@@ -159,21 +159,21 @@ $navigation-sub-height-mobile: $header-height-mobile;
   }
 
   &__link {
+    color: $font-color;
     display: block;
-    padding: 2px $gutter / 2 0;
     font-size: 1.2rem;
     font-weight: 400;
+    padding: .2rem ($gutter / 2) 0;
     text-transform: uppercase;
-    color: $font-color;
-    transition: .3s color ease-in;
+    transition: 300ms color ease-in;
 
     &--active {
       color: $color-blue;
     }
 
     @media (min-width: $min-720) {
-      height: 100%;
       font-weight: 600;
+      height: 100%;
     }
   }
 

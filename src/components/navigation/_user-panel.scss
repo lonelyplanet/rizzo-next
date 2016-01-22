@@ -15,7 +15,7 @@ $user-panel: (
   @include dropdown-menu($top, $left, $width, $margin-left, $padding-top);
   @include dropdown-menu-visible;
 
-  &:before {
+  &::before {
     @include dropdown-menu-arrow;
   }
 }
@@ -24,17 +24,18 @@ $user-panel: (
   @include button;
   border-radius: 0 0 $radius $radius;
   display: block;
-  padding-top: 2.3rem;
   padding-bottom: 1.9rem;
+  padding-top: 2.3rem;
 }
 
 .user-panel__header {
+  $height: 9rem;
+  border-bottom: .1rem solid $color-gray;
+  font-size: 1.6rem;
+  height: $height;
+  line-height: $height;
   padding-left: $gutter;
   padding-right: $gutter;
-  height: 9rem;
-  font-size: 1.6rem;
-  line-height: 9rem;
-  border-bottom: .1rem solid $color-gray;
 
   a {
     color: $font-color;
@@ -50,27 +51,27 @@ $user-panel: (
 }
 
 .user-panel__sign-out {
-  position: absolute;
-  top: map-get($user-panel, "icon-spacing");
-  right: map-get($user-panel, "icon-spacing");
-  width: map-get($user-panel, "icon-size");
-  height: map-get($user-panel, "icon-size");
-  text-indent: -9999rem;
   color: $font-color-light;
+  height: map-get($user-panel, "icon-size");
+  position: absolute;
+  right: map-get($user-panel, "icon-spacing");
+  text-indent: -9999rem;
+  top: map-get($user-panel, "icon-spacing");
   transition: color $animation-speed;
+  width: map-get($user-panel, "icon-size");
   z-index: 1;
 
-  &:before {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
+  &::before {
     bottom: 0;
+    display: block;
     font-size: 1.6rem;
+    left: 0;
     line-height: map-get($user-panel, "icon-size");
-    text-indent: 0;
+    position: absolute;
+    right: 0;
     text-align: center;
+    text-indent: 0;
+    top: 0;
   }
 
   &:hover,
@@ -118,93 +119,92 @@ $user-panel: (
   position: relative;
   width: 100%;
 
-
   &:not(:first-child) {
     border-top: .1rem solid $color-gray;
+  }
+
+  > a {
+    display: block;
+    transition: background-color $animation-speed linear;
+
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: #f4f5f8;
+    }
+  }
+
+  // avatar
+  > div:nth-of-type(1) {
+    height: 3.5rem;
+    position: absolute;
+    right: $spacing;
+    top: $spacing;
+    width: 3.5rem;
+
+    a {
+      display: block;
+    }
+
+    img {
+      border-radius: 100%;
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  // timestamp
+  > div:nth-of-type(2) {
+    bottom: $spacing;
+    position: absolute;
+    width: 18rem;
+
+    time {
+      color: $light-text-color;
+      display: block;
+      font-size: 1.1rem;
+    }
+  }
+
+  // subject text
+  > span {
+    display: block;
+    padding-bottom: ($spacing + .5);
+    width: 18rem;
+
+    a {
+      color: $font-color;
+      font-weight: bold;
+      transition: color $animation-speed linear;
+
+      &:hover,
+      &:active,
+      &:focus {
+        color: $color-blue;
+      }
+    }
   }
 }
 
 .user-panel__item {
   &--unread {
-    background-color: rgb(229, 229, 229);
-  }
-}
-
-.user-panel__items li > a {
-  display: block;
-  transition: background-color $animation-speed linear;
-
-  &:hover,
-  &:active,
-  &:focus {
-    background-color: #f4f5f8;
-  }
-}
-
-// avatar
-.user-panel__items li > div:nth-of-type(1) {
-  height: 3.5rem;
-  position: absolute;
-  right: $spacing;
-  top: $spacing;
-  width: 3.5rem;
-
-  a {
-    display: block;
-  }
-
-  img {
-    border-radius: 100%;
-    display: block;
-    height: 100%;
-    width: 100%;
-  }
-}
-
-// timestamp
-.user-panel__items li > div:nth-of-type(2) {
-  bottom: $spacing;
-  position: absolute;
-  width: 18rem;
-
-  time {
-    color: $light-text-color;
-    display: block;
-    font-size: 1.1rem;
-  }
-}
-
-// subject text
-.user-panel__items li > span {
-  display: block;
-  padding-bottom: ($spacing + .5);
-  width: 18rem;
-
-  a {
-    color: $font-color;
-    font-weight: bold;
-    transition: color $animation-speed linear;
-
-    &:hover,
-    &:active,
-    &:focus {
-      color: $color-blue;
-    }
+    background-color: #e5e5e5;
   }
 }
 
 .user-panel__link {
   @include button("inverse");
   border-radius: 0;
-  box-shadow: 0 0 3rem 0 rgba(0, 0, 0, .08);
+  box-shadow: 0 0 3rem 0 rgba(#000, .08);
   text-transform: none;
   width: 100%;
 }
 
 .unread-count {
   color: $light-text-color;
-  font-weight: normal;
   font-size: 1.1rem;
+  font-weight: normal;
 
   .tabs & {
     padding-left: .3rem;

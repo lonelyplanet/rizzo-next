@@ -6,21 +6,21 @@
   $item-spacing: 1rem;
   $total-height: ($height + $item-spacing) * 3;
   $size-width: 35%;
+  counter-reset: tlist;
   position: relative;
   text-align: left;
-  counter-reset: tlist;
 
   &__heading {
     font-size: 1.2rem;
     font-weight: 600;
-    text-transform: uppercase;
     line-height: 1;
+    text-transform: uppercase;
   }
 
   &__content {
-    position: relative;
-    margin-top: ($gutter - .3rem);
     border-top: .1rem solid #f1f4fb;
+    margin-top: ($gutter - .3rem);
+    position: relative;
 
     @media (min-width: $min-360) {
       padding-right: $size-width;
@@ -29,8 +29,8 @@
 
   &__primary {
     list-style: none;
-    padding-top: $item-spacing;
     padding-right: $gutter;
+    padding-top: $item-spacing;
 
     @media (max-width: $max-360) {
       display: none;
@@ -44,12 +44,12 @@
   }
 
   &__primary-link {
-    display: block;
-    position: relative;
-    padding-left: ($image-width + $gutter);
-    height: $height;
-    font-size: 1.6rem;
     color: $color-darkblue;
+    display: block;
+    font-size: 1.6rem;
+    height: $height;
+    padding-left: ($image-width + $gutter);
+    position: relative;
     transition: color $animation-speed;
 
     &:hover,
@@ -61,55 +61,43 @@
 
   &__number {
     $size: 2.7rem;
-
-    position: absolute;
-
-    top: 50%;
-    left: $image-width - ($size / 2);
-
-    margin-top: -($size / 2);
-
-    width: $size;
-    height: $size;
-
+    background-color: #fff;
+    border-radius: .3rem;
+    box-shadow: 0 .2rem .3rem rgba(#000, .3);
+    color: $font-color;
     font-family: $benton-sans;
     font-size: 1.2rem;
-    color: $font-color;
-    text-align: center;
+    height: $size;
+    left: $image-width - ($size / 2);
     line-height: ($size + .1rem);
-
-    border-radius: .3rem;
-    box-shadow: 0 .2rem .3rem rgba(0,0,0, .3);
-    background-color: #fff;
-
+    margin-top: -($size / 2);
+    position: absolute;
+    text-align: center;
+    top: 50%;
     transform: rotate(45deg);
+    width: $size;
 
-    &:before {
-      display: block;
-
-      counter-increment: tlist;
+    &::before {
       content: counter(tlist);
-
+      counter-increment: tlist;
+      display: block;
       transform: rotate(-45deg);
     }
   }
 
   &__image {
-    position: absolute;
-
-    top: 0;
-    left: 0;
-
-    width: $image-width;
-    height: $height;
-
     background: center no-repeat #333;
     background-size: cover;
+    height: $height;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: $image-width;
   }
 
   &__title {
-    line-height: ($height / 2) - 1rem;
     height: ($height / 2);
+    line-height: ($height / 2) - 1rem;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -119,21 +107,21 @@
     }
 
     &:last-child {
-      line-height: $height;
-      height: $height - .1rem;
       border-bottom: .1rem solid #f4f7fc;
+      height: $height - .1rem;
+      line-height: $height;
     }
   }
 
   &__subtitle {
-    padding-bottom: 1rem;
-    line-height: ($height / 2) - 1rem;
+    color: #cdd0d6;
+    font-size: 1.4rem;
     height: ($height / 2);
+    line-height: ($height / 2) - 1rem;
     overflow: hidden;
+    padding-bottom: 1rem;
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-size: 1.4rem;
-    color: #cdd0d6;
 
     &:last-child {
       border-bottom: .1rem solid #f4f7fc;
@@ -143,38 +131,38 @@
   $secondary-line-height: ($total-height - .1rem - $item-spacing * 2) / 7;
 
   &__secondary {
-    padding: $item-spacing 0 $item-spacing $gutter;
+    border-bottom: .1rem solid #f4f7fc;
     font-size: 1.2rem;
     font-weight: 600;
     line-height: $secondary-line-height;
-    border-bottom: .1rem solid #f4f7fc;
     list-style: none;
+    padding: $item-spacing 0 $item-spacing $gutter;
 
     @media (min-width: $min-360) {
-      position: absolute;
-      top: 0;
-      right: 0;
       bottom: 0;
-      width: $size-width;
       height: ($total-height - .1rem);
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: $size-width;
     }
   }
 
   &__secondary-item {
     position: relative;
 
-    &:before {
+    &::before {
+      color: #a7a9ae;
+      content: counter(tlist) ".";
+      counter-increment: tlist;
       display: block;
-      position: absolute;
-      top: 0;
-      left: -4rem;
-      width: 3rem;
-      text-align: right;
       font-family: $miller-daily;
       font-weight: 500;
-      color: #a7a9ae;
-      counter-increment: tlist;
-      content: counter(tlist) ".";
+      left: -4rem;
+      position: absolute;
+      text-align: right;
+      top: 0;
+      width: 3rem;
     }
 
     &--top {
@@ -187,14 +175,14 @@
   }
 
   &__secondary-link {
-    position: relative;
+    color: #2b3642;
     display: block;
     height: $secondary-line-height;
     overflow: hidden;
+    position: relative;
     text-overflow: ellipsis;
-    white-space: nowrap;
-    color: #2b3642;
     transition: color $animation-speed;
+    white-space: nowrap;
 
     &:hover,
     &:active,
@@ -206,120 +194,110 @@
   &__more {
     @include more();
     display: block;
-    margin-top: (4rem - .2);
     font-size: 1.1rem;
+    margin-top: (4rem - .2);
   }
 }
 
 .top_places {
   $close-button-size: 7.2rem;
-
-  position: fixed;
-  z-index: 9999;
-
-  top: 0;
-  left: 0;
-  right: 0;
+  background-color: #fff;
   bottom: 0;
-
-  box-shadow: 0 .5rem 5rem rgba(0,0,0,.5);
-
-  background: #fff;
-
+  box-shadow: 0 .5rem 5rem rgba(#000, .5);
+  left: 0;
   opacity: 0;
-  transition: transform .4s, opacity .4s;
+  position: fixed;
+  right: 0;
+  top: 0;
   transform: translateY(15%);
+  transition: transform 400ms, opacity 400ms;
+  z-index: 9999;
 
   @media (min-width: $min-720) {
     top: auto;
   }
 
   &--visible {
-    transform: translateY(0);
     opacity: 1;
+    transform: translateY(0);
   }
 
   &__close {
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
     display: block;
-    position: absolute;
-    z-index: 10000;
-    top: ($gutter / 2);
-    right: ($gutter / 2);
-    height: 4rem;
-    width: 4rem;
     font-size: 2rem;
+    height: 4rem;
     line-height: 4rem;
+    outline: 0;
+    padding: 0;
+    position: absolute;
+    right: ($gutter / 2);
     text-align: left;
     text-indent: -9999px;
-    cursor: pointer;
-    padding: 0;
-    border: 0;
-    background-color: transparent;
-    outline: 0;
+    top: ($gutter / 2);
+    width: 4rem;
+    z-index: 10000;
 
-    &:before {
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
+    &::before {
       bottom: 0;
-      text-indent: 0;
+      display: block;
+      left: 0;
+      position: absolute;
+      right: 0;
       text-align: center;
+      text-indent: 0;
+      top: 0;
     }
 
     @media (min-width: $min-720) {
-      z-index: 9998;
-      top: 0;
-      left: 50%;
-      margin-left: (-$close-button-size / 2);
-      width: $close-button-size;
-      height: $close-button-size;
-      font-size: 2.6rem;
-      line-height: $close-button-size;
-      text-align: center;
-      border-radius: 50%;
-      box-shadow: 0 2.2rem 4.5rem rgba(0,0,0, .75);
       background-color: #fff;
+      border-radius: 50%;
+      box-shadow: 0 2.2rem 4.5rem rgba(#000, .75);
+      font-size: 2.6rem;
+      height: $close-button-size;
+      left: 50%;
+      line-height: $close-button-size;
+      margin-left: (-$close-button-size / 2);
+      text-align: center;
+      top: 0;
+      transition: transform 400ms 1000ms;
       user-select: none;
-      transition: transform .4s 1s;
+      width: $close-button-size;
+      z-index: 9998;
     }
   }
 
   &--visible &__close {
     @media (min-width: $min-720) {
-      transition: transform .4s .4s;
       transform: translateY(-($close-button-size + $gutter));
+      transition: transform 400ms 400ms;
     }
   }
 
   &__content {
-    position: absolute;
-    z-index: 9999;
-
-    top: 0;
-    left: 0;
-    right: 0;
+    background-color: #fff;
     bottom: 0;
-
+    left: 0;
     margin: 0 auto;
-    padding: $gutter $gutter 0;
-
     max-width: $max-width;
-
     overflow-x: hidden;
     overflow-y: auto;
-
-    background-color: #fff;
+    padding: $gutter $gutter 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 9999;
 
     @media (min-width: $min-720) {
-      position: relative;
-      top: auto;
-      left: auto;
-      right: auto;
       bottom: auto;
-      padding: 4rem ($gutter * 2) ($gutter * 2);
+      left: auto;
       max-height: calc(100vh - #{($close-button-size + $gutter * 2)});
+      padding: 4rem ($gutter * 2) ($gutter * 2);
+      position: relative;
+      right: auto;
+      top: auto;
     }
 
     $top-places-content-mq: (strip-units($max-width) * 10) + (strip-units($gutter) * 10 * 4);

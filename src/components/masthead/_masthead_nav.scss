@@ -1,11 +1,11 @@
 @import "../../../sass/webpack_deps";
 
 .masthead_nav {
-  position: absolute;
   bottom: 0;
+  color: #fff;
+  position: absolute;
   width: 100%;
   z-index: 100;
-  color: #fff;
 
   &__container {
     @include container-padded();
@@ -16,9 +16,9 @@
   &__link {
     color: #fff;
     font-size: 1.2rem;
+    font-weight: 600;
     line-height: 6rem;
     text-transform: uppercase;
-    font-weight: 600;
 
     &:first-child {
       float: left;

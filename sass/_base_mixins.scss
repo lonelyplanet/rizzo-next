@@ -30,7 +30,7 @@
   &--border-bottom::after,
   &--border-top::before {
     box-sizing: content-box;
-    content: '';
+    content: "";
     display: block;
     height: 0;
     margin-left: ($gutter / 2);

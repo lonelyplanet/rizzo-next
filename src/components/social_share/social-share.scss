@@ -7,14 +7,14 @@
 /// Sass's `map-get` method.
 ///
 /// @usage
-/// `get($map-name, 'setting-name')`
+/// `get($map-name, "setting-name")`
 /// ----------------------------------------------------------------------------
 
 $social-share: (
-  'background-color': #f0f0f0,
-  'button-size': 3rem,
-  'margin-left': .4rem,
-  'margin-top': .9rem
+  "background-color": #f0f0f0,
+  "button-size": 3rem,
+  "margin-left": .4rem,
+  "margin-top": .9rem
 );
 
 
@@ -26,7 +26,7 @@ $social-share: (
 /// ----------------------------------------------------------------------------
 
 .social-share {
-  margin-left: -#{get($social-share, 'margin-left')}; // Negative margin to offset first item's margin
+  margin-left: -#{get($social-share, "margin-left")}; // Negative margin to offset first item's margin
 }
 
 
@@ -48,7 +48,7 @@ $social-share: (
 
   @media (min-width: $min-720) {
     float: right;
-    margin-top: -#{get($social-share, 'margin-top')}; // Negative margin to offset first row of items' margin
+    margin-top: -#{get($social-share, "margin-top")}; // Negative margin to offset first row of items' margin
   }
 }
 
@@ -68,26 +68,26 @@ $social-share: (
 
 // A `button` element that expects an SVG icon to be inside of it
 .social-share__control {
-  background-color: get($social-share, 'background-color');
+  background-color: get($social-share, "background-color");
   border: 0;
   border-radius: 100%;
   color: #333;
   cursor: pointer;
   display: inline-block;
-  height: get($social-share, 'button-size');
+  height: get($social-share, "button-size");
   line-height: 1;
-  margin-left: get($social-share, 'margin-left');
-  margin-top: get($social-share, 'margin-top');
+  margin-left: get($social-share, "margin-left");
+  margin-top: get($social-share, "margin-top");
   outline: 0;
   padding: 0;
   position: relative;
-  width: get($social-share, 'button-size');
-  transition: background-color .4s linear;
+  transition: background-color $animation-speed linear;
+  width: get($social-share, "button-size");
 
   &:hover,
   &:active,
   &:focus {
-    background-color: darken(get($social-share, 'background-color'), 3);
+    background-color: darken(get($social-share, "background-color"), 3);
   }
 
   .svg-icon {
@@ -126,9 +126,9 @@ $social-share: (
   background-color: #fff;
   border-radius: .4rem;
   box-shadow: .1rem 0 .2rem rgba(#000, .25), 0 0 .1rem rgba(#000, .35);
-  padding: .8rem 0;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
+  padding: .8rem 0;
   position: relative;
 
   @media (min-width: $min-720) {
@@ -152,7 +152,6 @@ $social-share: (
     padding: .4rem 1.5rem;
     text-align: left;
     white-space: nowrap;
-    width: auto;
     width: 100%;
 
     &:hover,
@@ -186,7 +185,7 @@ $social-share: (
     top: .1rem;
   }
 
-  &:after {
+  &::after {
     background-color: #fff;
     box-shadow: -.1rem .1rem .1rem -.1rem rgba(#000, .44);
     content: "";

@@ -8,45 +8,40 @@
   }
 
   &__images {
-    position: relative;
-
     height: 100%;
+    position: relative;
   }
 
   &__slide {
-    position: absolute;
-    z-index: 3;
-
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-
     background: center no-repeat $h2-color;
     background-size: cover;
-
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
     transition: opacity $animation-speed-ui, transform $animation-speed-ui;
+    z-index: 3;
   }
 
   &--fade &__slide {
     opacity: 1;
-
-    transition-duration: $animation-speed-ui*2;
+    transition-duration: ($animation-speed-ui * 2);
     transition-timing-function: ease-in-out;
 
     &--num_-1 {
-      z-index: 1;
       opacity: 1;
+      z-index: 1;
     }
 
     &--num_1 {
-      z-index: 5;
       opacity: 0;
+      z-index: 5;
     }
 
     &--next {
-      z-index: -1;
       opacity: 0;
+      z-index: -1;
     }
   }
 
@@ -54,62 +49,60 @@
     @include container-padded();
 
     @media (min-width: $min-1290) {
-      padding: 0;
       max-width: 90%;
+      padding: 0;
     }
   }
 
-  &--slide &__slide {
-    &--num_-2 {
-      transform: translateX(calc(-200% - #{$gutter * 2}));
-    }
+  &--slide &__slide--num_-2 {
+    transform: translateX(calc(-200% - #{$gutter * 2}));
+  }
 
-    &--num_-1 {
-      transform: translateX(calc(-100% - #{$gutter * 1}));
-    }
+  &--slide &__slide--num_-1 {
+    transform: translateX(calc(-100% - #{$gutter * 1}));
+  }
 
-    &--num_1 {
-      transform: translateX(calc(100% + #{$gutter * 1}));
-    }
+  &--slide &__slide--num_1 {
+    transform: translateX(calc(100% + #{$gutter * 1}));
+  }
 
-    &--num_2 {
-      transform: translateX(calc(200% + #{$gutter * 2}));
-    }
+  &--slide &__slide--num_2 {
+    transform: translateX(calc(200% + #{$gutter * 2}));
+  }
 
-    &--num_-2,
-    &--num_-1,
-    &--num_1,
-    &--num_2 {
-      opacity: .75;
+  &--slide &__slide--num_-2,
+  &--slide &__slide--num_-1,
+  &--slide &__slide--num_1,
+  &--slide &__slide--num_2 {
+    cursor: pointer;
+    opacity: .75;
 
-      cursor: pointer;
-
-      &:hover {
-        opacity: 1;
-      }
+    &:hover,
+    &:active,
+    &:focus {
+      opacity: 1;
     }
   }
 
   &__progress {
-    position: absolute;
-    top: auto;
     bottom: 10px;
-    width: 100%;
+    position: absolute;
     text-align: center;
-    // Put above the slides
-    z-index: 4;
+    top: auto;
+    width: 100%;
+    z-index: 4; // Put above the slides
   }
 
   &__progress__dot {
-    background: rgba(255,255,255, .6);
+    background-color: rgba(#fff, .6);
     border-radius: 50%;
-    height: 1rem;
-    width: 1rem;
     display: inline-block;
+    height: 1rem;
     margin: 0 .4rem;
+    width: 1rem;
 
     &--active {
-      background: rgba(255,255,255, 1);
+      background-color: #fff;
     }
   }
 }

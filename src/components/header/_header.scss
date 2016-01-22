@@ -9,14 +9,12 @@
   }
 
   &--normal {
-    position: absolute;
-    z-index: 100;
-
-    top: 0;
+    background: linear-gradient(to bottom, rgba(#000, .2), rgba(#000, 0));
     left: 0;
+    position: absolute;
     right: 0;
-
-    background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0));
+    top: 0;
+    z-index: 100;
   }
 
   &__container {
@@ -24,13 +22,10 @@
   }
 
   &__inner {
-    position: relative;
-
+    border-bottom: .1rem solid rgba(#fff, .3);
     height: $header-height-mobile;
-
-    border-bottom: .1rem solid rgba(255,255,255, .3);
-
     perspective: 800px;
+    position: relative;
 
     @media (min-width: $min-720) {
       height: $header-height;
@@ -47,36 +42,30 @@
 
   &__logo {
     display: block;
+    fill: #fff;
+    margin: 0 auto;
     position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 7.2rem;
     z-index: 1;
 
-    top: 50%;
+    @media (min-width: $min-720) {
+      margin: 0;
+      width: 14.2rem;
+    }
 
-    margin: 0 auto;
-
-    width: 7.2rem;
-
-    fill: #fff;
-
-    transform: translateY(-50%);
+    @media (min-width: $min-1080) {
+      margin: 0 auto;
+    }
 
     .no-csstransforms & {
       top: 3rem;
     }
 
-    #header-logo {
+    svg {
       display: block;
       width: 100%;
-    }
-
-    @media (min-width: $min-720) {
-      width: 14.2rem;
-
-      margin: 0;
-    }
-
-    @media (min-width: $min-1080) {
-      margin: 0 auto;
     }
   }
 
@@ -88,34 +77,26 @@
     display: none;
 
     @media (min-width: $min-1080) {
+      background-color: transparent;
+      border: 0;
+      color: rgba(#fff, .38);
+      cursor: pointer;
       display: block;
-      position: absolute;
-
-      top: 50%;
-      left: 0;
-
-      margin-top: (-$header-height / 2);
-
-      height: $header-height;
-      line-height: $header-height;
-
-
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-
       font-size: 2.4rem;
       font-weight: 100;
-      color: rgba(#fff, .38);
-      text-align: left;
-
-      user-select: none;
-      cursor: pointer;
-
-      border: 0;
-      background-color: transparent;
-      width: percent(447px, 1155px); // So it doesn't get too close to the logo
+      height: $header-height;
+      left: 0;
+      line-height: $header-height;
+      margin-top: (-$header-height / 2);
+      overflow: hidden;
       padding: 0;
+      position: absolute;
+      text-align: left;
+      text-overflow: ellipsis;
+      top: 50%;
+      user-select: none;
+      white-space: nowrap;
+      width: percent(447px, 1155px); // So it doesn't get too close to the logo
     }
 
     @media (min-width: $min-1290) {
@@ -124,15 +105,14 @@
     }
 
     &--fade {
+      -webkit-mask-image: -webkit-gradient(linear, 70% 0, 100% 0, from(rgba(#000, 1)), to(rgba(#000, 0)));
       width: 42%;
-      -webkit-mask-image: -webkit-gradient(linear, 70% 0, 100% 0, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
     }
 
     [class*="icon-"] {
       color: #fff;
-      margin-right: 1.2rem;
       font-size: 2rem;
-
+      margin-right: 1.2rem;
       transition: margin $animation-speed;
     }
 
@@ -173,14 +153,12 @@
   }
 
   &__navigation {
-    display: none;
-
-    position: absolute;
-    z-index: 1;
-
-    top: 0;
-    right: 0;
     bottom: 0;
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;
 
     @media (min-width: $min-720) {
       display: block;
@@ -188,15 +166,15 @@
   }
 
   &__mobile {
-    position: absolute;
-    top: 0;
-    right: (-$gutter / 2);
     bottom: 0;
+    position: absolute;
+    right: (-$gutter / 2);
+    top: 0;
     transition: opacity $animation-speed;
 
     &--left {
-      right: auto;
       left: (-$gutter / 2);
+      right: auto;
     }
 
     &--hidden {
@@ -212,31 +190,27 @@
   &__mobile-search,
   &__mobile-menu,
   &__mobile-cart {
-    position: relative;
-    display: block;
-    color: #fff;
-    text-indent: -9999rem;
-    line-height: $header-height-mobile;
     background: transparent;
-    padding: 0;
     border: 0;
-    user-select: none;
+    color: #fff;
     cursor: pointer;
+    display: block;
+    line-height: $header-height-mobile;
+    padding: 0;
+    position: relative;
+    text-indent: -9999rem;
+    user-select: none;
 
-    &:before {
-      display: block;
-
-      position: absolute;
-
-      top: 0;
-      left: 0;
-      right: 0;
+    &::before {
       bottom: 0;
-
+      display: block;
       font-size: 2.3rem;
-
-      text-indent: 0;
+      left: 0;
+      position: absolute;
+      right: 0;
       text-align: center;
+      text-indent: 0;
+      top: 0;
     }
   }
 
@@ -247,47 +221,45 @@
   }
 
   &__mobile-search {
-    width: $header-height-mobile;
     height: $header-height-mobile;
+    width: $header-height-mobile;
 
-    &:before {
+    &::before {
       margin-left: .4rem;
     }
   }
 
   &__mobile-menu {
-    width: $header-height-mobile;
     height: $header-height-mobile;
+    width: $header-height-mobile;
 
     .menu-icon {
+      left: 1.5rem;
+      right: 1.5rem;
+      top: ($header-height-mobile / 2 - .1);
+
       &,
-      &:before,
-      &:after {
-        display: block;
-        position: absolute;
-        height: .2rem;
+      &::before,
+      &::after {
         background-color: #fff;
+        display: block;
+        height: .2rem;
+        position: absolute;
         width: 2rem;
       }
 
-      & {
-        top: ($header-height-mobile / 2 - .1);
-        left: 1.5rem;
-        right: 1.5rem;
-      }
-
-      &:before,
-      &:after {
+      &::before,
+      &::after {
         content: "";
         left: 0;
         right: 0;
       }
 
-      &:before {
+      &::before {
         top: -.5rem;
       }
 
-      &:after {
+      &::after {
         top: .5rem;
       }
     }
@@ -296,8 +268,8 @@
   &--narrow &__mobile-menu {
     .menu-icon {
       &,
-      &:before,
-      &:after {
+      &::before,
+      &::after {
         background-color: $body-color;
       }
     }

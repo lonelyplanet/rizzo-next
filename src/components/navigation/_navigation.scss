@@ -3,23 +3,19 @@
 .navigation {
   font-size: 0;
   line-height: $header-height;
-
   user-select: none;
 
   &__list,
   &__item {
+    list-style: none;
     margin: 0;
     padding: 0;
-
-    list-style: none;
   }
 
   &__item {
-    position: relative;
-
     display: inline-block;
-
     margin-left: 1.7rem;
+    position: relative;
 
     &:not(:last-child) {
       margin-right: 1.7rem;
@@ -34,8 +30,8 @@
     }
 
     &--active {
-      height: $header-height;
       border-bottom: .4rem solid #fff;
+      height: $header-height;
     }
 
     &--user > .navigation__link {
@@ -72,12 +68,10 @@
   }
 
   &__link {
+    color: #fff;
     display: block;
-
     font-size: 1.4rem;
     font-weight: 600;
-    color: #fff;
-
     transition: color $animation-speed;
 
     &:hover,
@@ -111,31 +105,23 @@
 
   &__counter {
     $size: 1.7rem;
-
-    position: absolute;
-
-    top: 50%;
-    right: -($size / 3);
-
-    margin-top: -($size);
-
-    width: $size;
-    height: $size;
-
+    background: #dc221a;
+    border-radius: 50%;
+    box-shadow: 0 .1rem .2rem rgba(0,0,0, .2);
+    color: #fff;
     font-family: $benton-sans;
     font-size: 1.3rem;
     font-weight: 600;
-    color: #fff;
+    height: $size;
+    line-height: 13px;
+    margin-top: -($size);
+    position: absolute;
+    right: -($size / 3);
     text-align: center;
     text-indent: 0;
-    line-height: 13px;
-
-    border-radius: 50%;
-
-    background: #dc221a;
-    box-shadow: 0 .1rem .2rem rgba(0,0,0, .2);
-
+    top: 50%;
     user-select: none;
+    width: $size;
   }
 }
 
@@ -156,13 +142,13 @@
   .navigation__item:last-child & {
     @media (max-width: $max-1530) {
       &:before {
-        right: 1.6rem;
         left: auto;
+        right: 1.6rem;
       }
 
       left: auto;
-      right: 0;
       margin-left: 0;
+      right: 0;
     }
   }
 
@@ -171,8 +157,8 @@
   }
 
   &__list {
-    padding-top: 2.8rem;
     padding-bottom: 2.8rem;
+    padding-top: 2.8rem;
   }
 
   .sub-navigation-feature + &__list {
@@ -180,38 +166,38 @@
   }
 
   &__item {
-    position: relative;
     font-size: 1.6rem;
     line-height: 1;
     margin-left: $gutter;
     margin-right: $gutter;
+    position: relative;
 
     &:not(:first-child) {
       border-top: .1rem solid #f1f4fb;
     }
 
     &--current:before {
-      display: block;
+      background-color: $color-red;
+      border-radius: 100%;
+      bottom: 0;
       content: "";
+      display: block;
+      height: .4rem;
+      left: -1.7rem;
+      margin-bottom: auto;
+      margin-top: auto;
       position: absolute;
       top: 0;
-      bottom: 0;
-      left: -1.7rem;
-      margin-top: auto;
-      margin-bottom: auto;
       width: .4rem;
-      height: .4rem;
-      border-radius: 100%;
-      background-color: $color-red;
       z-index: 1;
     }
   }
 
   &__link {
-    display: block;
     color: $color-darkblue;
-    padding-top: 1rem;
+    display: block;
     padding-bottom: .8rem;
+    padding-top: 1rem;
     position: relative;
   }
 
@@ -240,8 +226,8 @@
     @include button;
     border-radius: 0 0 $radius $radius;
     display: block;
-    padding-top: 2.3rem;
     padding-bottom: 1.9rem;
+    padding-top: 2.3rem;
   }
 }
 

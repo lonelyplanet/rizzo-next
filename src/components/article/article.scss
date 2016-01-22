@@ -1,9 +1,9 @@
 @import "../../../sass/webpack_deps";
 
 .article {
+  opacity: 1;
   overflow: hidden; // Prevent horizontal movement in iOS caused by .size-full images
   position: relative;
-  opacity: 1;
   transform: translateY(0);
   transition: transform $animation-speed ease, opacity $animation-speed ease;
 

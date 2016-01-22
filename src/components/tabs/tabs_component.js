@@ -23,11 +23,11 @@ export default class Tabs extends Component {
 
   initialize() {
     this.events = {
-      "click .tabs__links a": "activateTab"
+      "click .js-tabs-link": "activateTab"
     };
 
-    this.$links = this.$el.find(".tabs__links a");
-    this.$tabs = this.$el.find(".tabs__content");
+    this.$links = this.$el.find(".js-tabs-link");
+    this.$tabs = this.$el.find(".js-tabs-content");
 
     this.active = this.$links.first();
   }

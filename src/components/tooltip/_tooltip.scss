@@ -1,28 +1,30 @@
+@import "../../../sass/webpack_deps";
+
 .tooltip {
-  position: absolute;
-  z-index: 20;
-  display: none;
-  width: 400px;
-  border-radius: 4px;
   background-color: #fff;
+  border-radius: .4rem;
   color: #3b444f;
+  display: none;
+  position: absolute;
+  width: 400px;
+  z-index: 20;
 
-  &:before{
-    position: absolute;
-    top: -7px;
-    left: 50%;
-    z-index: -1;
-    display: block;
-    width: 0;
-    height: 0;
-    margin-left: -4px;
-    border-right: 8px solid transparent;
-    border-bottom: 8px solid #fff;
-    border-left: 8px solid transparent;
+  &::before {
+    border-bottom: .8rem solid #fff;
+    border-left: .8rem solid transparent;
+    border-right: .8rem solid transparent;
     content: "";
+    display: block;
+    height: 0;
+    left: 50%;
+    margin-left: -.4rem;
+    position: absolute;
+    top: -.7rem;
+    width: 0;
+    z-index: -1;
   }
-}
 
-.tooltip:hover{
-  display: block;
+  &:hover {
+    display: block;
+  }
 }

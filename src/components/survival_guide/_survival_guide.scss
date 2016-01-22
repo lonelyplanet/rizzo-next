@@ -16,28 +16,17 @@ $mobile-breakpoint: 400;
   }
 
   &__link {
-    display: block;
     color: $body-color;
-
-    &:hover,
-    &:focus {
-      .survival-guide__icon {
-        transform: translateY(-.5rem);
-      }
-
-      .survival-guide__title {
-        color: $color-primary;
-      }
-    }
+    display: block;
   }
 
   &__item {
     display: inline-block;
-    width: 100%;
     text-align: center;
     vertical-align: top;
+    width: 100%;
 
-    @include respond-to($mobile-breakpoint - 1, 'max') {
+    @include respond-to($mobile-breakpoint - 1, "max") {
       margin-top: 4.5rem;
 
       &:first-child {
@@ -54,7 +43,7 @@ $mobile-breakpoint: 400;
     }
 
     &:nth-child(-n+2) {
-      @media only screen and (min-width: $mobile-breakpoint + 'px') and (max-width: $tablet-breakpoint - 1px) {
+      @media only screen and (min-width: $mobile-breakpoint + "px") and (max-width: $tablet-breakpoint - 1px) {
         margin-bottom: 4.5rem;
       }
     }
@@ -62,14 +51,19 @@ $mobile-breakpoint: 400;
 
   &__icon {
     display: block;
-    width: 60px;
     height: 60px;
     margin: 0 auto;
     transition: transform $animation-speed;
+    width: 60px;
 
     @include respond-to($mobile-breakpoint) {
-      width: 80px;
       height: 80px;
+      width: 80px;
+    }
+
+    .survival-guide__link:hover &,
+    .survival-guide__link:focus & {
+      transform: translateY(-.5rem);
     }
   }
 
@@ -83,14 +77,19 @@ $mobile-breakpoint: 400;
     @include respond-to($mobile-breakpoint) {
       margin-top: 2.8rem;
     }
+
+    .survival-guide__link:hover &,
+    .survival-guide__link:focus & {
+      color: $color-primary;
+    }
   }
 
   &__blurb {
-    width: 90%;
-    margin: .5rem auto 0;
+    color: $light-text-color;
     font-size: 1.6rem;
     line-height: 1.2;
-    color: $light-text-color;
+    margin: .5rem auto 0;
+    width: 90%;
 
     @include respond-to($mobile-breakpoint) {
       margin-top: .9rem;

@@ -1,7 +1,10 @@
 @import "../../../sass/webpack_deps";
 
+$alert: (
+  "font-color": #fff
+);
+
 .alert {
-  $alert-font-color: #fff;
   max-height: 0;
   overflow-y: hidden;
   transition: max-height $animation-speed;
@@ -15,63 +18,61 @@
   }
 
   &__container {
+    padding-left: 2rem;
+    padding-right: 2rem;
     text-align: center;
-    padding: {
-      right: 2rem;
-      left: 2rem;
-    }
 
     &--default {
-      @include alert-background($color:"default");
+      @include alert-background($color: "default");
     }
+
     &--warning {
-      @include alert-background($color:"warning");
+      @include alert-background($color: "warning");
     }
+
     &--notice {
-      @include alert-background($color:"notice");
+      @include alert-background($color: "notice");
     }
   }
 
   &__inner {
-    color: $alert-font-color;
+    color: get($alert, "font-color");
     font-size: 1.4rem;
     opacity: 0;
+    padding-bottom: 2.2rem;
+    padding-top: 2.2rem;
     transition: opacity 100ms;
-    padding: {
-      top: 2.2rem;
-      bottom: 2.2rem;
-    }
 
     &.is-visible {
       opacity: 1;
     }
 
     &--link {
-      color: $alert-font-color;
+      color: get($alert, "font-color");
       text-decoration: underline;
     }
   }
 
   &__close {
-    font-size: 0;
-    float: right;
-    color: $alert-font-color;
-    font-weight: $font-weight-light;
     background-color: transparent;
     border: 0;
-    padding: 0;
-    height: 2rem;
+    color: get($alert, "font-color");
     cursor: pointer;
-    transition: color $animation-speed;
+    float: right;
+    font-size: 0;
+    font-weight: $font-weight-light;
+    height: 2rem;
     outline: 0;
+    padding: 0;
+    transition: color $animation-speed;
 
     &:hover,
     &:active,
     &:focus {
-      color: #BEBEBE;
+      color: #bebebe;
     }
 
-    &:before {
+    &::before {
       font-size: 1.2rem;
     }
   }
