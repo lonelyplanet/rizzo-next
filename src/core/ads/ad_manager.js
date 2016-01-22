@@ -3,30 +3,30 @@ import AdSizes from "./ad_sizes";
 import AdUnit from "./ad_unit";
 import CookieUtil from "../cookie_util";
 import "jquery.dfp";
+import subscribe from "../decorators/subscribe";
+import track from "../decorators/track";
 
 export default class AdManager {
   constructor(config) {
     this.defaultConfig = {
       adunits: ".adunit",
-      listener: ".page-container",
       sizeMapping: AdSizes,
-
-      // Ad targeting properties
-      layers: [ "2009.lonelyplanet" ],
+      layers: [ "LonelyPlanet.com" ],
       theme: "",
       template: "",
       topic: "",
-
-      // Deprecated targeting properties
       adThm: "",
       adTnm: "",
       continent: "",
       country: "",
-      destination: ""
+      destination: "",
+      city: ""
     };
 
     this.config = $.extend({}, this.defaultConfig, config);
-    this.$listener = $(document);
+
+    this.subscribe();
+
     return this;
   }
 
@@ -36,32 +36,30 @@ export default class AdManager {
       setTargeting: this.formatKeywords(this.config),
       namespace: this.config.layers.join("/"),
       sizeMapping: this.config.sizeMapping,
-      collapseEmptyDivs: true,
       enableSingleRequest: false,
+      collapseEmptyDivs: true,
       afterEachAdLoaded: ($adunit) => {
         this._adCallback.call(this, $adunit);
       }
     };
 
     this.load();
+    return this;
+  }
 
-    this.$listener.on(":ads/refresh :page/updated", (e, data) => {
-      this.refresh(data);
-    });
+  @subscribe("reload", "ads")
+  _reload() {
+    this.pluginConfig.setTargeting = this.formatKeywords(window.lp.ads);
+    this.load();
+  }
 
-    this.$listener.on(":ads/reload :page/changed :lightbox/contentReady", () => {
-      this.pluginConfig.setTargeting = this.formatKeywords(window.lp.ads);
-      this.load();
-    });
+  _slugify(string) {
+    return string.toLowerCase().replace(" ", "-");
   }
 
   _adCallback($adunit) {
     let unit = $adunit.data("adUnit"),
         currentUnit;
-
-    if ($adunit.closest(".row--sponsored").length) {
-      $(".row--sponsored").addClass("is-open");
-    }
 
     if (!unit) {
       currentUnit = new AdUnit($adunit);
@@ -69,12 +67,13 @@ export default class AdManager {
     }
 
     if (!currentUnit.isEmpty()) {
-      window.lp.analytics.api.trackEvent({
-        category: "advertising",
-        action: "page-load-impression",
-        label: $adunit.data().sizeMapping
-      });
+      this._track($adunit);
     }
+  }
+
+  @track("article ad impression load");
+  _track($adunit) {
+    return `${$adunit.data("sizeMapping")}-${$adunit[0].id}-${$adunit.data("adType") || "default"}`;
   }
 
   formatKeywords(config) {
@@ -82,12 +81,12 @@ export default class AdManager {
       theme: config.theme,
       template: config.template,
       topic: config.topic,
-
-      // Deprecated targeting properties
       thm: config.adThm,
-      ctt: config.continent,
-      cnty: config.country,
-      dest: config.destination
+      ctt: this._slugify(config.continent),
+      cnty: this._slugify(config.country),
+      city: this._slugify(config.city),
+      dest: this._slugify(config.destination),
+      destination: this._slugify(config.destination)
     };
 
     if (window.Krux) {
@@ -145,6 +144,7 @@ export default class AdManager {
       .dfp(this.pluginConfig);
   }
 
+  @subscribe("refresh", "ads")
   refresh(data) {
     let i, len, unit;
 

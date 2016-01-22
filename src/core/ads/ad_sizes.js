@@ -9,6 +9,11 @@ export default {
     { browser: [ 728, 0 ], ad_sizes: [ 728, 90 ] },
     { browser: [ 0, 0 ], ad_sizes: [ 320, 50 ] }
   ],
+  "leaderboard-responsive": [
+    { browser: [ 980, 0 ], ad_sizes: [ [ 1000, 500 ], [ 970, 250 ], [ 970, 90 ], [ 970, 66 ], [ 728, 90 ], [ 1, 1 ] ] },
+    { browser: [ 728, 0 ], ad_sizes: [ 728, 90 ] },
+    { browser: [ 0, 0 ], ad_sizes: [[ 300, 250 ], [ 320, 50 ], [1, 1]] }
+  ],
   "leaderboard-content": [
     { browser: [ 728, 0 ], ad_sizes: [ 728, 90 ] },
     { browser: [ 0, 0 ], ad_sizes: [ 320, 50 ] }
@@ -35,5 +40,8 @@ export default {
   ],
   "tourist-board-html": [
     { browser: [ 0, 0 ], ad_sizes: [ 3, 3 ] }
+  ],
+  "superzone": [
+    { browser: [0,0], ad_sizes: [1,1] }
   ]
 };

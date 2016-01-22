@@ -42,4 +42,28 @@
 .adunit {
   padding-bottom: 1.8rem;
   padding-top: 1.8rem;
+
+  &--sponsor-logo, &--sponsor-logo-masthead {
+    width: 15rem;
+    height: 12rem;
+    display: inline-block;
+    margin-left: $gutter * 2;
+  }
+
+  &--sponsor-logo-masthead {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    @media (max-width: $max-720) {
+      left: 0;
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  &.display-none {
+    display: none;
+  }
 }

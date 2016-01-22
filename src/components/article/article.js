@@ -4,7 +4,9 @@ import debounce from "lodash/function/debounce";
 import ArticleBodyComponent from "../article_body";
 import SocialShareComponent from "../social_share";
 import track from "../../core/decorators/track";
+import publish from "../../core/decorators/publish";
 import waitForTransition from "../../core/utils/waitForTransition";
+import ArticleModel from "./article_model";
 
 export default class ArticleComponent extends Component {
   initialize() {
@@ -17,6 +19,7 @@ export default class ArticleComponent extends Component {
     this.$footer = $(".footer");
 
     this.isNextArticleLoading = false;
+    this.howManyArticlesHaveLoaded = 1;
 
     this.template = require("./article.hbs");
     this.loader = require("./article-loading.hbs");
@@ -26,27 +29,11 @@ export default class ArticleComponent extends Component {
     this.listOfArticles = [];
     this.paginatedArticles = {};
 
-    this.nextSlotId = 1;
-    this.adPath = `/${window.lp.ads.networkId}/${window.lp.ads.layers.join("/")}`;
-
-    this._slugifyPlaceDataForAds();
     this._setFirstArticle();
-
-    // Wait for utag
-    setTimeout(() => {
-      this._loadFirstAd();
-    }, 500);
 
     this.events = {
       "click .article-pagination__item": "_trackArticlePagination"
     };
-  }
-
-  _slugifyPlaceDataForAds() {
-    window.lp.ads.continent = this._slugify(window.lp.ads.continent);
-    window.lp.ads.country = this._slugify(window.lp.ads.country);
-    window.lp.ads.destination = this._slugify(window.lp.ads.destination);
-    window.lp.ads.interest = window.lp.ads.interest.replace(/,\s*$/, "");
   }
 
   /**
@@ -71,37 +58,7 @@ export default class ArticleComponent extends Component {
    * Set the first article
    */
   _setFirstArticle() {
-    this.howManyArticlesHaveLoaded = 1;
     this.$activeArticle = this.$el.addClass("is-active");
-
-    let article = window.lp.article;
-
-    // Add the first article to the map
-    this.articles.set(this.$el[0], {
-      title: article.name,
-      slug: article.slug,
-      image: article.image,
-      post_date: article.postDate,
-      categories: article.categories,
-      author_details: {
-        name: article.author
-      },
-      tealium: {
-        article: {
-          atlas_id: article.atlasId,
-          cd1_Continent: article.continentName,
-          cd2_Country: article.countryName,
-          cd3_City: article.cityName,
-          page_type: article.type,
-          site_section: article.siteSection,
-          interests: article.interests
-        },
-        place: {
-          id: article.id,
-          destination: article.destination
-        }
-      }
-    });
 
     // Add the first article to the list of viewed articles
     this.viewedArticles.push({
@@ -113,57 +70,26 @@ export default class ArticleComponent extends Component {
       el: this.$el.find(".js-action-sheet")
     });
 
-    this._getDataForInitialArticle(`${window.location.pathname}.json`).then((response) => {
-      this._setInitialListOfArticles(response.related_articles.articles);
-      this._setInitialCallouts(response.content.callouts);
+    let firstArticle = new ArticleModel({ 
+      url: `${window.location.pathname}.json`
+    });
+
+    firstArticle.fetch().then(() => {
+      this.articles.set(this.$el[0], firstArticle);
+      this._setInitialListOfArticles(firstArticle.get("related_articles").articles);
+      this._setInitialCallouts(firstArticle.get("content").callouts);
     });
   }
 
-  /**
-   * Create a promise for the AJAX call to get data for the first article
-   * @param  {String}  url Article URL to query
-   * @return {Promise}     A promise for when the AJAX request finishes
-   */
-  _getDataForInitialArticle(url) {
-    return new Promise((resolve, reject) => {
-      $.ajax(url, {
-        success: (response) => {
-          resolve(response.article);
-        },
-        error: (xhrObj, textStatus, error) => {
-          reject(Error(error));
-        }
-      });
-    });
-  }
-
-  /**
-   * Create a promise for the AJAX call to get a new article
-   * @param  {String}  slug Pathname of request
-   * @return {Promise}      A promise for when the AJAX request finishes
-   */
-  _promiseForNextArticle(slug) {
-    return new Promise((resolve, reject) => {
-      $.ajax(slug, {
-        success: (response) => {
-          resolve(response);
-        },
-        error: (xhrObj, textStatus, error) => {
-          reject(Error(error));
-        }
-      });
-    });
-  }
-
-  _setInitialCallouts(response) {
+  _setInitialCallouts(callouts) {
     this.articleBody = new ArticleBodyComponent({
       el: this.$el.find(".article-body"),
-      poiData: response
+      poiData: callouts
     });
   }
 
-  _setInitialListOfArticles(response) {
-    this.listOfArticles = response;
+  _setInitialListOfArticles(articles) {
+    this.listOfArticles = articles;
     this._setNextArticle();
     this._setArticlePagination(1);
     this._createArticlePagination(this.$el);
@@ -227,14 +153,9 @@ export default class ArticleComponent extends Component {
   /**
    * Runs methods when scrolling
    */
-  _scrollToNextArticle(offsetDifference) {
-    offsetDifference = offsetDifference ? offsetDifference : 0;
-
+  _scrollToNextArticle(offsetDifference = 0) {
     this.$window.on("scroll.article", debounce(() => {
-      let amountNeededToScroll = this._getAmountNeededToScroll(),
-          shouldGetNextArticle = this.$window.scrollTop() >= (amountNeededToScroll - offsetDifference);
-
-      if (shouldGetNextArticle) {
+      if (this._shouldGetNextArticle(offsetDifference)) {
         if (!this.isNextArticleLoading) {
           if (this.nextArticle) {
             this._getNextArticle(`/${this.nextArticle.slug}.json`);
@@ -242,12 +163,21 @@ export default class ArticleComponent extends Component {
         }
       }
 
-      this.articles.forEach((data, article) => {
-        this._toggleActiveClassForArticle(article);
-      });
-
+      this._setActiveArticle();
       this._checkIfHistoryShouldBeUpdated();
     }, 10));
+  }
+
+  _setActiveArticle() {
+    this.articles.forEach((model, $article) => {
+      this._toggleActiveClassForArticle($article);
+    });
+  }
+  
+  _shouldGetNextArticle(difference) {
+    let amountNeededToScroll = this._getAmountNeededToScroll();
+    
+    return this.$window.scrollTop() >= (amountNeededToScroll - difference);
   }
 
   /**
@@ -272,22 +202,18 @@ export default class ArticleComponent extends Component {
   /**
    * Check scroll top against each value in the map and add or remove the active
    * class to the `$article` element
-   * @param  {Object} article The article object from the map
+   * @param  {Object} $article The article object from the map
    */
-  _toggleActiveClassForArticle(article) {
+  _toggleActiveClassForArticle($article) {
     if (this.$window.scrollTop()) {
-      let top = article.offsetTop,
-          bottom = top + article.offsetHeight,
+      let top = $article.offsetTop,
+          bottom = top + $article.offsetHeight,
           shouldActiveClassBeAdded = this.$window.scrollTop() < bottom && this.$window.scrollTop() > top;
 
       if (shouldActiveClassBeAdded) {
-        this.$activeArticle = $(article)
-          .addClass("is-active");
-
+        this.$activeArticle = $($article).addClass("is-active");
       } else {
-        $(article)
-          .removeClass("is-active");
-
+        $($article).removeClass("is-active");
       }
     }
   }
@@ -336,24 +262,27 @@ export default class ArticleComponent extends Component {
     this.$loader = $(this.loader({}))
       .appendTo(this.$activeArticle);
 
-    this._promiseForNextArticle(slug).then((data) => {
-      this.$newArticle = $(this.template(data))
+    let nextArticle = new ArticleModel({ url: slug });
+
+    nextArticle.fetch().then(() => {
+        this.$newArticle = $(this.template({
+          article: nextArticle.get()
+        }))
         .appendTo(".page-container")
         .addClass("is-loading");
 
       // Set the new article element and data to the articles map
-      this.articles.set(this.$newArticle[0], data.article);
+      this.articles.set(this.$newArticle[0], nextArticle);
+      nextArticle.set("articleNumber", this.articles.size);
 
-      this._addNewArticlesToArray(data.article.related_articles.articles);
-      this._updateNewArticle(data.article);
+      this._addNewArticlesToArray(nextArticle.get("related_articles").articles);
+      this._updateNewArticle(nextArticle);
 
       this.isNextArticleLoading = false;
-
-      this._hideLoader({showArticle: true});
+      this._hideLoader({ showArticle: true });
     }, () => {
       this.isNextArticleLoading = false;
-
-      this._hideLoader({showArticle: false});
+      this._hideLoader({ showArticle: false });
     });
   }
 
@@ -373,10 +302,10 @@ export default class ArticleComponent extends Component {
   /**
    * Updates a newly created article
    */
-  _updateNewArticle(data) {
+  _updateNewArticle(model) {
     this.articleBody = new ArticleBodyComponent({
       el: this.$newArticle.find(".article-body"),
-      poiData: data.content.callouts
+      poiData: model.get("content").callouts
     });
 
     this.socialShare = new SocialShareComponent({
@@ -388,7 +317,8 @@ export default class ArticleComponent extends Component {
     this._setNextArticle();
     this._setArticlePagination(2);
     this._createArticlePagination(this.$newArticle);
-    this._updateAd();
+    this._checkIfHistoryShouldBeUpdated();
+    this._newArticleLoaded();
   }
 
   /**
@@ -459,8 +389,9 @@ export default class ArticleComponent extends Component {
   /**
    * Update data for ads and analytics
    */
+  @publish("reload", "ads")
   _updateData() {
-    let article = this.articles.get(this.$activeArticle[0]),
+    let article = this.articles.get(this.$activeArticle[0]).get(),
         interests = article.tealium.article.interests,
         categories = [],
         regex = /,\s*$/;
@@ -470,7 +401,7 @@ export default class ArticleComponent extends Component {
       slug: article.slug,
       image: article.image,
       postDate: article.post_date,
-      author: article.author_details.name,
+      author: article.author,
       atlasId: article.tealium.article.atlas_id,
       continentName: article.tealium.article.cd1_Continent,
       countryName: article.tealium.article.cd2_Country,
@@ -502,6 +433,7 @@ export default class ArticleComponent extends Component {
     window.lp.ads.country = article.tealium.article.cd2_Country ? this._slugify(article.tealium.article.cd2_Country) : "";
     window.lp.ads.destination = this._slugify(article.tealium.place.destination);
     window.lp.ads.interest = window.lp.article.interests;
+    window.lp.ads.position = article.articleNumber;
 
     this._updateMetaData(window.lp.article);
   }
@@ -539,107 +471,15 @@ export default class ArticleComponent extends Component {
     $(`meta[property="article:author"]`).attr("content", article.author);
   }
 
-  /**
-   * Generate unique names for slots
-   * @return {String} Unique ID
-   */
-  _generateNextSlotName() {
-    let id = this.nextSlotId++;
-    return `adunit-${id}`;
-  }
-
-  /**
-   * Define a size mapping object. The first parameter to addSize is a viewport
-   * size, while the second is a list of allowed ad sizes.
-   * @return {Object} Size map
-   */
-  _adSizes() {
-    return googletag.sizeMapping()
-      .addSize([980, 0], [[970, 250], [940, 40], [728, 90]])
-      .addSize([728, 0], [[728, 90]])
-      .addSize([0, 0], [[300, 250], [300, 50]])
-      .build();
-  }
-
-  @track("article ad impression load");
-  _loadFirstAd() {
-    let adSlots = [];
-    let $adUnit = $("#adunit-0");
-
-    $adUnit.data("sizeMapping", this.$window.width() >= 728 ? "leaderboard" : "mpu");
-
-    googletag.cmd.push(() => {
-      // Declare any slots initially present on the page
-      adSlots[0] = googletag.defineSlot(this.adPath, [300, 250], "adunit-0")
-        .defineSizeMapping(this._adSizes())
-        .setTargeting("template", window.lp.ads.template)
-        .setTargeting("topic", window.lp.ads.topic)
-        .setTargeting("adThm", window.lp.ads.adThm)
-        .setTargeting("continent", window.lp.ads.continent)
-        .setTargeting("country", window.lp.ads.country)
-        .setTargeting("destination", window.lp.ads.destination)
-        .setCollapseEmptyDiv(true)
-        .addService(googletag.pubads());
-
-      // Infinite scroll requires SRA
-      googletag.pubads().enableSingleRequest();
-
-      // Disable initial load, we will use `refresh()` to fetch ads. Calling
-      // this function means that `display()` calls just register the slot as
-      // ready, but do not fetch ads for it.
-      googletag.pubads().disableInitialLoad();
-
-      googletag.enableServices();
-    });
-
-    // Call `display()` to register the slot as ready and `refresh()` to fetch
-    // an ad
-    googletag.cmd.push(() => {
-      googletag.display("adunit-0");
-      googletag.pubads().refresh([adSlots[0]]);
-    });
-
-    if ($adUnit.length) {
-      return `${$adUnit.data().sizeMapping}-${$adUnit[0].id}-default`;
-    }
-  }
-
-  @track("article ad impression scroll");
-  _updateAd() {
-    let slotName = this._generateNextSlotName();
-    let $slot = $("<div />", {
-      "id": slotName,
-      "class": "adunit adunit--leaderboard",
-      "attr": {
-        "data-size-mapping": "leaderboard",
-        "data-targeting": ""
-      }
-    });
-
-    $slot.appendTo(this.$newArticle.find(".ad--leaderboard__container"));
-
-    // Define the slot itself; call `display()` to register the div and
-    // `refresh()` to fetch ad
-    googletag.cmd.push(() => {
-      let slot = googletag.defineSlot(this.adPath, [300, 250], slotName)
-        .defineSizeMapping(this._adSizes())
-        .setTargeting("template", window.lp.ads.template)
-        .setTargeting("topic", window.lp.ads.topic)
-        .setTargeting("adThm", window.lp.ads.adThm)
-        .setTargeting("continent", window.lp.ads.continent)
-        .setTargeting("country", window.lp.ads.country)
-        .setTargeting("destination", window.lp.ads.destination)
-        .setCollapseEmptyDiv(true)
-        .addService(googletag.pubads());
-
-      // `display()` has to be called before `refresh()` and after the slot
-      // `div` is in the page
-      googletag.display(slotName);
-      googletag.pubads().refresh([slot]);
-    });
+  _newArticleLoaded() {
+    let $slot = this.$newArticle.find(".adunit");
 
     if ($slot.length) {
-      return `${$slot.data().sizeMapping}-${$slot[0].id}-ajax`;
+      $slot.data({
+        adType: "ajax",
+        targeting: null
+      })
+      .removeAttr("data-targeting");
     }
   }
 }

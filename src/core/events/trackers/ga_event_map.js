@@ -7,10 +7,6 @@ export default {
     category: "advertising",
     action: "page-load-impression"
   },
-  "article ad impression scroll": {
-    category: "advertising",
-    action: "page-load-impression"
-  },
   "article pageview scroll": {
     category: "related-article",
     action: "scroll"

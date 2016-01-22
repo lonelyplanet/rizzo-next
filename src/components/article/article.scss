@@ -11,6 +11,11 @@
     opacity: 0;
     transform: translateY(20rem);
   }
+
+  &__attribution {
+    width: 100%;
+    text-align: center;
+  }
 }
 
 .article__container {
