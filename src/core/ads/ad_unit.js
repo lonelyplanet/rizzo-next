@@ -22,7 +22,7 @@ export default class AdUnit {
   }
 
   isEmpty() {
-    if (this.$target.css("display") === "none" || !$.trim(this.$target.html())) {
+    if (this.$target.css("display") === "none") {
       return true;
     }
 

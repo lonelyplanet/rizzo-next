@@ -83,7 +83,9 @@ export default class AdManager {
       topic: config.topic,
       thm: config.adThm,
       ctt: this._slugify(config.continent),
+      continent: this._slugify(config.continent),
       cnty: this._slugify(config.country),
+      country: this._slugify(config.country),
       city: this._slugify(config.city),
       dest: this._slugify(config.destination),
       destination: this._slugify(config.destination)
