@@ -3,28 +3,6 @@
 $mobile-breakpoint: 717;
 $small-breakpoint: 320;
 
-@keyframes heartbeat {
-  0% {
-    transform: scale(1);
-  }
-
-  5% {
-    transform: scale(1.3);
-  }
-
-  10% {
-    transform: scale(1);
-  }
-
-  15% {
-    transform: scale(1.3);
-  }
-
-  20% {
-    transform: scale(1);
-  }
-}
-
 .love-letter__heading {
   @include h1(3.1rem);
 

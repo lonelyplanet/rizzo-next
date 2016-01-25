@@ -4,18 +4,8 @@ $size: 3rem;
 $unit: $size / 16;
 $panel-height: calc(100% - #{$sidebar-header-height});
 
-@keyframes spinner {
-  0% {
-    transform: rotate(0);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 .spinner {
-  animation: spinner $animation-speed-ui linear infinite;
+  animation: spin $animation-speed-ui linear infinite;
   border: $unit solid $inactive;
   border-radius: 50%;
   display: block;
