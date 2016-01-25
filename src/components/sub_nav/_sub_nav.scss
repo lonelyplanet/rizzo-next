@@ -3,20 +3,6 @@
 $navigation-sub-height: 8rem;
 $navigation-sub-height-mobile: $header-height-mobile;
 
-@keyframes fly-in-sub-nav {
-  0% {
-    opacity: 0;
-    transform: translate(-25rem);
-    width: 150%;
-  }
-
-  100% {
-    opacity: 1;
-    transform: translate(0);
-    width: 150%;
-  }
-}
-
 .sub-nav-placeholder {
   display: block;
   margin: 0;
@@ -113,7 +99,7 @@ $navigation-sub-height-mobile: $header-height-mobile;
   }
 
   &__list {
-    animation: fly-in-sub-nav $animation-speed-ui;
+    animation: fly-in $animation-speed-ui;
     height: ($navigation-sub-height-mobile + 2); // to push horizontal scrollbar out of view
     margin: 0;
     -webkit-overflow-scrolling: touch;
