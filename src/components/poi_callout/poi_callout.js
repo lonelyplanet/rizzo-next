@@ -137,15 +137,6 @@ export default class PoiCalloutComponent extends Component {
    */
   _updatePoiCallout() {
     let poiData = this.pois[this.$activeLink.data("calloutSlug")];
-    let image, src;
-
-    if (poiData.image) {
-      // TODO: Do this on the Ruby side
-      image = poiData.image.replace("http://media.lonelyplanet.com/", "");
-      src = `https://lonelyplanetimages.imgix.net/${image}?w=210&h=95&fit=crop`;
-    } else {
-      src = "";
-    }
 
     this.$callout
       .addClass("is-visible")
@@ -161,7 +152,7 @@ export default class PoiCalloutComponent extends Component {
         name: poiData.name,
         topic: poiData.topic,
         excerpt: poiData.excerpt,
-        image: src
+        image: poiData.image
       }));
   }
 
