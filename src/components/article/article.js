@@ -433,7 +433,7 @@ export default class ArticleComponent extends Component {
     window.lp.ads.country = article.tealium.article.cd2_Country ? this._slugify(article.tealium.article.cd2_Country) : "";
     window.lp.ads.destination = this._slugify(article.tealium.place.destination);
     window.lp.ads.interest = window.lp.article.interests;
-    window.lp.ads.position = article.articleNumber;
+    window.lp.ads.position = `article-${article.articleNumber}`;
 
     this._updateMetaData(window.lp.article);
   }
