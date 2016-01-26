@@ -472,14 +472,19 @@ export default class ArticleComponent extends Component {
   }
 
   _newArticleLoaded() {
-    let $slot = this.$newArticle.find(".adunit");
+    let $slotLeader = this.$newArticle.find(".js-slot-leader"),
+        $slotSponsor = this.$newArticle.find(".js-sponsor-logo");
 
-    if ($slot.length) {
-      $slot.data({
+    if ($slotLeader.length) {
+      $slotLeader.data({
         adType: "ajax",
         targeting: null
       })
       .removeAttr("data-targeting");
+    } 
+    if ($slotSponsor.length) {
+      let position = this.articles.get(this.$activeArticle[0]).get().articleNumber;
+      $slotSponsor.attr("id",`${$slotSponsor.attr("id")}-${position}`);
     }
   }
 }
