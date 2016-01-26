@@ -97,7 +97,7 @@ export default class AdManager {
     }
 
     if (config.adTnm) {
-      // keywords.adTnm = config.adTnm.replace(/\s/, "").split(",");
+      keywords.adTnm = config.adTnm.replace(/\s/, "").split(",");
     }
 
     if (config.keyValues && !$.isEmptyObject(config.keyValues)) {
