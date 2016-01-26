@@ -22,7 +22,7 @@ $small-breakpoint: 320;
   }
 
   &:hover [class*="icon-"] {
-    animation: heartbeat 300ms infinite;
+    animation: heartbeat 3000ms infinite;
   }
 }
 
