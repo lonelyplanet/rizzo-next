@@ -318,7 +318,7 @@ export default class ArticleComponent extends Component {
     this._setArticlePagination(2);
     this._createArticlePagination(this.$newArticle);
     this._checkIfHistoryShouldBeUpdated();
-    this._newArticleLoaded();
+    this._newArticleLoaded(model);
   }
 
   /**
@@ -472,8 +472,7 @@ export default class ArticleComponent extends Component {
   }
 
   _newArticleLoaded() {
-    let $slotLeader = this.$newArticle.find(".js-slot-leader"),
-        $slotSponsor = this.$newArticle.find(".js-sponsor-logo");
+    let $slotLeader = this.$newArticle.find(".js-slot-leader");
 
     if ($slotLeader.length) {
       $slotLeader.data({
@@ -481,10 +480,6 @@ export default class ArticleComponent extends Component {
         targeting: null
       })
       .removeAttr("data-targeting");
-    } 
-    if ($slotSponsor.length) {
-      let position = this.articles.get(this.$activeArticle[0]).get().articleNumber;
-      $slotSponsor.attr("id",`${$slotSponsor.attr("id")}-${position}`);
     }
   }
 }
