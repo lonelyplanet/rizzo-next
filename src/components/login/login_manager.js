@@ -31,65 +31,17 @@ export default class LoginManager {
     this.user = (user.username ? new User(user) : new User());
     
     if (!user.id) {
-      return this.updateStatus();
+      return this._updateStatus();
     }
 
-    this.getNotifications().done((data) => {
-      this.notificationsFetched(data);
-      this.updateStatus();
-      this.pollForUpdates();
-    });
+    this._updateStatus();
   }
-  /**
-   * Update the user's notifications with data from Luna
-   * @param  {Object} data The new data
-   */
-  notificationsFetched(data) {
-    this.user.activities = data.activities;
-    this.user.messages = data.messages;
-  }
-  /**
-   * Set up an interval to check for Luna notification updates.
-   */
-  pollForUpdates() {
-    this.pollInterval = setInterval(() => {
-      this.getNotifications()
-        .done(this.checkNotifications.bind(this));
-    }, 15000);
-  }
-  /**
-   * Retrieve Thorntree notifications
-   * @return {jQuery.Deferred} A jQuery promise
-   */
-  getNotifications() {
-    return $.ajax({
-      url: this.feedUrl,
-      dataType: "jsonp"
-    });
-  }
-  /**
-   * Check to see if there are new notications from thorntree.
-   * If there are, it will update the user's messages and activity.
-   * @param  {Object} data Notification data from thorntree
-   */
-  checkNotifications(data) {
-    // Only update if things have changed
-    if(
-      JSON.stringify(data.messages) !== JSON.stringify(this.user.messages) || 
-      JSON.stringify(data.activities) !== JSON.stringify(this.user.activities)
-    ) {
-      this.notificationsFetched(data);
-      this.updateNotifications();  
-    }
-  }
+  
   @publish("user.status.update")
-  updateStatus() {
+  _updateStatus() {
     return this.user.toJSON();
   }
-  @publish("user.notifications.update")
-  updateNotifications() {
-    return this.user.toJSON();
-  }
+  
   error() {
     throw "Error retrieving luna login information";
   }
