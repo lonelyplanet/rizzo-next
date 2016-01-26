@@ -15,7 +15,7 @@ let LoginManager = Injector({
   "jquery": {
     ajax: ajaxMock
   }
-})
+});
 
 
 describe("login manager", () => {
@@ -37,7 +37,7 @@ describe("login manager", () => {
     login.statusFetched({ id: 1 });
     
     // Called twice because of checkStatus, and getNotifications
-    expect(ajaxMock.calledTwice).to.be.ok();
+    expect(ajaxMock.calledOnce).to.be.ok();
 
     ajaxMock.reset();
   });
@@ -50,20 +50,5 @@ describe("login manager", () => {
     expect(ajaxMock.calledOnce).to.be.ok();
 
     ajaxMock.reset();
-  });
-
-  it("should check for new User notifications", () => {
-    let login = new LoginManager();
-
-    login.user = new User({});
-    login.user.messages = [{ text: "foo" }];
-    login.user.activities = [];
-
-    login.checkNotifications({
-      messages: [{ "read?": false, text: '<li class="bar">bar</li>' }],
-      activities: []
-    });
-
-    expect(login.user.toJSON().messages[0].text).to.be("<li>bar</li>");
   });
 });
