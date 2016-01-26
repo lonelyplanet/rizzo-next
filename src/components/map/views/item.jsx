@@ -14,9 +14,9 @@ export default class ItemView extends React.Component {
         imgStyle;
 
     if (item.onMap) {
-      classString += "pin icon icon--chevron-right";
+      classString += "pin";
       if (title.length > 23) {
-        title = title.substr(0, 22) + "...";
+        title = title.substr(0, 22) + "…";
       }
     } else {
       classString += "list";
@@ -24,7 +24,7 @@ export default class ItemView extends React.Component {
         classString += " is-hovered";
       }
       if (title.length > 36) {
-        title = title.substr(0, 35) + "...";
+        title = title.substr(0, 35) + "…";
       }
     }
     if (item.geo.properties.image) {
@@ -51,6 +51,9 @@ export default class ItemView extends React.Component {
         <div className="place__text">
           <div className="title">{title}</div>
           {subtitle}
+        </div>
+        <div className="place__icon">
+          <i className="icon icon-chevron-right" aria-hidden="true"></i>
         </div>
       </div>
     );

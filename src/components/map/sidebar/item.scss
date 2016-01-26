@@ -1,6 +1,7 @@
 .place {
   background-color: #fff;
   cursor: pointer;
+  font-family: $benton-sans;
   height: 6rem;
   position: relative;
 
@@ -69,17 +70,6 @@
       position: absolute;
       right: 0;
       width: 0;
-    }
-
-    &::after {
-      background-position: .3rem 61%;
-      border-left: .1rem solid #eef1fa;
-      height: ($order-width * .6);
-      position: absolute;
-      right: 1rem;
-      top: 50%;
-      transform: translate(0, -50%);
-      width: 1.7rem;
     }
   }
 
@@ -151,10 +141,41 @@
     }
 
     .pin & {
+      line-height: 1;
       padding-right: $gutter;
       right: 0;
       width: ($item-width-pin - $image-width - $gutter);
       word-spacing: -.1em;
+    }
+  }
+
+  &__icon {
+    .list & {
+      display: none;
+    }
+
+    .pin & {
+      background-position: .3rem 61%;
+      border-left: .1rem solid #eef1fa;
+      height: ($order-width * .6);
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translate(0, -50%);
+      width: 1.7rem;
+
+      .icon {
+        color: $color-blue;
+        left: .5rem;
+        margin-top: .1rem;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+
+        &::before {
+          font-size: 1.2rem;
+        }
+      }
     }
   }
 }
