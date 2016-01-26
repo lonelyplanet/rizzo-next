@@ -177,6 +177,15 @@ $pswp__include-minimal-style: true !default;
   left: 0;
 }
 
+.pswp__youtube-player{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+
+}
+
 /*
   stretched thumbnail or div placeholder element (see below)
   style is added to avoid flickering in webkit/blink when layers overlap
