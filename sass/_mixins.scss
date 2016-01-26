@@ -50,7 +50,7 @@
 /// A mixin to help clean up z-index madness. Options are: `below`, `default`, `middle`, `top`, and `modal` [/doc]
 /// @deprecated
 @mixin z-layer($layer: default) {
-  @warn "The z-layer mixin has been deprecated as of 2016-01-11. Use the z function instead. See sass/_z-index.scss.";
+  @warn "The z-layer mixin has been deprecated; use the z function instead. See sass/_z-index.scss.";
 
   @if $layer == below {
     z-index: -1;
