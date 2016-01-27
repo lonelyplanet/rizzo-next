@@ -40,7 +40,7 @@ class ThingsToDo extends Component {
   }
   fetchCards() {
     return $.ajax({
-      url: `/api/${window.lp.place.slug}/experiences`
+      url: `/api/${window.lp.place.slug}/experiences.json`
     });
   }
   @publish("experiences.removed")
