@@ -56,7 +56,8 @@
     "resrc.js": "^0.9.5",
     "susy": "^2.2.9",
     "trackjs": "^2.1.16",
-    "urlencode": "^1.1.0"
+    "urlencode": "^1.1.0",
+    "scroll-js": "^0.4.0"
   },
   "devDependencies": {
     "autoprefixer-loader": "^3.1.0",
