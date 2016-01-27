@@ -15,6 +15,10 @@ export default class Logger {
     
     if (ENV_PROD) {
       airbrake.notify(err);
+
+      if (window.trackJs) {
+        window.trackJs.console.log(JSON.stringify(err));
+      }
     }
   }
 }

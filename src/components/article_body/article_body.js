@@ -4,6 +4,7 @@ import ImageGallery from "../image_gallery";
 import PoiCallout from "../poi_callout";
 import moment from "moment";
 import matchMedia from "../../core/utils/matchMedia";
+import rizzo from "../../rizzo"; 
 
 /**
  * Enhances the body of articles with a gallery and more
@@ -68,6 +69,8 @@ export default class ArticleBodyComponent extends Component {
       });
 
       promises.push(promise);
+    }, (url) => {
+      rizzo.logger.error(`Could not load image: ${url}`);
     });
 
     return Promise.all(promises);
@@ -87,11 +90,11 @@ export default class ArticleBodyComponent extends Component {
         resolve(image);
       };
       image.onerror = function() {
-        reject();
+        reject(url);
       };
 
       if (!url) {
-        reject();
+        reject(url);
       }
     });
   }
