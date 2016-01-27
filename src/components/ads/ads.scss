@@ -29,17 +29,11 @@
   }
 }
 
-/// Leaderboard
-
-.ad--leaderboard__container {
-  display: table;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 /// Adunit
 
 .adunit {
+  margin-left: auto;
+  margin-right: auto;
   padding-bottom: 1.8rem;
   padding-top: 1.8rem;
 
@@ -64,6 +58,14 @@
       margin-right: auto;
       right: 0;
     }
+  }
+
+  &--leaderboard {
+    max-width: 100rem;
+  }
+
+  &--superzone {
+    width: 100%;
   }
 
   &.display-none {

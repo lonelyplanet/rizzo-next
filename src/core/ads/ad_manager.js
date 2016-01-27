@@ -25,9 +25,18 @@ export default class AdManager {
 
     this.config = $.extend({}, this.defaultConfig, config);
 
+    this.adCallbacks = {
+      "1x1": "_superzone"
+    };
+
     this.subscribe();
 
     return this;
+  }
+
+  _superzone($unit) {
+    $unit.removeClass("adunit--leaderboard")
+      .addClass("adunit--superzone");
   }
 
   initialize() {
@@ -38,8 +47,8 @@ export default class AdManager {
       sizeMapping: this.config.sizeMapping,
       enableSingleRequest: false,
       collapseEmptyDivs: true,
-      afterEachAdLoaded: ($adunit) => {
-        this._adCallback.call(this, $adunit);
+      afterEachAdLoaded: ($adunit, event) => {
+        this._adCallback.call(this, $adunit, event);
       }
     };
 
@@ -57,7 +66,7 @@ export default class AdManager {
     return string.toLowerCase().replace(" ", "-");
   }
 
-  _adCallback($adunit) {
+  _adCallback($adunit, event) {
     let unit = $adunit.data("adUnit"),
         currentUnit;
 
@@ -68,6 +77,11 @@ export default class AdManager {
 
     if (!currentUnit.isEmpty()) {
       this._track($adunit);
+    }
+
+    if (event.size) {
+      let callback = this.adCallbacks[event.size.join("x")];
+      callback && this[callback] && this[callback]($adunit, event);
     }
   }
 
