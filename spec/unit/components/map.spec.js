@@ -12,7 +12,7 @@ let MapComponent = Injector({
   "history": {
     createHistory: function() {
       return {
-        pushState: pushState
+        push: pushState
       };
     }
   },
@@ -36,18 +36,18 @@ window.lp = {
 describe("map component", () => {
   it("should open, close and adjust the url", () => {
     let map = new MapComponent();
-    
+
     sinon.stub(map, "isOnMap")
       .returns(false);
 
     map.open();
 
     expect(pushState.calledOnce).to.be.ok();
-    expect(pushState.getCall(0).args[1].indexOf("/map")).to.not.be(-1);
+    expect(pushState.getCall(0).args[0].pathname.indexOf("/map")).to.not.be(-1);
 
     map.close();
 
-    expect(pushState.getCall(1).args[1].indexOf("/map")).to.be(-1);
+    expect(pushState.getCall(1).args[0].pathname.indexOf("/map")).to.be(-1);
 
     pushState.reset();
   });

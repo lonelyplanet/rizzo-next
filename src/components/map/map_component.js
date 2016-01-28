@@ -3,8 +3,11 @@ import React from "react";
 import MainView from "./views/main.jsx";
 import MapActions from "./actions";
 import Arkham from "../../core/arkham";
+import { createHistory } from "history";
 import $ from "jquery";
 import MapApi from "./map_api";
+
+let history = createHistory();
 
 class MapComponent extends Component {
 
@@ -52,7 +55,11 @@ class MapComponent extends Component {
 
     if (!this.isOnMap()) {
       let pathname = this.getMapPath();
-      history.pushState({ isOnMap: true }, null, `${pathname}map`);
+
+      history.push({
+        pathname: `${pathname}map`,
+        state: { isOnMap: true }
+      });
     }
   }
 
@@ -75,7 +82,11 @@ class MapComponent extends Component {
     this.destroyMap();
 
     let path = window.location.pathname.replace(/\/map\/?$/, "");
-    history.pushState({ isOnMap: false }, null, `${path}`);
+
+    history.push({
+      pathname: `${path}`,
+      state: { isOnMap: false }
+    });
   }
 
   onKeyup(e) {
