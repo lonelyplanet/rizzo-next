@@ -63,9 +63,16 @@ class NavigationComponent extends Component {
    */
 
   _handleClick(e) {
-    let target = e.currentTarget;
+    let $target = $(e.currentTarget);
 
-    $(target).hasClass("navigation__item") ? this._handleSubNav(target) : this._handleMobileSubNav(target);
+    $target.hasClass("navigation__item") ? this._handleSubNav($target[0]) : this._handleMobileSubNav($target[0]); 
+    
+    if (
+      $target.find(".mobile-sub-navigation").length &&
+      !$(e.target).hasClass("sub-navigation__link")
+    ) {
+      e.preventDefault();
+    }
   }
 
   _handleMobileSubNav(el) {
