@@ -7,6 +7,8 @@ import track from "../../core/decorators/track";
 import publish from "../../core/decorators/publish";
 import waitForTransition from "../../core/utils/waitForTransition";
 import ArticleModel from "./article_model";
+import rizzo from "../../rizzo";
+
 
 export default class ArticleComponent extends Component {
   initialize() {
@@ -78,6 +80,8 @@ export default class ArticleComponent extends Component {
       this.articles.set(this.$el[0], firstArticle);
       this._setInitialListOfArticles(firstArticle.get("related_articles").articles);
       this._setInitialCallouts(firstArticle.get("content").callouts);
+    }, () => {
+      rizzo.logger.error(`Unable to fetch ${window.location.pathname}.json`);
     });
   }
 
