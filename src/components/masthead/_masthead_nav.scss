@@ -1,4 +1,5 @@
 @import "../../../sass/webpack_deps";
+@import "masthead_variables";
 
 .masthead_nav {
   bottom: 0;
@@ -10,7 +11,7 @@
   &__container {
     @include container-padded();
     border-top: .1rem solid rgba(#fff, .3);
-    height: 6rem;
+    height: $masthead-nav-height;
   }
 }
 
@@ -18,7 +19,7 @@
   color: #fff;
   font-size: 1.2rem;
   font-weight: 600;
-  line-height: 6rem;
+  line-height: $masthead-nav-height;
   text-transform: uppercase;
 
   [class*="icon-chevron"] {
