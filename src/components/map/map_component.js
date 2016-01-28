@@ -4,7 +4,7 @@ import MainView from "./views/main.jsx";
 import MapActions from "./actions";
 import Arkham from "../../core/arkham";
 import { createHistory } from "history";
-import $ from "jquery"; 
+import $ from "jquery";
 import MapApi from "./map_api";
 
 let history = createHistory();
@@ -22,16 +22,44 @@ class MapComponent extends Component {
     });
 
     $("body").on("keyup", this.onKeyup.bind(this));
+
+    this.updateMapHistory();
+  }
+
+  updateMapHistory() {
+    window.onpopstate = (event) => {
+      let hasState = event.state && event.state.isOnMap,
+          isOnMap = this.isOnMap();
+
+      if(hasState || (!hasState && isOnMap)) {
+        this.createMap();
+      } else {
+        this.destroyMap();
+      }
+    };
+  }
+
+  createMap() {
+    $("html, body").addClass("noscroll");
+    this.$el.addClass("open");
+    MapActions.mapOpen();
+  }
+
+  destroyMap() {
+    $("html, body").removeClass("noscroll");
+    this.$el.removeClass("open");
   }
 
   open() {
-    this.$el.addClass("open");
-    $("html,body").addClass("noscroll");
-    MapActions.mapOpen();
+    this.createMap();
 
     if (!this.isOnMap()) {
       let pathname = this.getMapPath();
-      history.pushState({}, `${pathname}map/`);
+
+      history.push({
+        pathname: `${pathname}map`,
+        state: { isOnMap: true }
+      });
     }
   }
 
@@ -42,7 +70,7 @@ class MapComponent extends Component {
   getMapPath() {
     let pathname = window.location.pathname;
     let lastChar = window.location.pathname.substr(-1); // Selects the last character
-    
+
     if (lastChar !== "/") {         // If the last character is not a slash
        pathname = pathname + "/";   // Append a slash to it.
     }
@@ -51,11 +79,14 @@ class MapComponent extends Component {
   }
 
   close() {
-    $("html,body").removeClass("noscroll");
-    this.$el.removeClass("open");
+    this.destroyMap();
 
-    let path = window.location.pathname.replace(/map\/?$/, "");
-    history.pushState({}, `${path}`);
+    let path = window.location.pathname.replace(/\/map\/?$/, "");
+
+    history.push({
+      pathname: `${path}`,
+      state: { isOnMap: false }
+    });
   }
 
   onKeyup(e) {
