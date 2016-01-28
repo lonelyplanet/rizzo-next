@@ -116,7 +116,9 @@ class ThingsToDo extends Component {
               "background-image": "url(" + url + ")"
             })
             .addClass("is-visible");
-        }));
+        }), (url) => {
+          rizzo.logger.error(`Could not load image: ${url}`);
+        });
     });
 
     return Promise.all(imagePromises);
@@ -238,11 +240,11 @@ class ThingsToDo extends Component {
         resolve(url);
       };
       image.onerror = function() {
-        reject();
+        reject(url);
       };
 
       if (!url) {
-        reject();
+        reject(url);
       }
     });
 

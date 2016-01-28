@@ -141,7 +141,7 @@ class SearchComponent extends Component {
     switch(e.keyCode){
       case 13:
         // enter
-        if(this.currentPosition !== -1){
+        if(this.currentPosition !== -1 && this.collection[this.currentPosition]){
           this.collection[this.currentPosition].navigate();
           break;
         }
@@ -156,12 +156,18 @@ class SearchComponent extends Component {
 
       case 38:
         //up
+        if (!this.collection.length) {
+          return;
+        } 
         e.preventDefault();
         this.goUp();
         break;
 
       case 40:
         //down
+        if (!this.collection.length) {
+          return;
+        } 
         e.preventDefault();
         this.goDown();
         break;

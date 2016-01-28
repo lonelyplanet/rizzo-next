@@ -1,7 +1,6 @@
 import isJson from "../../utils/is_json";
 import isDev from "../../utils/is_dev";
 import gaEventMap from "./ga_event_map";
-import trackJs from "trackjs";
 
 /**
  * Track an event with our analytics library
@@ -38,6 +37,6 @@ export default function({ name, data } = {}) {
     typeof window.utag.link === "function") {
     window.utag.link(utagEvent);
   } else {
-    trackJs.console.log(`utag: not loaded yet`);
+    window.trackJs.console.log(`utag: not loaded yet`);
   }
 };
