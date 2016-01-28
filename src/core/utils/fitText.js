@@ -9,6 +9,14 @@ let unSetFontSize = ($el) => {
   $el.removeAttr("style");
 };
 
+let initialize = ($el, textWidth, settings) => {
+  if (textWidth > $el.width()) {
+    setFontSize($el, textWidth, settings);
+  } else {
+    unSetFontSize($el);
+  }
+};
+
 /**
  * Scales text to fit within a given area
  *
@@ -38,19 +46,11 @@ export default function fitText($el, options) {
 
   let textWidth = $el.find("span").width();
 
-  let initialize = () => {
-    if (textWidth > $el.width()) {
-      setFontSize($el, textWidth, settings);
-    } else {
-      unSetFontSize($el);
-    }
-  };
-
   // Call once to set
-  initialize();
+  initialize($el, textWidth, settings);
 
   // Call on resize
   $(window).on("resize.fitText orientationchange.fitText", debounce(() => {
-    initialize();
+    initialize($el, textWidth, settings);
   }, 10));
 };
