@@ -1,5 +1,22 @@
 import debounce from "lodash/function/debounce";
 
+let setFontSize = ($el, textWidth, settings) => {
+  let compressor = textWidth / $el.width();
+  $el.css("font-size", Math.floor(settings.minFontSize / compressor));
+};
+
+let unSetFontSize = ($el) => {
+  $el.removeAttr("style");
+};
+
+let initialize = ($el, textWidth, settings) => {
+  if (textWidth > $el.width()) {
+    setFontSize($el, textWidth, settings);
+  } else {
+    unSetFontSize($el);
+  }
+};
+
 /**
  * Scales text to fit within a given area
  *
@@ -29,28 +46,11 @@ export default function fitText($el, options) {
 
   let textWidth = $el.find("span").width();
 
-  function setFontSize() {
-    let compressor = textWidth / $el.width();
-    $el.css("font-size", Math.floor(settings.minFontSize / compressor));
-  }
-
-  function unSetFontSize() {
-    $el.removeAttr("style");
-  }
-
-  function initialize() {
-    if (textWidth > $el.width()) {
-      setFontSize();
-    } else {
-      unSetFontSize();
-    }
-  }
-
   // Call once to set
-  initialize();
+  initialize($el, textWidth, settings);
 
   // Call on resize
   $(window).on("resize.fitText orientationchange.fitText", debounce(() => {
-    initialize();
+    initialize($el, textWidth, settings);
   }, 10));
 };
