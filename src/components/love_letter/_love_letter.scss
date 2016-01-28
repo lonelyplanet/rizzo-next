@@ -1,6 +1,6 @@
 @import "../../../sass/webpack_deps";
 
-$mobile-breakpoint: 717;
+$mobile-breakpoint: 720;
 $small-breakpoint: 320;
 
 .love-letter__heading {
@@ -50,13 +50,7 @@ $small-breakpoint: 320;
 .love-letter__author {
   font-size: 1.4rem;
   letter-spacing: .01rem;
-  margin: 0 auto;
   text-align: center;
-  width: 93%;
-
-  @media (min-width: $min-720) {
-    text-align: center;
-  }
 
   a {
     display: inline-block;

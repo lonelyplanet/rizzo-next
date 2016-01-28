@@ -5,25 +5,29 @@
     &ldquo;<span class="js-love-letter">{{{love_letter_text}}}</span>&rdquo;
 
     {{#if love_letter_more}}
-    <a class="love-letter__more" href="{{love_letter_more}}" target="_blank">
-      Read More
-      <span class="icon-chevron-right"></span>
-    </a>
+      <a class="love-letter__more" href="{{love_letter_more}}" target="_blank">
+        Read More
+        <span class="icon-chevron-right"></span>
+      </a>
     {{/if}}
   </p>
 
   <div class="love-letter__author">
     {{#if love_letter.author.name }}
-    <a href="{{love_letter.author.url}}">
-      <img class="love-letter__author__image" src="{{love_letter.author.image}}" alt="Image of {{love_letter.author.name}}">
+      <a href="{{love_letter.author.url}}">
+        <img class="love-letter__author__image" src="{{love_letter.author.image}}" alt="Image of {{love_letter.author.name}}">
 
-      <div class="love-letter__author__creds">
-        <div class="love-letter__author__creds__name">{{love_letter.author.name}}</div>
-        <div class="love-letter__author__creds__title">{{love_letter.author.title}}</div>
-      </div>
-    </a>
+        <div class="love-letter__author__creds">
+          <div class="love-letter__author__creds__name">{{love_letter.author.name}}</div>
+          <div class="love-letter__author__creds__title">{{love_letter.author.title}}</div>
+        </div>
+      </a>
     {{/if}}
-    <div id="sponsor-logo-love-letter" class="adunit adunit--sponsor-logo display-none" data-size-mapping="sponsor-logo" data-targeting='{ "position": "love-letter" }'></div>
+
+    <div class="adunit adunit--sponsor-logo display-none"
+       id="sponsor-logo-love-letter"
+       data-size-mapping="sponsor-logo"
+       data-targeting='{ "position": "love-letter" }'>
+     </div>
   </div>
-  
 </article>

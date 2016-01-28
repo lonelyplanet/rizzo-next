@@ -1,4 +1,16 @@
+/// ----------------------------------------------------------------------------
+/// Dependencies
+/// ----------------------------------------------------------------------------
+
 @import "../../../sass/webpack_deps";
+
+
+
+
+
+/// ----------------------------------------------------------------------------
+/// Base styles
+/// ----------------------------------------------------------------------------
 
 .article {
   opacity: 1;
@@ -11,14 +23,43 @@
     opacity: 0;
     transform: translateY(20rem);
   }
-
-  &__attribution {
-    text-align: center;
-    width: 100%;
-  }
 }
+
+
+
+
+
+/// ----------------------------------------------------------------------------
+/// Element styles
+/// ----------------------------------------------------------------------------
 
 .article__container {
   @include container-padded;
+  padding-bottom: $gutter;
   position: relative;
+
+  @media (min-width: $min-600) {
+    padding-bottom: 10.4rem;
+  }
+}
+
+.article__sponsor-ad {
+  @include container;
+  border-top: 1px solid $color-border;
+  font-size: 1.4rem;
+  line-height: (22 / 14);
+  padding-bottom: .8rem;
+  padding-top: .8rem;
+
+  @include with-layout(static) {
+    width: span(6);
+  }
+
+
+
+  // Implementation detail
+
+  .article & {
+    margin-top: 4rem;
+  }
 }

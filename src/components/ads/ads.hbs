@@ -1,1 +1,5 @@
-<div id="{{ad.id}}" class="adunit adunit--{{ad.type}}" data-size-mapping="{{ad.size}}" {{#if ad.position}}data-targeting="{ position: '{{ad.position}}' }"{{/if}}></div>
+<div class="adunit adunit--{{ad.type}}"
+  id="{{ad.id}}"
+  data-size-mapping="{{ad.size}}"
+  {{#if ad.position}}data-targeting="{ position: '{{ad.position}}' }"{{/if}}>
+</div>

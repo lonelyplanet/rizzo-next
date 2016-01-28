@@ -6,6 +6,7 @@ import "./masthead_nav.js";
 import coverVid from "../../core/utils/covervid";
 import MobilUtil from "../../core/mobile_util";
 import fitText from "../../core/utils/fitText";
+import subscribe from "../../core/decorators/subscribe";
 
 /**
  * Masthead Component
@@ -52,8 +53,21 @@ export default class MastheadComponent extends Component {
     fitText(this.$el.find(".js-masthead-title"), {
       minFontSize: 56
     });
+
+    this.subscribe();
   }
-   /**
+
+  @subscribe("ad.loaded", "ads");
+  mastheadAdLoaded(data) {
+    if (data.id === "sponsor-logo-masthead") {
+      if ($("#" + data.id).hasClass("display-block")) {
+        this.$el.find(".masthead__text-wrap")
+          .addClass("masthead__text-wrap--pull-up");
+      }
+    }
+  }
+
+  /**
    * Play the video, callback from click handler
    */
   playVideo() {
