@@ -3,6 +3,7 @@ import AdSizes from "./ad_sizes";
 import AdUnit from "./ad_unit";
 import CookieUtil from "../cookie_util";
 import "jquery.dfp";
+import publish from "../decorators/publish";
 import subscribe from "../decorators/subscribe";
 import track from "../decorators/track";
 
@@ -48,12 +49,20 @@ export default class AdManager {
       enableSingleRequest: false,
       collapseEmptyDivs: true,
       afterEachAdLoaded: ($adunit, event) => {
+        this._afterEachAdLoaded($adunit);
         this._adCallback.call(this, $adunit, event);
       }
     };
 
     this.load();
     return this;
+  }
+
+  @publish("ad.loaded", "ads")
+  _afterEachAdLoaded($adunit) {
+    return {
+      id: $adunit.attr("id")
+    };
   }
 
   @subscribe("reload", "ads")
