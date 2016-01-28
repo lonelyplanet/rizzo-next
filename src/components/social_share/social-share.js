@@ -90,7 +90,7 @@ class SocialShareComponent extends Component {
     }
 
     if (network === "email") {
-      window.location.href = `mailto:?body=${msg}`;
+      window.location = `mailto:?body=${msg}`;
 
       return "email"
     }

@@ -7,13 +7,13 @@ import "owlcarousel-pre/owl-carousel/owl.carousel.js";
  * A component for creating an Image Slider
  */
 export default class ImageSliderComponent extends Component {
-  
+
   initialize(options) {
-  	options.afterMove = options.afterInit = options.afterUpdate = this.onUpdate;
+    options.afterMove = options.afterInit = options.afterUpdate = this.onUpdate;
 
     this.events = {
-    	"click .owl-next": "onNextClick",
-      	"click .owl-prev": "onPrevClick"
+      "click .owl-next": "onNextClick",
+      "click .owl-prev": "onPrevClick"
     };
 
     let $owlSlider = $(options.el).find('.owl-carousel').owlCarousel(options);
@@ -30,21 +30,21 @@ export default class ImageSliderComponent extends Component {
     this.slider.next();
   }
 
-  onUpdate(){
-  	let last = (this.visibleItems.length + this.currentItem == this.itemsAmount);
-  	let first = (this.currentItem == 0)
-  	
-  	if(last){
-  		$(this.options.el + " .owl-next").hide();
-  	}else{
-  		$(this.options.el + " .owl-next").show();
-  	}
+  onUpdate() {
+    let last = (this.visibleItems.length + this.currentItem == this.itemsAmount),
+        first = (this.currentItem == 0);
 
-  	if(first){
-  		$(this.options.el + " .owl-prev").hide();
-  	}else{
-  		$(this.options.el + " .owl-prev").show();
-  	}
+    if (last) {
+      $(this.options.el + " .owl-next").hide();
+    } else {
+      $(this.options.el + " .owl-next").show();
+    }
+
+    if (first) {
+      $(this.options.el + " .owl-prev").hide();
+    } else {
+      $(this.options.el + " .owl-prev").show();
+    }
   }
 }
 
