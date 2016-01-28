@@ -111,7 +111,8 @@ export default class AdManager {
       country: this._slugify(config.country),
       city: this._slugify(config.city),
       dest: this._slugify(config.destination),
-      destination: this._slugify(config.destination)
+      destination: this._slugify(config.destination),
+      interest: config.interest
     };
 
     if (window.Krux) {
