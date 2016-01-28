@@ -1,10 +1,28 @@
+/// ----------------------------------------------------------------------------
+/// Dependencies
+/// ----------------------------------------------------------------------------
+
 @import "../../../sass/webpack_deps";
+
+
+
+
+
+/// ----------------------------------------------------------------------------
+/// Base styles
+/// ----------------------------------------------------------------------------
 
 .ad {
   background-color: #2c3642;
 }
 
-/// MPU
+
+
+
+
+/// ----------------------------------------------------------------------------
+/// Extended styles
+/// ----------------------------------------------------------------------------
 
 .ad--mpu {
   height: 25rem;
@@ -29,46 +47,72 @@
   }
 }
 
-/// Adunit
-
-.adunit {
+.ad--leaderboard__container {
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
+}
+
+.adunit--sponsor-logo,
+.adunit--sponsor-logo-masthead {
+  display: inline-block;
+}
+
+.adunit--superzone {
+  @include container;
+}
+
+
+
+
+
+/// ----------------------------------------------------------------------------
+/// Implementation detail
+/// ----------------------------------------------------------------------------
+
+.ad--article .adunit {
   padding-bottom: 1.8rem;
   padding-top: 1.8rem;
+}
 
-  &--sponsor-logo,
-  &--sponsor-logo-masthead {
-    display: inline-block;
-    height: 12rem;
-    margin-left: ($gutter * 2);
-    padding-bottom: 0;
-    padding-top: 0;
+.ad--article .adunit--leaderboard {
+  display: inline-block;
+  margin-bottom: -8px; // offset `inline-block`
+}
+
+.attribution .adunit,
+.love-letter__author .adunit,
+.article__attribution .adunit {
+  @media (max-width: $max-720) {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    transform: scale(.8);
     width: 15rem;
   }
 
-  &--sponsor-logo-masthead {
-    bottom: 0;
-    position: absolute;
-    right: 0;
+  @media (min-width: $min-720) {
+    margin-left: ($gutter * 2);
+    padding-left: ($gutter * 2);
+    position: relative;
+  }
 
-    @media (max-width: $max-720) {
+  // Create a fake border so that it can extend outside of the ad
+  &::before {
+    @media (min-width: $min-720) {
+      background-color: $color-border;
+      content: "";
+      display: block;
+      height: calc(100% + 6rem);
       left: 0;
-      margin-left: auto;
-      margin-right: auto;
-      right: 0;
+      position: absolute;
+      top: -3rem;
+      width: .1rem;
     }
   }
+}
 
-  &--leaderboard {
-    max-width: 100rem;
-  }
-
-  &--superzone {
-    width: 100%;
-  }
-
-  &.display-none {
-    display: none;
-  }
+.masthead__ad .adunit--sponsor-logo-masthead {
+  display: inline-block;
+  margin-bottom: -.9rem; // reset inline-block margin
 }
