@@ -69,11 +69,11 @@ export default class ArticleBodyComponent extends Component {
       });
 
       promises.push(promise);
-    }, (url) => {
-      rizzo.logger.error(`Could not load image: ${url}`);
     });
 
-    return Promise.all(promises);
+    return Promise.all(promises).catch((err) => {
+      rizzo.logger.error(err);
+    });
   }
 
   /**
