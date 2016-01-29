@@ -3,6 +3,10 @@ import $ from "jquery";
 import PhotoSwipe from "photoswipe";
 import PhotoSwipeUI_Default from "photoswipe/dist/photoswipe-ui-default";
 import track from "../../core/decorators/track";
+<<<<<<< 5dda57b7b007dad543a0c9ca30790d2b6ea136fd
+=======
+import YouTubePlayer from "youtube-player";
+>>>>>>> lint
 
 // Keep track of instance IDs
 let instanceId = 0;
@@ -129,8 +133,8 @@ export default class ImageGalleryComponent extends Component {
    * Gets youtube movie id from given youtube movie url
    */
   _youtubeID(url) {
-    var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-    var match = url.match(regExp);
+    let regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/,
+        match = url.match(regExp);
 
     return match && match[2].length == 11 ? match[2] : null;
   }
