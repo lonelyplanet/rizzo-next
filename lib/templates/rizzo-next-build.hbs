@@ -1,5 +1,7 @@
 // This is a template file for what will output to `rizzo-next.js`
 import "babel-polyfill";
+import "matchmedia-polyfill/matchMedia";
+import "matchmedia-polyfill/matchMedia.addListener";
 
 {{#each components}}
 import {{name}} from "{{path}}";
