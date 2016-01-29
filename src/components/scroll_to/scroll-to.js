@@ -1,5 +1,4 @@
 import { Component } from "../../core/bane";
-import $ from "jquery";
 import Scroll from "scroll-js";
 
 class ScrollToComponent extends Component {

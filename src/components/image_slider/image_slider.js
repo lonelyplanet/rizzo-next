@@ -16,7 +16,7 @@ export default class ImageSliderComponent extends Component {
       "click .owl-prev": "onPrevClick"
     };
 
-    let $owlSlider = $(options.el).find('.owl-carousel').owlCarousel(options);
+    let $owlSlider = $(options.el).find(".owl-carousel").owlCarousel(options);
     this.slider = $owlSlider.data("owlCarousel");
   }
 
