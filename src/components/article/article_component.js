@@ -8,7 +8,7 @@ import publish from "../../core/decorators/publish";
 import waitForTransition from "../../core/utils/waitForTransition";
 import ArticleModel from "./article_model";
 import rizzo from "../../rizzo";
-
+import subscribe from "../../core/decorators/subscribe";
 
 export default class ArticleComponent extends Component {
   initialize() {
@@ -25,17 +25,32 @@ export default class ArticleComponent extends Component {
 
     this.template = require("./article.hbs");
     this.loader = require("./article-loading.hbs");
+    this.adLeaderboardTemplate = require("../ads/ad_article_leaderboard.hbs");
 
     this.articles = new Map();
     this.viewedArticles = [];
     this.listOfArticles = [];
-    this.paginatedArticles = {};
 
     this._setFirstArticle();
+    this.subscribe();
+  }
 
-    this.events = {
-      "click .article-pagination__item": "_trackArticlePagination"
-    };
+  @subscribe("ad.loaded", "ads");
+  _removeEmptySponsorAd(data) {
+    if (data.size === "sponsor-logo") {
+      let $article = this.$newArticle ? this.$newArticle : this.$el;
+      let $sponsorLogo = $article.find(".js-sponsor-logo");
+
+      if ($sponsorLogo.length && $sponsorLogo.hasClass("display-none")) {
+        $sponsorLogo
+          .closest(".js-article-sponsor-ad")
+          .remove();
+      }
+    }
+
+    if (data.size === "leaderboard-responsive") {
+      this.adLoadedPromise && this.adLoadedPromise();
+    }
   }
 
   /**
@@ -72,7 +87,7 @@ export default class ArticleComponent extends Component {
       el: this.$el.find(".js-action-sheet")
     });
 
-    let firstArticle = new ArticleModel({ 
+    let firstArticle = new ArticleModel({
       url: `${window.location.pathname}.json`
     });
 
@@ -87,7 +102,7 @@ export default class ArticleComponent extends Component {
 
   _setInitialCallouts(callouts) {
     this.articleBody = new ArticleBodyComponent({
-      el: this.$el.find(".article-body"),
+      el: this.$el.find(".js-article-body"),
       poiData: callouts
     });
   }
@@ -95,8 +110,6 @@ export default class ArticleComponent extends Component {
   _setInitialListOfArticles(articles) {
     this.listOfArticles = articles;
     this._setNextArticle();
-    this._setArticlePagination(1);
-    this._createArticlePagination(this.$el);
 
     if (this.canUseScrollFeature) {
       let roomToScroll = this._getRoomToScroll(),
@@ -108,43 +121,6 @@ export default class ArticleComponent extends Component {
         this._scrollToNextArticle();
       }
     }
-  }
-
-  /**
-   * Sets the next and previous articles for the pagination element
-   * @param {Integer} offset The number to be subtracted from each count to get
-   *                         the correct index
-   */
-  _setArticlePagination(offset) {
-    let nextCount = (this.howManyArticlesHaveLoaded * 2),
-        previousCount = (this.howManyArticlesHaveLoaded * 2) + 1;
-
-    this.paginatedArticles.next = this.listOfArticles[nextCount - offset];
-    this.paginatedArticles.previous = this.listOfArticles[previousCount - offset];
-  }
-
-  /**
-   * Adds data to the next and previous pagination links
-   * @param {Object} $article The article that contains the pagination element
-   *                          that is to be updated
-   */
-  _createArticlePagination($article) {
-    let $pagination = $article.find(".article-pagination"),
-        next = this.paginatedArticles.next,
-        previous = this.paginatedArticles.previous;
-
-    if (next && previous) {
-      $pagination.find(".is-prev").attr("href", `/${previous.slug}`).html(previous.title);
-      $pagination.find(".is-next").attr("href", `/${next.slug}`).html(next.title);
-      $pagination.removeClass("is-hidden");
-    }
-  }
-
-  @track("article pageview click");
-  _trackArticlePagination() {
-    let href = $(event.target).attr("href");
-
-    return href;
   }
 
   /**
@@ -177,10 +153,10 @@ export default class ArticleComponent extends Component {
       this._toggleActiveClassForArticle($article);
     });
   }
-  
+
   _shouldGetNextArticle(difference) {
     let amountNeededToScroll = this._getAmountNeededToScroll();
-    
+
     return this.$window.scrollTop() >= (amountNeededToScroll - difference);
   }
 
@@ -264,7 +240,7 @@ export default class ArticleComponent extends Component {
     this.isNextArticleLoading = true;
 
     this.$loader = $(this.loader({}))
-      .appendTo(this.$activeArticle);
+      .insertAfter(this.$activeArticle);
 
     let nextArticle = new ArticleModel({ url: slug });
 
@@ -283,7 +259,11 @@ export default class ArticleComponent extends Component {
       this._updateNewArticle(nextArticle);
 
       this.isNextArticleLoading = false;
-      this._hideLoader({ showArticle: true });
+
+      new Promise(resolve => this.adLoadedPromise = resolve)
+        .then(() => {
+          this._hideLoader({ showArticle: true });
+        });
     }, () => {
       this.isNextArticleLoading = false;
       this._hideLoader({ showArticle: false });
@@ -319,8 +299,6 @@ export default class ArticleComponent extends Component {
     this.howManyArticlesHaveLoaded += 1;
 
     this._setNextArticle();
-    this._setArticlePagination(2);
-    this._createArticlePagination(this.$newArticle);
     this._checkIfHistoryShouldBeUpdated();
     this._newArticleLoaded(model);
   }
@@ -393,7 +371,6 @@ export default class ArticleComponent extends Component {
   /**
    * Update data for ads and analytics
    */
-  @publish("reload", "ads")
   _updateData() {
     let article = this.articles.get(this.$activeArticle[0]).get(),
         interests = article.tealium.article.interests,
@@ -475,7 +452,10 @@ export default class ArticleComponent extends Component {
     $(`meta[property="article:author"]`).attr("content", article.author);
   }
 
+  @publish("reload", "ads")
   _newArticleLoaded() {
+    this.$newArticle.prepend(this.adLeaderboardTemplate());
+
     let $slotLeader = this.$newArticle.find(".js-slot-leader");
 
     if ($slotLeader.length) {

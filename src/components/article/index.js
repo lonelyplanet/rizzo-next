@@ -1,9 +1,8 @@
-import ArticleComponent from "./article";
+import ArticleComponent from "./article_component";
 
 require("./article.scss");
 require("./article-loading.scss");
 require("./article-header.scss");
-require("./article-footer.scss");
 require("./article-pagination.scss");
 
 export default ArticleComponent;

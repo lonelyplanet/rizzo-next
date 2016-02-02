@@ -1,9 +1,9 @@
-<article class="article" data-title="{{ article.title }}" data-slug="{{ article.slug }}">
+<article class="article" data-title="{{ article.title }}" data-slug="{{ article.slug }}" itemscope itemtype="http://schema.org/Article">
   <meta content="{{ article.title }}" itemprop="headline">
   <meta content="{{ article.title }}" itemprop="alternativeHeadline">
   <meta content="{{ article.post_date }}" itemprop="datePublished">
 
-  <div class="article__container" itemscope itemtype="http://schema.org/Article">
+  <div class="article__container">
     <header class="article-header is-narrow is-centered has-flexbox">
       <h1 class="article-header__title is-xlarge">
         {{ article.title }}
@@ -18,46 +18,14 @@
 
     {{> "components/article_body/article_body"}}
 
-    <footer class="article-footer js-article-footer is-narrow">
-      <div class="article-post-date js-article-post-date" hidden>
+    <footer class="article__footer js-article-footer">
+      <div class="post-date in-article-footer js-article-post-date" hidden>
         Published <time datetime="{{ article.post_date }}"></time>
-      </div><!-- .article-post-date -->
+      </div>
 
-      <div class="article-footer__top">
-        {{> "components/social/social"}}
-
-        {{#if article.categories}}
-          {{> "components/category_list/category_list"}}
-        {{/if}}
-      </div><!-- .article-footer__top -->
+      {{> "components/social_share/social_share_article"}}
     </footer><!-- .article-footer -->
 
-    <div class="article__sponsor-ad">
-      <div class="adunit adunit--sponsor-logo display-none js-sponsor-logo"
-        id="sponsor-logo-article"
-        data-size-mapping="sponsor-logo"
-        data-targeting='{ "position": "article-attribution" }'>
-      </div>
-    </div>
+    {{> "components/ads/ad_article_sponsor" }}
   </div><!-- .article__container -->
-
-  {{#if article.related_articles}}
-    <div class="article-pagination is-hidden">
-      <h3 class="article-pagination__heading">
-        Related articles
-      </h3>
-
-      <div class="article-pagination__container">
-        <a class="article-pagination__item is-prev"></a>
-        <a class="article-pagination__item is-next"></a>
-      </div><!-- .article-pagination__container -->
-    </div><!-- .article-pagination -->
-  {{/if}}
-
-
-  <div class="ad ad--leaderboard ad--article">
-    <div class="ad--leaderboard__container">
-      <div class="adunit adunit--leaderboard js-slot-leader" data-size-mapping="leaderboard-responsive"></div>
-    </div><!-- .container -->
-  </div><!-- .ad -->
 </article><!-- .article -->
