@@ -26,29 +26,18 @@ $social-share: (
 /// ----------------------------------------------------------------------------
 
 .social-share {
-  margin-left: -#{get($social-share, "margin-left")}; // Negative margin to offset first item's margin
-}
 
 
 
+  // Implementation detail
 
+  &.in-article-footer {
+    text-align: right;
+    width: 50%;
 
-/// ----------------------------------------------------------------------------
-/// Modifiers
-/// ----------------------------------------------------------------------------
-
-// Used for when an action sheet is at the end of an `.article` and inside of
-// the `.article-footer`
-.social-share--article {
-  float: left;
-
-  @media (max-width: $max-720) {
-    margin-right: 1.2rem;
-  }
-
-  @media (min-width: $min-720) {
-    float: right;
-    margin-top: -#{get($social-share, "margin-top")}; // Negative margin to offset first row of items' margin
+    .no-flexbox & {
+      float: right;
+    }
   }
 }
 
@@ -76,8 +65,6 @@ $social-share: (
   display: inline-block;
   height: get($social-share, "button-size");
   line-height: 1;
-  margin-left: get($social-share, "margin-left");
-  margin-top: get($social-share, "margin-top");
   outline: 0;
   padding: 0;
   position: relative;
@@ -106,17 +93,21 @@ $social-share: (
   z-index: z("middle");
 
   &.is-open {
-    left: 3.5rem;
     position: absolute;
 
-    @media (max-width: $max-720) {
-      top: -3rem;
+    @media (max-width: $max-840) {
+      right: 3.5rem;
+      top: -3.6rem;
     }
 
-    @media (min-width: $min-720) {
-      left: (-10rem + 1.5rem);
+    @media (min-width: $min-840) {
+      left: (-10rem + 1.2rem);
     }
   }
+}
+
+.social-share__menu--top {
+  top: -10.4rem;
 }
 
 // An inner wrapper for the menu items; it should be a `div` and it expects a
@@ -131,7 +122,7 @@ $social-share: (
   padding: .8rem 0;
   position: relative;
 
-  @media (min-width: $min-720) {
+  @media (min-width: $min-840) {
     box-shadow: 0 .1rem .2rem rgba(#000, .25), 0 0 .1rem rgba(#000, .35);
   }
 
@@ -172,31 +163,56 @@ $social-share: (
 .social-share__menu__arrow {
   clip-path: rect(-.4rem 1.4rem 1.8rem -.4rem);
   display: inline-block;
-  left: .1rem;
   margin-top: -.7rem;
   position: absolute;
-  top: 50%;
 
-  @media (min-width: $min-720) {
+  @media (max-width: $max-840) {
+    right: .1rem;
+    top: 50%;
+  }
+
+  @media (min-width: $min-840) {
     clip-path: rect(0 1.8rem 1.4rem -.4rem);
     left: 50%;
     margin-left: -.7rem;
     margin-top: 0;
-    top: .1rem;
+  }
+
+  .social-share__menu--top & {
+    bottom: 0;
+  }
+
+  .social-share__menu--bottom & {
+    @media (min-width: $min-840) {
+      top: .1rem;
+    }
   }
 
   &::after {
     background-color: #fff;
-    box-shadow: -.1rem .1rem .1rem -.1rem rgba(#000, .44);
     content: "";
     display: block;
     height: 1.4rem;
-    transform: rotate(45deg) translate(.6rem, -.6rem);
     width: 1.4rem;
 
-    @media (min-width: $min-720) {
-      box-shadow: -.1rem -.1rem .1rem -.1rem rgba(#000, .44);
-      transform: rotate(45deg) translate(.6rem, .6rem);
+    .social-share__menu--top & {
+      box-shadow: -.1rem .1rem .1rem -.1rem rgba(#000, .84);
+      transform: rotate(-135deg) translate(.6rem, -.6rem);
+
+      @media (min-width: $min-840) {
+        box-shadow: -.1rem -.1rem .1rem -.1rem rgba(#000, .84);
+        transform: rotate(-135deg) translate(.6rem, .6rem);
+      }
+    }
+
+    .social-share__menu--bottom & {
+      box-shadow: -.1rem .1rem .1rem -.1rem rgba(#000, .84);
+      transform: rotate(-135deg) translate(.6rem, -.6rem);
+
+      @media (min-width: $min-840) {
+        box-shadow: -.1rem -.1rem .1rem -.1rem rgba(#000, .44);
+        transform: rotate(45deg) translate(.6rem, .6rem);
+      }
     }
   }
 }
