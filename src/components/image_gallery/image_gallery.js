@@ -3,14 +3,7 @@ import $ from "jquery";
 import PhotoSwipe from "photoswipe";
 import PhotoSwipeUI_Default from "photoswipe/dist/photoswipe-ui-default";
 import track from "../../core/decorators/track";
-<<<<<<< HEAD
-<<<<<<< 5dda57b7b007dad543a0c9ca30790d2b6ea136fd
-=======
 import YouTubePlayer from "youtube-player";
->>>>>>> lint
-=======
-import YouTubePlayer from "youtube-player";
->>>>>>> origin/pj-best-in-us-comps
 
 // Keep track of instance IDs
 let instanceId = 0;
@@ -59,7 +52,6 @@ export default class ImageGalleryComponent extends Component {
       let $galleryImage = $(el),
           $linkEl = $galleryImage.find("a"),
           size = $linkEl.attr("data-size").split("x"),
-<<<<<<< HEAD
           image = $linkEl.find("img").attr("src"),
           link = $linkEl.attr("href"),
           largeImage = link.match(/\.(jpg|png|gif)/) ? link : image,
@@ -68,13 +60,6 @@ export default class ImageGalleryComponent extends Component {
       let item = {
         src: largeImage,
         msrc: image,
-=======
-          src = $linkEl.find("img").attr("src"),
-          url = $linkEl.attr("href"),
-          youtubeID = this._youtubeID(url);
-
-      let item = {
->>>>>>> origin/pj-best-in-us-comps
         el: $linkEl.find("img")[0],
         w: parseInt(size[0], 10),
         h: parseInt(size[1], 10)
@@ -93,15 +78,9 @@ export default class ImageGalleryComponent extends Component {
         item.youtubeID = youtubeID;
         item.html = "<div class='pswp__youtube-player' id='" + youtubeID + "'></div>";
         item.title = null;
-<<<<<<< HEAD
         item.src = null;
         item.msrc = null;
-=======
-      } else {
-        item.src = src;
-        item.msrc = src;
->>>>>>> origin/pj-best-in-us-comps
-      }
+      } 
 
       items.push(item);
     });
