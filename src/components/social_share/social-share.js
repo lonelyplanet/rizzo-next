@@ -61,7 +61,7 @@ class SocialShareComponent extends Component {
     if ($title.length) {
       title = $title[0].content;
       tweet = `${urlencode(title)} ${urlencode(url)} @lonelyplanet`;
-    }else if(msg){
+    }else if (msg) {
       tweet = `${urlencode(msg)}`;
     }
 
