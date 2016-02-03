@@ -13,6 +13,7 @@
 /// ----------------------------------------------------------------------------
 
 .article {
+  border-bottom: .1rem solid $color-border;
   opacity: 1;
   overflow: hidden; // Prevent horizontal movement in iOS caused by .size-full images
   position: relative;
@@ -35,11 +36,18 @@
 
 .article__container {
   @include container-padded;
-  padding-bottom: $gutter;
+  padding-bottom: gutter(static);
   position: relative;
+}
 
-  @media (min-width: $min-600) {
-    padding-bottom: 10.4rem;
+.article__footer {
+  @include container;
+  @include container-static(6);
+  align-items: center;
+  display: flex;
+
+  .no-flexbox & {
+    display: block;
   }
 }
 

@@ -49,8 +49,8 @@ export default class AdManager {
       enableSingleRequest: false,
       collapseEmptyDivs: true,
       afterEachAdLoaded: ($adunit, event) => {
-        this._afterEachAdLoaded($adunit);
         this._adCallback.call(this, $adunit, event);
+        this._afterEachAdLoaded($adunit);
       }
     };
 
@@ -61,7 +61,8 @@ export default class AdManager {
   @publish("ad.loaded", "ads")
   _afterEachAdLoaded($adunit) {
     return {
-      id: $adunit.attr("id")
+      id: $adunit.attr("id"),
+      size: $adunit.data("sizeMapping")
     };
   }
 
