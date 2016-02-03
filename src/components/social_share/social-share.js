@@ -50,17 +50,22 @@ class SocialShareComponent extends Component {
         winWidth = $(window).width(),
         left,
         top;
-
+    
     let $title = $el.closest(".article").find("meta[itemprop=\"headline\"]"),
         title,
+        tweet,
+        msg = $el.data("msg"),
         url = window.location.href,
         network = $el.data("network");
 
     if ($title.length) {
       title = $title[0].content;
+      tweet = `${urlencode(title)} ${urlencode(url)} @lonelyplanet`;
+    }else if (msg) {
+      tweet = `${urlencode(msg)}`;
     }
 
-    let tweet = `${urlencode(title)} ${urlencode(url)} @lonelyplanet`;
+    
 
     left = Math.round((winWidth / 2) - (width / 2));
     top = winHeight > height ? Math.round((winHeight / 2) - (height / 2)) : 0;
@@ -82,6 +87,12 @@ class SocialShareComponent extends Component {
       window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, "share", `${windowOptions},${windowSize}`);
 
       return "facebook";
+    }
+
+    if (network === "email") {
+      window.location = `mailto:?body=${msg}`;
+
+      return "email";
     }
   }
 

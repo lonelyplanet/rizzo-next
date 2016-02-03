@@ -3,6 +3,7 @@ import $ from "jquery";
 import PhotoSwipe from "photoswipe";
 import PhotoSwipeUI_Default from "photoswipe/dist/photoswipe-ui-default";
 import track from "../../core/decorators/track";
+import YouTubePlayer from "youtube-player";
 
 // Keep track of instance IDs
 let instanceId = 0;
@@ -53,7 +54,8 @@ export default class ImageGalleryComponent extends Component {
           size = $linkEl.attr("data-size").split("x"),
           image = $linkEl.find("img").attr("src"),
           link = $linkEl.attr("href"),
-          largeImage = link.match(/\.(jpg|png|gif)/) ? link : image;
+          largeImage = link.match(/\.(jpg|png|gif)/) ? link : image,
+          youtubeID = this._youtubeID(link);
 
       let item = {
         src: largeImage,
@@ -64,18 +66,123 @@ export default class ImageGalleryComponent extends Component {
       };
 
       let $caption;
-      if(($caption = $galleryImage.find("span")).length) {
+      if (($caption = $galleryImage.find("span")).length) {
         item.title = $caption.html();
-      } else if(($caption = $galleryImage.next(".copy--caption")).length) {
+      } else if (($caption = $galleryImage.next(".copy--caption")).length) {
         item.title = $caption.html();
-      } else if(($caption = $galleryImage.next("p").find(".caption")).length) {
+      } else if (($caption = $galleryImage.next("p").find(".caption")).length) {
         item.title = $caption.html();
       }
+
+      if (youtubeID) {
+        item.youtubeID = youtubeID;
+        item.html = "<div class='pswp__youtube-player' id='" + youtubeID + "'></div>";
+        item.title = null;
+        item.src = null;
+        item.msrc = null;
+      } 
 
       items.push(item);
     });
 
     return items;
+  }
+
+
+  /**
+   * Callback from photoswipe gallery close
+   */
+  onGalleryClose() {
+    this._youtubeStop();
+  }
+
+  /**
+   * Callback from photoswipe item change
+   */
+  onGalleryChange() {
+    this._youtubePlay(this._gallery.currItem.youtubeID);
+  }
+
+  /**
+   * Plays youtube movie if given proper movie ID
+   */
+  _youtubePlay(youtubeID) {
+    if (youtubeID) {
+      this._player = YouTubePlayer(youtubeID);
+      this._player.loadVideoById(youtubeID);
+      this._player.playVideo();
+    } else {
+      this._youtubeStop();
+    }
+  }
+
+  /**
+   * Stops youtube movie and destroys the player
+   */
+  _youtubeStop() {
+    if (this._player) {
+      this._player.destroy().then(() => {
+        this._player = null;
+      });
+    }
+  }
+
+  /**
+   * Gets youtube movie id from given youtube movie url
+   */
+  _youtubeID(url) {
+    let regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/,
+        match = url.match(regExp);
+
+    return match && match[2].length == 11 ? match[2] : null;
+  }
+
+  /**
+   * Callback from photoswipe gallery close
+   */
+  onGalleryClose() {
+    this._youtubeStop();
+  }
+
+  /**
+   * Callback from photoswipe item change
+   */
+  onGalleryChange() {
+    this._youtubePlay(this._gallery.currItem.youtubeID);
+  }
+
+  /**
+   * Plays youtube movie if given proper movie ID
+   */
+  _youtubePlay(youtubeID) {
+    if (youtubeID) {
+      this._player = YouTubePlayer(youtubeID);
+      this._player.loadVideoById(youtubeID);
+      this._player.playVideo();
+    } else {
+      this._youtubeStop();
+    }
+  }
+
+  /**
+   * Stops youtube movie and destroys the player
+   */
+  _youtubeStop() {
+    if (this._player) {
+      this._player.destroy().then(() => {
+        this._player = null;
+      });
+    }
+  }
+
+  /**
+   * Gets youtube movie id from given youtube movie url
+   */
+  _youtubeID(url) {
+    let regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/,
+        match = url.match(regExp);
+
+    return match && match[2].length == 11 ? match[2] : null;
   }
 
   /**
@@ -91,7 +198,7 @@ export default class ImageGalleryComponent extends Component {
         index = this.$images.index(clickedListItem),
         src = $(clickedListItem).find("img").attr("src");
 
-    if(index >= 0) {
+    if (index >= 0) {
       this.openPhotoSwipe(index);
     }
 
@@ -121,6 +228,8 @@ export default class ImageGalleryComponent extends Component {
     };
 
     this._gallery = new PhotoSwipe( this.$pswp[0], PhotoSwipeUI_Default, items, options );
+    this._gallery.listen("afterChange", this.onGalleryChange.bind(this));
+    this._gallery.listen("close", this.onGalleryClose.bind(this));
     this._gallery.init();
   }
 }

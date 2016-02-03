@@ -11,10 +11,11 @@
 /// ----------------------------------------------------------------------------
 
 $social-share: (
-  "background-color": #f0f0f0,
-  "button-size": 3rem,
-  "margin-left": .4rem,
-  "margin-top": .9rem
+  'background-color': #f0f0f0,
+  'button-size': 3rem,
+  'button-size-big': 4rem,
+  'margin-left': .4rem,
+  'margin-top': .9rem
 );
 
 
@@ -41,6 +42,23 @@ $social-share: (
   }
 }
 
+
+.social-share--centered {
+  float: none;
+}
+
+
+
+
+.social-share__list{
+  list-style: none;
+  text-align: center;
+
+  li{
+    display: inline-block;
+    margin: 0 5px;
+  }
+}
 
 
 
@@ -79,6 +97,11 @@ $social-share: (
 
   .svg-icon {
     vertical-align: middle;
+  }
+
+  &--big{
+    width: get($social-share, 'button-size-big');
+    height: get($social-share, 'button-size-big');
   }
 }
 
