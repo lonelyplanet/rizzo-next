@@ -68,6 +68,8 @@ export default class ArticleComponent extends Component {
    * @return {String}
    */
   _slugify(string) {
+    if (!string) return "";
+
     return string.toLowerCase().replace(" ", "-");
   }
 
@@ -413,8 +415,12 @@ export default class ArticleComponent extends Component {
     window.lp.ads.continent = article.tealium.article.cd1_Continent ? this._slugify(article.tealium.article.cd1_Continent) : "";
     window.lp.ads.country = article.tealium.article.cd2_Country ? this._slugify(article.tealium.article.cd2_Country) : "";
     window.lp.ads.destination = this._slugify(article.tealium.place.destination);
+    window.lp.ads.state = this._slugify(article.tealium.place.state_name);
+    window.lp.ads.region = this._slugify(article.tealium.place.region_name);
+    window.lp.ads.city = this._slugify(article.tealium.article.cd3_City);
     window.lp.ads.interest = window.lp.article.interests;
     window.lp.ads.position = `article-${article.articleNumber}`;
+
 
     this._updateMetaData(window.lp.article);
   }

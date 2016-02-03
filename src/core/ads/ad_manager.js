@@ -73,6 +73,8 @@ export default class AdManager {
   }
 
   _slugify(string) {
+    if (!string) return "";
+
     return string.toLowerCase().replace(" ", "-");
   }
 
@@ -113,6 +115,7 @@ export default class AdManager {
       city: this._slugify(config.city),
       dest: this._slugify(config.destination),
       destination: this._slugify(config.destination),
+      state: this._slugify(config.state),
       interest: config.interest
     };
 
@@ -121,10 +124,7 @@ export default class AdManager {
       keywords.kuid = window.Krux.user || "";
     }
 
-    // Send both adTnm and tnm for posterity
-    if (config.adTnm) {
-      keywords.adTnm = keywords.tnm = config.adTnm.replace(/\s/, "").split(",");
-    }
+    keywords.tnm = config.tnm.replace(/\s/, "").split(",");
 
     if (config.keyValues && !$.isEmptyObject(config.keyValues)) {
       for (let key in config.keyValues) {
