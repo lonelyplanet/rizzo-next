@@ -124,7 +124,9 @@ export default class AdManager {
       keywords.kuid = window.Krux.user || "";
     }
 
-    keywords.tnm = config.tnm.replace(/\s/, "").split(",");
+    if (config.tnm) {
+      keywords.tnm = config.tnm.replace(/\s/, "").split(",");
+    }
 
     if (config.keyValues && !$.isEmptyObject(config.keyValues)) {
       for (let key in config.keyValues) {
