@@ -120,8 +120,9 @@ export default class AdManager {
       keywords.kuid = window.Krux.user || "";
     }
 
+    // Send both adTnm and tnm for posterity
     if (config.adTnm) {
-      keywords.adTnm = config.adTnm.replace(/\s/, "").split(",");
+      keywords.adTnm = keywords.tnm = config.adTnm.replace(/\s/, "").split(",");
     }
 
     if (config.keyValues && !$.isEmptyObject(config.keyValues)) {

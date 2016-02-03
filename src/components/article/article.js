@@ -432,7 +432,7 @@ export default class ArticleComponent extends Component {
       window.lp.article.categories = article.categories;
     }
 
-    window.lp.ads.adThm = `tip-article, ${article.tealium.place.id}`;
+    window.lp.ads.adTnm = `tip-article, ${article.tealium.place.id}`;
     window.lp.ads.continent = article.tealium.article.cd1_Continent ? this._slugify(article.tealium.article.cd1_Continent) : "";
     window.lp.ads.country = article.tealium.article.cd2_Country ? this._slugify(article.tealium.article.cd2_Country) : "";
     window.lp.ads.destination = this._slugify(article.tealium.place.destination);
