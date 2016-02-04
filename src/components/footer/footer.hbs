@@ -155,8 +155,9 @@
         {{#each footer_social_media_links}}
           <li class="footer__social-item">
             <a class="footer__social-link footer__social-link--{{className}}" href="{{url}}">
-              <i class="icon-{{className}}" aria-hidden="true"></i>
-              <span class="hide-text">{{title}}</span>
+              <svg class="svg-icon svg-icon--small svg-icon--inline" aria-label="{{title}}">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lp-icon-{{className}}"></use>
+              </svg>
             </a>
           </li>
         {{/each}}

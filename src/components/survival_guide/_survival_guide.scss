@@ -51,14 +51,15 @@ $mobile-breakpoint: 400;
 
   &__icon {
     display: block;
-    height: 60px;
-    margin: 0 auto;
+    height: 6rem;
+    margin-left: auto;
+    margin-right: auto;
     transition: transform $animation-speed;
-    width: 60px;
+    width: 6rem;
 
     @include respond-to($mobile-breakpoint) {
-      height: 80px;
-      width: 80px;
+      height: 8rem;
+      width: 8rem;
     }
 
     .survival-guide__link:hover &,
