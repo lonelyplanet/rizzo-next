@@ -1,6 +1,8 @@
 @import "../../../sass/webpack_deps";
 
 .article-loading {
+  color: #bfbfbf;
+  font-size: 4rem;
   opacity: 1;
   padding-bottom: gutter();
   padding-top: gutter();
