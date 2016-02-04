@@ -29,18 +29,21 @@ class ToursComponent extends Component {
           blurbClamp = this.clampAt - headingLines + 1,
           headingClamp = 3;
 
-      if (headingLines >= 3) {
-        blurbClamp = this.nativeSupport ? 1 : 2;
-        $clamp(headingEl, { clamp: headingClamp });
-        $clamp(blurb, { clamp: blurbClamp });
-      } else {
-        if (!this.nativeSupport) {
-          blurbClamp++;
+      try {
+        if (headingLines >= 3) {
+          blurbClamp = this.nativeSupport ? 1 : 2;
+          $clamp(headingEl, { clamp: headingClamp });
+          $clamp(blurb, { clamp: blurbClamp });
+        } else {
+          if (!this.nativeSupport) {
+            blurbClamp++;
+          }
+
+          $clamp(blurb, { clamp: blurbClamp });
         }
-
-        $clamp(blurb, { clamp: blurbClamp });
+      } catch(e) {
+        // Clamp broke, oh well...
       }
-
     });
   }
 }

@@ -44,15 +44,19 @@ class ArticlesComponent extends Component {
       } = this._findElements(article);
 
       // aka 2 + 5 or something
-      if (titleLines + teaserLines > this.maxLines) {
-        let teaserClamp = Math.ceil(this.maxLines - titleLines);
-        $clamp(teaser.get(0), { clamp: teaserClamp });
-        teaser.addClass("article__info__teaser--small");
-        blurb.prop("hidden", true);
-      } else {
-        // Only clamp the blurb
-        let blurbClamp = Math.ceil(this.maxLines - titleLines - teaserLines);
-        $clamp(blurb.get(0), { clamp: blurbClamp });
+      try {
+        if (titleLines + teaserLines > this.maxLines) {
+          let teaserClamp = Math.ceil(this.maxLines - titleLines);
+          $clamp(teaser.get(0), { clamp: teaserClamp });
+          teaser.addClass("article__info__teaser--small");
+          blurb.prop("hidden", true);
+        } else {
+          // Only clamp the blurb
+          let blurbClamp = Math.ceil(this.maxLines - titleLines - teaserLines);
+          $clamp(blurb.get(0), { clamp: blurbClamp });
+        }
+      } catch(e) {
+        // Clamp broke... oh well
       }
     });
   }
