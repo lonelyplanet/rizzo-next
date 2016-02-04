@@ -1,115 +1,118 @@
 @import "../../../sass/webpack_deps";
 
 .owl-next {
-    right: -1.5rem;
+  right: -1.5rem;
 
-    @media (min-width: $min-480) {
-      right: -2rem;
+  @media (min-width: $min-480) {
+    right: -2rem;
+  }
+
+  @media (min-width: $min-840) {
+    right: -1rem;
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    .ttd__more-icon {
+      color: $color-blue;
     }
+  }
+}
 
+.owl-prev {
+  left: -1.5rem;
+
+  @media (min-width: $min-480) {
+    left: -2rem;
+  }
+
+  @media (min-width: $min-840) {
+    left: -1rem;
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    .ttd__less-icon {
+      color: $color-blue;
+    }
+  }
+}
+
+.owl-next,
+.owl-prev {
+  background-color: #fff;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  display: block;
+  height: 5rem;
+  outline: none;
+  padding: 0;
+  position: absolute;
+  top: 38%;
+  width: 5rem;
+  z-index: 15;
+
+  @media (min-width: $min-480) {
+    height: 6rem;
+    width: 6rem;
+  }
+
+  @media (min-width: $min-720) {
+    box-shadow: 0 .2rem 1rem .15rem rgba(#000, .07);
+  }
+
+  @media (max-width: $max-840) {
+    transform: translateY(-50%);
+  }
+
+  @media (min-width: $min-840) {
+    height: 4rem;
+    transition: box-shadow $animation-speed ease-in-out;
+    width: 4rem;
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
     @media (min-width: $min-840) {
-      right: -1rem;
-    }
-
-    &:hover,
-    &:active {
-      .ttd__more-icon {
-        color: $color-blue;
-      }
+      box-shadow: 0 .2rem 1rem .15rem rgba(#000, .1);
     }
   }
 
-  .owl-prev {
-    left: -1.5rem;
-
-    @media (min-width: $min-480) {
-      left: -2rem;
-    }
-
-    @media (min-width: $min-840) {
-      left: -1rem;
-    }
-
-    &:hover,
-    &:active {
-      .ttd__less-icon {
-        color: $color-blue;
-      }
-    }
+  &[disabled] {
+    opacity: 0;
+    pointer-events: none;
   }
+}
 
-  .owl-next,
-  .owl-prev {
-    display: block;
-    cursor: pointer;
-    position: absolute;
-    height: 5rem;
-    width: 5rem;
-    top: 38%;
-    z-index: 15;
-    border-radius: 50%;
-    border: none;
-    outline: none;
-    background-color: #fff;
-    padding: 0;
+.owl-next-icon,
+.owl-prev-icon {
+  color: #324355;
+  font-size: 1.1rem;
+  font-weight: 700;
+  position: relative;
+  transition: color $animation-speed ease-in-out;
 
-    @media (min-width: $min-480) {
-      height: 6rem;
-      width: 6rem;
-    }
-
-    @media (min-width: $min-720) {
-      box-shadow: 0 .2rem 1rem .15rem rgba(#000, .07);
-    }
-
-    @media (max-width: $max-840) {
-      transform: translateY(-50%);
-    }
-
-    @media (min-width: $min-840) {
-      height: 4rem;
-      width: 4rem;
-      transition: box-shadow $animation-speed ease-in-out;
-    }
-
-    &:hover,
-    &:active {
-      @media (min-width: $min-840) {
-        box-shadow: 0 .2rem 1rem .15rem rgba(#000, .1);
-      }
-    }
-
-    &[disabled] {
-      opacity: 0;
-      pointer-events: none;
-    }
+  @media (min-width: $min-840) {
+    font-size: .9rem;
   }
+}
 
-  .owl-next-icon,
-  .owl-prev-icon {
-    color: #324355;
-    font-size: 1.1rem;
-    font-weight: 700;
-    position: relative;
-    transition: color $animation-speed ease-in-out;
+.owl-next-icon {
+  right: .3rem;
 
-    @media (min-width: $min-840) {
-      font-size: .9rem;
-    }
+  @media (min-width: $min-720) {
+    right: -.1rem;
   }
+}
 
-  .owl-next-icon  {
-    right: .3rem;
+.owl-prev-icon {
+  left: .3rem;
 
-    @media (min-width: $min-720) {
-      right: -.1rem;
-    }
+  @media (min-width: $min-720) {
+    left: -.1rem;
   }
-
-  .owl-prev-icon {
-    left: .3rem;
-
-    @media (min-width: $min-720) {
-      left: -.1rem;
-    }
-  }
+}

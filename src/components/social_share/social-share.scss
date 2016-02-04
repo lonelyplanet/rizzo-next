@@ -42,23 +42,20 @@ $social-share: (
   }
 }
 
-
 .social-share--centered {
   float: none;
 }
 
-
-
-
-.social-share__list{
+.social-share__list {
   list-style: none;
   text-align: center;
 
-  li{
+  li {
     display: inline-block;
-    margin: 0 5px;
+    margin: 0 .5rem;
   }
 }
+
 
 
 

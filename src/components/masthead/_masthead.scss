@@ -49,6 +49,7 @@ $masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
   &__text-wrap {
     align-items: center;
     bottom: 0;
+    box-sizing: content-box;
     display: flex;
     justify-content: center;
     left: ($gutter * .5);
@@ -58,7 +59,6 @@ $masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
     right: ($gutter * .5);
     top: 0;
     z-index: z("middle");
-    box-sizing: content-box;
 
     @media (min-width: $min-480) {
       left: $gutter;
