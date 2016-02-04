@@ -17,7 +17,8 @@ export default class Logger {
       // airbrake.notify(err);
 
       if (window.trackJs) {
-        window.trackJs.console.error(err);
+        let message = typeof err === "string" ? err : JSON.stringify(err); 
+        window.trackJs.console.error(message);
       }
     }
   }
