@@ -58,6 +58,7 @@ $masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
     right: ($gutter * .5);
     top: 0;
     z-index: z("middle");
+    box-sizing: content-box;
 
     @media (min-width: $min-480) {
       left: $gutter;
