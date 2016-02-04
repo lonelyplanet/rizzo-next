@@ -101,6 +101,10 @@ $logo-height: 4rem;
       color: #fff;
     }
 
+    .svg-icon {
+      top: -.3rem;
+    }
+
     &--facebook {
       &:hover,
       &:active,
@@ -125,6 +129,11 @@ $logo-height: 4rem;
       &:focus {
         background-color: $color-pinterest;
         border-color: $color-pinterest;
+      }
+
+      .svg-icon {
+        height: 2rem;
+        width: 2rem;
       }
     }
   }

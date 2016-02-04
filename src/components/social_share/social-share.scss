@@ -42,23 +42,20 @@ $social-share: (
   }
 }
 
-
 .social-share--centered {
   float: none;
 }
 
-
-
-
-.social-share__list{
+.social-share__list {
   list-style: none;
   text-align: center;
 
-  li{
+  li {
     display: inline-block;
-    margin: 0 5px;
+    margin: 0 .5rem;
   }
 }
+
 
 
 
@@ -78,7 +75,7 @@ $social-share: (
   background-color: get($social-share, "background-color");
   border: 0;
   border-radius: 100%;
-  color: #333;
+  color: $color-darkblue;
   cursor: pointer;
   display: inline-block;
   height: get($social-share, "button-size");
@@ -95,13 +92,13 @@ $social-share: (
     background-color: darken(get($social-share, "background-color"), 3);
   }
 
-  .svg-icon {
-    vertical-align: middle;
+  &--big {
+    height: get($social-share, "button-size-big");
+    width: get($social-share, "button-size-big");
   }
 
-  &--big{
-    width: get($social-share, 'button-size-big');
-    height: get($social-share, 'button-size-big');
+  .svg-icon {
+    vertical-align: middle;
   }
 }
 
@@ -158,6 +155,7 @@ $social-share: (
   .social-share__control {
     background-color: #fff;
     border-radius: 0;
+    color: $color-text;
     display: block;
     font-size: 1.3rem;
     height: auto;
@@ -176,7 +174,6 @@ $social-share: (
 
     .svg-icon {
       margin-right: 1rem;
-      position: relative;
       top: -.2rem;
     }
   }
