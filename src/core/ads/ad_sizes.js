@@ -30,7 +30,7 @@ export default {
     { browser: [ 0, 0 ], ad_sizes: [ 300, 250 ] }
   ],
   "sponsor-logo": [
-    { browser: [ 0, 0 ], ad_sizes: [ [ 150, 120 ], [ 120, 50 ] ] }
+    { browser: [ 0, 0 ], ad_sizes: [ [ 150, 120 ], [ 120, 50 ], [1, 1] ] }
   ],
   "traffic-driver-html": [
     { browser: [ 0, 0 ], ad_sizes: [ 1, 1 ] }
