@@ -17,10 +17,10 @@
           "slug": "#",
           "submenu": {
             "featured": {
-              "image": "https://lonelyplanetstatic.imgix.net/gonzo/best-in-travel-2016/BIT2016-bg-main.jpg?w=80&h=60&fit=crop",
-              "title": "Best in Travel",
+              "image": "http://lonelyplanetstatic.imgix.net/bit2016-bg-main.jpg?w=80&h=60&fit=crop",
+              "title": "Best in the USA",
               "subtitle": "Featured",
-              "link": "//www.lonelyplanet.com/best-in-travel"
+              "link": "//www.lonelyplanet.com/best-in-us"
             },
             "items": [
               {
