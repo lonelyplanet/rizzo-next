@@ -6,7 +6,7 @@ import React from "react";
 export default class AlertView extends React.Component {
 
   render() {
-    let classString = "alert",
+    let classString = "map-alert",
         message = "";
 
     if (this.props.error) {
