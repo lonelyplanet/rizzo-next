@@ -21,7 +21,6 @@ class Alert extends Component {
     if (this.cookieUtil.getCookie(this.cookieName)) {
       return;
     }
-    console.log(this.$el);
 
     this.alert = alert;
     this.callback = callback;
@@ -48,8 +47,7 @@ class Alert extends Component {
       });
   }
 
-  linkClicked(e) {
-    e.preventDefault();
+  linkClicked() {
     this.callback && this.callback();
   }
 }
