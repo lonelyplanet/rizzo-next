@@ -2,7 +2,7 @@
 
 $logo-height: 4rem;
 
-.footer {
+.lp-global-footer {
   position: relative;
 
   @media (min-width: $min-960) {
@@ -201,7 +201,7 @@ $logo-height: 4rem;
   }
 }
 
-.footer__main {
+.lp-global-footer__main {
   @include divider("top");
 
   @media (min-width: $min-960) {
@@ -211,11 +211,11 @@ $logo-height: 4rem;
   }
 }
 
-.footer__main__checkbox {
+.lp-global-footer__main__checkbox {
   display: none;
 }
 
-.footer__main__links {
+.lp-global-footer__main__links {
   max-height: 50px;
   overflow: hidden;
   vertical-align: top;
@@ -238,7 +238,7 @@ $logo-height: 4rem;
   }
 }
 
-.footer__main__links--newsletter {
+.lp-global-footer__main__links--newsletter {
   border-top: 0;
   max-height: none;
 
@@ -249,7 +249,7 @@ $logo-height: 4rem;
   }
 }
 
-.footer__main__links__header {
+.lp-global-footer__main__links__header {
   font-size: 1.2rem;
   font-weight: $font-weight-semibold;
   line-height: 1;
@@ -300,7 +300,7 @@ $logo-height: 4rem;
   }
 }
 
-.footer__main__checkbox:checked + .footer__main__links {
+.lp-global-footer__main__checkbox:checked + .lp-global-footer__main__links {
   max-height: 600px;
 
   .icon {
@@ -308,13 +308,13 @@ $logo-height: 4rem;
   }
 }
 
-.footer__main__links__list {
+.lp-global-footer__main__links__list {
   @media (max-width: $max-960) {
     margin: 0 $spacing $spacing;
   }
 }
 
-.footer__main__links__list__item {
+.lp-global-footer__main__links__list__item {
   font-size: 1.3rem;
   letter-spacing: .02rem;
   line-height: 2.2;
@@ -389,7 +389,7 @@ $logo-height: 4rem;
     width: 22rem;
   }
 
-  .footer & {
+  .lp-global-footer & {
     @media (max-width: $max-960) {
       margin-bottom: $gutter;
       margin-left: $spacing;
