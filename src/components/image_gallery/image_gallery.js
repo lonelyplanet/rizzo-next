@@ -3,7 +3,6 @@ import $ from "jquery";
 import PhotoSwipe from "photoswipe";
 import PhotoSwipeUI_Default from "photoswipe/dist/photoswipe-ui-default";
 import track from "../../core/decorators/track";
-import YouTubePlayer from "youtube-player";
 
 // Keep track of instance IDs
 let instanceId = 0;
@@ -76,11 +75,11 @@ export default class ImageGalleryComponent extends Component {
 
       if (youtubeID) {
         item.youtubeID = youtubeID;
-        item.html = "<div class='pswp__youtube-player' id='" + youtubeID + "'></div>";
+        item.html = "<div class='pswp__player' id='" + youtubeID + "'></div>";
         item.title = null;
         item.src = null;
         item.msrc = null;
-      } 
+      }
 
       items.push(item);
     });
@@ -100,17 +99,16 @@ export default class ImageGalleryComponent extends Component {
    * Callback from photoswipe item change
    */
   onGalleryChange() {
-    this._youtubePlay(this._gallery.currItem.youtubeID);
+    this._youtubePlay(this._gallery.currItem);
   }
 
   /**
    * Plays youtube movie if given proper movie ID
    */
-  _youtubePlay(youtubeID) {
-    if (youtubeID) {
-      this._player = YouTubePlayer(youtubeID);
-      this._player.loadVideoById(youtubeID);
-      this._player.playVideo();
+  _youtubePlay(galleryItem) {
+    if (galleryItem.youtubeID) {
+      this._player = document.getElementById(galleryItem.youtubeID);
+      this._player.innerHTML = "<iframe width='100%' height='100%' src='https://www.youtube.com/embed/" + galleryItem.youtubeID + "?autoplay=1' frameborder='0' allowfullscreen></iframe>";
     } else {
       this._youtubeStop();
     }
@@ -121,57 +119,8 @@ export default class ImageGalleryComponent extends Component {
    */
   _youtubeStop() {
     if (this._player) {
-      this._player.destroy().then(() => {
-        this._player = null;
-      });
-    }
-  }
-
-  /**
-   * Gets youtube movie id from given youtube movie url
-   */
-  _youtubeID(url) {
-    let regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/,
-        match = url.match(regExp);
-
-    return match && match[2].length == 11 ? match[2] : null;
-  }
-
-  /**
-   * Callback from photoswipe gallery close
-   */
-  onGalleryClose() {
-    this._youtubeStop();
-  }
-
-  /**
-   * Callback from photoswipe item change
-   */
-  onGalleryChange() {
-    this._youtubePlay(this._gallery.currItem.youtubeID);
-  }
-
-  /**
-   * Plays youtube movie if given proper movie ID
-   */
-  _youtubePlay(youtubeID) {
-    if (youtubeID) {
-      this._player = YouTubePlayer(youtubeID);
-      this._player.loadVideoById(youtubeID);
-      this._player.playVideo();
-    } else {
-      this._youtubeStop();
-    }
-  }
-
-  /**
-   * Stops youtube movie and destroys the player
-   */
-  _youtubeStop() {
-    if (this._player) {
-      this._player.destroy().then(() => {
-        this._player = null;
-      });
+      this._player.innerHTML = "";
+      this._player = null;
     }
   }
 
