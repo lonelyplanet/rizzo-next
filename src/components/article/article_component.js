@@ -421,7 +421,6 @@ export default class ArticleComponent extends Component {
     window.lp.ads.interest = window.lp.article.interests;
     window.lp.ads.position = `article-${article.articleNumber}`;
 
-
     this._updateMetaData(window.lp.article);
   }
 
@@ -467,7 +466,7 @@ export default class ArticleComponent extends Component {
     if ($slotLeader.length) {
       $slotLeader.data({
         adType: "ajax",
-        targeting: null
+        targeting: { position: window.lp.ads.position }
       })
       .removeAttr("data-targeting");
     }
