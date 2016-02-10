@@ -17,12 +17,9 @@
   opacity: 1;
   overflow: hidden; // Prevent horizontal movement in iOS caused by .size-full images
   position: relative;
-  transform: translateY(0);
-  transition: transform $animation-speed ease, opacity $animation-speed ease;
 
   &.is-loading {
     opacity: 0;
-    transform: translateY(20rem);
   }
 }
 

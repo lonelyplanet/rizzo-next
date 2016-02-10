@@ -1,0 +1,14 @@
+@import "../../../sass/webpack_deps";
+
+.lp-progress {
+  display: block;
+  height: .1rem;
+  width: 100%;
+}
+
+.lp-progress-bar {
+  background-color: $color-blue;
+  display: block;
+  height: 100%;
+  width: 0; // Changes with JS
+}
