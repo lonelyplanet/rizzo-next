@@ -12,13 +12,12 @@ import subscribe from "../../core/decorators/subscribe";
 
 export default class ArticleComponent extends Component {
   initialize() {
-    this.canUseScrollFeature = window.history && window.history.pushState;
+    this.canUseScrollFeature = window.history && window.history.replaceState;
 
     this._resetWindowScrollPosition();
 
     this.$document = $(document);
     this.$window = $(window);
-    this.$footer = $(".footer");
 
     this.isNextArticleLoading = false;
     this.howManyArticlesHaveLoaded = 1;
@@ -136,13 +135,15 @@ export default class ArticleComponent extends Component {
    * Runs methods when scrolling
    */
   _scrollToNextArticle(offsetDifference = 0) {
+    let shouldGetNextArticle = false;
+
     this.$window.on("scroll.article", debounce(() => {
-      if (this._shouldGetNextArticle(offsetDifference)) {
-        if (!this.isNextArticleLoading) {
-          if (this.nextArticle) {
-            this._getNextArticle(`/${this.nextArticle.slug}.json`);
-          }
-        }
+      shouldGetNextArticle = this._shouldGetNextArticle(offsetDifference) &&
+        !this.isNextArticleLoading &&
+        this.nextArticle;
+
+      if (shouldGetNextArticle) {
+        this._getNextArticle(`/${this.nextArticle.slug}.json`);
       }
 
       this._setActiveArticle();
@@ -178,7 +179,7 @@ export default class ArticleComponent extends Component {
     let roomToScroll = this._getRoomToScroll(),
         amountToScrollPastEndOfArticle = 100;
 
-    return roomToScroll - this.$footer.height() + amountToScrollPastEndOfArticle;
+    return roomToScroll - amountToScrollPastEndOfArticle;
   }
 
   /**
@@ -336,14 +337,14 @@ export default class ArticleComponent extends Component {
   }
 
   /**
-   * Use HTML5 pushState to update the browser's history
+   * Use HTML5 replaceState to update the browser's history
    * @param {String} pathname The window's current pathname
    * @param {String} title    Title of the new "page"
    * @param {String} slug     Pathname of the new "page"
    */
   _updateHistory(pathname, title, slug) {
     if (pathname !== `/${slug}`) {
-      history.pushState(null, `${title} - Lonely Planet`, `/${slug}`);
+      window.history.replaceState(null, `${title} - Lonely Planet`, `/${slug}`);
 
       this._updateData();
 
