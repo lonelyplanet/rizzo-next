@@ -6,7 +6,7 @@
   color: #fff;
   position: absolute;
   width: 100%;
-  z-index: z("header");
+  z-index: z("global-header");
 
   &__container {
     @include container-padded();

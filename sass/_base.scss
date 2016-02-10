@@ -65,7 +65,7 @@ body {
       padding: 2.2rem 2rem 1.8rem;
       text-decoration: none;
       width: auto;
-      z-index: z("header");
+      z-index: z("global-header");
     }
 
     @include with-layout(static) {
