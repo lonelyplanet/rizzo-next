@@ -24,7 +24,11 @@ class ThingsToDo extends Component {
     };
 
     this.fetchCards().done(this.cardsFetched.bind(this)).fail((jqXHR) => {
-      rizzo.logger.error({ error: jqXHR.responseText });
+      rizzo.logger.error({ message:`
+        Could not fetch /api/${window.lp.place.slug}/experiences.json. 
+        Response Text: ${jqXHR.responseText}.
+        Status: ${jqXHR.statusText}
+        ` });
       return this.nukeIt();
     });
 

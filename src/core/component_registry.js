@@ -32,16 +32,19 @@ export default class ComponentRegistry {
     try {
       instance = new Component(options);
 
-      
       if (instances) {
         instances.push(instance);
       }
     } catch(e) {
       if (typeof ENV_PROD !== "undefined" && !ENV_PROD) {
         throw e;
-      }
-      else {
-        this.logger.error(e.message);
+      } else {
+        let el = typeof options === "object" ? options.el : options;
+        
+        this.logger.error(`
+          Could not create instance of ${Component.name} on ${el}.
+          Reason: ${e.message}
+        `);
       }
     }    
     
