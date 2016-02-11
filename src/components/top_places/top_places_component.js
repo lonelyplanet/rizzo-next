@@ -5,6 +5,10 @@ import Overlay from "../overlay";
 
 class TopPlaces extends Component {
   initialize() {
+    this.events = {
+      "touchend a": "goTo"
+    };
+
     this.$html = $("html");
     this.$body = $("body");
 
@@ -19,6 +23,17 @@ class TopPlaces extends Component {
     this.$body.on("keyup", this.onKeyup.bind(this));
     this.$el.on("click", "[class*='__close']", this.hide.bind(this));
     this.listenTo(this.overlay, "click", this.hide);
+  }
+
+  /**
+   * Handle touch events on top places
+   * @param  {[Event]} e 
+   */
+  goTo(e) {
+    let el = $(e.currentTarget),
+        link = el.attr("href");
+    
+    window.location = link;
   }
 
   toggle() {
