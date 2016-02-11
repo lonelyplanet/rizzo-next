@@ -42,6 +42,7 @@ class NavigationComponent extends Component {
 
     this.name = "navigation";
     this.$mobileNavigation = this.$el.find(".mobile-navigation").detach();
+    this.$mobileNavigation.removeClass("mobile-navigation--hidden");
     this.$mobileNavigation.on("click", ".js-close", this._clickNav.bind(this));
     this.$mobileNavigation.on("click", ".js-nav-item", this._handleClick.bind(this));
 
