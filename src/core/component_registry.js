@@ -44,6 +44,7 @@ export default class ComponentRegistry {
         this.logger.error(`
           Could not create instance of ${Component.name} on ${el}.
           Reason: ${e.message}
+          Page: ${document.location.href}
         `);
       }
     }    
