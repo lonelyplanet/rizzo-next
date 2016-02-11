@@ -28,8 +28,10 @@ export default class ComponentRegistry {
     let instances = this.components.get(Component.name);
 
     let instance = null;
+
     try {
       instance = new Component(options);
+
       
       if (instances) {
         instances.push(instance);
@@ -39,7 +41,7 @@ export default class ComponentRegistry {
         throw e;
       }
       else {
-        this.logger.error(e);
+        this.logger.error(e.message);
       }
     }    
     
