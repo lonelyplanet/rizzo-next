@@ -23,7 +23,7 @@
   }
 
   &--hidden {
-    z-index: -20;
+    z-index: z("below");
   }
 
   &--visible,
