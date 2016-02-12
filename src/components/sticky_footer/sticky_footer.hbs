@@ -1,0 +1,13 @@
+<div class="lp-sticky-footer off-screen">
+  {{> "components/progress/progress" }}
+
+  <div class="container">
+    <div class="lp-sticky-footer__current-item js-lp-sticky-footer-current-item">
+      {{ current.title }}
+    </div>
+
+    <a href="{{ next.slug }}" class="lp-sticky-footer__next-item js-lp-sticky-footer-next-item">
+      {{ next.title }}
+    </a>
+  </div>
+</div>

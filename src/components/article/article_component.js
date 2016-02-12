@@ -9,6 +9,8 @@ import waitForTransition from "../../core/utils/waitForTransition";
 import ArticleModel from "./article_model";
 import rizzo from "../../rizzo";
 import subscribe from "../../core/decorators/subscribe";
+import matchMedia from "../../core/utils/matchMedia";
+import StickyFooterComponent from "../sticky_footer";
 
 export default class ArticleComponent extends Component {
   initialize() {
@@ -30,8 +32,14 @@ export default class ArticleComponent extends Component {
     this.viewedArticles = [];
     this.listOfArticles = [];
 
+    this.state = {};
+
     this._setFirstArticle();
     this.subscribe();
+
+    this.stickyFooterComponent = new StickyFooterComponent({
+      el: $(".lp-sticky-footer")
+    });
   }
 
   @subscribe("ad.loaded", "ads");
@@ -50,6 +58,10 @@ export default class ArticleComponent extends Component {
     if (data.size === "leaderboard-responsive") {
       this.adLoadedPromise && this.adLoadedPromise();
     }
+  }
+
+  _createIdForArticle(slug) {
+    return slug.split("/")[slug.split("/").length - 1];
   }
 
   /**
@@ -72,17 +84,28 @@ export default class ArticleComponent extends Component {
     return string.toLowerCase().replace(" ", "-");
   }
 
+  _loadStickyFooter() {
+    this.stickyFooterComponent.update(
+      this.$el.offset().top,
+      this._getAmountNeededToScroll(),
+      this.state
+    );
+
+    matchMedia("(min-width: 720px)", (query) => {
+      if (query.matches) {
+        this.stickyFooterComponent.attach();
+        this.stickyFooterComponent.scroll();
+      } else {
+        this.stickyFooterComponent.detach();
+      }
+    });
+  }
+
   /**
    * Set the first article
    */
   _setFirstArticle() {
     this.$activeArticle = this.$el.addClass("is-active");
-
-    // Add the first article to the list of viewed articles
-    this.viewedArticles.push({
-      slug: this.$el.data("slug"),
-      title: this.$el.data("title")
-    });
 
     this.socialShare = new SocialShareComponent({
       el: this.$el.find(".js-action-sheet")
@@ -96,6 +119,34 @@ export default class ArticleComponent extends Component {
       this.articles.set(this.$el[0], firstArticle);
       this._setInitialListOfArticles(firstArticle.get("related_articles").articles);
       this._setInitialCallouts(firstArticle.get("content").callouts);
+
+      // Add the first article to the list of viewed articles
+      this.viewedArticles.push({
+        slug: this.$el.data("slug"),
+        title: this.$el.data("title"),
+        scroll: {
+          articleOffsetTop: this.$el.offset().top,
+          amountNeededToScroll: this._getAmountNeededToScroll()
+        },
+        next: {
+          slug: this.nextArticle.slug,
+          title: this.nextArticle.title
+        }
+      });
+
+      this.$el.attr("id", this._createIdForArticle(this.$el.data("slug")));
+
+      this.state = {
+        current: {
+          title: this.$el.data("title")
+        },
+        next: {
+          slug: this.nextArticle.slug,
+          title: this.nextArticle.title
+        }
+      };
+
+      this._loadStickyFooter();
     }, () => {
       rizzo.logger.error(`Unable to fetch ${window.location.pathname}.json`);
     });
@@ -189,7 +240,7 @@ export default class ArticleComponent extends Component {
    */
   _toggleActiveClassForArticle($article) {
     if (this.$window.scrollTop()) {
-      let top = $article.offsetTop,
+      let top = $($article).offset().top,
           bottom = top + $article.offsetHeight,
           shouldActiveClassBeAdded = this.$window.scrollTop() < bottom && this.$window.scrollTop() > top;
 
@@ -248,11 +299,11 @@ export default class ArticleComponent extends Component {
     let nextArticle = new ArticleModel({ url: slug });
 
     nextArticle.fetch().then(() => {
-        this.$newArticle = $(this.template({
-          article: nextArticle.get()
-        }))
-        .appendTo(".page-container")
-        .addClass("is-loading");
+      this.$newArticle = $(this.template({
+        article: nextArticle.get()
+      }))
+      .appendTo(".page-container")
+      .addClass("is-loading");
 
       // Set the new article element and data to the articles map
       this.articles.set(this.$newArticle[0], nextArticle);
@@ -263,14 +314,24 @@ export default class ArticleComponent extends Component {
 
       this.isNextArticleLoading = false;
 
-      new Promise(resolve => this.adLoadedPromise = resolve)
-        .then(() => {
-          this._hideLoader({ showArticle: true });
-        });
+      this.$newArticle.attr("id", this._createIdForArticle(nextArticle.get().slug));
+
+      this._articleCanBeLoaded();
     }, () => {
       this.isNextArticleLoading = false;
       this._hideLoader({ showArticle: false });
     });
+  }
+
+  @publish("loaded", "articles")
+  _articleCanBeLoaded() {
+    new Promise(resolve => this.adLoadedPromise = resolve).then(() => {
+      this._hideLoader({ showArticle: true });
+    });
+
+    return {
+      id: this.$newArticle.attr("id")
+    };
   }
 
   _hideLoader(options) {
@@ -314,6 +375,16 @@ export default class ArticleComponent extends Component {
     let previousArticle = this.listOfArticles[this.howManyArticlesHaveLoaded - 2];
 
     if (previousArticle) {
+      previousArticle.next = {
+        slug: this.nextArticle.slug,
+        title: this.nextArticle.title
+      };
+
+      previousArticle.scroll = {
+        articleOffsetTop: $(this.$newArticle).offset().top,
+        amountNeededToScroll: this._getAmountNeededToScroll()
+      };
+
       this.viewedArticles.push(previousArticle);
     }
   }
@@ -348,10 +419,33 @@ export default class ArticleComponent extends Component {
 
       this._updateData();
 
+      this.state.current.title = title;
+
       if(!this._doesItemExist(this.viewedArticles, slug)) {
+        this.state.next.slug = this.nextArticle.slug;
+        this.state.next.title = this.nextArticle.title;
+
         this._trackAjaxPageView(`/${slug}`, title);
         this._updateListOfViewedArticles();
       }
+
+      let articleOffsetTop = $(this.$newArticle).offset().top;
+      let amountNeededToScroll = this._getAmountNeededToScroll();
+
+      this.viewedArticles.forEach((item) => {
+        if (item.title === title) {
+          this.state.next.slug = item.next.slug;
+          this.state.next.title = item.next.title;
+          articleOffsetTop = item.scroll.articleOffsetTop;
+          amountNeededToScroll = item.scroll.amountNeededToScroll;
+        }
+      });
+
+      this.stickyFooterComponent.update(
+        articleOffsetTop,
+        amountNeededToScroll,
+        this.state
+      );
     }
   }
 
