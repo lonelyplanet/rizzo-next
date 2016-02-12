@@ -22,6 +22,10 @@
     transition: transform ($animation-speed / 2), opacity ($animation-speed / 2);
   }
 
+  &--hidden {
+    z-index: z("below");
+  }
+
   &--visible,
   &--visible &__list {
     opacity: 1;
