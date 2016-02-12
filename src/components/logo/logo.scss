@@ -20,7 +20,8 @@
 
   // Implementation detail
 
-  &.in-global-header {
+  .header &,
+  .lp-global-header & {
     margin-left: auto;
     margin-right: auto;
     position: relative;
@@ -42,7 +43,8 @@
     }
   }
 
-  &.in-global-footer {
+  .footer &,
+  .lp-global-footer & {
     width: 9.3rem;
 
     @media (max-width: $max-960) {
@@ -68,7 +70,8 @@
 /// ----------------------------------------------------------------------------
 
 .lp-logo--white,
-.header--has-images .lp-logo {
+.header--has-images .lp-logo,
+.lp-global-header--has-images .lp-logo {
   // @TODO remove `.header--has-images .lp-logo` and pass color in like `{{type}}`
   color: #fff;
 }
