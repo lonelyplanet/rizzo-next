@@ -67,28 +67,12 @@ $masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
   }
 
   &--no-images &__text-wrap {
-    border: .1rem solid $color-border;
     height: 100%;
     position: static;
 
     @media (min-width: $min-1290) {
       max-width: 100%;
     }
-  }
-
-  &--narrow &__text-wrap {
-    border-color: $color-border;
-    border-style: solid;
-    border-width: .1rem 0;
-    top: 0;
-
-    @media (min-width: $min-720) {
-      top: 0;
-    }
-  }
-
-  &--has-images &__text-wrap {
-    border: 0;
   }
 
   &__text {
