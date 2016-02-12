@@ -51,6 +51,7 @@ export default class MastheadComponent extends Component {
     this.listenTo(this.slideshow, "image.changed", this.updateStrapline);
 
     fitText(this.$el.find(".js-masthead-title"), {
+      fontSizes: [ 56, 60, 80, 120 ],
       minFontSize: 56
     });
 
@@ -60,9 +61,15 @@ export default class MastheadComponent extends Component {
   @subscribe("ad.loaded", "ads");
   mastheadAdLoaded(data) {
     if (data.id === "sponsor-logo-masthead") {
-      if ($("#" + data.id).hasClass("display-block")) {
+      let $mastheadAd = this.$el.find("#" + data.id);
+
+      if ($mastheadAd.hasClass("display-block")) {
         this.$el.find(".masthead__text-wrap")
           .addClass("masthead__text-wrap--pull-up");
+      } else {
+        $mastheadAd
+          .closest(".js-masthead-ad")
+          .remove();
       }
     }
   }

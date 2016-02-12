@@ -24,8 +24,8 @@ found at https://accounts.brightcove.com/en/terms-and-conditions/.
   {{/if}}
 
   <div class="masthead__text-wrap">
-    <div class="masthead__text {{#if masthead.first}}masthead__text--visible{{/if}}">
-      <div class="masthead__container">
+    <div class="masthead__text{{#if masthead.first}} masthead__text--visible{{/if}}">
+      {{#if masthead.parent}}
         <div class="masthead__breadcrumb">
           {{#if masthead.grandparent}}
             <a href="{{masthead.grandparent.slug}}">{{masthead.grandparent.place}}</a>
@@ -33,31 +33,34 @@ found at https://accounts.brightcove.com/en/terms-and-conditions/.
           {{/if}}
           <a href="{{masthead.parent.slug}}">{{masthead.parent.place}}</a>
         </div>
-        <h1 class="masthead__title js-masthead-title">{{masthead.title}}</h1>
+      {{/if}}
 
-        {{#if masthead.images}}
-          <div class="masthead__straplines">
-            {{#each masthead.images}}
-              <div class="masthead__strapline{{#if @first}} masthead__strapline--visible{{/if}}">{{strapline}}</div>
-            {{/each}}
-          </div>
-        {{/if}}
+      <h1 class="masthead__title js-masthead-title">
+        {{masthead.title}}
+      </h1>
 
-        {{#if top_places}}
-          <button class="masthead__button js-top-places">
-            {{masthead_button_types}} <i class="icon-chevron-down" aria-hidden="true"></i>
-          </button>
-        {{/if}}
+      {{#if masthead.images}}
+        <div class="masthead__straplines">
+          {{#each masthead.images}}
+            <div class="masthead__strapline{{#if @first}} masthead__strapline--visible{{/if}}">{{strapline}}</div>
+          {{/each}}
+        </div>
+      {{/if}}
 
-        <button class="masthead__button--play js-play-video" hidden>
-          <i class="masthead__button--play__icon icon-play3" aria-hidden="true"></i>
-          <span class="masthead__button--play__label">Play Video</span>
+      {{#if top_places}}
+        <button class="masthead__button js-top-places">
+          {{masthead_button_types}} <i class="icon-chevron-down" aria-hidden="true"></i>
         </button>
-      </div>
+      {{/if}}
+
+      <button class="masthead__button--play js-play-video" hidden>
+        <i class="masthead__button--play__icon icon-play3" aria-hidden="true"></i>
+        <span class="masthead__button--play__label">Play Video</span>
+      </button>
     </div>
   </div>
 
-  <div class="masthead__ad">
+  <div class="masthead__ad js-masthead-ad">
     <div class="adunit adunit--sponsor-logo-masthead display-none"
       id="sponsor-logo-masthead"
       data-size-mapping="sponsor-logo"
@@ -68,6 +71,7 @@ found at https://accounts.brightcove.com/en/terms-and-conditions/.
   {{#if is_continent}}
     {{> "components/masthead/masthead_nav" }}
   {{/if}}
+
 
   {{#if top_places}}
     {{> "components/top_places/top_places" }}
