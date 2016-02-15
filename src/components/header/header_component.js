@@ -20,12 +20,12 @@ class Header extends Component {
     });
 
     this.events = {
-      "click .js-lp-search": "onSearchClick",
-      "click .js-lp-search .navigation__link": "onSearchClick",
+      "click .js-lp-global-header-search": "onSearchClick",
+      "click .js-lp-global-header-search .navigation__link": "onSearchClick",
       "click .js-menu": "onMobileMenuClick"
     };
 
-    this.$search = this.$el.find(".js-lp-search");
+    this.$search = this.$el.find(".js-lp-global-header-search");
     this.$inner = this.$el.find(".js-lp-global-header-inner");
 
     $(window).resize(debounce(this.render.bind(this), 100));
