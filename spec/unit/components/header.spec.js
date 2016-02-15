@@ -37,7 +37,7 @@ describe("header", () => {
     let $el = $(html);
     let header = new Header({ el: $el });
 
-    $el.find(".js-lp-search").eq(0).trigger("click");
+    $el.find(".js-lp-global-header-search").eq(0).trigger("click");
 
     expect(showSearchCalled).to.be(1);
   });
