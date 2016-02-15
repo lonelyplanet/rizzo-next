@@ -10,6 +10,7 @@ import ArticleModel from "./article_model";
 import rizzo from "../../rizzo";
 import subscribe from "../../core/decorators/subscribe";
 import matchMedia from "../../core/utils/matchMedia";
+import breakpoints from "../../core/utils/breakpoints";
 import StickyFooterComponent from "../sticky_footer";
 
 export default class ArticleComponent extends Component {
@@ -91,7 +92,7 @@ export default class ArticleComponent extends Component {
       this.state
     );
 
-    matchMedia("(min-width: 720px)", (query) => {
+    matchMedia(`(min-width: ${breakpoints.min["720"]})`, (query) => {
       if (query.matches) {
         this.stickyFooterComponent.attach();
         this.stickyFooterComponent.scroll();
