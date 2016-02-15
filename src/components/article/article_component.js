@@ -157,6 +157,7 @@ export default class ArticleComponent extends Component {
         title: this.nextArticle.title
       }
     };
+
     this._loadStickyFooter();
   }
 
