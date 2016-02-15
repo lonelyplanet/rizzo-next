@@ -395,7 +395,7 @@ export default class ArticleComponent extends Component {
       };
 
       previousArticle.scroll = {
-        articleOffsetTop: $(this.$newArticle).offset().top,
+        articleOffsetTop: this.$newArticle.offset().top,
         amountNeededToScroll: this._getAmountNeededToScroll()
       };
 
@@ -443,7 +443,7 @@ export default class ArticleComponent extends Component {
         this._updateListOfViewedArticles();
       }
 
-      let articleOffsetTop = $(this.$newArticle).offset().top;
+      let articleOffsetTop = this.$newArticle.offset().top;
       let amountNeededToScroll = this._getAmountNeededToScroll();
 
       this.viewedArticles.forEach((item) => {
