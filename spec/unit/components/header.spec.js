@@ -27,7 +27,7 @@ describe("header", () => {
     Header.prototype.isTooBig = () => true;
     let header = new Header({ el: $(html) });
 
-    expect(header.$search.hasClass("header__search--fade")).to.be.ok();
+    expect(header.$search.hasClass("lp-global-header__search--fade")).to.be.ok();
 
     // Cleanup
     Header.prototype.isTooBig = isTooBig;

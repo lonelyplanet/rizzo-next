@@ -336,7 +336,7 @@
   transform: translateY(1rem);
   transition: opacity $animation-speed, transform $animation-speed, box-shadow ($animation-speed-ui * 1.5);
   width: $width;
-  z-index: z("header") + 1;
+  z-index: z("global-header") + 1;
 }
 
 @mixin dropdown-menu-visible {

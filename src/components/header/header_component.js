@@ -25,8 +25,8 @@ class Header extends Component {
       "click .js-menu": "onMobileMenuClick"
     };
 
-    this.$search = this.$el.find(".header__search");
-    this.$inner = this.$el.find(".header__inner");
+    this.$search = this.$el.find(".js-lp-search");
+    this.$inner = this.$el.find(".js-lp-global-header-inner");
 
     $(window).resize(debounce(this.render.bind(this), 100));
     this.render();
@@ -40,7 +40,7 @@ class Header extends Component {
    * @return {Header} The instance of the header
    */
   render() {
-    let fadeClassName = "header__search--fade";
+    let fadeClassName = "lp-global-header__search--fade";
 
     this.$search
         .removeClass(fadeClassName)
@@ -68,7 +68,7 @@ class Header extends Component {
 
   appendMenuIcon() {
     if(this.state.cartItemCount) {
-      $(".js-header-mobile").prepend(this.$mobileNotificationBadge);
+      $(".js-lp-global-header-mobile").prepend(this.$mobileNotificationBadge);
     }
   }
 }

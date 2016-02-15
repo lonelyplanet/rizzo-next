@@ -1,8 +1,8 @@
 @import "../../../sass/webpack_deps";
 
-.header {
+.lp-global-header {
   position: relative;
-  z-index: z("header");
+  z-index: z("global-header");
 
   &--narrow {
     background-color: #fff;
@@ -14,7 +14,7 @@
     position: absolute;
     right: 0;
     top: 0;
-    z-index: z("header");
+    z-index: z("global-header");
   }
 
   &__container {
@@ -36,7 +36,7 @@
     border-bottom-color: transparent;
   }
 
-  &--no-images.header--narrow &__inner {
+  &--no-images.lp-global-header--narrow &__inner {
     border-bottom-color: $color-border;
   }
 
