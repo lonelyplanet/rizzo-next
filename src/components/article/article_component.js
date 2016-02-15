@@ -116,40 +116,48 @@ export default class ArticleComponent extends Component {
     });
 
     firstArticle.fetch().then(() => {
+      let relatedArticles = firstArticle.get("related_articles").articles;
+
       this.articles.set(this.$el[0], firstArticle);
-      this._setInitialListOfArticles(firstArticle.get("related_articles").articles);
       this._setInitialCallouts(firstArticle.get("content").callouts);
 
-      // Add the first article to the list of viewed articles
-      this.viewedArticles.push({
-        slug: this.$el.data("slug"),
-        title: this.$el.data("title"),
-        scroll: {
-          articleOffsetTop: this.$el.offset().top,
-          amountNeededToScroll: this._getAmountNeededToScroll()
-        },
-        next: {
-          slug: this.nextArticle.slug,
-          title: this.nextArticle.title
-        }
-      });
-
-      this.$el.attr("id", this._createIdForArticle(this.$el.data("slug")));
-
-      this.state = {
-        current: {
-          title: this.$el.data("title")
-        },
-        next: {
-          slug: this.nextArticle.slug,
-          title: this.nextArticle.title
-        }
-      };
-
-      this._loadStickyFooter();
+      if (relatedArticles.length) {
+        this._setUpRelatedArticles(relatedArticles);
+      }
     }, () => {
       rizzo.logger.error(`Unable to fetch ${window.location.pathname}.json`);
     });
+  }
+
+  _setUpRelatedArticles(articles) {
+    this._setInitialListOfArticles(articles);
+
+    // Add the first article to the list of viewed articles
+    this.viewedArticles.push({
+      slug: this.$el.data("slug"),
+      title: this.$el.data("title"),
+      scroll: {
+        articleOffsetTop: this.$el.offset().top,
+        amountNeededToScroll: this._getAmountNeededToScroll()
+      },
+      next: {
+        slug: this.nextArticle.slug,
+        title: this.nextArticle.title
+      }
+    });
+
+    this.$el.attr("id", this._createIdForArticle(this.$el.data("slug")));
+
+    this.state = {
+      current: {
+        title: this.$el.data("title")
+      },
+      next: {
+        slug: this.nextArticle.slug,
+        title: this.nextArticle.title
+      }
+    };
+    this._loadStickyFooter();
   }
 
   _setInitialCallouts(callouts) {

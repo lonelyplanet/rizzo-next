@@ -21,7 +21,7 @@ $lp-sticky-footer-height: 7.6rem;
     transform: translateY(0);
     transition: transform $animation-speed ease-in-out;
     width: 100%;
-    z-index: z("header");
+    z-index: z("global-header");
   }
 
   &.off-screen {
