@@ -21,6 +21,12 @@ body {
   }
 }
 
+// Specific override for Guides app banner
+.branch-banner-is-active {
+  margin-top: 0 !important; // override inline
+  padding-top: 7.6rem;
+}
+
 .segment {
   @include segment();
 }
