@@ -23,6 +23,7 @@ class StickyFooterComponent extends Component {
     this.nextItem = ".js-lp-sticky-footer-next-item";
     this.nextItemClicked = false;
     this.lastScrollTop = 0;
+    this.isHidden = true;
 
     this.events = {
       ["click " + this.nextItem]: "_goToNextItem"
@@ -46,15 +47,21 @@ class StickyFooterComponent extends Component {
           this.progressComponent.fill();
         }
 
-        this.hide();
+        if (!this.isHidden) {
+          this.hide();
+        }
 
         return waitForTransition(this.$el, { fallbackTime: this.transitionSpeed }).then(() => {
           this.progressComponent.reset();
         });
       } else if (this.$window.scrollTop() >= this.articleOffsetTop) {
-        this.show();
+        if (this.isHidden) {
+          this.show();
+        }
       } else {
-        this.hide();
+        if (!this.isHidden) {
+          this.hide();
+        }
       }
 
       this.progressComponent.update((this.$window.scrollTop() - this.articleOffsetTop) / (this.amountNeededToScroll - this.articleOffsetTop) * 100);
@@ -76,11 +83,19 @@ class StickyFooterComponent extends Component {
     this._setContent(state);
   }
 
+  recalculate(amountNeededToScroll) {
+    this.amountNeededToScroll = amountNeededToScroll;
+  }
+
   show() {
+    this.isHidden = false;
+
     this.$el.removeClass(this.offScreenClassName);
   }
 
   hide() {
+    this.isHidden = true;
+
     this.$el.addClass(this.offScreenClassName);
   }
 

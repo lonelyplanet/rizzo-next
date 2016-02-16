@@ -18,6 +18,8 @@ export default class ArticleComponent extends Component {
   initialize() {
     this.canUseScrollFeature = window.history && window.history.replaceState;
 
+    this.subscribe();
+
     this._resetWindowScrollPosition();
 
     this.$document = $(document);
@@ -25,6 +27,7 @@ export default class ArticleComponent extends Component {
 
     this.isNextArticleLoading = false;
     this.howManyArticlesHaveLoaded = 1;
+    this.maxAdTimeout = 500;
 
     this.template = require("./article.hbs");
     this.loader = require("./article-loading.hbs");
@@ -33,16 +36,9 @@ export default class ArticleComponent extends Component {
     this.articles = new Map();
     this.viewedArticles = [];
     this.listOfArticles = [];
-
     this.state = {};
-    this.maxAdTimeout = 500;
 
     this._setFirstArticle();
-    this.subscribe();
-
-    this.stickyFooterComponent = new StickyFooterComponent({
-      el: $(".lp-sticky-footer")
-    });
   }
 
   @subscribe("ad.loaded", "ads");
@@ -79,6 +75,12 @@ export default class ArticleComponent extends Component {
     };
   }
 
+  _createStickyFooter() {
+    this.stickyFooterComponent = new StickyFooterComponent({
+      el: $(".lp-sticky-footer")
+    });
+  }
+
   _loadStickyFooter() {
     this.stickyFooterComponent.update(
       this.$el.offset().top,
@@ -102,7 +104,7 @@ export default class ArticleComponent extends Component {
   _setFirstArticle() {
     this.$activeArticle = this.$el.addClass("is-active");
 
-    this.socialShare = new SocialShareComponent({
+    this.socialShareComponent = new SocialShareComponent({
       el: this.$el.find(".js-action-sheet")
     });
 
@@ -117,16 +119,18 @@ export default class ArticleComponent extends Component {
       this._setInitialCallouts(firstArticle.get("content").callouts);
 
       if (relatedArticles.length) {
-        this._setUpRelatedArticles(relatedArticles);
+        this.$el.attr("id", this._createIdForArticle(this.$el.data("slug")));
+        this._setInitialListOfArticles(relatedArticles);
+        this._updateFirstArticle();
+        this._createStickyFooter();
+        this._loadStickyFooter();
       }
     }, () => {
       rizzo.logger.error(`Unable to fetch ${window.location.pathname}.json`);
     });
   }
 
-  _setUpRelatedArticles(articles) {
-    this._setInitialListOfArticles(articles);
-
+  _updateFirstArticle() {
     // Add the first article to the list of viewed articles
     this.viewedArticles.push({
       slug: this.$el.data("slug"),
@@ -141,8 +145,6 @@ export default class ArticleComponent extends Component {
       }
     });
 
-    this.$el.attr("id", this._createIdForArticle(this.$el.data("slug")));
-
     this.state = {
       current: {
         title: this.$el.data("title")
@@ -152,8 +154,6 @@ export default class ArticleComponent extends Component {
         title: this.nextArticle.title
       }
     };
-
-    this._loadStickyFooter();
   }
 
   _setInitialCallouts(callouts) {
@@ -191,6 +191,7 @@ export default class ArticleComponent extends Component {
    */
   _scrollToNextArticle(offsetDifference = 0) {
     let shouldGetNextArticle = false;
+    let hasRecalculatedStickyFooter = false;
 
     this.$window.on("scroll.article", debounce(() => {
       shouldGetNextArticle = this._shouldGetNextArticle(offsetDifference) &&
@@ -203,7 +204,13 @@ export default class ArticleComponent extends Component {
 
       this._setActiveArticle();
       this._checkIfHistoryShouldBeUpdated();
-    }, 10));
+
+      if (!hasRecalculatedStickyFooter) {
+        hasRecalculatedStickyFooter = true;
+        this.stickyFooterComponent.recalculate(this._getAmountNeededToScroll());
+        this.viewedArticles[this.howManyArticlesHaveLoaded - 1].scroll.amountNeededToScroll = this._getAmountNeededToScroll();
+      }
+    }, 100));
   }
 
   _setActiveArticle() {
@@ -232,7 +239,7 @@ export default class ArticleComponent extends Component {
    */
   _getAmountNeededToScroll() {
     let roomToScroll = this._getRoomToScroll(),
-        amountToScrollPastEndOfArticle = 100;
+        amountToScrollPastEndOfArticle = 0;
 
     return roomToScroll - amountToScrollPastEndOfArticle;
   }
@@ -366,7 +373,7 @@ export default class ArticleComponent extends Component {
       poiData: model.get("content").callouts
     });
 
-    this.socialShare = new SocialShareComponent({
+    this.socialShareComponent = new SocialShareComponent({
       el: this.$newArticle.find(".js-action-sheet")
     });
 
