@@ -4,7 +4,8 @@ import ImageGallery from "../image_gallery";
 import PoiCallout from "../poi_callout";
 import moment from "moment";
 import matchMedia from "../../core/utils/matchMedia";
-import rizzo from "../../rizzo"; 
+import breakpoints from "../../core/utils/breakpoints";
+import rizzo from "../../rizzo";
 
 /**
  * Enhances the body of articles with a gallery and more
@@ -21,7 +22,7 @@ export default class ArticleBodyComponent extends Component {
     });
 
     if (this.poiData) {
-      matchMedia("(min-width: 1200px)", (query) => {
+      matchMedia(`(min-width: ${breakpoints.min["1200"]})`, (query) => {
         if (query.matches) {
           this.loadPoiCallout(this.poiData);
         } else {

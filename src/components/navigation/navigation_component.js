@@ -6,6 +6,7 @@ import NavigationActions from "./navigation_actions";
 import NavigationState from "./navigation_state";
 import subscribe from "../../core/decorators/subscribe";
 import matchMedia from "../../core/utils/matchMedia";
+import breakpoints from "../../core/utils/breakpoints";
 
 let userPanelTemplate = require("./user_panel.hbs"),
     userAvatarTemplate = require("./user_avatar.hbs"),
@@ -27,7 +28,7 @@ class NavigationComponent extends Component {
       label: `${this.state.cartItemCount} ${notificationLabel} in your cart`
     });
 
-    matchMedia("(min-width: 720px)", (query) => {
+    matchMedia(`(min-width: ${breakpoints.min["720"]})`, (query) => {
       if (query.matches) {
         this.notification.$el.find(".js-notification-badge")
           .removeClass("notification-badge--shop-inline")
@@ -66,8 +67,8 @@ class NavigationComponent extends Component {
   _handleClick(e) {
     let $target = $(e.currentTarget);
 
-    $target.hasClass("navigation__item") ? this._handleSubNav($target[0]) : this._handleMobileSubNav($target[0]); 
-    
+    $target.hasClass("navigation__item") ? this._handleSubNav($target[0]) : this._handleMobileSubNav($target[0]);
+
     if (
       $target.find(".mobile-sub-navigation").length &&
       !$(e.target).hasClass("sub-navigation__link")
