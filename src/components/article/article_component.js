@@ -12,6 +12,7 @@ import subscribe from "../../core/decorators/subscribe";
 import matchMedia from "../../core/utils/matchMedia";
 import breakpoints from "../../core/utils/breakpoints";
 import StickyFooterComponent from "../sticky_footer";
+import { slugify } from "../../core/utils/stringHelpers";
 
 export default class ArticleComponent extends Component {
   initialize() {
@@ -76,17 +77,6 @@ export default class ArticleComponent extends Component {
     window.onunload = function() {
       $(window).scrollTop(0);
     };
-  }
-
-  /**
-   * Take a given string and turn it into a slug
-   * @param  {String} string String to slugify
-   * @return {String}
-   */
-  _slugify(string) {
-    if (!string) return "";
-
-    return string.toLowerCase().replace(" ", "-");
   }
 
   _loadStickyFooter() {
@@ -527,12 +517,12 @@ export default class ArticleComponent extends Component {
     }
 
     window.lp.ads.tnm = `tip-article, ${article.tealium.place.id}`;
-    window.lp.ads.continent = article.tealium.article.cd1_Continent ? this._slugify(article.tealium.article.cd1_Continent) : "";
-    window.lp.ads.country = article.tealium.article.cd2_Country ? this._slugify(article.tealium.article.cd2_Country) : "";
-    window.lp.ads.destination = this._slugify(article.tealium.place.destination);
-    window.lp.ads.state = this._slugify(article.tealium.place.state_name);
-    window.lp.ads.region = this._slugify(article.tealium.place.region_name);
-    window.lp.ads.city = this._slugify(article.tealium.article.cd3_City);
+    window.lp.ads.continent = article.tealium.article.cd1_Continent ? slugify(article.tealium.article.cd1_Continent) : "";
+    window.lp.ads.country = article.tealium.article.cd2_Country ? slugify(article.tealium.article.cd2_Country) : "";
+    window.lp.ads.destination = slugify(article.tealium.place.destination);
+    window.lp.ads.state = slugify(article.tealium.place.state_name);
+    window.lp.ads.region = slugify(article.tealium.place.region_name);
+    window.lp.ads.city = slugify(article.tealium.article.cd3_City);
     window.lp.ads.interest = window.lp.article.interests;
     window.lp.ads.position = `article-${article.articleNumber}`;
 
