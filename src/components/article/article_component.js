@@ -34,6 +34,7 @@ export default class ArticleComponent extends Component {
     this.listOfArticles = [];
 
     this.state = {};
+    this.maxAdTimeout = 500;
 
     this._setFirstArticle();
     this.subscribe();
@@ -57,7 +58,10 @@ export default class ArticleComponent extends Component {
     }
 
     if (data.size === "leaderboard-responsive") {
-      this.adLoadedPromise && this.adLoadedPromise();
+      if (!this.hasAdTimeoutResolved) {
+        clearTimeout(this.adTimer);
+        this.adLoadedPromise && this.adLoadedPromise();
+      }
     }
   }
 
@@ -335,7 +339,13 @@ export default class ArticleComponent extends Component {
 
   @publish("loaded", "articles")
   _articleCanBeLoaded() {
-    new Promise(resolve => this.adLoadedPromise = resolve).then(() => {
+    new Promise(resolve => {
+      this.adLoadedPromise = resolve;
+      this.adTimer = setTimeout(() => {
+        this.hasAdTimeoutResolved = true;
+        resolve();
+      }, this.maxAdTimeout);
+    }).then(() => {
       this._hideLoader({ showArticle: true });
     });
 
