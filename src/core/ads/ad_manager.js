@@ -6,6 +6,7 @@ import "jquery.dfp";
 import publish from "../decorators/publish";
 import subscribe from "../decorators/subscribe";
 import track from "../decorators/track";
+import { slugify } from "../../core/utils/stringHelpers";
 
 export default class AdManager {
   constructor(config) {
@@ -72,12 +73,6 @@ export default class AdManager {
     this.load();
   }
 
-  _slugify(string) {
-    if (!string) return "";
-
-    return string.toLowerCase().replace(" ", "-");
-  }
-
   _adCallback($adunit, event) {
     let unit = $adunit.data("adUnit"),
         currentUnit;
@@ -108,14 +103,14 @@ export default class AdManager {
       template: config.template,
       topic: config.topic,
       thm: config.adThm,
-      ctt: this._slugify(config.continent),
-      continent: this._slugify(config.continent),
-      cnty: this._slugify(config.country),
-      country: this._slugify(config.country),
-      city: this._slugify(config.city),
-      dest: this._slugify(config.destination),
-      destination: this._slugify(config.destination),
-      state: this._slugify(config.state),
+      ctt: slugify(config.continent),
+      continent: slugify(config.continent),
+      cnty: slugify(config.country),
+      country: slugify(config.country),
+      city: slugify(config.city),
+      dest: slugify(config.destination),
+      destination: slugify(config.destination),
+      state: slugify(config.state),
       interest: config.interest
     };
 
