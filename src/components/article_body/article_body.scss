@@ -234,7 +234,7 @@
         @include underlined-link(
           $link-color: $color-text,
           $link-color-active: $color-blue,
-          $underline-offset: .1rem
+          $underline-offset: 1px
         );
       }
     }
