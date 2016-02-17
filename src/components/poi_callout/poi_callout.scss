@@ -1,17 +1,14 @@
 @import "../../../sass/webpack_deps";
 
-.poi-callout {
+.lp-poi-callout {
   background-color: #fff;
   box-shadow: .15rem .26rem 2.9rem rgba(#000, .08);
   color: $color-darkblue;
   display: block;
   max-height: 30rem;
   max-width: 25rem;
-  opacity: 0;
   padding: 2rem;
-  position: absolute;
   transition: 1000ms ease;
-  visibility: hidden;
   width: 25rem;
   z-index: z("middle");
 
@@ -19,12 +16,13 @@
     display: none;
   }
 
-  &:hover,
-  &:active,
-  &:focus {
-    .poi-callout__content h3 {
-      color: $color-blue;
-    }
+  body > & {
+    position: absolute;
+  }
+
+  &.is-invisible {
+    opacity: 0;
+    visibility: hidden;
   }
 
   &.is-visible {
@@ -35,7 +33,7 @@
   }
 }
 
-.poi-callout__content p {
+.lp-poi-callout__excerpt {
   font-size: 1.4rem;
   font-weight: 300;
   height: 7rem;
@@ -45,19 +43,25 @@
   overflow: hidden;
 }
 
-.poi-callout__content img {
+.lp-poi-callout__image {
   margin-bottom: 1.8rem;
 }
 
-.poi-callout__content h3 {
+.lp-poi-callout__title {
   color: #29313e;
   font-size: 1.6rem;
   font-weight: 600;
   line-height: (20 / 16);
   transition: color 200ms ease;
+
+  .lp-poi-callout:hover &,
+  .lp-poi-callout:active &,
+  .lp-poi-callout:focus & {
+    color: $color-blue;
+  }
 }
 
-.poi-callout__content h5 {
+.lp-poi-callout__type {
   color: #6d6d6d;
   font-family: $miller-daily;
   font-size: 1.6rem;
