@@ -66,10 +66,6 @@ export default class MastheadComponent extends Component {
       if ($mastheadAd.hasClass("display-block")) {
         this.$el.find(".masthead__text-wrap")
           .addClass("masthead__text-wrap--pull-up");
-      } else {
-        $mastheadAd
-          .closest(".js-masthead-ad")
-          .remove();
       }
     }
   }
