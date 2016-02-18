@@ -1,0 +1,53 @@
+/// ----------------------------------------------------------------------------
+/// Breakpoints
+/// ----------------------------------------------------------------------------
+
+// Custom breakpoints (Mobile first)
+/// 1410px min width breakpoint
+$min-1410: #{(1410 * .0625)}em;
+/// 1350px min width breakpoint
+$min-1350: #{(1350 * .0625)}em;
+/// 1290px min width breakpoint
+$min-1290: #{(1290 * .0625)}em;
+/// 1200px min width breakpoint
+$min-1200: #{(1200 * .0625)}em;
+/// 1080px min width breakpoint
+$min-1080: #{(1080 * .0625)}em;
+/// 1024px min width breakpoint
+$min-1024: #{(1024 * .0625)}em;
+/// 960px min width breakpoint
+$min-960: #{(960 * .0625)}em;
+/// 840px min width breakpoint
+$min-840: #{(840 * .0625)}em;
+/// 768px min width breakpoint
+$min-768: #{(768 * .0625)}em;
+/// 720px min width breakpoint
+$min-720: #{(720 * .0625)}em;
+/// 600px min width breakpoint
+$min-600: #{(600 * .0625)}em;
+/// 560px min width breakpoint
+$min-560: #{(560 * .0625)}em;
+/// 480px min width breakpoint
+$min-480: #{(480 * .0625)}em;
+/// 360px min width breakpoint
+$min-360: #{(360 * .0625)}em;
+/// 320px min width breakpoint
+$min-320: #{(320 * .0625)}em;
+
+// Custom breakpoints
+$max-1530: #{(1530 * .0625)}em;
+$max-1410: #{(1409 * .0625)}em;
+$max-1350: #{(1349 * .0625)}em;
+$max-1290: #{(1289 * .0625)}em;
+$max-1200: #{(1199 * .0625)}em;
+$max-1080: #{(1079 * .0625)}em;
+$max-1024: #{(1023 * .0625)}em;
+$max-960: #{(959 * .0625)}em;
+$max-840: #{(839 * .0625)}em;
+$max-768: #{(767 * .0625)}em;
+$max-720: #{(719 * .0625)}em;
+$max-600: #{(599 * .0625)}em;
+$max-560: #{(559 * .0625)}em;
+$max-480: #{(479 * .0625)}em;
+$max-360: #{(359 * .0625)}em;
+$max-320: #{(319 * .0625)}em;

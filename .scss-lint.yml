@@ -24,7 +24,7 @@ linters:
 
   BemDepth:
     exclude:
-      - 'sass/_print.scss' # temporary exclusion until `stack__article__image-container` is refactored
+      - 'sass/generic/_print.scss' # temporary exclusion until `stack__article__image-container` is refactored
       - 'src/components/article_body/article_body.scss' # because markup from WP has more than one max element
       - 'src/components/articles/_articles.scss' # temporary exclusion, needs refactored; 2, 3 and 4 deep
       - 'src/components/footer/_footer.scss' # temporary exclusion, needs refactored; 2, 3 and 4 deep
@@ -105,9 +105,9 @@ linters:
 
   ImportantRule:
     exclude:
-      - 'sass/_base.scss' # need !important on .hide-text
-      - 'sass/_print.scss' # need !important to force print styles in some cases
-      - 'sass/_utility_classes.scss' # need !important on is-hidden class
+      - 'sass/generic/_print.scss' # need !important to force print styles in some cases
+      - 'sass/tools/_mixins.scss' # need !important on copy-caption styles
+      - 'sass/overrides/_utility_classes.scss' # need !important for overrides
       - 'src/components/ads/ads.scss' # need !important to ensure ad is hidden
       - 'src/components/article_body/article_body.scss' # need !important to override legacy styles
     enabled: true
@@ -171,8 +171,8 @@ linters:
 
   PropertyUnits:
     exclude:
-      - 'sass/_print.scss' # need to use px for border and cm for margin
-      - 'sass/_reset.scss' # need to use px for border
+      - 'sass/generic/_print.scss' # need to use px for border and cm for margin
+      - 'sass/generic/_reset.scss' # need to use px for border
     enabled: true
     global: [
       'em', 'rem',                    # Font-relative lengths ('ch', 'em', 'ex', 'rem')
@@ -220,7 +220,7 @@ linters:
 
   PseudoElement:
     exclude:
-      - 'sass/_reset.scss' # temporary exclusion until some webkit pseudo elements are added
+      - 'sass/generic/_reset.scss' # temporary exclusion until some webkit pseudo elements are added
     enabled: true
 
   QualifyingElement:
@@ -233,7 +233,7 @@ linters:
 
   SelectorDepth:
     exclude:
-      - 'sass/_print.scss' # need for article-body styles
+      - 'sass/generic/_print.scss' # need for article-body styles
       - 'src/components/article_body/article_body.scss' # because markup from WP is messy and overspecificity is needed
       - 'src/components/interests/_interests.scss' # temporary exclusion; 4 deep, needs refactored
       - 'src/components/navigation/_user-panel.scss' # temporary exclusion; 4 deep, needs refactored
@@ -258,7 +258,7 @@ linters:
 
   SingleLinePerSelector:
     exclude:
-      - 'sass/_reset.scss' # because of the margin and padding reset on every element imaginable
+      - 'sass/generic/_reset.scss' # because of the margin and padding reset on every element imaginable
     enabled: true
 
   SpaceAfterComma:
@@ -322,7 +322,7 @@ linters:
 
   VendorPrefix:
     exclude:
-      - 'sass/_reset.scss' # because of unstandard properties
+      - 'sass/generic/_reset.scss' # because of unstandard properties
       - 'src/components/header/_header.scss' # because of -webkit-mask-image; revisit to see if this is needed
     enabled: true
     identifier_list: base

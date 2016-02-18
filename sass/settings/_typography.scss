@@ -1,0 +1,22 @@
+/// ----------------------------------------------------------------------------
+/// Typography
+/// ----------------------------------------------------------------------------
+
+$sans-serif: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+$serif: "Georgia", "Times", "Times New Roman", serif;
+$benton-sans: "Benton Sans", $sans-serif;
+$miller-daily: "Miller Daily", $serif;
+
+$font-size: 1.8rem;
+$font-weight-light: 300;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$line-height: 1.5;
+
+// Deprecated
+$font-family: $benton-sans; // deprecated; use $benton-sans
+$font-family-special: $miller-daily; // deprecated; use $miller-daily
+$light: $font-weight-light;
+$medium: $font-weight-medium;
+$semibold: $font-weight-semibold;

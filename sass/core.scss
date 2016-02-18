@@ -1,11 +1,7 @@
-@import "webpack_deps"; // variables and mixins
-@import "reset";
-@import "fonts";
-@import "typography/headings";
-@import "typography/links";
-@import "elements/buttons";
-@import "utility_classes";
-@import "icomoon_icons";
-@import "icons";
-@import "base";
-@import "print";
+@import "generic/fonts";
+@import "webpack_deps"; // settings and tools
+@import "generic/reset";
+@import "base/base";
+@import "objects/objects";
+@import "overrides/utility_classes";
+@import "generic/print";
