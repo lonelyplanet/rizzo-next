@@ -58,7 +58,6 @@
 
 .article__sponsor-ad {
   @include container;
-  border-top: 1px solid $color-border;
   font-size: 1.4rem;
   line-height: (22 / 14);
   padding-bottom: .8rem;
