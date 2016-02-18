@@ -356,5 +356,9 @@ $masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
     @media (min-width: $min-960) {
       text-align: right;
     }
+
+    .no-js & {
+      display: none;
+    }
   }
 }

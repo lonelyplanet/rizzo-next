@@ -38,7 +38,14 @@ export default class ArticleComponent extends Component {
     this.listOfArticles = [];
     this.state = {};
 
+    this.$globalFooter = $(".lp-global-footer");
+
     this._setFirstArticle();
+    this._detachGlobalFooter();
+  }
+
+  _detachGlobalFooter() {
+    this.$globalFooter.detach();
   }
 
   @subscribe("ad.loaded", "ads");
@@ -239,9 +246,10 @@ export default class ArticleComponent extends Component {
    */
   _getAmountNeededToScroll() {
     let roomToScroll = this._getRoomToScroll(),
-        amountToScrollPastEndOfArticle = 0;
+        amountToScrollPastEndOfArticle = 0,
+        globalFooterHeight = this.$globalFooter.height();
 
-    return roomToScroll - amountToScrollPastEndOfArticle;
+    return roomToScroll - amountToScrollPastEndOfArticle - globalFooterHeight;
   }
 
   /**
