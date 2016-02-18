@@ -18,6 +18,10 @@
   overflow: hidden; // Prevent horizontal movement in iOS caused by .size-full images
   position: relative;
 
+  .no-js & {
+    border-bottom: 0;
+  }
+
   &.is-loading {
     opacity: 0;
   }
@@ -46,6 +50,10 @@
   .no-flexbox & {
     display: block;
   }
+
+  .no-js & {
+    display: none;
+  }
 }
 
 .article__sponsor-ad {
@@ -66,5 +74,9 @@
 
   .article & {
     margin-top: 4rem;
+  }
+
+  .no-js & {
+    display: none;
   }
 }
