@@ -23,6 +23,8 @@
 
     {{> "components/article_body/article_body"}}
 
+    {{> "components/ads/ad_article_sponsor" }}
+
     <footer class="article__footer js-article-footer">
       <div class="post-date in-article-footer js-article-post-date" hidden>
         Published <time datetime="{{ article.post_date }}"></time>
@@ -30,7 +32,5 @@
 
       {{> "components/social_share/social_share_article"}}
     </footer><!-- .article-footer -->
-
-    {{> "components/ads/ad_article_sponsor" }}
   </div><!-- .article__container -->
 </article><!-- .article -->

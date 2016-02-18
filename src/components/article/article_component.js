@@ -42,18 +42,7 @@ export default class ArticleComponent extends Component {
   }
 
   @subscribe("ad.loaded", "ads");
-  _removeEmptySponsorAd(data) {
-    if (data.size === "sponsor-logo") {
-      let $article = this.$newArticle ? this.$newArticle : this.$el;
-      let $sponsorLogo = $article.find(".js-sponsor-logo");
-
-      if ($sponsorLogo.length && $sponsorLogo.hasClass("display-none")) {
-        $sponsorLogo
-          .closest(".js-article-sponsor-ad")
-          .remove();
-      }
-    }
-
+  _adsLoaded(data) {
     if (data.size === "leaderboard-responsive") {
       if (!this.hasAdTimeoutResolved) {
         clearTimeout(this.adTimer);
