@@ -461,3 +461,40 @@ $alert-colors: (
     background-color: rgba(#000, .9);
   }
 }
+
+/// Clamps multi-line text
+/// @param {Value}          $font-size           - Font size of the text
+/// @param {Unitless Value} $line-height         - Line height of the text; **must be a unitless value**
+/// @param {Number}         $lines-to-show       - Number of lines to show
+/// @example scss
+/// p {
+///   @include line-clamp($font-size: 16px, $line-height: 1.5, $lines-to-show: 3);
+/// }
+@mixin line-clamp(
+  $font-size,
+  $line-height,
+  $lines-to-show
+) {
+  @if unitless($line-height) == false {
+    $line-height: create-unitless-line-height($font-size, $line-height);
+  }
+
+  -webkit-box-orient: vertical;
+  display: block; // Fallback for non-webkit browsers
+  display: -webkit-box;
+  height: ($font-size * $line-height * $lines-to-show); // Fallback for non-webkit browsers
+  -webkit-line-clamp: $lines-to-show;
+  overflow: hidden;
+  position: relative;
+  text-overflow: ellipsis;
+
+  // Fallback for non-webkit browsers
+  &::after {
+    background-color: #fff;
+    bottom: 0;
+    content: "\2026";
+    position: absolute;
+    text-align: left;
+    width: 100%;
+  }
+}

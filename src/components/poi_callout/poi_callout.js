@@ -1,7 +1,6 @@
 import { Component } from "../../core/bane";
 import $ from "jquery";
 import debounce from "lodash/function/debounce";
-import $clamp from "clamp-js/clamp.js";
 
 export default class PoiCalloutComponent extends Component {
   initialize(options, {
@@ -41,7 +40,7 @@ export default class PoiCalloutComponent extends Component {
         : this.$el.offset().left - this.calloutWidth;
 
       this._windowEvents();
-    }, 10));
+    }, 100));
 
     this.$window.on("scroll.poi", debounce(() => {
       this._windowEvents();
@@ -50,7 +49,7 @@ export default class PoiCalloutComponent extends Component {
         updateArticleOffsetHeight = true;
         this.articleOffsetHeight = this.$el.height() + this.$el.offset().top;
       }
-    }, 10));
+    }, 100));
 
     this.$callout.on("mouseenter.poi", () => {
       clearTimeout(this.mouseoutTimeout);
@@ -158,8 +157,6 @@ export default class PoiCalloutComponent extends Component {
         excerpt: poiData.excerpt,
         image: poiData.image
       }));
-
-    $clamp(this.$callout.find(".lp-js-poi-callout-excerpt").get(0), { clamp: 3 });
   }
 
   /**

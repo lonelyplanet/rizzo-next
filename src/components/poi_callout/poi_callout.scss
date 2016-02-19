@@ -34,13 +34,14 @@
 }
 
 .lp-poi-callout__excerpt {
-  font-size: 1.4rem;
+  $_font-size: 1.4rem;
+  $_line-height: (22 / 14);
+  @include line-clamp($_font-size, $_line-height, 3);
+  font-size: $_font-size;
   font-weight: 300;
-  height: 7rem;
-  line-height: (22 / 14);
+  line-height: $_line-height;
   margin-bottom: 0;
   margin-top: 1.6rem;
-  overflow: hidden;
 }
 
 .lp-poi-callout__image {
