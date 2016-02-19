@@ -6,7 +6,8 @@ export default class PoiCalloutComponent extends Component {
   initialize(options, {
     poiLinkSelector = "a[data-callout-slug]"
   } = {}) {
-    this.template = require("./poi_callout.hbs");
+    this.contentTemplate = require("./poi_callout_content.hbs");
+    this.calloutTemplate = require("./poi_callout.hbs");
 
     this.$links = this.$el.find(poiLinkSelector);
 
@@ -19,16 +20,9 @@ export default class PoiCalloutComponent extends Component {
       ["mouseleave.poi " + poiLinkSelector]: "_destroyPoiCallout"
     };
 
-    this.$callout = $("<a />", {
-      "class": "poi-callout",
-      "attr": {
-        tabindex: -1,
-        role: "dialog",
-        "aria-hidden": "true"
-      }
-    }).appendTo("body");
+    this.$callout = $(this.calloutTemplate({})).appendTo("body");
 
-    this.$callout.html(this.template({}));
+    this.$callout.html(this.contentTemplate({}));
 
     this.$window = $(window);
     this.calloutWidth = this.$callout.outerWidth();
@@ -38,17 +32,24 @@ export default class PoiCalloutComponent extends Component {
     this.mouseoutTimeout;
     this.$activeLink;
 
+    let updateArticleOffsetHeight = false;
+
     this.$window.on("resize.poi", debounce(() => {
       this.left = (this.$window.width() >= 1370)
         ? this.$el.offset().left - this.calloutWidth - 35
         : this.$el.offset().left - this.calloutWidth;
 
       this._windowEvents();
-    }, 10));
+    }, 100));
 
     this.$window.on("scroll.poi", debounce(() => {
       this._windowEvents();
-    }, 10));
+
+      if (!updateArticleOffsetHeight) {
+        updateArticleOffsetHeight = true;
+        this.articleOffsetHeight = this.$el.height() + this.$el.offset().top;
+      }
+    }, 100));
 
     this.$callout.on("mouseenter.poi", () => {
       clearTimeout(this.mouseoutTimeout);
@@ -76,7 +77,7 @@ export default class PoiCalloutComponent extends Component {
   _createPoiCallout(event) {
     event.preventDefault();
 
-    if (!this.$callout.hasClass("is-visible")) {
+    if (this.$callout.hasClass("is-invisible")) {
       this.top = 0;
       this.$callout.removeAttr("style");
     }
@@ -109,7 +110,8 @@ export default class PoiCalloutComponent extends Component {
 
       this.$callout
         .attr("aria-hidden", "true")
-        .removeClass("is-visible");
+        .removeClass("is-visible")
+        .addClass("is-invisible");
     }, 250);
 
     return false;
@@ -126,7 +128,7 @@ export default class PoiCalloutComponent extends Component {
 
     // Remove the active class from siblings in different paragraphs
     this.$activeLink
-      .closest("p")
+      .closest(".lp-js-poi-callout-excerpt")
       .siblings()
       .find(this.poiLinkSelector)
       .removeClass("is-active");
@@ -140,6 +142,7 @@ export default class PoiCalloutComponent extends Component {
 
     this.$callout
       .addClass("is-visible")
+      .removeClass("is-invisible")
       .attr({
         "aria-hidden": "false",
         "href": this.$activeLink.attr("href")
@@ -148,7 +151,7 @@ export default class PoiCalloutComponent extends Component {
         "top": `${this.top}px`,
         "left": `${this.left}px`
       })
-      .html(this.template({
+      .html(this.contentTemplate({
         name: poiData.name,
         topic: poiData.topic,
         excerpt: poiData.excerpt,
@@ -165,6 +168,7 @@ export default class PoiCalloutComponent extends Component {
     this.$callout
       .attr("aria-hidden", "true")
       .removeClass("is-visible")
+      .addClass("is-invisible")
       .removeAttr("style");
   }
 
@@ -174,7 +178,8 @@ export default class PoiCalloutComponent extends Component {
   _setTopOffsetForPoiCallout() {
     let bottomOffset = this.$callout.height() + this.$activeLink.offset().top,
         topOffset = this.$activeLink.offset().top,
-        calloutPosition = topOffset - this.$window.scrollTop() + this.$callout.outerHeight() + 30;
+        calloutPosition = topOffset - this.$window.scrollTop() + this.$callout.outerHeight() + 30,
+        stickyFooterOffset = 76;
 
     let isCalloutBelowBottom = this.articleOffsetHeight - bottomOffset < 0,
         isCalloutOffscreen = calloutPosition > this.$window.height();
@@ -184,10 +189,10 @@ export default class PoiCalloutComponent extends Component {
     }, 100));
 
     if (isCalloutBelowBottom) {
-      this.top = topOffset + (this.articleOffsetHeight - bottomOffset);
+      this.top = topOffset + (this.articleOffsetHeight - bottomOffset) - stickyFooterOffset;
 
     } else if (isCalloutOffscreen) {
-      this.top = topOffset - (calloutPosition - this.$window.height());
+      this.top = topOffset - (calloutPosition - this.$window.height()) - stickyFooterOffset;
 
     } else {
       this.top = topOffset;
