@@ -394,10 +394,17 @@ export default class ArticleComponent extends Component {
         title: this.nextArticle.title
       };
 
-      previousArticle.scroll = {
-        articleOffsetTop: $(this.$newArticle).offset().top,
-        amountNeededToScroll: this._getAmountNeededToScroll()
-      };
+      try {
+        previousArticle.scroll = {
+          articleOffsetTop: this.$newArticle.offset().top,
+          amountNeededToScroll: this._getAmountNeededToScroll()
+        };
+      } catch(e) {
+        rizzo.logger.error(`
+          Couldn't find ${this.$newArticle} in _updateListOfViewedArticles().
+          $newArticles: ${this.$newArticle.length}
+        `);
+      }
 
       this.viewedArticles.push(previousArticle);
     }
@@ -443,8 +450,18 @@ export default class ArticleComponent extends Component {
         this._updateListOfViewedArticles();
       }
 
-      let articleOffsetTop = $(this.$newArticle).offset().top;
-      let amountNeededToScroll = this._getAmountNeededToScroll();
+      let articleOffsetTop,
+          amountNeededToScroll;
+
+      try {
+        articleOffsetTop = this.$newArticle.offset().top;
+        amountNeededToScroll = this._getAmountNeededToScroll();
+      } catch(e) {
+        rizzo.logger.error(`
+          Couldn't find ${this.$newArticle} in _updateHistory().
+          $newArticles: ${this.$newArticle.length}
+        `);
+      }
 
       this.viewedArticles.forEach((item) => {
         if (item.title === title) {
