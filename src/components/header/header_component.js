@@ -62,7 +62,9 @@ class Header extends Component {
     this.search.show();
   }
 
-  onMobileMenuClick(){
+  onMobileMenuClick(e){
+    e.preventDefault();
+
     this.navigation._clickNav();
   }
 

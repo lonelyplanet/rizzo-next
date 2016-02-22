@@ -13,18 +13,18 @@
         </svg>
       </a>
 
-      <button class="lp-global-header__search js-lp-global-header-search">
+      <a class="lp-global-header__search js-lp-global-header-search" href="/search">
         <i class="icon-search" aria-hidden="true"></i>
         <span class="lp-global-header__search-text">Search {{search.title}}</span>
         <span class="lp-global-header__search-beyond">and beyond</span>
-      </button>
+      </a>
 
       <div class="lp-global-header__navigation">
         {{> "components/navigation/navigation" }}
       </div>
 
       <div class="lp-global-header__mobile lp-global-header__mobile--left">
-        <button class="lp-global-header__mobile-search icon-search-thin js-lp-global-header-search">Search</button>
+        <a class="lp-global-header__mobile-search icon-search-thin js-lp-global-header-search" href="/search">Search</a>
       </div>
 
       <div class="lp-global-header__mobile js-lp-global-header-mobile">
@@ -32,9 +32,9 @@
         <a class="lp-global-header__mobile-cart icon-cart js-mobile-cart">Cart</a>
         --}}
 
-        <button class="lp-global-header__mobile-menu js-menu" aria-label="Menu">
+        <a class="lp-global-header__mobile-menu js-menu" href="#footer" aria-label="Menu">
           <i class="menu-icon" aria-hidden="true"></i>
-        </button>
+        </a>
       </div>
 
     </div>
