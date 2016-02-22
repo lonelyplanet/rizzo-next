@@ -206,7 +206,7 @@ export default class ArticleComponent extends Component {
         this.stickyFooterComponent.recalculate(this._getAmountNeededToScroll());
         this.viewedArticles[this.howManyArticlesHaveLoaded - 1].scroll.amountNeededToScroll = this._getAmountNeededToScroll();
       }
-    }, 100));
+    }, 50));
   }
 
   _setActiveArticle() {
@@ -218,7 +218,7 @@ export default class ArticleComponent extends Component {
   _shouldGetNextArticle(difference) {
     let amountNeededToScroll = this._getAmountNeededToScroll();
 
-    return this.$window.scrollTop() >= (amountNeededToScroll - difference);
+    return this.$window.scrollTop() >= ((amountNeededToScroll - difference) * 0.8);
   }
 
   /**
