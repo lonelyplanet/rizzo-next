@@ -63,3 +63,30 @@
   // Calculate unitless line-height and return it
   @return ($line-height / $font-size);
 }
+
+/// Removes units from a number string
+///
+/// @param {string} $number The string to remove units from
+@function strip-units($number) {
+  @return $number / ($number * 0 + 1);
+}
+
+/// Returns a value from the $z-index map from a given key
+///
+/// Contains a map to hold all of the possible z-index values with a matching
+/// key. Avoid declaring a z-index value in the CSS itself, but instead add
+/// another key-value pair to the map.
+///
+/// @param  {String} $layer - Name of z layer
+/// @return {String}        - z-index value
+/// @example
+/// .foo {
+///   z-index: z("default");
+/// }
+@function z($layer) {
+  @if not map-has-key($z-index, $layer) {
+    @warn "No layer found for `#{$layer}` in $z-index map. Property omitted.";
+  }
+
+  @return map-get($z-index, $layer);
+}

@@ -1,18 +1,5 @@
 @import "../../../sass/webpack_deps";
 
-// !important is needed to override specificity in article-body__content
-@mixin copy-caption {
-  font-family: $benton-sans !important;
-  font-size: 1.1rem !important;
-  line-height: 1.4 !important;
-  text-align: center !important;
-
-  @media (min-width: $min-600) {
-    font-size: 1.2rem !important;
-    line-height: 1.6 !important;
-  }
-}
-
 .article-body {
   @include container;
   padding-bottom: 4.4rem;
@@ -38,7 +25,7 @@
   // within the CMS
   &.has-legacy-code .article-body__content {
     .copy--feature {
-      @extend %lede;
+      @include lede;
     }
 
     > address {

@@ -1,0 +1,20 @@
+.post-date {
+  @include post-date;
+
+
+
+  // Implementation detail
+
+  &.in-article-footer {
+    text-align: left;
+    width: 50%;
+
+    @media (max-width: $max-360) {
+      padding-right: gutter(static);
+    }
+
+    .no-flexbox & {
+      float: left;
+    }
+  }
+}

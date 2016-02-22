@@ -1,3 +1,8 @@
+@import "base_mixins";
+@import "icons_mixins";
+@import "headings_mixins";
+@import "links_mixins";
+@import "buttons_mixins";
 
 /// A simple clearfix helper
 @mixin clearfix {
@@ -496,5 +501,45 @@ $alert-colors: (
     position: absolute;
     text-align: left;
     width: 100%;
+  }
+}
+
+@mixin lede {
+  color: $color-darkblue;
+  font-size: 1.8rem;
+  font-weight: 300;
+  line-height: (28 / 18);
+  margin-bottom: 2.5rem;
+
+  @media (min-width: $min-480) {
+    font-size: 2rem;
+  }
+
+  @media (min-width: $min-600) {
+    font-size: 2.8rem;
+    line-height: (42 / 28);
+    margin-bottom: 5.5rem;
+  }
+}
+
+@mixin post-date {
+  color: $light-text-color;
+  font-family: $benton-sans;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+// !important is needed to override specificity in article-body__content
+@mixin copy-caption {
+  font-family: $benton-sans !important;
+  font-size: 1.1rem !important;
+  line-height: 1.4 !important;
+  text-align: center !important;
+
+  @media (min-width: $min-600) {
+    font-size: 1.2rem !important;
+    line-height: 1.6 !important;
   }
 }

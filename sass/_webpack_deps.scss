@@ -1,17 +1,3 @@
 @import "susy/sass/susy";
-
-@import "functions";
-
-@import "variables";
-@import "color_variables";
-@import "font_variables";
-@import "z-index";
-@import "animations";
-
-@import "base_mixins";
-@import "mixins";
-@import "icons_mixins";
-@import "typography/typography";
-@import "typography/headings_mixins";
-@import "typography/links_mixins";
-@import "elements/buttons_mixins";
+@import "settings/settings";
+@import "tools/tools";

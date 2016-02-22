@@ -1,0 +1,21 @@
+/// ----------------------------------------------------------------------------
+/// Layouts
+///
+/// Susy can be used to create multiple grid layouts. The `$default-layout`
+/// layout is mapped to the `$susy` variable, which is the required namespace
+/// within Susy for the default layout. View
+/// [Susy's documentation](http://susydocs.oddbird.net/en/latest/) to learn how
+/// to call other layouts and for accepted key/value pairs.
+/// ----------------------------------------------------------------------------
+
+$default-layout: (
+  columns: 12,
+  column-width: 8rem,
+  container: 129rem,
+  gutter-position: before,
+  gutters: 3 / 8,
+  math: fluid,
+  output: float
+);
+
+$susy: $default-layout;
