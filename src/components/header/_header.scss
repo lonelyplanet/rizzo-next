@@ -43,10 +43,10 @@
   &__logo {
     display: block;
     fill: #fff;
+    height: 100%;
     margin: 0 auto;
     position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 0;
     width: 7.2rem;
     z-index: z("default");
 
@@ -59,12 +59,9 @@
       margin: 0 auto;
     }
 
-    .no-csstransforms & {
-      top: 3rem;
-    }
-
     svg {
       display: block;
+      height: 100%;
       width: 100%;
     }
   }
