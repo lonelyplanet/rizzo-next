@@ -264,7 +264,7 @@ export default class ArticleComponent extends Component {
    * Find the active article and update the browser history
    */
   _checkIfHistoryShouldBeUpdated() {
-    if (this.$activeArticle.hasClass("is-active")) {
+    if (this.$activeArticle.hasClass("is-active") && this.$newArticle) {
       this._updateHistory(
         window.location.pathname,
         this.$activeArticle.data("title"),
