@@ -71,7 +71,8 @@ class NavigationComponent extends Component {
 
     if (
       $target.find(".mobile-sub-navigation").length &&
-      !$(e.target).hasClass("sub-navigation__link")
+      !$(e.target).hasClass("sub-navigation__link") &&
+      !$(e.target).closest("a").hasClass("sub-navigation-feature")
     ) {
       e.preventDefault();
     }
