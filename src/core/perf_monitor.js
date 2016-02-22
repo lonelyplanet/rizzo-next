@@ -14,7 +14,8 @@ export default class PerfMonitor {
     return `mark_${RizzoEvents.LOAD_BELOW}`;
   }
   constructor() {
-    this.subscribe();
+    // Disabling for now to see if webpagetest works without them
+    // this.subscribe();
   }
   /**
    * Listens for when our critical code is loaded and creates a perf mark
