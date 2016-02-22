@@ -1,8 +1,5 @@
 @import "../../../sass/webpack_deps";
 
-$mobile-breakpoint: 717;
-$small-breakpoint: 320;
-
 .intro-narrative__heading {
   @include h1();
 
@@ -52,24 +49,24 @@ $small-breakpoint: 320;
   margin: 0 auto;
   width: 93%;
 
-  @include respond-to($mobile-breakpoint) {
+  @media (min-width: $min-720) {
     text-align: center;
   }
 }
 
 .intro-narrative__author__image {
-  @include author-image($mobile-breakpoint);
+  @include author-image($min-720);
   margin-right: 0;
 }
 
 .intro-narrative__author__creds {
-  @include author-creds($mobile-breakpoint);
+  @include author-creds($min-720);
 }
 
 .intro-narrative__author__creds__name {
-  @include author-name($small-breakpoint);
+  @include author-name($min-320);
 }
 
 .intro-narrative__author__creds__title {
-  @include author-title($small-breakpoint);
+  @include author-title($min-320);
 }

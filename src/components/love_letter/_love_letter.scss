@@ -1,8 +1,5 @@
 @import "../../../sass/webpack_deps";
 
-$mobile-breakpoint: 720;
-$small-breakpoint: 320;
-
 .love-letter__heading {
   @include h1(3.1rem);
 
@@ -58,7 +55,7 @@ $small-breakpoint: 320;
 }
 
 .love-letter__author__image {
-  @include author-image($mobile-breakpoint);
+  @include author-image($min-720);
   transform: scale(1);
   transition: transform $animation-speed;
 
@@ -69,13 +66,13 @@ $small-breakpoint: 320;
 }
 
 .love-letter__author__creds {
-  @include author-creds($mobile-breakpoint);
+  @include author-creds($min-720);
 }
 
 .love-letter__author__creds__name {
-  @include author-name($small-breakpoint);
+  @include author-name($min-320);
 }
 
 .love-letter__author__creds__title {
-  @include author-title($small-breakpoint);
+  @include author-title($min-320);
 }

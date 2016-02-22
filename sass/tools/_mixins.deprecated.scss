@@ -10,7 +10,7 @@
 ///     }
 /// }
 @mixin respond-to($screen-width, $method: "min") {
-  // @warn "The respond-to mixin has been deprecated; use native CSS @media instead.";
+  @warn "The respond-to mixin has been deprecated; use native CSS @media instead.";
 
   @media only screen and (#{$method}-width: $screen-width + 0px) {
     @content;

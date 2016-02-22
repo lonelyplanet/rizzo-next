@@ -35,9 +35,9 @@
 }
 
 /// Style the author's image
-/// @param {boolean} $mobile
-/// @param {string}  $orientation ["vertical"] - "vertical" or "horizontal"
-@mixin author-image($mobile, $orientation: "vertical") {
+/// @param {string} $breakpoint
+/// @param {string} $orientation ["vertical"] - "vertical" or "horizontal"
+@mixin author-image($breakpoint, $orientation: "vertical") {
   border-radius: 100%;
   display: inline-block;
   max-width: 4rem;
@@ -48,7 +48,7 @@
     margin-bottom: 1.3rem;
   }
 
-  @include respond-to($mobile) {
+  @media (min-width: $breakpoint) {
     max-width: none;
     width: 8rem;
 
@@ -59,16 +59,16 @@
 }
 
 /// Style the author's credentials
-/// @param {boolean} $mobile
-@mixin author-creds($mobile) {
+/// @param {string} $breakpoint
+@mixin author-creds($breakpoint) {
   display: block;
   text-align: center;
   vertical-align: middle;
 }
 
 /// Style the author's name
-/// @param {boolean} $mobile
-@mixin author-name($mobile) {
+/// @param {string} $breakpoint
+@mixin author-name($breakpoint) {
   color: $body-color;
   font: {
     size: 4vw;
@@ -79,14 +79,14 @@
   text-transform: uppercase;
   letter-spacing: .06rem;
 
-  @include respond-to($mobile) {
+  @media (min-width: $breakpoint) {
     font-size: 1.2rem;
   }
 }
 
 /// Style an author's Title
-/// @param {boolean} $mobile
-@mixin author-title($mobile) {
+/// @param {string} $breakpoint
+@mixin author-title($breakpoint) {
   color: $light-text-color;
   font: {
     family: $miller-daily;
@@ -96,7 +96,7 @@
   letter-spacing: .06rem;
   line-height: 1;
 
-  @include respond-to($mobile) {
+  @media (min-width: $breakpoint) {
     font-size: 1.4rem;
   }
 }
@@ -111,10 +111,6 @@
   margin-top: 4rem;
   position: relative;
   text-align: center;
-
-  @include respond-to($mobile-breakpoint) {
-    margin-top: 6.5rem;
-  }
 }
 
 // -----------------------------------------------------------------------------
@@ -122,8 +118,6 @@
 // -----------------------------------------------------------------------------
 
 @mixin css-arrow($side: top, $size: 2rem, $offset: 0) {
-  @debug $side, $size, $offset;
-
   &::after {
     height: $size;
     width: $size;

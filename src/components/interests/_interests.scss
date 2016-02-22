@@ -1,6 +1,5 @@
 @import "../../../sass/webpack_deps";
 
-$mobile-breakpoint: 717px;
 $square-size: 220px;
 $gutter: 30px;
 $fluid-max: 427px;
@@ -179,7 +178,7 @@ $max-card-width: 1395px; // When all 9 cards are up
     overflow: hidden;
     width: $square-size;
 
-    @include respond-to($fluid-min) {
+    @media (min-width: $fluid-min) {
       transition: transform $animation-speed;
 
       &:hover {
@@ -278,7 +277,7 @@ $max-card-width: 1395px; // When all 9 cards are up
   }
 }
 
-@include respond-to($fluid-min) {
+@media (min-width: $fluid-min) {
   .interests__card--inner {
     left: 50%;
     top: 50%;

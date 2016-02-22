@@ -14,7 +14,7 @@
   width: 50px;
   z-index: z("default") + 1;
 
-  @include respond-to($mobile-breakpoint) {
+  @media (min-width: $min-720) {
     display: none;
   }
 }
