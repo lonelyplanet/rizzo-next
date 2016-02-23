@@ -1,0 +1,17 @@
+@import "../../../sass/webpack_deps";
+
+.article-error {
+  @include container-padded;
+  color: $body-color;
+  padding-bottom: gutter();
+  padding-top: gutter();
+  text-align: center;
+  transition: opacity $animation-speed ease;
+
+  a {
+    @include underlined-link(
+      $link-color: $body-color,
+      $link-color-active: $color-blue
+    );
+  }
+}
