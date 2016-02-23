@@ -179,11 +179,13 @@ $picker-width: 32rem;
 
 .picker__holder[class*="arrow-up"] {
   .picker--opened & {
-    @include css-arrow-central(top, $size: 3rem);
+    @include css-arrow($size: 3rem);
 
     &::after {
+      left: 50%;
       position: absolute;
       top: -1.1rem;
+      transform: translateX(-50%);
     }
   }
 

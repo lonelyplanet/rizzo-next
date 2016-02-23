@@ -1,7 +1,9 @@
 @import "../../../sass/webpack_deps";
 
-$tablet-breakpoint: 700;
-$mobile-breakpoint: 400;
+$survival-guide-breakpoint-tablet-min: #{(700 * .0625)}em;
+$survival-guide-breakpoint-mobile-max: #{(699 * .0625)}em;
+$survival-guide-breakpoint-mobile-min: #{(400 * .0625)}em;
+$survival-guide-breakpoint-mobile: #{(399 * .0625)}em;
 
 .survival-guide {
   font-weight: $font-weight-medium;
@@ -26,7 +28,7 @@ $mobile-breakpoint: 400;
     vertical-align: top;
     width: 100%;
 
-    @include respond-to($mobile-breakpoint - 1, "max") {
+    @media (max-width: $survival-guide-breakpoint-mobile) {
       margin-top: 4.5rem;
 
       &:first-child {
@@ -34,16 +36,16 @@ $mobile-breakpoint: 400;
       }
     }
 
-    @include respond-to($mobile-breakpoint) {
+    @media (min-width: $survival-guide-breakpoint-mobile-min) {
       width: 45%;
     }
 
-    @include respond-to($tablet-breakpoint) {
+    @media (min-width: $survival-guide-breakpoint-tablet-min) {
       width: 23%;
     }
 
     &:nth-child(-n+2) {
-      @media only screen and (min-width: $mobile-breakpoint + "px") and (max-width: $tablet-breakpoint - 1px) {
+      @media (min-width: $survival-guide-breakpoint-mobile-min) and (max-width: $survival-guide-breakpoint-mobile-max) {
         margin-bottom: 4.5rem;
       }
     }
@@ -57,7 +59,7 @@ $mobile-breakpoint: 400;
     transition: transform $animation-speed;
     width: 6rem;
 
-    @include respond-to($mobile-breakpoint) {
+    @media (min-width: $survival-guide-breakpoint-mobile-min) {
       height: 8rem;
       width: 8rem;
     }
@@ -75,7 +77,7 @@ $mobile-breakpoint: 400;
     margin-top: 2rem;
     transition: color $animation-speed;
 
-    @include respond-to($mobile-breakpoint) {
+    @media (min-width: $survival-guide-breakpoint-mobile-min) {
       margin-top: 2.8rem;
     }
 
@@ -92,13 +94,17 @@ $mobile-breakpoint: 400;
     margin: .5rem auto 0;
     width: 90%;
 
-    @include respond-to($mobile-breakpoint) {
+    @media (min-width: $survival-guide-breakpoint-mobile-min) {
       margin-top: .9rem;
     }
   }
 
   &__button-container {
     @include see-more-link;
+
+    @media (min-width: $survival-guide-breakpoint-mobile-min) {
+      margin-top: 6.5rem;
+    }
   }
 
   &__more {

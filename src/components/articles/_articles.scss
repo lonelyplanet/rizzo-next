@@ -1,7 +1,5 @@
 @import "../../../sass/webpack_deps";
 
-$small-breakpoint: 320;
-
 .articles {
   margin: 0 auto $gutter;
 }
@@ -152,7 +150,7 @@ $small-breakpoint: 320;
 }
 
 .article__info__author__image {
-  @include author-image(9999999, "horizontal"); // massive number here because we don't want it resizing ever
+  @include author-image(9999999em, "horizontal"); // massive number here because we don't want it resizing ever
   margin-right: 1rem;
 }
 
@@ -163,11 +161,11 @@ $small-breakpoint: 320;
 }
 
 .article__info__author__creds__name {
-  @include author-name($small-breakpoint);
+  @include author-name($min-320);
 }
 
 .article__info__author__creds__title {
-  @include author-title($small-breakpoint);
+  @include author-title($min-320);
 }
 
 .articles__button-container {

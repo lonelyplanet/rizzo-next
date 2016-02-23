@@ -1,8 +1,4 @@
-@import "base_mixins";
-@import "icons_mixins";
-@import "headings_mixins";
-@import "links_mixins";
-@import "buttons_mixins";
+@import "mixins.deprecated";
 
 /// A simple clearfix helper
 @mixin clearfix {
@@ -10,23 +6,6 @@
     clear: both;
     content: " ";
     display: table;
-  }
-}
-
-/// Set up a media query passing a value to use for min width
-///
-/// @deprecated
-/// @param {number} $screen-width - A value for the media query
-/// @param {string} $method ["min"] - "min" or "max"
-/// @example sass
-/// .header {
-///     @include respond-to($min-1290) {
-///
-///     }
-/// }
-@mixin respond-to($screen-width, $method: "min") {
-  @media only screen and (#{$method}-width: $screen-width + 0px) {
-    @content;
   }
 }
 
@@ -46,26 +25,6 @@
   z-index: z("default");
 }
 
-/// A mixin to help clean up z-index madness. Options are: `below`, `default`, `middle`, `top`, and `modal` [/doc]
-/// @deprecated
-@mixin z-layer($layer: default) {
-  @warn "The z-layer mixin has been deprecated; use the z function instead. See sass/_z-index.scss.";
-
-  @if $layer == below {
-    z-index: -1;
-  } @else if $layer == default {
-    z-index: 1;
-  } @else if $layer == middle {
-    z-index: 10;
-  } @else if $layer == top {
-    z-index: 20;
-  } @else if $layer == modal {
-    z-index: 9999;
-  } @else {
-    z-index: 1;
-  }
-}
-
 /// Standard divider used between sections
 @mixin divider($position: bottom) {
   @if $position == bottom {
@@ -76,9 +35,9 @@
 }
 
 /// Style the author's image
-/// @param {boolean} $mobile
-/// @param {string}  $orientation ["vertical"] - "vertical" or "horizontal"
-@mixin author-image($mobile, $orientation: "vertical") {
+/// @param {string} $breakpoint
+/// @param {string} $orientation ["vertical"] - "vertical" or "horizontal"
+@mixin author-image($breakpoint, $orientation: "vertical") {
   border-radius: 100%;
   display: inline-block;
   max-width: 4rem;
@@ -89,7 +48,7 @@
     margin-bottom: 1.3rem;
   }
 
-  @include respond-to($mobile) {
+  @media (min-width: $breakpoint) {
     max-width: none;
     width: 8rem;
 
@@ -100,16 +59,16 @@
 }
 
 /// Style the author's credentials
-/// @param {boolean} $mobile
-@mixin author-creds($mobile) {
+/// @param {string} $breakpoint
+@mixin author-creds($breakpoint) {
   display: block;
   text-align: center;
   vertical-align: middle;
 }
 
 /// Style the author's name
-/// @param {boolean} $mobile
-@mixin author-name($mobile) {
+/// @param {string} $breakpoint
+@mixin author-name($breakpoint) {
   color: $body-color;
   font: {
     size: 4vw;
@@ -120,14 +79,14 @@
   text-transform: uppercase;
   letter-spacing: .06rem;
 
-  @include respond-to($mobile) {
+  @media (min-width: $breakpoint) {
     font-size: 1.2rem;
   }
 }
 
 /// Style an author's Title
-/// @param {boolean} $mobile
-@mixin author-title($mobile) {
+/// @param {string} $breakpoint
+@mixin author-title($breakpoint) {
   color: $light-text-color;
   font: {
     family: $miller-daily;
@@ -137,7 +96,7 @@
   letter-spacing: .06rem;
   line-height: 1;
 
-  @include respond-to($mobile) {
+  @media (min-width: $breakpoint) {
     font-size: 1.4rem;
   }
 }
@@ -152,10 +111,6 @@
   margin-top: 4rem;
   position: relative;
   text-align: center;
-
-  @include respond-to($mobile-breakpoint) {
-    margin-top: 6.5rem;
-  }
 }
 
 // -----------------------------------------------------------------------------
@@ -164,110 +119,31 @@
 
 @mixin css-arrow($side: top, $size: 2rem, $offset: 0) {
   &::after {
-    @include size($size);
-  }
+    height: $size;
+    width: $size;
 
-  @if $side == top {
-    &::after {
+    @if $side == top {
       bottom: auto;
       left: $offset;
       top: -(.7 * $size);
     }
-  }
 
-  @if $side == right {
-    &::after {
+    @if $side == right {
       left: auto;
       right: -(.65 * $size);
       top: $offset;
     }
-  }
 
-  @if $side == bottom {
-    &::after {
+    @if $side == bottom {
       bottom: -(.6 * $size);
       left: $offset;
       top: auto;
     }
-  }
 
-  @if $side == left {
-    &::after {
+    @if $side == left {
       left: -(.6 * $size);
       right: auto;
       top: $offset;
-    }
-  }
-}
-
-/// Css arrow, currently only used in date picker
-/// @deprecated
-@mixin css-arrow-central($side: top, $size: 2.8rem, $offset: 0) {
-  @include css-arrow($side, $size, $offset);
-
-  @if $side == top {
-    &::after {
-      left: 50%;
-      transform: translateX(-50%);
-    }
-  }
-
-  @if $side == bottom {
-    &::after {
-      left: 50%;
-      transform: translateX(-50%);
-    }
-  }
-
-  @if $side == right {
-    &::after {
-      top: 50%;
-      transform: translateY(-50%);
-    }
-  }
-
-  @if $side == left {
-    &::after {
-      top: 50%;
-      transform: translateY(-50%);
-    }
-  }
-}
-
-/// @deprecated but still in use in _navigation.scss
-@mixin size($size) {
-  @if length($size) == 1 {
-    @if $size == auto {
-      height: $size;
-      width: $size;
-    } @else if unitless($size) {
-      height: $size + px;
-      width: $size + px;
-    } @else if not(unitless($size)) {
-      height: $size;
-      width: $size;
-    }
-  }
-
-  // Width x Height
-  @if length($size) == 2 {
-    $width: nth($size, 1);
-    $height: nth($size, 2);
-
-    @if $width == auto {
-      width: $width;
-    } @else if not(unitless($width)) {
-      width: $width;
-    } @else if unitless($width) {
-      width: $width + px;
-    }
-
-    @if $height == auto {
-      height: $height;
-    } @else if not(unitless($height)) {
-      height: $height;
-    } @else if unitless($height) {
-      height: $height + px;
     }
   }
 }
@@ -541,5 +417,569 @@ $alert-colors: (
   @media (min-width: $min-600) {
     font-size: 1.2rem !important;
     line-height: 1.6 !important;
+  }
+}
+
+/// ----------------------------------------------------------------------------
+/// Use to separate components on the page.
+/// ### Modifiers
+/// * `--grey` modifier to change the background color
+///
+/// @example css
+/// .segment {
+///   @include segment();
+/// }
+/// ----------------------------------------------------------------------------
+@mixin segment() {
+  margin: 0;
+  padding-bottom: ($gutter * 2) - $spacing;
+  padding-top: ($gutter * 2);
+
+  @media (min-width: $min-720) {
+    padding-bottom: ($gutter * 3) - $spacing;
+    padding-top: ($gutter * 3);
+  }
+
+  @media (min-width: $min-1080) {
+    padding-bottom: ($gutter * 4.5) - $spacing;
+    padding-top: ($gutter * 4.5);
+  }
+
+  &--grey {
+    background-color: $color-lightgrey;
+  }
+
+  &--border-bottom::after,
+  &--border-top::before {
+    box-sizing: content-box;
+    content: "";
+    display: block;
+    height: 0;
+    margin-left: ($gutter / 2);
+    margin-right: ($gutter / 2);
+    max-width: $max-width;
+    position: relative;
+
+    @media (min-width: $min-480) {
+      margin-left: $gutter;
+      margin-right: $gutter;
+    }
+
+    @media (min-width: $min-1080) {
+      margin-left: ($gutter * 2);
+      margin-right: ($gutter * 2);
+    }
+
+    @media (min-width: #{strip-units(($max-width + ($gutter * 4)) * .625)}em) {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  &--border-bottom:last-of-type::after {
+    border-bottom: 0;
+  }
+
+  &--border-top:last-of-type::after {
+    border-top: 0;
+  }
+
+  &--border-bottom::after {
+    border-bottom: .1rem solid $color-border;
+    bottom: -($gutter * 2) + $spacing;
+
+    @media (min-width: $min-480) {
+      bottom: -($gutter * 3) + $spacing;
+    }
+
+    @media (min-width: $min-1080) {
+      bottom: -($gutter * 3.5) + $spacing;
+    }
+  }
+
+  &--border-top::before {
+    border-top: .1rem solid $color-border;
+    top: -($gutter * 2);
+
+    @media (min-width: $min-480) {
+      top: -($gutter * 3);
+    }
+
+    @media (min-width: $min-1080) {
+      top: -($gutter * 4);
+    }
+  }
+}
+
+/// ----------------------------------------------------------------------------
+/// Extends Susy by returning a container with gutters; requires
+/// [Susy](http://susy.oddbird.net/).
+///
+/// Includes Susy's container mixin.
+///
+/// Should be used for the outermost container.
+///
+/// ### Modifiers (deprecated)
+/// * `--slim` removes the gutters
+/// * `--narrow` smaller width
+/// * `--half` half of the max width
+/// ----------------------------------------------------------------------------
+@mixin container-padded {
+  // Include Susy's container mixin
+  @include container;
+
+  // Tell Susy to use static values
+  @include with-layout(static) {
+    // Calculate the width of the container plus each gutter (doubled) and then
+    // convert the value to ems for use in the media query.
+    $max-width: container() + gutter-quad();
+    $media-query: #{(strip-units($max-width) * .625)}em;
+
+    @media (max-width: $max-480) {
+      padding-left: gutter-half();
+      padding-right: gutter-half();
+    }
+
+    @media (min-width: $min-480) {
+      margin-left: gutter();
+      margin-right: gutter();
+    }
+
+    @media (min-width: $min-1080) {
+      margin-left: gutter-double();
+      margin-right: gutter-double();
+    }
+
+    @media(min-width: $media-query) {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    // These modifiers are deprecated as it's easy enough to use Susy's span
+    // function to calculate widths on demand.
+    &--slim {
+      max-width: span(10); // $max-width - 12rem - ($gutter * 2)
+    }
+
+    &--narrow {
+      max-width: span(9); // ($max-width - $min-width)
+    }
+
+    &--half {
+      max-width: span(6); // ($max-width / 2)
+    }
+  }
+}
+
+/// ----------------------------------------------------------------------------
+/// Extends Susy by returning a static width container with optional gutters;
+/// requires [Susy](http://susy.oddbird.net/).
+///
+/// @param  {Number} $span                      - Number of columns to span
+/// @param  {String} $position [inside]|outside - Inside: wrapped; outside:
+///                                               wrapping (see @example)
+/// @example:
+/// ```scss
+/// // position: inside (default)
+/// .outer-container {
+///   // Include Susy's default container for the outermost container
+///   @include container;
+///
+///   .inner-container {
+///     // Include the static-container mixin that spans 6 columns and is inside
+///     // of another container; since 'inside' is default, the argument
+///     // doesn't need to be passed.
+///     @include container-static(6);
+///   }
+/// }
+///
+/// // position: outside
+/// .outer-container {
+///   // Include the static container mixin that spans 6 columns and is the
+///   // outermost container. When set to 'outside', Susy's default container
+///   // mixin will be included.
+///   @include container-static(6, outside);
+/// }
+/// ----------------------------------------------------------------------------
+@mixin container-static($span, $position: inside) {
+  // Include Susy's container mixin if the static container is positioned on the
+  // outside, i.e., wrapping.
+  @if $position == outside {
+    @include container;
+  }
+
+  // Tell Susy to use static values
+  @include with-layout(static) {
+    // Calculate the width of the container plus each gutter and then convert
+    // the value to ems for use in the media query.
+    $max-width: span($span) + gutter-double();
+    $mq: #{(strip-units($max-width) * .625)}em;
+
+    // Add horizontal margins if the static contained is positioned on the
+    // outside, i.e., wrapping.
+    @if $position == outside {
+      margin-left: gutter();
+      margin-right: gutter();
+    }
+
+    @media(min-width: $mq) {
+      // Reset the horizontal margins to center the static container if it's
+      // positioned on the outside, i.e., wrapping.
+      @if $position == outside {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      // Set a static width with Susy's `span` function
+      width: span($span);
+    }
+  }
+}
+
+/// Use in an icon to add it to the before selector
+/// @param {string} $uri The icon uri to add
+@mixin icon-before($uri) {
+  &::before {
+    background: {
+      image: url($uri);
+      position: center -94px;
+      repeat: no-repeat;
+      size: 50%;
+    }
+    content: "";
+    display: block;
+    height: 59px;
+    position: relative;
+    width: 82px;
+  }
+}
+
+/// Mixin for main headers
+// TODO: Rename this because it's not always being used as an actual `h1`
+@mixin h1($margin-bottom: $gutter * 2, $color: $h2-color) {
+  color: $color;
+  font-family: $benton-sans;
+  font-size: 2.8rem;
+  font-weight: 100;
+  line-height: 1.3;
+  margin-bottom: $margin-bottom;
+  margin-top: 0;
+  padding-bottom: $spacing;
+  position: relative;
+  text-align: center;
+
+  &::after {
+    border-bottom: .2rem solid $h2-secondary-color;
+    bottom: 0;
+    content: "";
+    display: block;
+    left: 50%;
+    margin-left: (-3rem / 2);
+    position: absolute;
+    width: 3rem;
+  }
+
+  @media (min-width: $min-720) {
+    font-size: 4.5rem;
+  }
+}
+
+@mixin h2() {
+  font-size: 1.8rem;
+}
+
+@mixin h3() {
+  font-size: 1.4rem;
+}
+
+// Very basic navigation header for Destinations sub-pages, i.e. photo credits
+@mixin narrative-nav() {
+  text-align: left;
+  max-width: $max-width;
+  margin: $gutter auto 0;
+  padding-bottom: 2.5rem;
+  text-transform: uppercase;
+  border-bottom: .1rem solid #e4e4e4;
+
+  [class*="icon-chevron"] {
+    font-size: .7rem;
+    font-weight: 600;
+    line-height: (5 / 7);
+    margin-right: .8rem;
+    vertical-align: 35%;
+  }
+}
+
+@mixin details-header() {
+  @include container;
+  padding-bottom: .44rem;
+  padding-top: 4.4rem;
+  position: relative;
+
+  @media (min-width: $min-720) {
+    padding-bottom: 4.2rem;
+    padding-top: 12rem;
+  }
+
+  &.is-narrow {
+    @include with-layout(static) {
+      max-width: span(10);
+    }
+  }
+
+  &.has-flexbox {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  &.is-centered {
+    text-align: center;
+  }
+
+  &__title {
+    line-height: 1;
+
+    &.is-xlarge {
+      color: #2b3642;
+      font-size: 2.7rem;
+      font-weight: 600;
+      letter-spacing: -.2rem;
+      line-height: (36.5 / 27);
+
+      @media (min-width: $min-600) {
+        font-size: 6.4rem;
+        line-height: (70 / 64);
+      }
+    }
+
+    &.is-small {
+      color: #b6c3ca;
+      font-size: 1.4rem;
+      font-weight: 400;
+      letter-spacing: .1rem;
+
+      @media (min-width: $min-480) {
+        font-size: 1.6rem;
+      }
+
+      @media (min-width: $min-560) {
+        display: inline-block;
+      }
+
+      @media (min-width: $min-600) {
+        font-size: 1.8rem;
+      }
+    }
+
+    &.is-xsmall {
+      color: #ca0000;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+
+      @media (min-width: $min-560) {
+        display: inline-block;
+      }
+
+      @media (min-width: $min-600) {
+        font-size: 1.3rem;
+      }
+    }
+
+    &.is-padded-bottom {
+      margin-bottom: 1.4rem;
+
+      @media(min-width: $min-600) {
+        margin-bottom: 3.9rem;
+      }
+    }
+  }
+}
+
+@mixin link-transition() {
+  transition-duration: 300ms;
+  transition-property: color, border, background;
+
+  &::after,
+  &::before {
+    transition-duration: 300ms;
+    transition-property: color, border, background;
+  }
+
+  &:hover {
+    transition-duration: 0;
+
+    &::after,
+    &::before {
+      transition-duration: 0;
+    }
+  }
+}
+
+@mixin more() {
+  @include link-transition();
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1;
+  text-transform: uppercase;
+
+  &:hover {
+    color: $color-primary + 30;
+  }
+
+  [class*="icon-"] {
+    backface-visibility: hidden;
+    display: inline-block;
+    font-size: 6px;
+    line-height: 1.6;
+    transform: translateX(6px);
+    transition: transform 500ms;
+    vertical-align: 20%;
+  }
+
+  &:hover {
+    [class*="icon-"] {
+      transform: translateX(.2rem);
+    }
+  }
+}
+
+@mixin see-more() {
+  @include more();
+  display: inline-block;
+  padding: $gutter;
+  position: relative;
+
+  &--small {
+    font-size: 1rem;
+  }
+}
+
+/// Provides the underline for the `underlined-link` mixin
+/// @param {Color} $color [$color-blue] - Color of the underline, usually the same as the text color
+/// @param {Dimension} $offset [2px] - Amount of padding above the underline
+/// @param {Dimension} $weight [1px] - Width of the underline
+@mixin underline(
+  $color: $color-blue,
+  $offset: 2px,
+  $weight: 1px
+) {
+  background-image: linear-gradient(
+    to top,
+    transparent,
+    transparent $offset,
+    $color $offset,
+    $color ($offset + $weight),
+    transparent ($offset + $weight)
+  );
+}
+
+/// Creates a nicely underlined hyperlink
+/// @param {Color} $link-color [$color-blue] Link color
+/// @param {Color} $link-color-active [$color-blue + 30] Link color for hover, active and focus states
+/// @param {Color} $background-color [#fff] Background color of the link, usually the same color as the page
+/// @param {Boolean} $breaking-underlines [true] If the underline should "break" as it passes thru a descender
+@mixin underlined-link(
+  $link-color: $color-blue,
+  $link-color-active: $color-blue + 30,
+  $underline-offset: 2px,
+  $background-color: #fff,
+  $breaking-underlines: true
+) {
+  @include underline(rgba($link-color, .4), $underline-offset);
+  color: $link-color;
+  position: relative;
+  text-decoration: none;
+  transition: color 200ms ease;
+
+  @if $breaking-underlines {
+    text-shadow: -1px -1px 0 $background-color,
+      1px -1px 0 $background-color,
+      -1px 1px 0 $background-color,
+      1px 1px 0 $background-color;
+  }
+
+  // @TODO Figure out why these styles don't work
+  // @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+  //   @include underline(rgba($link-color, .4), $underline-offset, .5);
+  // }
+
+  &:hover,
+  &:active,
+  &:focus {
+    @include underline(rgba($link-color-active, .4), $underline-offset);
+    color: $link-color-active;
+
+    // @TODO Figure out why these styles don't work
+    // @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+    //   @include underline(rgba($link-color-active, .4), $underline-offset, .5);
+    // }
+  }
+}
+
+@mixin button($type: "") {
+  appearance: none;
+  backface-visibility: hidden;
+  border: 0;
+  border-radius: 2.2rem;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.2rem;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 600;
+  line-height: 1;
+  outline: none;
+  padding: 1.8rem 3rem 1.4rem;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color $animation-speed, border $animation-speed, background-color $animation-speed;
+  vertical-align: middle;
+  white-space: nowrap;
+
+  @if $type == "" {
+    background-color: $color-primary;
+    color: #fff;
+  }
+
+  @if $type == "inverse" {
+    background-color: #fff;
+    color: $color-primary;
+  }
+
+  [class*="icon-"] {
+    display: inline-block;
+    font-size: 6px;
+    margin-left: .6rem;
+    transform: translate3d(0, 0, 0);
+    transition: transform 500ms;
+    vertical-align: 20%;
+  }
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+
+    @if $type == "" {
+      background-color: $color-primary + 15;
+      color: #fff;
+    }
+
+    @if $type == "inverse" {
+      background-color: #fff;
+      color: $color-primary + 30;
+    }
+
+    [class*="icon-"] {
+      transform: translate3d(-.4rem, 0, 0);
+    }
+
+    .icon-chevron-right {
+      transform: translate3d(.4rem, 0, 0);
+    }
+
+    .icon-chevron-down {
+      transform: translate3d(0, 0, 0);
+    }
   }
 }

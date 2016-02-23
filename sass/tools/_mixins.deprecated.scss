@@ -1,0 +1,114 @@
+/// Set up a media query passing a value to use for min width
+///
+/// @deprecated
+/// @param {number} $screen-width - A value for the media query
+/// @param {string} $method ["min"] - "min" or "max"
+/// @example sass
+/// .header {
+///     @include respond-to($min-1290) {
+///
+///     }
+/// }
+@mixin respond-to($screen-width, $method: "min") {
+  @warn "The respond-to mixin has been deprecated; use native CSS @media instead.";
+
+  @media only screen and (#{$method}-width: $screen-width + 0px) {
+    @content;
+  }
+}
+
+/// A mixin to help clean up z-index madness. Options are: `below`, `default`, `middle`, `top`, and `modal` [/doc]
+/// @deprecated
+@mixin z-layer($layer: default) {
+  @warn "The z-layer mixin has been deprecated; use the z function instead. See sass/tools/_functions.scss.";
+
+  @if $layer == below {
+    z-index: -1;
+  } @else if $layer == default {
+    z-index: 1;
+  } @else if $layer == middle {
+    z-index: 10;
+  } @else if $layer == top {
+    z-index: 20;
+  } @else if $layer == modal {
+    z-index: 9999;
+  } @else {
+    z-index: 1;
+  }
+}
+
+/// Css arrow
+/// @deprecated
+@mixin css-arrow-central($side: top, $size: 2.8rem, $offset: 0) {
+  @warn "The css-arrow-central mixin has been deprecated.";
+
+  @include css-arrow($side, $size, $offset);
+
+  @if $side == top {
+    &::after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  @if $side == bottom {
+    &::after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  @if $side == right {
+    &::after {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  @if $side == left {
+    &::after {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}
+
+/// @deprecated
+@mixin size($size) {
+  @warn "The size mixin has been deprecated.";
+
+  @if length($size) == 1 {
+    @if $size == auto {
+      height: $size;
+      width: $size;
+    } @else if unitless($size) {
+      height: $size + px;
+      width: $size + px;
+    } @else if not(unitless($size)) {
+      height: $size;
+      width: $size;
+    }
+  }
+
+  // Width x Height
+  @if length($size) == 2 {
+    $width: nth($size, 1);
+    $height: nth($size, 2);
+
+    @if $width == auto {
+      width: $width;
+    } @else if not(unitless($width)) {
+      width: $width;
+    } @else if unitless($width) {
+      width: $width + px;
+    }
+
+    @if $height == auto {
+      height: $height;
+    } @else if not(unitless($height)) {
+      height: $height;
+    } @else if unitless($height) {
+      height: $height + px;
+    }
+  }
+}
