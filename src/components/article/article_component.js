@@ -108,22 +108,19 @@ export default class ArticleComponent extends Component {
       url: `${window.location.pathname}.json`
     });
 
-    firstArticle.fetch().then(() => {
-      let relatedArticles = firstArticle.get("related_articles").articles;
+    firstArticle.set(window.lp.article_raw);
+    let relatedArticles = firstArticle.get("related_articles").articles;
 
-      this.articles.set(this.$el[0], firstArticle);
-      this._setInitialCallouts(firstArticle.get("content").callouts);
+    this.articles.set(this.$el[0], firstArticle);
+    this._setInitialCallouts(firstArticle.get("content").callouts);
 
-      if (relatedArticles.length) {
-        this.$el.attr("id", this._createIdForArticle(this.$el.data("slug")));
-        this._setInitialListOfArticles(relatedArticles);
-        this._updateFirstArticle();
-        this._createStickyFooter();
-        this._loadStickyFooter();
-      }
-    }, () => {
-      rizzo.logger.error(`Unable to fetch ${window.location.pathname}.json`);
-    });
+    if (relatedArticles.length) {
+      this.$el.attr("id", this._createIdForArticle(this.$el.data("slug")));
+      this._setInitialListOfArticles(relatedArticles);
+      this._updateFirstArticle();
+      this._createStickyFooter();
+      this._loadStickyFooter();
+    }
   }
 
   _updateFirstArticle() {
@@ -195,6 +192,7 @@ export default class ArticleComponent extends Component {
         this.nextArticle;
 
       if (shouldGetNextArticle) {
+        this._newArticleLoaded(this.articles.get(this.$activeArticle[0]));
         this._getNextArticle(`/${this.nextArticle.slug}.json`);
       }
 
@@ -326,8 +324,13 @@ export default class ArticleComponent extends Component {
 
       this._articleCanBeLoaded();
     }, () => {
+      let errorMessage = `"<a href="${this.nextArticle.slug}">${this.nextArticle.title}</a>"
+        could not be loaded. Please view it <a href="${this.nextArticle.slug}">here</a>.`;
+      this.nextArticle = false;
       this.isNextArticleLoading = false;
       this._hideLoader({ showArticle: false });
+      rizzo.logger.error(`Unable to fetch ${slug}.json`);
+      this.$activeArticle.append(`<div class="article-error">${errorMessage}</div>`);
     });
   }
 
@@ -378,7 +381,7 @@ export default class ArticleComponent extends Component {
 
     this._setNextArticle();
     this._checkIfHistoryShouldBeUpdated();
-    this._newArticleLoaded(model);
+    // this._newArticleLoaded(model);
   }
 
   /**
@@ -585,9 +588,9 @@ export default class ArticleComponent extends Component {
 
   @publish("reload", "ads")
   _newArticleLoaded() {
-    this.$newArticle.prepend(this.adLeaderboardTemplate());
+    this.$activeArticle.append(this.adLeaderboardTemplate());
 
-    let $slotLeader = this.$newArticle.find(".js-slot-leader");
+    let $slotLeader = this.$activeArticle.find(".js-slot-leader");
 
     if ($slotLeader.length) {
       $slotLeader.data({
