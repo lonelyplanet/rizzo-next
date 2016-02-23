@@ -121,6 +121,9 @@ export default class ArticleComponent extends Component {
       this._createStickyFooter();
       this._loadStickyFooter();
     }
+
+    // Put the ad in the first article, but don't load it yet
+    this.$activeArticle.append(this.adLeaderboardTemplate());
   }
 
   _updateFirstArticle() {
@@ -187,13 +190,17 @@ export default class ArticleComponent extends Component {
     let hasRecalculatedStickyFooter = false;
 
     this.$window.on("scroll.article", debounce(() => {
+      let activeArticle = this.articles.get(this.$activeArticle[0]);
+
       shouldGetNextArticle = this._shouldGetNextArticle(offsetDifference) &&
         !this.isNextArticleLoading &&
-        this.nextArticle;
+        typeof this.nextArticle !== "undefined";
 
-      if (shouldGetNextArticle) {
-        this._newArticleLoaded(this.articles.get(this.$activeArticle[0]));
-        this._getNextArticle(`/${this.nextArticle.slug}.json`);
+      if (shouldGetNextArticle && !activeArticle.get("hasFetched")) {
+        activeArticle.set("hasFetched", true);
+        this._getNextArticle(`/${this.nextArticle.slug}.json`).then(() => {
+          this._reloadAd();
+        });
       }
 
       this._setActiveArticle();
@@ -304,7 +311,7 @@ export default class ArticleComponent extends Component {
 
     let nextArticle = new ArticleModel({ url: slug });
 
-    nextArticle.fetch().then(() => {
+    return nextArticle.fetch().then(() => {
       this.$newArticle = $(this.template({
         article: nextArticle.get()
       }))
@@ -318,12 +325,15 @@ export default class ArticleComponent extends Component {
       this._addNewArticlesToArray(nextArticle.get("related_articles").articles);
       this._updateNewArticle(nextArticle);
 
-      this.isNextArticleLoading = false;
-
       this.$newArticle.attr("id", this._createIdForArticle(nextArticle.get().slug));
 
+      // Put the ad in the new article, but don't load it yet
+      this.$newArticle.append(this.adLeaderboardTemplate());
+
       this._articleCanBeLoaded();
-    }, () => {
+
+      this.isNextArticleLoading = false;
+    }).catch(() => {
       let errorMessage = `"<a href="${this.nextArticle.slug}">${this.nextArticle.title}</a>"
         could not be loaded. Please view it <a href="${this.nextArticle.slug}">here</a>.`;
       this.nextArticle = false;
@@ -381,7 +391,6 @@ export default class ArticleComponent extends Component {
 
     this._setNextArticle();
     this._checkIfHistoryShouldBeUpdated();
-    // this._newArticleLoaded(model);
   }
 
   /**
@@ -587,9 +596,7 @@ export default class ArticleComponent extends Component {
   }
 
   @publish("reload", "ads")
-  _newArticleLoaded() {
-    this.$activeArticle.append(this.adLeaderboardTemplate());
-
+  _reloadAd() {
     let $slotLeader = this.$activeArticle.find(".js-slot-leader");
 
     if ($slotLeader.length) {
