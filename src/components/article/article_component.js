@@ -22,7 +22,7 @@ export default class ArticleComponent extends Component {
 
     this._resetWindowScrollPosition();
 
-    this.$document = $(document);
+    this.$document = $("html");
     this.$window = $(window);
 
     this.isNextArticleLoading = false;
@@ -221,9 +221,11 @@ export default class ArticleComponent extends Component {
   }
 
   _shouldGetNextArticle(difference) {
+    let reset = this.$newArticle ? this.$newArticle.offset().top : 0;
     let amountNeededToScroll = this._getAmountNeededToScroll();
+    let calculatedAmount = (amountNeededToScroll - difference - reset) * 0.8;
 
-    return this.$window.scrollTop() >= ((amountNeededToScroll - difference) * 0.8);
+    return this.$window.scrollTop() - reset >= calculatedAmount;
   }
 
   /**
