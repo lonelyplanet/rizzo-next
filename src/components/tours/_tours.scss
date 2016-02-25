@@ -101,7 +101,7 @@ $tours-width: 52rem / $tours-width-base * 100%;
 }
 
 .tour__description {
-  color: $tours-title-color;
+  color: $color-text;
   font-weight: $font-weight-medium;
 
   @media (min-width: $min-960) {
@@ -121,7 +121,7 @@ $tours-width: 52rem / $tours-width-base * 100%;
   }
 
   @media (min-width: $min-480) {
-    border-bottom: .1rem solid $divider-color;
+    border-bottom: .1rem solid $color-gray;
     color: $tours-type-color;
     margin-top: .3rem;
   }
@@ -140,7 +140,7 @@ $tours-width: 52rem / $tours-width-base * 100%;
 }
 
 .tour__price {
-  background-color: $tours-price-background;
+  background-color: $color-red;
   color: #fff;
   display: inline-block;
   font-size: 1.2rem;
@@ -159,7 +159,7 @@ $tours-width: 52rem / $tours-width-base * 100%;
 }
 
 .tour__type {
-  color: $tours-title-color;
+  color: $color-text;
   display: inline;
   font-size: 1.1rem;
   font-weight: $font-weight-semibold;
@@ -186,7 +186,7 @@ $tours-width: 52rem / $tours-width-base * 100%;
 }
 
 .tour__blurb {
-  color: $tours-blurb-color;
+  color: $light-text-color;
   font-size: 1.3rem;
   line-height: 1.4;
 

@@ -50,14 +50,14 @@
       }
 
       .navigation--narrow & {
-        border-color: rgba($body-color, .6);
+        border-color: rgba($titlegray, .6);
 
         &:hover,
         &:active,
         &:focus {
-          background-color: rgba($body-color, .02);
-          border-color: rgba($body-color, .15);
-          color: $body-color;
+          background-color: rgba($titlegray, .02);
+          border-color: rgba($titlegray, .15);
+          color: $titlegray;
         }
       }
     }
@@ -90,22 +90,22 @@
   }
 
   .navigation--narrow &__link {
-    color: $body-color;
+    color: $titlegray;
 
     &:hover,
     &:active,
     &:focus {
-      color: rgba($body-color, .38);
+      color: rgba($titlegray, .38);
     }
   }
 
   .navigation--narrow &__item--active &__link {
-    color: $color-primary;
+    color: $lpblue;
   }
 
   &__counter {
     $size: 1.7rem;
-    background: #dc221a;
+    background: $color-red;
     border-radius: 50%;
     box-shadow: 0 .1rem .2rem rgba(#000, .2);
     color: #fff;
@@ -195,7 +195,7 @@
   }
 
   &__link {
-    color: $color-darkblue;
+    color: $darkgray;
     display: block;
     padding-bottom: .8rem;
     padding-top: 1rem;
@@ -254,17 +254,17 @@
   }
 
   &__title {
-    color: $color-darkblue;
+    color: $darkgray;
     font-size: 1.6rem;
     transition: color $animation-speed linear;
   }
 
   &:hover &__title {
-    color: $color-blue;
+    color: $lpblue;
   }
 
   &__subtitle {
-    color: #8d9197;
+    color: $light-text-color;
     font-size: 1.1rem;
     font-weight: 600;
     margin-top: .4rem;

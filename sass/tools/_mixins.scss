@@ -28,9 +28,9 @@
 /// Standard divider used between sections
 @mixin divider($position: bottom) {
   @if $position == bottom {
-    border-bottom: .1rem solid $divider-color;
+    border-bottom: .1rem solid $color-gray;
   } @else if $position == top {
-    border-top: .1rem solid $divider-color;
+    border-top: .1rem solid $color-gray;
   }
 }
 
@@ -69,7 +69,7 @@
 /// Style the author's name
 /// @param {string} $breakpoint
 @mixin author-name($breakpoint) {
-  color: $body-color;
+  color: $titlegray;
   font: {
     size: 4vw;
     weight: $font-weight-semibold;
@@ -203,7 +203,7 @@
   background-color: #fff;
   border-radius: $radius;
   box-shadow: 0 -1rem 2rem rgba(#000, 0);
-  color: $font-color;
+  color: $titlegray;
   display: block;
   font-size: $font-size;
   left: $left;
@@ -280,7 +280,7 @@
   }
 
   &:focus {
-    border-color: darken($color-border, 20%);
+    border-color: darken($color-gray, 20%);
   }
 }
 
@@ -312,13 +312,6 @@
   top: 0;
   width: $width;
 }
-
-// alert component background colors
-$alert-colors: (
-  "warning": #f00,
-  "notice": #ff0,
-  "default": #3b444f
-);
 
 @mixin alert-background($color: "default") {
   background-color: map-get($alert-colors, $color);
@@ -381,7 +374,7 @@ $alert-colors: (
 }
 
 @mixin lede {
-  color: $color-darkblue;
+  color: $darkgray;
   font-size: 1.8rem;
   font-weight: 300;
   line-height: (28 / 18);
@@ -446,7 +439,7 @@ $alert-colors: (
   }
 
   &--grey {
-    background-color: $color-lightgrey;
+    background-color: $color-lightgray;
   }
 
   &--border-bottom::after,
@@ -485,7 +478,7 @@ $alert-colors: (
   }
 
   &--border-bottom::after {
-    border-bottom: .1rem solid $color-border;
+    border-bottom: .1rem solid $color-gray;
     bottom: -($gutter * 2) + $spacing;
 
     @media (min-width: $min-480) {
@@ -498,7 +491,7 @@ $alert-colors: (
   }
 
   &--border-top::before {
-    border-top: .1rem solid $color-border;
+    border-top: .1rem solid $color-gray;
     top: -($gutter * 2);
 
     @media (min-width: $min-480) {
@@ -656,7 +649,7 @@ $alert-colors: (
 
 /// Mixin for main headers
 // TODO: Rename this because it's not always being used as an actual `h1`
-@mixin h1($margin-bottom: $gutter * 2, $color: $h2-color) {
+@mixin h1($margin-bottom: $gutter * 2, $color: $titlegray) {
   color: $color;
   font-family: $benton-sans;
   font-size: 2.8rem;
@@ -669,7 +662,7 @@ $alert-colors: (
   text-align: center;
 
   &::after {
-    border-bottom: .2rem solid $h2-secondary-color;
+    border-bottom: .2rem solid $color-red;
     bottom: 0;
     content: "";
     display: block;
@@ -699,7 +692,7 @@ $alert-colors: (
   margin: $gutter auto 0;
   padding-bottom: 2.5rem;
   text-transform: uppercase;
-  border-bottom: .1rem solid #e4e4e4;
+  border-bottom: .1rem solid $color-gray;
 
   [class*="icon-chevron"] {
     font-size: .7rem;
@@ -740,7 +733,7 @@ $alert-colors: (
     line-height: 1;
 
     &.is-xlarge {
-      color: #2b3642;
+      color: $darkgray;
       font-size: 2.7rem;
       font-weight: 600;
       letter-spacing: -.2rem;
@@ -824,7 +817,7 @@ $alert-colors: (
   text-transform: uppercase;
 
   &:hover {
-    color: $color-primary + 30;
+    color: $lpblue + 30;
   }
 
   [class*="icon-"] {
@@ -856,11 +849,11 @@ $alert-colors: (
 }
 
 /// Provides the underline for the `underlined-link` mixin
-/// @param {Color} $color [$color-blue] - Color of the underline, usually the same as the text color
+/// @param {Color} $color [$lpblue]  - Color of the underline, usually the same as the text color
 /// @param {Dimension} $offset [2px] - Amount of padding above the underline
 /// @param {Dimension} $weight [1px] - Width of the underline
 @mixin underline(
-  $color: $color-blue,
+  $color: $lpblue,
   $offset: 2px,
   $weight: 1px
 ) {
@@ -875,13 +868,13 @@ $alert-colors: (
 }
 
 /// Creates a nicely underlined hyperlink
-/// @param {Color} $link-color [$color-blue] Link color
-/// @param {Color} $link-color-active [$color-blue + 30] Link color for hover, active and focus states
+/// @param {Color} $link-color [$lpblue] Link color
+/// @param {Color} $link-color-active [$lpblue + 30] Link color for hover, active and focus states
 /// @param {Color} $background-color [#fff] Background color of the link, usually the same color as the page
 /// @param {Boolean} $breaking-underlines [true] If the underline should "break" as it passes thru a descender
 @mixin underlined-link(
-  $link-color: $color-blue,
-  $link-color-active: $color-blue + 30,
+  $link-color: $lpblue,
+  $link-color-active: $lpblue + 30,
   $underline-offset: 2px,
   $background-color: #fff,
   $breaking-underlines: true
@@ -938,13 +931,13 @@ $alert-colors: (
   white-space: nowrap;
 
   @if $type == "" {
-    background-color: $color-primary;
+    background-color: $lpblue;
     color: #fff;
   }
 
   @if $type == "inverse" {
     background-color: #fff;
-    color: $color-primary;
+    color: $lpblue;
   }
 
   [class*="icon-"] {
@@ -961,13 +954,13 @@ $alert-colors: (
     text-decoration: none;
 
     @if $type == "" {
-      background-color: $color-primary + 15;
+      background-color: $lpblue + 15;
       color: #fff;
     }
 
     @if $type == "inverse" {
       background-color: #fff;
-      color: $color-primary + 30;
+      color: $lpblue + 30;
     }
 
     [class*="icon-"] {

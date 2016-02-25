@@ -7,15 +7,15 @@
   justify-content: flex-start;
 
   > header {
-    border-bottom: .1rem solid $color-primary;
+    border-bottom: .1rem solid $lpblue;
 
     a {
-      color: $font-color;
+      color: $titlegray;
 
       &:hover,
       &:active,
       &:focus {
-        color: $color-primary;
+        color: $lpblue;
       }
     }
   }
@@ -23,12 +23,12 @@
 
 .navigation {
   a {
-    color: $font-color;
+    color: $titlegray;
 
     &:hover,
     &:active,
     &:focus {
-      color: $color-primary;
+      color: $lpblue;
     }
   }
 }

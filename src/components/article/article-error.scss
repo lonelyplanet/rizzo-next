@@ -2,7 +2,7 @@
 
 .article-error {
   @include container-padded;
-  color: $body-color;
+  color: $titlegray;
   padding-bottom: gutter();
   padding-top: gutter();
   text-align: center;
@@ -10,8 +10,8 @@
 
   a {
     @include underlined-link(
-      $link-color: $body-color,
-      $link-color-active: $color-blue
+      $link-color: $titlegray,
+      $link-color-active: $lpblue
     );
   }
 }

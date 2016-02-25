@@ -43,7 +43,7 @@
   &__input {
     border: 0;
     bottom: 0;
-    color: #3b4450;
+    color: $titlegray;
     font-size: 1.6rem;
     height: $input-height;
     left: ($header-height-mobile / 2);
@@ -68,13 +68,13 @@
     }
 
     @include placeholder {
-      color: rgba($body-color, .38);
+      color: rgba($titlegray, .38);
     }
   }
 
   &__label {
     bottom: 0;
-    color: $body-color;
+    color: $titlegray;
     display: block;
     font-size: 0;
     height: 2rem;
@@ -121,7 +121,7 @@
     &:hover,
     &:active,
     &:focus {
-      color: $color-primary;
+      color: $lpblue;
     }
 
     &::before {

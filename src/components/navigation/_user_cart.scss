@@ -3,7 +3,7 @@
 }
 
 .user-cart__title {
-  color: #2c3643;
+  color: $darkgray;
   font-size: 1.4rem;
   font-weight: bold;
   margin-bottom: 3rem;
@@ -54,7 +54,7 @@
 }
 
 .user-cart__action {
-  background-color: $color-blue;
+  background-color: $lpblue;
   border-bottom-left-radius: .3rem;
   border-bottom-right-radius: .3rem;
   color: #fff;

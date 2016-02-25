@@ -1,8 +1,8 @@
 @import "../../../sass/webpack_deps";
 
 .article-pagination {
-  border-bottom: .1rem solid $color-border;
-  border-top: .1rem solid $color-border;
+  border-bottom: .1rem solid $color-gray;
+  border-top: .1rem solid $color-gray;
 
   @media (max-width: $max-600) {
     padding-bottom: 4.4rem;
@@ -52,7 +52,7 @@
 }
 
 .article-pagination__item {
-  color: $color-darkblue;
+  color: $darkgray;
   display: block;
   font-size: 1.6rem;
   font-weight: 300;
@@ -99,12 +99,12 @@
   &:hover,
   &:active,
   &:focus {
-    color: $color-blue;
+    color: $lpblue;
   }
 
   &:first-child {
     @media (min-width: $min-600) {
-      border-left: .1rem solid $color-border;
+      border-left: .1rem solid $color-gray;
     }
   }
 }

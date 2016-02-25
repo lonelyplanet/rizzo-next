@@ -38,14 +38,14 @@ $user-panel: (
   padding-right: $gutter;
 
   a {
-    color: $font-color;
+    color: $titlegray;
     display: block;
     transition: color $animation-speed;
 
     &:hover,
     &:active,
     &:focus {
-      color: $color-blue;
+      color: $lpblue;
     }
   }
 }
@@ -77,7 +77,7 @@ $user-panel: (
   &:hover,
   &:active,
   &:focus {
-    color: $font-color;
+    color: $titlegray;
   }
 }
 
@@ -111,7 +111,7 @@ $user-panel: (
 // that reason, classes cannot be applied to each item or its children.
 
 .user-panel__items li {
-  color: $font-color;
+  color: $titlegray;
   font-size: 1.2rem;
   line-height: 1.2;
   overflow: hidden;
@@ -174,14 +174,14 @@ $user-panel: (
     width: 18rem;
 
     a {
-      color: $font-color;
+      color: $titlegray;
       font-weight: bold;
       transition: color $animation-speed linear;
 
       &:hover,
       &:active,
       &:focus {
-        color: $color-blue;
+        color: $lpblue;
       }
     }
   }
@@ -189,7 +189,7 @@ $user-panel: (
 
 .user-panel__item {
   &--unread {
-    background-color: #e5e5e5;
+    background-color: $color-gray;
   }
 }
 

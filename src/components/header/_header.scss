@@ -37,7 +37,7 @@
   }
 
   &--no-images.lp-global-header--narrow &__inner {
-    border-bottom-color: $color-border;
+    border-bottom-color: $color-gray;
   }
 
   &__logo {
@@ -67,7 +67,7 @@
   }
 
   &--narrow &__logo {
-    fill: $color-primary;
+    fill: $lpblue;
   }
 
   &__search {
@@ -141,12 +141,12 @@
   &--narrow &__search:hover &__search-text,
   &--narrow &__search:active &__search-text,
   &--narrow &__search:focus &__search-text {
-    color: rgba($body-color, .38);
+    color: rgba($titlegray, .38);
   }
 
   &--narrow &__search [class*="icon-"],
   &--narrow &__search-text {
-    color: $body-color;
+    color: $titlegray;
   }
 
   &__navigation {
@@ -214,7 +214,7 @@
   &--narrow &__mobile-search,
   &--narrow &__mobile-menu,
   &--narrow &__mobile-cart {
-    color: $body-color;
+    color: $titlegray;
   }
 
   &__mobile-search {
@@ -267,7 +267,7 @@
       &,
       &::before,
       &::after {
-        background-color: $body-color;
+        background-color: $titlegray;
       }
     }
   }

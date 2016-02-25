@@ -2,49 +2,91 @@
 // Rizzo Next Colors
 // -----------------------------------------------------------------------------
 
-$font-color: #333;
-$font-color-light: #959aa0;
+// Colors with no variables
+//
+// #030f1d
+// #2d2d2d
+// #29313e
+// #324355
+// #6d6d6d
+// #67747d
+// #717880
+// #a7a9ae
+// #b6c3ca
+// #bdcee3
+// #c5d1d7
+// #ced2d6
+// #cdd0d6
+// #ca0000
+// #d4d4d4
+// #d7dee3
+// #e1e3e7
+// #e4eaf8
+// #e5e7ed
+// #f1f4fb
+// #f4f5f8
+// #f4f7fc
+// #f4fbfe
+// #f0f0f0
+//
+// #000
+// #333
+// #999
+// #ccc
+// #cccdce
+// #ddd
+// #fff
 
-// TODO: Make these colors more generic
-$active: #0fdebd !default;
-$ancillary-header-color: #66747c !default;
-$articles-blurb-color: #7e838b !default;
-$body-color: #3b4450 !default;
+// Rizzo Colors
 $darkgray: #2c3643 !default;
-$divider-color: #e4e4e4 !default;
+$titlegray: #3b444f !default;
 $feature-copy: #67747c !default;
-$footer-bottom-link-color: #959aa0 !default;
-$footer-copyright-color: #bfc2c6 !default;
-$h2-color: #3b444f !default;
-$h2-secondary-color: #dc221a !default;
-$light-text-color: #898e95 !default;
-$linkblue: #288ad6 !default;
 $lpblue: #297cbb !default;
 $subduedgray: #dbe6ec !default;
-$tours-blurb-color: #a0a6ad !default;
-$tours-price-background: #dc1b10 !default;
-$tours-title-color: #474f5a !default;
+$color-orange: #ffc83f !default;
+$color-yellow: #feef6d !default;
+
+$active-color: #0fdebd !default;
+$articles-blurb-color: #7e838b !default;
+$color-red: #dc221a !default;
+$color-gray: #e4e4e4 !default;
+$color-text: #474f5a !default;
+$color-lightgray: #f5f5f5 !default;
+$footer-copyright-color: #bfc2c6 !default;
+$light-text-color: #898e95 !default; // very close to $font-color-light
+$font-color-light: #959aa0 !default; // very close to $light-text-color
 $tours-type-color: #c4c7cb !default;
 
-$color-warning: #ffc83f;
-$color-blue: #287bbb;
-$color-lightblue: #e9f2f8;
-$color-darkblue: #2c3642;
-
-$color-red: #dc221a;
-$color-purpleish: #3b4450;
-
-$color-gray: #e4e4e4;
-$color-lightgrey: #f5f5f5;
-
-// Color shortcuts
-$color-border: $color-gray;
-/// LP Primary blue color
-$color-primary: $color-blue;
-/// Main Text Color
-$color-text: #474f5a;
+// Alert component background colors
+$alert-colors: (
+  "warning": $color-red,
+  "notice": $color-yellow,
+  "default": $titlegray
+);
 
 // Social Network Colors
 $color-facebook: #3b5998;
 $color-twitter: #00aced;
 $color-pinterest: #cb2027;
+
+// Deprecated
+$font-color: #333; // see $titlegray
+$body-color: #3b4450; // see $titlegray
+$footer-bottom-link-color: $font-color-light;
+$ancillary-header-color: #66747c; // see $feature-copy
+$color-purpleish: $body-color;
+$divider-color: $color-gray;
+$color-border: $color-gray;
+$color-blue: $lpblue;
+$color-primary: $lpblue;
+$tours-title-color: $color-text;
+$linkblue: #288ad6; // see $lpblue
+$h2-secondary-color: $color-red;
+$h2-color: $titlegray;
+$color-darkblue: #2c3642; // see $darkgray
+$color-warning: $color-orange;
+$tours-price-background: #dc1b10; // see $color-red
+$tours-blurb-color: #a0a6ad; // see $light-text-color
+
+// Not used
+$color-lightblue: #e9f2f8;

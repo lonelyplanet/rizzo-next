@@ -69,7 +69,7 @@ $alert: (
     &:hover,
     &:active,
     &:focus {
-      color: #bebebe;
+      color: $footer-copyright-color;
     }
 
     &::before {
