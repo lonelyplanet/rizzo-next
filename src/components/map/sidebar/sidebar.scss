@@ -4,7 +4,7 @@ $panel-height: calc(100% - #{$sidebar-header-height});
 
 .spinner {
   animation: spin $animation-speed-ui linear infinite;
-  border: $unit solid #999;
+  border: $unit solid $font-color-light;
   border-radius: 50%;
   display: block;
   height: $size;
@@ -27,7 +27,7 @@ $panel-height: calc(100% - #{$sidebar-header-height});
 }
 
 .sidebar {
-  background-color: #fff;
+  background-color: $color-white;
   bottom: 0;
   height: 100vh;
   overflow: visible;
@@ -47,12 +47,12 @@ $panel-height: calc(100% - #{$sidebar-header-height});
 
     .details {
       a {
-        color: #fff;
+        color: $color-white;
       }
     }
 
     .sidebar__title {
-      color: #fff;
+      color: $color-white;
       font-size: 4rem;
       font-weight: bold;
       letter-spacing: -.2px;
@@ -88,13 +88,13 @@ $panel-height: calc(100% - #{$sidebar-header-height});
   }
 
   &__tabs {
-    border-top: .1rem solid rgba(#fff, .2);
+    border-top: .1rem solid rgba($color-white, .2);
     line-height: 1;
     list-style: none;
     margin-top: 2.6rem;
 
     .tab {
-      color: #fff;
+      color: $color-white;
       cursor: pointer;
       display: inline-block;
       font-size: 1.4rem;
@@ -170,7 +170,7 @@ $panel-height: calc(100% - #{$sidebar-header-height});
 
       &::after {
         $height: .4rem;
-        background: #fff;
+        background: $color-white;
         bottom: 0;
         content: "";
         display: block;
@@ -266,7 +266,7 @@ $panel-height: calc(100% - #{$sidebar-header-height});
 
     &__footer {
       bottom: 0;
-      box-shadow: 0 0 6rem 0 rgba(#000, .08);
+      box-shadow: 0 0 6rem 0 rgba($color-black, .08);
       position: absolute;
       top: auto;
       width: $sidebar-width;

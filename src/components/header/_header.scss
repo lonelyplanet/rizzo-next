@@ -5,11 +5,11 @@
   z-index: z("global-header");
 
   &--narrow {
-    background-color: #fff;
+    background-color: $color-white;
   }
 
   &--normal {
-    background: linear-gradient(to bottom, rgba(#000, .2), rgba(#000, 0));
+    background: linear-gradient(to bottom, rgba($color-black, .2), rgba($color-black, 0));
     left: 0;
     position: absolute;
     right: 0;
@@ -22,7 +22,7 @@
   }
 
   &__inner {
-    border-bottom: .1rem solid rgba(#fff, .3);
+    border-bottom: .1rem solid rgba($color-white, .3);
     height: $header-height-mobile;
     perspective: 800px;
     position: relative;
@@ -42,7 +42,7 @@
 
   &__logo {
     display: block;
-    fill: #fff;
+    fill: $color-white;
     height: 100%;
     margin: 0 auto;
     position: relative;
@@ -76,7 +76,7 @@
     @media (min-width: $min-1080) {
       background-color: transparent;
       border: 0;
-      color: rgba(#fff, .38);
+      color: rgba($color-white, .38);
       cursor: pointer;
       display: block;
       font-size: 2.4rem;
@@ -102,12 +102,12 @@
     }
 
     &--fade {
-      -webkit-mask-image: -webkit-gradient(linear, 70% 0, 100% 0, from(rgba(#000, 1)), to(rgba(#000, 0)));
+      -webkit-mask-image: -webkit-gradient(linear, 70% 0, 100% 0, from(rgba($color-black, 1)), to(rgba($color-black, 0)));
       width: 42%;
     }
 
     [class*="icon-"] {
-      color: #fff;
+      color: $color-white;
       font-size: 2rem;
       margin-right: 1.2rem;
       transition: margin $animation-speed;
@@ -127,14 +127,14 @@
   }
 
   &__search-text {
-    color: #fff;
+    color: $color-white;
     transition: color $animation-speed;
   }
 
   &__search:hover &__search-text,
   &__search:active &__search-text,
   &__search:focus &__search-text {
-    color: rgba(#fff, .38);
+    color: rgba($color-white, .38);
   }
 
   &--narrow &__search,
@@ -189,7 +189,7 @@
   &__mobile-cart {
     background: transparent;
     border: 0;
-    color: #fff;
+    color: $color-white;
     cursor: pointer;
     display: block;
     line-height: $header-height-mobile;
@@ -238,7 +238,7 @@
       &,
       &::before,
       &::after {
-        background-color: #fff;
+        background-color: $color-white;
         display: block;
         height: .2rem;
         position: absolute;

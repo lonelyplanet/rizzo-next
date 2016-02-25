@@ -196,7 +196,7 @@ $user-panel: (
 .user-panel__link {
   @include button("inverse");
   border-radius: 0;
-  box-shadow: 0 0 3rem 0 rgba(#000, .08);
+  box-shadow: 0 0 3rem 0 rgba($color-black, .08);
   text-transform: none;
   width: 100%;
 }

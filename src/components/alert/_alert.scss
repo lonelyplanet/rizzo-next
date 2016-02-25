@@ -1,7 +1,7 @@
 @import "../../../sass/webpack_deps";
 
 $alert: (
-  "font-color": #fff
+  "font-color": $color-white
 );
 
 .alert {

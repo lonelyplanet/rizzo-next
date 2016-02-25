@@ -30,12 +30,12 @@
     }
 
     &--active {
-      border-bottom: .4rem solid #fff;
+      border-bottom: .4rem solid $color-white;
       height: $header-height;
     }
 
     &--user > .navigation__link {
-      border: .1rem solid rgba(#fff, .6);
+      border: .1rem solid rgba($color-white, .6);
       border-radius: 1.7rem;
       line-height: 0;
       padding: 1.7rem 2rem 1.5rem;
@@ -44,9 +44,9 @@
       &:hover,
       &:active,
       &:focus {
-        background-color: rgba(#fff, .1);
-        border-color: rgba(#fff, .38);
-        color: #fff;
+        background-color: rgba($color-white, .1);
+        border-color: rgba($color-white, .38);
+        color: $color-white;
       }
 
       .navigation--narrow & {
@@ -68,7 +68,7 @@
   }
 
   &__link {
-    color: #fff;
+    color: $color-white;
     display: block;
     font-size: 1.4rem;
     font-weight: 600;
@@ -77,7 +77,7 @@
     &:hover,
     &:active,
     &:focus {
-      color: rgba(#fff, .6);
+      color: rgba($color-white, .6);
     }
   }
 
@@ -85,7 +85,7 @@
     &:hover,
     &:active,
     &:focus {
-      color: #fff;
+      color: $color-white;
     }
   }
 
@@ -107,8 +107,8 @@
     $size: 1.7rem;
     background: $color-red;
     border-radius: 50%;
-    box-shadow: 0 .1rem .2rem rgba(#000, .2);
-    color: #fff;
+    box-shadow: 0 .1rem .2rem rgba($color-black, .2);
+    color: $color-white;
     font-family: $benton-sans;
     font-size: 1.3rem;
     font-weight: 600;

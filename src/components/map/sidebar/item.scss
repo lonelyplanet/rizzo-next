@@ -1,5 +1,5 @@
 .place {
-  background-color: #fff;
+  background-color: $color-white;
   cursor: pointer;
   font-family: $benton-sans;
   height: 6rem;
@@ -42,7 +42,7 @@
   }
 
   &.pin {
-    box-shadow: 0 4.4rem 8.7rem -2.2rem #000;
+    box-shadow: 0 4.4rem 8.7rem -2.2rem $color-black;
     width: $item-width-pin;
 
     .title {
@@ -61,7 +61,7 @@
     .place__pointer {
       border-left: 1rem solid transparent;
       border-right: 1rem solid transparent;
-      border-top: 1rem solid #fff;
+      border-top: 1rem solid $color-white;
       bottom: -1rem;
       height: 0;
       left: 0;
@@ -107,9 +107,9 @@
     }
 
     &::before {
-      background-color: #fff;
+      background-color: $color-white;
       border-radius: .4rem;
-      box-shadow: .2rem .1rem .4rem -.2rem #333;
+      box-shadow: .2rem .1rem .4rem -.2rem lighten($color-black, 20); // #333
       content: "";
       display: block;
       height: 40%;

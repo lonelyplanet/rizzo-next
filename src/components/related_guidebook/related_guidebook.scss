@@ -2,7 +2,7 @@
 
 .related-guidebook {
   @include container;
-  box-shadow: 0 .3rem 2.9rem 0 rgba(#000, .08);
+  box-shadow: 0 .3rem 2.9rem 0 rgba($color-black, .08);
   display: flex;
 
   @include with-layout(static) {

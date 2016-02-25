@@ -12,7 +12,7 @@
     max-width: $max-width;
 
     a {
-      color: #333;
+      color: lighten($color-black, 20); // #333
       text-decoration: underline;
     }
   }

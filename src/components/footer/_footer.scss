@@ -29,7 +29,7 @@ $logo-height: 4rem;
   }
 
   &__logo {
-    fill: #cccdce;
+    fill: darken($color-white, 20); // #cccdce;
     transition: fill ($animation-speed / 2);
 
     @media (max-width: $max-960) {
@@ -85,7 +85,7 @@ $logo-height: 4rem;
   &__social-link {
     border: .1rem solid #e5e7ed;
     border-radius: 50%;
-    color: #cccdce;
+    color: darken($color-white, 20); // #cccdce;
     display: block;
     height: $logo-height;
     line-height: ($logo-height + .5);
@@ -98,7 +98,7 @@ $logo-height: 4rem;
     &:active,
     &:focus {
       background-color: #e5e7ed;
-      color: #fff;
+      color: $color-white;
     }
 
     .svg-icon {

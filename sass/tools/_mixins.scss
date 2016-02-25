@@ -200,9 +200,9 @@
 }
 
 @mixin dropdown-menu($top, $left, $width, $margin-left, $padding-top: $gutter) {
-  background-color: #fff;
+  background-color: $color-white;
   border-radius: $radius;
-  box-shadow: 0 -1rem 2rem rgba(#000, 0);
+  box-shadow: 0 -1rem 2rem rgba($color-black, 0);
   color: $titlegray;
   display: block;
   font-size: $font-size;
@@ -221,7 +221,7 @@
 }
 
 @mixin dropdown-menu-visible {
-  box-shadow: 0 3rem 9rem rgba(#000, .4);
+  box-shadow: 0 3rem 9rem rgba($color-black, .4);
   opacity: 1;
   pointer-events: all;
   transform: translateY(0);
@@ -229,7 +229,7 @@
 
 @mixin dropdown-menu-arrow($size: 1.6rem, $left: 50%) {
   border: ($size / 2) solid transparent;
-  border-bottom-color: #fff;
+  border-bottom-color: $color-white;
   content: "";
   display: block;
   height: 0;
@@ -253,8 +253,8 @@
 ///   }
 @mixin form-control($type: "text") {
   appearance: none;
-  background-color: #fff;
-  border: .1rem solid #d4d4d4;
+  background-color: $color-white;
+  border: .1rem solid darken($color-white, 17);
   border-radius: .2rem;
   color: #717880;
   font-size: 1.3rem;
@@ -302,7 +302,7 @@
 ///       @include fade-edge("right");
 ///     }
 ///   }
-@mixin fade-edge($side: "right", $offset: 0, $width: 3rem, $color: #fff) {
+@mixin fade-edge($side: "right", $offset: 0, $width: 3rem, $color: $color-white) {
   background-image: linear-gradient(to left, $color 0%, rgba($color, 0) 100%);
   bottom: 0;
   content: "";
@@ -318,7 +318,7 @@
 }
 
 @mixin pop-out {
-  background-color: rgba(#000, .6);
+  background-color: rgba($color-black, .6);
   background-image: url("data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCAxNiAxNiI+CiAgPHBhdGggZmlsbD0iI2ZmZiIgZD0iTTYuMiw5LjFMMSwxNC4zdi0zLjhDMSwxMC4yLDAuOCwxMCwwLjUsMTBDMC4yLDEwLDAsMTAuMiwwLDEwLjV2NWMwLDAsMCwwLDAsMGMwLDAsMCwwLDAsMAogICAgYzAsMC4xLDAuMSwwLjIsMC4xLDAuM2MwLDAsMCwwLDAsMGMwLDAsMCwwLDAsMEMwLjIsMTUuOSwwLjQsMTYsMC41LDE2YzAsMCwwLDAsMCwwaDVDNS44LDE2LDYsMTUuOCw2LDE1LjVDNiwxNS4yLDUuOCwxNSw1LjUsMTUKICAgIEgxLjdsNS4yLTUuMmMwLjItMC4yLDAuMi0wLjUsMC0wLjdDNi43LDksNi4zLDksNi4yLDkuMXogTTE2LDAuNWMwLTAuMS0wLjEtMC4yLTAuMS0wLjNjMCwwLDAsMCwwLDBzMCwwLDAsMAogICAgQzE1LjgsMC4xLDE1LjYsMCwxNS41LDBjMCwwLDAsMCwwLDBoLTVDMTAuMiwwLDEwLDAuMiwxMCwwLjVDMTAsMC44LDEwLjIsMSwxMC41LDFoMy44TDkuMSw2LjJjLTAuMiwwLjItMC4yLDAuNSwwLDAuNwogICAgYzAuMiwwLjIsMC41LDAuMiwwLjcsMEwxNSwxLjd2My44QzE1LDUuOCwxNS4yLDYsMTUuNSw2QzE1LjgsNiwxNiw1LjgsMTYsNS41TDE2LDAuNUMxNiwwLjUsMTYsMC41LDE2LDAuNXoiLz4KPC9zdmc+Cg==");
   background-position: 50% 50%;
   background-repeat: no-repeat;
@@ -332,7 +332,7 @@
   &:hover,
   &:active,
   &:focus {
-    background-color: rgba(#000, .9);
+    background-color: rgba($color-black, .9);
   }
 }
 
@@ -364,7 +364,7 @@
 
   // Fallback for non-webkit browsers
   &::after {
-    background-color: #fff;
+    background-color: $color-white;
     bottom: 0;
     content: "\2026";
     position: absolute;
@@ -439,7 +439,7 @@
   }
 
   &--grey {
-    background-color: $color-lightgray;
+    background-color: darken($color-white, 4);
   }
 
   &--border-bottom::after,
@@ -870,13 +870,13 @@
 /// Creates a nicely underlined hyperlink
 /// @param {Color} $link-color [$lpblue] Link color
 /// @param {Color} $link-color-active [$lpblue + 30] Link color for hover, active and focus states
-/// @param {Color} $background-color [#fff] Background color of the link, usually the same color as the page
+/// @param {Color} $background-color [$color-white] Background color of the link, usually the same color as the page
 /// @param {Boolean} $breaking-underlines [true] If the underline should "break" as it passes thru a descender
 @mixin underlined-link(
   $link-color: $lpblue,
   $link-color-active: $lpblue + 30,
   $underline-offset: 2px,
-  $background-color: #fff,
+  $background-color: $color-white,
   $breaking-underlines: true
 ) {
   @include underline(rgba($link-color, .4), $underline-offset);
@@ -932,11 +932,11 @@
 
   @if $type == "" {
     background-color: $lpblue;
-    color: #fff;
+    color: $color-white;
   }
 
   @if $type == "inverse" {
-    background-color: #fff;
+    background-color: $color-white;
     color: $lpblue;
   }
 
@@ -955,11 +955,11 @@
 
     @if $type == "" {
       background-color: $lpblue + 15;
-      color: #fff;
+      color: $color-white;
     }
 
     @if $type == "inverse" {
-      background-color: #fff;
+      background-color: $color-white;
       color: $lpblue + 30;
     }
 

@@ -1,7 +1,7 @@
 .map-alert {
-  background-color: #333;
-  border: .1rem solid #fff;
-  color: #fff;
+  background-color: lighten($color-black, 20); // #333
+  border: .1rem solid $color-white;
+  color: $color-white;
   font-size: 1.3rem;
   opacity: 0;
   padding: .5rem .8rem;

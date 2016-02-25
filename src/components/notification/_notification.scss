@@ -5,7 +5,7 @@ $notification-badge-size: 1.7rem;
 .notification-badge {
   background-color: $color-red;
   border-radius: 50%;
-  color: #fff;
+  color: $color-white;
   font-size: 1rem;
   font-style: normal;
   font-weight: bold;
@@ -41,7 +41,7 @@ $notification-badge-size: 1.7rem;
 
 .notification-badge--user,
 .notification-badge--user-inline {
-  border: .3rem solid #fff;
+  border: .3rem solid $color-white;
   position: absolute;
 }
 
