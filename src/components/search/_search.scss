@@ -2,7 +2,7 @@
 
 .lp-search {
   $input-height: 3.8rem;
-  background-color: #fff;
+  background-color: $color-white;
   left: 0;
   opacity: 0;
   position: absolute;
@@ -12,7 +12,7 @@
   z-index: z("modal");
 
   @media (min-width: $min-720) {
-    box-shadow: -5rem 0 15rem rgba(#000, .5);
+    box-shadow: -5rem 0 15rem rgba($color-black, .5);
   }
 
   &--visible {

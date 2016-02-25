@@ -255,7 +255,7 @@
       transition: color 300ms, border-bottom 200ms ease;
 
       &::before {
-        background: #f0f0f0;
+        background: darken($color-white, 6);
         bottom: 0;
         content: "";
         left: 0;
@@ -271,7 +271,7 @@
       &:hover,
       &:focus,
       &.is-active {
-        border-bottom: .1rem solid #f0f0f0;
+        border-bottom: .1rem solid darken($color-white, 6);
 
         &::before {
           transform: scaleY(1);

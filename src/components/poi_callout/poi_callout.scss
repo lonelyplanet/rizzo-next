@@ -1,8 +1,8 @@
 @import "../../../sass/webpack_deps";
 
 .lp-poi-callout {
-  background-color: #fff;
-  box-shadow: .15rem .26rem 2.9rem rgba(#000, .08);
+  background-color: $color-white;
+  box-shadow: .15rem .26rem 2.9rem rgba($color-black, .08);
   color: $darkgray;
   display: block;
   max-height: 30rem;

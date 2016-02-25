@@ -9,7 +9,7 @@ $lp-sticky-footer-height: 7.6rem;
 
   @media (min-width: $min-720) {
     backface-visibility: hidden;
-    background-color: #fff;
+    background-color: $color-white;
     bottom: 0;
     box-shadow: 0 0 4rem .7rem rgba(#2d2d2d, .05);
     font-size: 1.4rem;

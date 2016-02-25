@@ -23,7 +23,7 @@ $avatar: (
 /// ----------------------------------------------------------------------------
 
 .avatar {
-  background-color: #fff;
+  background-color: $color-white;
   border-radius: 100%;
   display: inline-block;
   height: get($avatar, "size");

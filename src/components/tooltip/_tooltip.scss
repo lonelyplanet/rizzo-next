@@ -1,7 +1,7 @@
 @import "../../../sass/webpack_deps";
 
 .tooltip {
-  background-color: #fff;
+  background-color: $color-white;
   border-radius: .4rem;
   color: $titlegray;
   display: none;
@@ -10,7 +10,7 @@
   z-index: z("top");
 
   &::before {
-    border-bottom: .8rem solid #fff;
+    border-bottom: .8rem solid $color-white;
     border-left: .8rem solid transparent;
     border-right: .8rem solid transparent;
     content: "";

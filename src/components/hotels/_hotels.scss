@@ -2,7 +2,7 @@
 @import "../../../sass/objects/datepicker";
 
 $hotels-breakpoint-large-min: em(860px);
-$hotels-color: #fff;
+$hotels-color: $color-white;
 $hotels-form-height: 4.4rem;
 $hotels-form-width: 784;
 $hotels-max-width: 1170;
@@ -43,7 +43,7 @@ $hotels-max-width: 1170;
 
   &__button-container {
     bottom: 2.5rem;
-    color: #fff;
+    color: $color-white;
     font-size: 1.2rem;
     left: calc(50% - (252px / 2));
     position: absolute;
@@ -54,13 +54,13 @@ $hotels-max-width: 1170;
   }
 
   &__more {
-    color: #fff;
+    color: $color-white;
     transition: color $animation-speed;
 
     &:hover,
     &:active,
     &:focus {
-      color: rgba(#fff, .6);
+      color: rgba($color-white, .6);
     }
 
     .icon-chevron-right {

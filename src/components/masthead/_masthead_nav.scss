@@ -3,20 +3,20 @@
 
 .masthead_nav {
   bottom: 0;
-  color: #fff;
+  color: $color-white;
   position: absolute;
   width: 100%;
   z-index: z("global-header");
 
   &__container {
     @include container-padded();
-    border-top: .1rem solid rgba(#fff, .3);
+    border-top: .1rem solid rgba($color-white, .3);
     height: $masthead-nav-height;
   }
 }
 
 .masthead_nav__link {
-  color: #fff;
+  color: $color-white;
   font-size: 1.2rem;
   font-weight: 600;
   line-height: $masthead-nav-height;

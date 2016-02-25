@@ -9,7 +9,7 @@ $picker-width: 32rem;
 }
 
 .picker__frame {
-  background-color: #fff;
+  background-color: $color-white;
   border-radius: .2rem;
   left: 0;
   max-height: 0;
@@ -138,7 +138,7 @@ $picker-width: 32rem;
 .picker__day--selected:hover {
   background-color: $active-color;
   border-color: $active-color;
-  color: #fff;
+  color: $color-white;
 }
 
 .picker__day--outfocus,
@@ -148,7 +148,7 @@ $picker-width: 32rem;
 }
 
 .picker__day--disabled {
-  color: #ddd;
+  color: darken($color-white, 20);
   cursor: default;
   opacity: .5;
 }
@@ -163,7 +163,7 @@ $picker-width: 32rem;
 }
 
 .picker__button--today {
-  border: .1rem solid rgba(#fff, .2);
+  border: .1rem solid rgba($color-white, .2);
   margin-left: auto;
   margin-right: auto;
   width: 95%;
@@ -221,7 +221,7 @@ $picker-width: 32rem;
 .picker__theme-blue {
   .picker__frame {
     background-color: $lpblue;
-    color: #fff;
+    color: $color-white;
     transition: none;
   }
 
@@ -233,13 +233,13 @@ $picker-width: 32rem;
   .picker__day--selected {
     &,
     &:hover {
-      background-color: #fff;
+      background-color: $color-white;
       color: $lpblue;
     }
   }
 
   .picker__day--infocus {
-    border-color: rgba(#fff, .25);
+    border-color: rgba($color-white, .25);
   }
 
   .picker__footer {

@@ -175,9 +175,9 @@
   width: $size;
 
   &::before {
-    background-color: #fff;
+    background-color: $color-white;
     border-radius: .4rem;
-    box-shadow: .2rem .1rem .4rem -.2rem #333;
+    box-shadow: .2rem .1rem .4rem -.2rem lighten($color-black, 20); // #333
     content: "";
     display: block;
     height: 100%;
