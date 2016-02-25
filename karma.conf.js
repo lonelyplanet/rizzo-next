@@ -48,7 +48,7 @@ module.exports = function(config) {
     // if true, it capture browsers, run tests and exit
     singleRun: false,
 
-    reporters: ["nyan", "coverage"],
+    reporters: ["nyan"],
 
     webpack: {
         module: {

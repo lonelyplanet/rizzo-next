@@ -21,9 +21,14 @@ module.exports = {
   module: {
     noParse: /node_modules\/(jquery|keymirror)/,
     loaders: [{
-        test: /\.jsx?$/,
+        test: /(\.jsx?)$/,
+        loader: "babel",
+        // Excluding everything EXCEPT rizzo-next and flamsteed
         exclude: /node_modules\/(?!rizzo|flamsteed).*/,
-        loader: "babel-loader?stage=1&optional[]=runtime"
+        query: {
+            "plugins": ["transform-decorators-legacy"],
+            "presets": ["es2015", "react"]
+        }
       },
       {
         // For some reason the sass-loader borks karma

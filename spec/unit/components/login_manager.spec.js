@@ -15,7 +15,7 @@ let LoginManager = Injector({
   "jquery": {
     ajax: ajaxMock
   }
-});
+}).default;
 
 
 describe("login manager", () => {
