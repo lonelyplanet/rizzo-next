@@ -8,6 +8,7 @@ exclude:
 - 'docs/**'
 - 'node_modules/**'
 - 'tmp/**'
+- 'sass/generic/_normalize.scss' # 3rd-party code
 - 'src/components/image_gallery/image_gallery.scss' # plugin code
 - 'src/components/map/**' # temporary exclusion; needs refactored
 plugin_directories: ['.scss-linters']
