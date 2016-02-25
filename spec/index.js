@@ -1,3 +1,4 @@
+require("babel-polyfill");
 require("./unit/core.spec.js");
 require("./unit/core/rizzo.spec.js");
 require("./unit/core/component_registry.spec.js");

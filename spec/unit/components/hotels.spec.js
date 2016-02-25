@@ -4,7 +4,7 @@ import $ from "jquery";
 let HotelsWidget = Injector({
   "../../core/decorators/track": function() { return function() {}; },
   "../../core/decorators/publish": function() { return function() {}; }
-});
+}).default;
 
 let hotelsTemplate = require("../../../src/components/hotels/hotels.hbs");
 

@@ -9,7 +9,7 @@ SearchMock.prototype = { show: function() { ++showSearchCalled; } };
 let Header = Injector({
   "../search": SearchMock,
   "../navigation": function() {}
-});
+}).default;
 
 let headerTemplate = require("../../../src/components/header/header.hbs");
 

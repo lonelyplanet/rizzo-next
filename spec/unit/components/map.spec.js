@@ -23,7 +23,7 @@ let MapComponent = Injector({
       };
     }
   }
-});
+}).default;
 
 let $ = require("jquery");
 

@@ -14,7 +14,7 @@ $mapButton.on("click", function() {
 
       let MapComponent = require("../map/index");
       
-      map = new MapComponent({
+      map = new MapComponent.default({
         el: ".map_holder"
       });
       
