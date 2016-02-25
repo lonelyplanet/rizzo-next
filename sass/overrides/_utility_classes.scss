@@ -8,10 +8,6 @@
   position: relative;
 }
 
-%transition--nav {
-  transition: transform $animation-speed ease;
-}
-
 .hide-text {
   border: 0 !important;
   clip: rect(1px, 1px, 1px, 1px);
