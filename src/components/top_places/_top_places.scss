@@ -44,7 +44,7 @@
   }
 
   &__primary-link {
-    color: $color-darkblue;
+    color: $darkgray;
     display: block;
     font-size: 1.6rem;
     height: $height;
@@ -55,7 +55,7 @@
     &:hover,
     &:active,
     &:focus {
-      color: $color-primary;
+      color: $lpblue;
     }
   }
 
@@ -64,7 +64,7 @@
     background-color: #fff;
     border-radius: .3rem;
     box-shadow: 0 .2rem .3rem rgba(#000, .3);
-    color: $font-color;
+    color: $titlegray;
     font-family: $benton-sans;
     font-size: 1.2rem;
     height: $size;
@@ -86,7 +86,7 @@
   }
 
   &__image {
-    background: center no-repeat #333;
+    background: center no-repeat $titlegray;
     background-size: cover;
     height: $height;
     left: 0;
@@ -175,7 +175,7 @@
   }
 
   &__secondary-link {
-    color: #2b3642;
+    color: $darkgray;
     display: block;
     height: $secondary-line-height;
     overflow: hidden;
@@ -187,7 +187,7 @@
     &:hover,
     &:active,
     &:focus {
-      color: $color-primary;
+      color: $lpblue;
     }
   }
 

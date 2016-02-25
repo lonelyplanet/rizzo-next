@@ -183,7 +183,7 @@ $image-card-hover-movement: .5rem;
 
     .ttd__more:hover,
     .ttd__more:active {
-      color: $color-blue;
+      color: $lpblue;
     }
   }
 
@@ -196,7 +196,7 @@ $image-card-hover-movement: .5rem;
 
     .ttd__less:hover,
     .ttd__less:active {
-      color: $color-blue;
+      color: $lpblue;
     }
   }
 }
@@ -254,7 +254,7 @@ $image-card-hover-movement: .5rem;
     background-color: #fff;
     border-radius: .4rem;
     box-shadow: 0 .2rem .2rem rgba(#000, .3);
-    color: #3b444f;
+    color: $titlegray;
     display: inline-block;
     font-family: $miller-daily;
     font-size: 1.4rem;

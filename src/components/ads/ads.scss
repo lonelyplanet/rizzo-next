@@ -13,7 +13,7 @@
 /// ----------------------------------------------------------------------------
 
 .ad {
-  background-color: #2c3642;
+  background-color: $darkgray;
 }
 
 
@@ -100,7 +100,7 @@
   // Create a fake border so that it can extend outside of the ad
   &::before {
     @media (min-width: $min-720) {
-      background-color: $color-border;
+      background-color: $color-gray;
       content: "";
       display: block;
       height: calc(100% + 6rem);

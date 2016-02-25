@@ -4,7 +4,7 @@
   position: relative;
 
   @media (max-width: $max-960) {
-    background-color: $color-border;
+    background-color: $color-gray;
     height: .1rem;
     margin: 0 ($gutter * .5);
     max-width: $max-width;

@@ -34,7 +34,7 @@
 
   &__close {
     $size: 5rem;
-    color: $font-color;
+    color: $titlegray;
     cursor: pointer;
     display: none;
     height: $size;
@@ -61,7 +61,7 @@
   }
 
   &__item {
-    border-bottom: .1rem solid #e4e4e4;
+    border-bottom: .1rem solid $color-gray;
     position: relative;
 
     // Search
@@ -74,7 +74,7 @@
     }
 
     &--active > .mobile-navigation__link {
-      color: $color-primary;
+      color: $lpblue;
     }
 
     .icon {
@@ -91,7 +91,7 @@
   }
 
   &__link {
-    color: $font-color;
+    color: $titlegray;
     display: block;
     padding: ($spacing + .1) 0 ($spacing - .4);
     position: relative;

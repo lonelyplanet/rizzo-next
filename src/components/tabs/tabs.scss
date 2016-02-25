@@ -62,7 +62,7 @@
 }
 
 .tabs__link {
-  color: $h2-color;
+  color: $titlegray;
   display: block;
   font-size: 1.2rem;
   font-weight: $font-weight-semibold;
@@ -71,10 +71,10 @@
   transition: color $animation-speed;
 
   &.is-active {
-    color: $color-blue;
+    color: $lpblue;
 
     &::after {
-      background-color: $color-blue;
+      background-color: $lpblue;
       bottom: -.1rem;
       content: "";
       display: block;

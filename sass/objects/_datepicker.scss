@@ -136,8 +136,8 @@ $picker-width: 32rem;
 
 .picker__day--selected,
 .picker__day--selected:hover {
-  background-color: $active;
-  border-color: $active;
+  background-color: $active-color;
+  border-color: $active-color;
   color: #fff;
 }
 
@@ -220,7 +220,7 @@ $picker-width: 32rem;
 
 .picker__theme-blue {
   .picker__frame {
-    background-color: $linkblue;
+    background-color: $lpblue;
     color: #fff;
     transition: none;
   }
@@ -234,7 +234,7 @@ $picker-width: 32rem;
     &,
     &:hover {
       background-color: #fff;
-      color: $linkblue;
+      color: $lpblue;
     }
   }
 

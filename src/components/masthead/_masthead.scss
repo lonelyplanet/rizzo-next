@@ -5,7 +5,7 @@ $masthead-straplines-height-small: (2.6rem + 2.7rem); // height + margin-bottom
 $masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
 
 .masthead {
-  background-color: $h2-color;
+  background-color: $titlegray;
   color: #fff;
   height: 90vh;
   left: 0;
@@ -23,14 +23,14 @@ $masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
 
   &--no-images.masthead--normal {
     background-color: transparent;
-    color: $font-color;
+    color: $titlegray;
     height: 30rem;
   }
 
   &--no-images.masthead--narrow {
     @include container-padded();
     border: 0;
-    color: $font-color;
+    color: $titlegray;
     height: 30rem;
   }
 
@@ -121,10 +121,10 @@ $masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
   }
 
   &--no-images &__breadcrumb {
-    color: $font-color;
+    color: $titlegray;
 
     a {
-      color: $font-color;
+      color: currentColor;
     }
   }
 

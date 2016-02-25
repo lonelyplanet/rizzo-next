@@ -15,9 +15,9 @@
   &:focus {
     @media (min-width: $min-720) {
       background-color: #fff;
-      border: .1rem solid $color-border;
+      border: .1rem solid $color-gray;
       clip: auto;
-      color: $color-blue;
+      color: $lpblue;
       height: auto;
       line-height: 1;
       outline: 0;

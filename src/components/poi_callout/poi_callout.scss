@@ -3,7 +3,7 @@
 .lp-poi-callout {
   background-color: #fff;
   box-shadow: .15rem .26rem 2.9rem rgba(#000, .08);
-  color: $color-darkblue;
+  color: $darkgray;
   display: block;
   max-height: 30rem;
   max-width: 25rem;
@@ -58,7 +58,7 @@
   .lp-poi-callout:hover &,
   .lp-poi-callout:active &,
   .lp-poi-callout:focus & {
-    color: $color-blue;
+    color: $lpblue;
   }
 }
 

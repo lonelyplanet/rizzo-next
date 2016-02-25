@@ -4,7 +4,7 @@
   @include h1();
 
   [class*="icon-"] {
-    color: #f01516;
+    color: saturate($color-red, 16);
     display: inline-block;
     font-size: 0;
     transform-origin: 50% 60%;

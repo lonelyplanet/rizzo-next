@@ -38,7 +38,7 @@
   &__name {
     backface-visibility: hidden;
     border-bottom: .1rem solid #f1f4fb;
-    color: $color-darkblue;
+    color: $darkgray;
     font-size: $font-size;
     font-weight: 300;
     transition: transform $animation-speed;
@@ -48,7 +48,7 @@
     }
 
     .is-highlight {
-      color: $body-color;
+      color: $titlegray;
     }
   }
 

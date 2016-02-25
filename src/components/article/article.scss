@@ -13,7 +13,7 @@
 /// ----------------------------------------------------------------------------
 
 .article {
-  border-bottom: .1rem solid $color-border;
+  border-bottom: .1rem solid $color-gray;
   opacity: 1;
   overflow: hidden; // Prevent horizontal movement in iOS caused by .size-full images
   position: relative;

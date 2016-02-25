@@ -587,7 +587,7 @@ a.pswp__share--download {
   height: 44px;
   font-size: 13px;
   line-height: 44px;
-  color: #FFF;
+  color: #fff;
   opacity: 0.75;
   padding: 0 10px;
 }
@@ -608,7 +608,7 @@ a.pswp__share--download {
 
   small {
     font-size: 1.2rem;
-    color: #bbb;
+    color: $footer-copyright-color;
   }
 }
 
@@ -620,7 +620,7 @@ a.pswp__share--download {
   font-size: 1.2rem;
   padding: 2rem;
   line-height: (20 / 12);
-  color: rgba(#2c3642, .8);
+  color: rgba($darkgray, .8);
   letter-spacing: -.02rem;
 
   @media(min-width: $min-720) {
@@ -629,7 +629,7 @@ a.pswp__share--download {
   }
 
   a {
-    color: rgba(#2c3642, .8);
+    color: rgba($darkgray, .8);
     text-decoration: underline;
   }
 }

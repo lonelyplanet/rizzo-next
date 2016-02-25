@@ -16,7 +16,7 @@ $logo-height: 4rem;
 
   &__bottom {
     @include clearfix;
-    border-top: .1rem solid $color-border;
+    border-top: .1rem solid $color-gray;
     padding-bottom: $gutter;
     position: relative;
 
@@ -47,7 +47,7 @@ $logo-height: 4rem;
     &:hover,
     &:active,
     &:focus {
-      fill: $color-primary;
+      fill: $lpblue;
     }
 
     svg {
@@ -184,7 +184,7 @@ $logo-height: 4rem;
   }
 
   &__link {
-    color: $footer-bottom-link-color;
+    color: $font-color-light;
     display: block;
     font-weight: 600;
     transition: color $animation-speed;
@@ -196,7 +196,7 @@ $logo-height: 4rem;
     &:hover,
     &:active,
     &:focus {
-      color: $color-primary;
+      color: $lpblue;
     }
   }
 }
@@ -250,6 +250,7 @@ $logo-height: 4rem;
 }
 
 .lp-global-footer__main__links__header {
+  color: $darkgray;
   font-size: 1.2rem;
   font-weight: $font-weight-semibold;
   line-height: 1;
@@ -288,14 +289,14 @@ $logo-height: 4rem;
   }
 
   a {
-    color: $darkgray;
+    color: currentColor;
     transition-duration: $animation-speed;
     transition-property: color, border, background;
 
     &:hover,
     &:active,
     &:focus {
-      color: $color-primary;
+      color: $lpblue;
     }
   }
 }
@@ -333,7 +334,7 @@ $logo-height: 4rem;
     &:hover,
     &:active,
     &:focus {
-      color: $color-primary;
+      color: $lpblue;
     }
   }
 }

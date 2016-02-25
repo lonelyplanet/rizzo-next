@@ -18,7 +18,7 @@ $survival-guide-breakpoint-mobile: #{(399 * .0625)}em;
   }
 
   &__link {
-    color: $body-color;
+    color: $titlegray;
     display: block;
   }
 
@@ -83,7 +83,7 @@ $survival-guide-breakpoint-mobile: #{(399 * .0625)}em;
 
     .survival-guide__link:hover &,
     .survival-guide__link:focus & {
-      color: $color-primary;
+      color: $lpblue;
     }
   }
 

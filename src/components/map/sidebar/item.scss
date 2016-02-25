@@ -6,13 +6,13 @@
   position: relative;
 
   .title {
-    color: $color-darkblue;
+    color: $darkgray;
     transition: color $animation-speed ease;
   }
 
   &.is-hovered.list {
     .title {
-      color: $color-blue;
+      color: $lpblue;
     }
   }
 
@@ -22,7 +22,7 @@
     width: 100%;
 
     &::after {
-      border-top: .1rem solid $divider-color;
+      border-top: .1rem solid $color-gray;
       bottom: 0;
       content: "";
       display: block;
@@ -51,7 +51,7 @@
 
     &:hover .title,
     &:focus .title {
-      color: $color-blue;
+      color: $lpblue;
     }
 
     .subtitle {
@@ -128,7 +128,7 @@
     transform: translate(0, -50%);
 
     .subtitle {
-      color: $footer-bottom-link-color;
+      color: $font-color-light;
       font-size: 1rem;
       font-weight: 600;
       text-transform: uppercase;
@@ -165,7 +165,7 @@
       width: 1.7rem;
 
       .icon {
-        color: $color-blue;
+        color: $lpblue;
         left: .5rem;
         margin-top: .1rem;
         position: absolute;
