@@ -9,9 +9,8 @@ $picker-width: 32rem;
 }
 
 .picker__frame {
-  @extend %transition--slower;
-  @extend %rounded-corners;
   background-color: #fff;
+  border-radius: .2rem;
   left: 0;
   max-height: 0;
   max-width: $picker-width;
@@ -21,7 +20,6 @@ $picker-width: 32rem;
   top: 0;
 
   .picker--opened & {
-    @extend %fly-out-shadow;
     max-height: 25em;
   }
 }
@@ -34,7 +32,7 @@ $picker-width: 32rem;
 
 .picker__month--wrap,
 .picker__year--wrap {
-  @extend %inline-block;
+  display: inline-block;
 }
 
 .picker__month--wrap {
@@ -82,7 +80,6 @@ $picker-width: 32rem;
 }
 
 .picker__nav--prev {
-  @extend %left-icon;
   left: 1rem;
 
   .no-background-size &::after,
@@ -92,7 +89,6 @@ $picker-width: 32rem;
 }
 
 .picker__nav--next {
-  @extend %right-icon;
   right: 1rem;
 
   .no-background-size &::after,
@@ -125,11 +121,11 @@ $picker-width: 32rem;
 }
 
 .picker__day {
-  @extend %inline-block;
   border: .1rem solid #d7dee3;
   border-radius: 3rem;
   color: $darkgray;
   cursor: pointer;
+  display: inline-block;
   font-size: 1.1rem;
   font-weight: bold;
   height: 2.6rem;
