@@ -15,7 +15,7 @@ export default class SidebarDetailsView extends React.Component{
         slug = `https://www.lonelyplanet.com/${poi.slug}`;
 
     if (poi.geo.properties.image) {
-      let imgSrc = `http://images-resrc.staticlp.com/s=w470,pd1/o=85/${poi.geo.properties.image}`;
+      let imgSrc = poi.geo.properties.image;
       image = <div className="details__image">
         <img src={imgSrc} ref="img" />
       </div>;

@@ -18,20 +18,20 @@ let fixture = `
     </a>
 
     <a class="article__info__author" href="https://auth.lonelyplanet.com/profiles/ddabdbb0-66a8-46e0-9e17-d95b14ad38cb">
-      
+
         <img class="article__info__author__image" src="https://auth.lonelyplanet.com/profiles/ddabdbb0-66a8-46e0-9e17-d95b14ad38cb/image">
-      
+
       <div class="article__info__author__creds">
         <div class="article__info__author__creds__name">Joe Minihane</div>
         <div class="article__info__author__creds__title">Lonely Planet Writer</div>
       </div>
     </a>
   </div>
-  
+
     <a class="article__imagery" href="http://www.lonelyplanet.com/travel-tips-and-articles/where-and-how-to-watch-sport-like-a-local" tabindex="-1">
-      <div class="article__imagery__image" aria-label="Image for Where and how to watch sport like a local" style="background-image: url(//images-resrc.staticlp.com/S=W748/O=75/http://www.lonelyplanet.com/travel-blog/tip-article/wordpress_uploads/2015/08/bombonera_cs.jpg)"></div>
+      <div class="article__imagery__image" aria-label="Image for Where and how to watch sport like a local" style="background-image: url(https://lonelyplanetwp.imgix.net/2015/08/bombonera_cs.jpg?w=748)"></div>
     </a>
-  
+
 </article>
 `;
 /** @test {ArticlesComponent} */

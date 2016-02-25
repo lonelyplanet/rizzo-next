@@ -28,7 +28,7 @@ export default class ItemView extends React.Component {
       }
     }
     if (item.geo.properties.image) {
-      let imgSrc = "http://images-resrc.staticlp.com/O=60/S=W80/" + item.geo.properties.image;
+      let imgSrc = item.geo.properties.image;
       imgStyle = { backgroundImage: `url(${imgSrc})` };
     }
     else {
