@@ -987,6 +987,7 @@ $alert-colors: (
 @mixin slider-button {
   background-color: #fff;
   border-radius: 50%;
+  color: #324355;
   display: block;
   height: 5rem;
   position: absolute;
@@ -1016,13 +1017,11 @@ $alert-colors: (
   &:hover,
   &:active,
   &:focus {
+    color: $lpblue;
+
     @media (min-width: $min-840) {
       box-shadow: 0 .2rem 1rem .15rem rgba(#000, .1);
     }
-  }
-
-  &:focus {
-    background-color: $color-lightgrey;
   }
 
   &[disabled] {
@@ -1032,7 +1031,7 @@ $alert-colors: (
 }
 
 @mixin slider-button-icon {
-  color: #324355;
+  color: currentColor;
   font-size: 1.1rem;
   font-weight: 700;
   position: relative;
