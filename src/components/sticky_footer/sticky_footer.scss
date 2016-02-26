@@ -11,7 +11,7 @@ $lp-sticky-footer-height: 7.6rem;
     backface-visibility: hidden;
     background-color: $color-white;
     bottom: 0;
-    box-shadow: 0 0 4rem .7rem rgba(#2d2d2d, .05);
+    box-shadow: 0 0 4rem .7rem rgba(lighten($color-black, 20), .05);
     font-size: 1.4rem;
     font-weight: 300;
     height: $lp-sticky-footer-height;
@@ -57,7 +57,7 @@ $lp-sticky-footer-height: 7.6rem;
 
   &::before {
     @media (min-width: $min-720) {
-      color: #ced2d6;
+      color: rgba($light-text-color, .5);
       content: "Next – ";
       font-size: 1.1rem;
       font-weight: 600;

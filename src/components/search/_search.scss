@@ -99,7 +99,7 @@
     background-color: transparent;
     border: 0;
     bottom: 0;
-    color: #bdcee3;
+    color: $active-background-color;
     cursor: pointer;
     display: block;
     font-size: 0;
@@ -148,7 +148,7 @@
   }
 
   &__list {
-    border-top: .1rem solid #e4eaf8;
+    border-top: .1rem solid $color-light-slate;
     display: block;
     list-style: none;
     margin-bottom: ($gutter * 1.5);

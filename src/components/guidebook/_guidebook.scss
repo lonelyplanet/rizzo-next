@@ -21,7 +21,6 @@
 }
 
 .guidebook__blurb {
-  color: $color-text;
   font-size: 1.6rem;
   font-weight: $font-weight-medium;
   line-height: (24 / 16);
@@ -103,7 +102,7 @@
   display: none;
 
   @media (min-width: $min-1080) {
-    color: $feature-copy;
+    color: rgba($light-text-color, .6);
     display: block;
     font-size: 2.6rem;
     font-weight: 300;

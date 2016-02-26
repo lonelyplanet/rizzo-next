@@ -3,7 +3,6 @@
 .lp-poi-callout {
   background-color: $color-white;
   box-shadow: .15rem .26rem 2.9rem rgba($color-black, .08);
-  color: $darkgray;
   display: block;
   max-height: 30rem;
   max-width: 25rem;
@@ -37,6 +36,7 @@
   $_font-size: 1.4rem;
   $_line-height: (22 / 14);
   @include line-clamp($_font-size, $_line-height, 3);
+  color: $titlegray;
   font-size: $_font-size;
   font-weight: 300;
   line-height: $_line-height;
@@ -49,7 +49,7 @@
 }
 
 .lp-poi-callout__title {
-  color: #29313e;
+  color: $darkgray;
   font-size: 1.6rem;
   font-weight: 600;
   line-height: (20 / 16);
@@ -63,7 +63,7 @@
 }
 
 .lp-poi-callout__type {
-  color: #6d6d6d;
+  color: $light-text-color;
   font-family: $miller-daily;
   font-size: 1.6rem;
   font-style: italic;

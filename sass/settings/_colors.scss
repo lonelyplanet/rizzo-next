@@ -2,27 +2,7 @@
 // Rizzo Next Colors
 // -----------------------------------------------------------------------------
 
-// Colors with no variables
-//
-// #2d2d2d
-// #717880
-// #a7a9ae
-// #b6c3ca
-// #bdcee3
-// #c5d1d7
-// #ced2d6
-// #cdd0d6
-// #ca0000
-// #d7dee3
-// #e1e3e7
-// #e4eaf8
-// #e5e7ed
-// #f1f4fb
-// #f4f5f8
-// #f4f7fc
-// #f4fbfe
-
-// Rizzo Colors
+// Rizzo Colors; these colors have been ported from Rizzo
 $darkgray: #2c3643 !default;
 $titlegray: #3b444f !default;
 $feature-copy: #67747c !default; // $bodygray
@@ -32,17 +12,25 @@ $color-orange: #ffc83f !default;
 $color-yellow: #feef6d !default;
 
 $active-color: #0fdebd !default;
-$articles-blurb-color: #7e838b !default;
 $color-red: #dc221a !default;
 $color-gray: #e4e4e4 !default;
+$articles-blurb-color: #7e838b !default;
 $color-text: #474f5a !default;
 $footer-copyright-color: #bfc2c6 !default;
 $light-text-color: #898e95 !default; // very close to $font-color-light
 $font-color-light: #959aa0 !default; // very close to $light-text-color
-$tours-type-color: #c4c7cb !default;
+$color-light-slate: #e4eaf8 !default;
+$active-background-color: #f4f5f8 !default;
+$color-light-blue: #bdcee3 !default;
 
+// Grayscale
 $color-black: #000 !default;
 $color-white: #fff !default;
+
+// One-off colors; should we consider changing them to a color that is more widely used?
+$top-place-number-color: #a7a9ae;
+$detail-header-small-color: #b6c3ca;
+$social-network-button-color: #e5e7ed;
 
 // Alert component background colors
 $alert-colors: (
@@ -75,6 +63,9 @@ $color-warning: $color-orange;
 $tours-price-background: #dc1b10; // see $color-red
 $tours-blurb-color: #a0a6ad; // see $light-text-color
 $color-lightgray: darken($color-white, 4);
+$fad-color: #b2b4b8; // rgba($font-color-light, .68) or rgba($light-text-color, .6)
+$item-border-color: #f1f4fb; // rgba($color-light-slate, .5)
+$tours-type-color: #c4c7cb;
 
 // Not used
 $color-lightblue: #e9f2f8;

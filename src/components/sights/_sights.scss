@@ -133,7 +133,7 @@
 }
 
 .sights__title {
-  color: #030f1d;
+  color: $darkgray;
   font-size: 1.6rem;
   font-weight: 600;
   line-height: 1.7;
@@ -147,7 +147,7 @@
 }
 
 .sights__location {
-  color: #c5d1d7;
+  color: rgba($light-text-color, .5);
   font-size: 1rem;
   font-weight: 600;
   letter-spacing: .02rem;

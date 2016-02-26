@@ -256,7 +256,7 @@
   background-color: $color-white;
   border: .1rem solid darken($color-white, 17);
   border-radius: .2rem;
-  color: #717880;
+  color: rgba($titlegray, .72);
   font-size: 1.3rem;
   height: auto;
   outline: 0;
@@ -746,7 +746,7 @@
     }
 
     &.is-small {
-      color: #b6c3ca;
+      color: $detail-header-small-color;
       font-size: 1.4rem;
       font-weight: 400;
       letter-spacing: .1rem;
@@ -765,7 +765,7 @@
     }
 
     &.is-xsmall {
-      color: #ca0000;
+      color: $color-red;
       font-size: 1.1rem;
       font-weight: 600;
       text-transform: uppercase;

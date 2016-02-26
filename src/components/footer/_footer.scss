@@ -83,7 +83,7 @@ $logo-height: 4rem;
   }
 
   &__social-link {
-    border: .1rem solid #e5e7ed;
+    border: .1rem solid $social-network-button-color;
     border-radius: 50%;
     color: darken($color-white, 20); // #cccdce;
     display: block;
@@ -97,7 +97,7 @@ $logo-height: 4rem;
     &:hover,
     &:active,
     &:focus {
-      background-color: #e5e7ed;
+      background-color: $social-network-button-color;
       color: $color-white;
     }
 
@@ -406,10 +406,9 @@ $logo-height: 4rem;
 }
 
 .language__label {
-  color: #717880;
+  color: rgba($titlegray, .72);
   font-size: 1.3rem;
   line-height: 1;
-  margin-bottom: 0;
 
   @media (min-width: $min-960) {
     padding-left: 1.2rem;

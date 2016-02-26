@@ -174,7 +174,7 @@
     position: relative;
 
     &:not(:first-child) {
-      border-top: .1rem solid #f1f4fb;
+      border-top: .1rem solid rgba($color-light-slate, .5);
     }
 
     &--current::before {
@@ -220,7 +220,7 @@
   }
 
   &__link:hover::after {
-    background-color: #f4f5f8;
+    background-color: $active-background-color;
   }
 
   &__button {
@@ -233,7 +233,7 @@
 }
 
 .sub-navigation-feature {
-  border-bottom: .1rem solid #e1e3e7;
+  border-bottom: .1rem solid $color-gray;
   display: block;
   overflow: hidden;
   padding: $gutter $gutter 2rem;

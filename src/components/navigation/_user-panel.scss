@@ -130,7 +130,7 @@ $user-panel: (
     &:hover,
     &:active,
     &:focus {
-      background-color: #f4f5f8;
+      background-color: $active-background-color;
     }
   }
 
