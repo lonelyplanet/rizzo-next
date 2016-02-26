@@ -977,7 +977,6 @@
   }
 }
 
-<<<<<<< c93cfffc839e9e61780b99420636ef2e9e9d4a46
 // Creates the base for the marker object. A size modifier is required to apply
 // proper dimensions and font size.
 @mixin marker {
@@ -1064,6 +1063,7 @@
 @mixin slider-button {
   background-color: $color-white;
   border-radius: 50%;
+  color: $titlegray;
   display: block;
   height: 5rem;
   position: absolute;
@@ -1093,13 +1093,11 @@
   &:hover,
   &:active,
   &:focus {
+    color: $lpblue;
+
     @media (min-width: $min-840) {
       box-shadow: 0 .2rem 1rem .15rem rgba($color-black, .1);
     }
-  }
-
-  &:focus {
-    background-color: darken($color-white, 4);
   }
 
   &[disabled] {
@@ -1109,7 +1107,7 @@
 }
 
 @mixin slider-button-icon {
-  color: $titlegray;
+  color: currentColor;
   font-size: 1.1rem;
   font-weight: 700;
   position: relative;
