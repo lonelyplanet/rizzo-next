@@ -460,7 +460,7 @@ export default class ArticleComponent extends Component {
         this.state.next.slug = this.nextArticle.slug;
         this.state.next.title = this.nextArticle.title;
 
-        this._trackAjaxPageView(`/${slug}`, title);
+        this._trackAjaxPageView(`/${slug}`);
         this._updateListOfViewedArticles();
       }
 
@@ -501,12 +501,12 @@ export default class ArticleComponent extends Component {
    * @return {String}          Data to send to analytics
    */
   @track("article pageview scroll");
-  _trackAjaxPageView(pathname, title) {
-    utag.view({
-      ga_location_override: pathname,
-      title: `${title} - AJAX`
+  _trackAjaxPageView(pathname) {
+    window.lp.analytics.api.trackEvent({
+      category: "Page View",
+      action: "Modal Location Override",
+      label: pathname
     });
-
     return pathname;
   }
 
