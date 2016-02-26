@@ -18,7 +18,7 @@
   }
 
   &__content {
-    border-top: .1rem solid #f1f4fb;
+    border-top: .1rem solid rgba($color-light-slate, .5);
     margin-top: ($gutter - .3rem);
     position: relative;
 
@@ -107,31 +107,34 @@
     }
 
     &:last-child {
-      border-bottom: .1rem solid #f4f7fc;
+      border-bottom: .1rem solid rgba($color-light-slate, .4);
       height: $height - .1rem;
       line-height: $height;
     }
   }
 
   &__subtitle {
-    color: #cdd0d6;
-    font-size: 1.4rem;
+    color: rgba($light-text-color, .5);
+    font-size: 1.1rem;
+    font-weight: 700;
     height: ($height / 2);
-    line-height: ($height / 2) - 1rem;
+    line-height: 1;
+    margin-top: .1rem;
     overflow: hidden;
     padding-bottom: 1rem;
     text-overflow: ellipsis;
+    text-transform: uppercase;
     white-space: nowrap;
 
     &:last-child {
-      border-bottom: .1rem solid #f4f7fc;
+      border-bottom: .1rem solid rgba($color-light-slate, .4);
     }
   }
 
   $secondary-line-height: ($total-height - .1rem - $item-spacing * 2) / 7;
 
   &__secondary {
-    border-bottom: .1rem solid #f4f7fc;
+    border-bottom: .1rem solid rgba($color-light-slate, .4);
     font-size: 1.2rem;
     font-weight: 600;
     line-height: $secondary-line-height;
@@ -152,7 +155,7 @@
     position: relative;
 
     &::before {
-      color: #a7a9ae;
+      color: $top-place-number-color;
       content: counter(tlist) ".";
       counter-increment: tlist;
       display: block;

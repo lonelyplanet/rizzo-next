@@ -121,7 +121,7 @@ $picker-width: 32rem;
 }
 
 .picker__day {
-  border: .1rem solid #d7dee3;
+  border: .1rem solid $subduedgray;
   border-radius: 3rem;
   color: $darkgray;
   cursor: pointer;
