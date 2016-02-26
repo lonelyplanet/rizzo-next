@@ -977,6 +977,7 @@
   }
 }
 
+<<<<<<< c93cfffc839e9e61780b99420636ef2e9e9d4a46
 // Creates the base for the marker object. A size modifier is required to apply
 // proper dimensions and font size.
 @mixin marker {
@@ -1058,4 +1059,79 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+}
+
+@mixin slider-button {
+  background-color: $color-white;
+  border-radius: 50%;
+  display: block;
+  height: 5rem;
+  position: absolute;
+  top: 50%;
+  width: 5rem;
+  z-index: z("middle") + 5;
+
+  @media (min-width: $min-480) {
+    height: 6rem;
+    width: 6rem;
+  }
+
+  @media (min-width: $min-720) {
+    box-shadow: 0 .2rem 1rem .15rem rgba($color-black, .07);
+  }
+
+  @media (max-width: $max-840) {
+    transform: translateY(-50%);
+  }
+
+  @media (min-width: $min-840) {
+    height: 4rem;
+    transition: box-shadow $animation-speed ease-in-out;
+    width: 4rem;
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    @media (min-width: $min-840) {
+      box-shadow: 0 .2rem 1rem .15rem rgba($color-black, .1);
+    }
+  }
+
+  &:focus {
+    background-color: darken($color-white, 4);
+  }
+
+  &[disabled] {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+@mixin slider-button-icon {
+  color: $titlegray;
+  font-size: 1.1rem;
+  font-weight: 700;
+  position: relative;
+  transition: color $animation-speed ease-in-out;
+
+  @media (min-width: $min-840) {
+    font-size: .9rem;
+  }
+}
+
+@mixin slider-button-icon-next {
+  right: .3rem;
+
+  @media (min-width: $min-720) {
+    right: -.1rem;
+  }
+}
+
+@mixin slider-button-icon-prev {
+  left: .3rem;
+
+  @media (min-width: $min-720) {
+    left: -.1rem;
+  }
 }

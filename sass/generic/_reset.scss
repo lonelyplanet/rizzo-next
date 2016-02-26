@@ -27,7 +27,7 @@ dd, ol, ul, li, fieldset, form, label, table,
 tbody, tfoot, thead, tr, th, td, article, aside,
 canvas, figure, figcaption, footer, header,
 hgroup, nav, section, time, mark, audio, video,
-input, textarea {
+input, button, select, textarea {
   margin: 0;
   padding: 0;
 }
@@ -80,4 +80,9 @@ textarea {
 button,
 select {
   line-height: normal;
+}
+
+button {
+  border: 0;
+  outline: none;
 }
