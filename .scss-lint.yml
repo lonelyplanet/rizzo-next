@@ -8,6 +8,7 @@ exclude:
 - 'docs/**'
 - 'node_modules/**'
 - 'tmp/**'
+- 'sass/generic/_print.scss'
 - 'sass/generic/_normalize.scss' # 3rd-party code
 - 'src/components/image_gallery/image_gallery.scss' # plugin code
 - 'src/components/map/**' # temporary exclusion; needs refactored
@@ -46,7 +47,7 @@ linters:
     enabled: true
 
   ColorVariable:
-    enabled: false # disabled until colors and variables are figured out
+    enabled: true
 
   Comment:
     enabled: true
