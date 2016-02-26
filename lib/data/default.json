@@ -17,7 +17,7 @@
           "slug": "#",
           "submenu": {
             "featured": {
-              "image": "http://lonelyplanetstatic.imgix.net/bit2016-bg-main.jpg?w=80&h=60&fit=crop",
+              "image": "https://lonelyplanetstatic.imgix.net/bit2016-bg-main.jpg?w=80&h=60&fit=min",
               "title": "Best in the US",
               "subtitle": "Featured",
               "link": "//www.lonelyplanet.com/best-in-us"
