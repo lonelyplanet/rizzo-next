@@ -976,3 +976,86 @@
     }
   }
 }
+
+// Creates the base for the marker object. A size modifier is required to apply
+// proper dimensions and font size.
+@mixin marker {
+  backface-visibility: hidden;
+  color: #3b444f;
+  display: inline-block;
+  font-family: $miller-daily;
+  position: relative;
+  text-align: center;
+  z-index: z("default");
+
+  // For CSS counter
+  &::before {
+    color: inherit;
+    position: relative;
+  }
+
+  // Create diamond shape
+  &::after {
+    background-color: #fff;
+    box-shadow: .2rem .2rem .2rem rgba(#000, .18);
+    content: "";
+    display: block;
+    height: 100%;
+    position: relative;
+    transform: rotate(45deg);
+    width: 100%;
+    z-index: z("below");
+  }
+}
+
+// Extends marker. Creates a small marker.
+@mixin marker-small {
+  $marker-small-size: 2.5rem;
+  $marker-small-font-size: 1.4rem;
+  font-size: $marker-small-font-size;
+  height: $marker-small-size;
+  line-height: $marker-small-size;
+  width: $marker-small-size;
+
+  // For CSS counter
+  &::before {
+    font-size: $marker-small-font-size;
+  }
+
+  // Adjust diamond shape
+  &::after {
+    border-radius: .4rem;
+    margin-top: -$marker-small-size;
+  }
+}
+
+// Extends marker. Creates a large marker.
+@mixin marker-large {
+  $marker-large-size: 3.6rem;
+  $marker-large-font-size: 2rem;
+  font-size: $marker-large-font-size;
+  height: $marker-large-size;
+  line-height: $marker-large-size;
+  width: $marker-large-size;
+
+  // For CSS counter
+  &::before {
+    font-size: $marker-large-font-size;
+  }
+
+  // Adjust diamond shape
+  &::after {
+    border-radius: .6rem;
+    margin-top: -$marker-large-size;
+  }
+}
+
+// Extends marker. By default, positions the marker over an 80px wide photo.
+// Pass in an offset if the photo width is not 80px.
+// @param {String} $offset [6.7rem] Amount to offset the marker from the left edge
+@mixin marker-place($offset: 6.7rem) {
+  left: $offset;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}

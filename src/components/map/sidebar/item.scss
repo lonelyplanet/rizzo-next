@@ -84,42 +84,10 @@
     width: $image-width;
   }
 
-  &__order {
-    color: $feature-copy;
-    display: block;
-    font-weight: bold;
-    height: $order-width;
-    left: $image-width;
-    line-height: $order-width;
-    position: absolute;
-    text-align: center;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: $order-width;
-
-    .pin & {
-      font-size: 1rem;
-    }
-
-    .list & {
-      font-size: 1.2rem;
-      padding-top: .2rem;
-    }
-
-    &::before {
-      background-color: $color-white;
-      border-radius: .4rem;
-      box-shadow: .2rem .1rem .4rem -.2rem lighten($color-black, 20); // #333
-      content: "";
-      display: block;
-      height: 40%;
-      left: 50%;
-      position: absolute;
-      top: 50%;
-      transform: translate(-50%, -50%) rotate(45deg);
-      width: 40%;
-      z-index: z("below");
-    }
+  &__marker {
+    @include marker;
+    @include marker-small;
+    @include marker-place;
   }
 
   &__text {
