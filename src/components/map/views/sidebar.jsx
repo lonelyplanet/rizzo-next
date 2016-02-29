@@ -33,7 +33,7 @@ export default class SidebarView extends React.Component {
       );
     });
 
-    if (location.description.length > 0) {
+    if (location.description && location.description.length > 0) {
       tabCount++;
       let dropdownOpen = this.props.tabDropdownOpen,
           isActive = tabCount === 1 || tabCount === activeSetIndex ? true : false,
