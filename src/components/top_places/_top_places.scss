@@ -59,29 +59,14 @@
     }
   }
 
-  &__number {
-    $size: 2.7rem;
-    background-color: #fff;
-    border-radius: .3rem;
-    box-shadow: 0 .2rem .3rem rgba(#000, .3);
-    color: $font-color;
-    font-family: $benton-sans;
-    font-size: 1.2rem;
-    height: $size;
-    left: $image-width - ($size / 2);
-    line-height: ($size + .1rem);
-    margin-top: -($size / 2);
-    position: absolute;
-    text-align: center;
-    top: 50%;
-    transform: rotate(45deg);
-    width: $size;
+  &__marker {
+    @include marker;
+    @include marker-small;
+    @include marker-place;
 
     &::before {
       content: counter(tlist);
       counter-increment: tlist;
-      display: block;
-      transform: rotate(-45deg);
     }
   }
 

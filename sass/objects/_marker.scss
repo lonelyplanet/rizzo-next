@@ -1,0 +1,15 @@
+.marker {
+  @include marker;
+}
+
+.marker--small {
+  @include marker-small;
+}
+
+.marker--large {
+  @include marker-large;
+}
+
+.marker--place {
+  @include marker-place;
+}
