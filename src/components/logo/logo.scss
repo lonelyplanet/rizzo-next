@@ -20,7 +20,6 @@
 
   // Implementation detail
 
-  .header &,
   .lp-global-header & {
     margin-left: auto;
     margin-right: auto;
@@ -43,7 +42,6 @@
     }
   }
 
-  .footer &,
   .lp-global-footer & {
     width: 9.3rem;
 
@@ -70,9 +68,8 @@
 /// ----------------------------------------------------------------------------
 
 .lp-logo--white,
-.header--has-images .lp-logo,
-.lp-global-header--has-images .lp-logo {
-  // @TODO remove `.header--has-images .lp-logo` and pass color in like `{{type}}`
+.lp-logo--normal {
+  // @TODO remove `--normal` and pass color in like `{{type}}`
   color: #fff;
 }
 
@@ -82,7 +79,7 @@
   color: $color-primary;
 }
 
-.lp-logo--grey {
+.lp-logo--gray {
   color: #cccdce;
   transition: color ($animation-speed / 2);
 
