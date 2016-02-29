@@ -60,6 +60,13 @@ $masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
     top: 0;
     width: 100%;
     z-index: z("middle");
+
+    .no-flexbox & {
+      display: table;
+      height: 100%;
+      max-width: 100%;
+      width: 100%;
+    }
   }
 
   &__text-wrap--pull-up {
@@ -88,18 +95,12 @@ $masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
     @media (min-width: $min-720) {
       margin-top: $header-height-mobile;
     }
-  }
 
-  .no-flexbox &__text {
-    display: table;
-    height: 100%;
-    width: 100%;
-  }
-
-  .no-flexbox &__container {
-    display: table-cell;
-    text-align: center;
-    vertical-align: middle;
+    .no-flexbox & {
+      display: table-cell;
+      text-align: center;
+      vertical-align: middle;
+    }
   }
 
   &__breadcrumb {
