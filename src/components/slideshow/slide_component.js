@@ -15,18 +15,13 @@ class SlideComponent extends Component {
     return "small";
   }
 
-  static get quality() {
-    return "hq";
-  }
-
   get imageUrl(){
-    return this.model[SlideComponent.imageSize][SlideComponent.quality];
+    return this.model[SlideComponent.imageSize];
   }
 
   initialize(options){
     this.model = options.model;
     this.preloadPromise = {};
-
     if(!this.model) {
       throw new Error("Missing slide model");
     }
