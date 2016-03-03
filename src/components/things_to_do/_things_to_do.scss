@@ -90,6 +90,11 @@ $image-card-hover-movement: .5rem;
     }
   }
 
+  &__more,
+  &__less {
+    @include slider-button;
+  }
+
   &__more {
     right: -2.5rem;
 
@@ -114,90 +119,17 @@ $image-card-hover-movement: .5rem;
     }
   }
 
-  &__more,
-  &__less {
-    background-color: $color-white;
-    border: 0;
-    border-radius: 50%;
-    cursor: pointer;
-    display: block;
-    height: 5rem;
-    outline: none;
-    padding: 0;
-    position: absolute;
-    top: 50%;
-    width: 5rem;
-    z-index: z("middle") + 5;
-
-    @media (min-width: $min-480) {
-      height: 6rem;
-      width: 6rem;
-    }
-
-    @media (min-width: $min-720) {
-      box-shadow: 0 .2rem 1rem .15rem rgba($color-black, .07);
-    }
-
-    @media (max-width: $max-840) {
-      transform: translateY(-50%);
-    }
-
-    @media (min-width: $min-840) {
-      height: 4rem;
-      transition: box-shadow $animation-speed ease-in-out;
-      width: 4rem;
-    }
-
-    &:hover,
-    &:active {
-      @media (min-width: $min-840) {
-        box-shadow: 0 .2rem 1rem .15rem rgba($color-black, .1);
-      }
-    }
-
-    &[disabled] {
-      opacity: 0;
-      pointer-events: none;
-    }
-  }
-
   &__more-icon,
   &__less-icon {
-    color: $titlegray;
-    font-size: 1.1rem;
-    font-weight: 700;
-    position: relative;
-    transition: color $animation-speed ease-in-out;
-
-    @media (min-width: $min-840) {
-      font-size: .9rem;
-    }
+    @include slider-button-icon;
   }
 
   &__more-icon {
-    right: .3rem;
-
-    @media (min-width: $min-720) {
-      right: -.1rem;
-    }
-
-    .ttd__more:hover,
-    .ttd__more:active {
-      color: $lpblue;
-    }
+    @include slider-button-icon-next;
   }
 
   &__less-icon {
-    left: .3rem;
-
-    @media (min-width: $min-720) {
-      left: -.1rem;
-    }
-
-    .ttd__less:hover,
-    .ttd__less:active {
-      color: $lpblue;
-    }
+    @include slider-button-icon-prev;
   }
 }
 
