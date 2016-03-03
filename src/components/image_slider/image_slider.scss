@@ -3,7 +3,7 @@
 .owl-next,
 .owl-prev {
   @include slider-button;
-  top: 38%;
+  // top: 38%;
 }
 
 .owl-next {
@@ -16,14 +16,6 @@
   @media (min-width: $min-840) {
     right: -1rem;
   }
-
-  &:hover,
-  &:active,
-  &:focus {
-    .ttd__more-icon {
-      color: $lpblue;
-    }
-  }
 }
 
 .owl-prev {
@@ -35,14 +27,6 @@
 
   @media (min-width: $min-840) {
     left: -1rem;
-  }
-
-  &:hover,
-  &:active,
-  &:focus {
-    .ttd__less-icon {
-      color: $lpblue;
-    }
   }
 }
 
