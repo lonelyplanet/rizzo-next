@@ -47,19 +47,23 @@ $masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
   }
 
   &__text-wrap {
+    @include container-padded();
     align-items: center;
     bottom: 0;
     display: flex;
     justify-content: center;
     left: 0;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 90%;
     position: absolute;
     right: 0;
     top: 0;
-    width: 100%;
+    width: auto;
     z-index: z("middle");
+
+    @media (min-width: $min-1290) {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 90%;
+    }
 
     .no-flexbox & {
       display: table;
@@ -344,27 +348,52 @@ $masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
 
   &__ad {
     @include container-padded;
+    bottom: 0;
     left: 0;
+    margin-bottom: 1.2rem;
     position: absolute;
     right: 0;
     text-align: center;
     z-index: 10;
 
-    @media (max-height: 699px) {
-      bottom: ($masthead-nav-height / 2) + .1;
-      transform: scale(.5);
-    }
-
-    @media (min-height: 700px) {
-      bottom: ($masthead-nav-height + .1);
-    }
-
     @media (min-width: $min-960) {
       text-align: right;
     }
 
+    @media (min-width: $min-1290) {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 90%;
+    }
+
+    @media (min-width: $min-1430) {
+      max-width: container();
+    }
+
+    .masthead--has-nav & {
+      bottom: ($masthead-nav-height + .1);
+    }
+
+    .masthead--narrow & {
+      @media (min-width: $min-960) and (max-width: $max-1430) {
+        padding-right: 1.2rem;
+      }
+    }
+
     .no-js & {
       display: none;
+    }
+
+    > .adunit {
+      @media (max-width: $max-600) and (max-height: 699px) {
+        transform: scale(.5);
+        transform-origin: 50% 100%;
+      }
+
+      @media (min-width: $min-960) and (max-height: 699px) {
+        transform: scale(.5);
+        transform-origin: 100% 100%;
+      }
     }
   }
 }
