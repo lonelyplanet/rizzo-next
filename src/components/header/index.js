@@ -1,4 +1,6 @@
 import HeaderComponent from "./header_component";
-import "./_header.scss";
+
+require("./_header.scss");
+require("../logo/logo.scss");
 
 export default HeaderComponent;

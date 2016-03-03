@@ -28,34 +28,6 @@ $logo-height: 4rem;
     }
   }
 
-  &__logo {
-    fill: darken($color-white, 20); // #cccdce;
-    transition: fill ($animation-speed / 2);
-
-    @media (max-width: $max-960) {
-      float: left;
-      margin-bottom: $spacing;
-      margin-left: $spacing;
-    }
-
-    @media (min-width: $min-960) {
-      left: 0;
-      position: absolute;
-      top: 1.7rem;
-    }
-
-    &:hover,
-    &:active,
-    &:focus {
-      fill: $lpblue;
-    }
-
-    svg {
-      display: block;
-      height: 4.6rem;
-    }
-  }
-
   &__social-list {
     @include clearfix;
     font-size: 1.8rem;

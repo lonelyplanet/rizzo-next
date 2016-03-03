@@ -1,0 +1,91 @@
+/// ----------------------------------------------------------------------------
+/// Dependencies
+/// ----------------------------------------------------------------------------
+
+@import "../../../sass/webpack_deps";
+
+
+
+
+
+/// ----------------------------------------------------------------------------
+/// Base styles
+/// ----------------------------------------------------------------------------
+
+.lp-logo {
+  display: block;
+  width: 7.2rem;
+
+
+
+  // Implementation detail
+
+  .lp-global-header & {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: z("default");
+
+    @media (min-width: $min-720) and (max-width: $max-1080) {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    @media (min-width: $min-720) {
+      width: 14.2rem;
+    }
+
+    .no-csstransforms & {
+      top: 3rem;
+    }
+  }
+
+  .lp-global-footer & {
+    width: 9.3rem;
+
+    @media (max-width: $max-960) {
+      float: left;
+      margin-bottom: $spacing;
+      margin-left: $spacing;
+    }
+
+    @media (min-width: $min-960) {
+      left: 0;
+      position: absolute;
+      top: 1.7rem;
+    }
+  }
+}
+
+
+
+
+
+/// ----------------------------------------------------------------------------
+/// Extended styles
+/// ----------------------------------------------------------------------------
+
+.lp-logo--white,
+.lp-logo--normal {
+  // @TODO remove `--normal` and pass color in like `{{type}}`
+  color: $color-white;
+}
+
+.lp-logo--blue,
+.lp-logo--narrow {
+  // @TODO remove `--narrow` and pass color in like `{{type}}`
+  color: $lpblue;
+}
+
+.lp-logo--gray {
+  color: darken($color-white, 20); // #cccdce
+  transition: color ($animation-speed / 2);
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: $color-primary;
+  }
+}
