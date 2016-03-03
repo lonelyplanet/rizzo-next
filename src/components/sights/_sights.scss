@@ -23,7 +23,7 @@
 
 .sights__heading {
   &:not(.sights__heading--large) {
-    color: $h2-color;
+    color: $titlegray;
     font-size: 2rem;
     font-weight: 300;
     letter-spacing: -.01rem;
@@ -102,7 +102,7 @@
 
 .sights__item {
   align-items: center;
-  border-bottom: .1rem solid $divider-color;
+  border-bottom: .1rem solid $color-gray;
   display: flex;
   padding-bottom: .8rem;
   padding-top: .8rem;
@@ -110,7 +110,7 @@
 
   &:first-child {
     @media (min-width: $min-600) {
-      border-top: .1rem solid $divider-color;
+      border-top: .1rem solid $color-gray;
     }
   }
 
@@ -133,7 +133,7 @@
 }
 
 .sights__title {
-  color: #030f1d;
+  color: $darkgray;
   font-size: 1.6rem;
   font-weight: 600;
   line-height: 1.7;
@@ -142,12 +142,12 @@
   .sights__item:hover &,
   .sights__item:active &,
   .sights__item:focus & {
-    color: $color-blue;
+    color: $lpblue;
   }
 }
 
 .sights__location {
-  color: #c5d1d7;
+  color: rgba($light-text-color, .5);
   font-size: 1rem;
   font-weight: 600;
   letter-spacing: .02rem;
@@ -175,9 +175,9 @@
   width: $size;
 
   &::before {
-    background-color: #fff;
+    background-color: $color-white;
     border-radius: .4rem;
-    box-shadow: .2rem .1rem .4rem -.2rem #333;
+    box-shadow: .2rem .1rem .4rem -.2rem lighten($color-black, 20); // #333
     content: "";
     display: block;
     height: 100%;

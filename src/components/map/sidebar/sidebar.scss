@@ -1,12 +1,10 @@
-$inactive: #999;
-$active: $lpblue;
 $size: 3rem;
 $unit: $size / 16;
 $panel-height: calc(100% - #{$sidebar-header-height});
 
 .spinner {
   animation: spin $animation-speed-ui linear infinite;
-  border: $unit solid $inactive;
+  border: $unit solid $font-color-light;
   border-radius: 50%;
   display: block;
   height: $size;
@@ -17,7 +15,7 @@ $panel-height: calc(100% - #{$sidebar-header-height});
 
   &::before,
   &::after {
-    background-color: $active;
+    background-color: $lpblue;
     border-radius: 50%;
     content: "";
     height: ($unit * 2);
@@ -29,7 +27,7 @@ $panel-height: calc(100% - #{$sidebar-header-height});
 }
 
 .sidebar {
-  background-color: #fff;
+  background-color: $color-white;
   bottom: 0;
   height: 100vh;
   overflow: visible;
@@ -43,18 +41,18 @@ $panel-height: calc(100% - #{$sidebar-header-height});
   }
 
   &__header {
-    background-color: $color-blue;
+    background-color: $lpblue;
     height: $sidebar-header-height;
     padding: 1.9rem $gutter .5rem;
 
     .details {
       a {
-        color: #fff;
+        color: $color-white;
       }
     }
 
     .sidebar__title {
-      color: #fff;
+      color: $color-white;
       font-size: 4rem;
       font-weight: bold;
       letter-spacing: -.2px;
@@ -90,13 +88,13 @@ $panel-height: calc(100% - #{$sidebar-header-height});
   }
 
   &__tabs {
-    border-top: .1rem solid rgba(#fff, .2);
+    border-top: .1rem solid rgba($color-white, .2);
     line-height: 1;
     list-style: none;
     margin-top: 2.6rem;
 
     .tab {
-      color: #fff;
+      color: $color-white;
       cursor: pointer;
       display: inline-block;
       font-size: 1.4rem;
@@ -138,7 +136,7 @@ $panel-height: calc(100% - #{$sidebar-header-height});
         text-align: left;
 
         &--item {
-          color: $color-darkblue;
+          color: $darkgray;
           font-size: 1.4rem;
           line-height: 1;
           padding-bottom: 1.3rem;
@@ -172,7 +170,7 @@ $panel-height: calc(100% - #{$sidebar-header-height});
 
       &::after {
         $height: .4rem;
-        background: #fff;
+        background: $color-white;
         bottom: 0;
         content: "";
         display: block;
@@ -203,7 +201,7 @@ $panel-height: calc(100% - #{$sidebar-header-height});
 
         // covers up the border
         &::after {
-          background-color: $color-blue;
+          background-color: $lpblue;
           bottom: -2.1rem;
           content: "";
           height: .4rem;
@@ -221,14 +219,14 @@ $panel-height: calc(100% - #{$sidebar-header-height});
     overflow: auto;
 
     .listing {
-      border-top: .1rem solid $divider-color;
+      border-top: .1rem solid $color-gray;
       margin: $gutter auto;
       position: relative;
       width: (($sidebar-width - ($gutter * 2)) / $sidebar-width) * 100%;
     }
 
     &__header {
-      color: #2b3642;
+      color: $darkgray;
       font-size: 3rem;
       font-weight: 300;
       line-height: 1.2;
@@ -268,7 +266,7 @@ $panel-height: calc(100% - #{$sidebar-header-height});
 
     &__footer {
       bottom: 0;
-      box-shadow: 0 0 6rem 0 rgba(#000, .08);
+      box-shadow: 0 0 6rem 0 rgba($color-black, .08);
       position: absolute;
       top: auto;
       width: $sidebar-width;

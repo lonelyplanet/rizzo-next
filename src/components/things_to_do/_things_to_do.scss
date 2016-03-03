@@ -116,7 +116,7 @@ $image-card-hover-movement: .5rem;
 
   &__more,
   &__less {
-    background-color: #fff;
+    background-color: $color-white;
     border: 0;
     border-radius: 50%;
     cursor: pointer;
@@ -135,7 +135,7 @@ $image-card-hover-movement: .5rem;
     }
 
     @media (min-width: $min-720) {
-      box-shadow: 0 .2rem 1rem .15rem rgba(#000, .07);
+      box-shadow: 0 .2rem 1rem .15rem rgba($color-black, .07);
     }
 
     @media (max-width: $max-840) {
@@ -151,7 +151,7 @@ $image-card-hover-movement: .5rem;
     &:hover,
     &:active {
       @media (min-width: $min-840) {
-        box-shadow: 0 .2rem 1rem .15rem rgba(#000, .1);
+        box-shadow: 0 .2rem 1rem .15rem rgba($color-black, .1);
       }
     }
 
@@ -163,7 +163,7 @@ $image-card-hover-movement: .5rem;
 
   &__more-icon,
   &__less-icon {
-    color: #324355;
+    color: $titlegray;
     font-size: 1.1rem;
     font-weight: 700;
     position: relative;
@@ -183,7 +183,7 @@ $image-card-hover-movement: .5rem;
 
     .ttd__more:hover,
     .ttd__more:active {
-      color: $color-blue;
+      color: $lpblue;
     }
   }
 
@@ -196,13 +196,13 @@ $image-card-hover-movement: .5rem;
 
     .ttd__less:hover,
     .ttd__less:active {
-      color: $color-blue;
+      color: $lpblue;
     }
   }
 }
 
 .image-card {
-  background-color: #ccc;
+  background-color: darken($color-white, 20); // #ccc
   display: block;
   position: relative;
   transition: transform $animation-speed;
@@ -229,9 +229,9 @@ $image-card-hover-movement: .5rem;
   }
 
   &__content {
-    background: linear-gradient(to top, rgba(#000, .5) 0%, rgba(#000, 0) 100%);
+    background: linear-gradient(to top, rgba($color-black, .5) 0%, rgba($color-black, 0) 100%);
     bottom: 0;
-    color: #fff;
+    color: $color-white;
     font-size: $font-size;
     left: 0;
     padding: 0 ($gutter / 3) ($gutter / 2);
@@ -251,10 +251,10 @@ $image-card-hover-movement: .5rem;
   &__number {
     $size: 2.7rem;
     backface-visibility: hidden;
-    background-color: #fff;
+    background-color: $color-white;
     border-radius: .4rem;
-    box-shadow: 0 .2rem .2rem rgba(#000, .3);
-    color: #3b444f;
+    box-shadow: 0 .2rem .2rem rgba($color-black, .3);
+    color: $titlegray;
     display: inline-block;
     font-family: $miller-daily;
     font-size: 1.4rem;

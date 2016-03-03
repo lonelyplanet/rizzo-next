@@ -2,7 +2,7 @@
 
 .related-guidebook {
   @include container;
-  box-shadow: 0 .3rem 2.9rem 0 rgba(#000, .08);
+  box-shadow: 0 .3rem 2.9rem 0 rgba($color-black, .08);
   display: flex;
 
   @include with-layout(static) {
@@ -92,7 +92,7 @@
 }
 
 .related-guidebook__title {
-  color: #2b3642;
+  color: $darkgray;
   font-size: 1.8rem;
   font-weight: 600;
   letter-spacing: -.02rem;
@@ -107,7 +107,7 @@
 }
 
 .related-guidebook__heading {
-  color: #2b3642;
+  color: $darkgray;
   font-size: 1.4rem;
   line-height: 1;
   margin-top: .7rem;
@@ -118,7 +118,7 @@
 }
 
 .related-guidebook__content {
-  color: #2b3642;
+  color: $darkgray;
   font-size: 1.2rem;
   line-height: (20 / 12);
   margin-bottom: 1.6rem;

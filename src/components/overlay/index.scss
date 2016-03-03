@@ -1,7 +1,7 @@
 @import "../../../sass/webpack_deps";
 
 .overlay {
-  background-color: rgba(#000, .4);
+  background-color: rgba($color-black, .4);
   bottom: 0;
   left: 0;
   opacity: 0;

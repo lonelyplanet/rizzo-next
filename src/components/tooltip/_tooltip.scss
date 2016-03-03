@@ -1,16 +1,16 @@
 @import "../../../sass/webpack_deps";
 
 .tooltip {
-  background-color: #fff;
+  background-color: $color-white;
   border-radius: .4rem;
-  color: #3b444f;
+  color: $titlegray;
   display: none;
   position: absolute;
   width: 400px;
   z-index: z("top");
 
   &::before {
-    border-bottom: .8rem solid #fff;
+    border-bottom: .8rem solid $color-white;
     border-left: .8rem solid transparent;
     border-right: .8rem solid transparent;
     content: "";

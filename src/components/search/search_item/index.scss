@@ -22,11 +22,11 @@
 
   &::after {
     @include fade-edge("right");
-    border-bottom: .1rem solid #f1f4fb;
+    border-bottom: .1rem solid rgba($color-light-slate, .5);
   }
 
   &--selected {
-    background-color: #f4f5f8;
+    background-color: $active-background-color;
   }
 
   &__link {
@@ -37,8 +37,8 @@
 
   &__name {
     backface-visibility: hidden;
-    border-bottom: .1rem solid #f1f4fb;
-    color: $color-darkblue;
+    border-bottom: .1rem solid rgba($color-light-slate, .5);
+    color: $darkgray;
     font-size: $font-size;
     font-weight: 300;
     transition: transform $animation-speed;
@@ -48,7 +48,7 @@
     }
 
     .is-highlight {
-      color: $body-color;
+      color: $titlegray;
     }
   }
 

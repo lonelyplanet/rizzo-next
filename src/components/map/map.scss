@@ -20,7 +20,7 @@
 
 // Needs an :after fix
 .map_holder {
-  background-color: rgba(#000, .8);
+  background-color: rgba($color-black, .8);
   bottom: 0;
   height: 100vh;
   left: 0;
@@ -56,7 +56,7 @@
 }
 
 .map-container {
-  background-color: $color-lightgrey;
+  background-color: darken($color-white, 4);
   height: 100%;
   width: $map-container-width;
 
@@ -76,10 +76,10 @@
 }
 
 .close-map {
-  background-color: #fff;
+  background-color: $color-white;
   border: 0;
   border-radius: 50%;
-  box-shadow: 0 1.2rem 2.5rem rgba(#000, .75);
+  box-shadow: 0 1.2rem 2.5rem rgba($color-black, .75);
   cursor: pointer;
   float: left;
   font-size: 2.6rem;

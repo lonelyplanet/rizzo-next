@@ -2,7 +2,7 @@
 
 .lp-search {
   $input-height: 3.8rem;
-  background-color: #fff;
+  background-color: $color-white;
   left: 0;
   opacity: 0;
   position: absolute;
@@ -12,7 +12,7 @@
   z-index: z("modal");
 
   @media (min-width: $min-720) {
-    box-shadow: -5rem 0 15rem rgba(#000, .5);
+    box-shadow: -5rem 0 15rem rgba($color-black, .5);
   }
 
   &--visible {
@@ -43,7 +43,7 @@
   &__input {
     border: 0;
     bottom: 0;
-    color: #3b4450;
+    color: $titlegray;
     font-size: 1.6rem;
     height: $input-height;
     left: ($header-height-mobile / 2);
@@ -68,13 +68,13 @@
     }
 
     @include placeholder {
-      color: rgba($body-color, .38);
+      color: rgba($titlegray, .38);
     }
   }
 
   &__label {
     bottom: 0;
-    color: $body-color;
+    color: $titlegray;
     display: block;
     font-size: 0;
     height: 2rem;
@@ -99,7 +99,7 @@
     background-color: transparent;
     border: 0;
     bottom: 0;
-    color: #bdcee3;
+    color: $active-background-color;
     cursor: pointer;
     display: block;
     font-size: 0;
@@ -121,7 +121,7 @@
     &:hover,
     &:active,
     &:focus {
-      color: $color-primary;
+      color: $lpblue;
     }
 
     &::before {
@@ -148,7 +148,7 @@
   }
 
   &__list {
-    border-top: .1rem solid #e4eaf8;
+    border-top: .1rem solid $color-light-slate;
     display: block;
     list-style: none;
     margin-bottom: ($gutter * 1.5);

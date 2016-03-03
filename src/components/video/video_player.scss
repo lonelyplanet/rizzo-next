@@ -3,7 +3,7 @@
 $max-video-width: 129rem;
 
 .video-overlay {
-  background: #fff;
+  background: $color-white;
   height: 100%;
   left: 0;
   opacity: 0;
@@ -29,7 +29,7 @@ $max-video-width: 129rem;
   }
 
   &__close__button {
-    color: $font-color;
+    color: $titlegray;
     cursor: pointer;
     opacity: 1;
     transition: opacity 500ms ease-in;

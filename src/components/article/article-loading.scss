@@ -1,7 +1,7 @@
 @import "../../../sass/webpack_deps";
 
 .article-loading {
-  color: #bfbfbf;
+  color: $footer-copyright-color;
   font-size: 4rem;
   opacity: 1;
   padding-bottom: gutter();

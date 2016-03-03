@@ -44,7 +44,7 @@
 
     p:not(.copy--feature),
     .copy--body__list {
-      color: $color-darkblue;
+      color: $darkgray;
       font-family: $miller-daily;
       font-size: 1.6rem;
       line-height: (26 / 16);
@@ -70,7 +70,7 @@
 
     .copy--h3,
     .copy--h4 {
-      color: #2b3642;
+      color: $darkgray;
       font-weight: 600;
       letter-spacing: -.02rem;
       margin-bottom: 1rem;
@@ -102,8 +102,8 @@
     p:not(.copy--caption) > a:not([data-callout-slug]),
     .client-body a {
       @include underlined-link(
-        $link-color: $color-darkblue,
-        $link-color-active: $color-blue
+        $link-color: $darkgray,
+        $link-color-active: $lpblue
       );
     }
 
@@ -220,7 +220,7 @@
       a {
         @include underlined-link(
           $link-color: $color-text,
-          $link-color-active: $color-blue,
+          $link-color-active: $lpblue,
           $underline-offset: 1px
         );
       }
@@ -240,22 +240,22 @@
   a[data-callout-slug] {
     @media(max-width: $max-1200) {
       @include underlined-link(
-        $link-color: $color-darkblue,
-        $link-color-active: $color-blue
+        $link-color: $darkgray,
+        $link-color-active: $lpblue
       );
     }
 
     @media(min-width: $min-1200) {
       backface-visibility: hidden;
-      border-bottom: .1rem dashed #bbb;
-      color: #2b3542;
+      border-bottom: .1rem dashed $footer-copyright-color;
+      color: $darkgray;
       position: relative;
       text-decoration: none;
       transform: translateZ(0);
       transition: color 300ms, border-bottom 200ms ease;
 
       &::before {
-        background: #f0f0f0;
+        background: darken($color-white, 6);
         bottom: 0;
         content: "";
         left: 0;
@@ -271,7 +271,7 @@
       &:hover,
       &:focus,
       &.is-active {
-        border-bottom: .1rem solid #f0f0f0;
+        border-bottom: .1rem solid darken($color-white, 6);
 
         &::before {
           transform: scaleY(1);
@@ -282,8 +282,8 @@
 
   .client-strap {
     @include container;
-    border-bottom: .1rem solid $color-border;
-    border-top: .1rem solid $color-border;
+    border-bottom: .1rem solid $color-gray;
+    border-top: .1rem solid $color-gray;
     margin-bottom: 3.2rem;
     margin-top: 3.2rem;
     padding-bottom: 3.2rem;

@@ -30,12 +30,12 @@
     }
 
     &--active {
-      border-bottom: .4rem solid #fff;
+      border-bottom: .4rem solid $color-white;
       height: $header-height;
     }
 
     &--user > .navigation__link {
-      border: .1rem solid rgba(#fff, .6);
+      border: .1rem solid rgba($color-white, .6);
       border-radius: 1.7rem;
       line-height: 0;
       padding: 1.7rem 2rem 1.5rem;
@@ -44,20 +44,20 @@
       &:hover,
       &:active,
       &:focus {
-        background-color: rgba(#fff, .1);
-        border-color: rgba(#fff, .38);
-        color: #fff;
+        background-color: rgba($color-white, .1);
+        border-color: rgba($color-white, .38);
+        color: $color-white;
       }
 
       .navigation--narrow & {
-        border-color: rgba($body-color, .6);
+        border-color: rgba($titlegray, .6);
 
         &:hover,
         &:active,
         &:focus {
-          background-color: rgba($body-color, .02);
-          border-color: rgba($body-color, .15);
-          color: $body-color;
+          background-color: rgba($titlegray, .02);
+          border-color: rgba($titlegray, .15);
+          color: $titlegray;
         }
       }
     }
@@ -68,7 +68,7 @@
   }
 
   &__link {
-    color: #fff;
+    color: $color-white;
     display: block;
     font-size: 1.4rem;
     font-weight: 600;
@@ -77,7 +77,7 @@
     &:hover,
     &:active,
     &:focus {
-      color: rgba(#fff, .6);
+      color: rgba($color-white, .6);
     }
   }
 
@@ -85,30 +85,30 @@
     &:hover,
     &:active,
     &:focus {
-      color: #fff;
+      color: $color-white;
     }
   }
 
   .navigation--narrow &__link {
-    color: $body-color;
+    color: $titlegray;
 
     &:hover,
     &:active,
     &:focus {
-      color: rgba($body-color, .38);
+      color: rgba($titlegray, .38);
     }
   }
 
   .navigation--narrow &__item--active &__link {
-    color: $color-primary;
+    color: $lpblue;
   }
 
   &__counter {
     $size: 1.7rem;
-    background: #dc221a;
+    background: $color-red;
     border-radius: 50%;
-    box-shadow: 0 .1rem .2rem rgba(#000, .2);
-    color: #fff;
+    box-shadow: 0 .1rem .2rem rgba($color-black, .2);
+    color: $color-white;
     font-family: $benton-sans;
     font-size: 1.3rem;
     font-weight: 600;
@@ -174,7 +174,7 @@
     position: relative;
 
     &:not(:first-child) {
-      border-top: .1rem solid #f1f4fb;
+      border-top: .1rem solid rgba($color-light-slate, .5);
     }
 
     &--current::before {
@@ -195,7 +195,7 @@
   }
 
   &__link {
-    color: $color-darkblue;
+    color: $darkgray;
     display: block;
     padding-bottom: .8rem;
     padding-top: 1rem;
@@ -220,7 +220,7 @@
   }
 
   &__link:hover::after {
-    background-color: #f4f5f8;
+    background-color: $active-background-color;
   }
 
   &__button {
@@ -233,7 +233,7 @@
 }
 
 .sub-navigation-feature {
-  border-bottom: .1rem solid #e1e3e7;
+  border-bottom: .1rem solid $color-gray;
   display: block;
   overflow: hidden;
   padding: $gutter $gutter 2rem;
@@ -254,17 +254,17 @@
   }
 
   &__title {
-    color: $color-darkblue;
+    color: $darkgray;
     font-size: 1.6rem;
     transition: color $animation-speed linear;
   }
 
   &:hover &__title {
-    color: $color-blue;
+    color: $lpblue;
   }
 
   &__subtitle {
-    color: #8d9197;
+    color: $light-text-color;
     font-size: 1.1rem;
     font-weight: 600;
     margin-top: .4rem;

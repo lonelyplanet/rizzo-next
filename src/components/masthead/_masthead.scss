@@ -5,8 +5,8 @@ $masthead-straplines-height-small: (2.6rem + 2.7rem); // height + margin-bottom
 $masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
 
 .masthead {
-  background-color: $h2-color;
-  color: #fff;
+  background-color: $titlegray;
+  color: $color-white;
   height: 90vh;
   left: 0;
   max-height: 80rem;
@@ -23,14 +23,14 @@ $masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
 
   &--no-images.masthead--normal {
     background-color: transparent;
-    color: $font-color;
+    color: $titlegray;
     height: 30rem;
   }
 
   &--no-images.masthead--narrow {
     @include container-padded();
     border: 0;
-    color: $font-color;
+    color: $titlegray;
     height: 30rem;
   }
 
@@ -108,7 +108,7 @@ $masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
   }
 
   &__breadcrumb {
-    color: #fff;
+    color: $color-white;
     font-size: 1.4rem;
     letter-spacing: -.02rem;
     line-height: 1;
@@ -119,17 +119,17 @@ $masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
     }
 
     a {
-      color: #fff;
+      color: $color-white;
       position: relative;
       text-transform: uppercase;
     }
   }
 
   &--no-images &__breadcrumb {
-    color: $font-color;
+    color: $titlegray;
 
     a {
-      color: $font-color;
+      color: currentColor;
     }
   }
 
@@ -222,7 +222,7 @@ $masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
     background-color: transparent;
     border: 0;
     bottom: (2.6rem - 1rem);
-    color: #fff;
+    color: $color-white;
     cursor: pointer;
     display: none;
     line-height: 1;
@@ -255,9 +255,9 @@ $masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
   }
 
   &__button--play__icon {
-    border: .2rem solid #fff;
+    border: .2rem solid $color-white;
     border-radius: 50%;
-    box-shadow: 0 0 2rem rgba(#000, .5);
+    box-shadow: 0 0 2rem rgba($color-black, .5);
     display: inline-block;
     font-size: 1.8rem;
     height: 4rem;
@@ -284,7 +284,7 @@ $masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
 
     .masthead__button--play:hover &,
     .masthead__button--play:focus & {
-      background-color: rgba(#fff, .2);
+      background-color: rgba($color-white, .2);
     }
   }
 
@@ -293,7 +293,7 @@ $masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
     font-size: 1.2rem;
     font-weight: 600;
     margin-top: ($gutter / 3);
-    text-shadow: 0 0 1rem #000;
+    text-shadow: 0 0 1rem $color-black;
 
     @media (min-width: $min-720) {
       display: inline-block;

@@ -11,7 +11,7 @@
 /// ----------------------------------------------------------------------------
 
 $social-share: (
-  'background-color': #f0f0f0,
+  'background-color': darken($color-white, 6),
   'button-size': 3rem,
   'button-size-big': 4rem,
   'margin-left': .4rem,
@@ -75,7 +75,7 @@ $social-share: (
   background-color: get($social-share, "background-color");
   border: 0;
   border-radius: 100%;
-  color: $color-darkblue;
+  color: $darkgray;
   cursor: pointer;
   display: inline-block;
   height: get($social-share, "button-size");
@@ -134,16 +134,16 @@ $social-share: (
 // `ul` of items to be inside of it. The social-share__control is also
 // reposed and used for each menu item.
 .social-share__menu__inner {
-  background-color: #fff;
+  background-color: $color-white;
   border-radius: .4rem;
-  box-shadow: .1rem 0 .2rem rgba(#000, .25), 0 0 .1rem rgba(#000, .35);
+  box-shadow: .1rem 0 .2rem rgba($color-black, .25), 0 0 .1rem rgba($color-black, .35);
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   padding: .8rem 0;
   position: relative;
 
   @media (min-width: $min-840) {
-    box-shadow: 0 .1rem .2rem rgba(#000, .25), 0 0 .1rem rgba(#000, .35);
+    box-shadow: 0 .1rem .2rem rgba($color-black, .25), 0 0 .1rem rgba($color-black, .35);
   }
 
   ul {
@@ -153,7 +153,7 @@ $social-share: (
   }
 
   .social-share__control {
-    background-color: #fff;
+    background-color: $color-white;
     border-radius: 0;
     color: $color-text;
     display: block;
@@ -169,7 +169,7 @@ $social-share: (
     &:hover,
     &:active,
     &:focus {
-      background-color: #fff;
+      background-color: $color-white;
     }
 
     .svg-icon {
@@ -209,28 +209,28 @@ $social-share: (
   }
 
   &::after {
-    background-color: #fff;
+    background-color: $color-white;
     content: "";
     display: block;
     height: 1.4rem;
     width: 1.4rem;
 
     .social-share__menu--top & {
-      box-shadow: -.1rem .1rem .1rem -.1rem rgba(#000, .84);
+      box-shadow: -.1rem .1rem .1rem -.1rem rgba($color-black, .84);
       transform: rotate(-135deg) translate(.6rem, -.6rem);
 
       @media (min-width: $min-840) {
-        box-shadow: -.1rem -.1rem .1rem -.1rem rgba(#000, .84);
+        box-shadow: -.1rem -.1rem .1rem -.1rem rgba($color-black, .84);
         transform: rotate(-135deg) translate(.6rem, .6rem);
       }
     }
 
     .social-share__menu--bottom & {
-      box-shadow: -.1rem .1rem .1rem -.1rem rgba(#000, .84);
+      box-shadow: -.1rem .1rem .1rem -.1rem rgba($color-black, .84);
       transform: rotate(-135deg) translate(.6rem, -.6rem);
 
       @media (min-width: $min-840) {
-        box-shadow: -.1rem -.1rem .1rem -.1rem rgba(#000, .44);
+        box-shadow: -.1rem -.1rem .1rem -.1rem rgba($color-black, .44);
         transform: rotate(45deg) translate(.6rem, .6rem);
       }
     }

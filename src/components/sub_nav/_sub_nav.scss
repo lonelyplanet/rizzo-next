@@ -21,7 +21,7 @@ $navigation-sub-height-mobile: $header-height-mobile;
 }
 
 .sub-nav {
-  background-color: #fff;
+  background-color: $color-white;
   font-size: 0;
   height: ($navigation-sub-height-mobile + .1);
   margin: 0;
@@ -53,7 +53,7 @@ $navigation-sub-height-mobile: $header-height-mobile;
 
   &__wrap {
     &::after {
-      border-bottom: .1rem solid #e4e4e4;
+      border-bottom: .1rem solid $color-gray;
       content: "";
       display: block;
       margin: 0 ($gutter / 2);
@@ -88,12 +88,12 @@ $navigation-sub-height-mobile: $header-height-mobile;
     }
 
     &::before {
-      background: linear-gradient(to right, rgba(#fff, 1) 0%, rgba(#fff, 0) 100%);
+      background: linear-gradient(to right, rgba($color-white, 1) 0%, rgba($color-white, 0) 100%);
       left: 0;
     }
 
     &::after {
-      background: linear-gradient(to left, rgba(#fff, 1) 0%, rgba(#fff, 0) 100%);
+      background: linear-gradient(to left, rgba($color-white, 1) 0%, rgba($color-white, 0) 100%);
       right: 0;
     }
   }
@@ -134,7 +134,7 @@ $navigation-sub-height-mobile: $header-height-mobile;
     &--active,
     a:hover,
     a:focus {
-      color: $color-blue;
+      color: $lpblue;
     }
 
     &--maps {
@@ -145,7 +145,7 @@ $navigation-sub-height-mobile: $header-height-mobile;
   }
 
   &__link {
-    color: $font-color;
+    color: $titlegray;
     display: block;
     font-size: 1.2rem;
     font-weight: 400;
@@ -154,7 +154,7 @@ $navigation-sub-height-mobile: $header-height-mobile;
     transition: 300ms color ease-in;
 
     &--active {
-      color: $color-blue;
+      color: $lpblue;
     }
 
     @media (min-width: $min-720) {

@@ -20,15 +20,15 @@
 }
 
 .svg-icon--dark {
-  fill: $color-darkblue;
+  fill: $darkgray;
 }
 
 .svg-icon--gray {
-  fill: rgba(#000, .6);
+  fill: rgba($color-black, .6);
 }
 
 .svg-icon--light-gray {
-  fill: rgba(#000, .25);
+  fill: rgba($color-black, .25);
 }
 
 .svg-icon--spin {

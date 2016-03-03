@@ -18,7 +18,7 @@
   }
 
   &__content {
-    border-top: .1rem solid #f1f4fb;
+    border-top: .1rem solid rgba($color-light-slate, .5);
     margin-top: ($gutter - .3rem);
     position: relative;
 
@@ -44,7 +44,7 @@
   }
 
   &__primary-link {
-    color: $color-darkblue;
+    color: $darkgray;
     display: block;
     font-size: 1.6rem;
     height: $height;
@@ -55,16 +55,16 @@
     &:hover,
     &:active,
     &:focus {
-      color: $color-primary;
+      color: $lpblue;
     }
   }
 
   &__number {
     $size: 2.7rem;
-    background-color: #fff;
+    background-color: $color-white;
     border-radius: .3rem;
-    box-shadow: 0 .2rem .3rem rgba(#000, .3);
-    color: $font-color;
+    box-shadow: 0 .2rem .3rem rgba($color-black, .3);
+    color: $titlegray;
     font-family: $benton-sans;
     font-size: 1.2rem;
     height: $size;
@@ -86,7 +86,7 @@
   }
 
   &__image {
-    background: center no-repeat #333;
+    background: center no-repeat $titlegray;
     background-size: cover;
     height: $height;
     left: 0;
@@ -107,31 +107,34 @@
     }
 
     &:last-child {
-      border-bottom: .1rem solid #f4f7fc;
+      border-bottom: .1rem solid rgba($color-light-slate, .4);
       height: $height - .1rem;
       line-height: $height;
     }
   }
 
   &__subtitle {
-    color: #cdd0d6;
-    font-size: 1.4rem;
+    color: rgba($light-text-color, .5);
+    font-size: 1.1rem;
+    font-weight: 700;
     height: ($height / 2);
-    line-height: ($height / 2) - 1rem;
+    line-height: 1;
+    margin-top: .1rem;
     overflow: hidden;
     padding-bottom: 1rem;
     text-overflow: ellipsis;
+    text-transform: uppercase;
     white-space: nowrap;
 
     &:last-child {
-      border-bottom: .1rem solid #f4f7fc;
+      border-bottom: .1rem solid rgba($color-light-slate, .4);
     }
   }
 
   $secondary-line-height: ($total-height - .1rem - $item-spacing * 2) / 7;
 
   &__secondary {
-    border-bottom: .1rem solid #f4f7fc;
+    border-bottom: .1rem solid rgba($color-light-slate, .4);
     font-size: 1.2rem;
     font-weight: 600;
     line-height: $secondary-line-height;
@@ -152,7 +155,7 @@
     position: relative;
 
     &::before {
-      color: #a7a9ae;
+      color: $top-place-number-color;
       content: counter(tlist) ".";
       counter-increment: tlist;
       display: block;
@@ -175,7 +178,7 @@
   }
 
   &__secondary-link {
-    color: #2b3642;
+    color: $darkgray;
     display: block;
     height: $secondary-line-height;
     overflow: hidden;
@@ -187,7 +190,7 @@
     &:hover,
     &:active,
     &:focus {
-      color: $color-primary;
+      color: $lpblue;
     }
   }
 
@@ -201,9 +204,9 @@
 
 .top_places {
   $close-button-size: 7.2rem;
-  background-color: #fff;
+  background-color: $color-white;
   bottom: 0;
-  box-shadow: 0 .5rem 5rem rgba(#000, .5);
+  box-shadow: 0 .5rem 5rem rgba($color-black, .5);
   left: 0;
   opacity: 0;
   position: fixed;
@@ -252,9 +255,9 @@
     }
 
     @media (min-width: $min-720) {
-      background-color: #fff;
+      background-color: $color-white;
       border-radius: 50%;
-      box-shadow: 0 2.2rem 4.5rem rgba(#000, .75);
+      box-shadow: 0 2.2rem 4.5rem rgba($color-black, .75);
       font-size: 2.6rem;
       height: $close-button-size;
       left: 50%;
@@ -277,7 +280,7 @@
   }
 
   &__content {
-    background-color: #fff;
+    background-color: $color-white;
     bottom: 0;
     left: 0;
     margin: 0 auto;

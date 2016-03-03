@@ -4,7 +4,7 @@
   @include h1();
 
   [class*="icon-"] {
-    color: #f01516;
+    color: saturate($color-red, 16);
     display: inline-block;
     font-size: 0;
     transform-origin: 50% 60%;
@@ -24,7 +24,7 @@
 }
 
 .intro-narrative__text {
-  color: #67747d;
+  color: $feature-copy;
   font-size: $font-size;
   font-style: italic;
   line-height: 1.8;

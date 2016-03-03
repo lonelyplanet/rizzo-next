@@ -1,8 +1,6 @@
 @import "../../../sass/webpack_deps";
 
-$fad-color: #b2b4b8;
 $fad-column-width: (100% / 3);
-$item-border-color: #f1f4fb;
 
 .food-and-drink {
   font-weight: $font-weight-medium;
@@ -105,7 +103,7 @@ $item-border-color: #f1f4fb;
 
   &__title {
     @include link-transition();
-    color: $fad-color;
+    color: rgba($light-text-color, .6);
     font-size: 1.4rem;
     font-weight: 700;
     line-height: 1;
@@ -115,15 +113,15 @@ $item-border-color: #f1f4fb;
   }
 
   &__name {
-    color: $color-darkblue;
+    color: $darkgray;
   }
 
   &__location {
-    color: $fad-color;
+    color: $light-text-color;
   }
 
   &__categories {
-    color: $fad-color;
+    color: rgba($light-text-color, .6);
     font-size: 1.1rem;
     font-weight: 700;
     line-height: 1;

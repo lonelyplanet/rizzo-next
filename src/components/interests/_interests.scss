@@ -187,7 +187,7 @@ $max-card-width: 1395px; // When all 9 cards are up
     }
 
     .interests__card--inner {
-      background-color: #67747c;
+      background-color: $feature-copy;
       background-position: 0;
       background-size: cover;
       height: $square-size - $gutter;
@@ -195,7 +195,7 @@ $max-card-width: 1395px; // When all 9 cards are up
       width: $square-size - $gutter;
 
       &::before {
-        background: linear-gradient(to top, rgba(#000, .4) 0%, rgba(#000, 0) 32%);
+        background: linear-gradient(to top, rgba($color-black, .4) 0%, rgba($color-black, 0) 32%);
         bottom: 0;
         content: "";
         display: block;
@@ -206,7 +206,7 @@ $max-card-width: 1395px; // When all 9 cards are up
       }
 
       .interests__card__bottom {
-        border-top: .1rem solid rgba(#fff, .6);
+        border-top: .1rem solid rgba($color-white, .6);
         bottom: 1rem;
         display: table;
         height: 4rem;
@@ -221,7 +221,7 @@ $max-card-width: 1395px; // When all 9 cards are up
       }
 
       .interests__card__link {
-        color: #fff;
+        color: $color-white;
         display: table-cell;
         font-size: 1.2rem;
         font-weight: 600;

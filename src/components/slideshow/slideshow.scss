@@ -13,7 +13,7 @@
   }
 
   &__slide {
-    background: center no-repeat $h2-color;
+    background: center no-repeat $titlegray;
     background-size: cover;
     bottom: 0;
     left: 0;
@@ -95,7 +95,7 @@
   }
 
   &__progress__dot {
-    background-color: rgba(#fff, .6);
+    background-color: rgba($color-white, .6);
     border-radius: 50%;
     display: inline-block;
     height: 1rem;
@@ -103,7 +103,7 @@
     width: 1rem;
 
     &--active {
-      background-color: #fff;
+      background-color: $color-white;
     }
   }
 }

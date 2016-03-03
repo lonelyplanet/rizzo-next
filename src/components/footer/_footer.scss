@@ -16,7 +16,7 @@ $logo-height: 4rem;
 
   &__bottom {
     @include clearfix;
-    border-top: .1rem solid $color-border;
+    border-top: .1rem solid $color-gray;
     padding-bottom: $gutter;
     position: relative;
 
@@ -29,7 +29,7 @@ $logo-height: 4rem;
   }
 
   &__logo {
-    fill: #cccdce;
+    fill: darken($color-white, 20); // #cccdce;
     transition: fill ($animation-speed / 2);
 
     @media (max-width: $max-960) {
@@ -47,7 +47,7 @@ $logo-height: 4rem;
     &:hover,
     &:active,
     &:focus {
-      fill: $color-primary;
+      fill: $lpblue;
     }
 
     svg {
@@ -83,9 +83,9 @@ $logo-height: 4rem;
   }
 
   &__social-link {
-    border: .1rem solid #e5e7ed;
+    border: .1rem solid $social-network-button-color;
     border-radius: 50%;
-    color: #cccdce;
+    color: darken($color-white, 20); // #cccdce;
     display: block;
     height: $logo-height;
     line-height: ($logo-height + .5);
@@ -97,8 +97,8 @@ $logo-height: 4rem;
     &:hover,
     &:active,
     &:focus {
-      background-color: #e5e7ed;
-      color: #fff;
+      background-color: $social-network-button-color;
+      color: $color-white;
     }
 
     .svg-icon {
@@ -184,7 +184,7 @@ $logo-height: 4rem;
   }
 
   &__link {
-    color: $footer-bottom-link-color;
+    color: $font-color-light;
     display: block;
     font-weight: 600;
     transition: color $animation-speed;
@@ -196,7 +196,7 @@ $logo-height: 4rem;
     &:hover,
     &:active,
     &:focus {
-      color: $color-primary;
+      color: $lpblue;
     }
   }
 }
@@ -250,6 +250,7 @@ $logo-height: 4rem;
 }
 
 .lp-global-footer__main__links__header {
+  color: $darkgray;
   font-size: 1.2rem;
   font-weight: $font-weight-semibold;
   line-height: 1;
@@ -288,14 +289,14 @@ $logo-height: 4rem;
   }
 
   a {
-    color: $darkgray;
+    color: currentColor;
     transition-duration: $animation-speed;
     transition-property: color, border, background;
 
     &:hover,
     &:active,
     &:focus {
-      color: $color-primary;
+      color: $lpblue;
     }
   }
 }
@@ -333,7 +334,7 @@ $logo-height: 4rem;
     &:hover,
     &:active,
     &:focus {
-      color: $color-primary;
+      color: $lpblue;
     }
   }
 }
@@ -405,10 +406,9 @@ $logo-height: 4rem;
 }
 
 .language__label {
-  color: #717880;
+  color: rgba($titlegray, .72);
   font-size: 1.3rem;
   line-height: 1;
-  margin-bottom: 0;
 
   @media (min-width: $min-960) {
     padding-left: 1.2rem;

@@ -20,7 +20,7 @@ $height: 6rem;
 
   &__image {
     background: {
-      color: #ccc;
+      color: darken($color-white, 20); // #ccc;
       repeat: no-repeat;
       size: cover;
     }

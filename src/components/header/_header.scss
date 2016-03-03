@@ -5,11 +5,11 @@
   z-index: z("global-header");
 
   &--narrow {
-    background-color: #fff;
+    background-color: $color-white;
   }
 
   &--normal {
-    background: linear-gradient(to bottom, rgba(#000, .2), rgba(#000, 0));
+    background: linear-gradient(to bottom, rgba($color-black, .2), rgba($color-black, 0));
     left: 0;
     position: absolute;
     right: 0;
@@ -22,7 +22,7 @@
   }
 
   &__inner {
-    border-bottom: .1rem solid rgba(#fff, .3);
+    border-bottom: .1rem solid rgba($color-white, .3);
     height: $header-height-mobile;
     perspective: 800px;
     position: relative;
@@ -37,12 +37,12 @@
   }
 
   &--no-images.lp-global-header--narrow &__inner {
-    border-bottom-color: $color-border;
+    border-bottom-color: $color-gray;
   }
 
   &__logo {
     display: block;
-    fill: #fff;
+    fill: $color-white;
     height: 100%;
     margin: 0 auto;
     position: relative;
@@ -67,7 +67,7 @@
   }
 
   &--narrow &__logo {
-    fill: $color-primary;
+    fill: $lpblue;
   }
 
   &__search {
@@ -76,7 +76,7 @@
     @media (min-width: $min-1080) {
       background-color: transparent;
       border: 0;
-      color: rgba(#fff, .38);
+      color: rgba($color-white, .38);
       cursor: pointer;
       display: block;
       font-size: 2.4rem;
@@ -102,12 +102,12 @@
     }
 
     &--fade {
-      -webkit-mask-image: -webkit-gradient(linear, 70% 0, 100% 0, from(rgba(#000, 1)), to(rgba(#000, 0)));
+      -webkit-mask-image: -webkit-gradient(linear, 70% 0, 100% 0, from(rgba($color-black, 1)), to(rgba($color-black, 0)));
       width: 42%;
     }
 
     [class*="icon-"] {
-      color: #fff;
+      color: $color-white;
       font-size: 2rem;
       margin-right: 1.2rem;
       transition: margin $animation-speed;
@@ -127,26 +127,26 @@
   }
 
   &__search-text {
-    color: #fff;
+    color: $color-white;
     transition: color $animation-speed;
   }
 
   &__search:hover &__search-text,
   &__search:active &__search-text,
   &__search:focus &__search-text {
-    color: rgba(#fff, .38);
+    color: rgba($color-white, .38);
   }
 
   &--narrow &__search,
   &--narrow &__search:hover &__search-text,
   &--narrow &__search:active &__search-text,
   &--narrow &__search:focus &__search-text {
-    color: rgba($body-color, .38);
+    color: rgba($titlegray, .38);
   }
 
   &--narrow &__search [class*="icon-"],
   &--narrow &__search-text {
-    color: $body-color;
+    color: $titlegray;
   }
 
   &__navigation {
@@ -189,7 +189,7 @@
   &__mobile-cart {
     background: transparent;
     border: 0;
-    color: #fff;
+    color: $color-white;
     cursor: pointer;
     display: block;
     line-height: $header-height-mobile;
@@ -214,7 +214,7 @@
   &--narrow &__mobile-search,
   &--narrow &__mobile-menu,
   &--narrow &__mobile-cart {
-    color: $body-color;
+    color: $titlegray;
   }
 
   &__mobile-search {
@@ -238,7 +238,7 @@
       &,
       &::before,
       &::after {
-        background-color: #fff;
+        background-color: $color-white;
         display: block;
         height: .2rem;
         position: absolute;
@@ -267,7 +267,7 @@
       &,
       &::before,
       &::after {
-        background-color: $body-color;
+        background-color: $titlegray;
       }
     }
   }

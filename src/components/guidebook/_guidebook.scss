@@ -21,7 +21,6 @@
 }
 
 .guidebook__blurb {
-  color: $color-text;
   font-size: 1.6rem;
   font-weight: $font-weight-medium;
   line-height: (24 / 16);
@@ -89,7 +88,7 @@
   }
 
   @media (min-width: $min-1080) {
-    color: $h2-secondary-color;
+    color: $color-red;
     padding-top: 0;
     text-align: left;
 
@@ -103,7 +102,7 @@
   display: none;
 
   @media (min-width: $min-1080) {
-    color: $ancillary-header-color;
+    color: rgba($light-text-color, .6);
     display: block;
     font-size: 2.6rem;
     font-weight: 300;
@@ -137,7 +136,7 @@
 
 .guidebook__picture {
   backface-visibility: hidden;
-  box-shadow: 2rem 1rem 6rem rgba(#000, .4);
+  box-shadow: 2rem 1rem 6rem rgba($color-black, .4);
   display: inline-block;
   font-size: 0;
   transition: 200ms transform;
