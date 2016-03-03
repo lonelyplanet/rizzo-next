@@ -55,6 +55,13 @@ $hotels-max-width: 1170;
 
   &__more {
     color: #fff;
+    transition: color $animation-speed;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: rgba(#fff, .6);
+    }
 
     .icon-chevron-right {
       &::before {
