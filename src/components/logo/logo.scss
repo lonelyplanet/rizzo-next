@@ -70,17 +70,17 @@
 .lp-logo--white,
 .lp-logo--normal {
   // @TODO remove `--normal` and pass color in like `{{type}}`
-  color: #fff;
+  color: $color-white;
 }
 
 .lp-logo--blue,
 .lp-logo--narrow {
   // @TODO remove `--narrow` and pass color in like `{{type}}`
-  color: $color-primary;
+  color: $lpblue;
 }
 
 .lp-logo--gray {
-  color: #cccdce;
+  color: darken($color-white, 20); // #cccdce
   transition: color ($animation-speed / 2);
 
   &:hover,
