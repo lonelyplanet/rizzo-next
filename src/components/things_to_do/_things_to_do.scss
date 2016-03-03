@@ -248,36 +248,14 @@ $image-card-hover-movement: .5rem;
     }
   }
 
-  &__number {
-    $size: 2.7rem;
-    backface-visibility: hidden;
-    background-color: $color-white;
-    border-radius: .4rem;
-    box-shadow: 0 .2rem .2rem rgba($color-black, .3);
-    color: $titlegray;
-    display: inline-block;
-    font-family: $miller-daily;
-    font-size: 1.4rem;
-    height: $size;
-    line-height: $size;
+  &__marker {
+    @include marker;
+    @include marker-small;
     margin-bottom: (($spacing / 2) + .5);
-    position: relative;
-    text-align: center;
-    transform: rotate(45deg);
-    width: $size;
-
-    .num {
-      display: block;
-      transform: rotate(-45deg);
-    }
 
     @media (min-width: $min-480) {
-      $size: 3.7rem;
-      font-size: 2rem;
-      height: $size;
-      line-height: $size;
+      @include marker-large;
       margin-bottom: 2.1rem;
-      width: $size;
     }
   }
 

@@ -162,38 +162,13 @@
   white-space: nowrap;
 }
 
-.sights__count {
-  $size: 3rem;
-  display: block;
-  height: $size;
-  left: (($size * 2) + .5);
-  line-height: 1;
-  position: absolute;
-  text-align: center;
-  top: 50%;
-  transform: translate(0, -50%);
-  width: $size;
+.sights__marker {
+  @include marker;
+  @include marker-small;
+  @include marker-place;
 
   &::before {
-    background-color: $color-white;
-    border-radius: .4rem;
-    box-shadow: .2rem .1rem .4rem -.2rem lighten($color-black, 20); // #333
-    content: "";
-    display: block;
-    height: 100%;
-    left: 50%;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%) rotate(45deg);
-    width: 100%;
-  }
-
-  &::after {
-    color: $feature-copy;
     content: counter(sights-count);
     counter-increment: sights-count;
-    font-size: 1.3rem;
-    position: relative;
-    top: .6rem;
   }
 }
