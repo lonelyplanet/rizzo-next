@@ -3,6 +3,8 @@
 /// ----------------------------------------------------------------------------
 
 // Custom breakpoints (Mobile first)
+/// 1430px min width breakpoint
+$min-1430: #{(1430 * .0625)}em;
 /// 1410px min width breakpoint
 $min-1410: #{(1410 * .0625)}em;
 /// 1350px min width breakpoint
@@ -36,6 +38,7 @@ $min-320: #{(320 * .0625)}em;
 
 // Custom breakpoints
 $max-1530: #{(1530 * .0625)}em;
+$max-1430: #{(1429 * .0625)}em;
 $max-1410: #{(1409 * .0625)}em;
 $max-1350: #{(1349 * .0625)}em;
 $max-1290: #{(1289 * .0625)}em;
