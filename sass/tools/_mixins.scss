@@ -981,7 +981,7 @@
 // proper dimensions and font size.
 @mixin marker {
   backface-visibility: hidden;
-  color: #3b444f;
+  color: $titlegray;
   display: inline-block;
   font-family: $miller-daily;
   position: relative;
@@ -996,8 +996,8 @@
 
   // Create diamond shape
   &::after {
-    background-color: #fff;
-    box-shadow: .2rem .2rem .2rem rgba(#000, .18);
+    background-color: $color-white;
+    box-shadow: .2rem .2rem .2rem rgba($color-black, .18);
     content: "";
     display: block;
     height: 100%;
