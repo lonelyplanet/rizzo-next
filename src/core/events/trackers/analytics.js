@@ -1,5 +1,4 @@
 import isJson from "../../utils/is_json";
-import isDev from "../../utils/is_dev";
 import gaEventMap from "./ga_event_map";
 
 /**
@@ -12,9 +11,9 @@ export default function({ name, data } = {}) {
 
   let mappedEvent,
       gaEventData = {
-        category: "Destinations Next",
+        category: data ? data.category : "Destinations Next",
         action: name,
-        label: isJson(data) ? JSON.stringify(data) : data
+        label: isJson(data) ? JSON.stringify(data) : (data ? data.label : data)
       };
 
   if (mappedEvent = gaEventMap[name]) {
@@ -26,17 +25,13 @@ export default function({ name, data } = {}) {
   }
 
   let utagEvent = Object.keys(gaEventData).reduce((memo, key) => {
-    memo["ga_event_" + key] = mappedEvent[key] || gaEventData[key];
+    memo[key] = mappedEvent[key] || gaEventData[key];
     return memo;
   }, {});
 
-  if (isDev()) {
-    console.log(`utag: ${JSON.stringify(utagEvent)}`);
-  } else if (
-    typeof window.utag !== "undefined" && 
-    typeof window.utag.link === "function") {
-    window.utag.link(utagEvent);
+  if (typeof window.lp.analytics != "undefined") {
+    window.lp.analytics.api.trackEvent(utagEvent);
   } else {
-    window.trackJs.console.log(`utag: not loaded yet`);
+    window.trackJs.console.log(`analytics: not loaded yet`);
   }
 };
