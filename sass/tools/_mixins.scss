@@ -1133,3 +1133,36 @@
     left: -.1rem;
   }
 }
+
+// 1. Flow with text content
+// 2. Inherit the parent text color
+// 3. Use the parent font-size for width and height
+// 4. Vertically align icon with adjacent text
+@mixin svg-icon {
+  display: inline-block; // 1
+  fill: currentColor; // 2
+  height: 1em; // 3
+  vertical-align: middle; // 4
+  width: 1em; // 3
+}
+
+// Align more nicely with capital letters
+@mixin svg-icon-inline {
+  position: relative;
+  top: -.0625em;
+}
+
+@mixin svg-icon-fit {
+  height: 100%;
+  width: 100%;
+}
+
+@mixin svg-icon-small {
+  height: 1.6rem;
+  width: 1.6rem;
+}
+
+@mixin svg-icon-tiny {
+  height: .6rem;
+  width: .6rem;
+}
