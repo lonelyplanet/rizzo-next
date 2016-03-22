@@ -225,7 +225,7 @@ $logo-height: 4rem;
   color: $darkgray;
   font-size: 1.2rem;
   font-weight: $font-weight-semibold;
-  line-height: 1;
+  line-height: inherit;
   text-transform: uppercase;
 
   @media (max-width: $max-960) {
