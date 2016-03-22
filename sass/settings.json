@@ -1,15 +1,58 @@
 {
+  "animation": {
+    "speed": "400ms",
+    "speedUi": "800ms"
+  },
   "color": {
     "darkGray": "#2c3643",
     "titleGray": "#3b444f",
+    "featureCopy": "#67747c",
+    "lpBlue": "#297cbb",
     "blue": "#297cbb",
     "subduedGray": "#dbe6ec",
+    "orange": "#ffc83f",
+    "yellow": "#feef6d",
+
+    "active": "#0fdebd",
     "red": "#dc221a",
+    "gray": "#e4e4e4",
+    "articlesBlurb": "#7e838b",
     "text": "#474f5a",
+    "footerCopyright": "#bfc2c6",
+    "lightText": "#898e95",
+    "fontColorLight": "#959aa0",
+    "lightSlate": "#e4eaf8",
+    "activeBackgroundColor": "#f4f5f8",
+    "lightBlue": "#bdcee3",
+
     "white": "#fff",
     "black": "#000",
-    "lightText": "#898e95",
-    "gray": "#e4e4e4"
+
+    "topPlaceNumber": "#a7a9ae",
+    "detailHeaderSmall": "#b6c3ca",
+    "socialNetworkButton": "#e5e7ed",
+
+    "alertWarning": "#dc221a",
+    "alertNotice": "#feef6d",
+    "alertDefault": "#3b444f",
+
+    "facebook": "#3b5998",
+    "twitter": "#00aced",
+    "pinterest": "#cb2027"
+  },
+  "components": {
+    "header": {
+      "height": "13rem",
+      "heightMobile": "5rem"
+    }
+  },
+  "default": {
+    "minWidth": "32rem",
+    "maxWidth": "129rem",
+    "spacing": "1.5rem",
+    "gutter": "3rem",
+    "radius": ".2rem",
+    "baseSize": "1.8em"
   },
   "font": {
     "family": {
@@ -40,6 +83,15 @@
         "serif"
       ]
     }
+  },
+  "grid": {
+    "columns": 12,
+    "columnWidth": "8rem",
+    "container": "129rem",
+    "gutterPosition": "before",
+    "gutters": "3 / 8",
+    "math": "fluid",
+    "output": "float"
   },
   "layout": {
     "gutter": "3rem",
@@ -80,9 +132,29 @@
       "720": "44.9375em",
       "600": "37.4375em",
       "560": "34.9375em",
-      "448": "29.9375em",
+      "480": "29.9375em",
       "360": "22.4375em",
       "320": "19.9375em"
     }
+  },
+  "typography": {
+    "fontSize": "1.8rem",
+    "fontWeightLight": 300,
+    "fontWeightMedium": 500,
+    "fontWeightSemibold": 600,
+    "fontWeightBold": 700,
+    "lineHeight": 1.5
+  },
+  "zIndex": {
+    "auto": "auto",
+    "below": -1,
+    "default": 1,
+    "slideshow-slide": 3,
+    "middle": 10,
+    "top": 20,
+    "global-header": 100,
+    "map-holder-open": 200,
+    "video-overlay-close": 1000,
+    "modal": 9999
   }
 }
