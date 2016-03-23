@@ -27,8 +27,8 @@ export default class ItemView extends React.Component {
         title = title.substr(0, 35) + "…";
       }
     }
-    if (item.geo.properties.image) {
-      let imgSrc = item.geo.properties.image;
+    if (item.geo.properties.thumbnail) {
+      let imgSrc = item.geo.properties.thumbnail;
       imgStyle = { backgroundImage: `url(${imgSrc})` };
     }
     else {
