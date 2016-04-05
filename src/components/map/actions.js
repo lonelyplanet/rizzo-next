@@ -79,7 +79,7 @@ class MapActions {
     Arkham.trigger("state.setinitial", state);
   }
 
-  @track("Modal Location Override")
+  @track("Map Location Override")
   initMap() {
     Arkham.trigger("map.init");
     return { label: `/${window.lp.place.slug}/map`, category: "Page View" };
