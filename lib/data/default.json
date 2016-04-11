@@ -24,12 +24,36 @@
             },
             "items": [
               {
+                "title": "Africa",
+                "slug": "africa"
+              },
+              {
+                "title": "Antarctica",
+                "slug": "antarctica-1007062"
+              },
+              {
                 "title": "Asia",
                 "slug": "asia"
               },
               {
+                "title": "Australia & Pacific",
+                "slug": "pacific"
+              },
+              {
+                "title": "Caribbean",
+                "slug": "caribbean"
+              },
+              {
+                "title": "Central America",
+                "slug": "central-america"
+              },
+              {
                 "title": "Europe",
                 "slug": "europe"
+              },
+              {
+                "title": "Middle East",
+                "slug": "middle-east"
               },
               {
                 "title": "North America",
@@ -38,30 +62,6 @@
               {
                 "title": "South America",
                 "slug": "south-america"
-              },
-              {
-                "title": "Central America",
-                "slug": "central-america"
-              },
-              {
-                "title": "Africa",
-                "slug": "africa"
-              },
-              {
-                "title": "Caribbean",
-                "slug": "caribbean"
-              },
-              {
-                "title": "Middle East",
-                "slug": "middle-east"
-              },
-              {
-                "title": "Australia & Pacific",
-                "slug": "pacific"
-              },
-              {
-                "title": "Antarctica",
-                "slug": "antarctica-1007062"
               }
             ],
             "call_to_action": {
@@ -134,7 +134,7 @@
         { "title": "North America", "url": "/north-america" },
         { "title": "Pacific", "url": "/pacific" },
         { "title": "South America", "url": "/south-america" }
-      ], 
+      ],
 
       "footer_nav_shop_items":
       [
@@ -144,7 +144,7 @@
         { "title": "Phrasebooks", "url": "http://shop.lonelyplanet.com/phrasebooks" },
         { "title": "Activity guides", "url": "http://shop.lonelyplanet.com/activity-guides" },
         { "title": "Special offers", "url": "http://shop.lonelyplanet.com/special-offers" }
-      ], 
+      ],
 
       "footer_nav_forum_items":
       [
@@ -152,7 +152,7 @@
         { "title": "Talk to Lonely Planet", "url": "http://lonelyplanet.com/thorntree/categories/talk-to-lonely-planet" },
         { "title": "Interest forums", "url": "http://lonelyplanet.com/thorntree/categories/interest-forums" },
         { "title": "Travel buddies & for sale", "url": "http://lonelyplanet.com/thorntree/categories/sell-swap-meet-up" }
-      ], 
+      ],
 
       "footer_nav_interest_items":
       [
@@ -166,14 +166,14 @@
         { "title": "Luxury travel", "url": "http://www.lonelyplanet.com/luxury-travel" },
         { "title": "Round the world travel", "url": "http://www.lonelyplanet.com/round-the-world-travel" },
         { "title": "Wildlife and nature", "url": "http://www.lonelyplanet.com/wildlife-and-nature" }
-      ], 
+      ],
 
       "footer_nav_booking_items":
       [
         { "title": "Hotels", "url": "http://www.lonelyplanet.com/hotels" },
         { "title": "Flights", "url": "http://www.lonelyplanet.com/flights" },
         { "title": "Insurance", "url": "http://www.lonelyplanet.com/travel-insurance" }
-      ], 
+      ],
 
       "footer_bottom_links":
       [
@@ -183,7 +183,7 @@
         { "title": "Press, trade and advertising", "url": "http://lonelyplanet.com/press-trade-advertising" },
         { "title": "Terms & conditions", "url": "http://lonelyplanet.com/legal/website-terms" },
         { "title": "Privacy policy", "url": "http://lonelyplanet.com/legal/privacy-policy" }
-      ], 
+      ],
 
       "footer_social_media_links":
       [
