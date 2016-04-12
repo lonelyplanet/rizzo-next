@@ -36,3 +36,4 @@ tmp
 sassdoc
 .vscode
 .idea
+.babelrc
