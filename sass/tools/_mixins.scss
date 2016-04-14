@@ -504,6 +504,27 @@
   }
 }
 
+@mixin container-header {
+  @include container;
+  margin-left: (gutter(static) / 2);
+  margin-right: (gutter(static) / 2);
+
+  @media (min-width: $min-720) {
+    margin-left: gutter(static);
+    margin-right: gutter(static);
+  }
+
+  @media (min-width: $min-1080) {
+    margin-left: (gutter(static) * 2);
+    margin-right: (gutter(static) * 2);
+  }
+
+  @media (min-width: $min-1410) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 /// ----------------------------------------------------------------------------
 /// Extends Susy by returning a container with gutters; requires
 /// [Susy](http://susy.oddbird.net/).
