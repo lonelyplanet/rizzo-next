@@ -37,7 +37,7 @@
   }
 
   &__container {
-    @include container-padded();
+    @include container-header;
   }
 
   &__input {
@@ -77,21 +77,22 @@
     color: $titlegray;
     display: block;
     font-size: 0;
-    height: 2rem;
+    height: 1.8rem;
     left: 0;
     line-height: 1;
     margin-bottom: auto;
     margin-top: auto;
     position: absolute;
     top: 0;
-    width: 2rem;
+    width: 1.8rem;
 
     @media (min-width: $min-720) {
       top: -.4rem;
     }
 
-    &::before {
-      font-size: 2rem;
+    .svg-icon {
+      font-size: 1.8rem;
+      vertical-align: 0;
     }
   }
 
@@ -99,7 +100,7 @@
     background-color: transparent;
     border: 0;
     bottom: 0;
-    color: $active-background-color;
+    color: $color-light-blue;
     cursor: pointer;
     display: block;
     font-size: 0;
@@ -116,20 +117,18 @@
 
     @media (min-width: $min-720) {
       right: 0;
+      top: -.4rem;
     }
 
     &:hover,
     &:active,
     &:focus {
-      color: $lpblue;
+      color: $titlegray;
     }
 
-    &::before {
+    .svg-icon {
       font-size: 1.8rem;
-
-      @media (min-width: $min-720) {
-        font-size: 2rem;
-      }
+      vertical-align: 0;
     }
   }
 }

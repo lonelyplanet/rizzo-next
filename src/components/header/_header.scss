@@ -1,11 +1,28 @@
 @import "../../../sass/webpack_deps";
 
+$lp-global-header-mobile-icon-size: 2.4rem;
+$lp-global-header-mobile-icon-padding: ($header-height-mobile - $lp-global-header-mobile-icon-size) / 2;
+
 .lp-global-header {
   position: relative;
   z-index: z("global-header");
 
+  @media (max-width: $max-720) {
+    border-bottom: .1rem solid rgba($color-white, .3);
+  }
+
   &--narrow {
     background-color: $color-white;
+
+    @media (max-width: $max-720) {
+      border-bottom: 0;
+    }
+  }
+
+  &--no-images.lp-global-header--narrow {
+    @media (max-width: $max-720) {
+      border-bottom: .1rem solid $color-gray;
+    }
   }
 
   &--normal {
@@ -18,26 +35,30 @@
   }
 
   &__container {
-    @include container-padded();
+    @include container-header;
   }
 
   &__inner {
-    border-bottom: .1rem solid rgba($color-white, .3);
     height: $header-height-mobile;
     perspective: 800px;
     position: relative;
 
     @media (min-width: $min-720) {
+      border-bottom: .1rem solid rgba($color-white, .3);
       height: $header-height;
     }
   }
 
   &--narrow &__inner {
-    border-bottom-color: transparent;
+    @media (min-width: $min-720) {
+      border-bottom-color: transparent;
+    }
   }
 
   &--no-images.lp-global-header--narrow &__inner {
-    border-bottom-color: $color-gray;
+    @media (min-width: $min-720) {
+      border-bottom-color: $color-gray;
+    }
   }
 
   &__search {
@@ -76,18 +97,19 @@
       width: 42%;
     }
 
-    [class*="icon-"] {
+    .svg-icon {
       color: $color-white;
-      font-size: 2rem;
-      margin-right: 1.2rem;
+      font-size: 1.8rem;
+      margin-right: 1.4rem;
       transition: margin $animation-speed;
+      vertical-align: 0;
     }
 
     &:hover,
     &:active,
     &:focus {
-      [class*="icon-"] {
-        margin-right: (1.2rem - .3);
+      .svg-icon {
+        margin-right: (1.4rem - .3);
       }
     }
 
@@ -114,7 +136,7 @@
     color: rgba($titlegray, .38);
   }
 
-  &--narrow &__search [class*="icon-"],
+  &--narrow &__search .svg-icon,
   &--narrow &__search-text {
     color: $titlegray;
   }
@@ -135,13 +157,15 @@
   &__mobile {
     bottom: 0;
     position: absolute;
-    right: (-$gutter / 2);
     top: 0;
     transition: opacity $animation-speed;
 
     &--left {
-      left: (-$gutter / 2);
-      right: auto;
+      left: -#{$lp-global-header-mobile-icon-padding};
+    }
+
+    &--right {
+      right: -#{$lp-global-header-mobile-icon-padding};
     }
 
     &--hidden {
@@ -162,11 +186,20 @@
     color: $color-white;
     cursor: pointer;
     display: block;
-    line-height: $header-height-mobile;
     padding: 0;
     position: relative;
-    text-indent: -9999rem;
     user-select: none;
+  }
+
+  &__mobile-search,
+  &__mobile-menu {
+    font-size: $lp-global-header-mobile-icon-size;
+    line-height: 1;
+  }
+
+  &__mobile-cart {
+    line-height: $header-height-mobile;
+    text-indent: -9999rem;
 
     &::before {
       bottom: 0;
@@ -184,26 +217,22 @@
   &--narrow &__mobile-search,
   &--narrow &__mobile-menu,
   &--narrow &__mobile-cart {
-    color: $titlegray;
+    color: $darkgray;
   }
 
-  &__mobile-search {
+  &__mobile-search,
+  &__mobile-menu {
     height: $header-height-mobile;
+    padding: $lp-global-header-mobile-icon-padding;
+    top: 0;
     width: $header-height-mobile;
-
-    &::before {
-      margin-left: .4rem;
-    }
   }
 
   &__mobile-menu {
-    height: $header-height-mobile;
-    width: $header-height-mobile;
-
     .menu-icon {
-      left: 1.5rem;
-      right: 1.5rem;
-      top: ($header-height-mobile / 2 - .1);
+      left: $lp-global-header-mobile-icon-padding;
+      right: $lp-global-header-mobile-icon-padding;
+      top: ($header-height-mobile / 2);
 
       &,
       &::before,
@@ -212,7 +241,7 @@
         display: block;
         height: .2rem;
         position: absolute;
-        width: 2rem;
+        width: 2.4rem;
       }
 
       &::before,
@@ -223,11 +252,11 @@
       }
 
       &::before {
-        top: -.5rem;
+        top: -.7rem;
       }
 
       &::after {
-        top: .5rem;
+        top: .7rem;
       }
     }
   }
@@ -237,7 +266,7 @@
       &,
       &::before,
       &::after {
-        background-color: $titlegray;
+        background-color: $darkgray;
       }
     }
   }

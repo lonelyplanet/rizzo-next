@@ -52,6 +52,7 @@ $survival-guide-breakpoint-mobile: #{(399 * .0625)}em;
   }
 
   &__icon {
+    color: $color-icon-blue;
     display: block;
     height: 6rem;
     margin-left: auto;
