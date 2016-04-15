@@ -67,7 +67,7 @@ $lp-global-header-mobile-icon-padding: ($header-height-mobile - $lp-global-heade
     @media (min-width: $min-1080) {
       background-color: transparent;
       border: 0;
-      color: rgba($color-white, .38);
+      color: $color-white;
       cursor: pointer;
       display: block;
       font-size: 2.4rem;
@@ -82,6 +82,7 @@ $lp-global-header-mobile-icon-padding: ($header-height-mobile - $lp-global-heade
       text-align: left;
       text-overflow: ellipsis;
       top: 50%;
+      transition: color $animation-speed;
       user-select: none;
       white-space: nowrap;
       width: percentage(447px / 1155px); // So it doesn't get too close to the logo
@@ -118,26 +119,21 @@ $lp-global-header-mobile-icon-padding: ($header-height-mobile - $lp-global-heade
     }
   }
 
-  &__search-text {
-    color: $color-white;
-    transition: color $animation-speed;
-  }
-
-  &__search:hover &__search-text,
-  &__search:active &__search-text,
-  &__search:focus &__search-text {
+  &__search:hover,
+  &__search:active,
+  &__search:focus {
     color: rgba($color-white, .38);
   }
 
   &--narrow &__search,
-  &--narrow &__search:hover &__search-text,
-  &--narrow &__search:active &__search-text,
-  &--narrow &__search:focus &__search-text {
+  &--narrow &__search:hover,
+  &--narrow &__search:active,
+  &--narrow &__search:focus {
     color: rgba($titlegray, .38);
   }
 
   &--narrow &__search .svg-icon,
-  &--narrow &__search-text {
+  &--narrow &__search {
     color: $titlegray;
   }
 
