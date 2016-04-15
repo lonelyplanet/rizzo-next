@@ -734,10 +734,10 @@
 
     &.is-xlarge {
       color: $darkgray;
-      font-size: 2.7rem;
+      font-size: 3rem;
       font-weight: 600;
-      letter-spacing: -.2rem;
-      line-height: (36.5 / 27);
+      letter-spacing: -.1rem;
+      line-height: (36 / 30);
 
       @media (min-width: $min-600) {
         font-size: 6.4rem;
