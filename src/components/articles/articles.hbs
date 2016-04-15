@@ -3,7 +3,7 @@
 
   <div class="articles__list">
     {{#each articles}}
-      <div class="ntvarticle-{{@index}}"></div>
+      <div id="ntvarticle-{{@index}}"></div>
       <article class="article" data-targeting='{ "position": "{{article_id}}"}'>
         <div class="article__info">
           <a class="article__info__link" href="{{url}}">
@@ -32,7 +32,7 @@
       </article>
     {{/each}}
     {{#if show_ntv_div}}
-    <div class="ntvarticle-2"></div>
+    <div id="ntvarticle-2"></div>
     {{/if}}
   </div>
 
