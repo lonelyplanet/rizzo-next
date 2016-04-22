@@ -1,6 +1,8 @@
+"use strict";
+
 class MobileUtil {
-  isMobile() {
-    return this.checkUserAgent(navigator.userAgent || navigator.vendor || window.opera);
+  isMobile(userAgent) {
+    return this.checkUserAgent(userAgent || navigator.userAgent || navigator.vendor || window.opera);
   }
   /** source http://detectmobilebrowsers.com **/
   checkUserAgent(a){
