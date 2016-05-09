@@ -201,10 +201,10 @@
   z-index: z("modal");
 
   @media (min-width: $min-720) {
-    top: 18vh;
-    width: 70%;
     left: 15%;
     right: 15%;
+    top: 18rem;
+    width: 70%;
   }
 
   &--visible {
@@ -327,10 +327,5 @@
       }
     }
 
-    + .top_places__column {
-      @media (min-width: $min-960) {
-        margin-left: $gutter;
-      }
-    }
   }
 }
