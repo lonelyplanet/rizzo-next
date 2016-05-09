@@ -1,0 +1,336 @@
+@import "../../../sass/webpack_deps";
+
+.tlist {
+  $height: 6rem;
+  $image-width: 8rem;
+  $item-spacing: 1rem;
+  $total-height: ($height + $item-spacing) * 3;
+  $size-width: 35%;
+  counter-reset: tlist;
+  position: relative;
+  text-align: left;
+
+  &__heading {
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  &__content {
+    border-top: .1rem solid rgba($color-light-slate, .5);
+    margin-top: ($gutter - .3rem);
+    position: relative;
+
+    @media (min-width: $min-360) {
+      padding-right: $size-width;
+    }
+  }
+
+  &__primary {
+    list-style: none;
+    padding-right: $gutter;
+    padding-top: $item-spacing;
+
+    @media (max-width: $max-360) {
+      display: none;
+    }
+  }
+
+  &__primary-item {
+    &:not(:first-child) {
+      margin-top: $item-spacing;
+    }
+  }
+
+  &__primary-link {
+    color: $darkgray;
+    display: block;
+    font-size: 1.6rem;
+    height: $height;
+    padding-left: ($image-width + $gutter);
+    position: relative;
+    transition: color $animation-speed;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $lpblue;
+    }
+  }
+
+  &__marker {
+    @include marker;
+    @include marker-small;
+    @include marker-place;
+
+    &::before {
+      content: counter(tlist);
+      counter-increment: tlist;
+    }
+  }
+
+  &__image {
+    background: center no-repeat $titlegray;
+    background-size: cover;
+    height: $height;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: $image-width;
+  }
+
+  &__title {
+    height: ($height / 2);
+    line-height: ($height / 2) - 1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &:not(:last-child) {
+      padding-top: 1rem;
+    }
+
+    &:last-child {
+      border-bottom: .1rem solid rgba($color-light-slate, .4);
+      height: $height - .1rem;
+      line-height: $height;
+    }
+  }
+
+  &__subtitle {
+    color: rgba($light-text-color, .5);
+    font-size: 1.1rem;
+    font-weight: 700;
+    height: ($height / 2);
+    line-height: 1;
+    margin-top: .1rem;
+    overflow: hidden;
+    padding-bottom: 1rem;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    white-space: nowrap;
+
+    &:last-child {
+      border-bottom: .1rem solid rgba($color-light-slate, .4);
+    }
+  }
+
+  $secondary-line-height: ($total-height - .1rem - $item-spacing * 2) / 7;
+
+  &__secondary {
+    border-bottom: .1rem solid rgba($color-light-slate, .4);
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: $secondary-line-height;
+    list-style: none;
+    padding: $item-spacing 0 $item-spacing $gutter;
+
+    @media (min-width: $min-360) {
+      bottom: 0;
+      height: ($total-height - .1rem);
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: $size-width;
+    }
+  }
+
+  &__secondary-item {
+    position: relative;
+
+    &::before {
+      color: $top-place-number-color;
+      content: counter(tlist) ".";
+      counter-increment: tlist;
+      display: block;
+      font-family: $miller-daily;
+      font-weight: 500;
+      left: -4rem;
+      position: absolute;
+      text-align: right;
+      top: 0;
+      width: 3rem;
+    }
+
+    &--top {
+      display: block;
+
+      @media (min-width: $min-360) {
+        display: none;
+      }
+    }
+  }
+
+  &__secondary-link {
+    color: $darkgray;
+    display: block;
+    height: $secondary-line-height;
+    overflow: hidden;
+    position: relative;
+    text-overflow: ellipsis;
+    transition: color $animation-speed;
+    white-space: nowrap;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $lpblue;
+    }
+  }
+
+  &__more {
+    @include more();
+    display: block;
+    font-size: 1.1rem;
+    margin-top: (4rem - .2);
+  }
+}
+
+.modal {
+  $close-button-size: 7.2rem;
+  background-color: $color-white;
+  box-shadow: 0 .5rem 5rem rgba($color-black, .5);
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+//  transform: translateY(15%);
+  transition: transform 400ms, opacity 400ms;
+  z-index: z("modal");
+
+  @media (min-width: $min-720) {
+    top: 18vh;
+    width: 70%;
+    left: 15%;
+    right: 15%;
+  }
+
+  &--visible {
+    opacity: 1;
+//    transform: translateY(0);
+  }
+
+  &__close {
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    display: block;
+    font-size: 2rem;
+    height: 4rem;
+    line-height: 4rem;
+    outline: 0;
+    padding: 0;
+    position: absolute;
+    right: ($gutter / 2);
+    text-align: left;
+    text-indent: -9999px;
+    top: ($gutter / 2);
+    width: 4rem;
+    z-index: z("modal") + 1;
+
+    &::before {
+      bottom: 0;
+      display: block;
+      left: 0;
+      position: absolute;
+      right: 0;
+      text-align: center;
+      text-indent: 0;
+      top: 0;
+    }
+
+    @media (min-width: $min-720) {
+      background-color: $color-white;
+      border-radius: 50%;
+      box-shadow: 0 2.2rem 4.5rem rgba($color-black, .75);
+      font-size: 2.6rem;
+      height: $close-button-size;
+      left: 50%;
+      line-height: $close-button-size;
+      margin-left: (-$close-button-size / 2);
+      text-align: center;
+      top: 0;
+      transition: transform 400ms 1000ms;
+      user-select: none;
+      width: $close-button-size;
+      z-index: z("modal") - 1;
+    }
+  }
+
+  &--visible &__close {
+    @media (min-width: $min-720) {
+      transform: translateY(-($close-button-size + $gutter));
+      transition: transform 400ms 400ms;
+    }
+  }
+
+  &__content {
+    background-color: $color-white;
+    bottom: 0;
+    left: 0;
+    margin: 0 auto;
+    max-width: $max-width;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: $gutter $gutter 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: z("modal");
+
+    @media (min-width: $min-720) {
+      bottom: auto;
+      left: auto;
+      max-height: calc(100vh - #{($close-button-size + $gutter * 2)});
+      padding: 4rem ($gutter * 2) ($gutter * 2);
+      position: relative;
+      right: auto;
+      top: auto;
+    }
+
+    $top-places-content-mq: (strip-units($max-width) * 10) + (strip-units($gutter) * 10 * 4);
+
+    @media (min-width: #{$top-places-content-mq * .0625}em) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  &__wrap {
+    @media (min-width: $min-720) {
+      display: flex;
+    }
+
+    .no-flexbox & {
+      overflow: hidden;
+    }
+  }
+
+  &__column {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 63rem;
+    width: 100%;
+
+    &:not(:first-child) {
+      @media (max-width: $max-720) {
+        margin-top: ($gutter * 2);
+      }
+    }
+
+    .no-flexbox & {
+      @media (min-width: $min-960) {
+        float: left;
+        width: calc(50% - #{$gutter});
+      }
+    }
+
+    + .top_places__column {
+      @media (min-width: $min-960) {
+        margin-left: $gutter;
+      }
+    }
+  }
+}

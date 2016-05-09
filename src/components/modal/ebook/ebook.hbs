@@ -1,0 +1,14 @@
+
+{{#with ebook}}
+  <img src="{{img.url}}"/>
+{{/with}}
+{{ebook.title}}
+{{#if ebook.form}}
+<form action="{{ebook.form.action}}">
+{{#each ebook.form.fields}}
+<input type="{{type}}" />
+{{/each}}
+</form>
+{{/if}}
+
+
