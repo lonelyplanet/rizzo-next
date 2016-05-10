@@ -4,10 +4,20 @@
 {{/with}}
 {{ebook.title}}
 {{#if ebook.form}}
-<form action="{{ebook.form.action}}">
-{{#each ebook.form.fields}}
-<input type="{{type}}" />
+<form action="{{ebook.form.action}}" class="js-sailthru-form">
+{{#each ebook.form.hidden_fields}}
+<input type="{{type}}" name="{{name}}" value="{{value}}" />
 {{/each}}
+{{#each ebook.form.text_fields}}
+<input type="{{type}}" name="{{name}}" placeholder="{{placeholder}}" required />
+{{/each}}
+<select name="{{ebook.form.country_select.name}}" required>
+<option value>Country</option>
+{{#each countries}}
+<option value="{{this}}">{{this}}</option>
+{{/each}}
+</select>
+<input type="submit" value="Submit">
 </form>
 {{/if}}
 

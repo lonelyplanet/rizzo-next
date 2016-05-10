@@ -11,6 +11,7 @@ class Modal extends Component {
 
     this.$html = $("html");
     this.$body = $("body");
+    this.$form = $(".js-sailthru-form");
 
     // Remove from dom
     this.$el.detach();
@@ -22,6 +23,7 @@ class Modal extends Component {
     this.$body.on("click", ".js-modal", this.show.bind(this));
     this.$body.on("keyup", this.onKeyup.bind(this));
     this.$el.on("click", "[class*='__close']", this.hide.bind(this));
+    this.$el.on("submit", ".js-sailthru-form", this.submit.bind(this));
     this.listenTo(this.overlay, "click", this.hide);
   }
 
@@ -86,6 +88,18 @@ class Modal extends Component {
       this.hide();
     }
   }
+
+  submit(e){
+    e.preventDefault();
+    $.post(this.$form.attr("action"), this.$form.serialize())
+      .done(function() {
+        console.log("Success!");
+      })
+      .fail(function(xhr, textStatus, errorThrown) {
+        console.log("Error!");
+      });
+  }
+
 }
 
 export default Modal;
