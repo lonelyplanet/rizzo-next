@@ -1,4 +1,5 @@
 import MapProvider from "./mapbox";
+import MapActions from "./actions";
 
 let MapAPI = {
   /**
@@ -9,7 +10,10 @@ let MapAPI = {
     this.mapProvider = new MapProvider({
       el: el
     });
-    this.mapProvider.launch();
+    const map = this.mapProvider.launch();
+    map.on("load", () => {
+      MapActions.initMap();
+    });
   },
   /**
    * Destroy the map
@@ -37,7 +41,6 @@ let MapAPI = {
    */
   clear: function() {
     this.mapProvider.removeMarkers();
-    this.mapProvider.removePopup();
   }
 
 };

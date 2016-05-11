@@ -11,8 +11,9 @@ import MapAPI from "./api";
 class InteractiveMap extends Component {
 
   initialize() {
+    this.launch();
+
     Arkham.on("map.init", () => {
-      this.launch();
       this.changeView();
     });
 
@@ -50,6 +51,7 @@ class InteractiveMap extends Component {
   }
 
   hasFetched() {
+    console.log("has fetched");
     let state = MapState.getState();
     let pois = state.sets[state.activeSetIndex].items;
     MapAPI.plot(pois);

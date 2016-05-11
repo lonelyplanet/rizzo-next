@@ -1,23 +1,30 @@
 import { Component } from "../../../core/bane";
 import MapboxMarkerSet from "./markerset";
-import "mapbox.js";
+// import "mapbox.js";
+import mapboxgl from "mapbox-gl/dist/mapbox-gl.js";
+import "mapbox-gl/dist/mapbox-gl.css";
 
-let L = window.L;
-let mapID = "lonelyplanet.04cf7895";
+import MapState from "../state";
 
-L.mapbox.accessToken = "pk.eyJ1IjoibG9uZWx5cGxhbmV0IiwiYSI6ImNpajYyZW1iMjAwOG51bWx2YW50ejNmN2IifQ.neyeEEzBkaNKcKUzCe3s2Q";
+mapboxgl.accessToken = "pk.eyJ1IjoibG9uZWx5cGxhbmV0IiwiYSI6Imh1ODUtdUEifQ.OLLon0V6rcoTyayXzzUzsg";
 
 class MapProvider extends Component {
   initialize() {
-    this.layer = L.mapbox.featureLayer();
+    this.$el.attr("id", "map");
   }
 
   launch() {
-    let options = {
-      zoomControl: true,
-      scrollWheelZoom: true
-    };
-    this.map = L.mapbox.map(this.$el[0], mapID, options);
+    const state = MapState.getState();
+
+    this.map = new mapboxgl.Map({
+        container: "map", // container id
+        style: "mapbox://styles/lonelyplanet/cin7ounjn0050bckvcebvti2h?v2", //stylesheet location
+        zoom: 9, // starting zoom
+        center: (state.userLocation || state.currentLocation.geo.geometry.coordinates).reverse(),
+        zoomControl: true,
+    });
+
+    return this.map;
   }
 
   kill() {
@@ -25,22 +32,19 @@ class MapProvider extends Component {
   }
 
   addMarkers(pois) {
-    this.markers = new MapboxMarkerSet({
+    this.markers = this.markers || new MapboxMarkerSet({
       el: this.el,
       map: this.map,
-      layer: this.layer,
       pois: pois
     });
+    this.markers.createMarkers(pois);
   }
 
   removeMarkers() {
-    delete this.markers;
+    if (this.markers) {
+      this.markers.clearMarkers();
+    }
   }
-
-  removePopup() {
-    this.map.closePopup();
-  }
-
 }
 
 export default MapProvider;
