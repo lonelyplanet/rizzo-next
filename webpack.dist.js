@@ -5,9 +5,9 @@ var path = require("path"),
     CommonsPlugin = new require("webpack/lib/optimize/CommonsChunkPlugin");
 
 /**
- * 
+ *
  * This webpack config is for transpiling and running unit tests
- * 
+ *
  */
 module.exports = {
   plugins: [
@@ -21,7 +21,7 @@ module.exports = {
   entry: {
   },
   progress: true,
-  
+
   output: {
     path: path.join(__dirname, "dist"),
     filename: "[name].js",
@@ -49,9 +49,9 @@ module.exports = {
       },
       {
         test: /\.hbs$/,
-        loader: "handlebars?rootRelative=" + path.join(__dirname, "src") + "/" + 
+        loader: "handlebars?rootRelative=" + path.join(__dirname, "src") + "/" +
           "&runtime=" + require.resolve("handlebars/dist/handlebars.runtime")
-      }, 
+      },
       {
         test: /picker(.date)?.js$/,
         loader: "imports?define=>false"
