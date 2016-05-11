@@ -40,7 +40,7 @@ class Modal extends Component {
   }
 
   toggle() {
-    if(this.isOpen){
+    if(this.isOpen) {
       this.hide();
     } else {
       this.show();
@@ -51,8 +51,7 @@ class Modal extends Component {
     if(this.isOpen) {
       return Promise.all([]);
     }
-    console.log("modal");
-    if(this.$el.parent().length === 0){
+    if(this.$el.parent().length === 0) {
       this.$el.appendTo(document.body);
     }
 
@@ -83,21 +82,21 @@ class Modal extends Component {
       });
   }
 
-  onKeyup(e){
+  onKeyup(e) {
     // ESC
     if(e.keyCode === 27 && this.isOpen) {
       this.hide();
     }
   }
 
-  handleSubmitSuccess(){
+  handleSubmitSuccess() {
     this.$form.addClass("is-hidden");
     this.$success.removeClass("is-hidden");
   }
 
-  submit(e){
+  submit(e) {
     e.preventDefault();
-    var that = this
+    var that = this;
     $.post(this.$form.attr("action"), this.$form.serialize())
       .done(function() {
         that.handleSubmitSuccess();

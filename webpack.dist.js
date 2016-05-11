@@ -38,7 +38,7 @@ module.exports = {
         exclude: /node_modules\/(?!rizzo|flamsteed).*/,
         query: {
             "plugins": ["transform-decorators-legacy"],
-            "presets": ["react"]
+            "presets": ["es2015", "react"]
         }
       },
       {
