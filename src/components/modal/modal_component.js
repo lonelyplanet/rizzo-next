@@ -96,14 +96,13 @@ class Modal extends Component {
 
   submit(e) {
     e.preventDefault();
-    var that = this;
     $.post(this.$form.attr("action"), this.$form.serialize())
-      .done(function() {
-        that.handleSubmitSuccess();
+      .done(() => {
+        this.handleSubmitSuccess();
       })
-      .fail(function(xhr) {
+      .fail((xhr) => {
         if (xhr.status === 409) {
-          that.handleSubmitSuccess();
+          this.handleSubmitSuccess();
         } else {
           console.log("error");
         }
