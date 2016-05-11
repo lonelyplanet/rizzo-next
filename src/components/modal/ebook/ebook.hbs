@@ -1,25 +1,37 @@
-
-{{#with ebook}}
-  <img src="{{img.url}}"/>
-{{/with}}
-{{ebook.title}}
-{{#if ebook.form}}
-<form action="{{ebook.form.action}}" class="js-sailthru-form">
-{{#each ebook.form.hidden_fields}}
-<input type="{{type}}" name="{{name}}" value="{{value}}" />
-{{/each}}
-{{#each ebook.form.text_fields}}
-<input type="{{type}}" name="{{name}}" placeholder="{{placeholder}}" required />
-{{/each}}
-<select name="{{ebook.form.country_select.name}}" required>
-<option value>Country</option>
-{{#each countries}}
-<option value="{{this}}">{{this}}</option>
-{{/each}}
-</select>
-<input type="submit" value="Submit">
-</form>
-{{/if}}
+<div class="modal__column--left">
+  {{#with ebook}}
+    <img src="{{img.url}}"/>
+  {{/with}}
+</div>
+<div class="modal__column--right">
+  {{ebook.title}}
+  <div class="ebook__strapline">
+    <h1>{{ebook.strapline}}</h1>
+  </div>
+  {{ebook.copy}}
+  {{#if ebook.form}}
+    <form action="{{ebook.form.action}}" class="js-sailthru-form">
+    {{#each ebook.form.hidden_fields}}
+    <input type="{{type}}" name="{{name}}" value="{{value}}" />
+    {{/each}}
+    {{#each ebook.form.text_fields}}
+    <input type="{{type}}" name="{{name}}" placeholder="{{placeholder}}" required />
+    {{/each}}
+    <select name="{{ebook.form.country_select.name}}" required>
+    <option value>Country</option>
+    {{#each countries}}
+    <option value="{{this}}">{{this}}</option>
+    {{/each}}
+    </select>
+    <input type="submit" value="Submit">
+    </form>
+  {{/if}}
+  {{ebook.terms}}
 <div class="js-success is-hidden">
 Thank you!
 </div>
+</div>
+
+
+
+

@@ -1,192 +1,5 @@
 @import "../../../sass/webpack_deps";
 
-.tlist {
-  $height: 6rem;
-  $image-width: 8rem;
-  $item-spacing: 1rem;
-  $total-height: ($height + $item-spacing) * 3;
-  $size-width: 35%;
-  counter-reset: tlist;
-  position: relative;
-  text-align: left;
-
-  &__heading {
-    font-size: 1.2rem;
-    font-weight: 600;
-    line-height: 1;
-    text-transform: uppercase;
-  }
-
-  &__content {
-    border-top: .1rem solid rgba($color-light-slate, .5);
-    margin-top: ($gutter - .3rem);
-    position: relative;
-
-    @media (min-width: $min-360) {
-      padding-right: $size-width;
-    }
-  }
-
-  &__primary {
-    list-style: none;
-    padding-right: $gutter;
-    padding-top: $item-spacing;
-
-    @media (max-width: $max-360) {
-      display: none;
-    }
-  }
-
-  &__primary-item {
-    &:not(:first-child) {
-      margin-top: $item-spacing;
-    }
-  }
-
-  &__primary-link {
-    color: $darkgray;
-    display: block;
-    font-size: 1.6rem;
-    height: $height;
-    padding-left: ($image-width + $gutter);
-    position: relative;
-    transition: color $animation-speed;
-
-    &:hover,
-    &:active,
-    &:focus {
-      color: $lpblue;
-    }
-  }
-
-  &__marker {
-    @include marker;
-    @include marker-small;
-    @include marker-place;
-
-    &::before {
-      content: counter(tlist);
-      counter-increment: tlist;
-    }
-  }
-
-  &__image {
-    background: center no-repeat $titlegray;
-    background-size: cover;
-    height: $height;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: $image-width;
-  }
-
-  &__title {
-    height: ($height / 2);
-    line-height: ($height / 2) - 1rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-
-    &:not(:last-child) {
-      padding-top: 1rem;
-    }
-
-    &:last-child {
-      border-bottom: .1rem solid rgba($color-light-slate, .4);
-      height: $height - .1rem;
-      line-height: $height;
-    }
-  }
-
-  &__subtitle {
-    color: rgba($light-text-color, .5);
-    font-size: 1.1rem;
-    font-weight: 700;
-    height: ($height / 2);
-    line-height: 1;
-    margin-top: .1rem;
-    overflow: hidden;
-    padding-bottom: 1rem;
-    text-overflow: ellipsis;
-    text-transform: uppercase;
-    white-space: nowrap;
-
-    &:last-child {
-      border-bottom: .1rem solid rgba($color-light-slate, .4);
-    }
-  }
-
-  $secondary-line-height: ($total-height - .1rem - $item-spacing * 2) / 7;
-
-  &__secondary {
-    border-bottom: .1rem solid rgba($color-light-slate, .4);
-    font-size: 1.2rem;
-    font-weight: 600;
-    line-height: $secondary-line-height;
-    list-style: none;
-    padding: $item-spacing 0 $item-spacing $gutter;
-
-    @media (min-width: $min-360) {
-      bottom: 0;
-      height: ($total-height - .1rem);
-      position: absolute;
-      right: 0;
-      top: 0;
-      width: $size-width;
-    }
-  }
-
-  &__secondary-item {
-    position: relative;
-
-    &::before {
-      color: $top-place-number-color;
-      content: counter(tlist) ".";
-      counter-increment: tlist;
-      display: block;
-      font-family: $miller-daily;
-      font-weight: 500;
-      left: -4rem;
-      position: absolute;
-      text-align: right;
-      top: 0;
-      width: 3rem;
-    }
-
-    &--top {
-      display: block;
-
-      @media (min-width: $min-360) {
-        display: none;
-      }
-    }
-  }
-
-  &__secondary-link {
-    color: $darkgray;
-    display: block;
-    height: $secondary-line-height;
-    overflow: hidden;
-    position: relative;
-    text-overflow: ellipsis;
-    transition: color $animation-speed;
-    white-space: nowrap;
-
-    &:hover,
-    &:active,
-    &:focus {
-      color: $lpblue;
-    }
-  }
-
-  &__more {
-    @include more();
-    display: block;
-    font-size: 1.1rem;
-    margin-top: (4rem - .2);
-  }
-}
-
 .modal {
   $close-button-size: 7.2rem;
   background-color: $color-white;
@@ -268,7 +81,6 @@
 
   &__content {
     background-color: $color-white;
-    bottom: 0;
     left: 0;
     margin: 0 auto;
     max-width: $max-width;
@@ -308,11 +120,12 @@
     }
   }
 
-  &__column {
+  &__column--left {
     margin-left: auto;
     margin-right: auto;
-    max-width: 63rem;
+    max-width: 30rem;
     width: 100%;
+
 
     &:not(:first-child) {
       @media (max-width: $max-720) {
@@ -328,4 +141,48 @@
     }
 
   }
+
+  &__column--right {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 70rem;
+    width: 100%;
+
+
+    &:not(:first-child) {
+      @media (max-width: $max-720) {
+        margin-top: ($gutter * 2);
+      }
+    }
+
+    .no-flexbox & {
+      @media (min-width: $min-960) {
+        float: left;
+        width: calc(50% - #{$gutter});
+      }
+    }
+
+  }
+
+  .ebook {
+    &__strapline {
+      margin-bottom: 5.2rem;
+      padding-top: 5.2rem;
+    }
+
+    h1 {
+      color: $titlegray;
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: -.05rem;
+      line-height: (36.5 / 27);
+
+      @media (min-width: $min-600) {
+        font-size: 4.2rem;
+        line-height: (70 / 64);
+      }
+    }
+  }
+
+
 }
