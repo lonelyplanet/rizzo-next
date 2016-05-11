@@ -1,9 +1,4 @@
 {
-  "animation": {
-    "fast": "200ms",
-    "default": "400ms",
-    "slow": "800ms"
-  },
   "color": {
     "darkGray": "#2c3643",
     "titleGray": "#3b444f",
@@ -141,6 +136,11 @@
   },
   "spacing": {
     "mobile": "2rem"
+  },
+  "timing": {
+    "fast": "200ms",
+    "default": "400ms",
+    "slow": "800ms"
   },
   "typography": {
     "fontSize": "1.8rem",
