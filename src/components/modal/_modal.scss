@@ -160,23 +160,42 @@
   }
 
   .ebook {
-    &__strapline {
-      margin-bottom: 5.2rem;
-      padding-top: 5.2rem;
-    }
-
-    h1 {
+    &__strapline h1 {
       color: $titlegray;
       font-size: 2rem;
       font-weight: 600;
       letter-spacing: -.05rem;
       line-height: (36.5 / 27);
+      margin-bottom: 3rem;
+      padding-top: 1rem;
 
       @media (min-width: $min-600) {
         font-size: 4.2rem;
         line-height: (70 / 64);
       }
+      }
+
+    &__title {
+      color: $color-red;
+      margin-bottom: 1rem;
     }
+
+    &__copy {
+      margin-bottom: 2.5rem;
+    }
+
+    &__form-field {
+      background-color: $color-white;
+      height: 50px;
+      margin: 1.5rem .5rem 1rem 0;
+      width: 325px;
+    }
+
+    .button {
+      margin: 1rem 0;
+
+    }
+
   }
 
 }

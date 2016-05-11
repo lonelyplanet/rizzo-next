@@ -4,26 +4,30 @@
   {{/with}}
 </div>
 <div class="modal__column--right">
-  {{ebook.title}}
+  <div class="ebook__title">
+    {{ebook.title}}
+  </div>
   <div class="ebook__strapline">
     <h1>{{ebook.strapline}}</h1>
   </div>
-  {{ebook.copy}}
+  <div class="ebook__copy">
+    {{ebook.copy}}
+  </div>
   {{#if ebook.form}}
     <form action="{{ebook.form.action}}" class="js-sailthru-form">
     {{#each ebook.form.hidden_fields}}
     <input type="{{type}}" name="{{name}}" value="{{value}}" />
     {{/each}}
     {{#each ebook.form.text_fields}}
-    <input type="{{type}}" name="{{name}}" placeholder="{{placeholder}}" required />
+    <input class="ebook__form-field"type="{{type}}" name="{{name}}" placeholder="{{placeholder}}" required />
     {{/each}}
-    <select name="{{ebook.form.country_select.name}}" required>
+    <select class="ebook__form-field" name="{{ebook.form.country_select.name}}" required>
     <option value>Country</option>
     {{#each countries}}
     <option value="{{this}}">{{this}}</option>
     {{/each}}
     </select>
-    <input type="submit" value="Submit">
+    <input class="button" type="submit" value="Download">
     </form>
   {{/if}}
   {{ebook.terms}}
