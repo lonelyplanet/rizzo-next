@@ -1,7 +1,8 @@
 {
   "animation": {
-    "speed": "400ms",
-    "speedUi": "800ms"
+    "fast": "200ms",
+    "default": "400ms",
+    "slow": "800ms"
   },
   "color": {
     "darkGray": "#2c3643",
@@ -137,6 +138,9 @@
       "360": "22.4375em",
       "320": "19.9375em"
     }
+  },
+  "spacing": {
+    "mobile": "2rem"
   },
   "typography": {
     "fontSize": "1.8rem",
