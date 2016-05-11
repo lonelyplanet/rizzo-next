@@ -12,6 +12,7 @@ class Modal extends Component {
     this.$html = $("html");
     this.$body = $("body");
     this.$form = $(".js-sailthru-form");
+    this.$success = $(".js-success");
 
     // Remove from dom
     this.$el.detach();
@@ -89,17 +90,26 @@ class Modal extends Component {
     }
   }
 
-  submit(e){
-    e.preventDefault();
-    $.post(this.$form.attr("action"), this.$form.serialize())
-      .done(function() {
-        console.log("Success!");
-      })
-      .fail(function(xhr, textStatus, errorThrown) {
-        console.log("Error!");
-      });
+  handleSubmitSuccess(){
+    this.$form.addClass("is-hidden");
+    this.$success.removeClass("is-hidden");
   }
 
+  submit(e){
+    e.preventDefault();
+    var that = this
+    $.post(this.$form.attr("action"), this.$form.serialize())
+      .done(function() {
+        that.handleSubmitSuccess();
+      })
+      .fail(function(xhr) {
+        if (xhr.status === 409) {
+          that.handleSubmitSuccess();
+        } else {
+          console.log("error");
+        }
+      });
+  }
 }
 
 export default Modal;
