@@ -38,12 +38,6 @@ class MapProvider extends Component {
     });
     this.markers.createMarkers(pois);
   }
-
-  removeMarkers() {
-    if (this.markers) {
-      this.markers.clearMarkers();
-    }
-  }
 }
 
 export default MapProvider;

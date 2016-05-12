@@ -26,7 +26,6 @@ let MapAPI = {
    * @param {Array} pois
    */
   redraw: function(pois) {
-    this.clear();
     this.plot(pois);
   },
   /**
@@ -36,12 +35,6 @@ let MapAPI = {
   plot: function(pois) {
     this.mapProvider.addMarkers(pois);
   },
-  /**
-   * Remove all map markers
-   */
-  clear: function() {
-    this.mapProvider.removeMarkers();
-  }
 
 };
 

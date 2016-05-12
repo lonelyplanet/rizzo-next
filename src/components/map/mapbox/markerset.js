@@ -87,10 +87,6 @@ class MarkerSet extends Component {
     return geojson;
   }
 
-  clearMarkers() {
-    // this.map.removeLayer("markers");
-  }
-
   createMarkers(pois) {
     this.pois = pois;
 
