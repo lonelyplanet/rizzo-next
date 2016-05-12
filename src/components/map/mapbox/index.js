@@ -9,14 +9,14 @@ mapboxgl.accessToken = "pk.eyJ1IjoibG9uZWx5cGxhbmV0IiwiYSI6Imh1ODUtdUEifQ.OLLon0
 
 class MapProvider extends Component {
   initialize() {
-    this.$el.attr("id", "map");
+    this.$el.attr("id", "lpMap");
   }
 
   launch() {
     const state = MapState.getState();
 
     this.map = new mapboxgl.Map({
-        container: "map", // container id
+        container: "lpMap", // container id
         style: "mapbox://styles/lonelyplanet/cin7ounjn0050bckvcebvti2h?v2", //stylesheet location
         zoom: 9, // starting zoom
         center: (state.userLocation || state.currentLocation.geo.geometry.coordinates).reverse(),

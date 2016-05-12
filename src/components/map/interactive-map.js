@@ -48,9 +48,9 @@ class InteractiveMap extends Component {
   }
 
   hasFetched() {
-    console.log("has fetched");
     let state = MapState.getState();
     let pois = state.sets[state.activeSetIndex].items;
+
     MapAPI.plot(pois);
   }
 
