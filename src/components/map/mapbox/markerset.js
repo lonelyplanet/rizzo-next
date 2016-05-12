@@ -4,6 +4,7 @@ import MapState from "../state";
 import React from "react";
 import Pin from "../views/pin.jsx";
 import mapboxgl from "mapbox-gl/dist/mapbox-gl.js";
+import Arkham from "../../../core/arkham";
 
 class MarkerSet extends Component {
 
@@ -43,6 +44,14 @@ class MarkerSet extends Component {
   }
 
   listen() {
+    Arkham.on("map.poihover", (data) => {
+      const poi = this.pois[data.poiIndex];
+      this.popup.setLngLat(poi.geo.geometry.coordinates)
+        .setDOMContent(this._createIcon(poi.geo.properties.index))
+        .addTo(this.map);
+      MapActions.itemHighlight(data.poiIndex);
+    });
+
     this.popup = new mapboxgl.Popup({
       closeButton: false,
       closeOnClick: false
@@ -88,7 +97,9 @@ class MarkerSet extends Component {
     const geoJson = this._createGeoJSON();
     this.source.setData(geoJson);
 
-    this.map.flyTo({ center: geoJson.features[0].geometry.coordinates });
+    this.map.flyTo({
+      center: geoJson.features[0].geometry.coordinates,
+    });
 
     const bounds = new mapboxgl.LngLatBounds();
 
@@ -96,7 +107,7 @@ class MarkerSet extends Component {
       bounds.extend(feature.geometry.coordinates);
     });
 
-    this.map.fitBounds(bounds, { padding: 100 });
+    this.map.fitBounds(bounds, { padding: 100, maxZoom: 20, });
   }
 
   _createIcon(markerIndex) {
@@ -116,7 +127,10 @@ class MarkerSet extends Component {
     let poi = { pin: pin };
     let markup = React.renderToStaticMarkup(React.createElement(Pin, poi));
 
-    return markup;
+    const $el = $(markup);
+    $el.attr("data-poi", markerIndex);
+
+    return $el[0];
   }
 
   _poiHover(e) {
@@ -135,20 +149,30 @@ class MarkerSet extends Component {
     // Populate the popup and set its coordinates
     // based on the feature found.
     this.popup.setLngLat(feature.geometry.coordinates)
-      .setHTML(this._createIcon(feature.properties.index))
+      .setDOMContent(this._createIcon(feature.properties.index))
       .addTo(this.map);
 
     MapActions.itemHighlight(feature.properties.index);
   }
 
   _poiClick(event) {
-    let poiIndex = (event.layer || this.activeLayer).feature.properties.index,
-        poi = this.pois[poiIndex];
+    const poiIndex = $(event.currentTarget).data("poi");
+    this._goTo(poiIndex);
+  }
+
+  _goTo(poiIndex) {
+    const poi = this.pois[poiIndex];
 
     if (poi.item_type === "Place") {
-      MapActions.gotoPlace({ place: poi.slug, placeTitle: poi.title, breadcrumb: poi.subtitle });
+      MapActions.gotoPlace({
+        place: poi.slug,
+        placeTitle: poi.title,
+        breadcrumb: poi.subtitle
+      });
     } else {
-      MapActions.poiOpen({ index: poiIndex, poi });
+      MapActions.poiOpen({
+        index: poiIndex, poi
+      });
     }
   }
 }

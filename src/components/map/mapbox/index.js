@@ -1,6 +1,5 @@
 import { Component } from "../../../core/bane";
 import MapboxMarkerSet from "./markerset";
-// import "mapbox.js";
 import mapboxgl from "mapbox-gl/dist/mapbox-gl.js";
 import "mapbox-gl/dist/mapbox-gl.css";
 

@@ -44,9 +44,6 @@ class InteractiveMap extends Component {
       pois = state.sets[state.activeSetIndex].items;
     }
 
-    // Prevent double evnts
-    this.$el.off("click.marker");
-
     MapAPI.redraw(pois);
   }
 
