@@ -13,6 +13,8 @@ class MarkerSet extends Component {
       "click.marker .pin": "_poiClick"
     };
 
+    this.markerIcons = ["sights", "restaraunts", "shopping"];
+
     this.pois = pois;
     this.map = map;
     this.layer = layer;
@@ -77,7 +79,7 @@ class MarkerSet extends Component {
         Object.assign(geo.properties, {
           index: i,
           title: this.pois[i].name,
-          "marker-symbol": geo.properties.category || "sights"
+          "marker-symbol": this._getCategoryIcon(geo.properties.category.toLowerCase())
         });
 
         geojson.features.push(geo);
@@ -85,6 +87,10 @@ class MarkerSet extends Component {
     }
 
     return geojson;
+  }
+
+  _getCategoryIcon(category) {
+    return this.markerIcons.indexOf(category) > -1 ? category : "sights";
   }
 
   createMarkers(pois) {
