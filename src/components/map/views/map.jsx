@@ -1,5 +1,4 @@
 import React from "react";
-import MapActions from "../actions";
 import InteractiveMap from "../interactive-map";
 
 /**
@@ -10,7 +9,6 @@ export default class MapView extends React.Component {
     this.interactiveMap = new InteractiveMap({
       el: this.refs.map.getDOMNode()
     });
-    MapActions.initMap();
   }
   render() {
     return (

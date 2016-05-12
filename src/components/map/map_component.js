@@ -12,10 +12,15 @@ let history = createHistory();
 class MapComponent extends Component {
 
   initialize() {
-    MapApi.fetch(`/${window.lp.place.slug}/map.json`).done((results) => {
-      MapActions.setState(results);
-      React.render(<MainView />, this.$el[0]);
-    });
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.userLocation = [position.coords.latitude, position.coords.longitude];
+
+        this.fetchMap();
+      }, () => {
+        this.fetchMap();
+      });
+    }
 
     Arkham.on("map.closed", () => {
       this.close();
@@ -24,6 +29,14 @@ class MapComponent extends Component {
     $("body").on("keyup", this.onKeyup.bind(this));
 
     this.updateMapHistory();
+  }
+
+  fetchMap() {
+    MapApi.fetch(`/${window.lp.place.slug}/map.json`).done((results) => {
+      results.userLocation = this.userLocation;
+      MapActions.setState(results);
+      React.render(<MainView />, this.$el[0]);
+    });
   }
 
   updateMapHistory() {

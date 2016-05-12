@@ -124,6 +124,7 @@ Arkham.on("place.errorfetching", (data) => {
 });
 
 Arkham.on("state.setinitial", (data) => {
+  state.userLocation = data.userLocation;
   state.isFetching = false;
   state.topics = data.topics;
   state.sets = MapState.sortSets(data.sets.filter((s) => !!s.items.length));
