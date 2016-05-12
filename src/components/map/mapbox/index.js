@@ -19,7 +19,7 @@ class MapProvider extends Component {
         container: "lpMap", // container id
         style: "mapbox://styles/lonelyplanet/cin7ounjn0050bckvcebvti2h?v2", //stylesheet location
         zoom: 9, // starting zoom
-        center: (state.userLocation || state.currentLocation.geo.geometry.coordinates).reverse(),
+        center: (state.userLocation ? state.userLocation.reverse() : state.currentLocation.geo.geometry.coordinates),
         zoomControl: true,
     });
 
