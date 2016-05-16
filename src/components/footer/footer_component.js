@@ -1,4 +1,4 @@
-import { Component } from "../../core/bane";
+import Component from "../../core/component";
 import $ from "jquery";
 
 class Footer extends Component {

@@ -1,8 +1,8 @@
-let each = require("lodash/collection/each"),
-    once = require("lodash/function/once"),
-    keys = require("lodash/object/keys"),
-    isEmpty = require("lodash/lang/isEmpty"),
-    uniqueId = require("lodash/utility/uniqueId"),
+let each = require("lodash.forEach"),
+    once = require("lodash.once"),
+    keys = require("lodash.keys"),
+    isEmpty = require("lodash.isEmpty"),
+    uniqueId = require("lodash.uniqueid"),
     slice = Array.prototype.slice;
 
 // Regular expression used to split event strings.

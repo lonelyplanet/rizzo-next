@@ -1,4 +1,4 @@
-import { Component } from "../../../core/bane";
+import Component from "../../../core/component";
 import highlight from "../../../core/utils/highlight";
 import template from "./index.html.hbs";
 import "./index.scss";

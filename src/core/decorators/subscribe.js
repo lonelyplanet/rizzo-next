@@ -1,5 +1,5 @@
 import postal from "postal/lib/postal.lodash";
-import each from "lodash/collection/each";
+import each from "lodash.forEach";
 
 let _ = { each };
 

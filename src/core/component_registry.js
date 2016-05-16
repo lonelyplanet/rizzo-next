@@ -1,5 +1,3 @@
-import { Component } from "./bane";
-
 /**
  * Register components with Rizzo
  */
@@ -13,7 +11,7 @@ export default class ComponentRegistry {
     this.logger = logger;
   }
   /**
-   * Create an instance of a given component. 
+   * Create an instance of a given component.
    * Will also register the component.
    * @param  {Component} Component A constructor that extends `Component`
    * @param  {[object]} options Options to pass to the constructor
@@ -40,15 +38,15 @@ export default class ComponentRegistry {
         throw e;
       } else {
         let el = typeof options === "object" ? options.el : options;
-        
+
         this.logger.error(`
           Could not create instance of ${Component.name} on ${el}.
           Reason: ${e.message}
           Page: ${document.location.href}
         `);
       }
-    }    
-    
+    }
+
     return instance;
   }
   /**
@@ -58,23 +56,19 @@ export default class ComponentRegistry {
    * @example
    * rizzo.renderComponent(MastheadComponent, {});
    * rizzo.registry.getInstancesOf(MastheadComponent); // [MastheadComponent]
-   * 
+   *
    */
   getInstancesOf(Component) {
     let name = typeof Component === "function" ? Component.name : Component;
     return this.components.get(name);
   }
   /**
-   * Add a new Component to the registry.  
-   * Must extend the `Component` constructor.  
+   * Add a new Component to the registry.
+   * Must extend the `Component` constructor.
    * Components will only be registered in browsers that support `Function.name` since this is mostly for debugging anyways.
    * @param  {Component} Constructor The component being added
    */
   register(Constructor) {
-    if (!(Constructor.prototype instanceof Component)) {
-      throw "Can only register Components";
-    }
-
     this.components.set(Constructor.name, []);
   }
 }
