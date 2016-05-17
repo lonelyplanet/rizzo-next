@@ -64,6 +64,14 @@
     </div>
   </div>
 
+  {{#if masthead.masthead__cta}}
+    <div class="masthead__cta" style="background: url({{masthead.masthead__cta.img}}) no-repeat; background-size: 60px">
+      <p class="masthead__cta--copy">{{{masthead.masthead__cta.copy}}}</p>
+      <button class="button js-modal"
+       role="button">{{masthead.masthead__cta.button--text}}</button>
+    </div>
+  {{/if}}
+
   {{#if is_continent}}
     {{> "components/masthead/masthead_nav" }}
   {{/if}}
