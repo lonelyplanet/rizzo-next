@@ -1,4 +1,4 @@
-import { Component } from "../../core/bane";
+import Component from "../../core/component";
 import "./_notification.scss";
 
 class Notification extends Component {

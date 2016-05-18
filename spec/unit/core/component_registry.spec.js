@@ -1,5 +1,5 @@
 import ComponentRegistry from "../../../src/core/component_registry";
-import { Component } from "../../../src/core/bane";
+import Component from "../../../src/core/component";
 
 /** @test {ComponentRegistry} */
 describe("ComponentRegistry", () => {

@@ -1,4 +1,4 @@
-import { Component } from "../../core/bane";
+import Component from "../../core/component";
 import Overlay from "../overlay";
 import Notification from "../notification/notification";
 import waitForTransition from "../../core/utils/waitForTransition";

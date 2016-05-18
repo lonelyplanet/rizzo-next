@@ -5,7 +5,6 @@ import GlobalFooter from "./components/footer";
 import FastClick from "fastclick";
 import "./core/utils/preload";
 import "./core/utils/detect_swipe";
-import "./core/event_tracker";
 import "./components/ads";
 import "./components/svg_icons";
 import CookieUtil from "./core/cookie_util";

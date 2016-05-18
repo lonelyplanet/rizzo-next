@@ -1,1 +1,0 @@
-require("./_interests.scss");
