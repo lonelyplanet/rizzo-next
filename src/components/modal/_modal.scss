@@ -6,7 +6,7 @@
   box-shadow: 0 .5rem 5rem rgba($color-black, .5);
   left: 0;
   opacity: 0;
-  position: absolute;
+  position: fixed;
   right: 0;
   top: 0;
   transition: transform 400ms, opacity 400ms;
@@ -194,6 +194,11 @@
     .button {
       margin: 1rem 0;
 
+    }
+
+    &__modal__terms {
+      font-size: 1rem;
+      padding: 2rem 2rem 0;
     }
 
   }

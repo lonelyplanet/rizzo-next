@@ -4,7 +4,7 @@ import waitForTimeout from "../../core/utils/waitForTransition";
 import Overlay from "../overlay";
 
 class Modal extends Component {
-  initialize() {
+  initialize(options) {
     this.events = {
       "touchend a": "goTo"
     };
@@ -26,6 +26,12 @@ class Modal extends Component {
     this.$el.on("click", "[class*='__close']", this.hide.bind(this));
     this.$el.on("submit", ".js-sailthru-form", this.submit.bind(this));
     this.listenTo(this.overlay, "click", this.hide);
+
+    //fire modal on correct url hash
+
+    if (options.hash === location.hash) {
+      $(".js-modal").trigger("click");
+    }
   }
 
   /**
