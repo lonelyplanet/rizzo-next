@@ -2,7 +2,7 @@
   {{#if video}}
   <div class="masthead__video-container js-video-container">
     <div class="masthead__video-wrap">
-      <video class="masthead__video js-video" autoplay loop preload="auto">
+      <video class="masthead__video js-video" autoplay loop preload="auto" poster={{video.poster}}>
         <source src="{{video.source}}" type="video/mp4">
       </video>
     </div>
