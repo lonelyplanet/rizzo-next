@@ -11,6 +11,9 @@ class Modal extends Component {
 
     this.$html = $("html");
     this.$body = $("body");
+    this.$strapline = $(".ebook__strapline");
+    this.$title = $(".ebook__title");
+    this.$copy = $(".ebook__copy");
     this.$form = $(".js-sailthru-form");
     this.$success = $(".js-success");
 
@@ -97,6 +100,9 @@ class Modal extends Component {
 
   handleSubmitSuccess() {
     this.$form.addClass("is-hidden");
+    this.$strapline.addClass("is-hidden");
+    this.$title.addClass("is-hidden");
+    this.$copy.addClass("is-hidden");
     this.$success.removeClass("is-hidden");
   }
 

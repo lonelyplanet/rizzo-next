@@ -31,7 +31,37 @@
     </form>
   {{/if}}
   <div class="js-success is-hidden">
-  Thank you!
+    <div class="ebook__success">
+      <div class="social-share social-share--centered js-action-sheet">
+        <ul class="social-share__list">
+          <li>
+            <button class="social-share__control social-share__control--big js-action-sheet-share-control" data-network="twitter" data-msg="{{social.twitter}}">
+              <svg class="svg-icon svg-icon--gray" viewBox="0 0 21 21" width="21" height="21">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lp-svg-twitter-21px"></use>
+              </svg>
+            </button>
+          </li>
+          <li>
+            <button class="social-share__control social-share__control--big js-action-sheet-share-control" data-network="facebook" data-msg="{{social.facebook}}">
+              <svg class="svg-icon svg-icon--gray" viewBox="0 0 9 17" width="9" height="16">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lp-svg-facebook-9px"></use>
+              </svg>
+            </button>
+          </li>
+          <li>
+            <button class="social-share__control social-share__control--big js-action-sheet-share-control" data-network="email" data-msg="{{{social.email}}}">
+              <svg class="svg-icon svg-icon--gray" viewBox="0 0 18 17" width="18" height="17">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lp-svg-email-18px"></use>
+              </svg>
+            </button>
+          </li>
+        </ul>
+      </div><!-- .social-share -->
+      <h1 class="ebook__success__copy">Thank you!</h1>
+      <div class="ebook__download__button">
+        <a class="button" href="https://s3.amazonaws.com/static-asset/marketing/BIE2016/Secret_Europe.pdf" target="_blank" role="button">Download eBook</a>
+      </div>
+  </div>
   </div>
 </div>
 
