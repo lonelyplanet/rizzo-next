@@ -6,17 +6,21 @@
   box-shadow: 0 .5rem 5rem rgba($color-black, .5);
   left: 0;
   opacity: 0;
-  position: fixed;
   right: 0;
   top: 0;
   transition: transform 400ms, opacity 400ms;
   z-index: z("modal");
 
   @media (min-width: $min-720) {
-    left: 15%;
-    right: 15%;
+    left: 50%;
+    max-width: 1200px;
     top: 18rem;
+    transform: translate(-50%, -0%);
     width: 70%;
+  }
+
+  @media (min-width: $min-320) {
+    position: fixed;
   }
 
   &--visible {
@@ -108,7 +112,7 @@
   }
 
   &__wrap {
-    @media (min-width: $min-720) {
+    @media (min-width: $min-1024) {
       display: flex;
     }
 
@@ -118,6 +122,10 @@
   }
 
   &__column--left {
+    @media (min-width: $min-720) {
+      padding-right: 1rem;
+    }
+
     margin-left: auto;
     margin-right: auto;
     max-width: 30rem;
@@ -191,8 +199,8 @@
       width: 325px;
     }
 
-    .button {
-      margin: 1rem 0;
+    &__download__button--position {
+      margin: 1rem;
 
     }
 
@@ -200,12 +208,14 @@
       font-size: 1rem;
       padding: 2rem 2rem 0;
     }
+
     &__success {
-      margin-top: 50px;
+      margin-top: 5em;
       text-align: center;
     }
-    &__success__copy{
-      padding: 30px;
+
+    &__success__copy {
+      padding: 1.5em;
     }
 
   }
