@@ -50,12 +50,12 @@ class SocialShareComponent extends Component {
         winWidth = $(window).width(),
         left,
         top;
-    
+
     let $title = $el.closest(".article").find("meta[itemprop=\"headline\"]"),
         title,
         tweet,
         msg = $el.data("msg"),
-        url = window.location.href,
+        url = $el.data("url") || window.location.href,
         network = $el.data("network");
 
     if ($title.length) {
