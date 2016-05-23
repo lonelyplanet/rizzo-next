@@ -16,6 +16,7 @@ class Modal extends Component {
     this.$copy = $(".ebook__copy");
     this.$form = $(".js-sailthru-form");
     this.$success = $(".js-success");
+    this.$modalTrigger = $(".js-modal");
 
     // Remove from dom
     this.$el.detach();
@@ -24,7 +25,7 @@ class Modal extends Component {
     this.overlay = new Overlay();
 
     // Events
-    this.$body.on("click", ".js-modal", this.show.bind(this));
+    this.$modalTrigger.on("click", this.show.bind(this));
     this.$body.on("keyup", this.onKeyup.bind(this));
     this.$el.on("click", "[class*='__close']", this.hide.bind(this));
     this.$el.on("submit", ".js-sailthru-form", this.submit.bind(this));
@@ -72,6 +73,10 @@ class Modal extends Component {
     }, 10);
 
     this.isOpen = true;
+
+    let hash = this.$modalTrigger.data("href");
+    location.hash = hash;
+    this.trackModalPageView();
   }
   @track("Modal Close").sendReturnValue(false)
   hide() {
@@ -89,6 +94,9 @@ class Modal extends Component {
       .then(() => {
         this.$el.detach();
       });
+
+    location.hash = "";
+    this.trackModalPageView(location.href);
   }
 
   onKeyup(e) {
@@ -104,6 +112,12 @@ class Modal extends Component {
     this.$title.addClass("is-hidden");
     this.$copy.addClass("is-hidden");
     this.$success.removeClass("is-hidden");
+    const dataLayer = {
+      category: "account",
+      action: "newsletter",
+      value: "sign up"
+    };
+    window.lp.analytics.api.trackEvent(dataLayer);
   }
 
   submit(e) {
@@ -119,6 +133,14 @@ class Modal extends Component {
           console.log("error");
         }
       });
+  }
+
+  trackModalPageView() {
+    window.lp.analytics.api.trackEvent({
+      category: "Page View",
+      action: "Modal Location Override",
+      label: document.location.pathname
+    });
   }
 }
 
