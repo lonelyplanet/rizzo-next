@@ -2,6 +2,8 @@ import { Component } from "../../core/bane";
 import track from "../../core/decorators/track";
 import waitForTimeout from "../../core/utils/waitForTransition";
 import Overlay from "../overlay";
+import matchMedia from "../../core/utils/matchMedia";
+import breakpoints from "../../core/utils/breakpoints";
 
 class Modal extends Component {
   initialize(options) {
@@ -66,6 +68,14 @@ class Modal extends Component {
     }
 
     this.overlay.show();
+
+    matchMedia(`(max-width: ${breakpoints.max["720"]})`, (query) => {
+      console.log("matchmedia", query);
+      if (query.matches) {
+        $("html, body").animate({ scrollTop: 0 }, "slow");
+        console.log("scroll");
+      }
+    });
 
     // wait a few ticks so transition triggers
     setTimeout(() => {
