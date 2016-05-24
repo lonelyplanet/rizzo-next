@@ -17,10 +17,10 @@
           "slug": "#",
           "submenu": {
             "featured": {
-              "image": "https://lonelyplanetstatic.imgix.net/bit2016-bg-main.jpg?w=80&h=60&fit=min",
-              "title": "Best in the US",
+              "image": "https://s3.amazonaws.com/static-asset/marketing/BIE2016/BIE-nav-image.jpg",
+              "title": "Best in Europe",
               "subtitle": "Featured",
-              "link": "//www.lonelyplanet.com/best-in-us"
+              "link": "//www.lonelyplanet.com/best-in-europe"
             },
             "items": [
               {
