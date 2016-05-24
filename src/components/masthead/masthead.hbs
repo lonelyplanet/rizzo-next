@@ -7,6 +7,9 @@
       </video>
     </div>
   </div>
+  <div class="masthead__video-caption">
+    <p class="masthead__video-caption--copy">{{{video.caption}}}</p>
+  </div>
   {{/if}}
 
   {{#if masthead.first}}
@@ -65,7 +68,7 @@
   </div>
 
   {{#if masthead.masthead__cta}}
-    <div class="masthead__cta" style="background: url({{masthead.masthead__cta.img}}) no-repeat; background-size: 60px">
+    <div class="masthead__cta js-modal" style="background: url({{masthead.masthead__cta.img}}) no-repeat; background-size: 60px">
       <p class="masthead__cta--copy">{{{masthead.masthead__cta.copy}}}</p>
       <button class="button js-modal" data-href="{{masthead.masthead__cta.href}}"
        role="button">{{masthead.masthead__cta.button--text}}</button>
