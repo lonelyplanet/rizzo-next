@@ -70,10 +70,8 @@ class Modal extends Component {
     this.overlay.show();
 
     matchMedia(`(max-width: ${breakpoints.max["720"]})`, (query) => {
-      console.log("matchmedia", query);
       if (query.matches) {
         $("html, body").animate({ scrollTop: 0 }, "slow");
-        console.log("scroll");
       }
     });
 
