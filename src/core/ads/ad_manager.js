@@ -7,6 +7,7 @@ import publish from "../decorators/publish";
 import subscribe from "../decorators/subscribe";
 import track from "../decorators/track";
 import { slugify } from "../../core/utils/stringHelpers";
+import assign from "object-assign";
 
 export default class AdManager {
   constructor(config) {
@@ -166,7 +167,12 @@ export default class AdManager {
       .filter((index) => {
         return this.$adunits.eq(index).data("googleAdUnit") === undefined;
       })
-      .dfp(this.pluginConfig);
+      .each((i, el) => {
+        const $el = $(el);
+        const elOptions = $el.data("dfpOptions");
+
+        $el.dfp(assign({}, this.pluginConfig, elOptions));
+      });
   }
 
   @subscribe("refresh", "ads")

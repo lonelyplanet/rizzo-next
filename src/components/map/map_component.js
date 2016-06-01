@@ -6,12 +6,20 @@ import Arkham from "../../core/arkham";
 import { createHistory } from "history";
 import $ from "jquery";
 import MapApi from "./map_api";
+import mapboxgl from "mapbox-gl/dist/mapbox-gl.js";
+import rizzo from "../../rizzo";
 
 let history = createHistory();
 
 class MapComponent extends Component {
 
   initialize() {
+    rizzo.logger.log("Creating map");
+
+    if (!mapboxgl.supported()) {
+      return false;
+    }
+
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         this.userLocation = [position.coords.latitude, position.coords.longitude];

@@ -5,6 +5,7 @@ import React from "react";
 import Pin from "../views/pin.jsx";
 import mapboxgl from "mapbox-gl/dist/mapbox-gl.js";
 import Arkham from "../../../core/arkham";
+import debounce from "lodash/function/debounce";
 
 class MarkerSet extends Component {
 
@@ -59,7 +60,7 @@ class MarkerSet extends Component {
       closeOnClick: false
     });
 
-    this.map.on("mousemove", this._poiHover.bind(this));
+    this.map.on("mousemove", debounce(this._poiHover.bind(this), 100));
   }
 
   _createGeoJSON() {
@@ -122,7 +123,7 @@ class MarkerSet extends Component {
     let set = state.sets[index || 0];
 
     if (!set) {
-      return;
+      return "";
     }
 
     let pin = set.items[markerIndex];
@@ -150,8 +151,14 @@ class MarkerSet extends Component {
 
     // Populate the popup and set its coordinates
     // based on the feature found.
+    const icon = this._createIcon(feature.properties.index);
+
+    if (!icon) {
+      return;
+    }
+
     this.popup.setLngLat(feature.geometry.coordinates)
-      .setDOMContent(this._createIcon(feature.properties.index))
+      .setDOMContent(icon)
       .addTo(this.map);
 
     MapActions.itemHighlight(feature.properties.index);

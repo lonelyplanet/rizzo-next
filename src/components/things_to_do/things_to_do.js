@@ -24,11 +24,11 @@ class ThingsToDo extends Component {
     };
 
     this.fetchCards().done(this.cardsFetched.bind(this)).fail((jqXHR) => {
-      rizzo.logger.error({ message:`
-        Could not fetch /api/${window.lp.place.slug}/experiences.json. 
+      rizzo.logger.error(new Error(`
+        Could not fetch /api/${window.lp.place.slug}/experiences.json.
         Response Text: ${jqXHR.responseText}.
         Status: ${jqXHR.statusText}
-        ` });
+        `));
       return this.nukeIt();
     });
 
@@ -120,8 +120,6 @@ class ThingsToDo extends Component {
               "background-image": "url(" + url + ")"
             })
             .addClass("is-visible");
-        }, (url) => {
-          rizzo.logger.error(`Could not load image: ${url}`);
         }));
     });
 
