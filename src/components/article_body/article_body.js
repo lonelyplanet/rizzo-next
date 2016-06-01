@@ -73,7 +73,7 @@ export default class ArticleBodyComponent extends Component {
     });
 
     return Promise.all(promises).catch((err) => {
-      rizzo.logger.error(err);
+      rizzo.logger.log(err);
     });
   }
 
