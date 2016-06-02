@@ -29,12 +29,6 @@ FastClick.attach(document.body);
 
 if (typeof ENV_PROD !== "undefined" && ENV_PROD) {
   require("trackjs");
-
-  window.onerror = function(message, file, line, col) {
-    rizzo.logger.error({
-      message, file, line, col
-    });
-  };
 }
 
 let cookie = new CookieUtil();
