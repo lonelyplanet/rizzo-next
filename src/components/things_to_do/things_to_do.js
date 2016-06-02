@@ -131,7 +131,11 @@ class ThingsToDo extends Component {
   makeNextList() {
     let cards = this.nextCards();
     if (window.localStorage) {
-      window.localStorage.setItem("ttd.currentIndex", JSON.stringify({ index: this.currentIndex, slug: window.lp.place.slug }));
+      try {
+        window.localStorage.setItem("ttd.currentIndex", JSON.stringify({ index: this.currentIndex, slug: window.lp.place.slug }));
+      } catch(e) {
+        rizzo.logger.log("Couldn't set TTD in local storage");
+      }
     }
 
     // Create a new list and place it on top of existing list
