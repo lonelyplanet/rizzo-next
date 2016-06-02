@@ -83,7 +83,7 @@ export default class AdManager {
       $adunit.data("adUnit", currentUnit);
     }
 
-    if (!currentUnit.isEmpty()) {
+    if (currentUnit && !currentUnit.isEmpty()) {
       this._track($adunit);
     }
 
