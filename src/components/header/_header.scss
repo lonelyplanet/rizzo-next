@@ -28,7 +28,7 @@ $lp-global-header-mobile-icon-padding: ($header-height-mobile - $lp-global-heade
   &--normal {
     background: linear-gradient(to bottom, rgba($color-black, .2), rgba($color-black, 0));
     left: 0;
-    position: absolute;
+    position: relative;
     right: 0;
     top: 0;
     z-index: z("global-header");
