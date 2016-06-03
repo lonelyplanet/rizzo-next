@@ -21,6 +21,10 @@ $masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
     max-height: 70.8rem;
   }
 
+  &--normal {
+    margin-top: -13rem;
+  }
+
   &--no-images.masthead--normal {
     background-color: transparent;
     color: $titlegray;

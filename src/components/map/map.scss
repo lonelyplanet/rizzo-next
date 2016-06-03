@@ -30,7 +30,7 @@
   top: 0;
   transition: 500ms ease-in-out;
   width: 100vw;
-  z-index: z("default") - 1;
+  z-index: z("default") - 2;
 
   &.open {
     opacity: 1;
