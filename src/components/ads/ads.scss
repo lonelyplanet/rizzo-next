@@ -4,10 +4,6 @@
 
 @import "../../../sass/webpack_deps";
 
-
-
-
-
 /// ----------------------------------------------------------------------------
 /// Base styles
 /// ----------------------------------------------------------------------------
@@ -15,10 +11,6 @@
 .ad {
   background-color: $darkgray;
 }
-
-
-
-
 
 /// ----------------------------------------------------------------------------
 /// Extended styles
@@ -57,7 +49,6 @@
 .adunit--sponsor-logo-masthead {
   display: inline-block;
 }
-
 
 /// ----------------------------------------------------------------------------
 /// Implementation detail
@@ -108,4 +99,8 @@
 .masthead__ad .adunit--sponsor-logo-masthead {
   display: inline-block;
   margin-bottom: -.9rem; // reset inline-block margin
+}
+
+.adunit--experiences {
+  padding-bottom: 20rem;
 }
