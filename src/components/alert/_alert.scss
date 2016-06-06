@@ -33,6 +33,10 @@ $alert: (
     &--notice {
       @include alert-background($color: "notice");
     }
+
+    &--cta {
+      @include alert-background($color: "cta");
+    }
   }
 
   &__inner {
