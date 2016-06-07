@@ -13,12 +13,15 @@ $mapButton.on("click", function() {
       }
 
       let MapComponent = require("../map/index");
-      
+
       map = new MapComponent.default({
         el: ".map_holder"
       });
-      
-      map.open();
+
+      if (!MapComponent.supported && map) {
+        map.close();
+      }
+
     }, "map");
   }
 });
