@@ -127,6 +127,11 @@ class MarkerSet extends Component {
     }
 
     let pin = set.items[markerIndex];
+
+    if (!pin) {
+      return "";
+    }
+
     let poi = { pin: pin };
     let markup = React.renderToStaticMarkup(React.createElement(Pin, poi));
 

@@ -16,7 +16,7 @@ class MapComponent extends Component {
   initialize() {
     rizzo.logger.log("Creating map");
 
-    if (!mapboxgl.supported()) {
+    if (!MapComponent.supported) {
       return false;
     }
 
@@ -44,6 +44,7 @@ class MapComponent extends Component {
       results.userLocation = this.userLocation;
       MapActions.setState(results);
       React.render(<MainView />, this.$el[0]);
+      this.open();
     });
   }
 
@@ -117,5 +118,7 @@ class MapComponent extends Component {
   }
 
 }
+
+MapComponent.supported = mapboxgl.supported();
 
 export default MapComponent;
