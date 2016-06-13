@@ -34,8 +34,8 @@ $alert: (
       @include alert-background($color: "notice");
     }
 
-    &--cta {
-      @include alert-background($color: "cta");
+    &--info {
+      @include alert-background($color: "info");
     }
   }
 
