@@ -23,7 +23,7 @@ $color-light-slate: #e4eaf8 !default;
 $active-background-color: #f4f5f8 !default;
 $color-light-blue: #bdcee3 !default;
 $color-icon-blue: #2095cf !default;
-$color-lightblue: #e9f2f8 !default;
+$color-paleblue: #e9f2f8 !default;
 
 
 // Grayscale
@@ -40,7 +40,7 @@ $alert-colors: (
   "warning": $color-red,
   "notice": $color-yellow,
   "default": $titlegray,
-  "info": $color-lightblue
+  "info": $color-paleblue
 );
 
 // Social Network Colors
