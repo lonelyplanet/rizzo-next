@@ -47,7 +47,8 @@ class MapActions {
     });
 
     return {
-      place
+      category: "Destinations Next",
+      label:    placeTitle
     };
   }
 
