@@ -63,8 +63,10 @@
   padding-bottom: .8rem;
   padding-top: .8rem;
 
-  @include with-layout(static) {
-    width: span(6);
+  @media(min-width: $min-720) {
+    @include with-layout(static) {
+      width: span(6);
+    }
   }
 
 
