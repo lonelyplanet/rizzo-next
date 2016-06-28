@@ -10,7 +10,7 @@ class Overlay extends Component {
     this.options = options;
 
     this.$html = $("html");
-    this.$el.addClass("overlay");
+    this.$el.addClass("lp-overlay");
 
     this.events = {
       "click": "onClick",
@@ -45,7 +45,7 @@ class Overlay extends Component {
     getScrollbarWidth()
       .then((scrollWidth) => {
         setTimeout(() => {
-          this.$el.addClass("overlay--visible");
+          this.$el.addClass("lp-overlay--visible");
         }, 10);
 
         if (this.options.preventScroll) {
@@ -65,7 +65,7 @@ class Overlay extends Component {
       return Promise.all([]);
     }
 
-    this.$el.removeClass("overlay--visible");
+    this.$el.removeClass("lp-overlay--visible");
 
     this.isVisible = false;
 
