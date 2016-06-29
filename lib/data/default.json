@@ -25,43 +25,43 @@
             "items": [
               {
                 "title": "Africa",
-                "slug": "africa"
+                "slug": "https://www.lonelyplanet.com/africa"
               },
               {
                 "title": "Antarctica",
-                "slug": "antarctica-1007062"
+                "slug": "https://www.lonelyplanet.com/antarctica-1007062"
               },
               {
                 "title": "Asia",
-                "slug": "asia"
+                "slug": "https://www.lonelyplanet.com/asia"
               },
               {
                 "title": "Australia & Pacific",
-                "slug": "pacific"
+                "slug": "https://www.lonelyplanet.com/pacific"
               },
               {
                 "title": "Caribbean",
-                "slug": "caribbean"
+                "slug": "https://www.lonelyplanet.com/caribbean"
               },
               {
                 "title": "Central America",
-                "slug": "central-america"
+                "slug": "https://www.lonelyplanet.com/central-america"
               },
               {
                 "title": "Europe",
-                "slug": "europe"
+                "slug": "https://www.lonelyplanet.com/europe"
               },
               {
                 "title": "Middle East",
-                "slug": "middle-east"
+                "slug": "https://www.lonelyplanet.com/middle-east"
               },
               {
                 "title": "North America",
-                "slug": "north-america"
+                "slug": "https://www.lonelyplanet.com/north-america"
               },
               {
                 "title": "South America",
-                "slug": "south-america"
+                "slug": "https://www.lonelyplanet.com/south-america"
               }
             ],
             "call_to_action": {
@@ -77,31 +77,31 @@
             "items": [
               {
                 "title": "Insurance",
-                "slug": "travel-insurance"
+                "slug": "https://www.lonelyplanet.com/travel-insurance"
               },
               {
                 "title": "Hotels",
-                "slug": "hotels"
+                "slug": "https://www.lonelyplanet.com/hotels"
               },
               {
                 "title": "Flights",
-                "slug": "flights"
+                "slug": "https://www.lonelyplanet.com/flights"
               },
               {
                 "title": "Adventure tours",
-                "slug": "adventure-tours"
+                "slug": "https://www.lonelyplanet.com/adventure-tours"
               },
               {
                 "title": "Sightseeing tours",
-                "slug": "sightseeing-tours"
+                "slug": "https://www.lonelyplanet.com/sightseeing-tours"
               },
               {
                 "title": "Airport transfers",
-                "slug": "airport-transfers"
+                "slug": "https://www.lonelyplanet.com/airport-transfers"
               },
               {
                 "title": "Car rental",
-                "slug": "car-rental"
+                "slug": "https://www.lonelyplanet.com/car-rental"
               }
             ]
           }
@@ -124,16 +124,16 @@
     "footer": {
       "footer_nav_destination_items":
       [
-        { "title": "Africa", "url": "/africa" },
-        { "title": "Antarctica", "url": "/antarctica" },
-        { "title": "Asia", "url": "/asia" },
-        { "title": "Caribbean Islands", "url": "/caribbean" },
-        { "title": "Central America", "url": "/central-america" },
-        { "title": "Europe", "url": "/europe" },
-        { "title": "Middle East", "url": "/middle-east" },
-        { "title": "North America", "url": "/north-america" },
-        { "title": "Pacific", "url": "/pacific" },
-        { "title": "South America", "url": "/south-america" }
+        { "title": "Africa", "url": "https://www.lonelyplanet.com/africa" },
+        { "title": "Antarctica", "url": "https://www.lonelyplanet.com/antarctica" },
+        { "title": "Asia", "url": "https://www.lonelyplanet.com/asia" },
+        { "title": "Caribbean Islands", "url": "https://www.lonelyplanet.com/caribbean" },
+        { "title": "Central America", "url": "https://www.lonelyplanet.com/central-america" },
+        { "title": "Europe", "url": "https://www.lonelyplanet.com/europe" },
+        { "title": "Middle East", "url": "https://www.lonelyplanet.com/middle-east" },
+        { "title": "North America", "url": "https://www.lonelyplanet.com/north-america" },
+        { "title": "Pacific", "url": "https://www.lonelyplanet.com/pacific" },
+        { "title": "South America", "url": "https://www.lonelyplanet.com/south-america" }
       ],
 
       "footer_nav_shop_items":
