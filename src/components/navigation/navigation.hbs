@@ -19,7 +19,7 @@
           <ul class="sub-navigation__list">
           {{#each submenu.items}}
             <li class="sub-navigation__item{{#if current}} sub-navigation__item--current{{/if}}">
-              <a class="sub-navigation__link" href="/{{slug}}">{{title}}</a>
+              <a class="sub-navigation__link" href="{{slug}}">{{title}}</a>
             </li>
           {{/each}}
           </ul>
@@ -64,7 +64,7 @@
             <ul class="sub-navigation__list">
             {{#each submenu.items}}
               <li class="sub-navigation__item{{#if current}} sub-navigation__item--current{{/if}}">
-                <a class="sub-navigation__link" href="/{{slug}}">{{title}}</a>
+                <a class="sub-navigation__link" href="{{slug}}">{{title}}</a>
               </li>
             {{/each}}
             {{#if submenu.call_to_action}}
