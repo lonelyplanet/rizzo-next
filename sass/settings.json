@@ -44,7 +44,7 @@
     "poiShop": "#ff6e8d",
     "poiSleep": "#9d69c9",
     "poiTransport": "#b6c3ca",
-    "poiDefault": "#a8a9ae",
+    "poiDefault": "#a8a9ae"
   },
   "components": {
     "header": {
