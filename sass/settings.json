@@ -35,7 +35,16 @@
 
     "facebook": "#3b5998",
     "twitter": "#00aced",
-    "pinterest": "#cb2027"
+    "pinterest": "#cb2027",
+
+    "poiEat": "#00ca8b",
+    "poiDrink": "#88bde7",
+    "poiPlay": "#ffc92a",
+    "poiSee": "#f8324d",
+    "poiShop": "#ff6e8d",
+    "poiSleep": "#9d69c9",
+    "poiTransport": "#b6c3ca",
+    "poiDefault": "#a8a9ae",
   },
   "components": {
     "header": {
