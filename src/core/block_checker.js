@@ -2,7 +2,7 @@ import $ from "jquery";
 import trackEvent from "../core/events/track_event";
 
 export default function() {
-  window.lp.isAdblockActive = $(".ads.adpartner").is(":hidden");
+  window.lp.isAdblockActive = !!($(".ads.adpartner") && $(".ads.adpartner").is(":hidden"));
 
   if (window.lp.isAdblockActive) {
 
