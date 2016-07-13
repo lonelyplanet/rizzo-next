@@ -7,6 +7,7 @@ class Notification extends Component {
     this.target = options.target;
     this.className = options.className;
     this.label = options.label;
+    this.href = options.href;
     this.template = require("./notification.hbs");
     this.render();
   }
@@ -14,7 +15,8 @@ class Notification extends Component {
     let notification = this.build({
       number: this.content,
       className: this.className,
-      label: this.label
+      label: this.label,
+      href: this.href,
     });
     this.target.append(notification);
     return this;
