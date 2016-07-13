@@ -25,7 +25,8 @@ class NavigationComponent extends Component {
       target: this.$el.find(".js-cart-notification"),
       content: this.state.cartItemCount,
       className: "notification-badge--shop",
-      label: `${this.state.cartItemCount} ${notificationLabel} in your cart`
+      label: `${this.state.cartItemCount} ${notificationLabel} in your cart`,
+      href: "http://shop.lonelyplanet.com/cart/update",
     });
 
     matchMedia(`(min-width: ${breakpoints.min["720"]})`, (query) => {

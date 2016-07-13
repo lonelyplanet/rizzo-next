@@ -1,6 +1,8 @@
 {{!-- notification Widget --}}
 {{#if number}}
 <span class="notification-badge{{#if className}} {{ className }}{{/if}} js-notification-badge"{{#if label}} aria-label="{{ label }}"{{/if}}>
+  {{#if href}}<a href="{{href}}" style="color: white">{{/if}}
   {{ number }}
+  {{#if href}}</a>{{/if}}
 </span>
 {{/if}}
