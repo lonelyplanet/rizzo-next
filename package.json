@@ -23,7 +23,7 @@
     "scsslint": "scss-lint . --config .scss-lint.yml",
     "prepublish": "node bin/rizzo build"
   },
-  "version": "0.11.55",
+  "version": "0.11.56",
   "pre-commit": [
     "scsslint",
     "lint"
