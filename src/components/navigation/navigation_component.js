@@ -13,11 +13,10 @@ let userPanelTemplate = require("./user_panel.hbs"),
     userLinkTemplate = require("./user_link.hbs");
 
 class NavigationComponent extends Component {
-
   initialize() {
-
     this.state = NavigationState.getState();
     this.overlay = new Overlay();
+    this.cartUrl = "http://shop.lonelyplanet.com/cart/update";
 
     let notificationLabel = this.state.cartItemCount === 1 ? "item" : "items";
 
@@ -26,7 +25,7 @@ class NavigationComponent extends Component {
       content: this.state.cartItemCount,
       className: "notification-badge--shop",
       label: `${this.state.cartItemCount} ${notificationLabel} in your cart`,
-      href: "http://shop.lonelyplanet.com/cart/update",
+      href: this.cartUrl,
     });
 
     matchMedia(`(min-width: ${breakpoints.min["720"]})`, (query) => {
@@ -49,6 +48,8 @@ class NavigationComponent extends Component {
     this.$mobileNavigation.on("click", ".js-nav-item", this._handleClick.bind(this));
 
     this.$el.on("touchstart", ".js-nav-item", this._handleClick.bind(this));
+
+    this.updateShopUrl();
 
     // SubNavigation hover
     this.handleHover();
@@ -166,6 +167,19 @@ class NavigationComponent extends Component {
 
   _clickNav() {
     NavigationActions.clickNav();
+  }
+
+  /**
+   * Change shop URL depending on if there are items in the cart
+   */
+  updateShopUrl() {
+    const shopUrl = this.state.cartItemCount ?
+      this.cartUrl :
+      "http://shop.lonelyplanet.com/";
+
+    $(".js-cart-notification")
+      .find(".navigation__link")
+      .attr("href", shopUrl);
   }
 
   @subscribe("user.status.update")
