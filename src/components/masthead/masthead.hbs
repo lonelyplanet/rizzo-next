@@ -71,7 +71,7 @@
     <div class="masthead__cta js-modal" style="background: url({{masthead.masthead__cta.img}}) no-repeat; background-size: 60px"
       data-href="{{masthead.masthead__cta.href}}">
       <p class="masthead__cta--copy">{{{masthead.masthead__cta.copy}}}</p>
-      <button class="button" role="button">{{masthead.masthead__cta.button--text}}</button>
+      <button class="button" role="button" data-lpa-category="{{masthead.masthead__cta.category}}" data-lpa-action="{{masthead.masthead__cta.action}}" data-lpa-label="{{masthead.masthead__cta.label}}">{{masthead.masthead__cta.button--text}}</button>
     </div>
   {{/if}}
 
@@ -79,6 +79,9 @@
     {{> "components/masthead/masthead_nav" }}
   {{/if}}
 
+  {{#if modal}}
+    {{> "components/modal/modal" }}
+  {{/if}}
 
   {{#if top_places}}
     {{> "components/top_places/top_places" }}
