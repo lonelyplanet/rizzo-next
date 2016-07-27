@@ -165,57 +165,62 @@
 
   }
 
-  .ebook {
-    &__strapline h1 {
-      color: $titlegray;
-      font-size: 2rem;
-      font-weight: 600;
-      letter-spacing: -.05rem;
-      line-height: (36.5 / 27);
-      margin-bottom: 3rem;
-      padding-top: 1rem;
+}
 
-      @media (min-width: $min-600) {
-        font-size: 4.2rem;
-        line-height: (70 / 64);
-      }
+.modal-ebook {
+  &__strapline h1 {
+    color: $titlegray;
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: -.05rem;
+    line-height: (36.5 / 27);
+    margin-bottom: 3rem;
+    padding-top: 1rem;
+
+    @media (min-width: $min-600) {
+      font-size: 4.2rem;
+      line-height: (70 / 64);
     }
+  }
 
-    &__title {
-      color: $color-red;
-      margin-bottom: 1rem;
+  &__title {
+    color: $color-red;
+    margin-bottom: 1rem;
+  }
+
+  &__copy {
+    margin-bottom: 2.5rem;
+  }
+
+  &__form-field {
+    background-color: $color-white;
+    height: 50px;
+    margin: 1.5rem .5rem 1rem 0;
+    padding: $spacing;
+    width: 325px;
+  }
+
+  &__download__button--position {
+    margin: 1rem;
+
+    &.disabled {
+      cursor: default;
+      opacity: .4;
     }
+  }
 
-    &__copy {
-      margin-bottom: 2.5rem;
-    }
+  &__modal__terms {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
 
-    &__form-field {
-      background-color: $color-white;
-      height: 50px;
-      margin: 1.5rem .5rem 1rem 0;
-      width: 325px;
-    }
+  &__success {
+    margin-top: 5em;
+    text-align: center;
+  }
 
-    &__download__button--position {
-      margin: 1rem;
-
-    }
-
-    &__modal__terms {
-      font-size: 1rem;
-      padding: 2rem 2rem 0;
-    }
-
-    &__success {
-      margin-top: 5em;
-      text-align: center;
-    }
-
-    &__success__copy {
-      padding: 1.5em;
-    }
-
+  &__success__copy {
+    padding: 1.5em;
   }
 
 }

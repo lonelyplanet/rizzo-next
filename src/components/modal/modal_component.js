@@ -4,6 +4,7 @@ import waitForTimeout from "../../core/utils/waitForTransition";
 import Overlay from "../overlay";
 import matchMedia from "../../core/utils/matchMedia";
 import breakpoints from "../../core/utils/breakpoints";
+import SocialShareComponent from "../social_share";
 
 class Modal extends Component {
   initialize(options) {
@@ -85,6 +86,12 @@ class Modal extends Component {
     let hash = this.$modalTrigger.data("href");
     location.hash = hash;
     this.trackModalPageView();
+
+    $(".js-action-sheet").each(function(){
+      new SocialShareComponent({
+        el: this
+      });
+    });
   }
   @track("Modal Close").sendReturnValue(false)
   hide() {
@@ -114,14 +121,14 @@ class Modal extends Component {
     }
   }
 
-  handleSubmitSuccess() {
+  handleSubmitSuccess(e) {
     this.$form.addClass("is-hidden");
     this.$strapline.addClass("is-hidden");
     this.$title.addClass("is-hidden");
     this.$copy.addClass("is-hidden");
     this.$success.removeClass("is-hidden");
     const dataLayer = {
-      category: "account",
+      category: e.currentTarget.name,
       action: "newsletter",
       value: "sign up"
     };
@@ -130,13 +137,20 @@ class Modal extends Component {
 
   submit(e) {
     e.preventDefault();
-    $.post(this.$form.attr("action"), this.$form.serialize())
+
+    let formData = this.$form.serialize();
+
+    if(e.currentTarget.name === "celebrate-rio-2016") {
+      formData += "&" + $.param({ "sailthru[vars][LP_TRAVELNEWS_NEWSLETTER]": true });
+    }
+
+    $.post(this.$form.attr("action"), formData)
       .done(() => {
-        this.handleSubmitSuccess();
+        this.handleSubmitSuccess(e);
       })
       .fail((xhr) => {
         if (xhr.status === 409) {
-          this.handleSubmitSuccess();
+          this.handleSubmitSuccess(e);
         } else {
           console.log("error");
         }
