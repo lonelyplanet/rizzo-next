@@ -1,15 +1,14 @@
 import $ from "jquery";
-import trackEvent from "../core/events/track_event";
 
 export default function() {
   window.lp.isAdblockActive = !!($(".ads.adpartner") && $(".ads.adpartner").is(":hidden"));
 
+  window.lp.analytics.dataLayer = window.lp.analytics.dataLayer || {};
+  window.lp.analytics.dataLayer.events = window.lp.analytics.dataLayer.events || [];
+
   if (window.lp.isAdblockActive) {
-
-    trackEvent({ name: "loaded-with-adblock", data: { category: "advertising", label: window.location.pathname }});
-
+    window.lp.analytics.dataLayer.events.push({ category: "advertising", action: "loaded-with-adblock" });
   } else {
-
-    trackEvent({ name: "loaded-without-adblock", data: { category: "advertising", label: window.location.pathname }});
+    window.lp.analytics.dataLayer.events.push({ category: "advertising", action: "loaded-without-adblock" });
   }
 }
