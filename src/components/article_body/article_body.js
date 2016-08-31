@@ -33,6 +33,18 @@ export default class ArticleBodyComponent extends Component {
       });
     }
 
+    let featuredImage = this.el.find(this.imageContainerSelector);
+    let $paragraphs = this.$el.find("p");
+    let showAd = $paragraphs.length >= 2 || featuredImage.length;
+
+    if (showAd) {
+      matchMedia(`(max-width: ${breakpoints.max["480"]})`, (query) => {
+        if (query.matches) {
+          this._appendAd($paragraphs, featuredImage);
+        }
+      });
+    }
+
     this.formatDate();
   }
 
@@ -122,5 +134,22 @@ export default class ArticleBodyComponent extends Component {
       el: this.$el,
       pois: data
     });
+  }
+
+  _appendAd($paragraphs, featuredImage) {
+    const element = `<div
+      id="ad-article"
+      class="adunit adunit--article display-none"
+      data-dfp-options='{ "namespace": "LonelyPlanet.com/Yieldmo" }'
+      data-size-mapping="mpu"
+      data-targeting='{ "position": "article-paragraph" }'></div>`;
+
+    if(featuredImage.length) {
+      featuredImage.after(element);
+    } else {
+      $paragraphs.eq(1).after(element);
+    }
+
+    window.lp.ads.manager.load();
   }
 }
