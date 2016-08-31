@@ -20,7 +20,6 @@ class ArticlesComponent extends Component {
 
       $(window).on("resize", this._reclamp.bind(this));
     }
-
   }
   widthWindow() {
     return $(window).width();
