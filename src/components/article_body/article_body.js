@@ -141,7 +141,7 @@ export default class ArticleBodyComponent extends Component {
       id="ad-article"
       class="adunit adunit--article display-none"
       data-dfp-options='{ "namespace": "LonelyPlanet.com/Yieldmo" }'
-      data-size-mapping="mpu"
+      data-size-mapping="mpu-double"
       data-targeting='{ "position": "article-paragraph" }'></div>`;
 
     if(featuredImage.length) {
