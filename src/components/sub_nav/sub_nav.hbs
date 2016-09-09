@@ -4,9 +4,15 @@
     <div class="sub-nav__container">
       <ul class="sub-nav__list js-sub-nav-list">
         {{#each sub_nav}}
-          <li class="sub-nav__item sub-nav__item--{{link}}">
-            <a class="sub-nav__link js-sub-nav-link" href="#{{link}}">{{title}}</a>
-          </li>
+          {{#if link.uri}}
+            <li class="sub-nav__item sub-nav__item--{{link.name}}">
+              <a class="sub-nav__link" href="{{link.uri}}">{{title}}</a>
+            </li>
+          {{else}}
+            <li class="sub-nav__item sub-nav__item--{{link}}">
+              <a class="sub-nav__link js-sub-nav-link" href="#{{link}}">{{title}}</a>
+            </li>
+          {{/if}}
         {{/each}}
       </ul>
     </div>
