@@ -136,16 +136,15 @@ export default class ArticleBodyComponent extends Component {
     });
   }
 
-  _appendAd($paragraphs, featuredImage) {
+  _appendAd($paragraphs, $featuredImage) {
     const element = `<div
-      id="ad-article"
       class="adunit adunit--article display-none"
       data-dfp-options='{ "namespace": "LonelyPlanet.com/Yieldmo" }'
       data-size-mapping="mpu-double"
       data-targeting='{ "position": "article-paragraph" }'></div>`;
 
-    if(featuredImage.length) {
-      featuredImage.after(element);
+    if($featuredImage.length) {
+      $featuredImage.eq(0).after(element);
     } else {
       $paragraphs.eq(1).after(element);
     }
