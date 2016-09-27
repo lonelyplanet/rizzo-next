@@ -24,7 +24,7 @@ $masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
   &--normal {
     margin-top: -5rem;
 
-    @media (min-width: $min-480) {
+    @media (min-width: $min-720) {
       margin-top: -13rem;
     }
   }
