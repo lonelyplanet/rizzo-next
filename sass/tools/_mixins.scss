@@ -215,7 +215,11 @@
   position: absolute;
   top: $top;
   transform: translateY(1rem);
-  transition: opacity $animation-speed, transform $animation-speed, box-shadow ($animation-speed-ui * 1.5);
+  transition: opacity $animation-speed,
+    transform $animation-speed,
+    box-shadow ($animation-speed-ui * 1.5),
+    visibility $animation-speed;
+  visibility: hidden;
   width: $width;
   z-index: z("global-header") + 1;
 }
@@ -225,6 +229,7 @@
   opacity: 1;
   pointer-events: all;
   transform: translateY(0);
+  visibility: visible;
 }
 
 @mixin dropdown-menu-arrow($size: 1.6rem, $left: 50%) {
