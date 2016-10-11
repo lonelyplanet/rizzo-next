@@ -10,6 +10,26 @@
     max-width: $max-width;
   }
 
+  &__attribution {
+    background-color: rgba($color-white, .5);
+    bottom: 0;
+    font-size: 1.2rem;
+    line-height: 1;
+    padding: .5rem .5rem .3rem;
+    position: absolute;
+    right: 0;
+
+    a {
+      color: inherit;
+    }
+
+    a:hover,
+    a:active,
+    a:focus {
+      text-decoration: underline;
+    }
+  }
+
   &__container {
     display: none;
 
