@@ -46,7 +46,8 @@
 }
 
 .adunit--sponsor-logo,
-.adunit--sponsor-logo-masthead {
+.adunit--sponsor-logo-masthead,
+.adunit--best-in-masthead {
   display: inline-block;
 }
 
@@ -99,6 +100,10 @@
 .masthead__ad .adunit--sponsor-logo-masthead {
   display: inline-block;
   margin-bottom: -.9rem; // reset inline-block margin
+}
+
+.masthead__ad .adunit--best-in-masthead {
+  float: left;
 }
 
 .adunit--experiences {
