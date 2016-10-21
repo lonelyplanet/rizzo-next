@@ -21,7 +21,7 @@
     "sassdoc": "./node_modules/.bin/sassdoc sass --theme neat",
     "lint": "./node_modules/.bin/eslint src --ext .js,.jsx",
     "scsslint": "scss-lint . --config .scss-lint.yml",
-    "prepublish": "node bin/rizzo build && cp -R src dist && babel -d dist dist"
+    "prepublish": " rimraf dist && mkdir -p dist && node bin/rizzo build && mkdir -p tmp && babel -d tmp src && cp -R tmp/* dist && rimraf tmp"
   },
   "version": "0.11.80",
   "pre-commit": [
@@ -97,6 +97,7 @@
     "object-assign": "^3.0.0",
     "phantomjs-prebuilt": "^2.1.4",
     "pre-commit": "^1.1.2",
+    "rimraf": "^2.5.4",
     "sass-loader": "^3.1.1",
     "sassdoc": "^2.1.15",
     "sassdoc-theme-neat": "0.0.2",
