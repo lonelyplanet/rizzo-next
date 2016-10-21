@@ -20,6 +20,10 @@
     position: absolute;
     right: 0;
 
+    @media (max-width: $max-960) {
+      display: none;
+    }
+
     a {
       color: inherit;
     }
@@ -32,19 +36,18 @@
   }
 
   &__container {
-    display: none;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 0;
+    left: 0;
+    padding: ($gutter * 13.2) 0;
+    position: relative;
+    top: 0;
+    width: 100%;
 
-    @media (min-width: $min-960) {
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      display: block;
-      height: 0;
-      left: 0;
-      padding: ($gutter * 13.2) 0;
-      position: relative;
-      top: 0;
-      width: 100%;
+    @media (max-width: $max-960) {
+      display: none;
     }
   }
 
