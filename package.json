@@ -21,9 +21,9 @@
     "sassdoc": "./node_modules/.bin/sassdoc sass --theme neat",
     "lint": "./node_modules/.bin/eslint src --ext .js,.jsx",
     "scsslint": "scss-lint . --config .scss-lint.yml",
-    "prepublish": "node bin/rizzo build"
+    "prepublish": " rimraf dist && mkdir -p dist && node bin/rizzo build && mkdir -p tmp && babel -d tmp src && cp -R tmp/* dist && rimraf tmp"
   },
-  "version": "0.11.79",
+  "version": "0.11.80",
   "pre-commit": [
     "scsslint",
     "lint"
@@ -63,8 +63,10 @@
   },
   "devDependencies": {
     "autoprefixer-loader": "^3.1.0",
+    "babel-cli": "^6.16.0",
     "babel-eslint": "^4.1.7",
     "babel-loader": "^6.2.3",
+    "babel-plugin-transform-decorators": "^6.13.0",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-preset-es2015": "^6.5.0",
     "babel-preset-react": "^6.5.0",
@@ -95,6 +97,7 @@
     "object-assign": "^3.0.0",
     "phantomjs-prebuilt": "^2.1.4",
     "pre-commit": "^1.1.2",
+    "rimraf": "^2.5.4",
     "sass-loader": "^3.1.1",
     "sassdoc": "^2.1.15",
     "sassdoc-theme-neat": "0.0.2",
