@@ -8,7 +8,7 @@ import $ from "jquery";
 
 const dateDefaults = {
   format: "mm/d/yyyy",
-  formatSubmit: "dd/mm/yyyy",
+  formatSubmit: "yyyy-mm-dd",
   hiddenName: true,
   labelMonthNext: "Go to the next month",
   labelMonthPrev: "Go to the previous month",
