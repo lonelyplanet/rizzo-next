@@ -13,24 +13,24 @@
         </p>
       </header>
 
-      <form class="hotels__search" id="hotel-search-form" action="https://www.lonelyplanet.com/{{slug}}/hotels">
+      <form class="hotels__search" id="hotel-search-form" action="/{{slug}}/a/lod/{{place.atlas_id}}">
         <fieldset>
           <div class="hotels__search__field">
             <label class="hotels__search__label" for="js-av-start">Check-in</label>
 
-            <input class="hotels__search__control" id="js-av-start" autocomplete="off" name="search[from]" placeholder="Check-in" type="date">
+            <input class="hotels__search__control" id="js-av-start" autocomplete="off" name="startDate" placeholder="Check-in" type="date">
           </div>
 
           <div class="hotels__search__field">
             <label class="hotels__search__label" for="js-av-end">Check-out</label>
 
-            <input class="hotels__search__control" id="js-av-end" autocomplete="off" name="search[to]" placeholder="Check-out" type="date">
+            <input class="hotels__search__control" id="js-av-end" autocomplete="off" name="endDate" placeholder="Check-out" type="date">
           </div>
 
           <div class="hotels__search__field">
             <label class="hotels__search__label" for="js-guests">Number of guests</label>
 
-            <select class="hotels__search__control" id="js-guests" name="search[guests]">
+            <select class="hotels__search__control" id="js-guests" name="numGuests">
               <option value="1">1 Guest</option>
               <option value="2" selected="selected">2 Guests</option>
               <option value="3">3 Guests</option>
