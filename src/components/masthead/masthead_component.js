@@ -7,6 +7,7 @@ import coverVid from "../../core/utils/covervid";
 import MobilUtil from "../../core/mobile_util";
 import fitText from "../../core/utils/fitText";
 import subscribe from "../../core/decorators/subscribe";
+import Video from "../video";
 
 /**
  * Masthead Component
@@ -31,7 +32,6 @@ export default class MastheadComponent extends Component {
       }
     });
 
-     // import Video from "../video";
     this.$video = this.$el.find(".js-video").on("playing", (event) => {
       $(event.target).addClass("is-playing");
     });
@@ -54,6 +54,10 @@ export default class MastheadComponent extends Component {
       fontSizes: [ 56, 60, 80, 120 ],
       minFontSize: 56
     });
+
+    Video
+      .addPlayer("#masthead-video-overlay", "brightcove_default")
+      .then(this.playerReady.bind(this));
 
     this.subscribe();
   }
@@ -86,8 +90,9 @@ export default class MastheadComponent extends Component {
   playerReady(player) {
     this.player = player;
 
-    this.player.search(window.lp.place.atlasId)
-      .then(this.searchDone.bind(this));
+    // this.player.search(window.lp.place.atlasId)
+    //   .then(this.searchDone.bind(this));
+    this.player.search().then(this.searchDone.bind(this));
 
     this.listenTo(this.player, "play", this.onPlay);
     this.listenTo(this.player, "stop", this.onStop);

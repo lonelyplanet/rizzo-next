@@ -10,9 +10,11 @@ class Brightcove extends VideoPlayer {
       "https://files.brightcove.com/bc-mapi.js"
     ];
   }
+
   initialize(options) {
     super.initialize(options);
 
+    // global map of Brightcove instances keyed by id (ex. "player1")
     window.BCL = window.BCL || {};
   }
 
@@ -21,7 +23,8 @@ class Brightcove extends VideoPlayer {
    * @returns {Promise}
    */
   search() {
-    return new Promise((resolve) => {
+      return new Promise((resolve) => {
+      resolve(5);
       BCMAPI.search({
         all: `atlas_id:${window.lp.place.atlasId}`
       });
@@ -95,6 +98,21 @@ class Brightcove extends VideoPlayer {
       }
     });
   }
+
+
+  // // loadPlayer and _getScripts were taken from video_player.js
+  // loadPlayer() {
+  //   this._getScripts(this.scripts);
+  // }
+  // _getScripts(scripts) {
+  //   let promises = scripts.map((s) => $.getScript(s));
+
+  //   $.when(...promises).then(() => {
+  //     this.setup();
+  //   });
+  // }
+
+
   setup() {
     // brightcove.createExperiences();
 
@@ -109,7 +127,8 @@ class Brightcove extends VideoPlayer {
     BCMAPI.callback = `BCL.player${this.playerId}.onSearchResponse`;
 
     window.onresize = this.calculateDimensions.bind(this);
-    this.trigger("ready");
+    super.setup();
+    // this.trigger("ready");
   }
 
   /**
