@@ -29,6 +29,10 @@ $max-video-width: 129rem;
     // top: 3.5rem;
     // z-index: z("video-overlay-close");
 
+    @media (max-width: $max-720) {
+      height: 7rem;
+    }
+
     &__button {
       color: $titlegray;
       cursor: pointer;
@@ -37,6 +41,13 @@ $max-video-width: 129rem;
       position: absolute;
       top: 3.5rem;
       right: 3.5rem;
+
+      @media (max-width: $max-720) {
+        top: 1.5rem;
+        right: 1.65rem;
+      }
+
+      
 
       // &--disabled {
       //   cursor: default;
