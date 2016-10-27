@@ -1,12 +1,12 @@
 import { Component } from "../../core/bane";
 import Slideshow from "../slideshow";
 import assign from "lodash/object/assign";
-import Overlay from "../overlay";
 import "./masthead_nav.js";
 import coverVid from "../../core/utils/covervid";
 import MobilUtil from "../../core/mobile_util";
 import fitText from "../../core/utils/fitText";
 import subscribe from "../../core/decorators/subscribe";
+import Video from "../video";
 
 /**
  * Masthead Component
@@ -21,8 +21,6 @@ export default class MastheadComponent extends Component {
       "click .js-play-video": "playVideo"
     };
 
-    this.overlay = new Overlay();
-
     $.each(this.$straplines, function(index, strapline) {
       if (!$(strapline).html()) {
         $(strapline)
@@ -31,7 +29,6 @@ export default class MastheadComponent extends Component {
       }
     });
 
-     // import Video from "../video";
     this.$video = this.$el.find(".js-video").on("playing", (event) => {
       $(event.target).addClass("is-playing");
     });
@@ -55,6 +52,11 @@ export default class MastheadComponent extends Component {
       minFontSize: 56
     });
 
+    // Initialize video overlay
+    Video
+      .addPlayer("#video-overlay", "brightcove")
+      .then(this.playerReady.bind(this));
+
     this.subscribe();
   }
 
@@ -74,43 +76,41 @@ export default class MastheadComponent extends Component {
    * Play the video, callback from click handler
    */
   playVideo() {
-    this.overlay.show();
-    this.player.play(this.videoId);
+    this.player.play();
   }
 
   /**
-   * Callback from the player load event
+   * Callback from the player "ready" event
    * @param  {VideoPlayer} player Instance of the VideoPlayer
-   * @listens {play}
    */
   playerReady(player) {
     this.player = player;
-
-    this.player.search(window.lp.place.atlasId)
-      .then(this.searchDone.bind(this));
-
-    this.listenTo(this.player, "play", this.onPlay);
-    this.listenTo(this.player, "stop", this.onStop);
-    this.listenTo(this.player, "pause", this.onStop);
+    this.player.search().then(this.searchDone.bind(this));
   }
 
-  onPlay() {
-    // Use this?
-  }
-
-  onStop() {
-    // Use?
-    this.overlay.hide();
-  }
-
+  /**
+   * Callback from the player search()
+   * @param  {videos} list of video ids that matched the search
+   */
   searchDone(videos) {
     if (videos.length) {
-      this.$el.find(".js-play-video")
-        .removeAttr("hidden")
-        .addClass("is-visible");
-
-      this.videoId = videos[0];
+      let videoId = videos[0];
+      this.player.loadVideo(videoId).then(this.loadDone.bind(this));
     }
+  }
+
+  /**
+   * Callback from the player loadVideo()
+   * @param  {success} bool depicting whether the video successfully loaded or not
+   */
+  loadDone(success) {
+    if (!success) {
+      return;
+    }
+
+    this.$el.find(".js-play-video")
+      .removeAttr("hidden")
+      .addClass("is-visible");
   }
 
   updateStrapline(data) {

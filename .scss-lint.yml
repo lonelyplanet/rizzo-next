@@ -244,7 +244,6 @@ linters:
 
   SelectorFormat:
     exclude:
-      - 'src/components/video/video_player.scss' # because of Brightcove
       - 'src/components/masthead/_masthead_nav.scss' # temporary exclusion because `masthead_nav` needs refactored
       - 'src/components/top_places/_top_places.scss' # temporary exclusion because `top_places` needs refactored
     enabled: true
