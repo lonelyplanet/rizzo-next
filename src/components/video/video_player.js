@@ -3,16 +3,10 @@ import waitForTransition from "../../core/utils/waitForTransition";
 
 class VideoPlayer extends Component {
 
-  // Override with any script paths that need to be loaded
-  // before the player can be built
-  get scripts() {
-    return [];
-  }
-
   initialize({ playerId }) {
     this.playerId = playerId;
     this.render();
-    this.loadPlayer();
+    this.setup();
 
     this.events = {
       "click": "pause"
@@ -20,15 +14,20 @@ class VideoPlayer extends Component {
   }
 
   render() {
-    this.$el
-      .addClass("video-overlay")
-      .css("zIndex", -20);
-
+    this.$el.addClass("video-overlay");
     this.calculateDimensions();
   }
 
+  /**
+   * Run any setup to load the player (ex. videojs player).
+   * Make sure this.trigger("ready") is called within this function.
+   */
   setup() {
+    // calculateDimensions is bound here because it could potentially 
+    // be an expensive calculation and we don't want to hook it up
+    // unless we're "ready".
     window.onresize = this.calculateDimensions.bind(this);
+
     this.trigger("ready");
   }
 
@@ -40,12 +39,18 @@ class VideoPlayer extends Component {
     });
   }
 
+  /**
+   * Override to actually play the underlying player
+   */
   play() {
     $(".masthead").css("opacity", 0);
     this.$el.css("zIndex", 9999);
     this.$el.addClass("video-overlay--playing");
   }
 
+  /**
+   * Override to actually pause the underlying player
+   */
   pause() {
     $(".masthead").css("opacity", 1);
     this.$el.removeClass("video-overlay--playing");
@@ -55,17 +60,6 @@ class VideoPlayer extends Component {
     });
   }
 
-  loadPlayer() {
-    this._getScripts(this.scripts);
-  }
-
-  _getScripts(scripts) {
-    let promises = scripts.map((s) => $.getScript(s));
-
-    $.when(...promises).then(() => {
-      this.setup();
-    });
-  }
 }
 
 export default VideoPlayer;

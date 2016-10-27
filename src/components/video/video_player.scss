@@ -1,18 +1,12 @@
 @import "../../../sass/webpack_deps";
 
-$max-video-width: 129rem;
-
 .video-overlay {
-  // background: $color-white;
-  // background-color: transparent;
   height: 100%;
-  left: 0;
   opacity: 0;
   position: relative;
-  right: 0;
-  top: 0;
-  transition: opacity $animation-speed-ui ease-in;
+  transition: opacity ($animation-speed-ui / 2) ease-in;
   width: 100%;
+  z-index: -20;
 
   &--playing {
     opacity: 1;
@@ -21,13 +15,9 @@ $max-video-width: 129rem;
   &__close {
     font-size: 2rem;
     height: 13rem;
-    // background-color: rgba(255, 255, 255, 0.5);
-    // left: auto;
-    // overflow: hidden;
-    // position: relative;
-    // right: 3.5rem;
-    // top: 3.5rem;
-    // z-index: z("video-overlay-close");
+    left: 0;
+    position: relative;
+    top: 0;
 
     @media (max-width: $max-720) {
       height: 7rem;
@@ -36,50 +26,25 @@ $max-video-width: 129rem;
     &__button {
       color: $titlegray;
       cursor: pointer;
-      // opacity: 1;
-      // transition: opacity 500ms ease-in;
       position: absolute;
-      top: 3.5rem;
       right: 3.5rem;
+      top: 3.5rem;
 
       @media (max-width: $max-720) {
-        top: 1.5rem;
         right: 1.65rem;
+        top: 1.5rem;
       }
-
-      
-
-      // &--disabled {
-      //   cursor: default;
-      //   opacity: 0;
-      //   pointer-events: none;
-      // }
     }
   }
-
-  
 }
 
 .masthead-video {
-  /*left: 50%;*/
-  /*max-width: $max-video-width;*/
-  /*position: fixed;
-  top: 50%;
-  transform: translate(-50%, -50%);*/
   width: 100%;
-  // background-color: $color-white;
-
-  /*@media(min-width: $min-480) {
-    width: 60%;
-  }*/
 
   &__container {
-    // height: 0;
     margin-left: ($gutter / 2);
     margin-right: ($gutter / 2);
     text-align: center;
-    /*padding-bottom: 56.25%;*/
-    position: relative;
 
     @media (min-width: $min-480) {
       margin-left: $gutter;
@@ -102,15 +67,3 @@ $max-video-width: 129rem;
   }
 }
 
-// .BrightcoveExperience {
-//   bottom: 0;
-//   height: 100%;
-//   left: 0;
-//   margin: 0 auto;
-//   max-height: 80rem;
-//   max-width: $max-video-width; // Max video width before controls start to disappear
-//   position: absolute;
-//   right: 0;
-//   top: 0;
-//   width: 100%;
-// }

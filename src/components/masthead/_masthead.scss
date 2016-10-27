@@ -11,12 +11,12 @@ $masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
   left: 0;
   max-height: 80rem;
   min-height: 40rem;
+  opacity: 1;
   overflow: hidden;
   position: relative;
   top: 0;
+  transition: opacity ($animation-speed-ui / 2) ease-in;
   z-index: z("slideshow-slide") + 3;
-  opacity: 1;
-  transition: opacity $animation-speed-ui ease-in-out;
 
   &--narrow {
     background-color: transparent;
@@ -103,9 +103,9 @@ $masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
   &__text {
     @include container-padded();
     max-width: 100%; // override container mixin’s default; causes off-centered text in IE
+    position: relative;
     text-align: center;
     width: 100%;
-    position: relative;
 
     @media (min-width: $min-720) {
       margin-top: $header-height-mobile;
@@ -230,49 +230,28 @@ $masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
   }
 
   &__text__overflow {
-    position: absolute;
-    width: 100%;
-    top: auto;
     left: 0;
     margin-top: 1rem;
+    position: absolute;
+    top: auto;
+    width: 100%;
   }
 
   &__button--play {
     background-color: transparent;
     border: 0;
-    //bottom: (2.6rem - 1rem);
     color: $color-white;
     cursor: pointer;
     display: none;
     line-height: 1;
-    padding: 1rem;
     opacity: 0;
+    padding: 1rem;
     transition: opacity ($animation-speed-ui / 2) ease-in-out;
 
     &.is-visible {
       display: inline-block;
       opacity: 1;
     }
-
-    // @media (max-width: $max-720) {
-    //   left: 0;
-    //   margin-left: auto;
-    //   margin-right: auto;
-    //   right: 0;
-    //   width: 8.2rem;
-    // }
-
-    // @media (min-width: $min-720) {
-    //   left: ($gutter - 1rem);
-    // }
-
-    // @media (max-height: em(679px)) {
-    //   left: 50%;
-    //   padding-bottom: .4rem;
-    //   padding-top: .4rem;
-    //   transform: translateX(-50%);
-    //   width: auto;
-    // }
   }
 
   &__button--play__icon {
@@ -282,11 +261,11 @@ $masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
     display: inline-block;
     font-size: 1.8rem;
     height: 4rem;
-    width: 4rem;
     padding-left: .4rem;
     padding-top: 1rem;
     transition: background-color $animation-speed linear;
-    
+    width: 4rem;
+
     @media (min-width: $min-720) {
       font-size: 2.2rem;
       height: 5.2rem;
