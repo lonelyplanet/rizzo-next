@@ -15,6 +15,8 @@ $masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
   position: relative;
   top: 0;
   z-index: z("slideshow-slide") + 3;
+  opacity: 1;
+  transition: opacity $animation-speed-ui ease-in-out;
 
   &--narrow {
     background-color: transparent;
@@ -227,44 +229,50 @@ $masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
     z-index: z("default") + 1;
   }
 
+  &__text__overflow {
+    position: absolute;
+    width: 100%;
+    top: auto;
+    left: 0;
+    margin-top: 1rem;
+  }
+
   &__button--play {
     background-color: transparent;
     border: 0;
-    bottom: (2.6rem - 1rem);
+    //bottom: (2.6rem - 1rem);
     color: $color-white;
     cursor: pointer;
     display: none;
     line-height: 1;
     padding: 1rem;
-    margin: 0 auto;
-    width: 100%;
-    position: absolute;
-    left: 0;
-    bottom: -($masthead-play-icon-height + 4.5rem);
+    opacity: 0;
+    transition: opacity ($animation-speed-ui / 2) ease-in-out;
 
     &.is-visible {
-      display: block;
+      display: inline-block;
+      opacity: 1;
     }
 
-    @media (max-width: $max-720) {
-      left: 0;
-      margin-left: auto;
-      margin-right: auto;
-      right: 0;
-      width: 8.2rem;
-    }
+    // @media (max-width: $max-720) {
+    //   left: 0;
+    //   margin-left: auto;
+    //   margin-right: auto;
+    //   right: 0;
+    //   width: 8.2rem;
+    // }
 
-    /*@media (min-width: $min-720) {
-      left: ($gutter - 1rem);
-    }*/
+    // @media (min-width: $min-720) {
+    //   left: ($gutter - 1rem);
+    // }
 
-    @media (max-height: em(679px)) {
-      /*left: 50%;*/
-      padding-bottom: .4rem;
-      padding-top: .4rem;
-      transform: translateX(-50%);
-      width: auto;
-    }
+    // @media (max-height: em(679px)) {
+    //   left: 50%;
+    //   padding-bottom: .4rem;
+    //   padding-top: .4rem;
+    //   transform: translateX(-50%);
+    //   width: auto;
+    // }
   }
 
   &__button--play__icon {
@@ -273,12 +281,12 @@ $masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
     box-shadow: 0 0 2rem rgba($color-black, .5);
     display: inline-block;
     font-size: 1.8rem;
-    height: $masthead-play-icon-height;
+    height: 4rem;
+    width: 4rem;
     padding-left: .4rem;
     padding-top: 1rem;
     transition: background-color $animation-speed linear;
-    width: 4rem;
-
+    
     @media (min-width: $min-720) {
       font-size: 2.2rem;
       height: 5.2rem;

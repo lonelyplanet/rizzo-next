@@ -17,24 +17,37 @@ class VideoPlayer extends Component {
     this.events = {
       "click": "pause"
     };
+  }
 
+  render() {
     this.$el
       .addClass("video-overlay")
       .css("zIndex", -20);
 
-    this.$close = this.$el.find(".video-overlay__close__button");
+    this.calculateDimensions();
   }
 
   setup() {
+    window.onresize = this.calculateDimensions.bind(this);
     this.trigger("ready");
   }
 
+  calculateDimensions() {
+    let mastheadHeight = $(".masthead").outerHeight();
+    this.$el.css({
+      "margin-top": -(mastheadHeight), 
+      "height": mastheadHeight
+    });
+  }
+
   play() {
+    $(".masthead").css("opacity", 0);
     this.$el.css("zIndex", 9999);
     this.$el.addClass("video-overlay--playing");
   }
 
   pause() {
+    $(".masthead").css("opacity", 1);
     this.$el.removeClass("video-overlay--playing");
 
     waitForTransition(this.$el).then(() => {

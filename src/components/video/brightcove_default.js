@@ -4,115 +4,93 @@ import VideoPlayer from "./video_player";
 
 class BrightcoveDefault extends VideoPlayer {
 
-  // get scripts() {
-  //   return [
-  //     "https://players.brightcove.net/5104226627001/default_default/index.min.js"
-  //   ];
-  // }
-
+  get videoEl() {
+    if (this.$el.hasClass("video-js")) {
+      return this.el;
+    }
+    return this.$el.find(".video-js")[0];
+  }
 
   initialize(options) {
     super.initialize(options);
+    this.events["click .video-js"] = "onClickVideo";
   }
 
-  /**
-   * Search for a video by it's Atlas ID
-   * @returns {Promise}
-   */
   search() {
-
-    return Promise.resolve([5136109874001]);
-
-    // return new Promise((resolve) => {
-    //   BCMAPI.search({
-    //     all: `atlas_id:${window.lp.place.atlasId}`
-    //   });
-
-    //   this.searchResolver = resolve;
-    // });
+    try {
+      let videoId = "ref:dest_" + window.lp.place.atlasId;
+      return Promise.resolve([videoId]);
+    }
+    catch (e) {
+      return Promise.resolve([]);
+    }
   }
-  /**
-   * Pause the playing video
-   */
+
+  onClickVideo(event) {
+    event.stopPropagation();
+  }
+
   pause() {
     super.pause();
+    this.player.pause();
   }
-  /**
-   * Play the video
-   */
+
   play() {
+    this.calculateDimensions();
     super.play();
+    this.player.play();
   }
-
-  /**
-   * Render the brightcove template
-   */
-  render() {
-    super.render();
-    // this.$el.html(template({
-    //   playerId: this.playerId
-    // }));
-  }
-
-  // loadPlayer() {
-
-  // }
 
   setup() {
-    // super.setup();
-    // let base = super;
-    let self = this;
+    window.onresize = this.calculateDimensions.bind(this);
 
-    videojs(this.el).ready(() => {
+    let self = this;
+    videojs(this.videoEl).ready(function () {
       self.player = this;
-      // self.setup();
-      // self.trigger('ready');
-      // base.setup();
       self.trigger("ready");
     });
   }
 
-  /**
-   * Callback from the BEGIN event from the video player
-   */
-  // begin() {
-  //   this.trigger("begin");
-  //   this.isPlaying = true;
-  // }
-  // progress() {
-  //   this.trigger("progress");
-  // }
-  // playing() {
-  //   this.trigger("play");
-  // }
-  // calculateDimensions() {
-  //   let resizeWidth = document.getElementById("masthead-video-player").clientWidth,
-  //       resizeHeight = document.getElementById("masthead-video-player").clientHeight;
+  loadVideo(videoId) {
+    if (!this.player) {
+      return Promise.resolve(false);
+    }
 
-  //   if (this.experienceModule && this.experienceModule.experience.type === "html") {
-  //       this.experienceModule.setSize(resizeWidth, resizeHeight);
-  //   }
-  // }
-  // onTemplateReady() {
-  //   this.videoPlayer.addEventListener(brightcove.api.events.MediaEvent.CHANGE, () => {
-  //     this.searchResolver(this.mastheadVideoIds);
-  //   });
+    return new Promise((resolve) => {
+      this.player.catalog.getVideo(videoId, (error, video) => {
+        if (!error) {
+          this.player.catalog.load(video);
+        }
+        resolve(!error);
+      });
+    });
+  }
 
-  //   this.videoPlayer.cueVideoByID(this.mastheadVideoIds[0]);
-  // }
-  // onSearchResponse(jsonData) {
-  //   let mastheadVideoIds = [];
+  calculateDimensions() {
+    super.calculateDimensions();
 
-  //   for (let index in jsonData.items) {
-  //     mastheadVideoIds.push(jsonData.items[index].id);
-  //   }
+    let ratio = 1.77777778;
 
-  //   // Only load the brightcove player when there's videos for a place
-  //   if (mastheadVideoIds.length) {
-  //     this.mastheadVideoIds = mastheadVideoIds;
-  //     $.getScript("https://sadmin.brightcove.com/js/BrightcoveExperiences.js");
-  //   }
-  // }
+    // If we have video data, use the aspect ratio of the 
+    // video as the width-height ratio value
+    try {
+      let source = this.player.mediainfo.rawSources[0];
+      ratio = source.width / source.height;
+    }
+    catch (e) {}
+
+    let maxHeight = this.$el.innerHeight() - this.$el.find(".video-overlay__close").outerHeight();
+    let maxWidth = this.$el.find(".masthead-video__container").innerWidth();
+    let desiredWidth = maxWidth;
+    let desiredHeight = maxWidth / ratio;
+
+    if (desiredHeight > maxHeight) {
+      desiredHeight = maxHeight;
+      desiredWidth = desiredHeight * ratio;
+    }
+
+    $(this.videoEl).css({width: desiredWidth, height: desiredHeight});
+  }
 }
 
 export default BrightcoveDefault;
