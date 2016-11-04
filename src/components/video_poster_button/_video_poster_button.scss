@@ -56,7 +56,6 @@
     padding-left: .7rem;
     padding-top: 1.4rem;
     text-align: center;
-    transition: transform ($animation-speed-ui / 2) ease;
     width: 6rem;
 
     @media (max-width: $max-560) {
@@ -101,10 +100,6 @@
 }
 
 .video-poster-button__inner:hover {
-
-  .video-poster-button__play {
-    transform: scale(1.08);
-  }
 
   .video-poster-button__text {
     background-color: rgba($color-black, .17);
