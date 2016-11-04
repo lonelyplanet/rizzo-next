@@ -61,8 +61,25 @@
       }
     }
 
-    .video-js {
-      display: inline-block;
+
+  }
+
+  .video-js {
+    display: inline-block;
+  }
+
+  .vjs-play-progress {
+    background-color: $lpblue;
+  }
+
+  .vjs-volume-level {
+    background-color: $lpblue;
+  }
+
+  .vjs-big-play-button {
+    &:hover,
+    &:active {
+      background-color: $lpblue;
     }
   }
 }
