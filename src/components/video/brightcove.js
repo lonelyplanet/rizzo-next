@@ -1,157 +1,68 @@
-/* global brightcove, BCMAPI */
+/* global videojs */
 
 import VideoPlayer from "./video_player";
 
-let template = require("./brightcove.hbs");
-
 class Brightcove extends VideoPlayer {
-  get scripts() {
-    return [
-      "https://files.brightcove.com/bc-mapi.js"
-    ];
+
+  get videoEl() {
+    if (this.$el.hasClass("video-js")) {
+      return this.el;
+    }
+    return this.$el.find(".video-js")[0];
   }
+
   initialize(options) {
     super.initialize(options);
-
-    window.BCL = window.BCL || {};
+    this.events["click .video-js"] = "onClickVideo";
   }
 
-  /**
-   * Search for a video by it's Atlas ID
-   * @returns {Promise}
-   */
   search() {
-    return new Promise((resolve) => {
-      BCMAPI.search({
-        all: `atlas_id:${window.lp.place.atlasId}`
-      });
-
-      this.searchResolver = resolve;
-    });
-  }
-  /**
-   * Pause the playing video
-   */
-  pause() {
-    // This kind of sucks, but since it's flash based I have to keep trying to pause
-    // until it actually pauses... O_o
-    if (this.isPlaying) {
-      clearTimeout(this.pauseTimer);
-      this.videoPlayer.pause(true);
-
-      super.pause();
-    } else {
-      this.pauseTimer = setTimeout(() => this.pause(), 50);
+    try {
+      let videoId = "ref:dest_" + window.lp.place.atlasId;
+      return Promise.resolve([videoId]);
+    }
+    catch (e) {
+      return Promise.resolve([]);
     }
   }
-  /**
-   * Play the video
-   */
+
+  onClickVideo(event) {
+    // Prevent event from bubbling -- added for VideoOverlayComponent
+    // to prevent the overlay from closing when the user uses the video embed.
+    event.stopPropagation();
+  }
+
   play() {
-    this.calculateDimensions();
-    this.videoPlayer.play();
-
     super.play();
+    this.player.play();
   }
 
-  /**
-   * Render the brightcove template
-   */
-  render() {
-    this.$el.html(template({
-      playerId: this.playerId
-    }));
+  pause() {
+    super.pause();
+    this.player.pause();
   }
 
-  /**
-   * Callback from the brightcove API
-   * @param id
-   */
-  onTemplateLoad(id) {
-    function calculateNewPercentage(width, height) {
-      let newPercentage = ((height / width) * 100) + "%";
-      document.getElementById("outer-container").style.paddingBottom = newPercentage;
-    }
-
-    this.player = brightcove.api.getExperience(id || "masthead-video-player");
-
-    // get a reference to the video player
-    this.videoPlayer = this.player.getModule(brightcove.api.modules.APIModules.VIDEO_PLAYER);
-    this.experienceModule = this.player.getModule(brightcove.api.modules.APIModules.EXPERIENCE);
-
-    this.videoPlayer.addEventListener(brightcove.api.events.MediaEvent.PROGRESS, this.progress.bind(this));
-    this.videoPlayer.addEventListener(brightcove.api.events.MediaEvent.BEGIN, this.begin.bind(this));
-    this.videoPlayer.addEventListener(brightcove.api.events.MediaEvent.PLAY, this.playing.bind(this));
-    this.videoPlayer.addEventListener(brightcove.api.events.MediaEvent.STOP, () => this.trigger("stop"));
-
-    this.videoPlayer.getCurrentRendition((renditionDTO) => {
-      if (renditionDTO) {
-        calculateNewPercentage(renditionDTO.frameWidth, renditionDTO.frameHeight);
-      } else {
-        this.videoPlayer.addEventListener(brightcove.api.events.MediaEvent.PLAY, (event) =>
-        {
-          calculateNewPercentage(event.media.renditions[0].frameWidth, event.media.renditions[0].frameHeight);
-        });
-      }
-    });
-  }
   setup() {
-    // brightcove.createExperiences();
-
-    window.BCL["player" + this.playerId] = this;
-    this.onTemplateLoad = this.onTemplateLoad.bind(this);
-    this.onTemplateReady = this.onTemplateReady.bind(this);
-    this.onSearchResponse = this.onSearchResponse.bind(this);
-
-    // Media API read token
-    BCMAPI.token = "f1kYE3jBtEUS9XJ9rxo4ijS9rAhTizk87O6v7jMZ49qWmQemLSPhbw..";
-    // set the callback for Media API calls
-    BCMAPI.callback = `BCL.player${this.playerId}.onSearchResponse`;
-
-    window.onresize = this.calculateDimensions.bind(this);
-    this.trigger("ready");
-  }
-
-  /**
-   * Callback from the BEGIN event from the video player
-   */
-  begin() {
-    this.trigger("begin");
-    this.isPlaying = true;
-  }
-  progress() {
-    this.trigger("progress");
-  }
-  playing() {
-    this.trigger("play");
-  }
-  calculateDimensions() {
-    let resizeWidth = document.getElementById("masthead-video-player").clientWidth,
-        resizeHeight = document.getElementById("masthead-video-player").clientHeight;
-
-    if (this.experienceModule && this.experienceModule.experience.type === "html") {
-        this.experienceModule.setSize(resizeWidth, resizeHeight);
-    }
-  }
-  onTemplateReady() {
-    this.videoPlayer.addEventListener(brightcove.api.events.MediaEvent.CHANGE, () => {
-      this.searchResolver(this.mastheadVideoIds);
+    let self = this;
+    videojs(this.videoEl).ready(function () {
+      self.player = this;
+      self.trigger("ready");
     });
-
-    this.videoPlayer.cueVideoByID(this.mastheadVideoIds[0]);
   }
-  onSearchResponse(jsonData) {
-    let mastheadVideoIds = [];
 
-    for (let index in jsonData.items) {
-      mastheadVideoIds.push(jsonData.items[index].id);
+  loadVideo(videoId) {
+    if (!this.player) {
+      return Promise.resolve(false);
     }
 
-    // Only load the brightcove player when there's videos for a place
-    if (mastheadVideoIds.length) {
-      this.mastheadVideoIds = mastheadVideoIds;
-      $.getScript("https://sadmin.brightcove.com/js/BrightcoveExperiences.js");
-    }
+    return new Promise((resolve) => {
+      this.player.catalog.getVideo(videoId, (error, video) => {
+        if (!error) {
+          this.player.catalog.load(video);
+        }
+        resolve(!error);
+      });
+    });
   }
 }
 

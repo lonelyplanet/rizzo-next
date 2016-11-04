@@ -1,0 +1,112 @@
+@import "../../../sass/webpack_deps";
+
+.video-poster-button {
+  display: none;
+  opacity: 0;
+  padding-top: 0;
+  text-align: center;
+  transition: opacity $animation-speed-ui ease-in-out;
+
+  &--visible {
+    display: block;
+    opacity: 1;
+  }
+
+  &__inner {
+    color: $color-white;
+    display: inline-block;
+    position: relative;
+  }
+
+  &__poster {
+    max-width: 890px;
+    width: 100%;
+  }
+
+  &__text {
+    align-items: center;
+    background-color: rgba($color-black, .1);
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    overflow: hidden;
+    padding: $gutter * 2;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    transition: background-color ($animation-speed-ui / 2) ease;
+    width: 100%;
+
+    @media (max-width: $max-720) {
+      padding: $gutter;
+    }
+
+    @media (max-width: $max-480) {
+      padding: $gutter / 2;
+    }
+  }
+
+  &__play {
+    border: .2rem solid $color-white;
+    border-radius: 50%;
+    display: inline-block;
+    font-size: 3rem;
+    height: 6rem;
+    padding-left: .7rem;
+    padding-top: 1.4rem;
+    text-align: center;
+    transition: transform ($animation-speed-ui / 2) ease;
+    width: 6rem;
+
+    @media (max-width: $max-560) {
+      font-size: 2.1rem;
+      height: 4.5rem;
+      padding-left: .5rem;
+      padding-top: 1rem;
+      width: 4.5rem;
+    }
+
+    @media (max-width: $max-480) {
+      font-size: 1.8rem;
+      height: 3.7rem;
+      padding-left: .45rem;
+      padding-top: .8rem;
+      width: 3.7rem;
+    }
+  }
+
+  &__title {
+    font-family: $benton-sans;
+    font-size: 4rem;
+    font-weight: 400;
+    margin-top: $gutter;
+    text-transform: uppercase;
+
+    @media (max-width: $max-720) {
+      font-size: 2.75rem;
+      margin-top: $gutter / 1.5;
+    }
+
+    @media (max-width: $max-480) {
+      font-size: 2.1rem;
+      margin-top: $gutter / 2;
+    }
+
+    @media (max-width: $max-360) {
+      font-size: 1.9rem;
+      margin-top: $gutter / 2.5;
+    }
+  }
+}
+
+.video-poster-button__inner:hover {
+
+  .video-poster-button__play {
+    transform: scale(1.08);
+  }
+
+  .video-poster-button__text {
+    background-color: rgba($color-black, .17);
+  }
+}

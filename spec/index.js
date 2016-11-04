@@ -16,6 +16,8 @@ require("./unit/components/slideshow.spec.js");
 require("./unit/components/tabs.spec.js");
 require("./unit/components/things_to_do.spec.js");
 require("./unit/components/video.spec.js");
+require("./unit/components/video_overlay.spec.js");
+require("./unit/components/video_poster_button.spec.js");
 require("./unit/decorators/publish.spec.js");
 require("./unit/decorators/subscribe.spec.js");
 require("./unit/decorators/channel.spec.js");

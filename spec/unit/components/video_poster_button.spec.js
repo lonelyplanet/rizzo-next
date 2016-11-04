@@ -1,0 +1,1 @@
+import VideoPosterButtonComponent from "../../../src/components/video_poster_button/video_poster_button_component";

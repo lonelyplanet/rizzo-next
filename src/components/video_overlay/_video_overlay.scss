@@ -1,0 +1,88 @@
+@import "../../../sass/webpack_deps";
+
+.video-overlay {
+  background-color: rgba($color-white, .9);
+  z-index: -20;
+
+  &--visible {
+    z-index: z("modal") - 2;
+  }
+
+  &--playing {
+    opacity: 1;
+  }
+
+  &__close {
+    font-size: 2rem;
+    height: 10rem;
+    left: 0;
+    position: relative;
+    top: 0;
+
+    @media (max-width: $max-720) {
+      height: 7rem;
+    }
+
+    &__button {
+      color: $titlegray;
+      cursor: pointer;
+      position: absolute;
+      right: 3.5rem;
+      top: 3.5rem;
+
+      @media (max-width: $max-720) {
+        right: 1.65rem;
+        top: 1.5rem;
+      }
+    }
+  }
+
+  &__video {
+    width: 100%;
+
+    &__container {
+      margin-left: ($gutter / 2);
+      margin-right: ($gutter / 2);
+      text-align: center;
+
+      @media (min-width: $min-480) {
+        margin-left: $gutter;
+        margin-right: $gutter;
+      }
+
+      @media (min-width: $min-1080) {
+        margin-left: ($gutter * 2);
+        margin-right: ($gutter * 2);
+      }
+
+      @media (min-width: $min-1290) {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+
+
+  }
+
+  .video-js {
+    display: inline-block;
+  }
+
+  .vjs-play-progress {
+    background-color: $lpblue;
+  }
+
+  .vjs-volume-level {
+    background-color: $lpblue;
+  }
+
+  .vjs-big-play-button {
+    &:hover,
+    &:active {
+      background-color: $lpblue;
+    }
+  }
+}
+
+
+
