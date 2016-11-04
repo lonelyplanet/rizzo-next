@@ -11,11 +11,9 @@ $masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
   left: 0;
   max-height: 80rem;
   min-height: 40rem;
-  opacity: 1;
   overflow: hidden;
   position: relative;
   top: 0;
-  transition: opacity ($animation-speed-ui / 2) ease-in;
   z-index: z("slideshow-slide") + 3;
 
   &--narrow {
@@ -227,87 +225,6 @@ $masthead-straplines-height-large: (4.1rem + 2.4rem); // height + margin-bottom
     @include button();
     position: relative;
     z-index: z("default") + 1;
-  }
-
-  &__text__overflow {
-    left: 0;
-    margin-top: 1rem;
-    position: absolute;
-    top: auto;
-    width: 100%;
-  }
-
-  &__button--play {
-    background-color: transparent;
-    border: 0;
-    color: $color-white;
-    cursor: pointer;
-    display: none;
-    line-height: 1;
-    opacity: 0;
-    padding: 1rem;
-    transition: opacity ($animation-speed-ui / 2) ease-in-out;
-
-    &.is-visible {
-      display: inline-block;
-      opacity: 1;
-    }
-  }
-
-  &__button--play__icon {
-    border: .2rem solid $color-white;
-    border-radius: 50%;
-    box-shadow: 0 0 2rem rgba($color-black, .5);
-    display: inline-block;
-    font-size: 1.8rem;
-    height: 4rem;
-    padding-left: .4rem;
-    padding-top: 1rem;
-    transition: background-color $animation-speed linear;
-    width: 4rem;
-
-    @media (min-width: $min-720) {
-      font-size: 2.2rem;
-      height: 5.2rem;
-      padding-left: .6rem;
-      padding-top: 1.3rem;
-      width: 5.2rem;
-    }
-
-    @media (max-height: em(679px)) {
-      font-size: 1rem;
-      height: 1.8rem;
-      padding-left: .2rem;
-      padding-top: .2rem;
-      width: 1.8rem;
-    }
-
-    .masthead__button--play:hover &,
-    .masthead__button--play:focus & {
-      background-color: rgba($color-white, .2);
-    }
-  }
-
-  &__button--play__label {
-    display: block;
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin-top: ($gutter / 3);
-    text-shadow: 0 0 1rem $color-black;
-
-    @media (min-width: $min-720) {
-      display: inline-block;
-      font-size: 1.4rem;
-      margin-top: 0;
-      padding-left: 1rem;
-      position: relative;
-      top: -.3rem;
-    }
-
-    @media (max-height: em(679px)) {
-      display: inline-block;
-      margin-top: 0;
-    }
   }
 
   &__video-container {

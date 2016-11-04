@@ -27,7 +27,14 @@ class Brightcove extends VideoPlayer {
   }
 
   onClickVideo(event) {
+    // Prevent event from bubbling -- added for VideoOverlayComponent
+    // to prevent the overlay from closing when the user uses the video embed.
     event.stopPropagation();
+  }
+
+  play() {
+    super.play();
+    this.player.play();
   }
 
   pause() {
@@ -35,15 +42,7 @@ class Brightcove extends VideoPlayer {
     this.player.pause();
   }
 
-  play() {
-    this.calculateDimensions();
-    super.play();
-    this.player.play();
-  }
-
   setup() {
-    window.onresize = this.calculateDimensions.bind(this);
-
     let self = this;
     videojs(this.videoEl).ready(function () {
       self.player = this;
@@ -64,32 +63,6 @@ class Brightcove extends VideoPlayer {
         resolve(!error);
       });
     });
-  }
-
-  calculateDimensions() {
-    super.calculateDimensions();
-
-    let ratio = 1.77777778;
-
-    // If we have video data, use the aspect ratio of the 
-    // video as the width-height ratio value
-    try {
-      let source = this.player.mediainfo.rawSources[0];
-      ratio = source.width / source.height;
-    }
-    catch (e) {}
-
-    let maxHeight = this.$el.innerHeight() - this.$el.find(".video-overlay__close").outerHeight();
-    let maxWidth = this.$el.find(".masthead-video__container").innerWidth();
-    let width = maxWidth;
-    let height = width / ratio;
-
-    if (height > maxHeight) {
-      height = maxHeight;
-      width = height * ratio;
-    }
-
-    $(this.videoEl).css({width: width, height: height});
   }
 }
 

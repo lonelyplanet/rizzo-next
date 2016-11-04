@@ -6,7 +6,6 @@ import coverVid from "../../core/utils/covervid";
 import MobilUtil from "../../core/mobile_util";
 import fitText from "../../core/utils/fitText";
 import subscribe from "../../core/decorators/subscribe";
-import Video from "../video";
 
 /**
  * Masthead Component
@@ -17,9 +16,6 @@ export default class MastheadComponent extends Component {
   }
 
   initialize(options) {
-    this.events = {
-      "click .js-play-video": "playVideo"
-    };
 
     $.each(this.$straplines, function(index, strapline) {
       if (!$(strapline).html()) {
@@ -52,11 +48,6 @@ export default class MastheadComponent extends Component {
       minFontSize: 56
     });
 
-    // Initialize video overlay
-    Video
-      .addPlayer("#video-overlay", "brightcove")
-      .then(this.playerReady.bind(this));
-
     this.subscribe();
   }
 
@@ -70,47 +61,6 @@ export default class MastheadComponent extends Component {
           .addClass("masthead__text-wrap--pull-up");
       }
     }
-  }
-
-  /**
-   * Play the video, callback from click handler
-   */
-  playVideo() {
-    this.player.play();
-  }
-
-  /**
-   * Callback from the player "ready" event
-   * @param  {VideoPlayer} player Instance of the VideoPlayer
-   */
-  playerReady(player) {
-    this.player = player;
-    this.player.search().then(this.searchDone.bind(this));
-  }
-
-  /**
-   * Callback from the player search()
-   * @param  {videos} list of video ids that matched the search
-   */
-  searchDone(videos) {
-    if (videos.length) {
-      let videoId = videos[0];
-      this.player.loadVideo(videoId).then(this.loadDone.bind(this));
-    }
-  }
-
-  /**
-   * Callback from the player loadVideo()
-   * @param  {success} bool depicting whether the video successfully loaded or not
-   */
-  loadDone(success) {
-    if (!success) {
-      return;
-    }
-
-    this.$el.find(".js-play-video")
-      .removeAttr("hidden")
-      .addClass("is-visible");
   }
 
   updateStrapline(data) {
