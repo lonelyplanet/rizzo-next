@@ -43,10 +43,13 @@ export default class MastheadComponent extends Component {
 
     this.listenTo(this.slideshow, "image.changed", this.updateStrapline);
 
-    fitText(this.$el.find(".js-masthead-title"), {
-      fontSizes: [ 56, 60, 80, 120 ],
-      minFontSize: 56
-    });
+    let mastheadTitle = this.$el.find(".js-masthead-title");
+    if (mastheadTitle.length) {
+      fitText(this.$el.find(".js-masthead-title"), {
+        fontSizes: [ 56, 60, 80, 120 ],
+        minFontSize: 56
+      });
+    }
 
     this.subscribe();
   }
