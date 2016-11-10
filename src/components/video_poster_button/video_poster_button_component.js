@@ -6,13 +6,6 @@ import VideoOverlay from "../video_overlay";
 */
 export default class VideoPosterButtonComponent extends Component {
     initialize () {
-
-        // Temporary: querystring parameter video=true needs to be
-        // used to get the poster button to appear.
-        if (window.location.href.indexOf("video=true") == -1) {
-            return;
-        }
-
         this.overlay = new VideoOverlay({el: ".video-overlay"});
 
         this.events = {
