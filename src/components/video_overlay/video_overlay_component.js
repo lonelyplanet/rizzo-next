@@ -9,12 +9,20 @@ export default class VideoOverlay extends Overlay {
 
   initialize (options) {
     super.initialize(options);
+
+    this.defaultAspectRatio = 1.77777778;
+    this.resizeBound = false;
+
     Video.addPlayer(this.el, "brightcove").then(this.playerReady.bind(this));
   }
 
   show () {
     super.show();
     this.calculateDimensions();
+    if (!this.resizeBound) {
+      this.resizeBound = true;
+      $(window).resize(this.calculateDimensions.bind(this));
+    }
     this.$el.addClass("video-overlay--visible");
     return waitForTransition(this.$el).then(() => {
         this.player.play();
@@ -41,7 +49,8 @@ export default class VideoOverlay extends Overlay {
     if (!this.player) {
       return;
     }
-    let ratio = 1.77777778;
+
+    let ratio = this.defaultAspectRatio;
 
     // If we have video data, use the aspect ratio of the 
     // video as the width-height ratio value
@@ -69,13 +78,31 @@ export default class VideoOverlay extends Overlay {
   }
 
   /**
+  * Used to set the initial dimensions of the video player
+  * so that when video data begins to load, it sees that the player is fairly
+  * large and loads high-res video data.  We have an issue with Brightcove at the moment
+  * where it seems to load lower-res video if the player size is set to "mobile-like" 
+  * dimensions, but we want to make sure we always have high-res video loaded (if available).
+  */
+  setInitialDimensions () {
+    if (!this.player) {
+      return;
+    }
+
+    let width = 1280;
+    let height = width / this.defaultAspectRatio;
+
+    $(this.player.videoEl).css({ width: width, height: height});
+  }
+
+  /**
   * Callback from the player "ready" event
   * @param  {VideoPlayer} player Instance of the VideoPlayer
   */
   playerReady (player) {
     this.player = player;
 
-    window.onresize = this.calculateDimensions.bind(this);
+    this.setInitialDimensions();
 
     this.player.search().then(this.searchDone.bind(this));
   }
