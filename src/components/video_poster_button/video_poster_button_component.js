@@ -34,16 +34,18 @@ export default class VideoPosterButtonComponent extends Component {
         catch (e) {
         }
 
-        this.$el.find(".video-poster-button__poster").attr("src", image);
-        this.$el.find(".video-poster-button__title").text(title);
-
         if (!image) {
             this.$el.removeClass("video-poster-button--visible");
         }
-        else {
+
+        let imageEl = this.$el.find(".video-poster-button__poster")[0];
+        imageEl.onload = () => {
             this.$el.addClass("video-poster-button--visible");
-        }
-        
+        };
+        imageEl.src = image;
+
+        this.$el.find(".video-poster-button__title").text(title);
+
         return this;
     }
 
