@@ -1,5 +1,7 @@
 import Brightcove from "./brightcove";
 
+require("./_video.scss");
+
 let players = new Map();
 players.set("brightcove", Brightcove);
 

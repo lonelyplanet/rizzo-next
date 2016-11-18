@@ -50,11 +50,13 @@ export default class VideoPosterButtonComponent extends Component {
   render () {
     let title = "";
     let image = null;
+    let description = "";
 
     try {
         let mediainfo = this.player.player.mediainfo;
         title = mediainfo.name;
         image = mediainfo.poster;
+        description = mediainfo.description;
     }
     catch (e) {
     }
@@ -72,6 +74,11 @@ export default class VideoPosterButtonComponent extends Component {
 
     this.$el.find(".video-poster-button__title").text(title);
 
+    // TEMP
+    description = "Test Description goes here.  Check out Ireland!  You think you can just be part of the team whenever you want? You gotta work for it!  and travel ;)";
+
+    this.$el.find(".video-poster-button__description").text(description);
+
     return this;
   }
 
@@ -82,7 +89,7 @@ export default class VideoPosterButtonComponent extends Component {
 
   /**
     * Callback from the player "ready" event
-    * @param  {VideoPlayer} player Instance of the VideoPlayer
+    * @param  {VideoPlayer} player - Instance of the VideoPlayer
     */
   playerReady (player) {
     this.player = player;
@@ -91,7 +98,7 @@ export default class VideoPosterButtonComponent extends Component {
 
   /**
   * Callback from the player searchAndLoadVideo()
-  * @param  {success} bool depicting whether a video successfully loaded or not
+  * @param  {bool} success - depicting whether a video successfully loaded or not
   */
   loadDone (success) {
     if (!success) {

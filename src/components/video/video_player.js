@@ -4,6 +4,7 @@ class VideoPlayer extends Component {
 
   initialize({ playerId }) {
     this.playerId = playerId;
+    this.defaultAspectRatio = 1.77777778;
     this.events = {};
     this.setup();
   }
