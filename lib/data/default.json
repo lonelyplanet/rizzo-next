@@ -1,6 +1,7 @@
 {
   "dest": "/dist",
   "components": {
+    "svg_icons": true,
     "header": {
       "type": "narrow",
       "search": {

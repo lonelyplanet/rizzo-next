@@ -1,0 +1,122 @@
+{
+  "dest": "/dist/header_normal",
+  "components": {
+    "svg_icons": true,
+    "header": {
+      "type": "normal",
+      "images": true,
+      "search": {
+        "title": "Lonely Planet"
+      },
+      "navigation": [
+        {
+          "title": "Search",
+          "slug": "//www.lonelyplanet.com/search",
+          "css_class": "navigation__search--mobile"
+        },
+        {
+          "title": "Destinations",
+          "slug": "#",
+          "submenu": {
+            "featured": {
+              "image": "https://lonelyplanetstatic.imgix.net/marketing/2017/BIT/BIT-nav-image.png?w=80&h=60&fit=min",
+              "title": "Best in Travel",
+              "subtitle": "Featured",
+              "link": "//www.lonelyplanet.com/best-in-travel"
+            },
+            "items": [
+              {
+                "title": "Africa",
+                "slug": "https://www.lonelyplanet.com/africa"
+              },
+              {
+                "title": "Antarctica",
+                "slug": "https://www.lonelyplanet.com/antarctica-1007062"
+              },
+              {
+                "title": "Asia",
+                "slug": "https://www.lonelyplanet.com/asia"
+              },
+              {
+                "title": "Australia & Pacific",
+                "slug": "https://www.lonelyplanet.com/pacific"
+              },
+              {
+                "title": "Caribbean",
+                "slug": "https://www.lonelyplanet.com/caribbean"
+              },
+              {
+                "title": "Central America",
+                "slug": "https://www.lonelyplanet.com/central-america"
+              },
+              {
+                "title": "Europe",
+                "slug": "https://www.lonelyplanet.com/europe"
+              },
+              {
+                "title": "Middle East",
+                "slug": "https://www.lonelyplanet.com/middle-east"
+              },
+              {
+                "title": "North America",
+                "slug": "https://www.lonelyplanet.com/north-america"
+              },
+              {
+                "title": "South America",
+                "slug": "https://www.lonelyplanet.com/south-america"
+              }
+            ],
+            "call_to_action": {
+              "slug": "//www.lonelyplanet.com/places",
+              "title": "See All Countries"
+            }
+          }
+        },
+        {
+          "title": "Bookings",
+          "slug": "#",
+          "submenu": {
+            "items": [
+              {
+                "title": "Insurance",
+                "slug": "https://www.lonelyplanet.com/travel-insurance"
+              },
+              {
+                "title": "Hotels",
+                "slug": "https://www.lonelyplanet.com/hotels"
+              },
+              {
+                "title": "Flights",
+                "slug": "https://www.lonelyplanet.com/flights"
+              },
+              {
+                "title": "Adventure tours",
+                "slug": "https://www.lonelyplanet.com/adventure-tours"
+              },
+              {
+                "title": "Sightseeing tours",
+                "slug": "https://www.lonelyplanet.com/sightseeing-tours"
+              },
+              {
+                "title": "Airport transfers",
+                "slug": "https://www.lonelyplanet.com/airport-transfers"
+              },
+              {
+                "title": "Car rental",
+                "slug": "https://www.lonelyplanet.com/car-rental"
+              }
+            ]
+          }
+        },
+        {
+          "title": "Shop",
+          "slug": "http://shop.lonelyplanet.com"
+        },
+        {
+          "title": "Sign In",
+          "slug": "//auth.lonelyplanet.com/users/sign_in"
+        }
+      ]
+    }
+  }
+}

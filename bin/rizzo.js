@@ -16,11 +16,11 @@ program
   .option("-c, --config [config]", "Pass in a JSON configuration file")
   .action(function(components, options){
     const build = require("../lib/commands/build");
-    
+
     let config;
     if (options.config) {
       try {
-        config = require(options.conf);
+        config = require(options.config);
       } catch(e) {
         console.log("No config file found at %s", options.config);
         return program.exit(0);
@@ -28,7 +28,7 @@ program
     } else {
       config = require("../lib/data/default.json");
     }
-    
+
     if (options.dest) {
       config.dest = options.dest;
     }
@@ -37,7 +37,7 @@ program
       console.log("Done!");
     });
   });
-  
+
 program
   .command("create [name]")
   .description("Create a new rizzo component")
