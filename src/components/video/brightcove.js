@@ -17,7 +17,8 @@ class Brightcove extends VideoPlayer {
   }
 
   onClickVideo(event) {
-    // Prevent event from bubbling into the UI when the user interacts with the video
+    // Prevent event from bubbling into the UI 
+    // when the user interacts with the video.
     event.stopPropagation();
   }
 
@@ -35,6 +36,7 @@ class Brightcove extends VideoPlayer {
     let self = this;
     videojs(this.videoEl).ready(function () {
       self.player = this;
+      self.player.on("ended", () => { self.trigger("ended"); });
       self.setInitialDimensions();
       self.trigger("ready");
     });
@@ -87,10 +89,14 @@ class Brightcove extends VideoPlayer {
    * this.videoEl before making the player visible.
    */
   setInitialDimensions() {
+    if (!this.player) {
+      return;
+    }
+
     let width = 1280;
     let height = width / this.defaultAspectRatio;
 
-    $(this.videoEl).css({ width: width, height: height});
+    this.player.dimensions(width, height);
   }
 
   /**
@@ -135,7 +141,9 @@ class Brightcove extends VideoPlayer {
   }
 
   /**
-   * Retrieves SEO-friendly metadata about the "source" of the currently loaded video
+   * Retrieves SEO-friendly metadata about the highest-resolution "source" 
+   * of the currently loaded video
+   *
    * @returns {Object} object with 'url', 'width', and 'height' 
    *   attributes, null if unable to retrieve valid metadata
    */

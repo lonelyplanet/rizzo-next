@@ -17,4 +17,8 @@
   &:active {
     background-color: $lpblue;
   }
+
+  @media (max-width: $max-480) {
+    transform: scale(.7);
+  }
 }

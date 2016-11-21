@@ -14,7 +14,6 @@ export default class VideoPosterButtonComponent extends Component {
     };
 
     Video.addPlayer(this.el, "brightcove").then(this.playerReady.bind(this));
-
   }
 
   showVideo () {
@@ -54,9 +53,9 @@ export default class VideoPosterButtonComponent extends Component {
 
     try {
         let mediainfo = this.player.player.mediainfo;
-        title = mediainfo.name;
+        title = mediainfo.name || "";
         image = mediainfo.poster;
-        description = mediainfo.description;
+        description = mediainfo.description || "";
     }
     catch (e) {
     }
@@ -67,16 +66,17 @@ export default class VideoPosterButtonComponent extends Component {
 
     let imageEl = this.$el.find(".video-poster-button__poster")[0];
     imageEl.onload = () => {
+
+      // Reset the width and height of the player to be the same 
+      // dimensions as the poster image so that we have a nice 
+      // smooth transition (and to undo Brightcove.setInitialDimensions())
       $(this.player.videoEl).css({ width: "100%", height: "100%" });
+
       this.$el.addClass("video-poster-button--visible");
     };
     imageEl.src = image;
 
     this.$el.find(".video-poster-button__title").text(title);
-
-    // TEMP
-    description = "Test Description goes here.  Check out Ireland!  You think you can just be part of the team whenever you want? You gotta work for it!  and travel ;)";
-
     this.$el.find(".video-poster-button__description").text(description);
 
     return this;
@@ -93,7 +93,15 @@ export default class VideoPosterButtonComponent extends Component {
     */
   playerReady (player) {
     this.player = player;
+    this.listenTo(this.player, "ended", this.onVideoEnded.bind(this));
     this.player.searchAndLoadVideo().then(this.loadDone.bind(this));
+  }
+
+  /**
+   * Callback from the player "ended" event / when a video finishes playing.
+   */
+  onVideoEnded () {
+    this.hideVideo();
   }
 
   /**

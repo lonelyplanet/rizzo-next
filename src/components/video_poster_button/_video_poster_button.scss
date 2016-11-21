@@ -13,11 +13,11 @@
   }
 
   &__container {
+    left: 0;
+    max-width: 1280px;
     position: relative;
     top: 0;
-    left: 0;
     width: 100%;
-    max-width: 1280px;
   }
 
   &__video {
@@ -39,10 +39,10 @@
   &__inner {
     color: $color-white;
     display: block;
-    letter-spacing: -0.31px;
-    position: relative;
+    letter-spacing: -.31px;
     opacity: 0;
     overflow: hidden;
+    position: relative;
     transition: opacity $animation-speed-ui ease-in-out;
     z-index: -20;
 
@@ -53,18 +53,19 @@
   }
 
   &__backdrop {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+    background-image: linear-gradient(-180deg, transparent 2%, rgba($color-black, 1) 98%);
     bottom: 0;
+    height: 100%;
     left: 0;
     opacity: .47;
-    background-image: linear-gradient(-180deg, transparent 2%, rgba(0, 0, 0, 1) 98%);
+    position: absolute;
     transition: opacity ($animation-speed-ui / 2) ease;
+    width: 100%;
   }
 
   &__text {
     align-items: center;
+    bottom: 0;
     display: flex;
     justify-content: center;
     left: 0;
@@ -72,10 +73,7 @@
     padding: 11rem 7rem 7rem;
     position: absolute;
     text-align: center;
-    bottom: 0;
     width: 100%;
-    
-    line-height: 20px;
 
     @media (max-width: $max-720) {
       padding: 5rem 3rem 4rem;
@@ -84,7 +82,6 @@
     @media (max-width: $max-480) {
       padding: 4rem 2rem 2rem;
     }
-
   }
 
   &__text__inner {
@@ -92,6 +89,7 @@
   }
 
   &__play {
+    background-color: $lpblue;
     border-radius: 50%;
     display: inline-block;
     font-size: 2.4rem;
@@ -100,7 +98,6 @@
     padding-top: 1.85rem;
     text-align: center;
     width: 6rem;
-    background-color: $lpblue;
 
     @media (max-width: $max-720) {
       font-size: 2.1rem;
@@ -111,11 +108,11 @@
     }
 
     @media (max-width: $max-560) {
-      width: 4rem;
-      height: 4rem;
       font-size: 1.9rem;
-      padding-top: 1.025rem;
-      padding-left: 0.6rem;
+      height: 4rem;
+      padding-left: .5rem;
+      padding-top: 1.05rem;
+      width: 4rem;
     }
 
     @media (max-width: $max-480) {
@@ -151,7 +148,6 @@
 
   &__description {
     font-size: 1.2rem;
-    line-height: 1.9em;
     padding: 2.8em 20%;
 
     @media (max-width: $max-720) {

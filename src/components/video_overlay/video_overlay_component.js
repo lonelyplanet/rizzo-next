@@ -10,7 +10,6 @@ export default class VideoOverlay extends Overlay {
   initialize (options) {
     super.initialize(options);
 
-    this.defaultAspectRatio = 1.77777778;
     this.resizeBound = false;
 
     Video.addPlayer(this.el, "brightcove").then(this.playerReady.bind(this));
@@ -64,27 +63,16 @@ export default class VideoOverlay extends Overlay {
 
   /**
   * Callback from the player "ready" event
-  * @param  {VideoPlayer} player Instance of the VideoPlayer
+  * @param  {VideoPlayer} player - Instance of the VideoPlayer
   */
   playerReady (player) {
     this.player = player;
-    this.player.search().then(this.searchDone.bind(this));
-  }
-
-  /**
-  * Callback from the player search()
-  * @param  {videos} list of video ids that matched the search
-  */
-  searchDone (videos) {
-    if (videos.length) {
-      let videoId = videos[0];
-      this.player.loadVideo(videoId).then(this.loadDone.bind(this));
-    }
+    this.player.searchAndLoadVideo().then(this.loadDone.bind(this));
   }
 
   /**
   * Callback from the player loadVideo()
-  * @param  {success} bool depicting whether the video successfully loaded or not
+  * @param  {bool} success - depicting whether the video successfully loaded or not
   */
   loadDone (success) {
     if (!success) {
