@@ -1,0 +1,24 @@
+@import "../../../sass/webpack_deps";
+
+.video-js {
+  margin: 0 auto;
+}
+
+.vjs-play-progress {
+  background-color: $lpblue;
+}
+
+.vjs-volume-level {
+  background-color: $lpblue;
+}
+
+.vjs-big-play-button {
+  &:hover,
+  &:active {
+    background-color: $lpblue;
+  }
+
+  @media (max-width: $max-480) {
+    transform: scale(.7);
+  }
+}

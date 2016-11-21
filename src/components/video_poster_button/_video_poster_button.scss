@@ -12,96 +12,158 @@
     opacity: 1;
   }
 
-  &__inner {
-    color: $color-white;
-    display: inline-block;
+  &__container {
+    left: 0;
+    max-width: 1280px;
     position: relative;
+    top: 0;
+    width: 100%;
   }
 
-  &__poster {
-    max-width: 890px;
+  &__video {
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    transition: opacity $animation-speed-ui ease-in-out;
+    width: 100%;
+    z-index: -20;
+
+    &--visible {
+      opacity: 1;
+      z-index: 0;
+    }
+  }
+
+  &__inner {
+    color: $color-white;
+    display: block;
+    letter-spacing: -.31px;
+    opacity: 0;
+    overflow: hidden;
+    position: relative;
+    transition: opacity $animation-speed-ui ease-in-out;
+    z-index: -20;
+
+    &--visible {
+      opacity: 1;
+      z-index: 0;
+    }
+  }
+
+  &__backdrop {
+    background-image: linear-gradient(-180deg, transparent 2%, rgba($color-black, 1) 98%);
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    opacity: .47;
+    position: absolute;
+    transition: opacity ($animation-speed-ui / 2) ease;
     width: 100%;
   }
 
   &__text {
     align-items: center;
-    background-color: rgba($color-black, .1);
+    bottom: 0;
     display: flex;
-    height: 100%;
     justify-content: center;
     left: 0;
     overflow: hidden;
-    padding: $gutter * 2;
+    padding: 11rem 7rem 7rem;
     position: absolute;
     text-align: center;
-    top: 0;
-    transition: background-color ($animation-speed-ui / 2) ease;
     width: 100%;
 
     @media (max-width: $max-720) {
-      padding: $gutter;
+      padding: 5rem 3rem 4rem;
     }
 
     @media (max-width: $max-480) {
-      padding: $gutter / 2;
+      padding: 4rem 2rem 2rem;
     }
   }
 
+  &__text__inner {
+    z-index: 1;
+  }
+
   &__play {
-    border: .2rem solid $color-white;
+    background-color: $lpblue;
     border-radius: 50%;
     display: inline-block;
-    font-size: 3rem;
+    font-size: 2.4rem;
     height: 6rem;
-    padding-left: .7rem;
-    padding-top: 1.4rem;
+    padding-left: .65rem;
+    padding-top: 1.85rem;
     text-align: center;
     width: 6rem;
 
-    @media (max-width: $max-560) {
+    @media (max-width: $max-720) {
       font-size: 2.1rem;
       height: 4.5rem;
-      padding-left: .5rem;
-      padding-top: 1rem;
+      padding-left: .6rem;
+      padding-top: 1.2rem;
       width: 4.5rem;
+    }
+
+    @media (max-width: $max-560) {
+      font-size: 1.9rem;
+      height: 4rem;
+      padding-left: .5rem;
+      padding-top: 1.05rem;
+      width: 4rem;
     }
 
     @media (max-width: $max-480) {
       font-size: 1.8rem;
       height: 3.7rem;
       padding-left: .45rem;
-      padding-top: .8rem;
+      padding-top: .9rem;
       width: 3.7rem;
     }
   }
 
   &__title {
     font-family: $benton-sans;
-    font-size: 4rem;
+    font-size: 2.4rem;
     font-weight: 400;
     margin-top: $gutter;
-    text-transform: uppercase;
 
     @media (max-width: $max-720) {
-      font-size: 2.75rem;
+      font-size: 2.1rem;
       margin-top: $gutter / 1.5;
     }
 
     @media (max-width: $max-480) {
-      font-size: 2.1rem;
-      margin-top: $gutter / 2;
+      font-size: 1.9rem;
+      margin-top: $gutter / 2.5;
+    }
+
+    @media (max-width: $max-320) {
+      font-size: 1.7rem;
+      margin-top: $gutter / 2.5;
+    }
+  }
+
+  &__description {
+    font-size: 1.2rem;
+    padding: 2.8em 20%;
+
+    @media (max-width: $max-720) {
+      padding: 2.2em 12%;
     }
 
     @media (max-width: $max-360) {
-      font-size: 1.9rem;
-      margin-top: $gutter / 2.5;
+      font-size: 1.1rem;
+      padding: 2em;
     }
   }
 }
 
 .video-poster-button__inner:hover {
 
-  .video-poster-button__text {
-    background-color: rgba($color-black, .17);
+  .video-poster-button__backdrop {
+    opacity: .56;
   }
 }

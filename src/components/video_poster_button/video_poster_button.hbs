@@ -1,14 +1,30 @@
 <div class="video-poster-button segment">
     <div class="container">
-        <a class="video-poster-button__inner" href="">
-            <img class="video-poster-button__poster" />
-            <div class="video-poster-button__text">
-                <div class="video-poster-button__text__inner">
-                    <i class="video-poster-button__play icon-play3"></i>
-                    <div class="video-poster-button__title">
+        <div class="video-poster-button__container">
+            <a class="video-poster-button__inner video-poster-button__inner--visible" href="">
+                <img class="video-poster-button__poster" />
+                <div class="video-poster-button__text">
+                    <div class="video-poster-button__backdrop">
+                    </div>
+                    <div class="video-poster-button__text__inner">
+                        <i class="video-poster-button__play icon-play3"></i>
+                        <div class="video-poster-button__title">
+                        </div>
                     </div>
                 </div>
+            </a>
+            <div class="video-poster-button__video">
+                <video data-account="5104226627001" 
+                    data-player="default" 
+                    data-embed="default" 
+                    data-application-id 
+                    class="video-js" 
+                    controls >
+                </video>
+                <script src="//players.brightcove.net/5104226627001/default_default/index.min.js"></script>
             </div>
-        </a>
+        </div>
+        <div class="video-poster-button__description">
+        </div>
     </div>
 </div>
