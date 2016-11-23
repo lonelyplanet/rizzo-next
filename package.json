@@ -45,7 +45,7 @@
     "jquery": "^2.1.4",
     "jquery.dfp": "^2.4.1",
     "lodash": "^3.10.0",
-    "mapbox.js": "^2.2.2",
+    "mapbox.js": "^3.0.1",
     "mapbox-gl": "^0.19.0",
     "matchmedia-polyfill": "^0.3.0",
     "mkdirp": "^0.5.1",
