@@ -24,7 +24,7 @@
     "scsslint": "scss-lint . --config .scss-lint.yml",
     "prepublish": "npm run build && mkdir -p tmp && cp -R src/* tmp && babel -d tmp tmp && cp -R tmp/* dist && rimraf tmp"
   },
-  "version": "0.11.91",
+  "version": "0.11.92",
   "pre-commit": [
     "scsslint",
     "lint"
