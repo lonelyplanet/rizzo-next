@@ -5,10 +5,24 @@ import VideoPlayer from "./video_player";
 class Brightcove extends VideoPlayer {
 
   initialize(options) {
+    // Cache of any video metadata we come across.
+    this.videoMediaInfo = {};
+
+    // Reference to a video.js player instance
+    this.player = null;
+
+    this.accountId = "5104226627001";
+    this.bcPlayerId = "default";
+    this.bcPlayer360Id = "HkUmgIl6";
+    this.policyKey = "BCpkADawqM215uOvhQWwjkTCXEb4uomDGwVmCx_TrCq3pmoyRSl7ISWkWgkFPG_-QZC8k55V_cP8wvTsivQa6jEgXkdnr_OTJzArFIuIxmmdFdrx2d4jgOH959-2_zXeC455OeqA8jr-h40g"; 
+  
     super.initialize(options);
     this.events["click .video-js"] = "onClickVideo";
   }
 
+  /**
+   * Returns 'undefined' if unable to find a .video-js element
+   */
   get videoEl() {
     if (this.$el.hasClass("video-js")) {
       return this.el;
@@ -33,32 +47,93 @@ class Brightcove extends VideoPlayer {
   }
 
   setup() {
-    let self = this;
-    videojs(this.videoEl).ready(function () {
-      self.player = this;
-      self.player.on("ended", () => { self.trigger("ended"); });
-      self.setInitialDimensions();
-      self.trigger("ready");
+    if (!this.videoEl) {
+      this.trigger("ready");
+      return;
+    }
+
+    this.setPlayer().then(() => {
+      this.trigger("ready");
+    });
+  }
+
+  setPlayer() {
+    if (this.player) {
+      // In our current implementation, we only 
+      // allow a player to be instantiated once.
+      return new Promise.resolve();
+    }
+
+    return new Promise((resolve) => {
+      let self = this;
+      videojs(this.videoEl).ready(function () {
+        self.player = this;
+        self.player.on("ended", () => { self.trigger("ended"); });
+        self.setInitialDimensions();
+        resolve();
+      });
     });
   }
 
   search() {
-    try {
-      let videoId = "ref:dest_" + window.lp.place.atlasId;
-      return Promise.resolve([videoId]);
-    }
-    catch (e) {
-      return Promise.resolve([]);
-    }
+    return new Promise((resolve) => {
+      try {
+        let refId = "dest_" + window.lp.place.atlasId;
+        let url = "https://edge.api.brightcove.com/playback/v1/accounts/" + this.accountId + "/videos/ref:" + refId;
+        let accept = "application/json;pk=" + this.policyKey;
+
+        $.ajax({
+          url: url,
+          context: this,
+          headers: {
+            "Accept": accept
+          },
+          success: function (data) {
+            this.videoMediaInfo[data.id] = data;
+            resolve([data]);
+          },
+          error: function () {
+            resolve([]);
+          }
+        });
+
+      }
+      catch (e) {
+        resolve([]);
+      }
+    });
   }
 
   searchAndLoadVideo() {
     return this.search().then((videos) => {
       if (videos.length) {
-        let videoId = videos[0];
+        let videoId = videos[0].id;
         return this.loadVideo(videoId);
       }
       return new Promise.resolve(false);
+    });
+  }
+
+  insertPlayer(el, videoId) {
+    return new Promise((resolve) => {
+      let playerId = this.is360Video(videoId) ? this.bcPlayer360Id : this.bcPlayerId;
+
+      // let html = "<video data-video-id=\"" + videoId + "\" data-account=\"" + this.accountId + "\" data-player=\"" + playerId + "\" data-embed=\"default\" class=\"video-js\" controls></video>";
+      let html = "<video data-account=\"" + this.accountId + "\" data-player=\"" + playerId + "\" data-embed=\"default\" class=\"video-js\" controls></video>";
+      
+      el.innerHTML = html;
+
+      let s = document.createElement("script");
+      s.src = "//players.brightcove.net/" + this.accountId + "/" + playerId + "_default/index.min.js";
+      
+      s.onload = () => {
+        this.setPlayer().then(() => {
+          this.renderSEOMarkup();
+          resolve();
+        });
+      };
+
+      document.body.appendChild(s);
     });
   }
 
@@ -71,11 +146,45 @@ class Brightcove extends VideoPlayer {
       this.player.catalog.getVideo(videoId, (error, video) => {
         if (!error) {
           this.player.catalog.load(video);
+          let mediainfo = this.player.mediainfo;
+          this.videoMediaInfo[mediainfo.id] = mediainfo;
           this.renderSEOMarkup();
         }
         resolve(!error);
       });
     });
+  }
+
+  /**
+   * Determines whether the currently loaded video is a 360 video.
+   *
+   * We use tagging in brightcove since this data is not included in 
+   * the standard video metadata.
+   * We use the tag '360' to tell our code that a video is a 360 video.
+   */
+  is360Video(videoId) {
+    let mediainfo = null;
+
+    if (videoId) {
+      mediainfo = this.videoMediaInfo[videoId];
+    }
+    else if (this.player) {
+      mediainfo = this.player.mediainfo;
+    }
+
+    if (!mediainfo) {
+      return false;
+    }
+
+    let tags = mediainfo.tags;
+    for (let i = 0; i < tags.length; i++) {
+      let tag = tags[i];
+      if (tag == "360") {
+        return true;
+      }
+    }
+
+    return false;
   }
 
   /**

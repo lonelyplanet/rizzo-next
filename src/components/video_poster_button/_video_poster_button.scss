@@ -13,11 +13,11 @@
   }
 
   &__container {
+    display: inline-block;
     left: 0;
-    max-width: 1280px;
     position: relative;
     top: 0;
-    width: 100%;
+    margin: 0 auto;
   }
 
   &__video {
@@ -38,7 +38,8 @@
 
   &__inner {
     color: $color-white;
-    display: block;
+    // display: inline-block;
+    float: left;
     letter-spacing: -.31px;
     opacity: 0;
     overflow: hidden;
