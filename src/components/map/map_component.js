@@ -20,14 +20,23 @@ class MapComponent extends Component {
       return false;
     }
 
+    let geolocationTimeout = 10000;
+    let getCurrentPositionCompleted = false;
+    setTimeout(() => {
+      if(!getCurrentPositionCompleted){
+        this.fetchMap();
+      }
+    }, geolocationTimeout + 1000);
+
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
+        getCurrentPositionCompleted = true;
         this.userLocation = [position.coords.latitude, position.coords.longitude];
-
         this.fetchMap();
       }, () => {
+        getCurrentPositionCompleted = true;
         this.fetchMap();
-      });
+      },{timeout: geolocationTimeout});
     }
 
     Arkham.on("map.closed", () => {
