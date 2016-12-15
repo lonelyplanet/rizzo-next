@@ -200,7 +200,7 @@ class MarkerSet extends Component {
         minIndex = i;
       }
     }
-    if (minDistance < 1) {
+    if (minDistance < (20 - this.map.getZoom())/10) {
       return [(this.pois[minIndex]).geo];
     } else {
       return [];
