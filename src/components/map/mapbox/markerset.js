@@ -142,7 +142,12 @@ class MarkerSet extends Component {
   }
 
   _poiHover(e) {
-    const features = this.map.queryRenderedFeatures(e.point, { layers: ["markers"] });
+    let features;
+    try {
+      features = this.map.queryRenderedFeatures(e.point, { layers: ["markers"] });
+    } catch(error) {
+      features = this._getClosestFeatures(e.lngLat.lng, e.lngLat.lat);
+    }
 
     if (!features.length) {
         this.popup.remove();
@@ -167,6 +172,39 @@ class MarkerSet extends Component {
       .addTo(this.map);
 
     MapActions.itemHighlight(feature.properties.index);
+  }
+
+  _toRadians(deg) {
+    return deg * Math.PI / 180;
+  }
+
+  _equirectangularDistance(lng1, lat1, lng2, lat2) {
+    let x = (lng1 - lng2) * Math.cos((lat1 + lat2)/2);
+    let y = (lat1 - lat2);
+    return (Math.sqrt(x*x + y*y) * 6371);
+  }
+
+  _getClosestFeatures(lng1, lat1) {
+    let minDistance = 1000000;
+    let minIndex = 0;
+    lng1 = this._toRadians(lng1);
+    lat1 = this._toRadians(lat1);
+    for (let i = 0, l = this.pois.length; i < l; i++) {
+      let geo = this.pois[i].geo;
+      let lng2 = this._toRadians(geo.geometry.coordinates[0]);
+      let lat2 = this._toRadians(geo.geometry.coordinates[1]);
+      let distance = this._equirectangularDistance(lng1, lat1, lng2, lat2);
+
+      if (distance < minDistance) {
+        minDistance = distance;
+        minIndex = i;
+      }
+    }
+    if (minDistance < (20 - this.map.getZoom())/10) {
+      return [(this.pois[minIndex]).geo];
+    } else {
+      return [];
+    }
   }
 
   _poiClick(event) {
