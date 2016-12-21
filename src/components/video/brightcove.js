@@ -91,8 +91,7 @@ class Brightcove extends VideoPlayer {
   search() {
     return new Promise((resolve) => {
       try {
-        // let refId = "dest_" + window.lp.place.atlasId;
-        let refId = "360_CA_van";
+        let refId = "dest_" + window.lp.place.atlasId;
         let url = "https://edge.api.brightcove.com/playback/v1/accounts/" + this.accountId + "/videos/ref:" + refId;
         let accept = "application/json;pk=" + this.policyKey;
 
