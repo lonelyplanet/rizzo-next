@@ -7,6 +7,13 @@ import Video from "../video";
 export default class VideoPosterButtonComponent extends Component {
   initialize () {
 
+    // Temporary: querystring parameter video=true needs to be
+    // used to get the poster button to appear.
+    this.show360Videos = true;
+    if (window.location.href.indexOf("360=true") == -1) {
+       this.show360Videos = false;
+    }
+
     this.playerVisible = false;
 
     this.events = {
@@ -125,6 +132,11 @@ export default class VideoPosterButtonComponent extends Component {
   searchDone (data) {
     if (data.length) {
       let videoId = data[0].id;
+
+      // Temporary: Don't show 360 videos until they've been tested and approved
+      if (this.player.is360Video(videoId) && !this.show360Videos) {
+        return;
+      }
 
       // If this is a 360 video and the user is using an incapatible device, just stop.
       if (this.player.is360Video(videoId) && !this.player.is360VideoSupported()) {
