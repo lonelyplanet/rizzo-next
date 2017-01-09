@@ -7,6 +7,13 @@ import Video from "../video";
 export default class VideoPosterButtonComponent extends Component {
   initialize () {
 
+    // Temporary: querystring parameter video=true needs to be
+    // used to get the poster button to appear.
+    this.show360Videos = true;
+    if (window.location.href.indexOf("360=true") == -1) {
+       this.show360Videos = false;
+    }
+
     this.playerVisible = false;
 
     this.events = {
@@ -14,6 +21,8 @@ export default class VideoPosterButtonComponent extends Component {
     };
 
     Video.addPlayer(this.el, "brightcove").then(this.playerReady.bind(this));
+
+    $(window).resize(this.resize.bind(this));
   }
 
   showVideo () {
@@ -21,6 +30,9 @@ export default class VideoPosterButtonComponent extends Component {
       return;
     }
     this.playerVisible = true;
+
+    // Make sure video is proper dimensions before revealing it.
+    this.resize();
 
     let buttonContainer = this.$el.find(".video-poster-button__inner");
     buttonContainer.removeClass("video-poster-button__inner--visible");
@@ -66,18 +78,18 @@ export default class VideoPosterButtonComponent extends Component {
 
     let imageEl = this.$el.find(".video-poster-button__poster")[0];
     imageEl.onload = () => {
-
-      // Reset the width and height of the player to be the same 
-      // dimensions as the poster image so that we have a nice 
-      // smooth transition (and to undo Brightcove.setInitialDimensions())
-      $(this.player.videoEl).css({ width: "100%", height: "100%" });
-
       this.$el.addClass("video-poster-button--visible");
     };
     imageEl.src = image;
 
     this.$el.find(".video-poster-button__title").text(title);
-    this.$el.find(".video-poster-button__description").text(description);
+
+    let descriptionEl = this.$el.find(".video-poster-button__description");
+    descriptionEl.text(description).show();
+    
+    if (!description) {
+      descriptionEl.hide();
+    }
 
     return this;
   }
@@ -87,14 +99,23 @@ export default class VideoPosterButtonComponent extends Component {
     this.showVideo();
   }
 
+  resize () {
+    if (!(this.player && this.player.videoEl)) {
+      return;
+    }
+    let poster = this.$el.find(".video-poster-button__poster");
+    let dimensions = this.player.getIdealDimensions(poster.width(), poster.height());
+    $(this.player.videoEl).css({ width: dimensions.width, height: dimensions.height });
+  }
+
   /**
     * Callback from the player "ready" event
-    * @param  {VideoPlayer} player - Instance of the VideoPlayer
+    * @param {VideoPlayer} player - Instance of the VideoPlayer
     */
   playerReady (player) {
     this.player = player;
     this.listenTo(this.player, "ended", this.onVideoEnded.bind(this));
-    this.player.searchAndLoadVideo().then(this.loadDone.bind(this));
+    this.player.search().then(this.searchDone.bind(this));
   }
 
   /**
@@ -105,9 +126,40 @@ export default class VideoPosterButtonComponent extends Component {
   }
 
   /**
-  * Callback from the player searchAndLoadVideo()
+  * Callback from the player search()
   * @param  {bool} success - depicting whether a video successfully loaded or not
   */
+  searchDone (data) {
+    if (data.length) {
+      let videoId = data[0].id;
+
+      // Temporary: Don't show 360 videos until they've been tested and approved
+      if (this.player.is360Video(videoId) && !this.show360Videos) {
+        return;
+      }
+
+      // If this is a 360 video and the user is using an incapatible device, just stop.
+      if (this.player.is360Video(videoId) && !this.player.is360VideoSupported()) {
+        return;
+      }
+
+      let videoContainer = this.$el.find(".video-poster-button__video")[0];
+
+      // Insert the player embed, load the video, and then run this.loadDone when finished.
+      (this.player
+        .insertPlayer(videoContainer, videoId)
+        .then(() => {
+          return this.player.loadVideo(videoId);
+        })
+        .then(this.loadDone.bind(this)));
+    }
+  }
+
+  /**
+   * Run once a video is finished loading in the player
+   *
+   * @param  {bool} success - depicting whether a video successfully loaded or not
+   */
   loadDone (success) {
     if (!success) {
       return;
