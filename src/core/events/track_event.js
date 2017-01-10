@@ -11,11 +11,11 @@ const TRACKING_CHANNEL = "tracking";
  * @param  {Object} options
  * @param  {String} options.name The name of the event
  * @param  {String|Object} options.data Details of the event
- * @param  {Array} [options.trackers] An array of string names of trackers to use.   
+ * @param  {Array} [options.trackers] An array of string names of trackers to use.
  */
-export default function trackEvent ({ 
-  name, 
-  data, 
+export default function trackEvent ({
+  name,
+  data,
   trackers = ["flamsteed", "analytics"] } = {}
 ) {
   trackers.map((tracker) => {
@@ -28,10 +28,10 @@ export default function trackEvent ({
       };
     }
     catch(e) {
-      rizzo.logger.error(e);
+      rizzo.logger.log(e);
       return false;
     }
-    
+
   }).forEach(({ result, tracker }) => result !== false && postal.channel(TRACKING_CHANNEL).publish(`event.${tracker}.tracked`, {
     name, data
   }));
