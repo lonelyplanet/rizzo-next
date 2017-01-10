@@ -29,7 +29,7 @@ export default function({ name, data } = {}) {
     return memo;
   }, {});
 
-  if (typeof window.lp.analytics != "undefined") {
+  if (typeof window.lp.analytics != "undefined" && window.lp.analytics.api) {
     window.lp.analytics.api.trackEvent(utagEvent);
   } else {
     window.trackJs.console.log(`analytics: not loaded yet`);
