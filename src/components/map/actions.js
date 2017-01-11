@@ -1,9 +1,9 @@
 import Arkham from "../../core/arkham";
-import times from "lodash/utility/times";
-import assign from "lodash/object/assign";
-import filter from "lodash/collection/filter";
-import each from "lodash/collection/each";
-import uniq from "lodash/array/uniq";
+import times from "lodash/times";
+import assign from "lodash/assign";
+import filter from "lodash/filter";
+import each from "lodash/each";
+import uniq from "lodash/uniq";
 import MapApi from "./map_api";
 import track from "../../core/decorators/track";
 

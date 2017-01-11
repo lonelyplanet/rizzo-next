@@ -1,6 +1,6 @@
 import { Component } from "../../core/bane";
 import $ from "jquery";
-import debounce from "lodash/function/debounce";
+import debounce from "lodash/debounce";
 import ArticleBodyComponent from "../article_body";
 import SocialShareComponent from "../social_share";
 import track from "../../core/decorators/track";

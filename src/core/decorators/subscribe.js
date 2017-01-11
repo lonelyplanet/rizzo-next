@@ -1,5 +1,5 @@
 import postal from "postal/lib/postal.lodash";
-import each from "lodash/collection/each";
+import each from "lodash/each";
 
 let _ = { each };
 
@@ -25,7 +25,7 @@ function addSubscribeMethod(target) {
         );
       });
     });
-    
+
     this["_subscriptions"] = subscriptionInstances;
   };
 
@@ -33,15 +33,15 @@ function addSubscribeMethod(target) {
 }
 
 /**
- * Decorator for listening on an event bus (postal).  
- * Will search the class for a `channel`, or use `/` by default.  
+ * Decorator for listening on an event bus (postal).
+ * Will search the class for a `channel`, or use `/` by default.
  * **NOTE:** You have to call `this.subscribe()` in the constructor in order to have postal actually attatch the listeners correctly.
  * @function
  * @param  {String} topic Topic to listen for
  * @param  {String} channel The channel to listen on
  * @example <caption>Default Channel</caption>
  * import publish from "path/to/core/decorators/publish"
- * 
+ *
  * class FooComponent () {
  *   constructor() {
  *     // This is required
@@ -49,7 +49,7 @@ function addSubscribeMethod(target) {
  *   }
  *   @subscribe("foo.some.message")
  *   someMethod(data, evnelope, subscription) {
- *     
+ *
  *   }
  *   @subscribe("foo.some.other")
  *   anotherMethod(data, evnelope, subscription) {
@@ -58,7 +58,7 @@ function addSubscribeMethod(target) {
  * }
  * @example <caption>Custom Channel</caption>
  * import publish from "path/to/core/decorators/publish"
- * 
+ *
  * class FooComponent () {
  *   constructor() {
  *     // This is required
@@ -72,7 +72,7 @@ function addSubscribeMethod(target) {
  * @example <caption>Channel decorator</caption>
  * import publish from "path/to/core/decorators/publish";
  * import channel from "path/to/core/decorators/channel"
- * 
+ *
  * class FooComponent () {
  *   constructor() {
  *     // This is required

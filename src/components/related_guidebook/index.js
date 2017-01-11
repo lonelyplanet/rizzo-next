@@ -1,7 +1,7 @@
 import { Component } from "../../core/bane";
 import $clamp from "clamp-js/clamp.js";
 import $ from "jquery";
-import debounce from "lodash/function/debounce";
+import debounce from "lodash/debounce";
 
 import "./related_guidebook.scss";
 

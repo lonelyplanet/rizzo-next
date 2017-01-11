@@ -1,7 +1,7 @@
 import { Component } from "../../core/bane";
 import RizzoEvents from "../../core/rizzo_events";
 import subscribe from "../../core/decorators/subscribe";
-import debounce from "lodash/function/debounce";
+import debounce from "lodash/debounce";
 require("./_sub_nav.scss");
 
 export default class SubNav extends Component {

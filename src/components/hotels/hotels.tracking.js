@@ -1,4 +1,4 @@
-import map from "lodash/collection/map";
+import map from "lodash/map";
 
 let _ = { map };
 
