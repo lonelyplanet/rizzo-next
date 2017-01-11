@@ -3,7 +3,7 @@ import SearchComponent from "../search";
 import NavigationComponent from "../navigation";
 import NavigationState from "../navigation/navigation_state";
 import $ from "jquery";
-import debounce from "lodash/function/debounce";
+import debounce from "lodash/debounce";
 
 /**
  * The page header which contains both search and navigation.

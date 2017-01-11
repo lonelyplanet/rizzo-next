@@ -5,7 +5,7 @@ import React from "react";
 import Pin from "../views/pin.jsx";
 import mapboxgl from "mapbox-gl/dist/mapbox-gl.js";
 import Arkham from "../../../core/arkham";
-import debounce from "lodash/function/debounce";
+import debounce from "lodash/debounce";
 
 class MarkerSet extends Component {
 

@@ -1,10 +1,10 @@
 import $ from "jquery";
 import Events from "./mixins/events";
-import assign from "lodash/object/assign";
-import pick from "lodash/object/pick";
-import bind from "lodash/function/bind";
-import each from "lodash/collection/each";
-import uniqueId from "lodash/utility/uniqueId";
+import assign from "lodash/assign";
+import pick from "lodash/pick";
+import bind from "lodash/bind";
+import each from "lodash/each";
+import uniqueId from "lodash/uniqueId";
 import postal from "postal/lib/postal.lodash";
 
 // Can pass in options that contains these keys. They will automatically be added to `this`
@@ -17,7 +17,7 @@ let delegateEventSplitter = /^(\S+)\s*(.*)$/;
 * Extend this class with es6 syntax.
 * @example
 * import { Component } from "./core/bane"
-* 
+*
 * class ArticlesComponent extends Component {
 *   initialize() {
 *     this.events = {
@@ -80,9 +80,9 @@ export default class Component {
    * <div data-lp-initial-cards="{{cards}}"></div>
    *
    * @example <caption>JavaScript</caption>
-   * let state = this.getInitialState(); 
+   * let state = this.getInitialState();
    * state.cards; // { cards: ... }
-   * 
+   *
    * @return {Object} The parsed JSON data
    */
   getInitialState() {
@@ -118,7 +118,7 @@ export default class Component {
 
     return state;
   }
-  /** 
+  /**
   * Allows you to delegate events to the element the component is attached to. In the `initialize` method of your
   * component, simply add an `events` object to `this
   * @example

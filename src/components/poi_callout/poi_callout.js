@@ -1,6 +1,6 @@
 import { Component } from "../../core/bane";
 import $ from "jquery";
-import debounce from "lodash/function/debounce";
+import debounce from "lodash/debounce";
 
 export default class PoiCalloutComponent extends Component {
   initialize(options, {

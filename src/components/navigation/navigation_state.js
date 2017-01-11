@@ -1,4 +1,4 @@
-import assign from "lodash/object/assign";
+import assign from "lodash/assign";
 import Events from "../../core/mixins/events";
 import Arkham from "../../core/arkham";
 import ShopCookieUtil from "../../core/shop_cookie_util";

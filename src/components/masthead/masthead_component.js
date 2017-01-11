@@ -1,6 +1,6 @@
 import { Component } from "../../core/bane";
 import Slideshow from "../slideshow";
-import assign from "lodash/object/assign";
+import assign from "lodash/assign";
 import "./masthead_nav.js";
 import coverVid from "../../core/utils/covervid";
 import MobilUtil from "../../core/mobile_util";

@@ -1,4 +1,4 @@
-import debounce from "lodash/function/debounce";
+import debounce from "lodash/debounce";
 
 let getWordCount = (string) => {
   return string.match(/(\w+)/g).length;

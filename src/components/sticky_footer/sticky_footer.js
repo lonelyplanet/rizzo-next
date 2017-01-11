@@ -1,6 +1,6 @@
 import { Component } from "../../core/bane";
 import $ from "jquery";
-import debounce from "lodash/function/debounce";
+import debounce from "lodash/debounce";
 import waitForTransition from "../../core/utils/waitForTransition";
 import subscribe from "../../core/decorators/subscribe";
 import ProgressComponent from "../progress";
