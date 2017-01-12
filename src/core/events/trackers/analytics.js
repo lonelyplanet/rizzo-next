@@ -29,8 +29,8 @@ export default function({ name, data } = {}) {
     return memo;
   }, {});
 
-  if (typeof window.lp.analytics != "undefined" && window.lp.analytics.api) {
-    window.lp.analytics.api.trackEvent(utagEvent);
+  if (typeof window.lp.analytics != "undefined" && typeof window.lp.analytics.send === "function") {
+    window.lp.analytics.send("event", utagEvent);
   } else {
     window.trackJs.console.log(`analytics: not loaded yet`);
   }

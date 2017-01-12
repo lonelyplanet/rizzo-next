@@ -132,7 +132,7 @@ class Modal extends Component {
       action: "newsletter",
       value: "sign up"
     };
-    window.lp.analytics.api.trackEvent(dataLayer);
+    window.lp.analytics.send("event", dataLayer);
   }
 
   submit(e) {
@@ -158,7 +158,7 @@ class Modal extends Component {
   }
 
   trackModalPageView() {
-    window.lp.analytics.api.trackEvent({
+    window.lp.analytics.send("event", {
       category: "Page View",
       action: "Modal Location Override",
       label: document.location.pathname

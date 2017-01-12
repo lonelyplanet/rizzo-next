@@ -500,13 +500,8 @@ export default class ArticleComponent extends Component {
    * @param  {String} title    Title to send to analytics
    * @return {String}          Data to send to analytics
    */
-  @track("article pageview scroll");
+  @track("article pageview scroll")
   _trackAjaxPageView(pathname) {
-    window.lp.analytics.api.trackEvent({
-      category: "Page View",
-      action: "Modal Location Override",
-      label: pathname
-    });
     return pathname;
   }
 
