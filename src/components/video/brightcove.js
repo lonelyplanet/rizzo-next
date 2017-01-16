@@ -279,13 +279,12 @@ class Brightcove extends VideoPlayer {
   }
 
   /**
-   * Retrieves SEO-friendly metadata about the highest-resolution "source" 
+   * Retrieves the url for the highest-resolution SEO-friendly video source 
    * of the currently loaded video
    *
-   * @returns {Object} object with 'url', 'width', and 'height' 
-   *   attributes, null if unable to retrieve valid metadata
+   * @returns {string} url, null if unable to retrieve an SEO-friendly url
    */
-  getVideoSourceData () {
+  getVideoSourceURL () {
 
     if (!this.player || !this.player.mediainfo) {
       return null;
@@ -309,21 +308,19 @@ class Brightcove extends VideoPlayer {
 
     let url = null;
     let width = 0;
-    let height = 0;
 
     $.each(this.player.mediainfo.sources, function (i, source) {
       if (!source.type || validTypes.indexOf(source.type.toLowerCase()) == -1) {
         return;
       }
 
-      if (!url || (width < source.width)) {
+      if (!url || (source.width && width < source.width)) {
         url = source.src;
         width = source.width;
-        height = source.height;
       }
     });
 
-    return url ? { url: url, width: width, height: height } : null;
+    return url;
   }
 
   /**
@@ -344,11 +341,6 @@ class Brightcove extends VideoPlayer {
       return;
     }
 
-    let src = this.getVideoSourceData();
-    if (!src) {
-      return;
-    }
-
     let defaultDescription = "";
     try {
       defaultDescription = window.lp.place.name;
@@ -362,7 +354,8 @@ class Brightcove extends VideoPlayer {
     let seconds = Math.ceil(this.getVideoProperty("duration"));
     let duration = "PT" + seconds + "S";
 
-    let embedUrl = "http://players.brightcove.net/5104226627001/default_default/index.html?videoId=" + videoId;
+    let playerId = this.is360Video(videoId) ? this.bcPlayer360Id : this.bcPlayerId;
+    let embedUrl = "https://players.brightcove.net/" + this.accountId + "/" + playerId + "_default/index.html?videoId=" + videoId;
 
     let data = {
       "@context": "http://schema.org",
@@ -370,18 +363,18 @@ class Brightcove extends VideoPlayer {
       "name": this.getVideoProperty("name") || defaultDescription,
       "description": this.getVideoProperty("description") || defaultDescription,
       "thumbnailURL": this.getVideoProperty("thumbnail"),
-      "contentURL": src.url,
       "embedURL": embedUrl,
       "duration": duration,
       "uploadDate": this.getVideoProperty("createdAt"),
-
-      // Leaving width and height off because they are optional and the width and height returned from
-      // this.getVideoSourceData() isn't necessarily the largest dimensions the video can be rendered at.
-      // All source data in brightcove's video metadata uses the same value for "contentURL" above, so 
-      // Google, Bing, etc. should be able to determine the resolution of the video on their own.
-      // "height": src.height,
-      // "width": src.width,
     };
+
+    // This is not a required field since we will always already
+    // have an "embedURL" value in the SEO data, but it doesn't 
+    // hurt to be thorough if we have the data available.
+    let contentURL = this.getVideoSourceURL();
+    if (contentURL) {
+      data["contentURL"] = contentURL;
+    }
 
     script = document.createElement("script");
     script.id = scriptId;
