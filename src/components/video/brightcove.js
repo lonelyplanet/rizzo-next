@@ -355,7 +355,7 @@ class Brightcove extends VideoPlayer {
     let duration = "PT" + seconds + "S";
 
     let playerId = this.is360Video(videoId) ? this.bcPlayer360Id : this.bcPlayerId;
-    let embedUrl = "http://players.brightcove.net/" + this.accountId + "/" + playerId + "_default/index.html?videoId=" + videoId;
+    let embedUrl = "https://players.brightcove.net/" + this.accountId + "/" + playerId + "_default/index.html?videoId=" + videoId;
 
     let data = {
       "@context": "http://schema.org",
