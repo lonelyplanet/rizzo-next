@@ -5,26 +5,10 @@ import VideoPlayer from "./video_player";
 class Brightcove extends VideoPlayer {
 
   initialize(options) {
-    // Cache of any video metadata we come across.
-    this.videoMediaInfo = {};
-
-    // Reference to a video.js player instance
-    this.player = null;
-
-    this.accountId = "5104226627001";
-    this.bcPlayerId = "default";
-    this.bcPlayer360Id = "HkUmgIl6";
-
-    // Policy key reference: https://docs.brightcove.com/en/video-cloud/player-management/guides/policy-key.html
-    this.policyKey = "BCpkADawqM215uOvhQWwjkTCXEb4uomDGwVmCx_TrCq3pmoyRSl7ISWkWgkFPG_-QZC8k55V_cP8wvTsivQa6jEgXkdnr_OTJzArFIuIxmmdFdrx2d4jgOH959-2_zXeC455OeqA8jr-h40g"; 
-  
     super.initialize(options);
     this.events["click .video-js"] = "onClickVideo";
   }
 
-  /**
-   * Returns 'undefined' if unable to find a .video-js element
-   */
   get videoEl() {
     if (this.$el.hasClass("video-js")) {
       return this.el;
@@ -49,192 +33,70 @@ class Brightcove extends VideoPlayer {
   }
 
   setup() {
-    if (!this.videoEl) {
-      this.trigger("ready");
-      return;
-    }
-
-    this.setPlayer().then(() => {
-      this.trigger("ready");
+    let self = this;
+    videojs(this.videoEl).ready(function () {
+      self.player = this;
+      self.player.on("ended", () => { self.trigger("ended"); });
+      self.setInitialDimensions();
+      self.trigger("ready");
     });
   }
 
-  /**
-   * Instantiates a videojs instance from
-   * the existing Brightcove embed markup on the page.
-   *
-   * If the Brightcove embed doesn't exist on the page, make sure to run 
-   * insertPlayer prior to running this method.
-   */
-  setPlayer() {
-    if (this.player) {
-      // In our current implementation, we only 
-      // allow a player to be instantiated once.
-      return new Promise.resolve();
-    }
-
-    return new Promise((resolve) => {
-      let self = this;
-
-      videojs(this.videoEl).ready(function () {
-        self.player = this;
-        self.player.on("ended", () => { self.trigger("ended"); });
-        resolve();
-      });
-    });
-  }
-
-  /**
-   * Searches for any videos associated with the current page
-   * and returns a list of each matching videos' metadata.
-   */
   search() {
-    return new Promise((resolve) => {
-      try {
-        let refId = "dest_" + window.lp.place.atlasId;
-        let url = "https://edge.api.brightcove.com/playback/v1/accounts/" + this.accountId + "/videos/ref:" + refId;
-        let accept = "application/json;pk=" + this.policyKey;
-
-        $.ajax({
-          url: url,
-          context: this,
-          headers: {
-            "Accept": accept
-          },
-          success: function (data) {
-            this.videoMediaInfo[data.id] = data;
-            resolve([data]);
-          },
-          error: function () {
-            resolve([]);
-          }
-        });
-
-      }
-      catch (e) {
-        resolve([]);
-      }
-    });
+    try {
+      let videoId = "ref:dest_" + window.lp.place.atlasId;
+      return Promise.resolve([videoId]);
+    }
+    catch (e) {
+      return Promise.resolve([]);
+    }
   }
 
-  /**
-   * Convenience method to find a video and load it into
-   * the instantiated videojs instance / player.
-   */
   searchAndLoadVideo() {
     return this.search().then((videos) => {
       if (videos.length) {
-        let videoId = videos[0].id;
+        let videoId = videos[0];
         return this.loadVideo(videoId);
       }
       return new Promise.resolve(false);
     });
   }
 
-  /**
-   * Inserts a Brightcove player embed into the DOM
-   * and instantiates the player / videojs instance.
-   *
-   * @param {Object} el - DOM element to insert the player into
-   * @param {number} videoId - The id of the video that will be eventually 
-   *    loaded into the player; This is used to determine which player 
-   *    needs to be inserted.
-   */
-  insertPlayer(el, videoId) {
-    if (this.videoEl) {
-      // A player has already been inserted before
-      return Promise.resolve();
+  loadVideo(videoId) {
+    if (!this.player) {
+      return Promise.resolve(false);
     }
 
     return new Promise((resolve) => {
-      let playerId = this.is360Video(videoId) ? this.bcPlayer360Id : this.bcPlayerId;
-
-      let html = "<video data-account=\"" + this.accountId + "\" data-player=\"" + playerId + "\" data-embed=\"default\" class=\"video-js\" controls></video>";
-      
-      el.innerHTML = html;
-
-      let s = document.createElement("script");
-      s.src = "//players.brightcove.net/" + this.accountId + "/" + playerId + "_default/index.min.js";
-      
-      s.onload = () => {
-        this.setPlayer().then(() => {
-          resolve();
-        });
-      };
-
-      document.body.appendChild(s);
+      this.player.catalog.getVideo(videoId, (error, video) => {
+        if (!error) {
+          this.player.catalog.load(video);
+          this.renderSEOMarkup();
+        }
+        resolve(!error);
+      });
     });
   }
 
   /**
-   * Loads a video into the instantiated videojs instance
+   * Used to set the initial dimensions of the video player
+   * so that when video data begins to load, it sees that the player is fairly
+   * large and loads high-res video data.  We have an issue with Brightcove at the moment
+   * where it seems to load lower-res video if the player size is set to "mobile-like" 
+   * dimensions, but we want to make sure we always have high-res video loaded (if available).
    *
-   * @param {number} videoId - The id of the video to load in the player
+   * This is run when the player is initially setup so consider resizing
+   * this.videoEl before making the player visible.
    */
-  loadVideo(videoId) {
+  setInitialDimensions() {
     if (!this.player) {
-      // We don't have a player to load the video into
-      return Promise.resolve(false);
+      return;
     }
 
-    let video = this.videoMediaInfo[videoId];
-    if (video) {
-      // We already have a video and the player, so just load it
-      this.player.catalog.load(video);
-      this.renderSEOMarkup();
-      return Promise.resolve(true);
-    }
-    else {
-      // We don't have the video data yet, so fetch it and then
-      // load it into the player.
-      return new Promise((resolve) => {
-        this.player.catalog.getVideo(videoId, (error, video) => {
-          if (!error) {
-            this.player.catalog.load(video);
-            let mediainfo = this.player.mediainfo;
-            this.videoMediaInfo[mediainfo.id] = mediainfo;
-            this.renderSEOMarkup();
-          }
-          resolve(!error);
-        });
-      });
-    }
-  }
+    let width = 1280;
+    let height = width / this.defaultAspectRatio;
 
-  /**
-   * Determines whether the currently loaded video is a 360 video.
-   *
-   * We use tagging in brightcove since this data is not included in 
-   * the standard video metadata.
-   *
-   * We use the tag '360' to tell our code that a video is a 360 video.
-   *
-   * @param {number} videoId - The id of the video to check
-   * @return {Boolean} whether the specified video is a 360 video or not.
-   */
-  is360Video(videoId) {
-    let mediainfo = null;
-
-    if (videoId) {
-      mediainfo = this.videoMediaInfo[videoId];
-    }
-    else if (this.player) {
-      mediainfo = this.player.mediainfo;
-    }
-
-    if (!mediainfo) {
-      return false;
-    }
-
-    let tags = mediainfo.tags;
-    for (let i = 0; i < tags.length; i++) {
-      let tag = tags[i];
-      if (tag == "360") {
-        return true;
-      }
-    }
-
-    return false;
+    this.player.dimensions(width, height);
   }
 
   /**
