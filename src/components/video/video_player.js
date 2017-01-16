@@ -44,7 +44,14 @@ class VideoPlayer extends Component {
    *
    */
   is360VideoSupported() {
+    // Must not be a mobile device
     if (MobilUtil.isMobileOrTablet()) {
+      return false;
+    }
+
+    // WebGL must be available
+    let canvas = document.createElement("canvas");
+    if (!canvas.getContext("webgl")) {
       return false;
     }
 

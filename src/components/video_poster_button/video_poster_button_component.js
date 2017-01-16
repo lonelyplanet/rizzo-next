@@ -64,16 +64,16 @@ export default class VideoPosterButtonComponent extends Component {
     let description = "";
 
     try {
-        let mediainfo = this.player.player.mediainfo;
-        title = mediainfo.name || "";
-        image = mediainfo.poster;
-        description = mediainfo.description || "";
+      let mediainfo = this.player.player.mediainfo;
+      title = mediainfo.name || "";
+      image = mediainfo.poster;
+      description = mediainfo.description || "";
     }
     catch (e) {
     }
 
     if (!image) {
-        this.$el.removeClass("video-poster-button--visible");
+      this.$el.removeClass("video-poster-button--visible");
     }
 
     let imageEl = this.$el.find(".video-poster-button__poster")[0];
