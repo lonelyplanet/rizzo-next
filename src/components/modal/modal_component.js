@@ -158,11 +158,7 @@ class Modal extends Component {
   }
 
   trackModalPageView() {
-    window.lp.analytics.send("event", {
-      category: "Page View",
-      action: "Modal Location Override",
-      label: document.location.pathname
-    });
+    // Used to call a page view here, removing but keeping placeholder...
   }
 }
 
