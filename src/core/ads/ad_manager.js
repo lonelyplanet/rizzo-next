@@ -5,7 +5,6 @@ import CookieUtil from "../cookie_util";
 import "jquery.dfp";
 import publish from "../decorators/publish";
 import subscribe from "../decorators/subscribe";
-import track from "../decorators/track";
 import { slugify } from "../../core/utils/stringHelpers";
 import assign from "object-assign";
 
@@ -93,7 +92,6 @@ export default class AdManager {
     }
   }
 
-  @track("article ad impression load");
   _track($adunit) {
     return `${$adunit.data("sizeMapping")}-${$adunit[0].id}-${$adunit.data("adType") || "default"}`;
   }

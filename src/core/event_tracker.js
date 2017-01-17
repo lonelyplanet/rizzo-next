@@ -15,8 +15,8 @@ let componentChannel = postal.channel("components");
  *
  */
 let trackEvent = function(name, details) {
-  if (window.lp.analytics.api.trackEvent) {
-    window.lp.analytics.api.trackEvent({
+  if (window.lp.analytics.send) {
+    window.lp.analytics.send("event", {
       category: name,
       action: details
     });

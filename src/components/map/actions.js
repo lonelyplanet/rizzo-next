@@ -5,7 +5,6 @@ import filter from "lodash/filter";
 import each from "lodash/each";
 import uniq from "lodash/uniq";
 import MapApi from "./map_api";
-import track from "../../core/decorators/track";
 
 const generatePlacements = () => {
   let placement = {
@@ -35,7 +34,7 @@ class MapActions {
   viewChange(data) {
     Arkham.trigger("view.changed", data);
   }
-  @track("Map goToPlace")
+
   gotoPlace({ placeTitle, place, breadcrumb, topic="" }) {
     let query = topic ? `?topic=${topic.toLowerCase()}` : "",
         url = `/${place}/map.json${query}`;
@@ -80,7 +79,6 @@ class MapActions {
     Arkham.trigger("state.setinitial", state);
   }
 
-  @track("Map Location Override")
   initMap() {
     Arkham.trigger("map.init");
     return { label: `/${window.lp.place.slug}/map`, category: "Page View" };

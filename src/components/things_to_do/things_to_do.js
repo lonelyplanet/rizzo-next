@@ -1,6 +1,5 @@
 import Component from "../../core/component";
 import waitForTransition from "../../core/utils/waitForTransition";
-import track from "../../core/decorators/track";
 import $clamp from "clamp-js/clamp.js";
 import rizzo from "../../rizzo";
 import publish from "../../core/decorators/publish";
@@ -183,7 +182,7 @@ class ThingsToDo extends Component {
    * Load more top things to do. Callback from click on load more button.
    * @param  {jQuery.Event} e The DOM event
    */
-  @track("Top Experiences More")
+
   loadMore(e) {
     e.preventDefault();
     if (this.animating || this.currentIndex + 4 >= this.cards.length) {
@@ -196,7 +195,7 @@ class ThingsToDo extends Component {
     // Forward
     this.animate();
   }
-  @track("Top Experiences Previous")
+
   loadPrevious(e) {
     e.preventDefault();
     if (this.animating || this.currentIndex - 4 < 0) {

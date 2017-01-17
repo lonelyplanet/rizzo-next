@@ -1,5 +1,4 @@
 import { Component } from "../../core/bane";
-import track from "../../core/decorators/track";
 import waitForTimeout from "../../core/utils/waitForTransition";
 import Overlay from "../overlay";
 import matchMedia from "../../core/utils/matchMedia";
@@ -59,7 +58,7 @@ class Modal extends Component {
       this.show();
     }
   }
-  @track("Modal Open").sendReturnValue(false)
+
   show() {
     if(this.isOpen) {
       return Promise.all([]);
@@ -93,7 +92,7 @@ class Modal extends Component {
       });
     });
   }
-  @track("Modal Close").sendReturnValue(false)
+
   hide() {
     if(!this.isOpen) {
       return Promise.all([]);
@@ -132,7 +131,7 @@ class Modal extends Component {
       action: "newsletter",
       value: "sign up"
     };
-    window.lp.analytics.api.trackEvent(dataLayer);
+    window.lp.analytics.send("event", dataLayer);
   }
 
   submit(e) {
@@ -158,11 +157,7 @@ class Modal extends Component {
   }
 
   trackModalPageView() {
-    window.lp.analytics.api.trackEvent({
-      category: "Page View",
-      action: "Modal Location Override",
-      label: document.location.pathname
-    });
+    // Used to call a page view here, removing but keeping placeholder...
   }
 }
 
