@@ -6,7 +6,6 @@ import gaEventMap from "./ga_event_map";
  * @param {Object} options An object with event data
  */
 export default function({ name, data } = {}) {
-  /* global utag */
   data = (isJson(data) ? JSON.parse(data) : data) || "";
 
   let mappedEvent,
@@ -30,7 +29,7 @@ export default function({ name, data } = {}) {
   }, {});
 
   if (typeof window.lp.analytics != "undefined" && typeof window.lp.analytics.send === "function") {
-    window.lp.analytics.send("event", utagEvent);
+    window.lp.analytics.send(utagEvent.name || "event", utagEvent);
   } else {
     window.trackJs.console.log(`analytics: not loaded yet`);
   }

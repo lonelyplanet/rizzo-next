@@ -8,8 +8,7 @@ export default {
     action: "page-load-impression"
   },
   "article pageview scroll": {
-    category: "related-article",
-    action: "scroll"
+    name: "infinitescroll.appended",
   },
   "article pageview click": {
     category: "related-article",
