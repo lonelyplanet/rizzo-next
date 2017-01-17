@@ -2,7 +2,6 @@ import { Component } from "../../core/bane";
 import $ from "jquery";
 import PhotoSwipe from "photoswipe";
 import PhotoSwipeUI_Default from "photoswipe/dist/photoswipe-ui-default";
-import track from "../../core/decorators/track";
 
 // Keep track of instance IDs
 let instanceId = 0;
@@ -139,7 +138,6 @@ export default class ImageGalleryComponent extends Component {
    * @param  {Event}  event Event
    * @return {Object}       Returns an object to send data to GA for tracking
    */
-  @track("gallery click")
   onGalleryClick(event) {
     event.preventDefault();
 

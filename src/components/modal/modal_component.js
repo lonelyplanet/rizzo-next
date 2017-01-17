@@ -1,5 +1,4 @@
 import { Component } from "../../core/bane";
-import track from "../../core/decorators/track";
 import waitForTimeout from "../../core/utils/waitForTransition";
 import Overlay from "../overlay";
 import matchMedia from "../../core/utils/matchMedia";
@@ -59,7 +58,7 @@ class Modal extends Component {
       this.show();
     }
   }
-  @track("Modal Open").sendReturnValue(false)
+
   show() {
     if(this.isOpen) {
       return Promise.all([]);
@@ -93,7 +92,7 @@ class Modal extends Component {
       });
     });
   }
-  @track("Modal Close").sendReturnValue(false)
+
   hide() {
     if(!this.isOpen) {
       return Promise.all([]);

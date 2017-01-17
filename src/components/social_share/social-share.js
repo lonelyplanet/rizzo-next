@@ -1,7 +1,6 @@
 import { Component } from "../../core/bane";
 import $ from "jquery";
 import urlencode from "urlencode";
-import track from "../../core/decorators/track";
 
 class SocialShareComponent extends Component {
   initialize() {
@@ -32,7 +31,7 @@ class SocialShareComponent extends Component {
     this.isSocialShareMenuHidden = false;
   }
 
-  @track("share menu click");
+
   makeSocialShareMenuHidden($menu) {
     this._showSocialShareMenu($menu);
     this.isSocialShareMenuHidden = true;
@@ -40,7 +39,7 @@ class SocialShareComponent extends Component {
     return window.location.pathname;
   }
 
-  @track("share button click");
+
   socialShareControlClicked(event) {
     let $el = $(event.currentTarget);
 
@@ -65,7 +64,7 @@ class SocialShareComponent extends Component {
       tweet = `${urlencode(msg)}`;
     }
 
-    
+
 
     left = Math.round((winWidth / 2) - (width / 2));
     top = winHeight > height ? Math.round((winHeight / 2) - (height / 2)) : 0;

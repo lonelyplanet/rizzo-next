@@ -1,7 +1,5 @@
 import { Component } from "../../core/bane";
 import "pickadate/lib/picker.date";
-import HotelsTracking from "./hotels.tracking";
-import track from "../../core/decorators/track";
 import $ from "jquery";
 
 const dateDefaults = {
@@ -71,7 +69,7 @@ class HotelsWidget extends Component {
       "select": date
     });
   }
-  @track(HotelsTracking.search)
+
   searchHotels() {
     return {
       booking: this.booking
