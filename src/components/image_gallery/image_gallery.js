@@ -139,7 +139,7 @@ export default class ImageGalleryComponent extends Component {
    * @param  {Event}  event Event
    * @return {Object}       Returns an object to send data to GA for tracking
    */
-  @track("gallery click");
+  @track("gallery click")
   onGalleryClick(event) {
     event.preventDefault();
 
