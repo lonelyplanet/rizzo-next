@@ -556,6 +556,14 @@ export default class ArticleComponent extends Component {
     window.lp.ads.interest = window.lp.article.interests;
     window.lp.ads.position = `article-${article.articleNumber}`;
 
+    Object.assign(window.lp.analytics.dataLayer[0], {
+      cd1_Continent: article.tealium.article.cd1_Continent,
+      cd2_Country: article.tealium.article.cd2_Country,
+      cd3_City: article.tealium.article.cd3_City,
+      cd5_Region: article.tealium.place.state_name || article.tealium.place.region_name,
+      cd10_ArticleName: article.title,
+    });
+
     this._updateMetaData(window.lp.article);
   }
 

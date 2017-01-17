@@ -1,8 +1,6 @@
 import { Component } from "../../core/bane";
 import "pickadate/lib/picker.date";
-import HotelsEvents from "./hotels.events";
 import HotelsTracking from "./hotels.tracking";
-import publish from "../../core/decorators/publish";
 import track from "../../core/decorators/track";
 import $ from "jquery";
 
@@ -60,7 +58,7 @@ class HotelsWidget extends Component {
   changeDate (endDate, startDate){
     let existingEndDate = new Date(endDate),
         newStartDate = new Date(startDate);
-    
+
     if (existingEndDate.toString() === "Invalid Date" || newStartDate > existingEndDate) {
       let newMinimumEndDate = new Date(newStartDate.getTime() + 24 * 60 * 60 * 1000);
       this.updateEndDate(newMinimumEndDate);
@@ -74,7 +72,6 @@ class HotelsWidget extends Component {
     });
   }
   @track(HotelsTracking.search)
-  @publish(HotelsEvents.SEARCH)
   searchHotels() {
     return {
       booking: this.booking
