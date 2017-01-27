@@ -1,5 +1,10 @@
 <article class="love-letter">
   <h2 class="love-letter__heading">{{{love_letter_title}}}</h2>
+  {{#if love_letter.data_source }}
+    <div id="love-letter-{{love_letter.data_source}}" style="display:none"></div>
+  {{else}}
+    <div id="love-letter-es" style="display:none"></div>
+  {{/if}}
 
   <p class="love-letter__text">
     &ldquo;<span class="js-love-letter">{{{love_letter_text}}}</span>&rdquo;
