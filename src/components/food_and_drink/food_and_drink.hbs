@@ -2,13 +2,7 @@
 
 <article class="food-and-drink">
   <h2 class="food-and-drink__heading">{{title}}</h2>
-
-  {{#if food_and_drink.data_source }}
-    <div id="food_and_drink-{{food_and_drink.data_source}}" style="display:none"></div>
-  {{else}}
-    <div id="food_and_drink-es" style="display:none"></div>
-  {{/if}}
-
+  <div id="food_and_drink-{{food_and_drink.data_source}}" style="display:none"></div>
 
   {{#if food_accent}}
     <img class="food-and-drink__image" src="{{food_accent}}" alt="{{title}} accent image">
