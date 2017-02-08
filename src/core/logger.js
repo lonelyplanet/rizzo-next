@@ -13,11 +13,7 @@ export default class Logger {
   error(err) {
     if (ENV_PROD) {
       if (window.trackJs) {
-        if (typeof err === "string") {
-          this._send("error", err);
-        } else if (err instanceof Error) {
-          window.trackJs.track(err);
-        }
+        this._send("log", err);
       }
     } else {
       console.log(JSON.stringify(err));
