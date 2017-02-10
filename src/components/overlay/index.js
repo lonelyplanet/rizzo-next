@@ -2,7 +2,6 @@ import { Component } from "../../core/bane";
 import Arkham from "../../core/arkham";
 import waitForTransition from "../../core/utils/waitForTransition";
 import getScrollbarWidth from "../../core/utils/getScrollbarWidth";
-import "./index.scss";
 
 class Overlay extends Component {
 

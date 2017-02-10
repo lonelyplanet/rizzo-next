@@ -4,7 +4,6 @@ import waitForTransition from "../../core/utils/waitForTransition";
 import SearchActions from "./search_actions";
 import SearchState from "./search_state";
 import template from "./search.hbs";
-import "./_search.scss";
 
 import SearchItemComponent from "./search_item";
 

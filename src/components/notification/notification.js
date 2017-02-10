@@ -1,5 +1,4 @@
 import { Component } from "../../core/bane";
-import "./_notification.scss";
 
 class Notification extends Component {
   initialize(options) {
