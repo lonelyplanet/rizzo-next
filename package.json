@@ -25,7 +25,7 @@
     "scsslint": "scss-lint . --config .scss-lint.yml",
     "test": "karma start --single-run"
   },
-  "version": "0.12.11",
+  "version": "0.12.12",
   "pre-commit": [
     "scsslint",
     "lint"
