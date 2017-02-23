@@ -54,7 +54,7 @@ export default class MastheadComponent extends Component {
     this.subscribe();
   }
 
-  @subscribe("ad.loaded", "ads");
+  @subscribe("ad.loaded", "ads")
   mastheadAdLoaded(data) {
     if (data.id === "sponsor-logo-masthead" || data.id === "best-in-badge-masthead") {
       let $mastheadAd = this.$el.find("#" + data.id);
