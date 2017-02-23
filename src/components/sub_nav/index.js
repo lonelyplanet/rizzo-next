@@ -126,20 +126,20 @@ export default class SubNav extends Component {
       title: "Experiences"
     })).prependTo(this.$subNavList);
   }
-  @subscribe(RizzoEvents.LOAD_BELOW, "events");
+  @subscribe(RizzoEvents.LOAD_BELOW, "events")
   updateContentHeight() {
     this.contentHeight = $(".navigation-wrapper").outerHeight();
   }
   /**
    * If a component is removed from the DOM, this will remove its subnav element
    */
-  @subscribe("*.removed", "components");
+  @subscribe("*.removed", "components")
   removeSubNav(data, envelope) {
     let component = envelope.topic.split(".")[0];
 
     this.$el.find(`.sub-nav__item--${component}`).remove();
   }
-  @subscribe("experiences.removed", "components");
+  @subscribe("experiences.removed", "components")
   addSights() {
     if ($(".sights").length) {
       $(this.subNavItem({
