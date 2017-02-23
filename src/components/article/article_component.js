@@ -48,7 +48,7 @@ export default class ArticleComponent extends Component {
     this.$globalFooter.detach();
   }
 
-  @subscribe("ad.loaded", "ads");
+  @subscribe("ad.loaded", "ads")
   _adsLoaded(data) {
     if (data.size === "leaderboard-responsive") {
       if (!this.hasAdTimeoutResolved) {
