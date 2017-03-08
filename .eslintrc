@@ -20,7 +20,7 @@
     "no-underscore-dangle": [0],
     "strict": [0, "never"],
     "no-var": [1],
-    "no-unused-vars": [2],
+    "no-unused-vars": [1],
     "react/jsx-uses-vars": 1,
     "semi": [1, "always"],
     "no-use-before-define": [2],

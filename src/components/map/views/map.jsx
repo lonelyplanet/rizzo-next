@@ -7,12 +7,13 @@ import InteractiveMap from "../interactive-map";
 export default class MapView extends React.Component {
   componentDidMount() {
     this.interactiveMap = new InteractiveMap({
-      el: this.refs.map.getDOMNode()
+      el: this.map
     });
   }
+
   render() {
     return (
-      <div ref="map" className="map-container"></div>
+      <div ref={(node) => this.map = node} className="map-container"></div>
     );
   }
 

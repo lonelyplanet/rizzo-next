@@ -1,5 +1,6 @@
 import { Component } from "../../core/bane";
 import React from "react";
+import { render } from "react-dom";
 import MainView from "./views/main.jsx";
 import MapActions from "./actions";
 import Arkham from "../../core/arkham";
@@ -11,7 +12,7 @@ import rizzo from "../../rizzo";
 
 let history = createHistory();
 
-class MapComponent extends Component {
+export default class MapComponent extends Component {
 
   initialize() {
     rizzo.logger.log("Creating map");
@@ -52,7 +53,9 @@ class MapComponent extends Component {
     MapApi.fetch(`/${window.lp.place.slug}/map.json`).done((results) => {
       results.userLocation = this.userLocation;
       MapActions.setState(results);
-      React.render(<MainView />, this.$el[0]);
+      render(
+        <MainView />
+      , this.$el[0]);
       this.open();
     });
   }
@@ -129,5 +132,3 @@ class MapComponent extends Component {
 }
 
 MapComponent.supported = mapboxgl.supported();
-
-export default MapComponent;
