@@ -69,5 +69,4 @@ export default class MainView extends React.Component {
   closeMap() {
     MapActions.mapClose();
   }
-
 }

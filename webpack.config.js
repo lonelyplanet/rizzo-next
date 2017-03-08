@@ -3,9 +3,9 @@
 var path = require("path");
 
 /**
- * 
+ *
  * This webpack config is for transpiling and running unit tests
- * 
+ *
  */
 module.exports = {
   progress: true,
@@ -38,9 +38,9 @@ module.exports = {
       },
       {
         test: /\.hbs$/,
-        loader: "handlebars?rootRelative=" + path.join(__dirname, "src") + "/" + 
+        loader: "handlebars?rootRelative=" + path.join(__dirname, "src") + "/" +
           "&runtime=" + require.resolve("handlebars/dist/handlebars.runtime")
-      }, 
+      },
       {
         test: /picker(.date)?.js$/,
         loader: "imports?define=>false"
