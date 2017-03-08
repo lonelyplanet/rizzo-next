@@ -43,7 +43,7 @@
     "handlebars": "^4.0.3",
     "history": "^1.11.1",
     "imagesloaded": "*",
-    "jquery": "^2.1.4",
+    "jquery": "^3.1.1",
     "jquery.dfp": "^2.4.1",
     "lodash": "^4.17.4",
     "mapbox-gl": "^0.32.1",
