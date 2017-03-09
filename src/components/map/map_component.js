@@ -21,24 +21,7 @@ export default class MapComponent extends Component {
       return false;
     }
 
-    let geolocationTimeout = 10000;
-    let getCurrentPositionCompleted = false;
-    setTimeout(() => {
-      if(!getCurrentPositionCompleted){
-        this.fetchMap();
-      }
-    }, geolocationTimeout + 1000);
-
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        getCurrentPositionCompleted = true;
-        this.userLocation = [position.coords.latitude, position.coords.longitude];
-        this.fetchMap();
-      }, () => {
-        getCurrentPositionCompleted = true;
-        this.fetchMap();
-      },{timeout: geolocationTimeout});
-    }
+    this.fetchMap();
 
     Arkham.on("map.closed", () => {
       this.close();
@@ -51,7 +34,6 @@ export default class MapComponent extends Component {
 
   fetchMap() {
     MapApi.fetch(`/${window.lp.place.slug}/map.json`).done((results) => {
-      results.userLocation = this.userLocation;
       MapActions.setState(results);
       render(
         <MainView />
