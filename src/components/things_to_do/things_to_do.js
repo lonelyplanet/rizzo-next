@@ -42,9 +42,16 @@ class ThingsToDo extends Component {
     return obj.index;
   }
   fetchCards() {
-    return $.ajax({
-      url: `/api/${window.lp.place.slug}/experiences.json`
-    });
+    var op_variant = window.location.href.match(/op_variant=true/)
+    if (op_variant == null) {
+      return $.ajax({
+        url: `/api/${window.lp.place.slug}/experiences.json`
+      });
+    } else {
+      return $.ajax({
+        url: `/api/${window.lp.place.slug}/experiences.json?op_variant=true`
+      });
+    }
   }
   @publish("experiences.removed")
   nukeIt() {
