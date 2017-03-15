@@ -23,7 +23,12 @@
     "prepublish": "npm run build && mkdir -p tmp && cp -R src/* tmp && babel -d tmp tmp && cp -R tmp/* dist && rimraf tmp",
     "sassdoc": "./node_modules/.bin/sassdoc sass --theme neat",
     "scsslint": "scss-lint . --config .scss-lint.yml",
-    "test": "karma start --single-run"
+    "test": "karma start --single-run",
+    "preversion": "npm run build",
+    "version": "standard-version --commit-all",
+    "version:patch": "standard-version -- --release-as patch",
+    "version:minor": "npm run release -- --release-as minor",
+    "version:major": "standard-version --release-as major"
   },
   "version": "0.12.19",
   "pre-commit": [
@@ -105,6 +110,7 @@
     "sassdoc": "^2.1.15",
     "sassdoc-theme-neat": "0.0.2",
     "sinon": "^1.17.1",
+    "standard-version": "^4.0.0",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.2"
   }
