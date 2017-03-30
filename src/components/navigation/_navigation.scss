@@ -24,7 +24,7 @@
     &:first-child {
       display: none;
 
-      @media (min-width: $min-720) and (max-width: $max-1080) {
+      @media (min-width: $min-720) and (max-width: $max-1200) {
         display: inline-block;
       }
     }

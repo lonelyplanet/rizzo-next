@@ -19,24 +19,24 @@
           "submenu": {
             "items": [
               {
-                "title": "Adventure",
-                "slug": "//www.lonelyplanet.com/video/adventure/v/cha/1"
+                "title": "Adventure travel",
+                "slug": "//www.lonelyplanet.com/video/adventure-travel/v/cha/1"
               },
               {
-                "title": "Arts & Culture",
-                "slug": "//www.lonelyplanet.com/video/arts-culture/v/cha/2"
+                "title": "Art and culture",
+                "slug": "//www.lonelyplanet.com/video/art-and-culture/v/cha/2"
               },
               {
                 "title": "Beaches",
                 "slug": "//www.lonelyplanet.com/video/beaches/v/cha/3"
               },
               {
-                "title": "Explore Every Day",
+                "title": "Explore every day",
                 "slug": "//www.lonelyplanet.com/video/explore-every-day/v/cha/4"
               },
               {
-                "title": "Food & Drink",
-                "slug": "//www.lonelyplanet.com/video/food-drink/v/cha/7"
+                "title": "Food and drink",
+                "slug": "//www.lonelyplanet.com/video/food-and-drink/v/cha/7"
               }
             ]
           }
