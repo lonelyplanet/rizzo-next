@@ -28,7 +28,7 @@
     transform: translateY(-50%);
     z-index: z("default");
 
-    @media (min-width: $min-720) and (max-width: $max-1080) {
+    @media (min-width: $min-720) and (max-width: $max-1200) {
       margin-left: 0;
       margin-right: 0;
     }

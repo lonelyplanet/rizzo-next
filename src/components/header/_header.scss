@@ -64,7 +64,7 @@ $lp-global-header-mobile-icon-padding: ($header-height-mobile - $lp-global-heade
   &__search {
     display: none;
 
-    @media (min-width: $min-1080) {
+    @media (min-width: $min-1200) {
       background-color: transparent;
       border: 0;
       color: rgba($color-white, .38);
