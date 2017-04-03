@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.14.0"></a>
+# [0.14.0](https://github.com/lonelyplanet/rizzo-next/compare/v0.13.0...v0.14.0) (2017-04-03)
+
+
+### Features
+
+* add Video to main navigation in header ([6461dd5](https://github.com/lonelyplanet/rizzo-next/commit/6461dd5))
+
+
+
 <a name="0.13.0"></a>
 # [0.13.0](https://github.com/lonelyplanet/rizzo-next/compare/v0.12.19...v0.13.0) (2017-03-15)
 
