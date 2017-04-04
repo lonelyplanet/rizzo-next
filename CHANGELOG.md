@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.14.1"></a>
+## [0.14.1](https://github.com/lonelyplanet/rizzo-next/compare/v0.14.0...v0.14.1) (2017-04-04)
+
+
+### Bug Fixes
+
+* **navigation:** Add a see all videos link ([be6fb4d](https://github.com/lonelyplanet/rizzo-next/commit/be6fb4d))
+
+
+
 <a name="0.14.0"></a>
 # [0.14.0](https://github.com/lonelyplanet/rizzo-next/compare/v0.13.0...v0.14.0) (2017-04-03)
 
