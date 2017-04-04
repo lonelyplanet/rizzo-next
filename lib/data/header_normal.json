@@ -16,7 +16,7 @@
         },
         {
           "title": "Video",
-          "slug": "//www.lonelyplanet.com/video",
+          "slug": "#",
           "submenu": {
             "items": [
               {
@@ -39,7 +39,11 @@
                 "title": "Food and drink",
                 "slug": "//www.lonelyplanet.com/video/food-and-drink/v/cha/7"
               }
-            ]
+            ],
+            "call_to_action": {
+              "slug": "//www.lonelyplanet.com/video",
+              "title": "See All Videos"
+            }
           }
         },
         {
