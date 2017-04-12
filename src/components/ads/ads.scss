@@ -98,8 +98,9 @@
 }
 
 .masthead__ad .adunit--sponsor-logo-masthead {
-  display: inline-block;
-  margin-bottom: -.9rem; // reset inline-block margin
+  bottom: 0;
+  position: absolute;
+  right: 12px;
 }
 
 .masthead__ad .adunit--best-in-masthead {
