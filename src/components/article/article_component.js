@@ -58,9 +58,10 @@ export default class ArticleComponent extends Component {
     $(paragraphs).each((index, p) => {
       const notFirst = index !== 0;
       const atEachInterval = (index + 1) % interval === 0;
+      const adCount = (index + 1) / interval;
 
       if (notFirst && atEachInterval) {
-        $(p).after(adSlot((index + 1) / interval));
+        $(p).after(adSlot(adCount));
       }
     });
   }
