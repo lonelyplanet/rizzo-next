@@ -63,7 +63,8 @@
       }
 
       + p,
-      + .copy--body__list {
+      + .copy--body__list,
+      + .adunit--articles-inline {
         margin-top: 1rem;
 
         @media (min-width: $min-600) {
