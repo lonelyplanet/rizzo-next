@@ -4,33 +4,41 @@
   <meta content="{{ article.post_date }}" itemprop="datePublished">
 
   <div class="article__container">
-    <header class="article-header is-narrow is-centered has-flexbox">
-      <h1 class="article-header__title is-xlarge">
-        {{ article.title }}
-      </h1>
+    <div class="article__intro">
+      <div class="article__header">
+        <header class="article-header has-flexbox">
+          <h1 class="article-header__title is-xlarge">
+            {{ article.title }}
+          </h1>
 
-      <div class="article-header__title is-xsmall is-padded-bottom js-header-title">
-        Tips &amp; articles
+          <div class="article-header__title is-xsmall is-padded-bottom js-header-title">
+            Tips &amp; articles
 
-        <div class="adunit adunit--sponsor-logo display-none js-sponsor-logo"
-          data-size-mapping="sponsor-logo"
-          data-targeting='{ "position": "header" }'>
+            <div class="adunit adunit--sponsor-logo display-none js-sponsor-logo"
+              data-size-mapping="sponsor-logo"
+              data-targeting='{ "position": "header" }'>
+            </div>
+          </div>
+        </header>
+      </div>
+
+      <div class="article__author">
+        {{> "components/author/author"}}
+      </div>
+    </div>
+
+    <div class="article__content">
+      {{> "components/article_body/article_body"}}
+
+      {{> "components/ads/ad_article_sponsor" }}
+
+      <footer class="article__footer js-article-footer">
+        <div class="post-date in-article-footer js-article-post-date">
+          Published <time datetime="{{ article.post_date }}"></time>
         </div>
-      </div>
-    </header>
 
-    {{> "components/author/author"}}
-
-    {{> "components/article_body/article_body"}}
-
-    {{> "components/ads/ad_article_sponsor" }}
-
-    <footer class="article__footer js-article-footer">
-      <div class="post-date in-article-footer js-article-post-date">
-        Published <time datetime="{{ article.post_date }}"></time>
-      </div>
-
-      {{> "components/social_share/social_share_article"}}
-    </footer>
+        {{> "components/social_share/social_share_article"}}
+      </footer>
+    </div>
   </div>
 </article>

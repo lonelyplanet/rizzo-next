@@ -8,4 +8,46 @@
       margin-bottom: -2rem;
     }
   }
+
+
+  // Implementation detail
+
+  .article__header & {
+    margin-left: 0;
+    margin-right: 0;
+    max-width: span(7 static);
+    padding-bottom: 0;
+    padding-top: 0;
+
+    @media (min-width: $min-720) {
+      padding-bottom: 0;
+      padding-top: 0;
+    }
+  }
+}
+
+.article-header__title.is-xlarge {
+  // Implementation detail
+
+  .article__header & {
+    font-size: 3.2rem;
+    line-height: (40 / 32);
+
+    @media (min-width: $min-600) {
+      font-size: 4.8rem;
+      line-height: (56 / 48);
+    }
+  }
+}
+
+.article-header__title.is-padded-bottom {
+  // Implementation detail
+
+  .article__header & {
+    margin-bottom: 1.5rem;
+
+    @media(min-width: $min-600) {
+      margin-bottom: 1.5rem;
+    }
+  }
 }
