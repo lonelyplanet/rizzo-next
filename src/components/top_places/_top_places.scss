@@ -231,12 +231,15 @@
     &::before {
       bottom: 0;
       display: block;
+      height: 1em;
       left: 0;
+      margin: auto;
       position: absolute;
       right: 0;
       text-align: center;
       text-indent: 0;
       top: 0;
+      width: 1em;
     }
 
     @media (min-width: $min-720) {
