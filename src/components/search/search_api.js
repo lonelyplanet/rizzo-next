@@ -11,7 +11,7 @@ let SearchApi = {
     }).done((results) => {
       searchResults = results;
       if (videoResults) {
-        SearchServerActions.fetched(sortResults(query, searchResults, videoResults));
+        SearchServerActions.fetched(mergeResults(query, searchResults, videoResults));
       }
     });
 
@@ -20,24 +20,34 @@ let SearchApi = {
     }).done((results) => {
       videoResults = results;
       if (searchResults) {
-        SearchServerActions.fetched(sortResults(query, searchResults, videoResults));
+        SearchServerActions.fetched(mergeResults(query, searchResults, videoResults));
       }
     });
   }
 };
 
-const sortResults = (query, searchResults, videoResults) => {
+const mergeResults = (query, searchResults, videoResults) => {
   let results = [];
 
-  const bestVideoResults = videoResults.filter((v) => {
-    return v.name.toLowerCase().startsWith(query.toLowerCase());
-  });
-  const bestVideoResultCount = bestVideoResults.length;
+  let bestVideoResults = [];
 
-  // Remove best videos from original list to prevent duplicates
+  // Best video results are results that start with the search query
+  if (query.length > 1) {
+    bestVideoResults = videoResults.filter((v) => {
+      return v.name.toLowerCase().startsWith(query.toLowerCase());
+    });
+  }
+
+  // Second best video results are results where one word within the 
+  // video name starts with the search query
   videoResults = videoResults.filter((v) => {
-    return bestVideoResults.findIndex((x) => x.name === v.name) === -1;
+    return (
+      (bestVideoResults.findIndex((x) => x.name === v.name) === -1) &&
+      (query.indexOf(" ") === -1 && !!(v.name.toLowerCase().split(" ").find((word) => word.startsWith(query.toLowerCase()))))
+      );
   });
+
+  const bestVideoResultCount = bestVideoResults.length;
 
   // Merge results by alternating between the best video results and the search results
   while (bestVideoResults.length || searchResults.length) {
@@ -51,7 +61,7 @@ const sortResults = (query, searchResults, videoResults) => {
 
   // Make sure at least 1 video result appears in the top 5
   if (!bestVideoResultCount && videoResults.length) {
-    results.splice(2, 0, videoResults.shift());
+    results.splice(4, 0, videoResults.shift());
   }
 
   // Add less relevant video results to the end
