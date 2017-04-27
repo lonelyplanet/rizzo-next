@@ -103,5 +103,16 @@ $height: 6rem;
         repeat: no-repeat;
       }
     }
+
+    &--video {
+      &::before {
+        content: "\e602";
+      }
+
+      background: {
+        image: url("https://assets.staticlp.com/destinations-next/images/search-category-image-sights.jpg");
+        repeat: no-repeat;
+      }
+    }
   }
 }

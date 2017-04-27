@@ -6,6 +6,7 @@ class SearchItemComponent extends Component {
 
   initialize(options){
     this.model = options.model;
+    this.model.isVideo = this.model.type === "video";
     this.searchString = options.searchString;
     this.$el = $("<li />", {
       "class": "lp-search-item"
