@@ -17,7 +17,7 @@ class Brightcove extends VideoPlayer {
   }
 
   onClickVideo(event) {
-    // Prevent event from bubbling into the UI 
+    // Prevent event from bubbling into the UI
     // when the user interacts with the video.
     event.stopPropagation();
   }
@@ -33,12 +33,146 @@ class Brightcove extends VideoPlayer {
   }
 
   setup() {
-    let self = this;
-    videojs(this.videoEl).ready(function () {
-      self.player = this;
-      self.player.on("ended", () => { self.trigger("ended"); });
-      self.setInitialDimensions();
-      self.trigger("ready");
+    // let self = this;
+    this.player = videojs(this.videoEl);
+    this.player.ready(this.onPlayerReady.bind(this));
+    this.player.on("loadstart", this.onPlayerLoadStart.bind(this));
+    // this.player.on("error", this.onPlayerError.bind(this));
+    // this.player.on("playing", this.onPlayerPlaying.bind(this));
+    this.player.on("ended", this.onPlayerEnded.bind(this));
+    // this.player.on("ads-ad-ended", this.onAdEnded.bind(this));
+
+    // videojs(this.videoEl).ready(function () {
+    //   self.player = this;
+    //   self.player.on("ended", () => { self.trigger("ended"); });
+    //   self.player
+    //   self.player.on("loadstart", this.onPlayerLoadStart.bind(this));
+    //   self.player.on("error", this.onPlayerError.bind(this));
+    //   self.player.on("playing", this.onPlayerPlaying.bind(this));
+    //   self.player.on("ended", this.onPlayerEnded.bind(this));
+    //   self.player.on("ads-ad-ended", this.onAdEnded.bind(this));
+    //   // self.setInitialDimensions();
+    //   self.trigger("ready");
+    // });
+  }
+
+  onPlayerReady() {
+    this.trigger("ready");
+  }
+
+  onPlayerLoadStart() {
+    this.renderSEOMarkup();
+
+    const tt = this.player.textTracks()[0];
+    if (tt) {
+      tt.oncuechange = this.onPlayerCueChange.bind(this);
+    }
+
+    this.configureOverlays();
+
+    // if (this.props.autoplay) {
+    //   this.player.play();
+    // }
+  }
+
+  // onPlayerError() {
+  //   this.loadVideo()
+  // }
+
+  onPlayerEnded() {
+    this.trigger("ended");
+  }
+
+  // onAdEnded() {
+
+  // }
+
+  onPlayerCueChange() {
+    const tt = this.player.textTracks()[0];
+    const activeCue = tt.activeCues[0];
+    if (!activeCue || activeCue.text !== "CODE") {
+      return;
+    }
+
+    const cue = activeCue.originalCuePoint;
+
+    const overlayElementId = `ad-lowerthird-${this.cid}-${cue.id}`;
+    const element = document.getElementById(overlayElementId);
+
+    if (!element) {
+      return;
+    }
+
+    let cueIndex = null;
+
+    this.getCues().forEach((c, i) => {
+      if (c.originalCuePoint.id === cue.id) {
+        cueIndex = i;
+      }
+    });
+
+    if (cueIndex === null) {
+      return;
+    }
+
+    window.lp.analytics.dfp.video.lowerThird(cueIndex + 1, overlayElementId);
+
+    // if (this.props.onCueChange) {
+    //   this.props.onCueChange(cue, cueIndex, overlayElementId);
+    // }
+  }
+
+  getCues() {
+    if (!this.player) {
+      return [];
+    }
+
+    const tt = this.player.textTracks()[0];
+    if (!tt) {
+      return [];
+    }
+
+    let index = 0;
+    const cues = [];
+    while (index < tt.cues.length) {
+      const cue = tt.cues[index];
+      if (cue.text === "CODE") {
+        cues.push(cue);
+      }
+      index += 1;
+    }
+
+    return cues;
+  }
+
+  configureOverlays() {
+    const overlays = this.getCues().map((c) => {
+      const cue = c.originalCuePoint;
+
+      const defaultEnd = cue.startTime + 15;
+      const end = defaultEnd < cue.endTime ? defaultEnd : cue.endTime;
+
+      return {
+        content: `<div id="ad-lowerthird-${this.cid}-${cue.id}" class="video__lowerthird-overlay" />`,
+        align: "bottom",
+        start: cue.startTime,
+        end,
+      };
+    });
+
+    overlays.push({
+      content: "<div class=\"video__ad-overlay\">Advertisement</div>",
+      align: "top-left",
+      start: "ads-ad-started",
+      end: "playing",
+    });
+
+    this.player.overlay({
+      content: "",
+      overlays,
+      showBackground: false,
+      attachToControlBar: true,
+      debug: false,
     });
   }
 
@@ -62,16 +196,22 @@ class Brightcove extends VideoPlayer {
     });
   }
 
+  // isVideoLoaded(videoId) {
+  //   return this.player && this.player.mediainfo && this.player.mediainfo.id === videoId;
+  // }
+
   loadVideo(videoId) {
     if (!this.player) {
       return Promise.resolve(false);
     }
 
+    // this.videoId = videoId;
+
     return new Promise((resolve) => {
       this.player.catalog.getVideo(videoId, (error, video) => {
         if (!error) {
           this.player.catalog.load(video);
-          this.renderSEOMarkup();
+
         }
         resolve(!error);
       });
@@ -82,33 +222,33 @@ class Brightcove extends VideoPlayer {
    * Used to set the initial dimensions of the video player
    * so that when video data begins to load, it sees that the player is fairly
    * large and loads high-res video data.  We have an issue with Brightcove at the moment
-   * where it seems to load lower-res video if the player size is set to "mobile-like" 
+   * where it seems to load lower-res video if the player size is set to "mobile-like"
    * dimensions, but we want to make sure we always have high-res video loaded (if available).
    *
    * This is run when the player is initially setup so consider resizing
    * this.videoEl before making the player visible.
    */
-  setInitialDimensions() {
-    if (!this.player) {
-      return;
-    }
+  // setInitialDimensions() {
+  //   if (!this.player) {
+  //     return;
+  //   }
 
-    let width = 1280;
-    let height = width / this.defaultAspectRatio;
+  //   let width = 1280;
+  //   let height = width / this.defaultAspectRatio;
 
-    this.player.dimensions(width, height);
-  }
+  //   this.player.dimensions(width, height);
+  // }
 
   /**
    * Gets the ideal dimensions of the video, considering it's aspect ratio.
    * @param {number} maxw - (required) Maximum width to return (pixels)
-   * @param {number} maxh - (optional) Maximum height to return (pixels) 
+   * @param {number} maxh - (optional) Maximum height to return (pixels)
    * @return {Object} object with 'width' and 'height' attributes
    */
   getIdealDimensions(maxw, maxh) {
     let ratio = this.defaultAspectRatio;
 
-    // If we have video data, use the aspect ratio of the 
+    // If we have video data, use the aspect ratio of the
     // video as the width-height ratio value
     try {
       let source = this.player.mediainfo.rawSources[0];
@@ -141,55 +281,7 @@ class Brightcove extends VideoPlayer {
   }
 
   /**
-   * Retrieves SEO-friendly metadata about the highest-resolution "source" 
-   * of the currently loaded video
-   *
-   * @returns {Object} object with 'url', 'width', and 'height' 
-   *   attributes, null if unable to retrieve valid metadata
-   */
-  getVideoSourceData () {
-
-    if (!this.player || !this.player.mediainfo) {
-      return null;
-    }
-
-    // Schema.org VideoObject valid types include:
-    //   .mpg, .mpeg, .mp4, .m4v, .mov, .wmv, .asf, .avi, .ra, .ram, .rm, .flv
-    //   (Some of these are skipped here because they pertain to audio-only file types)
-    //   https://developers.google.com/webmasters/videosearch/schema
-    let validTypes = [
-      "video/mpeg",
-      "video/mp4",
-      "video/x-m4v",
-      "video/quicktime",
-      "video/x-ms-wmv",
-      "video/x-ms-asf",
-      "video/x-msvideo",
-      "application/vnd.rn-realmedia",
-      "video/x-flv"
-    ];
-
-    let url = null;
-    let width = 0;
-    let height = 0;
-
-    $.each(this.player.mediainfo.sources, function (i, source) {
-      if (!source.type || validTypes.indexOf(source.type.toLowerCase()) == -1) {
-        return;
-      }
-
-      if (!url || (width < source.width)) {
-        url = source.src;
-        width = source.width;
-        height = source.height;
-      }
-    });
-
-    return url ? { url: url, width: width, height: height } : null;
-  }
-
-  /**
-   * Uses the currently loaded video data to build a block of 
+   * Uses the currently loaded video data to build a block of
    * LD-JSON Schema.org markup and appends it to the "head" tag
    *
    * This is run automatically when any video is loaded.
@@ -206,11 +298,6 @@ class Brightcove extends VideoPlayer {
       return;
     }
 
-    let src = this.getVideoSourceData();
-    if (!src) {
-      return;
-    }
-
     let defaultDescription = "";
     try {
       defaultDescription = window.lp.place.name;
@@ -224,25 +311,15 @@ class Brightcove extends VideoPlayer {
     let seconds = Math.ceil(this.getVideoProperty("duration"));
     let duration = "PT" + seconds + "S";
 
-    let embedUrl = "http://players.brightcove.net/5104226627001/default_default/index.html?videoId=" + videoId;
-
     let data = {
       "@context": "http://schema.org",
       "@type": "VideoObject",
       "name": this.getVideoProperty("name") || defaultDescription,
       "description": this.getVideoProperty("description") || defaultDescription,
-      "thumbnailURL": this.getVideoProperty("thumbnail"),
-      "contentURL": src.url,
-      "embedURL": embedUrl,
+      "thumbnailURL": this.getVideoProperty("poster"),
+      "embedURL": "https://players.brightcove.net/5104226627001/default_default/index.html?videoId=" + videoId,
       "duration": duration,
       "uploadDate": this.getVideoProperty("createdAt"),
-
-      // Leaving width and height off because they are optional and the width and height returned from
-      // this.getVideoSourceData() isn't necessarily the largest dimensions the video can be rendered at.
-      // All source data in brightcove's video metadata uses the same value for "contentURL" above, so 
-      // Google, Bing, etc. should be able to determine the resolution of the video on their own.
-      // "height": src.height,
-      // "width": src.width,
     };
 
     script = document.createElement("script");
