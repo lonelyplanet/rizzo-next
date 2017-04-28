@@ -105,10 +105,15 @@ $height: 6rem;
     }
 
     &--video {
-      @include icon-before("https://assets.staticlp.com/destinations-next/icons/sight--line.svg");
+      @include icon-before("https://assets.staticlp.com/destinations-next/icons/video--line.svg");
+
+      &::before {
+        background-position: center;
+        background-size: 45%;
+      }
 
       background: {
-        image: url("https://assets.staticlp.com/destinations-next/images/search-category-image-sights.jpg");
+        image: url("https://assets.staticlp.com/destinations-next/images/search-category-image-video.jpg");
         repeat: no-repeat;
       }
     }

@@ -46,13 +46,10 @@ Arkham.on("search.fetch", (data) => {
   state.isTyping = true;
   state.query = data.query;
 
-  console.log('got data', data, state);
-
   SearchState.trigger("change:isTyping", state);
 });
 
 Arkham.on("search.fetched", (data) => {
-  console.log('DATA', data);
   state.results = data.results.slice(0, 5);
   state.isTyping = false;
 

@@ -38,7 +38,7 @@ const mergeResults = (query, searchResults, videoResults) => {
     });
   }
 
-  // Second best video results are results where one word within the 
+  // Second best video results are results where one word within the
   // video name starts with the search query
   videoResults = videoResults.filter((v) => {
     return (
