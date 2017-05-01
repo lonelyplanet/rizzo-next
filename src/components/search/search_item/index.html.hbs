@@ -1,6 +1,6 @@
 <a class="lp-search-item__link" href="https://www.lonelyplanet.com/{{slug}}" data-lpa-category="Destinations Next" data-lpa-action="Search Click" data-lpa-label="{{name}}">
   {{#if image}}
-  <div class="topic__image" style="background-image: url( {{ image }} );" aria-label="icon {{type}}"></div>
+    <div class="topic__image{{#if isVideo }} topic__image--{{type}}{{/if}}" style="background-image: url( {{ image }} );" aria-label="icon {{type}}"></div>
   {{else}}
   <div class="topic__image topic__image--{{type}}" aria-label="icon {{type}}"></div>
   {{/if}}

@@ -103,5 +103,19 @@ $height: 6rem;
         repeat: no-repeat;
       }
     }
+
+    &--video {
+      @include icon-before("https://assets.staticlp.com/destinations-next/icons/video--line.svg");
+
+      &::before {
+        background-position: center;
+        background-size: 45%;
+      }
+
+      background: {
+        image: url("https://assets.staticlp.com/destinations-next/images/search-category-image-video.jpg");
+        repeat: no-repeat;
+      }
+    }
   }
 }
