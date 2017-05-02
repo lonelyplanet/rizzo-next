@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.14.5"></a>
+## [0.14.5](https://github.com/lonelyplanet/rizzo-next/compare/0.14.4...v0.14.5) (2017-05-02)
+
+
+### Bug Fixes
+
+* Fix scsslint errors in topic.scss ([#646](https://github.com/lonelyplanet/rizzo-next/issues/646)) ([30b58c5](https://github.com/lonelyplanet/rizzo-next/commit/30b58c5))
+
+
+
 <a name="0.14.3"></a>
 ## [0.14.3](https://github.com/lonelyplanet/rizzo-next/compare/v0.14.2...v0.14.3) (2017-04-28)
 
