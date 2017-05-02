@@ -15,7 +15,7 @@
         },
         {
           "title": "Video",
-          "slug": "#",
+          "slug": "//www.lonelyplanet.com/video",
           "submenu": {
             "items": [
               {
@@ -41,13 +41,13 @@
             ],
             "call_to_action": {
               "slug": "//www.lonelyplanet.com/video",
-              "title": "See All Videos"
+              "title": "Browse Videos"
             }
           }
         },
         {
           "title": "Destinations",
-          "slug": "#",
+          "slug": "//www.lonelyplanet.com/places",
           "submenu": {
             "featured": {
               "image": "https://lonelyplanetstatic.imgix.net/marketing/2017/BIT/BIT-nav-image.png?w=80&h=60&fit=min",
@@ -105,7 +105,7 @@
         },
         {
           "title": "Bookings",
-          "slug": "#",
+          "slug": "javascript:void(0)",
           "submenu": {
             "items": [
               {
