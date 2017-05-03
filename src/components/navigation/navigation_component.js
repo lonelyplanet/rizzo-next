@@ -204,9 +204,6 @@ class NavigationComponent extends Component {
 
     $liMobile.html(signOutLinkTemplate({
       user
-    })).append(userPanelTemplate({
-      className: "mobile-sub-navigation",
-      user
     }));
 
     $mobileNavigationHeader.append(avatarMarkerTemplate({
