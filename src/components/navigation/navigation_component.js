@@ -11,6 +11,8 @@ import breakpoints from "../../core/utils/breakpoints";
 let userPanelTemplate = require("./user_panel.hbs");
 let userAvatarTemplate = require("./user_avatar.hbs");
 let userLinkTemplate = require("./user_link.hbs");
+let avatarMarkerTemplate = require("./avatar_marker.hbs");
+let profileSettingsButtonTemplate = require("./profile_settings_button.hbs");
 
 class NavigationComponent extends Component {
   initialize() {
@@ -187,6 +189,8 @@ class NavigationComponent extends Component {
     let $li = this.$el.find(".navigation__item--user"),
         $liMobile = this.$mobileNavigation.find(".mobile-navigation__item--user");
 
+    let $mobileNavigationHeader = this.$mobileNavigation.find(".js-mobile-navigation-header");
+
     if (!user.id) {
       return;
     }
@@ -202,6 +206,12 @@ class NavigationComponent extends Component {
       user
     })).append(userPanelTemplate({
       className: "mobile-sub-navigation",
+      user
+    }));
+
+    $mobileNavigationHeader.append(avatarMarkerTemplate({
+      user
+    })).append(profileSettingsButtonTemplate({
       user
     }));
   }
