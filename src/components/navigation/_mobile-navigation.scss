@@ -65,7 +65,6 @@ $gutter: 1.6rem;
   }
 
   &__item {
-    border-bottom: .1rem solid $color-gray;
     position: relative;
 
     // Search
@@ -92,6 +91,12 @@ $gutter: 1.6rem;
     &.clicked .icon {
       transform: rotateZ(180deg);
     }
+  }
+
+  &__item--user {
+    border-top: .1rem solid $color-gray;
+    margin-top: $gutter;
+    padding-top: $gutter;
   }
 
   &__link {
