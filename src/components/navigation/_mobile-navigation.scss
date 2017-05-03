@@ -18,7 +18,8 @@ $gutter: 1.6rem;
   z-index: z("modal") + 1;
 
   &,
-  &__list {
+  &__list,
+  &__header:not(:empty) {
     opacity: 0;
     transform: translateX(30%);
     transition: transform ($animation-speed / 2), opacity ($animation-speed / 2);
@@ -29,7 +30,8 @@ $gutter: 1.6rem;
   }
 
   &--visible,
-  &--visible &__list {
+  &--visible &__list,
+  &--visible &__header:not(:empty) {
     opacity: 1;
     transform: translateX(0);
   }
@@ -98,4 +100,15 @@ $gutter: 1.6rem;
     padding: ($spacing + .1) 0 ($spacing - .4);
     position: relative;
   }
+}
+
+.mobile-navigation__header:not(:empty) {
+  border-bottom: 1px solid $color-gray;
+  display: flex;
+  justify-content: space-between;
+  left: -#{$gutter};
+  padding: $gutter;
+  position: relative;
+  top: -#{$gutter};
+  width: calc(100% + #{$gutter} + #{$gutter});
 }
