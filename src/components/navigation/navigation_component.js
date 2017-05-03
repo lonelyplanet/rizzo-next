@@ -8,9 +8,9 @@ import subscribe from "../../core/decorators/subscribe";
 import matchMedia from "../../core/utils/matchMedia";
 import breakpoints from "../../core/utils/breakpoints";
 
-let userPanelTemplate = require("./user_panel.hbs"),
-    userAvatarTemplate = require("./user_avatar.hbs"),
-    userLinkTemplate = require("./user_link.hbs");
+let userPanelTemplate = require("./user_panel.hbs");
+let userAvatarTemplate = require("./user_avatar.hbs");
+let userLinkTemplate = require("./user_link.hbs");
 
 class NavigationComponent extends Component {
   initialize() {
