@@ -14,6 +14,7 @@
 
   &__container {
     left: 0;
+    margin: 0 auto;
     max-width: 1280px;
     position: relative;
     top: 0;
@@ -49,6 +50,10 @@
     &--visible {
       opacity: 1;
       z-index: 0;
+    }
+
+    img {
+      width: 100%;
     }
   }
 
