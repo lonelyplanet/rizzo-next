@@ -10,7 +10,7 @@ import breakpoints from "../../core/utils/breakpoints";
 
 let userPanelTemplate = require("./user_panel.hbs");
 let userAvatarTemplate = require("./user_avatar.hbs");
-let userLinkTemplate = require("./user_link.hbs");
+let signOutLinkTemplate = require("./sign_out_link.hbs");
 let avatarMarkerTemplate = require("./avatar_marker.hbs");
 let profileSettingsButtonTemplate = require("./profile_settings_button.hbs");
 
@@ -202,7 +202,7 @@ class NavigationComponent extends Component {
       user
     }));
 
-    $liMobile.html(userLinkTemplate({
+    $liMobile.html(signOutLinkTemplate({
       user
     })).append(userPanelTemplate({
       className: "mobile-sub-navigation",
