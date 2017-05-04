@@ -12,7 +12,8 @@ import debounce from "lodash/debounce";
  */
 class Header extends Component {
 
-  initialize() {
+  initialize(options) {
+    this.lazyLoadGlobalComponents = this.lazyLoadGlobalComponents.bind(this);
     this.state = NavigationState.getState();
     this.search = new SearchComponent();
     this.navigation = new NavigationComponent({
@@ -34,7 +35,37 @@ class Header extends Component {
     this.$mobileNotificationBadge = require("./mobile_notification_badge.hbs");
 
     this.appendMenuIcon();
+    this.buildGlobalComponents(options);
   }
+
+  buildGlobalComponents(options = {}) {
+    $(document).one("mouseenter", "a[href*='login']", (options) => this.lazyLoadGlobalComponents(options));
+    $(document).one("touchstart", "a[href*='login']", (options) => this.lazyLoadGlobalComponents(options));
+    $(document).on("touchstart", "a[href*='login']", () => {
+      this.navigation._clickNav();
+    });
+
+    if (window.location.hash.indexOf("login") > -1) {
+      this.lazyLoadGlobalComponents(options);
+    }
+  }
+
+  lazyLoadGlobalComponents(options) {
+    require.ensure([], (require) => {
+      const render = require("@lonelyplanet/dotcom-core/dist/classes/runtime").default;
+
+      const modal = document.createElement("div");
+      modal.id = "lp-global-modal-login";
+      document.body.appendChild(modal);
+
+      render({
+        component: "GlobalLogin",
+        el: modal,
+        props: options,
+      });
+    });
+  }
+
   /**
    * Add a class to the search when it's too big for the screen
    * @return {Header} The instance of the header
