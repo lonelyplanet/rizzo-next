@@ -39,15 +39,11 @@ class Header extends Component {
   }
 
   buildGlobalComponents(options = {}) {
-    $(document).one("mouseenter", "a[href*='login']", (options) => this.lazyLoadGlobalComponents(options));
-    $(document).one("touchstart", "a[href*='login']", (options) => this.lazyLoadGlobalComponents(options));
+    this.lazyLoadGlobalComponents(options);
+
     $(document).on("touchstart", "a[href*='login']", () => {
       this.navigation._clickNav();
     });
-
-    if (window.location.hash.indexOf("login") > -1) {
-      this.lazyLoadGlobalComponents(options);
-    }
   }
 
   lazyLoadGlobalComponents(options) {
@@ -63,6 +59,15 @@ class Header extends Component {
         el: modal,
         props: options,
       });
+
+      // TODO: Add logic for toast
+      /*
+      const toastMessage = localStorage.getItem("toast");
+      if (toastMessage) {
+        console.log(toastMessage);
+        localStorage.removeItem("toast");
+      }
+      */
     });
   }
 
