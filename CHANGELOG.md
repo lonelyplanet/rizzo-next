@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.15.0"></a>
+# [0.15.0](https://github.com/lonelyplanet/rizzo-next/compare/v0.14.5...v0.15.0) (2017-05-04)
+
+
+### Features
+
+* Global modal ([bd20dcd](https://github.com/lonelyplanet/rizzo-next/commit/bd20dcd))
+
+
+
 <a name="0.14.5"></a>
 ## [0.14.5](https://github.com/lonelyplanet/rizzo-next/compare/0.14.4...v0.14.5) (2017-05-02)
 
