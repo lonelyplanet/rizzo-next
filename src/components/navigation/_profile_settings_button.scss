@@ -1,0 +1,19 @@
+$color: #99a9b3;
+
+.backpack-ProfileSettingsButton {
+  color: $color;
+  font-size: 16px;
+  height: 24px;
+  margin-right: -4px; // offset horizontal padding
+  text-align: center;
+  width: 24px;
+}
+
+.backpack-Icon {
+  display: inline-block;
+  fill: currentcolor;
+  height: 1em;
+  line-height: 1;
+  vertical-align: middle;
+  width: 1em;
+}

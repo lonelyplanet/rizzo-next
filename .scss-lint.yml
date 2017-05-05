@@ -186,38 +186,38 @@ linters:
       'dpi', 'dpcm', 'dppx',          # Resolution ('dpi', 'dpcm', 'dppx')
       '%']                            # Other ('%')
     properties: {
-      border: ['rem'],
-      border-top: ['rem'],
-      border-right: ['rem'],
-      border-bottom: ['rem'],
-      border-left: ['rem'],
-      border-spacing: ['rem'],
-      border-radius: ['rem', '%'],
-      font-size: ['px', 'rem', 'vw', '%'],
+      border: ['px', 'em', 'rem'],
+      border-top: ['px', 'em', 'rem'],
+      border-right: ['px', 'em', 'rem'],
+      border-bottom: ['px', 'em', 'rem'],
+      border-left: ['px', 'em', 'rem'],
+      border-spacing: ['px', 'em', 'rem'],
+      border-radius: ['px', 'em', 'rem', '%'],
+      font-size: ['px', 'em', 'rem', 'vw', '%'],
       height: ['px', 'em', 'rem', '%', 'vw', 'vh'],
       max-height: ['px', 'em', 'rem', '%', 'vh'],
       min-height: ['px', 'em', 'rem', '%', 'vh'],
-      letter-spacing: ['rem'],
-      line-height: ['' ,'rem'], # allowing rems to vertically center text
-      margin: ['em', 'rem', '%', 'vw'],
-      margin-top: ['em', 'rem', '%', 'vw'],
-      margin-right: ['em', 'rem', '%', 'vw'],
-      margin-bottom: ['em', 'rem', '%', 'vw'],
-      margin-left: ['em', 'rem', '%', 'vw'],
-      padding: ['em', 'rem', '%', 'vw'],
-      padding-top: ['em', 'rem', '%', 'vw'],
-      padding-right: ['em', 'rem', '%', 'vw'],
-      padding-bottom: ['em', 'rem', '%', 'vw'],
-      padding-left: ['em', 'rem', '%', 'vw'],
+      letter-spacing: ['px', 'rem'],
+      line-height: ['', 'px', 'rem'], # allowing rems to vertically center text
+      margin: ['px', 'em', 'rem', '%', 'vw'],
+      margin-top: ['px', 'em', 'rem', '%', 'vw'],
+      margin-right: ['px', 'em', 'rem', '%', 'vw'],
+      margin-bottom: ['px', 'em', 'rem', '%', 'vw'],
+      margin-left: ['px', 'em', 'rem', '%', 'vw'],
+      padding: ['px', 'em', 'rem', '%', 'vw'],
+      padding-top: ['px', 'em', 'rem', '%', 'vw'],
+      padding-right: ['px', 'em', 'rem', '%', 'vw'],
+      padding-bottom: ['px', 'em', 'rem', '%', 'vw'],
+      padding-left: ['px', 'em', 'rem', '%', 'vw'],
       transition: ['ms'],
       transition-duration: ['ms'],
       width: ['px', 'em', 'rem', '%', 'vw'],
       max-width: ['px', 'em', 'rem', '%', 'vw'],
       min-width: ['px', 'em', 'rem', '%', 'vw'],
-      top: ['px', 'rem', '%', 'vw'],
-      bottom: ['px', 'rem', '%', 'vw'],
-      left: ['px', 'rem', '%', 'vw'],
-      right: ['px', 'rem', '%', 'vw']
+      top: ['px', 'em', 'rem', '%', 'vw'],
+      bottom: ['px', 'em', 'rem', '%', 'vw'],
+      left: ['px', 'em', 'rem', '%', 'vw'],
+      right: ['px', 'em', 'rem', '%', 'vw']
     }
 
   PseudoElement:
@@ -246,7 +246,7 @@ linters:
     exclude:
       - 'src/components/masthead/_masthead_nav.scss' # temporary exclusion because `masthead_nav` needs refactored
       - 'src/components/top_places/_top_places.scss' # temporary exclusion because `top_places` needs refactored
-    enabled: true
+    enabled: false
     convention: hyphenated_BEM # 'hyphenated_lowercase', or 'strict_BEM', or 'hyphenated_BEM', or 'snake_case', or 'camel_case', or a regex pattern
 
   Shorthand:

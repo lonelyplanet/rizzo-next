@@ -1,0 +1,29 @@
+.backpack-AvatarMarker {
+  align-items: center;
+  color: inherit;
+  display: flex;
+  font-size: 20px;
+  line-height: 1;
+  text-decoration: none;
+  transition: color 200ms ease-in-out;
+}
+
+.backpack-AvatarMarker-avatar {
+  border-radius: 100%;
+  display: inline-block;
+  height: 24px;
+  object-fit: cover;
+  vertical-align: middle;
+  width: 24px;
+}
+
+.backpack-AvatarMarker-name {
+  align-self: flex-end;
+  margin-left: 16px;
+  max-width: 136px;
+  overflow: hidden;
+  position: relative;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+}

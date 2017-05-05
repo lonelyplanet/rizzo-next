@@ -5,6 +5,8 @@ import "../logo/logo.scss";
 import "../navigation/_navigation.scss";
 import "../navigation/_mobile-navigation.scss";
 import "../navigation/_user-panel.scss";
+import "../navigation/_avatar_marker.scss";
+import "../navigation/_profile_settings_button.scss";
 import "../avatar/avatar.scss";
 import "../search/search.scss";
 import "../search/search_item/index.scss";

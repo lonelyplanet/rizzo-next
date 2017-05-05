@@ -1,5 +1,7 @@
 @import "../../../sass/webpack_deps";
 
+$gutter: 1.6rem;
+
 .mobile-navigation {
   background-color: $color-white;
   bottom: 0;
@@ -16,7 +18,8 @@
   z-index: z("modal") + 1;
 
   &,
-  &__list {
+  &__list,
+  &__header:not(:empty) {
     opacity: 0;
     transform: translateX(30%);
     transition: transform ($animation-speed / 2), opacity ($animation-speed / 2);
@@ -27,7 +30,8 @@
   }
 
   &--visible,
-  &--visible &__list {
+  &--visible &__list,
+  &--visible &__header:not(:empty) {
     opacity: 1;
     transform: translateX(0);
   }
@@ -61,7 +65,6 @@
   }
 
   &__item {
-    border-bottom: .1rem solid $color-gray;
     position: relative;
 
     // Search
@@ -90,10 +93,27 @@
     }
   }
 
+  &__item--user {
+    border-top: .1rem solid $color-gray;
+    margin-top: $gutter;
+    padding-top: $gutter;
+  }
+
   &__link {
     color: $titlegray;
     display: block;
     padding: ($spacing + .1) 0 ($spacing - .4);
     position: relative;
   }
+}
+
+.mobile-navigation__header:not(:empty) {
+  border-bottom: 1px solid $color-gray;
+  display: flex;
+  justify-content: space-between;
+  left: -#{$gutter};
+  padding: $gutter;
+  position: relative;
+  top: -#{$gutter};
+  width: calc(100% + #{$gutter} + #{$gutter});
 }
