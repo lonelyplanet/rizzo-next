@@ -12,15 +12,15 @@ var path = require("path"),
 module.exports = {
   plugins: [
     // new webpack.optimize.UglifyJsPlugin(),
-    new ExtractTextPlugin("[name].css"),
+    new ExtractTextPlugin({
+      filename: "[name].css",
+    }),
     // new CommonsPlugin({
     //   name: "common"
     // })
   ],
   // Component entries will be built dynamically
-  entry: {
-  },
-  progress: true,
+  entry: {},
 
   output: {
     path: path.join(__dirname, "dist"),
@@ -31,11 +31,11 @@ module.exports = {
   },
   module: {
     noParse: /node_modules\/(jquery|keymirror)/,
-    loaders: [{
+    rules: [{
         test: /(\.jsx?)$/,
-        loader: "babel",
+        loader: "babel-loader",
         // Excluding everything EXCEPT rizzo-next and flamsteed
-        exclude: /node_modules\/(?!rizzo|flamsteed).*/,
+        exclude: /node_modules\/(?!rizzo|flamsteed|@lonelyplanet).*/,
         query: {
             "plugins": ["transform-decorators-legacy"],
             "presets": ["es2015", "react"]
@@ -43,24 +43,27 @@ module.exports = {
       },
       {
        test: /\.scss$/,
-        loader: ExtractTextPlugin.extract("style-loader", "css-loader!autoprefixer-loader?browsers=last 3 version" +
+        loader: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: "css-loader?minimize!autoprefixer-loader?browsers=last 3 version" +
           "!sass-loader?outputStyle=expanded&" +
-          "includePaths[]=" + path.resolve(__dirname, "./node_modules"))
+          "includePaths[]=" + path.resolve(__dirname, "./node_modules"),
+        })
       },
       {
         test: /\.hbs$/,
-        loader: "handlebars?rootRelative=" + path.join(__dirname, "src") + "/" +
+        loader: "handlebars-loader?rootRelative=" + path.join(__dirname, "src") + "/" +
           "&runtime=" + require.resolve("handlebars/dist/handlebars.runtime")
       },
       {
         test: /picker(.date)?.js$/,
-        loader: "imports?define=>false"
+        loader: "imports-loader?define=>false"
       }, {
         test: /sinon(.*)?\.js$/,
-        loader: "imports?define=>false"
+        loader: "imports-loader?define=>false"
       }, {
         test: /\.json$/,
-        loader: "json"
+        loader: "json-loader"
       }]
   }
 };
