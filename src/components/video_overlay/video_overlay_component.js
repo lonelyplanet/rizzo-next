@@ -67,7 +67,32 @@ export default class VideoOverlay extends Overlay {
   */
   playerReady (player) {
     this.player = player;
-    this.player.searchAndLoadVideo().then(this.loadDone.bind(this));
+    this.player.search().then(this.searchDone.bind(this));
+  }
+
+  /**
+  * Callback from the player search()
+  * @param  {bool} success - depicting whether a video successfully loaded or not
+  */
+  searchDone (data) {
+    if (data.length) {
+      let videoId = data[0].id;
+
+      // If this is a 360 video and the user is using an incapatible device, just stop.
+      if (this.player.is360Video(videoId) && !this.player.is360VideoSupported()) {
+        return;
+      }
+
+      let videoContainer = this.$el.find(".video-overlay__video__container")[0];
+
+      // Insert the player embed, load the video, and then run this.loadDone when finished.
+      (this.player
+        .insertPlayer(videoContainer, videoId)
+        .then(() => {
+          return this.player.loadVideo(videoId);
+        })
+        .then(this.loadDone.bind(this)));
+    }
   }
 
   /**
