@@ -22,3 +22,15 @@
     transform: scale(.7);
   }
 }
+
+.video__ad-overlay {
+  background-color: rgba(0, 0, 0, .8);
+  color: #e6e6e6;
+  font-family: arial, sans-serif;
+  font-size: 11px;
+  font-weight: normal;
+  line-height: 21px;
+  margin-top: 8px;
+  padding: 6px 24px;
+  vertical-align: middle;
+}

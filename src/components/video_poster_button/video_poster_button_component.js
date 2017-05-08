@@ -28,7 +28,7 @@ export default class VideoPosterButtonComponent extends Component {
     let videoContainer = this.$el.find(".video-poster-button__video");
     videoContainer.addClass("video-poster-button__video--visible");
 
-    this.player.play();
+    this.player.start();
   }
 
   hideVideo () {
@@ -67,8 +67,8 @@ export default class VideoPosterButtonComponent extends Component {
     let imageEl = this.$el.find(".video-poster-button__poster")[0];
     imageEl.onload = () => {
 
-      // Reset the width and height of the player to be the same 
-      // dimensions as the poster image so that we have a nice 
+      // Reset the width and height of the player to be the same
+      // dimensions as the poster image so that we have a nice
       // smooth transition (and to undo Brightcove.setInitialDimensions())
       $(this.player.videoEl).css({ width: "100%", height: "100%" });
 
@@ -93,22 +93,22 @@ export default class VideoPosterButtonComponent extends Component {
     */
   playerReady (player) {
     this.player = player;
-    this.listenTo(this.player, "ended", this.onVideoEnded.bind(this));
-    this.player.searchAndLoadVideo().then(this.loadDone.bind(this));
+    this.listenTo(this.player, "ended", this.onPlayerEnded.bind(this));
+    this.player.fetchVideos().then(this.fetchDone.bind(this));
   }
 
   /**
-   * Callback from the player "ended" event / when a video finishes playing.
+   * Callback from the player "ended" event / when a video or playlist finishes playing.
    */
-  onVideoEnded () {
+  onPlayerEnded () {
     this.hideVideo();
   }
 
   /**
-  * Callback from the player searchAndLoadVideo()
-  * @param  {bool} success - depicting whether a video successfully loaded or not
+  * Callback from the player fetchVideos()
+  * @param  {bool} success - depicting whether at least one video is available or not
   */
-  loadDone (success) {
+  fetchDone (success) {
     if (!success) {
       return;
     }

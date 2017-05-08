@@ -24,7 +24,7 @@ export default class VideoOverlay extends Overlay {
     }
     this.$el.addClass("video-overlay--visible");
     return waitForTransition(this.$el).then(() => {
-        this.player.play();
+        this.player.start();
     });
   }
 
@@ -67,14 +67,14 @@ export default class VideoOverlay extends Overlay {
   */
   playerReady (player) {
     this.player = player;
-    this.player.searchAndLoadVideo().then(this.loadDone.bind(this));
+    this.player.fetchVideos().then(this.fetchDone.bind(this));
   }
 
   /**
   * Callback from the player loadVideo()
-  * @param  {bool} success - depicting whether the video successfully loaded or not
+  * @param  {bool} success - depicting whether at least one video is available or not
   */
-  loadDone (success) {
+  fetchDone (success) {
     if (!success) {
       return;
     }
