@@ -67,7 +67,7 @@
     react-modal "^1.2.1"
     redux "^3.5.2"
 
-"@kadira/storybook@^2.35.0":
+"@kadira/storybook@^2.35.3":
   version "2.35.3"
   resolved "https://registry.yarnpkg.com/@kadira/storybook/-/storybook-2.35.3.tgz#8106195e1733623baf60db6adaa678dc29285d12"
   dependencies:
@@ -111,11 +111,11 @@
     webpack-dev-middleware "^1.6.0"
     webpack-hot-middleware "^2.13.2"
 
-"@lonelyplanet/dotcom-core@^1.1.6":
-  version "1.1.6"
-  resolved "https://registry.yarnpkg.com/@lonelyplanet/dotcom-core/-/dotcom-core-1.1.6.tgz#7694687805bf742286331c833a361f8ecebc2593"
+"@lonelyplanet/dotcom-core@^1.1.8":
+  version "1.1.8"
+  resolved "https://registry.yarnpkg.com/@lonelyplanet/dotcom-core/-/dotcom-core-1.1.8.tgz#0122b1a438895962be37d085c0387e1c5b6b978f"
   dependencies:
-    backpack-ui "^4.16.4"
+    backpack-ui "^4.19.0"
     inversify "^4.1.0"
     radium "^0.18.2"
     react "^15.5.4"
@@ -1279,11 +1279,11 @@ backo2@1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/backo2/-/backo2-1.0.2.tgz#31ab1ac8b129363463e35b3ebb69f4dfcfba7947"
 
-backpack-ui@^4.16.4:
-  version "4.16.4"
-  resolved "https://registry.yarnpkg.com/backpack-ui/-/backpack-ui-4.16.4.tgz#38b4d456c1fc00cf2a89aecb5ac2cb487c9aad3f"
+backpack-ui@^4.19.0:
+  version "4.19.1"
+  resolved "https://registry.yarnpkg.com/backpack-ui/-/backpack-ui-4.19.1.tgz#54cc468372cee2f1297cedf7d9677b019521399a"
   dependencies:
-    "@kadira/storybook" "^2.35.0"
+    "@kadira/storybook" "^2.35.3"
     "@kadira/storybook-addon-knobs" "^1.7.1"
     axios "^0.15.3"
     chai "^3.5.0"
