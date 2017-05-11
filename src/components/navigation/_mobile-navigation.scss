@@ -15,7 +15,7 @@ $gutter: 1.6rem;
   right: 0;
   top: 0;
   width: 25rem;
-  z-index: z("modal") + 1;
+  z-index: z("menu");
 
   &,
   &__list,
