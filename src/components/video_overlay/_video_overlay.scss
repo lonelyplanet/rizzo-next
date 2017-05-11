@@ -2,10 +2,10 @@
 
 .video-overlay {
   background-color: rgba($color-white, .9);
-  z-index: -20;
+  z-index: z("below");
 
   &--visible {
-    z-index: z("modal") - 2;
+    z-index: z("overlay");
   }
 
   &--playing {
@@ -57,6 +57,3 @@
     }
   }
 }
-
-
-
