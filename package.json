@@ -113,6 +113,6 @@
     "sinon": "^1.17.1",
     "standard-version": "^4.0.0",
     "style-loader": "^0.17.0",
-    "webpack": "^2.5.0"
+    "webpack": "^2.5.1"
   }
 }
