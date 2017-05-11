@@ -63,10 +63,30 @@ $author: (
       width: span(3);
     }
   }
+
+
+
+  // Implementation detail
+
+  .article__author & {
+    @media (min-width: $min-480) {
+      width: 100%;
+    }
+  }
 }
 
 .author--vertical {
   text-align: center;
+
+
+
+  // Implementation detail
+
+  .article__author & {
+    @media (max-width: $max-720) {
+      text-align: left;
+    }
+  }
 }
 
 .author--horizontal {

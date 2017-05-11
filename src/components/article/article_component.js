@@ -44,6 +44,28 @@ export default class ArticleComponent extends Component {
     this._detachGlobalFooter();
   }
 
+  _insertInlineAdSlots($article) {
+    const $articleBody = $article.find(".js-article-body");
+    const articleCount = this.howManyArticlesHaveLoaded;
+    const interval = 6;
+    const adSlot = (adNumber) => `<div class="adunit--articles-inline" id="ad-articles-article-${articleCount}-ad-${adNumber}" />`;
+
+    const paragraphs = $articleBody.find("p")
+      .filter((index, p) => {
+        return !$(p).attr("class") || $(p).attr("class") === "feature" ;
+      });
+
+    $(paragraphs).each((index, p) => {
+      const notFirst = index !== 0;
+      const atEachInterval = (index + 1) % interval === 0;
+      const adCount = (index + 1) / interval;
+
+      if (notFirst && atEachInterval) {
+        $(p).after(adSlot(adCount));
+      }
+    });
+  }
+
   _detachGlobalFooter() {
     this.$globalFooter.detach();
   }
@@ -124,6 +146,8 @@ export default class ArticleComponent extends Component {
 
     // Put the ad in the first article, but don't load it yet
     this.$activeArticle.append(this.adLeaderboardTemplate());
+
+    this._insertInlineAdSlots(this.$el);
   }
 
   _updateFirstArticle() {
@@ -393,6 +417,7 @@ export default class ArticleComponent extends Component {
 
     this._setNextArticle();
     this._checkIfHistoryShouldBeUpdated();
+    this._insertInlineAdSlots(this.$newArticle);
   }
 
   /**
@@ -579,25 +604,25 @@ export default class ArticleComponent extends Component {
     // Title
     document.title = documentTitle;
     $("meta[name=title]").attr("content", documentTitle);
-    $(`meta[property="og:title"]`).attr("content", documentTitle);
+    $("meta[property=\"og:title\"]").attr("content", documentTitle);
 
     // Description
     $("meta[name=description]").attr("content", description);
     $("meta[itemprop=description]").attr("content", description);
-    $(`meta[property="og:description"]`).attr("content", description);
+    $("meta[property=\"og:description\"]").attr("content", description);
 
     // URL
-    $(`meta[property="og:url"]`).attr("content", url);
+    $("meta[property=\"og:url\"]").attr("content", url);
     $("link[rel=canonical]").attr("href", url);
 
     // Image
     $("meta[itemprop=image]").attr("content", article.image);
-    $(`meta[property="og:image"]`).attr("content", article.image);
+    $("meta[property=\"og:image\"]").attr("content", article.image);
 
     // Article
-    $(`meta[property="article:tag"]`).attr("content", article.categories);
-    $(`meta[property="article:published_time"]`).attr("content", article.postDate);
-    $(`meta[property="article:author"]`).attr("content", article.author);
+    $("meta[property=\"article:tag\"]").attr("content", article.categories);
+    $("meta[property=\"article:published_time\"]").attr("content", article.postDate);
+    $("meta[property=\"article:author\"]").attr("content", article.author);
   }
 
   @publish("reload", "ads")
