@@ -14,6 +14,8 @@ import breakpoints from "../../core/utils/breakpoints";
 import StickyFooterComponent from "../sticky_footer";
 import { slugify } from "../../core/utils/stringHelpers";
 
+const adpackage = document.cookie.match(/adpackage/);
+
 export default class ArticleComponent extends Component {
   initialize() {
     this.canUseScrollFeature = window.history && window.history.replaceState;
@@ -147,7 +149,9 @@ export default class ArticleComponent extends Component {
     // Put the ad in the first article, but don't load it yet
     this.$activeArticle.append(this.adLeaderboardTemplate());
 
-    this._insertInlineAdSlots(this.$el);
+    if (adpackage) {
+      this._insertInlineAdSlots(this.$el);
+    }
   }
 
   _updateFirstArticle() {
@@ -418,7 +422,9 @@ export default class ArticleComponent extends Component {
     this._setNextArticle();
     this._checkIfHistoryShouldBeUpdated();
 
-    this._insertInlineAdSlots(this.$newArticle);
+    if (adpackage) {
+      this._insertInlineAdSlots(this.$newArticle);
+    }
   }
 
   /**
