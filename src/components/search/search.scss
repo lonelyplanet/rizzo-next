@@ -9,7 +9,7 @@
   right: 0;
   top: 0;
   transition: opacity ($animation-speed-ui / 2);
-  z-index: z("modal");
+  z-index: z("menu");
 
   @media (min-width: $min-720) {
     box-shadow: -5rem 0 15rem rgba($color-black, .5);
