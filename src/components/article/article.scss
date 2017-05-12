@@ -38,7 +38,52 @@
 .article__container {
   @include container-padded;
   padding-bottom: gutter(static);
+  padding-top: 4.4rem;
   position: relative;
+
+  @media (min-width: $min-720) {
+    padding-top: 12rem;
+  }
+}
+
+.article__intro {
+  @include container;
+  margin-bottom: 3.4rem;
+}
+
+.article__author {
+  @media (max-width: $max-600) {
+    &::before {
+      background-color: $color-red;
+      content: "";
+      display: block;
+      height: .2rem;
+      margin-bottom: 1.6rem;
+      margin-top: 1.6rem;
+      width: 4.8rem;
+    }
+  }
+
+  @media (min-width: $min-600) {
+    float: left;
+    width: span(3);
+  }
+}
+
+.article__header {
+  @media (min-width: $min-600) {
+    float: right;
+    margin-left: gutter();
+    width: span(9);
+  }
+}
+
+.article__content {
+  @media (min-width: $min-600) {
+    // float: left;
+    margin-left: (span(3) + gutter());
+    width: span(9);
+  }
 }
 
 .article__footer {
