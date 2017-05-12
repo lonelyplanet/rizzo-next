@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.16.1"></a>
+## [0.16.1](https://github.com/lonelyplanet/rizzo-next/compare/v0.16.0...v0.16.1) (2017-05-12)
+
+
+### Bug Fixes
+
+* Insert ad slots into article body after every 6th paragraph ([#659](https://github.com/lonelyplanet/rizzo-next/issues/659)) ([926b7d4](https://github.com/lonelyplanet/rizzo-next/commit/926b7d4))
+
+
+
 <a name="0.16.0"></a>
 # [0.16.0](https://github.com/lonelyplanet/rizzo-next/compare/v0.15.5...v0.16.0) (2017-05-12)
 
