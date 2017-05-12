@@ -14,6 +14,8 @@ import breakpoints from "../../core/utils/breakpoints";
 import StickyFooterComponent from "../sticky_footer";
 import { slugify } from "../../core/utils/stringHelpers";
 
+const adpackage = document.cookie.match(/adpackage/);
+
 export default class ArticleComponent extends Component {
   initialize() {
     this.canUseScrollFeature = window.history && window.history.replaceState;
@@ -42,6 +44,28 @@ export default class ArticleComponent extends Component {
 
     this._setFirstArticle();
     this._detachGlobalFooter();
+  }
+
+  _insertInlineAdSlots($article) {
+    const $articleBody = $article.find(".js-article-body");
+    const articleCount = this.howManyArticlesHaveLoaded;
+    const interval = 6;
+    const adSlot = (adNumber) => `<div class="adunit--articles-inline" id="ad-articles-article-${articleCount}-ad-${adNumber}" />`;
+
+    const paragraphs = $articleBody.find("p")
+      .filter((index, p) => {
+        return !$(p).attr("class") || $(p).attr("class") === "feature" ;
+      });
+
+    $(paragraphs).each((index, p) => {
+      const notFirst = index !== 0;
+      const atEachInterval = (index + 1) % interval === 0;
+      const adCount = (index + 1) / interval;
+
+      if (notFirst && atEachInterval) {
+        $(p).after(adSlot(adCount));
+      }
+    });
   }
 
   _detachGlobalFooter() {
@@ -124,6 +148,10 @@ export default class ArticleComponent extends Component {
 
     // Put the ad in the first article, but don't load it yet
     this.$activeArticle.append(this.adLeaderboardTemplate());
+
+    if (adpackage) {
+      this._insertInlineAdSlots(this.$el);
+    }
   }
 
   _updateFirstArticle() {
@@ -393,6 +421,10 @@ export default class ArticleComponent extends Component {
 
     this._setNextArticle();
     this._checkIfHistoryShouldBeUpdated();
+
+    if (adpackage) {
+      this._insertInlineAdSlots(this.$newArticle);
+    }
   }
 
   /**
