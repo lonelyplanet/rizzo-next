@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.16.0"></a>
+# [0.16.0](https://github.com/lonelyplanet/rizzo-next/compare/v0.15.5...v0.16.0) (2017-05-12)
+
+
+### Bug Fixes
+
+* Bump webpack, karma, karma-webpack ([#658](https://github.com/lonelyplanet/rizzo-next/issues/658)) ([da49b22](https://github.com/lonelyplanet/rizzo-next/commit/da49b22))
+* Change overlay color to 30% black ([#653](https://github.com/lonelyplanet/rizzo-next/issues/653)) ([e69d2f1](https://github.com/lonelyplanet/rizzo-next/commit/e69d2f1))
+* Change z-index for mobile navigation ([#654](https://github.com/lonelyplanet/rizzo-next/issues/654)) ([d7d0a8d](https://github.com/lonelyplanet/rizzo-next/commit/d7d0a8d))
+* Change z-index for search component ([#655](https://github.com/lonelyplanet/rizzo-next/issues/655)) ([34fa65a](https://github.com/lonelyplanet/rizzo-next/commit/34fa65a))
+* Change z-index for video overlay ([#657](https://github.com/lonelyplanet/rizzo-next/issues/657)) ([a730092](https://github.com/lonelyplanet/rizzo-next/commit/a730092))
+* Change z-index of overlay ([#656](https://github.com/lonelyplanet/rizzo-next/issues/656)) ([c2b823e](https://github.com/lonelyplanet/rizzo-next/commit/c2b823e))
+* Update article header layout ([#660](https://github.com/lonelyplanet/rizzo-next/issues/660)) ([0298273](https://github.com/lonelyplanet/rizzo-next/commit/0298273))
+
+
+### Features
+
+* Add new values for z-index ([#652](https://github.com/lonelyplanet/rizzo-next/issues/652)) ([7bc1750](https://github.com/lonelyplanet/rizzo-next/commit/7bc1750))
+
+
+
 <a name="0.15.5"></a>
 ## [0.15.5](https://github.com/lonelyplanet/rizzo-next/compare/v0.15.3...v0.15.5) (2017-05-08)
 
