@@ -24,13 +24,13 @@
 }
 
 .video__ad-overlay {
-  background-color: rgba(0, 0, 0, .8);
-  color: #e6e6e6;
+  background-color: rgba($color-black, .8);
+  color: $color-gray;
   font-family: arial, sans-serif;
   font-size: 11px;
   font-weight: normal;
-  line-height: 21px;
-  margin-top: 8px;
-  padding: 6px 24px;
+  line-height: (21 / 11);
+  margin-top: .8rem;
+  padding: .6rem 2.4rem;
   vertical-align: middle;
 }
