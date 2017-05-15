@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.14.6"></a>
+## [0.14.6](https://github.com/lonelyplanet/rizzo-next/compare/v0.14.5...v0.14.6) (2017-05-15)
+
+
+### Bug Fixes
+
+* Insert ad slots into article body after every 6th paragraph ([#659](https://github.com/lonelyplanet/rizzo-next/issues/659)) ([f82d846](https://github.com/lonelyplanet/rizzo-next/commit/f82d846))
+* Update article header layout ([#660](https://github.com/lonelyplanet/rizzo-next/issues/660)) ([10b3693](https://github.com/lonelyplanet/rizzo-next/commit/10b3693))
+* Update styles for video ad overlay ([ebec3e8](https://github.com/lonelyplanet/rizzo-next/commit/ebec3e8))
+
+
+
 <a name="0.14.5"></a>
 ## [0.14.5](https://github.com/lonelyplanet/rizzo-next/compare/0.14.4...v0.14.5) (2017-05-02)
 
