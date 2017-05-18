@@ -87,10 +87,9 @@
 }
 
 .article__footer {
-  @include container;
-  @include container-static(6);
   align-items: center;
   display: flex;
+  max-width: 63rem;
 
   .no-flexbox & {
     display: block;
@@ -102,17 +101,11 @@
 }
 
 .article__sponsor-ad {
-  @include container;
   font-size: 1.4rem;
   line-height: (22 / 14);
+  max-width: span(6 static);
   padding-bottom: .8rem;
   padding-top: .8rem;
-
-  @media(min-width: $min-720) {
-    @include with-layout(static) {
-      width: span(6);
-    }
-  }
 
 
 
