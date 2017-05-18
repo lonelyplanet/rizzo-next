@@ -89,7 +89,7 @@
 .article__footer {
   align-items: center;
   display: flex;
-  max-width: 63rem;
+  max-width: span(6 static);
 
   .no-flexbox & {
     display: block;
