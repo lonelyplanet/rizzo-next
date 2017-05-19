@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.14.8"></a>
+## [0.14.8](https://github.com/lonelyplanet/rizzo-next/compare/v0.14.7...v0.14.8) (2017-05-19)
+
+
+### Bug Fixes
+
+* Change ID for article ad slots, use feature flag ([#663](https://github.com/lonelyplanet/rizzo-next/issues/663)) ([3ccf063](https://github.com/lonelyplanet/rizzo-next/commit/3ccf063))
+
+
+
 <a name="0.14.7"></a>
 ## [0.14.7](https://github.com/lonelyplanet/rizzo-next/compare/v0.14.6...v0.14.7) (2017-05-19)
 
