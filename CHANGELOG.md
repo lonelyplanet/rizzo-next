@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.14.9"></a>
+## [0.14.9](https://github.com/lonelyplanet/rizzo-next/compare/v0.14.8...v0.14.9) (2017-05-19)
+
+
+### Bug Fixes
+
+* Change ID for sponsor ad ([#664](https://github.com/lonelyplanet/rizzo-next/issues/664)) ([07f34e9](https://github.com/lonelyplanet/rizzo-next/commit/07f34e9))
+
+
+
 <a name="0.14.8"></a>
 ## [0.14.8](https://github.com/lonelyplanet/rizzo-next/compare/v0.14.7...v0.14.8) (2017-05-19)
 
