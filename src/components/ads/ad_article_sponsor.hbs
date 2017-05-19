@@ -1,6 +1,16 @@
 <div class="article__sponsor-ad js-article-sponsor-ad">
-  <div class="adunit adunit--sponsor-logo display-none js-sponsor-logo"
-    data-size-mapping="sponsor-logo"
-    data-targeting='{ "position": "article-attribution" }'>
-  </div>
+  {{#if adpackage}}
+    <div
+      id="ad-articles-sponsor-logo"
+      class="adunit adunit--sponsor-logo js-sponsor-logo"
+      style="display: none;">
+    </div>
+  {{/if}}
+
+  {{#unless adpackage}}
+    <div class="adunit adunit--sponsor-logo display-none js-sponsor-logo"
+      data-size-mapping="sponsor-logo"
+      data-targeting='{ "position": "article-attribution" }'>
+    </div>
+  {{/unless}}
 </div>
