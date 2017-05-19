@@ -147,7 +147,7 @@ export default class ArticleComponent extends Component {
     }
 
     // Put the ad in the first article, but don't load it yet
-    this.$activeArticle.append(this.adLeaderboardTemplate());
+    this.$activeArticle.append(this.adLeaderboardTemplate({ adpackage }));
 
     if (adpackage) {
       this._insertInlineAdSlots(this.$el);
@@ -358,7 +358,7 @@ export default class ArticleComponent extends Component {
       this.$newArticle.attr("id", this._createIdForArticle(nextArticle.get().slug));
 
       // Put the ad in the new article, but don't load it yet
-      this.$newArticle.append(this.adLeaderboardTemplate());
+      this.$newArticle.append(this.adLeaderboardTemplate({ adpackage }));
 
       this._articleCanBeLoaded();
 

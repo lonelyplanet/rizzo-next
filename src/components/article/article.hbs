@@ -14,10 +14,20 @@
           <div class="article-header__title is-xsmall is-padded-bottom js-header-title">
             Tips &amp; articles
 
-            <div class="adunit adunit--sponsor-logo display-none js-sponsor-logo"
-              data-size-mapping="sponsor-logo"
-              data-targeting='{ "position": "header" }'>
-            </div>
+            {{#if adpackage}}
+              <div
+                id="ad-articles-sponsor-logo"
+                class="adunit adunit--sponsor-logo js-sponsor-logo"
+                style="display: none;">
+              </div>
+            {{/if}}
+
+            {{#unless adpackage}}
+              <div class="adunit adunit--sponsor-logo display-none js-sponsor-logo"
+                data-size-mapping="sponsor-logo"
+                data-targeting='{ "position": "header" }'>
+              </div>
+            {{/unless}}
           </div>
         </header>
       </div>
