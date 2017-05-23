@@ -1,9 +1,8 @@
 <div class="article__sponsor-ad js-article-sponsor-ad">
   {{#if adpackage}}
     <div
-      id="ad-articles-sponsor"
-      class="adunit adunit--sponsor-logo js-sponsor-logo"
-      style="display: none;">
+      id="ad-articles-sponsor{{#if count}}-{{ count }}{{/if}}{{#unless count}}-1{{/unless}}"
+      class="adunit--sponsor-logo js-sponsor-logo">
     </div>
   {{/if}}
 
