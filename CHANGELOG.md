@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.14.10"></a>
+## [0.14.10](https://github.com/lonelyplanet/rizzo-next/compare/v0.14.9...v0.14.10) (2017-05-23)
+
+
+### Bug Fixes
+
+* Create unique IDs for article ads ([#665](https://github.com/lonelyplanet/rizzo-next/issues/665)) ([4d112ea](https://github.com/lonelyplanet/rizzo-next/commit/4d112ea))
+* Use standard-version command for version:minor script ([#667](https://github.com/lonelyplanet/rizzo-next/issues/667)) ([b7dd9d4](https://github.com/lonelyplanet/rizzo-next/commit/b7dd9d4))
+
+
+
 <a name="0.14.9"></a>
 ## [0.14.9](https://github.com/lonelyplanet/rizzo-next/compare/v0.14.8...v0.14.9) (2017-05-19)
 
