@@ -2,9 +2,8 @@
   <div class="ad--leaderboard__container">
     {{#if adpackage}}
       <div
-        id="ad-articles-leaderboard"
-        class="adunit adunit--leaderboard js-slot-leader"
-        style="display: none;">
+        id="ad-articles-leaderboard{{#if adSlotNumber}}-{{adSlotNumber}}{{/if}}"
+        class="adunit--leaderboard">
       </div>
     {{/if}}
 
