@@ -16,9 +16,8 @@
 
             {{#if adpackage}}
               <div
-                id="ad-articles-sponsor-logo"
-                class="adunit adunit--sponsor-logo js-sponsor-logo"
-                style="display: none;">
+                id="ad-articles-sponsor-logo{{#if count}}-{{ count }}{{/if}}{{#unless count}}-1{{/unless}}"
+                class="adunit--sponsor-logo js-sponsor-logo">
               </div>
             {{/if}}
 

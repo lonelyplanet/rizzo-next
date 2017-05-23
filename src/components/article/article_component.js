@@ -147,7 +147,8 @@ export default class ArticleComponent extends Component {
     }
 
     // Put the ad in the first article, but don't load it yet
-    this.$activeArticle.append(this.adLeaderboardTemplate({ adpackage }));
+    const adSlotNumber = this.howManyArticlesHaveLoaded;
+    this.$activeArticle.append(this.adLeaderboardTemplate({ adpackage, adSlotNumber }));
 
     if (adpackage) {
       this._insertInlineAdSlots(this.$el);
@@ -343,7 +344,8 @@ export default class ArticleComponent extends Component {
 
     return nextArticle.fetch().then(() => {
       this.$newArticle = $(this.template({
-        article: nextArticle.get()
+        article: nextArticle.get(),
+        count: (this.howManyArticlesHaveLoaded + 1)
       }))
       .appendTo(".page-container")
       .addClass("is-loading");
@@ -358,7 +360,8 @@ export default class ArticleComponent extends Component {
       this.$newArticle.attr("id", this._createIdForArticle(nextArticle.get().slug));
 
       // Put the ad in the new article, but don't load it yet
-      this.$newArticle.append(this.adLeaderboardTemplate({ adpackage }));
+      const adSlotNumber = this.howManyArticlesHaveLoaded;
+      this.$newArticle.append(this.adLeaderboardTemplate({ adpackage, adSlotNumber }));
 
       this._articleCanBeLoaded();
 
