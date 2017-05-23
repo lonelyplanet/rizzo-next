@@ -141,8 +141,7 @@ export default class ArticleBodyComponent extends Component {
   _appendAd($paragraphs, $featuredImage) {
     const element = adpackage ? `<div
       id="ad-articles-yieldmo"
-      class="adunit adunit--article"
-      style="display: none;"></div>` :
+      class="adunit--article"></div>` :
       `<div
         class="adunit adunit--article display-none"
         data-dfp-options='{ "namespace": "LonelyPlanet.com/Yieldmo" }'
