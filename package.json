@@ -27,7 +27,7 @@
     "preversion": "npm run build",
     "version": "standard-version --commit-all",
     "version:patch": "standard-version -- --release-as patch",
-    "version:minor": "npm run release -- --release-as minor",
+    "version:minor": "standard-version -- --release-as minor",
     "version:major": "standard-version --release-as major"
   },
   "version": "0.14.9",
