@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.14.11"></a>
+## [0.14.11](https://github.com/lonelyplanet/rizzo-next/compare/v0.14.10...v0.14.11) (2017-05-24)
+
+
+### Bug Fixes
+
+* Update new yieldmo ad slot ([#668](https://github.com/lonelyplanet/rizzo-next/issues/668)) ([996485e](https://github.com/lonelyplanet/rizzo-next/commit/996485e))
+
+
+
 <a name="0.14.10"></a>
 ## [0.14.10](https://github.com/lonelyplanet/rizzo-next/compare/v0.14.9...v0.14.10) (2017-05-23)
 
