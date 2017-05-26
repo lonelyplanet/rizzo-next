@@ -30,7 +30,7 @@
     "version:minor": "npm run release -- --release-as minor",
     "version:major": "standard-version --release-as major"
   },
-  "version": "0.16.3",
+  "version": "0.16.4",
   "pre-commit": [
     "scsslint",
     "lint"

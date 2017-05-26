@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.16.4"></a>
+## [0.16.4](https://github.com/lonelyplanet/rizzo-next/compare/v0.16.1...v0.16.4) (2017-05-26)
+
+
+### Bug Fixes
+
+* Changed font asset to use https ([731b19b](https://github.com/lonelyplanet/rizzo-next/commit/731b19b))
+
+
+
 <a name="0.16.3"></a>
 ## [0.16.3](https://github.com/lonelyplanet/rizzo-next/compare/v0.16.1...v0.16.3) (2017-05-24)
 
