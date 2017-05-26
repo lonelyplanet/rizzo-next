@@ -190,14 +190,16 @@
       "footer_nav_interest_items":
       [
         { "title": "Adventure travel", "url": "http://www.lonelyplanet.com/adventure-travel" },
+        { "title": "Art and culture", "url": "http://www.lonelyplanet.com/art-and-culture" },
+        { "title": "Backpacking", "url": "http://www.lonelyplanet.com/backpacking" },
         { "title": "Beaches, coasts and islands", "url": "http://www.lonelyplanet.com/beaches-coasts-and-islands" },
-        { "title": "Budget travel", "url": "http://www.lonelyplanet.com/budget-travel" },
-        { "title": "Family travel", "url": "http://www.lonelyplanet.com/family-travel" },
+        { "title": "Family holidays", "url": "http://www.lonelyplanet.com/family-holidays" },
         { "title": "Festivals", "url": "http://www.lonelyplanet.com/festivals" },
         { "title": "Food and drink", "url": "http://www.lonelyplanet.com/food-and-drink" },
-        { "title": "Honeymoons and romance", "url": "http://www.lonelyplanet.com/honeymoons-and-romance" },
-        { "title": "Luxury travel", "url": "http://www.lonelyplanet.com/luxury-travel" },
-        { "title": "Round the world travel", "url": "http://www.lonelyplanet.com/round-the-world-travel" },
+        { "title": "Honeymoon and romance", "url": "http://www.lonelyplanet.com/honeymoon-and-romance" },
+        { "title": "Road trips", "url": "http://www.lonelyplanet.com/road-trips" },
+        { "title": "Travel gear and tech", "url": "http://www.lonelyplanet.com/travel-gear-and-tech" },
+        { "title": "Travel on a budget", "url": "http://www.lonelyplanet.com/travel-on-a-budget" },
         { "title": "Wildlife and nature", "url": "http://www.lonelyplanet.com/wildlife-and-nature" }
       ],
 
