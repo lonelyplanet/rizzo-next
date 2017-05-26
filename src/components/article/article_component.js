@@ -344,8 +344,11 @@ export default class ArticleComponent extends Component {
     let nextArticle = new ArticleModel({ url: slug });
 
     return nextArticle.fetch().then(() => {
+      const getNextArticle = nextArticle.get();
+
       this.$newArticle = $(this.template({
-        article: nextArticle.get(),
+        article: getNextArticle,
+        adpackage: getNextArticle.features.indexOf("adpackage") > -1,
         count: (this.howManyArticlesHaveLoaded + 1)
       }))
       .appendTo(".page-container")
