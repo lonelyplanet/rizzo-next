@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.14.13"></a>
+## [0.14.13](https://github.com/lonelyplanet/rizzo-next/compare/v0.14.12...v0.14.13) (2017-05-26)
+
+
+### Bug Fixes
+
+* Fix up article ad slots ([#675](https://github.com/lonelyplanet/rizzo-next/issues/675)) ([1379e1d](https://github.com/lonelyplanet/rizzo-next/commit/1379e1d))
+* Update footer interest links ([3bf57f8](https://github.com/lonelyplanet/rizzo-next/commit/3bf57f8))
+
+
+
 <a name="0.14.12"></a>
 ## [0.14.12](https://github.com/lonelyplanet/rizzo-next/compare/v0.14.11...v0.14.12) (2017-05-24)
 
