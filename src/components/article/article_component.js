@@ -184,7 +184,8 @@ export default class ArticleComponent extends Component {
   _setInitialCallouts(callouts) {
     this.articleBody = new ArticleBodyComponent({
       el: this.$el.find(".js-article-body"),
-      poiData: callouts
+      poiData: callouts,
+      numberOfArticles: this.howManyArticlesHaveLoaded
     });
   }
 
@@ -343,8 +344,11 @@ export default class ArticleComponent extends Component {
     let nextArticle = new ArticleModel({ url: slug });
 
     return nextArticle.fetch().then(() => {
+      const getNextArticle = nextArticle.get();
+
       this.$newArticle = $(this.template({
-        article: nextArticle.get(),
+        article: getNextArticle,
+        adpackage: getNextArticle.features.indexOf("adpackage") > -1,
         count: (this.howManyArticlesHaveLoaded + 1)
       }))
       .appendTo(".page-container")
@@ -413,7 +417,8 @@ export default class ArticleComponent extends Component {
   _updateNewArticle(model) {
     this.articleBody = new ArticleBodyComponent({
       el: this.$newArticle.find(".article-body"),
-      poiData: model.get("content").callouts
+      poiData: model.get("content").callouts,
+      numberOfArticles: (this.howManyArticlesHaveLoaded + 1)
     });
 
     this.socialShareComponent = new SocialShareComponent({

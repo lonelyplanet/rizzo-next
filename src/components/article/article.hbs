@@ -11,23 +11,26 @@
             {{ article.title }}
           </h1>
 
-          <div class="article-header__title is-xsmall is-padded-bottom js-header-title">
-            Tips &amp; articles
-
-            {{#if adpackage}}
+          {{#if adpackage}}
+            <div class="article-header__title is-xsmall is-padded-bottom">
               <div
                 id="ad-articles-sponsor-logo{{#if count}}-{{ count }}{{/if}}{{#unless count}}-1{{/unless}}"
-                class="adunit--sponsor-logo js-sponsor-logo">
+                class="adunit--sponsor-logo">
+                Tips &amp; articles
               </div>
-            {{/if}}
+            </div>
+          {{/if}}
 
-            {{#unless adpackage}}
+          {{#unless adpackage}}
+            <div class="article-header__title is-xsmall is-padded-bottom js-header-title">
+              Tips &amp; articles
+
               <div class="adunit adunit--sponsor-logo display-none js-sponsor-logo"
                 data-size-mapping="sponsor-logo"
                 data-targeting='{ "position": "header" }'>
               </div>
-            {{/unless}}
-          </div>
+            </div>
+          {{/unless}}
         </header>
       </div>
 
