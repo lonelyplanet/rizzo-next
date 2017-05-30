@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.14.14"></a>
+## [0.14.14](https://github.com/lonelyplanet/rizzo-next/compare/v0.14.13...v0.14.14) (2017-05-30)
+
+
+### Bug Fixes
+
+* Default features key in ArticleModel to empty array ([#676](https://github.com/lonelyplanet/rizzo-next/issues/676)) ([59d3421](https://github.com/lonelyplanet/rizzo-next/commit/59d3421))
+
+
+
 <a name="0.14.13"></a>
 ## [0.14.13](https://github.com/lonelyplanet/rizzo-next/compare/v0.14.12...v0.14.13) (2017-05-26)
 
