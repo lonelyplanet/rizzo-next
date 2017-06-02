@@ -2,24 +2,29 @@
 
 .video-js {
   margin: 0 auto;
-}
 
-.vjs-play-progress {
-  background-color: $lpblue;
-}
-
-.vjs-volume-level {
-  background-color: $lpblue;
-}
-
-.vjs-big-play-button {
-  &:hover,
-  &:active {
-    background-color: $lpblue;
+  .vjs-overlay-top-left {
+    top: 0;
+    left: 0;
   }
 
-  @media (max-width: $max-480) {
-    transform: scale(.7);
+  .vjs-overlay-bottom {
+    left: 0;
+    margin-left: 0;
+    max-width: 100% !important;
+    width: 100%;
+  }
+
+  .vjs-big-play-button {
+    @media (max-width: $max-480) {
+      transform: scale(.7);
+    }
+  }
+}
+
+.vjs-error {
+  .vjs-error-display {
+    display: none;
   }
 }
 
@@ -33,4 +38,23 @@
   margin-top: 8px;
   padding: 6px 24px;
   vertical-align: middle;
+}
+
+.video__lowerthird-overlay {
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 */
+  position: relative;
+
+  &>div {
+    height: 100% !important;
+    width: 100% !important;
+  }
+
+  iframe {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
 }

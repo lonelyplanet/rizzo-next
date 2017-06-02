@@ -50,18 +50,32 @@ class Brightcove extends VideoPlayer {
     videojs(this.videoEl).ready(function () {
       self.player = this;
       self.player.on("loadstart", self.onPlayerLoadStart.bind(self));
+      self.player.on("playing", self.onPlayerPlaying.bind(self));
       self.player.on("ended", self.onPlayerEnded.bind(self));
+      self.player.on("ads-ad-started", self.onAdStarted.bind(self));
+      self.player.on("ads-ad-ended", self.onAdEnded.bind(self));
       self.trigger("ready");
     });
   }
 
   onPlayerLoadStart() {
+    const tt = this.player.textTracks()[0];
+    if (tt) {
+      tt.oncuechange = this.onPlayerCueChange.bind(this);
+    }
+
     this.renderSEOMarkup();
     this.configureOverlays();
+
+    this.trigger("loadstart");
 
     if (this.autoplay) {
       this.player.play();
     }
+  }
+
+  onPlayerPlaying() {
+    this.disableAdOverlay();
   }
 
   onPlayerEnded() {
@@ -71,6 +85,62 @@ class Brightcove extends VideoPlayer {
     else {
       this.loadNextVideo();
     }
+  }
+
+  onAdStarted() {
+    this.enableAdOverlay();
+  }
+
+  onAdEnded() {
+    this.disableAdOverlay();
+  }
+
+  onPlayerCueChange() {
+    const tt = this.player.textTracks()[0];
+    const activeCue = tt.activeCues[0];
+    if (!activeCue || activeCue.text !== "CODE") {
+      return;
+    }
+
+    const cue = activeCue.originalCuePoint;
+
+    const overlayElementId = "ad-lowerthird-" + this.playerId + "-" + cue.id;
+    const element = document.getElementById(overlayElementId);
+
+    if (!element) {
+      return;
+    }
+
+    let cueIndex = null;
+
+    this.getCues().forEach((c, i) => {
+      if (c.originalCuePoint.id === cue.id) {
+        cueIndex = i;
+      }
+    });
+
+    if (cueIndex === null) {
+      return;
+    }
+
+
+    console.log("HIT CUE", cue, cueIndex, overlayElementId);
+    try {
+      window.lp.analytics.dfp.video.lowerThird(cueIndex + 1, overlayElementId);
+    }
+    catch (e) {
+    }
+
+  }
+
+  enableAdOverlay() {
+    const adOverlay = this.$el.find("#" + this.getAdOverlayId());
+    adOverlay.css("display", "inline-block");
+  }
+
+  disableAdOverlay() {
+    const adOverlay = this.$el.find("#" + this.getAdOverlayId());
+    adOverlay.css("display", "none");
   }
 
   fetchVideos() {
@@ -147,17 +217,60 @@ class Brightcove extends VideoPlayer {
     return { width: width, height: height };
   }
 
+  getAdOverlayId() {
+    return "ad-overlay-" + this.playerId;
+  }
+
+  getCues() {
+    if (!this.player) {
+      return [];
+    }
+
+    const tt = this.player.textTracks()[0];
+    if (!tt) {
+      return [];
+    }
+
+    let index = 0;
+    const cues = [];
+    while (index < tt.cues.length) {
+      const cue = tt.cues[index];
+      if (cue.text === "CODE") {
+        cues.push(cue);
+      }
+      index += 1;
+    }
+
+    return cues;
+  }
+
   configureOverlays() {
     if (!this.player) {
       return;
     }
 
-    const overlays = [{
-      content: "<div class=\"video__ad-overlay\">Advertisement</div>",
+    const overlays = this.getCues().map((c) => {
+      const cue = c.originalCuePoint;
+
+      const defaultEnd = cue.startTime + 15;
+      const end = defaultEnd < cue.endTime ? defaultEnd : cue.endTime;
+
+      const cueElementId = "ad-lowerthird-" + this.playerId + "-" + cue.id;
+
+      return {
+        content: "<div id=\"" + cueElementId + "\" class=\"video__lowerthird-overlay\" />",
+        align: "bottom",
+        start: cue.startTime,
+        end,
+      };
+    });
+
+    overlays.push({
+      content: "<div id=\"" + this.getAdOverlayId() + "\" class=\"video__ad-overlay\">Advertisement</div>",
       align: "top-left",
       start: "ads-ad-started",
       end: "playing",
-    }];
+    });
 
     this.player.overlay({
       content: "",

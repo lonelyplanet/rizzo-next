@@ -47,15 +47,16 @@ export default class VideoPosterButtonComponent extends Component {
   }
 
   render () {
-    let title = "";
+    this.renderImage();
+    this.renderText();
+  }
+
+  renderImage () {
     let image = null;
-    let description = "";
 
     try {
-        let mediainfo = this.player.player.mediainfo;
-        title = mediainfo.name || "";
+        const mediainfo = this.player.player.mediainfo;
         image = mediainfo.poster;
-        description = mediainfo.description || "";
     }
     catch (e) {
     }
@@ -75,11 +76,22 @@ export default class VideoPosterButtonComponent extends Component {
       this.$el.addClass("video-poster-button--visible");
     };
     imageEl.src = image;
+  }
+
+  renderText () {
+    let title = "";
+    let description = "";
+
+    try {
+        const mediainfo = this.player.player.mediainfo;
+        title = mediainfo.name || "";
+        description = mediainfo.description || "";
+    }
+    catch (e) {
+    }
 
     this.$el.find(".video-poster-button__title").text(title);
-    this.$el.find(".video-poster-button__description").text(description);
-
-    return this;
+    this.$el.find(".video-poster-button__description").html(description);
   }
 
   onClick (e) {
@@ -94,14 +106,22 @@ export default class VideoPosterButtonComponent extends Component {
   playerReady (player) {
     this.player = player;
     this.listenTo(this.player, "ended", this.onPlayerEnded.bind(this));
+    this.listenTo(this.player, "loadstart", this.onPlayerLoadStart.bind(this));
     this.player.fetchVideos().then(this.fetchDone.bind(this));
   }
 
   /**
-   * Callback from the player "ended" event / when a video or playlist finishes playing.
+   * Callback from the player "ended" event / when the playlist finishes playing.
    */
   onPlayerEnded () {
     this.hideVideo();
+  }
+
+  /**
+   * Callback from the player "loadstart" event / when a video is loaded and is ready to play.
+   */
+  onPlayerLoadStart () {
+    this.renderText();
   }
 
   /**
