@@ -46,6 +46,7 @@ class Brightcove extends VideoPlayer {
   }
 
   setup() {
+<<<<<<< HEAD
     let self = this;
     videojs(this.videoEl).ready(function () {
       self.player = this;
@@ -55,6 +56,148 @@ class Brightcove extends VideoPlayer {
       self.player.on("ads-ad-started", self.onAdStarted.bind(self));
       self.player.on("ads-ad-ended", self.onAdEnded.bind(self));
       self.trigger("ready");
+=======
+    // let self = this;
+    this.player = videojs(this.videoEl);
+    this.player.ready(this.onPlayerReady.bind(this));
+    this.player.on("loadstart", this.onPlayerLoadStart.bind(this));
+    // this.player.on("error", this.onPlayerError.bind(this));
+    // this.player.on("playing", this.onPlayerPlaying.bind(this));
+    this.player.on("ended", this.onPlayerEnded.bind(this));
+    // this.player.on("ads-ad-ended", this.onAdEnded.bind(this));
+
+    // videojs(this.videoEl).ready(function () {
+    //   self.player = this;
+    //   self.player.on("ended", () => { self.trigger("ended"); });
+    //   self.player
+    //   self.player.on("loadstart", this.onPlayerLoadStart.bind(this));
+    //   self.player.on("error", this.onPlayerError.bind(this));
+    //   self.player.on("playing", this.onPlayerPlaying.bind(this));
+    //   self.player.on("ended", this.onPlayerEnded.bind(this));
+    //   self.player.on("ads-ad-ended", this.onAdEnded.bind(this));
+    //   // self.setInitialDimensions();
+    //   self.trigger("ready");
+    // });
+  }
+
+  onPlayerReady() {
+    this.trigger("ready");
+  }
+
+  onPlayerLoadStart() {
+    this.renderSEOMarkup();
+
+    const tt = this.player.textTracks()[0];
+    if (tt) {
+      tt.oncuechange = this.onPlayerCueChange.bind(this);
+    }
+
+    this.configureOverlays();
+
+    // if (this.props.autoplay) {
+    //   this.player.play();
+    // }
+  }
+
+  // onPlayerError() {
+  //   this.loadVideo()
+  // }
+
+  onPlayerEnded() {
+    this.trigger("ended");
+  }
+
+  // onAdEnded() {
+
+  // }
+
+  onPlayerCueChange() {
+    const tt = this.player.textTracks()[0];
+    const activeCue = tt.activeCues[0];
+    if (!activeCue || activeCue.text !== "CODE") {
+      return;
+    }
+
+    const cue = activeCue.originalCuePoint;
+
+    const overlayElementId = `ad-lowerthird-${this.cid}-${cue.id}`;
+    const element = document.getElementById(overlayElementId);
+
+    if (!element) {
+      return;
+    }
+
+    let cueIndex = null;
+
+    this.getCues().forEach((c, i) => {
+      if (c.originalCuePoint.id === cue.id) {
+        cueIndex = i;
+      }
+    });
+
+    if (cueIndex === null) {
+      return;
+    }
+
+    window.lp.analytics.dfp.video.lowerThird(cueIndex + 1, overlayElementId);
+
+    // if (this.props.onCueChange) {
+    //   this.props.onCueChange(cue, cueIndex, overlayElementId);
+    // }
+  }
+
+  getCues() {
+    if (!this.player) {
+      return [];
+    }
+
+    const tt = this.player.textTracks()[0];
+    if (!tt) {
+      return [];
+    }
+
+    let index = 0;
+    const cues = [];
+    while (index < tt.cues.length) {
+      const cue = tt.cues[index];
+      if (cue.text === "CODE") {
+        cues.push(cue);
+      }
+      index += 1;
+    }
+
+    return cues;
+  }
+
+  configureOverlays() {
+    const overlays = this.getCues().map((c) => {
+      const cue = c.originalCuePoint;
+
+      const defaultEnd = cue.startTime + 15;
+      const end = defaultEnd < cue.endTime ? defaultEnd : cue.endTime;
+
+      return {
+        content: `<div id="ad-lowerthird-${this.cid}-${cue.id}" class="video__lowerthird-overlay" />`,
+        align: "bottom",
+        start: cue.startTime,
+        end,
+      };
+    });
+
+    overlays.push({
+      content: "<div class=\"video__ad-overlay\">Advertisement</div>",
+      align: "top-left",
+      start: "ads-ad-started",
+      end: "playing",
+    });
+
+    this.player.overlay({
+      content: "",
+      overlays,
+      showBackground: false,
+      attachToControlBar: true,
+      debug: false,
+>>>>>>> 9be0d2d3e2986e9433a883dd564a75d348e89be2
     });
   }
 
@@ -138,16 +281,25 @@ class Brightcove extends VideoPlayer {
     adOverlay.css("display", "inline-block");
   }
 
+<<<<<<< HEAD
   disableAdOverlay() {
     const adOverlay = this.$el.find("#" + this.getAdOverlayId());
     adOverlay.css("display", "none");
   }
 
   fetchVideos() {
+=======
+  // isVideoLoaded(videoId) {
+  //   return this.player && this.player.mediainfo && this.player.mediainfo.id === videoId;
+  // }
+
+  loadVideo(videoId) {
+>>>>>>> 9be0d2d3e2986e9433a883dd564a75d348e89be2
     if (!this.player) {
       return Promise.resolve(false);
     }
 
+<<<<<<< HEAD
     let query = null;
     try {
       query = "ref:dest_" + window.lp.place.atlasId;
@@ -155,10 +307,14 @@ class Brightcove extends VideoPlayer {
     catch (e) {
       return Promise.resolve(false);
     }
+=======
+    // this.videoId = videoId;
+>>>>>>> 9be0d2d3e2986e9433a883dd564a75d348e89be2
 
     return new Promise((resolve) => {
       this.player.catalog.getPlaylist(query, (error, playlist) => {
         if (!error) {
+<<<<<<< HEAD
           this.videos = playlist.length ? playlist : [];
         }
         if (this.videos.length) {
@@ -173,11 +329,16 @@ class Brightcove extends VideoPlayer {
             }
             resolve(!error);
           });
+=======
+          this.player.catalog.load(video);
+
+>>>>>>> 9be0d2d3e2986e9433a883dd564a75d348e89be2
         }
       });
     });
   }
 
+<<<<<<< HEAD
   loadNextVideo() {
     if (!this.player || !this.videos.length) {
       return;
@@ -188,6 +349,28 @@ class Brightcove extends VideoPlayer {
 
     this.player.catalog.load(this.videos[this.currentVideoIndex]);
   }
+=======
+  /**
+   * Used to set the initial dimensions of the video player
+   * so that when video data begins to load, it sees that the player is fairly
+   * large and loads high-res video data.  We have an issue with Brightcove at the moment
+   * where it seems to load lower-res video if the player size is set to "mobile-like"
+   * dimensions, but we want to make sure we always have high-res video loaded (if available).
+   *
+   * This is run when the player is initially setup so consider resizing
+   * this.videoEl before making the player visible.
+   */
+  // setInitialDimensions() {
+  //   if (!this.player) {
+  //     return;
+  //   }
+
+  //   let width = 1280;
+  //   let height = width / this.defaultAspectRatio;
+
+  //   this.player.dimensions(width, height);
+  // }
+>>>>>>> 9be0d2d3e2986e9433a883dd564a75d348e89be2
 
   /**
    * Gets the ideal dimensions of the video, considering it's aspect ratio.
@@ -325,15 +508,23 @@ class Brightcove extends VideoPlayer {
     let seconds = Math.ceil(this.getVideoProperty("duration"));
     let duration = "PT" + seconds + "S";
 
+<<<<<<< HEAD
     let embedUrl = "https://players.brightcove.net/5104226627001/default_default/index.html?videoId=" + videoId;
 
+=======
+>>>>>>> 9be0d2d3e2986e9433a883dd564a75d348e89be2
     let data = {
       "@context": "http://schema.org",
       "@type": "VideoObject",
       "name": this.getVideoProperty("name") || defaultDescription,
       "description": this.getVideoProperty("description") || defaultDescription,
+<<<<<<< HEAD
       "thumbnailURL": this.getVideoProperty("thumbnail"),
       "embedURL": embedUrl,
+=======
+      "thumbnailURL": this.getVideoProperty("poster"),
+      "embedURL": "https://players.brightcove.net/5104226627001/default_default/index.html?videoId=" + videoId,
+>>>>>>> 9be0d2d3e2986e9433a883dd564a75d348e89be2
       "duration": duration,
       "uploadDate": this.getVideoProperty("createdAt"),
     };
