@@ -46,71 +46,18 @@ class Brightcove extends VideoPlayer {
   }
 
   setup() {
-// <<<<<<< HEAD
-//     let self = this;
-//     videojs(this.videoEl).ready(function () {
-//       self.player = this;
-//       self.player.on("loadstart", self.onPlayerLoadStart.bind(self));
-//       self.player.on("playing", self.onPlayerPlaying.bind(self));
-//       self.player.on("ended", self.onPlayerEnded.bind(self));
-//       self.player.on("ads-ad-started", self.onAdStarted.bind(self));
-//       self.player.on("ads-ad-ended", self.onAdEnded.bind(self));
-//       self.trigger("ready");
-// =======
-    // let self = this;
     this.player = videojs(this.videoEl);
     this.player.ready(this.onPlayerReady.bind(this));
     this.player.on("loadstart", this.onPlayerLoadStart.bind(this));
-    // this.player.on("error", this.onPlayerError.bind(this));
     this.player.on("playing", this.onPlayerPlaying.bind(this));
     this.player.on("ended", this.onPlayerEnded.bind(this));
     this.player.on("ads-ad-started", this.onAdStarted.bind(this));
-    this.player.on("ads-ad-ended", this.onAdEnded.bind(self));
-
-    // videojs(this.videoEl).ready(function () {
-    //   self.player = this;
-    //   self.player.on("ended", () => { self.trigger("ended"); });
-    //   self.player
-    //   self.player.on("loadstart", this.onPlayerLoadStart.bind(this));
-    //   self.player.on("error", this.onPlayerError.bind(this));
-    //   self.player.on("playing", this.onPlayerPlaying.bind(this));
-    //   self.player.on("ended", this.onPlayerEnded.bind(this));
-    //   self.player.on("ads-ad-ended", this.onAdEnded.bind(this));
-    //   // self.setInitialDimensions();
-    //   self.trigger("ready");
-    // });
+    this.player.on("ads-ad-ended", this.onAdEnded.bind(this));
   }
 
   onPlayerReady() {
     this.trigger("ready");
   }
-
-  onPlayerLoadStart() {
-    this.renderSEOMarkup();
-
-    const tt = this.player.textTracks()[0];
-    if (tt) {
-      tt.oncuechange = this.onPlayerCueChange.bind(this);
-    }
-
-    this.configureOverlays();
-
-    // if (this.props.autoplay) {
-    //   this.player.play();
-    // }
-  }
-
-  // onPlayerError() {
-  //   this.loadVideo()
-  // }
-
-  onPlayerEnded() {
-    this.trigger("ended");
-  }
-
-  // onAdEnded() {
-
-  // }
 
   onPlayerCueChange() {
     const tt = this.player.textTracks()[0];
@@ -121,7 +68,7 @@ class Brightcove extends VideoPlayer {
 
     const cue = activeCue.originalCuePoint;
 
-    const overlayElementId = `ad-lowerthird-${this.cid}-${cue.id}`;
+    const overlayElementId = `ad-lowerthird-${this.playerId}-${cue.id}`;
     const element = document.getElementById(overlayElementId);
 
     if (!element) {
@@ -141,64 +88,6 @@ class Brightcove extends VideoPlayer {
     }
 
     window.lp.analytics.dfp.video.lowerThird(cueIndex + 1, overlayElementId);
-
-    // if (this.props.onCueChange) {
-    //   this.props.onCueChange(cue, cueIndex, overlayElementId);
-    // }
-  }
-
-  getCues() {
-    if (!this.player) {
-      return [];
-    }
-
-    const tt = this.player.textTracks()[0];
-    if (!tt) {
-      return [];
-    }
-
-    let index = 0;
-    const cues = [];
-    while (index < tt.cues.length) {
-      const cue = tt.cues[index];
-      if (cue.text === "CODE") {
-        cues.push(cue);
-      }
-      index += 1;
-    }
-
-    return cues;
-  }
-
-  configureOverlays() {
-    const overlays = this.getCues().map((c) => {
-      const cue = c.originalCuePoint;
-
-      const defaultEnd = cue.startTime + 15;
-      const end = defaultEnd < cue.endTime ? defaultEnd : cue.endTime;
-
-      return {
-        content: `<div id="ad-lowerthird-${this.cid}-${cue.id}" class="video__lowerthird-overlay" />`,
-        align: "bottom",
-        start: cue.startTime,
-        end,
-      };
-    });
-
-    overlays.push({
-      content: "<div class=\"video__ad-overlay\">Advertisement</div>",
-      align: "top-left",
-      start: "ads-ad-started",
-      end: "playing",
-    });
-
-    this.player.overlay({
-      content: "",
-      overlays,
-      showBackground: false,
-      attachToControlBar: true,
-      debug: false,
-    });
   }
 
   onPlayerLoadStart() {
@@ -236,44 +125,6 @@ class Brightcove extends VideoPlayer {
 
   onAdEnded() {
     this.disableAdOverlay();
-  }
-
-  onPlayerCueChange() {
-    const tt = this.player.textTracks()[0];
-    const activeCue = tt.activeCues[0];
-    if (!activeCue || activeCue.text !== "CODE") {
-      return;
-    }
-
-    const cue = activeCue.originalCuePoint;
-
-    const overlayElementId = "ad-lowerthird-" + this.playerId + "-" + cue.id;
-    const element = document.getElementById(overlayElementId);
-
-    if (!element) {
-      return;
-    }
-
-    let cueIndex = null;
-
-    this.getCues().forEach((c, i) => {
-      if (c.originalCuePoint.id === cue.id) {
-        cueIndex = i;
-      }
-    });
-
-    if (cueIndex === null) {
-      return;
-    }
-
-
-    console.log("HIT CUE", cue, cueIndex, overlayElementId);
-    try {
-      window.lp.analytics.dfp.video.lowerThird(cueIndex + 1, overlayElementId);
-    }
-    catch (e) {
-    }
-
   }
 
   enableAdOverlay() {

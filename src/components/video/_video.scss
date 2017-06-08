@@ -4,14 +4,14 @@
   margin: 0 auto;
 
   .vjs-overlay-top-left {
-    top: 0;
     left: 0;
+    top: 0;
   }
 
   .vjs-overlay-bottom {
     left: 0;
     margin-left: 0;
-    max-width: 100% !important;
+    max-width: 100%;
     width: 100%;
   }
 
@@ -42,13 +42,8 @@
 
 .video__lowerthird-overlay {
   height: 0;
-  padding-bottom: 56.25%; /* 16:9 */
+  padding-bottom: 56.25%; // 16:9
   position: relative;
-
-  &>div {
-    height: 100% !important;
-    width: 100% !important;
-  }
 
   iframe {
     height: 100%;
