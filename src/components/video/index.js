@@ -1,12 +1,14 @@
 import Brightcove from "./brightcove";
+import Youtube from "./youtube";
 
 require("./_video.scss");
 
 let players = new Map();
 players.set("brightcove", Brightcove);
+players.set("youtube", Youtube);
 
 class Video {
-  static addPlayer(element, type="brightcove") {
+  static addPlayer(element, type="brightcove", options={}) {
     if (typeof element === "string") {
       element = $(element)[0];
     }
@@ -16,12 +18,14 @@ class Video {
     let PlayerConstructor = players.get(type),
         player = new PlayerConstructor({
           el: element,
-          playerId: this.players.size + 1
+          playerId: this.players.size + 1,
+          videoId: options.videoId || null,
+          autoplay: options.autplay || false,
         });
 
     this.players.set(element, player);
 
-    // Take the return value and use .then() on it to ensure the 
+    // Take the return value and use .then() on it to ensure the
     // player is ready before using it.
     return new Promise((resolve) => {
       player.on("ready", () => {

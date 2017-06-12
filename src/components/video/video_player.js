@@ -2,8 +2,10 @@ import { Component } from "../../core/bane";
 
 class VideoPlayer extends Component {
 
-  initialize({ playerId }) {
+  initialize(playerId, options={}) {
     this.playerId = playerId;
+    this.videoId = options.videoId || null;
+    this.autoplay = options.autoplay || false;
     this.defaultAspectRatio = 1.77777778;
     this.events = {};
     this.setup();
@@ -18,6 +20,12 @@ class VideoPlayer extends Component {
   }
 
   /**
+   * Override to actually kill the underlying player
+   */
+  dispose() {
+  }
+
+  /**
    * Override to actually play the underlying player
    */
   play() {
@@ -28,6 +36,7 @@ class VideoPlayer extends Component {
    */
   pause() {
   }
+
 
 }
 

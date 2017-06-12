@@ -4,10 +4,9 @@ import VideoPlayer from "./video_player";
 
 class Brightcove extends VideoPlayer {
 
-  initialize(options) {
-    super.initialize(options);
+  initialize(playerId, options={}) {
+    super.initialize(playerId, options);
 
-    this.autoplay = false;
     this.videos = [];
     this.currentVideoIndex = null;
 
@@ -46,6 +45,10 @@ class Brightcove extends VideoPlayer {
   }
 
   setup() {
+    if (!this.videoEl) {
+
+    }
+
     let self = this;
     videojs(this.videoEl).ready(function () {
       self.player = this;
@@ -53,6 +56,13 @@ class Brightcove extends VideoPlayer {
       self.player.on("ended", self.onPlayerEnded.bind(self));
       self.trigger("ready");
     });
+  }
+
+  dispose() {
+    if (this.player) {
+      this.player.dispose();
+      this.player = null;
+    }
   }
 
   onPlayerLoadStart() {
