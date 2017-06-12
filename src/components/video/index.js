@@ -8,7 +8,11 @@ players.set("brightcove", Brightcove);
 players.set("youtube", Youtube);
 
 class Video {
-  static addPlayer(element, type="brightcove", options={}) {
+  static addPlayer(element, {
+    type = "brightcove",
+    videoId = null,
+    autoplay = false} = {}) {
+
     if (typeof element === "string") {
       element = $(element)[0];
     }
@@ -19,8 +23,8 @@ class Video {
         player = new PlayerConstructor({
           el: element,
           playerId: this.players.size + 1,
-          videoId: options.videoId || null,
-          autoplay: options.autplay || false,
+          videoId,
+          autoplay,
         });
 
     this.players.set(element, player);

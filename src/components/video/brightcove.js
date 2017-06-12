@@ -4,8 +4,8 @@ import VideoPlayer from "./video_player";
 
 class Brightcove extends VideoPlayer {
 
-  initialize(playerId, options={}) {
-    super.initialize(playerId, options);
+  initialize(options) {
+    super.initialize(options);
 
     this.videos = [];
     this.currentVideoIndex = null;

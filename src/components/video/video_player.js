@@ -2,10 +2,10 @@ import { Component } from "../../core/bane";
 
 class VideoPlayer extends Component {
 
-  initialize(playerId, options={}) {
+  initialize({playerId, videoId=null, autoplay=false}) {
     this.playerId = playerId;
-    this.videoId = options.videoId || null;
-    this.autoplay = options.autoplay || false;
+    this.videoId = videoId;
+    this.autoplay = autoplay;
     this.defaultAspectRatio = 1.77777778;
     this.events = {};
     this.setup();

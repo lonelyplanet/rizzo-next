@@ -137,8 +137,8 @@ export default class ImageGalleryComponent extends Component {
     if (galleryItem.videoID) {
       Video.addPlayer(
         galleryItem.videoID,
-        galleryItem.videoType,
-        { videoId: galleryItem.videoID,
+        { type: galleryItem.videoType,
+          videoId: galleryItem.videoID,
           autoplay: this.autoplayVideos }).then(this.playerReady.bind(this));
     }
     else {
