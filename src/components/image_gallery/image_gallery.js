@@ -195,7 +195,7 @@ export default class ImageGalleryComponent extends Component {
    */
   _brightcoveID(url) {
     let regExp = /^.*\.brightcove\..*(\/videos\/|\?videoId=)([0-9]+)$/,
-      match = url.match(regExp)
+      match = url.match(regExp);
 
     return match ? match[2] : null;
   }

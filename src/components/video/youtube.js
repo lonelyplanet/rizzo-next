@@ -19,7 +19,7 @@ class Youtube extends VideoPlayer {
   }
 
   dispose() {
-    this.$el.html('');
+    this.$el.html("");
   }
 }
 
