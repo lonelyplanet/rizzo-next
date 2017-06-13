@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.14.16"></a>
+## [0.14.16](https://github.com/lonelyplanet/rizzo-next/compare/v0.14.15...v0.14.16) (2017-06-13)
+
+
+### Bug Fixes
+
+* Do NOT remove sights component ([c3f9ec4](https://github.com/lonelyplanet/rizzo-next/commit/c3f9ec4))
+
+
+
 <a name="0.14.15"></a>
 ## [0.14.15](https://github.com/lonelyplanet/rizzo-next/compare/v0.14.14...v0.14.15) (2017-06-12)
 
