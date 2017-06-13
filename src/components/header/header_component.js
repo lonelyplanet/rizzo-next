@@ -60,14 +60,34 @@ class Header extends Component {
         props: options,
       });
 
-      // TODO: Add logic for toast
-      /*
-      const toastMessage = localStorage.getItem("toast");
-      if (toastMessage) {
-        console.log(toastMessage);
-        localStorage.removeItem("toast");
+      const toast = document.createElement("div");
+      toast.id = "lp-global-toast";
+      document.body.appendChild(toast);
+
+      const toastTitle = sessionStorage.getItem("lp-toastTitle");
+      const toastMessage = sessionStorage.getItem("lp-toastMessage");
+      const toastType = sessionStorage.getItem("lp-toastType");
+      const toastDuration = 3000;
+
+      if (toastMessage && toastType) {
+        render({
+          component: "GlobalToast",
+          el: toast,
+          props: {
+            title: toastTitle,
+            message: toastMessage,
+            type: toastType,
+            duration: toastDuration,
+          },
+        });
+
+        sessionStorage.removeItem("lp-toastMessage");
+        sessionStorage.removeItem("lp-toastType");
+
+        setTimeout(() => {
+          document.body.removeChild(toast);
+        }, toastDuration + 200);
       }
-      */
     });
   }
 
