@@ -34,6 +34,8 @@ class Video {
 
     this.players.set(element, player);
 
+    player.on("disposed", this.removePlayer.bind(this));
+
     // Take the return value and use .then() on it to ensure the
     // player is ready before using it.
     return new Promise((resolve) => {
@@ -45,6 +47,12 @@ class Video {
         resolve(player);
       });
     });
+  }
+
+  static removePlayer(player) {
+    if (this.players) {
+      this.players.delete(player.el);
+    }
   }
 }
 

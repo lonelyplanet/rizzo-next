@@ -98,6 +98,8 @@ class Brightcove extends VideoPlayer {
       this.player.dispose();
       this.player = null;
     }
+
+    this.trigger("disposed", this);
   }
 
   isReady() {

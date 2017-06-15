@@ -121,6 +121,10 @@ export default class ImageGalleryComponent extends Component {
     }
   }
 
+  playerReady(player) {
+    this._player = player;
+  }
+
   /**
    * Stops movie and destroys the player
    */

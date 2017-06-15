@@ -27,6 +27,7 @@ class VideoPlayer extends Component {
    * Override to actually kill the underlying player
    */
   dispose() {
+    this.trigger("disposed", this);
   }
 
   /**
