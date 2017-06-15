@@ -1,25 +1,32 @@
 @import "../../../sass/webpack_deps";
 
 .video-js {
+  height: 100%;
   margin: 0 auto;
-}
+  width: 100%;
 
-.vjs-play-progress {
-  background-color: $lpblue;
-}
-
-.vjs-volume-level {
-  background-color: $lpblue;
-}
-
-.vjs-big-play-button {
-  &:hover,
-  &:active {
-    background-color: $lpblue;
+  .vjs-overlay-top-left {
+    left: 0;
+    top: 0;
   }
 
-  @media (max-width: $max-480) {
-    transform: scale(.7);
+  .vjs-overlay-bottom {
+    left: 0;
+    margin-left: 0;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .vjs-big-play-button {
+    @media (max-width: $max-480) {
+      transform: scale(.7);
+    }
+  }
+}
+
+.vjs-error {
+  .vjs-error-display {
+    display: none;
   }
 }
 
@@ -29,8 +36,22 @@
   font-family: arial, sans-serif;
   font-size: 11px;
   font-weight: normal;
-  line-height: (21 / 11);
+  line-height: 2.1rem;
   margin-top: .8rem;
-  padding: .6rem 2.4rem;
+  padding: .6rem 2.1rem;
   vertical-align: middle;
+}
+
+.video__lowerthird-overlay {
+  height: 0;
+  padding-bottom: 56.25%; // 16:9
+  position: relative;
+
+  iframe {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
 }

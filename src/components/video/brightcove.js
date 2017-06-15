@@ -7,7 +7,6 @@ class Brightcove extends VideoPlayer {
   initialize(options) {
     super.initialize(options);
 
-    this.autoplay = false;
     this.videos = [];
     this.currentVideoIndex = null;
 
@@ -46,22 +45,128 @@ class Brightcove extends VideoPlayer {
   }
 
   setup() {
-    let self = this;
-    videojs(this.videoEl).ready(function () {
-      self.player = this;
-      self.player.on("loadstart", self.onPlayerLoadStart.bind(self));
-      self.player.on("ended", self.onPlayerEnded.bind(self));
-      self.trigger("ready");
+    if (!this.videoEl) {
+      // Insert brightcove player html
+      let html = "<video ";
+      if (this.videoId) {
+        html += "data-video-id='" + this.videoId + "' ";
+      }
+      html += "data-account='5104226627001' ";
+      html += "data-player='default' ";
+      html += "data-embed='default' ";
+      html += "data-application-id ";
+      html += "class='video-js' ";
+      html += "></video>";
+      this.el.innerHTML = html;
+
+      // Insert script to initialize brightcove player
+      const scriptId = this.getPlayerScriptId();
+      const scriptSrc = "https://players.brightcove.net/5104226627001/default_default/index.min.js";
+      const script = document.createElement("script");
+
+      script.id = scriptId;
+      script.src = scriptSrc;
+      script.onload = this.onLoadSetupScript.bind(this);
+
+      document.body.appendChild(script);
+    }
+    else {
+      this.player = videojs(this.videoEl);
+
+      // We don't show the controls until the player is instantiated
+      // or else the controls show briefly without the brightcove theme applied.
+      this.player.controls(true);
+
+      this.player.ready(this.onPlayerReady.bind(this));
+      this.player.on("loadstart", this.onPlayerLoadStart.bind(this));
+      this.player.on("playing", this.onPlayerPlaying.bind(this));
+      this.player.on("ended", this.onPlayerEnded.bind(this));
+      this.player.on("ads-ad-started", this.onAdStarted.bind(this));
+      this.player.on("ads-ad-ended", this.onAdEnded.bind(this));
+    }
+  }
+
+  dispose() {
+    const scriptId = this.getPlayerScriptId();
+    const script = document.getElementById(scriptId);
+
+    if (script) {
+      script.remove();
+    }
+
+    if (this.player) {
+      this.player.dispose();
+      this.player = null;
+    }
+
+    this.trigger("disposed", this);
+  }
+
+  isReady() {
+    return this.player && this.player.isReady_;
+  }
+
+  getPlayerScriptId() {
+    return "video__initialize-" + this.playerId;
+  }
+
+  onLoadSetupScript() {
+    this.setup();
+  }
+
+  onPlayerReady() {
+    this.trigger("ready");
+  }
+
+  onPlayerCueChange() {
+    const tt = this.player.textTracks()[0];
+    const activeCue = tt.activeCues[0];
+    if (!activeCue || activeCue.text !== "CODE") {
+      return;
+    }
+
+    const cue = activeCue.originalCuePoint;
+
+    const overlayElementId = `ad-lowerthird-${this.playerId}-${cue.id}`;
+    const element = document.getElementById(overlayElementId);
+
+    if (!element) {
+      return;
+    }
+
+    let cueIndex = null;
+
+    this.getCues().forEach((c, i) => {
+      if (c.originalCuePoint.id === cue.id) {
+        cueIndex = i;
+      }
     });
+
+    if (cueIndex === null) {
+      return;
+    }
+
+    window.lp.analytics.dfp.video.lowerThird(cueIndex + 1, overlayElementId);
   }
 
   onPlayerLoadStart() {
+    const tt = this.player.textTracks()[0];
+    if (tt) {
+      tt.oncuechange = this.onPlayerCueChange.bind(this);
+    }
+
     this.renderSEOMarkup();
     this.configureOverlays();
+
+    this.trigger("loadstart");
 
     if (this.autoplay) {
       this.player.play();
     }
+  }
+
+  onPlayerPlaying() {
+    this.disableAdOverlay();
   }
 
   onPlayerEnded() {
@@ -71,6 +176,24 @@ class Brightcove extends VideoPlayer {
     else {
       this.loadNextVideo();
     }
+  }
+
+  onAdStarted() {
+    this.enableAdOverlay();
+  }
+
+  onAdEnded() {
+    this.disableAdOverlay();
+  }
+
+  enableAdOverlay() {
+    const adOverlay = this.$el.find("#" + this.getAdOverlayId());
+    adOverlay.css("display", "inline-block");
+  }
+
+  disableAdOverlay() {
+    const adOverlay = this.$el.find("#" + this.getAdOverlayId());
+    adOverlay.css("display", "none");
   }
 
   fetchVideos() {
@@ -147,17 +270,60 @@ class Brightcove extends VideoPlayer {
     return { width: width, height: height };
   }
 
+  getAdOverlayId() {
+    return "ad-overlay-" + this.playerId;
+  }
+
+  getCues() {
+    if (!this.player) {
+      return [];
+    }
+
+    const tt = this.player.textTracks()[0];
+    if (!tt) {
+      return [];
+    }
+
+    let index = 0;
+    const cues = [];
+    while (index < tt.cues.length) {
+      const cue = tt.cues[index];
+      if (cue.text === "CODE") {
+        cues.push(cue);
+      }
+      index += 1;
+    }
+
+    return cues;
+  }
+
   configureOverlays() {
     if (!this.player) {
       return;
     }
 
-    const overlays = [{
-      content: "<div class=\"video__ad-overlay\">Advertisement</div>",
+    const overlays = this.getCues().map((c) => {
+      const cue = c.originalCuePoint;
+
+      const defaultEnd = cue.startTime + 15;
+      const end = defaultEnd < cue.endTime ? defaultEnd : cue.endTime;
+
+      const cueElementId = "ad-lowerthird-" + this.playerId + "-" + cue.id;
+
+      return {
+        content: "<div id=\"" + cueElementId + "\" class=\"video__lowerthird-overlay\" />",
+        align: "bottom",
+        start: cue.startTime,
+        end,
+      };
+    });
+
+    overlays.push({
+      content: "<div id=\"" + this.getAdOverlayId() + "\" class=\"video__ad-overlay\">Advertisement</div>",
       align: "top-left",
       start: "ads-ad-started",
       end: "playing",
-    }];
+    });
 
     this.player.overlay({
       content: "",
@@ -219,7 +385,7 @@ class Brightcove extends VideoPlayer {
       "@type": "VideoObject",
       "name": this.getVideoProperty("name") || defaultDescription,
       "description": this.getVideoProperty("description") || defaultDescription,
-      "thumbnailURL": this.getVideoProperty("thumbnail"),
+      "thumbnailURL": this.getVideoProperty("poster"),
       "embedURL": embedUrl,
       "duration": duration,
       "uploadDate": this.getVideoProperty("createdAt"),
