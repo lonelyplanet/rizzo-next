@@ -14,7 +14,6 @@ class Youtube extends VideoPlayer {
 
       this.$el.html(html);
     }
-
     this.trigger("ready");
   }
 

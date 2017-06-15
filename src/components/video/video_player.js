@@ -11,6 +11,10 @@ class VideoPlayer extends Component {
     this.setup();
   }
 
+  isReady() {
+    return true;
+  }
+
   /**
    * Run any setup to load the player (ex. videojs player).
    * Make sure this.trigger("ready") is called within this function.

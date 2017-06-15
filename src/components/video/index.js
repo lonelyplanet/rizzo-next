@@ -14,7 +14,11 @@ class Video {
     autoplay = false} = {}) {
 
     if (typeof element === "string") {
-      element = $(element)[0];
+      element = document.getElementById(element);
+    }
+
+    if (!element) {
+      return;
     }
 
     this.players = this.players || new Map();
@@ -32,6 +36,10 @@ class Video {
     // Take the return value and use .then() on it to ensure the
     // player is ready before using it.
     return new Promise((resolve) => {
+      if (player.isReady()) {
+        resolve(player);
+        return;
+      }
       player.on("ready", () => {
         resolve(player);
       });

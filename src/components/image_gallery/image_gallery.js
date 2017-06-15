@@ -97,7 +97,6 @@ export default class ImageGalleryComponent extends Component {
    */
   onGalleryClose() {
     this._videoStop();
-    // this._youtubeStop();
   }
 
   /**
@@ -105,35 +104,10 @@ export default class ImageGalleryComponent extends Component {
    */
   onGalleryChange() {
     this._videoPlay(this._gallery.currItem);
-    // this._youtubePlay(this._gallery.currItem);
-    // this._brightcovePlay(this._gallery.currItem);
   }
 
-  /**
-   * Plays youtube movie if given proper movie ID
-   */
-  // _youtubePlay(galleryItem) {
-  //   if (galleryItem.youtubeID) {
-  //     this._player = document.getElementById(galleryItem.youtubeID);
-  //     this._player.innerHTML = "<iframe width='100%' height='100%' src='https://www.youtube.com/embed/" + galleryItem.youtubeID + "?autoplay=1' frameborder='0' allowfullscreen></iframe>";
-  //   } else {
-  //     this._youtubeStop();
-  //   }
-  // }
-  //
-  // /**
-  //  * Plays brightcove movie if given proper movie ID
-  //  */
-  // _brightcovePlay(galleryItem) {
-  //   if (galleryItem.brightcoveID) {
-  //     this._player = document.getElementById(galleryItem.brightcoveID);
-  //     Video.addPlayer(this._player, "brightcove").then(this.playerReady.bind(this));
-  //   } else {
-  //     this._brightcoveStop();
-  //   }
-  // }
-
   _videoPlay(galleryItem) {
+    this._videoStop();
     if (galleryItem.videoID) {
       Video.addPlayer(
         galleryItem.videoID,
@@ -141,37 +115,11 @@ export default class ImageGalleryComponent extends Component {
           videoId: galleryItem.videoID,
           autoplay: this.autoplayVideos }).then(this.playerReady.bind(this));
     }
-    else {
-      this._videoStop();
-    }
   }
 
   playerReady (player) {
     this._player = player;
-    // this.bcPlayer = player;
-    // this.listenTo(this.player, "ended", this.onPlayerEnded.bind(this));
-    // this.player.fetchVideos().then(this.fetchDone.bind(this));
   }
-
-  /**
-   * Stops youtube movie and destroys the player
-   */
-  // _youtubeStop() {
-  //   if (this._player) {
-  //     this._player.innerHTML = "";
-  //     this._player = null;
-  //   }
-  // }
-  //
-  // _brightcoveStop() {
-  //   if (this.bcPlayer) {
-  //     // this.bcPlayer.dispose();
-  //   }
-  //   if (this._player) {
-  //     this._player.innerHTML = "";
-  //     this._player = null;
-  //   }
-  // }
 
   _videoStop() {
     if (this._player) {
@@ -194,7 +142,7 @@ export default class ImageGalleryComponent extends Component {
    * Gets brightcove movie id from given brightcove movie url
    */
   _brightcoveID(url) {
-    let regExp = /^.*\.brightcove\..*(\/videos\/|\?videoId=)([0-9]+)$/,
+    let regExp = /^.*\.brightcove\..*(\/videos\/|\?videoId=)([0-9]+).*/,
       match = url.match(regExp);
 
     return match ? match[2] : null;
