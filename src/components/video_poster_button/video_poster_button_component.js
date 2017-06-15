@@ -6,14 +6,13 @@ import Video from "../video";
 */
 export default class VideoPosterButtonComponent extends Component {
   initialize () {
-
     this.playerVisible = false;
 
     this.events = {
         "click .video-poster-button__inner": "onClick"
     };
 
-    Video.addPlayer(this.el, "brightcove").then(this.playerReady.bind(this));
+    Video.addPlayer(this.$el.find(".video-poster-button__video")[0]).then(this.playerReady.bind(this));
   }
 
   showVideo () {
@@ -67,12 +66,6 @@ export default class VideoPosterButtonComponent extends Component {
 
     let imageEl = this.$el.find(".video-poster-button__poster")[0];
     imageEl.onload = () => {
-
-      // Reset the width and height of the player to be the same
-      // dimensions as the poster image so that we have a nice
-      // smooth transition (and to undo Brightcove.setInitialDimensions())
-      $(this.player.videoEl).css({ width: "100%", height: "100%" });
-
       this.$el.addClass("video-poster-button--visible");
     };
     imageEl.src = image;

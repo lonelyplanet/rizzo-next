@@ -1,7 +1,9 @@
 @import "../../../sass/webpack_deps";
 
 .video-js {
+  height: 100%;
   margin: 0 auto;
+  width: 100%;
 
   .vjs-overlay-top-left {
     left: 0;

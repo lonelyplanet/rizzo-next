@@ -12,7 +12,7 @@ export default class VideoOverlay extends Overlay {
 
     this.resizeBound = false;
 
-    Video.addPlayer(this.el, "brightcove").then(this.playerReady.bind(this));
+    Video.addPlayer(this.$el.find(".video-overlay__video__container")[0]).then(this.playerReady.bind(this));
   }
 
   show () {
