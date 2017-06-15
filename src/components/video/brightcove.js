@@ -7,7 +7,6 @@ class Brightcove extends VideoPlayer {
   initialize(options) {
     super.initialize(options);
 
-    this.autoplay = false;
     this.videos = [];
     this.currentVideoIndex = null;
 
@@ -46,13 +45,72 @@ class Brightcove extends VideoPlayer {
   }
 
   setup() {
-    let self = this;
-    videojs(this.videoEl).ready(function () {
-      self.player = this;
-      self.player.on("loadstart", self.onPlayerLoadStart.bind(self));
-      self.player.on("ended", self.onPlayerEnded.bind(self));
-      self.trigger("ready");
-    });
+    if (!this.videoEl) {
+      // Insert brightcove player html
+      let html = "<video ";
+      if (this.videoId) {
+        html += "data-video-id='" + this.videoId + "' ";
+      }
+      html += "data-account='5104226627001' ";
+      html += "data-player='default' ";
+      html += "data-embed='default' ";
+      html += "data-application-id ";
+      html += "class='video-js' ";
+      html += "></video>";
+      this.el.innerHTML = html;
+
+      // Insert script to initialize brightcove player
+      const scriptId = this.getPlayerScriptId();
+      const scriptSrc = "https://players.brightcove.net/5104226627001/default_default/index.min.js";
+      const script = document.createElement("script");
+
+      script.id = scriptId;
+      script.src = scriptSrc;
+      script.onload = this.onLoadSetupScript.bind(this);
+
+      document.body.appendChild(script);
+    }
+    else {
+      let self = this;
+      videojs(this.videoEl).ready(function () {
+        self.player = this;
+
+        // We don't show the controls until the player is instantiated
+        // or else the controls show briefly without the brightcove theme applied.
+        self.player.controls(true);
+
+        self.player.on("loadstart", self.onPlayerLoadStart.bind(self));
+        self.player.on("ended", self.onPlayerEnded.bind(self));
+
+        self.trigger("ready");
+      });
+    }
+  }
+
+  dispose() {
+    const scriptId = this.getPlayerScriptId();
+    const script = document.getElementById(scriptId);
+
+    if (script) {
+      script.remove();
+    }
+
+    if (this.player) {
+      this.player.dispose();
+      this.player = null;
+    }
+  }
+
+  isReady() {
+    return this.player && this.player.isReady_;
+  }
+
+  getPlayerScriptId() {
+    return "video__initialize-" + this.playerId;
+  }
+
+  onLoadSetupScript() {
+    this.setup();
   }
 
   onPlayerLoadStart() {

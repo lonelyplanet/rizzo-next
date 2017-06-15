@@ -2,6 +2,7 @@ import { Component } from "../../core/bane";
 import $ from "jquery";
 import PhotoSwipe from "photoswipe";
 import PhotoSwipeUI_Default from "photoswipe/dist/photoswipe-ui-default";
+import Video from "../video";
 
 // Keep track of instance IDs
 let instanceId = 0;
@@ -23,9 +24,11 @@ export default class ImageGalleryComponent extends Component {
   }
 
   initialize({
-    galleryImageSelector = ".stack__article__image-container"
+    galleryImageSelector = ".stack__article__image-container",
+    autoplayVideos = true
   } = {}) {
     this.template = require("./image_gallery.hbs");
+    this.autoplayVideos = autoplayVideos;
 
     this.$images = this.$el.find(galleryImageSelector);
 
@@ -53,14 +56,17 @@ export default class ImageGalleryComponent extends Component {
           image = $linkEl.find("img").attr("src"),
           link = $linkEl.attr("href"),
           largeImage = link.match(/\.(jpg|png|gif)/) ? link : image,
-          youtubeID = this._youtubeID(link);
+          youtubeID = this._youtubeID(link),
+          brightcoveID = this._brightcoveID(link);
 
       let item = {
         src: largeImage,
         msrc: image,
         el: $linkEl.find("img")[0],
         w: parseInt(size[0], 10),
-        h: parseInt(size[1], 10)
+        h: parseInt(size[1], 10),
+        videoID: youtubeID || brightcoveID,
+        videoType: youtubeID ? "youtube" : brightcoveID ? "brightcove" : null,
       };
 
       let $caption;
@@ -72,9 +78,8 @@ export default class ImageGalleryComponent extends Component {
         item.title = $caption.html();
       }
 
-      if (youtubeID) {
-        item.youtubeID = youtubeID;
-        item.html = "<div class='pswp__player' id='" + youtubeID + "'></div>";
+      if (item.videoID) {
+        item.html = "<div class='pswp__player' id='" + item.videoID + "'></div>";
         item.title = null;
         item.src = null;
         item.msrc = null;
@@ -91,34 +96,34 @@ export default class ImageGalleryComponent extends Component {
    * Callback from photoswipe gallery close
    */
   onGalleryClose() {
-    this._youtubeStop();
+    this._videoStop();
   }
 
   /**
    * Callback from photoswipe item change
    */
   onGalleryChange() {
-    this._youtubePlay(this._gallery.currItem);
+    this._videoPlay(this._gallery.currItem);
   }
 
-  /**
-   * Plays youtube movie if given proper movie ID
-   */
-  _youtubePlay(galleryItem) {
-    if (galleryItem.youtubeID) {
-      this._player = document.getElementById(galleryItem.youtubeID);
-      this._player.innerHTML = "<iframe width='100%' height='100%' src='https://www.youtube.com/embed/" + galleryItem.youtubeID + "?autoplay=1' frameborder='0' allowfullscreen></iframe>";
-    } else {
-      this._youtubeStop();
+  _videoPlay(galleryItem) {
+    this._videoStop();
+    if (galleryItem.videoID) {
+      Video.addPlayer(
+        galleryItem.videoID,
+        { type: galleryItem.videoType,
+          videoId: galleryItem.videoID,
+          autoplay: this.autoplayVideos }).then(this.playerReady.bind(this));
     }
   }
 
-  /**
-   * Stops youtube movie and destroys the player
-   */
-  _youtubeStop() {
+  playerReady (player) {
+    this._player = player;
+  }
+
+  _videoStop() {
     if (this._player) {
-      this._player.innerHTML = "";
+      this._player.dispose();
       this._player = null;
     }
   }
@@ -128,9 +133,19 @@ export default class ImageGalleryComponent extends Component {
    */
   _youtubeID(url) {
     let regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/,
-        match = url.match(regExp);
+      match = url.match(regExp);
 
     return match && match[2].length == 11 ? match[2] : null;
+  }
+
+  /**
+   * Gets brightcove movie id from given brightcove movie url
+   */
+  _brightcoveID(url) {
+    let regExp = /^.*\.brightcove\..*(\/videos\/|\?videoId=)([0-9]+).*/,
+      match = url.match(regExp);
+
+    return match ? match[2] : null;
   }
 
   /**
