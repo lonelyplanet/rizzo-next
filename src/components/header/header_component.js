@@ -1,4 +1,5 @@
 import { Component } from "../../core/bane";
+import CookieUtil from "../../core/cookie_util";
 import SearchComponent from "../search";
 import NavigationComponent from "../navigation";
 import NavigationState from "../navigation/navigation_state";
@@ -36,6 +37,8 @@ class Header extends Component {
 
     this.appendMenuIcon();
     this.buildGlobalComponents(options);
+
+    this.cookieUtil = new CookieUtil();
   }
 
   buildGlobalComponents(options = {}) {
@@ -64,25 +67,24 @@ class Header extends Component {
       toast.id = "lp-global-toast";
       document.body.appendChild(toast);
 
-      const toastTitle = sessionStorage.getItem("lp-toastTitle");
-      const toastMessage = sessionStorage.getItem("lp-toastMessage");
-      const toastType = sessionStorage.getItem("lp-toastType");
+      const toastData = this.cookieUtil.getCookie("lpToast");
       const toastDuration = 3000;
 
-      if (toastMessage && toastType) {
+      if (toastData) {
+        const data = JSON.parse(toastData);
+
         render({
           component: "GlobalToast",
           el: toast,
           props: {
-            title: toastTitle,
-            message: toastMessage,
-            type: toastType,
+            title: data.title,
+            message: data.message,
+            type: data.type,
             duration: toastDuration,
           },
         });
 
-        sessionStorage.removeItem("lp-toastMessage");
-        sessionStorage.removeItem("lp-toastType");
+        this.cookieUtil.removeCookie("lpToast");
 
         setTimeout(() => {
           document.body.removeChild(toast);
