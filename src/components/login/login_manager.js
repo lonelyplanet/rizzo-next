@@ -5,7 +5,7 @@ import User from "./user";
 export default class LoginManager {
   constructor() {
     this.lunaStatusUrl = "https://auth.lonelyplanet.com/users/status.json";
-    this.dotcomConnectStatusUrl = "http://connect.qa.lonelyplanet.com/users/status.json";
+    this.dotcomConnectStatusUrl = process.env.CONNECT_STATUS;
     this.feedUrl = "https://www.lonelyplanet.com/thorntree/users/feed";
 
     this.checkStatus();
@@ -29,7 +29,7 @@ export default class LoginManager {
     })).done(([lunaUser], [connectUser]) => {
       let user = Object.assign({}, connectUser, { "connect": true });
 
-      if (lunaUser) {
+      if (lunaUser.id) {
         user = Object.assign({}, lunaUser, { "luna": true });
       }
 

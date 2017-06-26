@@ -53,8 +53,8 @@ module.exports = function(config) {
     webpack: {
         module: {
             noParse: webpackConfig.module.noParse,
-            loaders: webpackConfig.module.loaders,
-            // postLoaders: [{ 
+            rules: webpackConfig.module.rules,
+            // postLoaders: [{
             //     test: /\.jsx?$/,
             //     exclude: /(spec|node_modules|bower_components)\//,
             //     loader: "istanbul-instrumenter"
@@ -73,7 +73,7 @@ module.exports = function(config) {
     },
 
     coverageReporter: {
-      
+
       dir : "docs/coverage",
       reporters: [{
         type : "html"

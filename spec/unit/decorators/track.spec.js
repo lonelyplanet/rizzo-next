@@ -1,5 +1,5 @@
 // TODO: had to comment out because of https://github.com/deepsweet/istanbul-instrumenter-loader/issues/15
-// let Injector = require("inject!../../../src/core/decorators/track");
+// let Injector = require("Inject-loader!../../../src/core/decorators/track");
 
 // let trackEvent = sinon.spy();
 // let track = Injector({

@@ -1,5 +1,5 @@
 // This is gonna be a doozy
-let Injector = require("inject!../../../src/components/map/map_component");
+let Injector = require("Inject-loader!../../../src/components/map/map_component");
 
 let pushState = sinon.stub();
 

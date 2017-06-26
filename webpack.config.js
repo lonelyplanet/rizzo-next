@@ -20,9 +20,9 @@ module.exports = {
   },
   module: {
     noParse: /node_modules\/(jquery|keymirror)/,
-    loaders: [{
+    rules: [{
         test: /(\.jsx?)$/,
-        loader: "babel",
+        loader: "babel-loader",
         // Excluding everything EXCEPT rizzo-next and flamsteed
         exclude: /node_modules\/(?!rizzo|flamsteed).*/,
         query: {
@@ -34,22 +34,22 @@ module.exports = {
         // For some reason the sass-loader borks karma
         test: /\.scss$/,
         // loader: "file"
-        loader: "style!css!sass?includePaths[]=" + path.join(__dirname, "node_modules")
+        loader: "style-loader!css-loader!sass-loader?includePaths[]=" + path.join(__dirname, "node_modules")
       },
       {
         test: /\.hbs$/,
-        loader: "handlebars?rootRelative=" + path.join(__dirname, "src") + "/" +
+        loader: "handlebars-loader?rootRelative=" + path.join(__dirname, "src") + "/" +
           "&runtime=" + require.resolve("handlebars/dist/handlebars.runtime")
       },
       {
         test: /picker(.date)?.js$/,
-        loader: "imports?define=>false"
+        loader: "imports-loader?define=>false"
       }, {
         test: /sinon(.*)?\.js$/,
-        loader: "imports?define=>false"
+        loader: "imports-loader?define=>false"
       }, {
         test: /\.json$/,
-        loader: "json"
+        loader: "json-loader"
       }]
   }
 };

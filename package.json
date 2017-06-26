@@ -33,6 +33,7 @@
   "version": "0.16.4",
   "pre-commit": [
     "scsslint",
+    "test",
     "lint"
   ],
   "dependencies": {
