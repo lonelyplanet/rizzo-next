@@ -5,7 +5,6 @@ let ArticlesComponent = Injector({
     ++clampCalls;
     clampCalledWith = options;
   },
-  "Tabs": function() {}
 }).default;
 let $ = require("jquery");
 let fixture = `
