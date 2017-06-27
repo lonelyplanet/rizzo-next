@@ -1,6 +1,6 @@
 import User from "../../../src/components/login/user";
 
-let Injector = require("Inject-loader!../../../src/components/login/login_manager");
+let Injector = require("inject-loader!../../../src/components/login/login_manager");
 
 let doneSpy = sinon.spy();
 let failSpy = sinon.spy();

@@ -1,4 +1,4 @@
-import Injector from "Inject-loader!../../../src/components/articles/";
+import Injector from "inject-loader!../../../src/components/articles/";
 let clampCalls = 0, clampCalledWith;
 let ArticlesComponent = Injector({
   "clamp-js/clamp.js": function(el, options) {

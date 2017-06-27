@@ -1,5 +1,5 @@
 import $ from "jquery";
-let Injector = require("Inject-loader!../../../src/components/header/header_component");
+let Injector = require("inject-loader!../../../src/components/header/header_component");
 
 let showSearchCalled = 0;
 

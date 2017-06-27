@@ -1,4 +1,4 @@
-let Injector = require("Inject-loader!../../../src/components/hotels/hotels_widget");
+let Injector = require("inject-loader!../../../src/components/hotels/hotels_widget");
 import $ from "jquery";
 
 let HotelsWidget = Injector({
