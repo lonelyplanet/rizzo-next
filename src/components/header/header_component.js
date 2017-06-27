@@ -83,14 +83,15 @@ class Header extends Component {
             type: data.type,
             duration: toastDuration,
             animationDuration,
+            onClose: () => {
+              this.cookieUtil.removeCookie("lpToast");
+
+              setTimeout(() => {
+                document.body.removeChild(toast);
+              }, animationDuration);
+            },
           },
         });
-
-        this.cookieUtil.removeCookie("lpToast");
-
-        setTimeout(() => {
-          document.body.removeChild(toast);
-        }, toastDuration + 200);
       }
     });
   }
