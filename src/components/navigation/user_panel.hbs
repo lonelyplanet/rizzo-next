@@ -1,12 +1,7 @@
 <div class="{{className}}">
   <ul class="sub-navigation__list">
     <li class="sub-navigation__item">
-      {{#if user.luna}}
-      <a class="sub-navigation__link" href="//www.lonelyplanet.com/thorntree/profiles/{{user.profileSlug}}">Profile</a>
-      {{/if}}
-      {{#if user.connect}}
-      <a class="sub-navigation__link" href="//connect.lonelyplanet.com/profiles/{{user.id}}">Settings</a>
-      {{/if}}
+       <a class="sub-navigation__link" href="{{user.profileLink}}">Settings</a>
     </li>
 
     <li class="sub-navigation__item">
@@ -22,12 +17,7 @@
     </li>
 
     <li class="sub-navigation__item">
-      {{#if user.luna}}
-      <a class="sub-navigation__link" href="//auth.lonelyplanet.com/users/sign_out">Sign Out</a>
-      {{/if}}
-      {{#if user.connect}}
-      <a class="sub-navigation__link" href="//connect.lonelyplanet.com/users/sign_out">Sign Out</a>
-      {{/if}}
+      <a class="sub-navigation__link" href="{{user.signOutLink}}">Sign Out</a>
     </li>
   </ul>
 </div>
