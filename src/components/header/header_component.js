@@ -69,6 +69,7 @@ class Header extends Component {
 
       const toastData = this.cookieUtil.getCookie("lpToast");
       const toastDuration = 3000;
+      const animationDuration = 200;
 
       if (toastData) {
         const data = JSON.parse(toastData);
@@ -81,6 +82,7 @@ class Header extends Component {
             message: data.message,
             type: data.type,
             duration: toastDuration,
+            animationDuration,
           },
         });
 
