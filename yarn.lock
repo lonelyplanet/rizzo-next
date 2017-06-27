@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@lonelyplanet/dotcom-core@^1.3.1":
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/@lonelyplanet/dotcom-core/-/dotcom-core-1.3.1.tgz#5750c8b5c4d6611a9c176cdd10b16a197ff2edac"
+"@lonelyplanet/dotcom-core@^1.3.2":
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/@lonelyplanet/dotcom-core/-/dotcom-core-1.3.2.tgz#c6e28adab2055ce434075c7d3946204b368389c1"
   dependencies:
     backpack-ui "^4.25.0"
     inversify "^4.1.0"
