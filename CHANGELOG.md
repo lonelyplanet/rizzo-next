@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.17.0"></a>
+# [0.17.0](https://github.com/lonelyplanet/rizzo-next/compare/v0.16.1...v0.17.0) (2017-06-27)
+
+
+### Bug Fixes
+
+* Changed font asset to use https ([731b19b](https://github.com/lonelyplanet/rizzo-next/commit/731b19b))
+
+
+### Features
+
+*  Login with global header ([#684](https://github.com/lonelyplanet/rizzo-next/issues/684)) ([d55f425](https://github.com/lonelyplanet/rizzo-next/commit/d55f425))
+
+
+
 <a name="0.16.4"></a>
 ## [0.16.4](https://github.com/lonelyplanet/rizzo-next/compare/v0.16.1...v0.16.4) (2017-05-26)
 
