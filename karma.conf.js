@@ -23,7 +23,7 @@ module.exports = function(config) {
     exclude: [],
 
     // web server port
-    port: 8081,
+    port: 8082,
 
     // level of logging
     // possible values: LOG_DISABLE || LOG_ERROR || LOG_WARN || LOG_INFO || LOG_DEBUG
@@ -53,8 +53,8 @@ module.exports = function(config) {
     webpack: {
         module: {
             noParse: webpackConfig.module.noParse,
-            loaders: webpackConfig.module.loaders,
-            // postLoaders: [{ 
+            rules: webpackConfig.module.rules,
+            // postLoaders: [{
             //     test: /\.jsx?$/,
             //     exclude: /(spec|node_modules|bower_components)\//,
             //     loader: "istanbul-instrumenter"
@@ -73,7 +73,7 @@ module.exports = function(config) {
     },
 
     coverageReporter: {
-      
+
       dir : "docs/coverage",
       reporters: [{
         type : "html"

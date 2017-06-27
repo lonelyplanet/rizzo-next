@@ -1,3 +1,10 @@
-<a class="avatar avatar--navigation" href="#">
+{{#if user.luna}}
+<a class="avatar avatar--navigation" href="//www.lonelyplanet.com/thorntree/profiles/{{user.profileSlug}}">
   <img src="{{user.avatar}}" alt="{{user.username}} avatar">
 </a>
+{{/if}}
+{{#if user.connect}}
+<a class="avatar avatar--navigation" href="//www.lonelyplanet.com/profile/{{user.profileSlug}}">
+  <img src="{{user.avatar}}" alt="{{user.username}} avatar">
+</a>
+{{/if}}

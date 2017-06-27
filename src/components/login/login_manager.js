@@ -4,9 +4,10 @@ import User from "./user";
 
 export default class LoginManager {
   constructor() {
-    this.statusUrl = "https://auth.lonelyplanet.com/users/status.json";
+    this.lunaStatusUrl = "https://auth.lonelyplanet.com/users/status.json";
+    this.dotcomConnectStatusUrl = process.env.AUTH_USER_STATUS;
     this.feedUrl = "https://www.lonelyplanet.com/thorntree/users/feed";
-    
+
     this.checkStatus();
   }
   /**
@@ -14,11 +15,25 @@ export default class LoginManager {
    * @return {jQuery.Deferred}
    */
   checkStatus() {
-    return $.ajax({
-      url: this.statusUrl,
+    $.when($.ajax({
+      url: this.lunaStatusUrl,
       dataType: "jsonp",
       success: this.statusFetched.bind(this),
       error: this.error.bind(this)
+    }),
+    $.ajax({
+      url: this.dotcomConnectStatusUrl,
+      dataType: "jsonp",
+      success: this.statusFetched.bind(this),
+      error: this.error.bind(this)
+    })).done(([lunaUser], [connectUser]) => {
+      let user = Object.assign({}, connectUser, { "connect": true });
+
+      if (lunaUser.id) {
+        user = Object.assign({}, lunaUser, { "luna": true });
+      }
+
+      this.statusFetched(user);
     });
   }
   /**
@@ -29,19 +44,19 @@ export default class LoginManager {
    */
   statusFetched(user) {
     this.user = (user.username ? new User(user) : new User());
-    
+
     if (!user.id) {
       return this._updateStatus();
     }
 
     this._updateStatus();
   }
-  
+
   @publish("user.status.update")
   _updateStatus() {
     return this.user.toJSON();
   }
-  
+
   error() {
     throw "Error retrieving luna login information";
   }

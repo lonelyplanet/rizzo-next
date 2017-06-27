@@ -1,11 +1,10 @@
-import Injector from "inject!../../../src/components/articles/";
+import Injector from "inject-loader!../../../src/components/articles/";
 let clampCalls = 0, clampCalledWith;
 let ArticlesComponent = Injector({
   "clamp-js/clamp.js": function(el, options) {
     ++clampCalls;
     clampCalledWith = options;
   },
-  "Tabs": function() {}
 }).default;
 let $ = require("jquery");
 let fixture = `
@@ -39,10 +38,10 @@ describe("articles component", () => {
   it("should detect mobile", () => {
     let el = $("<div />");
     let component = new ArticlesComponent({ el });
-    
+
     component.widthWindow = () => 320;
     expect(component._detectScreen()).to.be("mobile");
-    
+
     component.widthWindow = () => 1024;
 
     expect(component._detectScreen()).to.be("desktop");

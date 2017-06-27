@@ -1,10 +1,6 @@
-let Injector = require("inject!../../../src/components/hotels/hotels_widget");
-import $ from "jquery";
+let HotelsWidget = require("../../../src/components/hotels/hotels_widget").default;
 
-let HotelsWidget = Injector({
-  "../../core/decorators/track": function() { return function() {}; },
-  "../../core/decorators/publish": function() { return function() {}; }
-}).default;
+import $ from "jquery";
 
 let hotelsTemplate = require("../../../src/components/hotels/hotels.hbs");
 

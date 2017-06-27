@@ -192,6 +192,10 @@ class NavigationComponent extends Component {
     let $mobileNavigationHeader = this.$mobileNavigation.find(".js-mobile-navigation-header");
 
     if (!user.id) {
+      if (this.showNewLoginLink()) {
+        $(".navigation__link[href*='sign_in']", $(".lp-global-header__navigation"))
+          .attr("href", "#login");
+      }
       return;
     }
 
@@ -215,6 +219,10 @@ class NavigationComponent extends Component {
   @subscribe("user.notifications.update")
   userNotificationUpdate(user) {
     this.userStatusUpdate(user);
+  }
+
+  showNewLoginLink() {
+    return document.cookie.indexOf("split-16-connect") > -1;
   }
 }
 
