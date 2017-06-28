@@ -195,6 +195,9 @@ class NavigationComponent extends Component {
       if (this.showNewLoginLink()) {
         $(".navigation__link[href*='sign_in']", $(".lp-global-header__navigation"))
           .attr("href", "#login");
+
+        $(".mobile-navigation__link[href*='sign_in']", $(".mobile-navigation"))
+          .attr("href", "#login");
       }
       return;
     }

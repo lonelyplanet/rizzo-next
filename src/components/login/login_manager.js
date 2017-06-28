@@ -15,18 +15,18 @@ export default class LoginManager {
    * @return {jQuery.Deferred}
    */
   checkStatus() {
-    $.when($.ajax({
-      url: this.lunaStatusUrl,
-      dataType: "jsonp",
-      success: this.statusFetched.bind(this),
-      error: this.error.bind(this)
-    }),
-    $.ajax({
-      url: this.dotcomConnectStatusUrl,
-      dataType: "jsonp",
-      success: this.statusFetched.bind(this),
-      error: this.error.bind(this)
-    })).done(([lunaUser], [connectUser]) => {
+    $.when(
+      $.ajax({
+        url: this.lunaStatusUrl,
+        dataType: "jsonp",
+        error: this.error.bind(this)
+      }),
+      $.ajax({
+        url: this.dotcomConnectStatusUrl,
+        dataType: "jsonp",
+        error: this.error.bind(this)
+      })
+    ).done(([lunaUser], [connectUser]) => {
       let user = Object.assign({}, connectUser, { "connect": true });
 
       if (lunaUser.id) {
