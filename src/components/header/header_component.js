@@ -1,4 +1,5 @@
 import { Component } from "../../core/bane";
+import CookieUtil from "../../core/cookie_util";
 import SearchComponent from "../search";
 import NavigationComponent from "../navigation";
 import NavigationState from "../navigation/navigation_state";
@@ -36,6 +37,8 @@ class Header extends Component {
 
     this.appendMenuIcon();
     this.buildGlobalComponents(options);
+
+    this.cookieUtil = new CookieUtil();
   }
 
   buildGlobalComponents(options = {}) {
@@ -60,14 +63,36 @@ class Header extends Component {
         props: options,
       });
 
-      // TODO: Add logic for toast
-      /*
-      const toastMessage = localStorage.getItem("toast");
-      if (toastMessage) {
-        console.log(toastMessage);
-        localStorage.removeItem("toast");
+      const toast = document.createElement("div");
+      toast.id = "lp-global-toast";
+      document.body.appendChild(toast);
+
+      const toastData = this.cookieUtil.getCookie("lpToast");
+      const toastDuration = 3000;
+      const animationDuration = 200;
+
+      if (toastData) {
+        const data = JSON.parse(toastData);
+
+        render({
+          component: "GlobalToast",
+          el: toast,
+          props: {
+            title: data.title,
+            message: data.message,
+            type: data.type,
+            duration: toastDuration,
+            animationDuration,
+            onClose: () => {
+              this.cookieUtil.removeCookie("lpToast");
+
+              setTimeout(() => {
+                document.body.removeChild(toast);
+              }, animationDuration);
+            },
+          },
+        });
       }
-      */
     });
   }
 
