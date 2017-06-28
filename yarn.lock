@@ -2,17 +2,28 @@
 # yarn lockfile v1
 
 
-"@lonelyplanet/dotcom-core@^1.3.1":
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/@lonelyplanet/dotcom-core/-/dotcom-core-1.3.1.tgz#5750c8b5c4d6611a9c176cdd10b16a197ff2edac"
+"@lonelyplanet/dotcom-core@^1.3.3":
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/@lonelyplanet/dotcom-core/-/dotcom-core-1.3.3.tgz#8ebb5a265ee55e30f5fb4bcf7ef9b789502962eb"
   dependencies:
-    backpack-ui "^4.25.0"
+    "@lonelyplanet/open-planet-node" "^1.2.4"
+    backpack-ui "^4.26.1"
     inversify "^4.1.0"
     isomorphic-fetch "^2.2.1"
     radium "^0.18.2"
     react "^15.5.4"
     react-dom "^15.5.4"
     reflect-metadata "^0.1.10"
+
+"@lonelyplanet/open-planet-node@^1.2.4":
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/@lonelyplanet/open-planet-node/-/open-planet-node-1.2.4.tgz#12d23978ac5e3b9043100d671dac5ba76ef0f367"
+  dependencies:
+    inversify "^4.1.0"
+    pluralize "^5.0.0"
+    reflect-metadata "^0.1.10"
+    request "^2.81.0"
+    request-promise-native "^1.0.4"
 
 "@mapbox/gl-matrix@^0.0.1":
   version "0.0.1"
@@ -1406,9 +1417,9 @@ backo2@1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/backo2/-/backo2-1.0.2.tgz#31ab1ac8b129363463e35b3ebb69f4dfcfba7947"
 
-backpack-ui@^4.25.0:
-  version "4.26.0"
-  resolved "https://registry.yarnpkg.com/backpack-ui/-/backpack-ui-4.26.0.tgz#3d601b011cd8274964c41222420c824988221087"
+backpack-ui@^4.26.1:
+  version "4.26.1"
+  resolved "https://registry.yarnpkg.com/backpack-ui/-/backpack-ui-4.26.1.tgz#eae638e8a4dcc54546c0da2346ad8e8e38255973"
   dependencies:
     axios "^0.15.3"
     chai "^3.5.0"
@@ -5743,7 +5754,7 @@ lodash.uniq@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
 
-lodash@4.x.x, lodash@^4.0.0, lodash@^4.0.1, lodash@^4.1.0, lodash@^4.12.0, lodash@^4.14.0, lodash@^4.16.6, lodash@^4.17.4, lodash@^4.2.0, lodash@^4.2.1, lodash@^4.3.0, lodash@^4.5.0, lodash@~4.17.4:
+lodash@4.x.x, lodash@^4.0.0, lodash@^4.0.1, lodash@^4.1.0, lodash@^4.12.0, lodash@^4.13.1, lodash@^4.14.0, lodash@^4.16.6, lodash@^4.17.4, lodash@^4.2.0, lodash@^4.2.1, lodash@^4.3.0, lodash@^4.5.0, lodash@~4.17.4:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
@@ -6851,6 +6862,10 @@ pluralize@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-4.0.0.tgz#59b708c1c0190a2f692f1c7618c446b052fd1762"
 
+pluralize@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-5.0.0.tgz#e8b9073af9a0cb02e4c2efa95b55bebbdbf01299"
+
 podda@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/podda/-/podda-1.2.2.tgz#15b0edbd334ade145813343f5ecf9c10a71cf500"
@@ -7948,6 +7963,20 @@ request-progress@~2.0.1:
   dependencies:
     throttleit "^1.0.0"
 
+request-promise-core@1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/request-promise-core/-/request-promise-core-1.1.1.tgz#3eee00b2c5aa83239cfb04c5700da36f81cd08b6"
+  dependencies:
+    lodash "^4.13.1"
+
+request-promise-native@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/request-promise-native/-/request-promise-native-1.0.4.tgz#86988ec8eee408e45579fce83bfd05b3adf9a155"
+  dependencies:
+    request-promise-core "1.1.1"
+    stealthy-require "^1.1.0"
+    tough-cookie ">=2.3.0"
+
 request@2, request@^2.79.0, request@~2.79.0:
   version "2.79.0"
   resolved "https://registry.yarnpkg.com/request/-/request-2.79.0.tgz#4dfe5bf6be8b8cdc37fcf93e04b65577722710de"
@@ -8614,6 +8643,10 @@ stdout-stream@^1.4.0:
   dependencies:
     readable-stream "^2.0.1"
 
+stealthy-require@^1.1.0:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/stealthy-require/-/stealthy-require-1.1.1.tgz#35b09875b4ff49f26a777e509b3090a3226bf24b"
+
 stream-browserify@^2.0.0, stream-browserify@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/stream-browserify/-/stream-browserify-2.0.1.tgz#66266ee5f9bdb9940a4e4514cafb43bb71e5c9db"
@@ -9014,7 +9047,7 @@ to-utf8@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/to-utf8/-/to-utf8-0.0.1.tgz#d17aea72ff2fba39b9e43601be7b3ff72e089852"
 
-tough-cookie@^2.2.0, tough-cookie@~2.3.0:
+tough-cookie@>=2.3.0, tough-cookie@^2.2.0, tough-cookie@~2.3.0:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/tough-cookie/-/tough-cookie-2.3.2.tgz#f081f76e4c85720e6c37a5faced737150d84072a"
   dependencies:
