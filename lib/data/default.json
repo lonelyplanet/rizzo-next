@@ -155,7 +155,7 @@
         },
         {
           "title": "Sign In",
-          "slug": "#login"
+          "slug": "//auth.lonelyplanet.com/users/sign_in"
         }
       ]
     },
