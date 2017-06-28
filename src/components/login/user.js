@@ -23,6 +23,17 @@ export default class User {
     this.activity = activity;
     this.luna = luna;
     this.connect = connect;
+    this.profileLink = connect ?
+      `/profile/${id}/edit` :
+      `//www.lonelyplanet.com/thorntree/profiles/${profileSlug}`;
+
+    this.publicProfileLink = connect ?
+      `/profile/${username}` :
+      `//www.lonelyplanet.com/thorntree/profiles/${profileSlug}`;
+
+    this.signOutLink = connect ?
+      `${process.env.AUTH_HOST}/users/sign_out` :
+      "//auth.lonelyplanet.com/users/sign_out";
   }
   toJSON() {
     let obj = {};
