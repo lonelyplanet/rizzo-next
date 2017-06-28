@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.18.1"></a>
+## [0.18.1](https://github.com/lonelyplanet/rizzo-next/compare/v0.18.0...v0.18.1) (2017-06-28)
+
+
+### Bug Fixes
+
+* Bump dotcom-core ([c3932ad](https://github.com/lonelyplanet/rizzo-next/commit/c3932ad))
+* Update links for mobile navigation ([#687](https://github.com/lonelyplanet/rizzo-next/issues/687)) ([cfe4c7a](https://github.com/lonelyplanet/rizzo-next/commit/cfe4c7a))
+
+
+
 <a name="0.18.0"></a>
 # [0.18.0](https://github.com/lonelyplanet/rizzo-next/compare/v0.17.1...v0.18.0) (2017-06-28)
 
