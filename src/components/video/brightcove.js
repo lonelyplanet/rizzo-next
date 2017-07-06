@@ -239,7 +239,13 @@ class Brightcove extends VideoPlayer {
     this.currentVideoIndex = this.currentVideoIndex === null ? 0 : this.currentVideoIndex + 1;
     this.currentVideoIndex = this.currentVideoIndex > this.videos.length - 1 ? 0 : this.currentVideoIndex;
 
-    this.player.catalog.load(this.videos[this.currentVideoIndex]);
+    const video = this.videos[this.currentVideoIndex];
+
+    // Do not load a video that is already loaded
+    // (brightcove's engagement score metrics will break)
+    if (!this.player.mediainfo || (this.player.mediainfo.id !== video.id)) {
+      this.player.catalog.load(video);
+    }
   }
 
   /**

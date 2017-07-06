@@ -19,10 +19,10 @@
           "slug": "//www.lonelyplanet.com/video",
           "submenu": {
             "featured": {
-              "image": "https://lonelyplanetstatic.imgix.net/op-video-sync/assets/discover_thailand_masthead.jpg?w=80&h=60&fit=min",
-              "title": "Discover Thailand",
+              "image": "https://lonelyplanetstatic.imgix.net/op-video-sync/assets/journeys_masthead.jpg?w=80&h=60&fit=min",
+              "title": "Journeys",
               "subtitle": "Featured",
-              "link": "//www.lonelyplanet.com/video/discover-thailand/v/cha/8"
+              "link": "//www.lonelyplanet.com/video/journeys/v/cha/9"
             },
             "items": [
               {
@@ -44,10 +44,6 @@
               {
                 "title": "Food and drink",
                 "slug": "//www.lonelyplanet.com/video/food-and-drink/v/cha/7"
-              },
-              {
-                "title": "Journeys",
-                "slug": "//www.lonelyplanet.com/video/journeys/v/cha/9"
               }
             ],
             "call_to_action": {
