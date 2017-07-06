@@ -3,11 +3,6 @@
 .article-header {
   @include details-header();
 
-  .dfp-sponsor-badge {
-    @media(min-width: $min-600) {
-      margin-bottom: -2rem;
-    }
-  }
 
 
   // Implementation detail

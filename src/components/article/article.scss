@@ -80,17 +80,15 @@
 
 .article__content {
   @media (min-width: $min-600) {
-    // float: left;
     margin-left: (span(3) + gutter());
     width: span(9);
   }
 }
 
 .article__footer {
-  @include container;
-  @include container-static(6);
   align-items: center;
   display: flex;
+  max-width: span(6 static);
 
   .no-flexbox & {
     display: block;
@@ -102,17 +100,11 @@
 }
 
 .article__sponsor-ad {
-  @include container;
   font-size: 1.4rem;
   line-height: (22 / 14);
+  max-width: span(6 static);
   padding-bottom: .8rem;
   padding-top: .8rem;
-
-  @media(min-width: $min-720) {
-    @include with-layout(static) {
-      width: span(6);
-    }
-  }
 
 
 

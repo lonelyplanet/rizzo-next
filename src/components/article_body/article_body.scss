@@ -73,6 +73,16 @@
       }
     }
 
+    .adunit--articles-inline {
+      margin-bottom: 1rem;
+      margin-top: 1rem;
+
+      @media (min-width: $min-600) {
+        margin-bottom: 1.7em;
+        margin-top: 1.7em;
+      }
+    }
+
     .copy--body__list {
       padding-left: 2rem;
     }

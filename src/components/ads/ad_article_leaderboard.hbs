@@ -1,5 +1,18 @@
 <div class="ad ad--leaderboard ad--article">
   <div class="ad--leaderboard__container">
-    <div class="adunit adunit--leaderboard js-slot-leader" data-size-mapping="leaderboard-responsive" data-targeting='{ "position": "superzone" }'></div>
+    {{#if adpackage}}
+      <div
+        id="ad-articles-leaderboard{{#if adSlotNumber}}-{{adSlotNumber}}{{/if}}"
+        class="adunit--leaderboard">
+      </div>
+    {{/if}}
+
+    {{#unless adpackage}}
+      <div
+        class="adunit adunit--leaderboard js-slot-leader"
+        data-size-mapping="leaderboard-responsive"
+        data-targeting='{ "position": "superzone" }'>
+      </div>
+    {{/unless}}
   </div>
 </div>

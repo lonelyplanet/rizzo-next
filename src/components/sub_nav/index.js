@@ -146,8 +146,6 @@ export default class SubNav extends Component {
         id: "sights",
         title: "Sights"
       })).prependTo(this.$subNavList);
-    } else {
-      $("#sights").closest(".segment").remove();
     }
   }
 }
