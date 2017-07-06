@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.18.7"></a>
+## [0.18.7](https://github.com/lonelyplanet/rizzo-next/compare/v0.18.6...v0.18.7) (2017-07-06)
+
+
+### Bug Fixes
+
+* change className for destinations navigation link. previously hardcoded to active ([#697](https://github.com/lonelyplanet/rizzo-next/issues/697)) ([072d157](https://github.com/lonelyplanet/rizzo-next/commit/072d157))
+* Get rizzo-next setup to work in legacy apps ([934fcd4](https://github.com/lonelyplanet/rizzo-next/commit/934fcd4))
+
+
+
 <a name="0.18.6"></a>
 ## [0.18.6](https://github.com/lonelyplanet/rizzo-next/compare/v0.18.5...v0.18.6) (2017-07-06)
 
