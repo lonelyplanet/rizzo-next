@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.18.3"></a>
+## [0.18.3](https://github.com/lonelyplanet/rizzo-next/compare/v0.18.2...v0.18.3) (2017-07-06)
+
+
+### Bug Fixes
+
+* add modal trigger to mobile nav ([314de8f](https://github.com/lonelyplanet/rizzo-next/commit/314de8f))
+* Add SVG icons to global footer ([#693](https://github.com/lonelyplanet/rizzo-next/issues/693)) ([b8a2acb](https://github.com/lonelyplanet/rizzo-next/commit/b8a2acb))
+
+
+
 <a name="0.18.2"></a>
 ## [0.18.2](https://github.com/lonelyplanet/rizzo-next/compare/v0.18.1...v0.18.2) (2017-06-28)
 
