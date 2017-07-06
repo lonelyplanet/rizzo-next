@@ -2,6 +2,125 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.18.4"></a>
+## [0.18.4](https://github.com/lonelyplanet/rizzo-next/compare/v0.18.3...v0.18.4) (2017-07-06)
+
+
+
+<a name="0.14.17"></a>
+## [0.14.17](https://github.com/lonelyplanet/rizzo-next/compare/v0.14.16...v0.14.17) (2017-06-15)
+
+
+
+<a name="0.14.16"></a>
+## [0.14.16](https://github.com/lonelyplanet/rizzo-next/compare/v0.14.15...v0.14.16) (2017-06-13)
+
+
+### Bug Fixes
+
+* Do NOT remove sights component ([c3f9ec4](https://github.com/lonelyplanet/rizzo-next/commit/c3f9ec4))
+
+
+
+<a name="0.14.15"></a>
+## [0.14.15](https://github.com/lonelyplanet/rizzo-next/compare/v0.14.14...v0.14.15) (2017-06-12)
+
+
+
+<a name="0.14.14"></a>
+## [0.14.14](https://github.com/lonelyplanet/rizzo-next/compare/v0.14.13...v0.14.14) (2017-05-30)
+
+
+### Bug Fixes
+
+* Default features key in ArticleModel to empty array ([#676](https://github.com/lonelyplanet/rizzo-next/issues/676)) ([59d3421](https://github.com/lonelyplanet/rizzo-next/commit/59d3421))
+
+
+
+<a name="0.14.13"></a>
+## [0.14.13](https://github.com/lonelyplanet/rizzo-next/compare/v0.16.4...v0.14.13) (2017-05-26)
+
+
+### Bug Fixes
+
+* Fix up article ad slots ([#675](https://github.com/lonelyplanet/rizzo-next/issues/675)) ([1379e1d](https://github.com/lonelyplanet/rizzo-next/commit/1379e1d))
+* Update footer interest links ([3bf57f8](https://github.com/lonelyplanet/rizzo-next/commit/3bf57f8))
+
+
+
+<a name="0.14.12"></a>
+## [0.14.12](https://github.com/lonelyplanet/rizzo-next/compare/v0.14.11...v0.14.12) (2017-05-24)
+
+
+### Bug Fixes
+
+* Changed font asset to use https ([1370152](https://github.com/lonelyplanet/rizzo-next/commit/1370152))
+
+
+
+<a name="0.14.11"></a>
+## [0.14.11](https://github.com/lonelyplanet/rizzo-next/compare/v0.14.10...v0.14.11) (2017-05-24)
+
+
+### Bug Fixes
+
+* Update new yieldmo ad slot ([#668](https://github.com/lonelyplanet/rizzo-next/issues/668)) ([996485e](https://github.com/lonelyplanet/rizzo-next/commit/996485e))
+
+
+
+<a name="0.14.10"></a>
+## [0.14.10](https://github.com/lonelyplanet/rizzo-next/compare/v0.14.9...v0.14.10) (2017-05-23)
+
+
+### Bug Fixes
+
+* Create unique IDs for article ads ([#665](https://github.com/lonelyplanet/rizzo-next/issues/665)) ([4d112ea](https://github.com/lonelyplanet/rizzo-next/commit/4d112ea))
+* Use standard-version command for version:minor script ([#667](https://github.com/lonelyplanet/rizzo-next/issues/667)) ([b7dd9d4](https://github.com/lonelyplanet/rizzo-next/commit/b7dd9d4))
+
+
+
+<a name="0.14.9"></a>
+## [0.14.9](https://github.com/lonelyplanet/rizzo-next/compare/v0.14.8...v0.14.9) (2017-05-19)
+
+
+### Bug Fixes
+
+* Change ID for sponsor ad ([#664](https://github.com/lonelyplanet/rizzo-next/issues/664)) ([07f34e9](https://github.com/lonelyplanet/rizzo-next/commit/07f34e9))
+
+
+
+<a name="0.14.8"></a>
+## [0.14.8](https://github.com/lonelyplanet/rizzo-next/compare/v0.14.7...v0.14.8) (2017-05-19)
+
+
+### Bug Fixes
+
+* Change ID for article ad slots, use feature flag ([#663](https://github.com/lonelyplanet/rizzo-next/issues/663)) ([3ccf063](https://github.com/lonelyplanet/rizzo-next/commit/3ccf063))
+
+
+
+<a name="0.14.7"></a>
+## [0.14.7](https://github.com/lonelyplanet/rizzo-next/compare/v0.14.6...v0.14.7) (2017-05-19)
+
+
+### Bug Fixes
+
+* Fix article ad, footer layout ([#662](https://github.com/lonelyplanet/rizzo-next/issues/662)) ([6d39820](https://github.com/lonelyplanet/rizzo-next/commit/6d39820))
+
+
+
+<a name="0.14.6"></a>
+## [0.14.6](https://github.com/lonelyplanet/rizzo-next/compare/v0.16.1...v0.14.6) (2017-05-15)
+
+
+### Bug Fixes
+
+* Insert ad slots into article body after every 6th paragraph ([#659](https://github.com/lonelyplanet/rizzo-next/issues/659)) ([f82d846](https://github.com/lonelyplanet/rizzo-next/commit/f82d846))
+* Update article header layout ([#660](https://github.com/lonelyplanet/rizzo-next/issues/660)) ([10b3693](https://github.com/lonelyplanet/rizzo-next/commit/10b3693))
+* Update styles for video ad overlay ([ebec3e8](https://github.com/lonelyplanet/rizzo-next/commit/ebec3e8))
+
+
+
 <a name="0.18.3"></a>
 ## [0.18.3](https://github.com/lonelyplanet/rizzo-next/compare/v0.18.2...v0.18.3) (2017-07-06)
 
