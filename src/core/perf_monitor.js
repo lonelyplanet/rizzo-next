@@ -32,7 +32,7 @@ export default class PerfMonitor {
   loadBelow() {
     mark(this.loadBelow);
 
-    measure(`mark_critical_to_below`, this.loadCritical, this.loadBelow);
-    measure(`mark_critical`, "domContentLoadedEventEnd", this.loadCritical);
+    measure("mark_critical_to_below", this.loadCritical, this.loadBelow);
+    measure("mark_critical", "domContentLoadedEventEnd", this.loadCritical);
   }
 }

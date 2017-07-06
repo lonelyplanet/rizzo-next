@@ -51,7 +51,7 @@ export default class CookieUtil {
   removeCookie(name) {
     let cookieString = `${name}=`;
     cookieString += ";max-age=0";
-    cookieString += `;expires=jan 1 1973`;
+    cookieString += ";expires=jan 1 1973";
     document.cookie = cookieString;
   }
 }

@@ -79,7 +79,7 @@ export default class ArticleBodyComponent extends Component {
         if (!$span.length) {
           $(el).contents().filter(function() {
             return this.nodeType === 3 && $.trim(this.nodeValue).length;
-          }).wrap(`<span class="copy--caption" />`);
+          }).wrap("<span class=\"copy--caption\" />");
         }
       });
 

@@ -1,5 +1,5 @@
 import { Component } from "../../core/bane";
-import React from "react";
+import React from "react"; // eslint-disable-line no-unused-vars
 import { render } from "react-dom";
 import MainView from "./views/main.jsx";
 import MapActions from "./actions";
