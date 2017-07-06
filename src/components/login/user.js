@@ -32,7 +32,7 @@ export default class User {
       `//www.lonelyplanet.com/thorntree/profiles/${profileSlug}`;
 
     this.signOutLink = connect ?
-      `${process.env.AUTH_HOST}/users/sign_out` :
+      "//connect.lonelyplanet.com/users/sign_out" :
       "//auth.lonelyplanet.com/users/sign_out";
   }
   toJSON() {

@@ -5,7 +5,7 @@ import User from "./user";
 export default class LoginManager {
   constructor() {
     this.lunaStatusUrl = "https://auth.lonelyplanet.com/users/status.json";
-    this.dotcomConnectStatusUrl = `https://connect.lonelyplanet.com/users/status.json`;
+    this.dotcomConnectStatusUrl = "https://connect.lonelyplanet.com/users/status.json";
     this.feedUrl = "https://www.lonelyplanet.com/thorntree/users/feed";
 
     this.checkStatus();

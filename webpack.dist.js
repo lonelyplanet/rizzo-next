@@ -25,9 +25,11 @@ module.exports = {
   output: {
     path: path.join(__dirname, "dist"),
     filename: "[name].js",
+    chunkFilename: "chunk_[name].js",
     libraryTarget: "umd",
     umdNamedDefine: true,
-    library: "rizzo-next"
+    library: "rizzo-next",
+    publicPath: "/assets/",
   },
   module: {
     noParse: /node_modules\/(jquery|keymirror)/,

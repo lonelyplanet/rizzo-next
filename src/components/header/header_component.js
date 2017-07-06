@@ -93,7 +93,7 @@ class Header extends Component {
           },
         });
       }
-    });
+    }, "rizzo_next_global_components");
   }
 
   /**
