@@ -2,11 +2,11 @@
 # yarn lockfile v1
 
 
-"@lonelyplanet/dotcom-core@^1.3.5":
-  version "1.3.6"
-  resolved "https://registry.yarnpkg.com/@lonelyplanet/dotcom-core/-/dotcom-core-1.3.6.tgz#8d9409fca7172692b24bfc6b3f4b5b358dae6c15"
+"@lonelyplanet/dotcom-core@^1.3.7":
+  version "1.3.7"
+  resolved "https://registry.yarnpkg.com/@lonelyplanet/dotcom-core/-/dotcom-core-1.3.7.tgz#d3fa4e43ba2e5d04f6a124f7c0ea11fa670fa979"
   dependencies:
-    "@lonelyplanet/open-planet-node" "^1.2.7"
+    "@lonelyplanet/open-planet-node" "^1.2.8"
     backpack-ui "^4.26.1"
     inversify "^4.1.0"
     isomorphic-fetch "^2.2.1"
@@ -15,9 +15,9 @@
     react-dom "^15.5.4"
     reflect-metadata "^0.1.10"
 
-"@lonelyplanet/open-planet-node@^1.2.7":
-  version "1.2.7"
-  resolved "https://registry.yarnpkg.com/@lonelyplanet/open-planet-node/-/open-planet-node-1.2.7.tgz#2013de98f94683f9cb2863c23cd923642493785f"
+"@lonelyplanet/open-planet-node@^1.2.8":
+  version "1.2.8"
+  resolved "https://registry.yarnpkg.com/@lonelyplanet/open-planet-node/-/open-planet-node-1.2.8.tgz#0813af5683cb32fcbc98b577da495c14a440c72f"
   dependencies:
     inversify "^4.1.0"
     isomorphic-fetch "^2.2.1"
@@ -570,7 +570,7 @@ axios@^0.15.3:
   dependencies:
     follow-redirects "1.0.0"
 
-babel-cli@^6.16.0, babel-cli@^6.24.0:
+babel-cli@^6.16.0:
   version "6.24.1"
   resolved "https://registry.yarnpkg.com/babel-cli/-/babel-cli-6.24.1.tgz#207cd705bba61489b2ea41b5312341cf6aca2283"
   dependencies:
@@ -599,7 +599,7 @@ babel-code-frame@^6.11.0, babel-code-frame@^6.22.0, babel-code-frame@^6.8.0:
     esutils "^2.0.2"
     js-tokens "^3.0.0"
 
-babel-core@^6.0.14, babel-core@^6.24.0, babel-core@^6.24.1, babel-core@^6.5.2, babel-core@~6:
+babel-core@^6.0.14, babel-core@^6.24.1, babel-core@^6.5.2, babel-core@~6:
   version "6.25.0"
   resolved "https://registry.yarnpkg.com/babel-core/-/babel-core-6.25.0.tgz#7dd42b0463c742e9d5296deb3ec67a9322dad729"
   dependencies:
@@ -795,10 +795,6 @@ babel-messages@^6.23.0, babel-messages@^6.8.0:
   resolved "https://registry.yarnpkg.com/babel-messages/-/babel-messages-6.23.0.tgz#f3cdf4703858035b2a2951c6ec5edf6c62f2630e"
   dependencies:
     babel-runtime "^6.22.0"
-
-babel-plugin-add-module-exports@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/babel-plugin-add-module-exports/-/babel-plugin-add-module-exports-0.2.1.tgz#9ae9a1f4a8dc67f0cdec4f4aeda1e43a5ff65e25"
 
 babel-plugin-check-es2015-constants@^6.22.0:
   version "6.22.0"
@@ -1020,7 +1016,7 @@ babel-plugin-transform-es2015-modules-amd@^6.22.0, babel-plugin-transform-es2015
     babel-runtime "^6.22.0"
     babel-template "^6.24.1"
 
-babel-plugin-transform-es2015-modules-commonjs@^6.23.0, babel-plugin-transform-es2015-modules-commonjs@^6.24.0, babel-plugin-transform-es2015-modules-commonjs@^6.24.1:
+babel-plugin-transform-es2015-modules-commonjs@^6.23.0, babel-plugin-transform-es2015-modules-commonjs@^6.24.1:
   version "6.24.1"
   resolved "https://registry.yarnpkg.com/babel-plugin-transform-es2015-modules-commonjs/-/babel-plugin-transform-es2015-modules-commonjs-6.24.1.tgz#d3e310b40ef664a36622200097c6d440298f2bfe"
   dependencies:
@@ -1236,7 +1232,7 @@ babel-preset-env@1.5.2:
     invariant "^2.2.2"
     semver "^5.3.0"
 
-babel-preset-es2015@^6.16.0, babel-preset-es2015@^6.24.0, babel-preset-es2015@^6.24.1, babel-preset-es2015@^6.5.0:
+babel-preset-es2015@^6.16.0, babel-preset-es2015@^6.24.1, babel-preset-es2015@^6.5.0:
   version "6.24.1"
   resolved "https://registry.yarnpkg.com/babel-preset-es2015/-/babel-preset-es2015-6.24.1.tgz#d44050d6bc2c9feea702aaf38d727a0210538939"
   dependencies:
@@ -1294,7 +1290,7 @@ babel-preset-react-app@^3.0.0:
     babel-preset-env "1.5.2"
     babel-preset-react "6.24.1"
 
-babel-preset-react@6.24.1, babel-preset-react@^6.23.0, babel-preset-react@^6.24.1, babel-preset-react@^6.5.0:
+babel-preset-react@6.24.1, babel-preset-react@^6.24.1, babel-preset-react@^6.5.0:
   version "6.24.1"
   resolved "https://registry.yarnpkg.com/babel-preset-react/-/babel-preset-react-6.24.1.tgz#ba69dfaea45fc3ec639b6a4ecea6e17702c91380"
   dependencies:
@@ -1313,7 +1309,7 @@ babel-preset-stage-0@^6.24.1:
     babel-plugin-transform-function-bind "^6.22.0"
     babel-preset-stage-1 "^6.24.1"
 
-babel-preset-stage-1@^6.22.0, babel-preset-stage-1@^6.24.1:
+babel-preset-stage-1@^6.24.1:
   version "6.24.1"
   resolved "https://registry.yarnpkg.com/babel-preset-stage-1/-/babel-preset-stage-1-6.24.1.tgz#7692cd7dcd6849907e6ae4a0a85589cfb9e2bfb0"
   dependencies:
@@ -5815,11 +5811,7 @@ lowercase-keys@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/lowercase-keys/-/lowercase-keys-1.0.0.tgz#4e3366b39e7f5457e35f1324bdf6f88d0bfc7306"
 
-lru-cache@2:
-  version "2.7.3"
-  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-2.7.3.tgz#6d4524e8b955f95d4f5b58851ce21dd72fb4e952"
-
-lru-cache@2.2.x:
+lru-cache@2, lru-cache@2.2.x:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-2.2.4.tgz#6c658619becf14031d0d0b594b16042ce4dc063d"
 
