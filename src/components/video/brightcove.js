@@ -154,6 +154,7 @@ class Brightcove extends VideoPlayer {
     }
 
     this.renderSEOMarkup();
+    this.updateDataLayer();
     this.configureOverlays();
 
     this.trigger("loadstart");
@@ -348,6 +349,14 @@ class Brightcove extends VideoPlayer {
     }
 
     return this.player.mediainfo[name];
+  }
+
+  updateDataLayer () {
+    Object.assign(window.lp.analytics.dataLayer[0], {
+      brightcoveID: this.getVideoProperty("id"),
+      brightcoveTitle: this.getVideoProperty("name"),
+      brightcoveDescription: this.getVideoProperty("description")
+    });
   }
 
   /**
