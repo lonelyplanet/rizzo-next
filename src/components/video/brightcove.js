@@ -356,9 +356,9 @@ class Brightcove extends VideoPlayer {
 
   updateDataLayer () {
     Object.assign(window.lp.analytics.dataLayer[0], {
-      brightcoveID: this.getVideoProperty('id'),
-      brightcoveTitle: this.getVideoProperty('name'),
-      brightcoveDescription: this.getVideoProperty('description')
+      brightcoveID: this.getVideoProperty("id"),
+      brightcoveTitle: this.getVideoProperty("name"),
+      brightcoveDescription: this.getVideoProperty("description")
     });
   }
 
