@@ -13,7 +13,7 @@ export default class ArticleComponent extends Component {
 
     this.adLeaderboardTemplate = require("../ads/ad_article_leaderboard.hbs");
 
-    this._setFirstArticle();
+    this._setArticle();
   }
 
   _insertInlineAdSlots($article) {
@@ -47,21 +47,18 @@ export default class ArticleComponent extends Component {
     }
   }
 
-  /**
-   * Set the first article
-   */
-  _setFirstArticle() {
+  _setArticle() {
     this.socialShareComponent = new SocialShareComponent({
       el: this.$el.find(".js-action-sheet")
     });
 
-    let firstArticle = new ArticleModel({
+    let article = new ArticleModel({
       url: `${window.location.pathname}.json`
     });
 
-    firstArticle.set(window.lp.article_raw);
+    article.set(window.lp.article_raw);
 
-    this._setInitialCallouts(firstArticle.get("content").callouts);
+    this._setPoiCallouts(article.get("content").callouts);
 
     // Put the ad in the first article, but don't load it yet
     this.$el.append(this.adLeaderboardTemplate({ adpackage }));
@@ -71,7 +68,7 @@ export default class ArticleComponent extends Component {
     }
   }
 
-  _setInitialCallouts(callouts) {
+  _setPoiCallouts(callouts) {
     this.articleBody = new ArticleBodyComponent({
       el: this.$el.find(".js-article-body"),
       poiData: callouts
