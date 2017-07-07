@@ -19,7 +19,7 @@ export default class ArticleComponent extends Component {
   _insertInlineAdSlots($article) {
     const $articleBody = $article.find(".js-article-body");
     const interval = 6;
-    const adSlot = (adNumber) => `<div class="adunit--articles-inline" id="ad-articles-${adNumber}" />`;
+    const adSlot = (adNumber) => `<div class="adunit--articles-inline" id="ad-articles-in-article-${adNumber}" />`;
 
     const paragraphs = $articleBody.find("p")
       .filter((index, p) => {
