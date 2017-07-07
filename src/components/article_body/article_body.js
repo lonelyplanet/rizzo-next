@@ -16,7 +16,6 @@ export default class ArticleBodyComponent extends Component {
   initialize(options) {
     this.imageContainerSelector = ".stack__article__image-container";
     this.poiData = options.poiData;
-    this.howManyArticlesHaveLoaded = options.numberOfArticles;
 
     this.loadImages().then(() => {
       this.gallery = new ImageGallery({
@@ -141,7 +140,7 @@ export default class ArticleBodyComponent extends Component {
 
   _appendAd($paragraphs, $featuredImage) {
     const element = adpackage ? `<div
-      id="ad-articles-yieldmo-${this.howManyArticlesHaveLoaded}"
+      id="ad-articles-yieldmo"
       class="adunit--article"></div>` :
       `<div
         class="adunit adunit--article display-none"
