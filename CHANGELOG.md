@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.18.8"></a>
+## [0.18.8](https://github.com/lonelyplanet/rizzo-next/compare/v0.18.7...v0.18.8) (2017-07-07)
+
+
+### Bug Fixes
+
+* Move status endpoint to global ([ffb3a9c](https://github.com/lonelyplanet/rizzo-next/commit/ffb3a9c))
+
+
+
 <a name="0.18.7"></a>
 ## [0.18.7](https://github.com/lonelyplanet/rizzo-next/compare/v0.18.6...v0.18.7) (2017-07-06)
 
