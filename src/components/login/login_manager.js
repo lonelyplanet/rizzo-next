@@ -8,6 +8,10 @@ export default class LoginManager {
     this.dotcomConnectStatusUrl = "https://connect.lonelyplanet.com/users/status.json";
     this.feedUrl = "https://www.lonelyplanet.com/thorntree/users/feed";
 
+    if (window.lp.auth && window.lp.auth.host) {
+      this.dotcomConnectStatusUrl = `${window.lp.auth.host}/users/status.json`;
+    }
+
     this.checkStatus();
   }
   /**
