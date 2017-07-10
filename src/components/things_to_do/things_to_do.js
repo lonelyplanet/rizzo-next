@@ -42,7 +42,7 @@ class ThingsToDo extends Component {
     return obj.index;
   }
   fetchCards() {
-    var op_variant = window.location.href.match(/op_variant=true/)
+    const op_variant = window.location.href.match(/op_variant=true/);
     if (op_variant == null) {
       return $.ajax({
         url: `/api/${window.lp.place.slug}/experiences.json`

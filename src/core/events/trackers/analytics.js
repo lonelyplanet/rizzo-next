@@ -31,6 +31,6 @@ export default function({ name, data } = {}) {
   if (typeof window.lp.analytics != "undefined" && typeof window.lp.analytics.send === "function") {
     window.lp.analytics.send(utagEvent.name || "event", utagEvent);
   } else {
-    window.trackJs.console.log(`analytics: not loaded yet`);
+    window.trackJs.console.log("analytics: not loaded yet");
   }
 };
