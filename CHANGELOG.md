@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.20.0"></a>
+# [0.20.0](https://github.com/lonelyplanet/rizzo-next/compare/v0.18.9...v0.20.0) (2017-07-10)
+
+
+### Bug Fixes
+
+* Import scrolljs from dist/ in scrollTo component ([#704](https://github.com/lonelyplanet/rizzo-next/issues/704)) ([9381c58](https://github.com/lonelyplanet/rizzo-next/commit/9381c58))
+* Updated datalayer to contain brightcove video details for lower third targeting ([#701](https://github.com/lonelyplanet/rizzo-next/issues/701)) ([01b802a](https://github.com/lonelyplanet/rizzo-next/commit/01b802a))
+
+
+### Features
+
+* Remove infinite scroll from articles ([#698](https://github.com/lonelyplanet/rizzo-next/issues/698)) ([921c391](https://github.com/lonelyplanet/rizzo-next/commit/921c391))
+
+
+
 <a name="0.19.0"></a>
 # [0.19.0](https://github.com/lonelyplanet/rizzo-next/compare/v0.18.9...v0.19.0) (2017-07-07)
 
