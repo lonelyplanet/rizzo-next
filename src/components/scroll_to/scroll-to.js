@@ -1,5 +1,5 @@
 import { Component } from "../../core/bane";
-import Scroll from "scroll-js";
+import Scroll from "scroll-js/dist/scroll";
 
 class ScrollToComponent extends Component {
   initialize() {
