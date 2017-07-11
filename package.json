@@ -30,7 +30,7 @@
     "version:minor": "standard-version -- --release-as minor",
     "version:major": "standard-version --release-as major"
   },
-  "version": "0.19.1",
+  "version": "0.19.2",
   "pre-commit": [
     "scsslint",
     "test",
