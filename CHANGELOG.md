@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.19.2"></a>
+## [0.19.2](https://github.com/lonelyplanet/rizzo-next/compare/v0.19.1...v0.19.2) (2017-07-11)
+
+
+### Bug Fixes
+
+* Resolve lint warnings; mostly double quotes ([#696](https://github.com/lonelyplanet/rizzo-next/issues/696)) ([8bc1c3e](https://github.com/lonelyplanet/rizzo-next/commit/8bc1c3e))
+
+
+
 <a name="0.19.1"></a>
 ## [0.19.1](https://github.com/lonelyplanet/rizzo-next/compare/v0.19.0...v0.19.1) (2017-07-10)
 
