@@ -3,16 +3,11 @@ import $ from "jquery";
 import ArticleBodyComponent from "../article_body";
 import SocialShareComponent from "../social_share";
 import ArticleModel from "./article_model";
-import subscribe from "../../core/decorators/subscribe";
 
 const adpackage = document.cookie.match(/adpackage/);
 
 export default class ArticleComponent extends Component {
   initialize() {
-    this.subscribe();
-
-    this.adLeaderboardTemplate = require("../ads/ad_article_leaderboard.hbs");
-
     this._setArticle();
   }
 
@@ -37,16 +32,6 @@ export default class ArticleComponent extends Component {
     });
   }
 
-  @subscribe("ad.loaded", "ads")
-  _adsLoaded(data) {
-    if (data.size === "leaderboard-responsive") {
-      if (!this.hasAdTimeoutResolved) {
-        clearTimeout(this.adTimer);
-        this.adLoadedPromise && this.adLoadedPromise();
-      }
-    }
-  }
-
   _setArticle() {
     this.socialShareComponent = new SocialShareComponent({
       el: this.$el.find(".js-action-sheet")
@@ -59,9 +44,6 @@ export default class ArticleComponent extends Component {
     article.set(window.lp.article_raw);
 
     this._setPoiCallouts(article.get("content").callouts);
-
-    // Put the ad in the first article, but don't load it yet
-    this.$el.append(this.adLeaderboardTemplate({ adpackage }));
 
     if (adpackage) {
       this._insertInlineAdSlots(this.$el);
