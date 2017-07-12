@@ -232,6 +232,63 @@
       }
     }
 
+    // [data-op-video-id] is the only possible way of identifying
+    // our target if our article data has come through op-articles.
+    [data-op-video-id] {
+      // Break the video out of the container; Intended to
+      // appear identical to how .stack__article__image displays images.
+      margin: 3.2rem percentage(-15px / 290px);
+      opacity: 0;
+      transition: opacity 200ms ease;
+      visibility: hidden;
+      width: percentage(320px / 290px);
+
+      &.is-visible {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      >div {
+        padding-top: 56.25%; // maintain 16:9 aspect ratio
+      }
+
+      @media(min-width: $min-480) {
+        margin-left: percentage(-30px / 420px);
+        margin-right: percentage(-30px / 420px);
+        width: percentage(480px / 420px);
+      }
+
+      @media(min-width: $min-600) {
+        margin-bottom: 6.6rem;
+        margin-left: percentage(-45px / 630px);
+        margin-right: percentage(-45px / 630px);
+        margin-top: 6.6rem;
+        width: percentage(720px / 630px);
+      }
+
+      @media (min-width: $min-840) {
+        margin-left: -10%;
+        width: 120%;
+      }
+
+      @media (min-width: $min-1024) {
+        margin-left: -20%;
+        width: 140%;
+      }
+
+      @media (min-width: $min-1290) {
+        margin-left: -40%;
+        width: 180%;
+      }
+
+      @media (min-width: $min-1410) {
+        @include with-layout(static) {
+          margin-left: -#{span(2) + gutter()};
+          width: span(10);
+        }
+      }
+    }
+
     .copy--caption,
     p > span.caption {
       @include copy-caption;

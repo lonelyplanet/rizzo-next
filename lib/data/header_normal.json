@@ -19,19 +19,15 @@
           "slug": "//www.lonelyplanet.com/video",
           "submenu": {
             "featured": {
-              "image": "https://lonelyplanetstatic.imgix.net/op-video-sync/assets/journeys_masthead.jpg?w=80&h=60&fit=min",
-              "title": "Journeys",
+              "image": "https://lonelyplanetstatic.imgix.net/op-video-sync/assets/art_and_culture_masthead2.jpg?w=80&h=60&fit=min",
+              "title": "Art and culture",
               "subtitle": "Featured",
-              "link": "//www.lonelyplanet.com/video/journeys/v/cha/9"
+              "link": "//www.lonelyplanet.com/video/art-and-culture/v/cha/2"
             },
             "items": [
               {
                 "title": "Adventure travel",
                 "slug": "//www.lonelyplanet.com/video/adventure-travel/v/cha/1"
-              },
-              {
-                "title": "Art and culture",
-                "slug": "//www.lonelyplanet.com/video/art-and-culture/v/cha/2"
               },
               {
                 "title": "Beaches, coasts and islands",
@@ -44,6 +40,10 @@
               {
                 "title": "Food and drink",
                 "slug": "//www.lonelyplanet.com/video/food-and-drink/v/cha/7"
+              },
+              {
+                "title": "Journeys",
+                "slug": "//www.lonelyplanet.com/video/journeys/v/cha/9"
               }
             ],
             "call_to_action": {
