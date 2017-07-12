@@ -237,10 +237,7 @@
     [data-op-video-id] {
       // Break the video out of the container; Intended to
       // appear identical to how .stack__article__image displays images.
-      margin-bottom: 3.2rem;
-      margin-left: percentage(-15px / 290px);
-      margin-right: percentage(-15px / 290px);
-      margin-top: 3.2rem;
+      margin: 3.2rem percentage(-15px / 290px);
       opacity: 0;
       transition: opacity 200ms ease;
       visibility: hidden;
