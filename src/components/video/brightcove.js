@@ -75,12 +75,12 @@ class Brightcove extends VideoPlayer {
       // or else the controls show briefly without the brightcove theme applied.
       this.player.controls(true);
 
-      this.player.ready(this.onPlayerReady.bind(this));
       this.player.on("loadstart", this.onPlayerLoadStart.bind(this));
       this.player.on("playing", this.onPlayerPlaying.bind(this));
       this.player.on("ended", this.onPlayerEnded.bind(this));
       this.player.on("ads-ad-started", this.onAdStarted.bind(this));
       this.player.on("ads-ad-ended", this.onAdEnded.bind(this));
+      this.player.ready(this.onPlayerReady.bind(this));
     }
   }
 
@@ -165,6 +165,7 @@ class Brightcove extends VideoPlayer {
   }
 
   onPlayerPlaying() {
+    this.updateDataLayer();
     this.disableAdOverlay();
   }
 

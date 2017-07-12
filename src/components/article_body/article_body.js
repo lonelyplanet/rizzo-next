@@ -2,6 +2,7 @@ import { Component } from "../../core/bane";
 import $ from "jquery";
 import ImageGallery from "../image_gallery";
 import PoiCallout from "../poi_callout";
+import Video from "../video";
 import moment from "moment";
 import matchMedia from "../../core/utils/matchMedia";
 import breakpoints from "../../core/utils/breakpoints";
@@ -48,6 +49,16 @@ export default class ArticleBodyComponent extends Component {
     }
 
     this.formatDate();
+    this.loadVideos();
+
+  }
+
+  loadVideos() {
+    this.$el.find("[data-op-video-id]")
+      .addClass("is-visible")
+      .each((i, el) => {
+        Video.addPlayer(el);
+      });
   }
 
   /**
