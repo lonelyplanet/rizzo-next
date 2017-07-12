@@ -37,7 +37,7 @@
     "lint"
   ],
   "dependencies": {
-    "@lonelyplanet/dotcom-core": "^1.3.7",
+    "@lonelyplanet/dotcom-core": "^1.3.11",
     "airbrake-js": "^0.9.3",
     "async": "^2.0.0-rc.4",
     "babel-core": "^6.5.2",
