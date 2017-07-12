@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.20.0"></a>
+# [0.20.0](https://github.com/lonelyplanet/rizzo-next/compare/v0.19.3...v0.20.0) (2017-07-12)
+
+
+### Features
+
+* Add video initialization for videos that appear in articles ([#711](https://github.com/lonelyplanet/rizzo-next/issues/711)) ([a340460](https://github.com/lonelyplanet/rizzo-next/commit/a340460))
+
+
+
 <a name="0.19.3"></a>
 ## [0.19.3](https://github.com/lonelyplanet/rizzo-next/compare/v0.19.2...v0.19.3) (2017-07-12)
 
