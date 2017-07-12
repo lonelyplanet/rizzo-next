@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.19.3"></a>
+## [0.19.3](https://github.com/lonelyplanet/rizzo-next/compare/v0.19.2...v0.19.3) (2017-07-12)
+
+
+### Bug Fixes
+
+* Fix bug with article leaderboard ad ([#709](https://github.com/lonelyplanet/rizzo-next/issues/709)) ([6f44ecd](https://github.com/lonelyplanet/rizzo-next/commit/6f44ecd))
+
+
+
 <a name="0.19.2"></a>
 ## [0.19.2](https://github.com/lonelyplanet/rizzo-next/compare/v0.19.1...v0.19.2) (2017-07-11)
 
