@@ -25,10 +25,11 @@
     "scsslint": "scss-lint . --config .scss-lint.yml",
     "test": "karma start --single-run",
     "preversion": "npm run build",
-    "version": "standard-version --commit-all",
-    "version:patch": "standard-version -- --release-as patch",
-    "version:minor": "standard-version -- --release-as minor",
-    "version:major": "standard-version --release-as major"
+    "release": "standard-version",
+    "version": "npm run release --commit-all",
+    "version:patch": "npm run release -- --release-as patch",
+    "version:minor": "npm run release -- --release-as minor",
+    "version:major": "npm run release -- --release-as major"
   },
   "version": "0.20.0",
   "pre-commit": [
