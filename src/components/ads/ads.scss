@@ -39,10 +39,36 @@
   }
 }
 
+.ad--inline {
+  background-color: $adunit-background-color;
+
+  &::before {
+    background-color: $color-white;
+    border-top: 1px solid $adunit-background-color;
+    color: rgba($darkgray, .57);
+    content: "Advertisement";
+    display: block;
+    font-size: 8px;
+    left: 0;
+    letter-spacing: .5px;
+    line-height: 1;
+    padding-bottom: 16px;
+    padding-top: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+  }
+}
+
+.ad--inline__container,
 .ad--leaderboard__container {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+}
+
+.ad--inline__container {
+  padding: 24px;
 }
 
 .adunit--sponsor-logo,
