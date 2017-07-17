@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.21.1"></a>
+## [0.21.1](https://github.com/lonelyplanet/rizzo-next/compare/v0.21.0...v0.21.1) (2017-07-17)
+
+
+### Bug Fixes
+
+* Add styles for inline article ad  ([#714](https://github.com/lonelyplanet/rizzo-next/issues/714)) ([8b556cb](https://github.com/lonelyplanet/rizzo-next/commit/8b556cb))
+
+
+
 <a name="0.21.0"></a>
 # [0.21.0](https://github.com/lonelyplanet/rizzo-next/compare/v0.20.0...v0.21.0) (2017-07-13)
 
