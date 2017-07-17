@@ -56,6 +56,10 @@ export default class ArticleComponent extends Component {
     }
   }
 
+  _createIdForArticle(slug) {
+    return slug.split("/")[slug.split("/").length - 1];
+  }
+
   _setPoiCallouts(callouts) {
     this.articleBody = new ArticleBodyComponent({
       el: this.$el.find(".js-article-body"),
