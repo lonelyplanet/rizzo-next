@@ -1,0 +1,34 @@
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.lonelyplanet.com/{{ article.slug }}"
+    },
+    "headline": "{{ article.title }}",
+    "datePublished": "{{ article.post_date }}",
+    "dateModified": "{{ article.post_date }}",
+    "image": {
+      "@type": "ImageObject",
+      "url": "{{ article.image }}",
+      "height": 500,
+      "width": 748
+    },
+    "author": {
+      "@type": "{{ article.author_details.type }}",
+      "name": "{{ article.author_details.name }}"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Lonely Planet",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://s3.amazonaws.com/static-asset/lp-logo-amp.png",
+        "width": 106,
+        "height": 60
+      }
+    },
+   "description": "{{ article.first_paragraph }}"
+  }
+</script>
