@@ -50,7 +50,6 @@ export default class ArticleBodyComponent extends Component {
 
     this.formatDate();
     this.loadVideos();
-
   }
 
   loadVideos() {
@@ -150,14 +149,23 @@ export default class ArticleBodyComponent extends Component {
   }
 
   _appendAd($paragraphs, $featuredImage) {
-    const element = adpackage ? `<div
-      id="ad-articles-yieldmo"
-      class="adunit--article"></div>` :
-      `<div
-        class="adunit adunit--article display-none"
-        data-dfp-options='{ "namespace": "LonelyPlanet.com/Yieldmo" }'
-        data-size-mapping="mpu-double"
-        data-targeting='{ "position": "article-paragraph" }'></div>`;
+    const element = adpackage ? `
+    <div class="ad ad--inline ad--yieldmo ad--article">
+      <div class="ad--inline__container">
+        <div
+          id="ad-articles-yieldmo"
+          class="adunit--article"></div>
+      </div>
+    </div>` :
+    `<div class="ad ad--inline ad--yieldmo ad--article">
+      <div class="ad--inline__container">
+        <div
+          class="adunit adunit--article display-none"
+          data-dfp-options='{ "namespace": "LonelyPlanet.com/Yieldmo" }'
+          data-size-mapping="mpu-double"
+          data-targeting='{ "position": "article-paragraph" }'></div>
+        </div>
+      </div>`;
 
     if($featuredImage.length) {
       $featuredImage.eq(0).after(element);
