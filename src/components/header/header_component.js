@@ -2,8 +2,10 @@ import { Component } from "../../core/bane";
 import SearchComponent from "../search";
 import NavigationComponent from "../navigation";
 import NavigationState from "../navigation/navigation_state";
+import CookieUtil from "../../core/cookie_util";
 import $ from "jquery";
 import debounce from "lodash/debounce";
+import BetaBannerComponent from "../beta_banner/beta_banner_component";
 
 /**
  * The page header which contains both search and navigation.
@@ -28,6 +30,8 @@ class Header extends Component {
     this.$search = this.$el.find(".js-lp-global-header-search");
     this.$inner = this.$el.find(".js-lp-global-header-inner");
 
+    this.cookieUtil = new CookieUtil();
+
     $(window).resize(debounce(this.render.bind(this), 100));
     this.render();
 
@@ -35,6 +39,10 @@ class Header extends Component {
 
     this.appendMenuIcon();
     this.buildGlobalComponents();
+    if(this.hasVariantCookie()) {
+      const $betaBanner = new BetaBannerComponent();
+      $betaBanner.render();
+    }
   }
 
   buildGlobalComponents() {
@@ -62,6 +70,16 @@ class Header extends Component {
    */
   isTooBig() {
     return this.$search.width() > this.$inner.width() * .42;
+  }
+
+  /**
+   * If in variant group then show the beta banner
+   * @return {Boolean}
+   */
+  hasVariantCookie() {
+    // Hard coding the specfic cookier for now just to make sure
+    // to not interfere with other tests going on
+    return this.cookieUtil.getCookie("_v") === "split-16-connect";
   }
 
   onSearchClick(e) {

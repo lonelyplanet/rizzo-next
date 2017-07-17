@@ -1,0 +1,51 @@
+@import "../../../sass/webpack_deps";
+
+.lp-beta-banner {
+  background: $beta-banner-color;
+  color: $color-white;
+  font-size: 1.6rem;
+  padding-bottom: 1.6rem;
+  padding-top: 1.6rem;
+  width: 100%;
+
+  @media (max-width: $max-720) {
+    font-size: 1.2rem;
+  }
+
+  &--left {
+    float: left;
+    max-width: 50%;
+  }
+
+  &--right {
+    position: absolute;
+    right: 0;
+  }
+
+  &--action-list li {
+    display: inline;
+    padding-left: 32px;
+
+    @media (max-width: $max-720) {
+      font-size: 1.4rem;
+      padding-left: 8px;
+    }
+
+    a {
+      color: $color-white;
+      text-decoration: underline;
+    }
+
+    a:hover {
+      color: $color-primary;
+    }
+  }
+
+  &__container {
+    @include container-header;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+  }
+}
