@@ -97,9 +97,9 @@ If tests fail or linting violations are present, it is advised that you don’t 
 
 Releases can be made by:
 
-- [https://github.com/egdelwonk](egdelwonk)
-- [https://github.com/jcreamer898](jcreamer898)
-- [https://github.com/nickfranciosi](nickfranciosi)
-- [https://github.com/thomasthesecond](thomasthesecond)
+- [egdelwonk](https://github.com/egdelwonk)
+- [jcreamer898](https://github.com/jcreamer898)
+- [nickfranciosi](https://github.com/nickfranciosi)
+- [thomasthesecond](https://github.com/thomasthesecond)
 
 Please ping one of them to create a new release.
