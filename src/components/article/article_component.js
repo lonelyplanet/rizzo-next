@@ -47,7 +47,9 @@ export default class ArticleComponent extends Component {
       url: `${window.location.pathname}.json`
     });
 
-    article.set(window.lp.article_raw);
+    const rawArticle = window.lp.article_raw;
+
+    article.set(rawArticle);
 
     this._setPoiCallouts(article.get("content").callouts);
 
