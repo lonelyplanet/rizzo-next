@@ -51,6 +51,8 @@ export default class ArticleComponent extends Component {
 
     article.set(rawArticle);
 
+    this.$el.attr("id", this._createIdForArticle(rawArticle.slug));
+
     this._setPoiCallouts(article.get("content").callouts);
 
     if (adpackage) {
