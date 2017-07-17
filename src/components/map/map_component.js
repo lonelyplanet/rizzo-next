@@ -4,7 +4,7 @@ import { render } from "react-dom";
 import MainView from "./views/main.jsx";
 import MapActions from "./actions";
 import Arkham from "../../core/arkham";
-import { createHistory } from "history";
+import createHistory from "history/createBrowserHistory";
 import $ from "jquery";
 import MapApi from "./map_api";
 import mapboxgl from "mapbox-gl/dist/mapbox-gl.js";

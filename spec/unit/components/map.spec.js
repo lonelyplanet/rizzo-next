@@ -9,12 +9,10 @@ let MapComponent = Injector({
     createElement: function() {}
   },
   "./views/main.jsx": function() {},
-  "history": {
-    createHistory: function() {
-      return {
-        push: pushState
-      };
-    }
+  "history/createBrowserHistory": function() {
+    return {
+      push: pushState
+    };
   },
   "./map_api": {
     fetch: () => {
