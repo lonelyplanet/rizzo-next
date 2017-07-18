@@ -24,20 +24,29 @@
 
   &--action-list li {
     display: inline;
-    padding-left: 32px;
+    padding-left: 3.2rem;
 
     @media (max-width: $max-720) {
       font-size: 1.4rem;
-      padding-left: 8px;
+      padding-left: .8rem;
     }
 
     a {
       color: $color-white;
+      font-weight: 600;
       text-decoration: underline;
+      transition: color $animation-speed ease-in-out;
     }
 
-    a:hover {
-      color: $color-primary;
+    a:hover,
+    a:active,
+    a:focus {
+      color: rgba($color-white, .8);
+    }
+
+    a:focus {
+      outline: 1px dotted rgba($color-white, .4);
+      outline-offset: 2px;
     }
   }
 
