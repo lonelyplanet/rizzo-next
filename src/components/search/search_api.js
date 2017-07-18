@@ -3,7 +3,7 @@ import SearchServerActions from "./search_server_actions";
 
 const mergeResults = (query, searchResults, videoResults) => {
 
-  // Best video results are video's whose name starts with the query text.
+  // Best video results are videos whose name starts with the query text.
   // They'll be listed first in the results.
   let bestVideoResults = [];
   if (query.length > 1) {
