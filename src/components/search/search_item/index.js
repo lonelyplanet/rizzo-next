@@ -2,6 +2,8 @@ import { Component } from "../../../core/bane";
 import highlight from "../../../core/utils/highlight";
 import template from "./index.html.hbs";
 
+require("../../topic/_topic.scss");
+
 class SearchItemComponent extends Component {
 
   initialize(options){
