@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.22.0"></a>
+# [0.22.0](https://github.com/lonelyplanet/rizzo-next/compare/v0.21.0...v0.22.0) (2017-07-18)
+
+
+### Bug Fixes
+
+* Add styles for inline article ad  ([#714](https://github.com/lonelyplanet/rizzo-next/issues/714)) ([8b556cb](https://github.com/lonelyplanet/rizzo-next/commit/8b556cb))
+* Fix formatting for username links in contributing doc ([#716](https://github.com/lonelyplanet/rizzo-next/issues/716)) ([130d444](https://github.com/lonelyplanet/rizzo-next/commit/130d444))
+* Update microdata for article ([#717](https://github.com/lonelyplanet/rizzo-next/issues/717)) ([a251c3b](https://github.com/lonelyplanet/rizzo-next/commit/a251c3b))
+
+
+### Features
+
+* add beta banner for profile launch ([73efa12](https://github.com/lonelyplanet/rizzo-next/commit/73efa12))
+
+
+
 <a name="0.21.1"></a>
 ## [0.21.1](https://github.com/lonelyplanet/rizzo-next/compare/v0.21.0...v0.21.1) (2017-07-17)
 
