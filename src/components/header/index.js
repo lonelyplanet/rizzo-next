@@ -2,6 +2,7 @@ import HeaderComponent from "./header_component";
 
 import "./_header.scss";
 import "../logo/logo.scss";
+import "../beta_banner/_beta_banner.scss";
 import "../navigation/_navigation.scss";
 import "../navigation/_mobile-navigation.scss";
 import "../navigation/_user-panel.scss";
