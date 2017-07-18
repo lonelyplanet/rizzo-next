@@ -8,7 +8,7 @@ export default class BetaBannerComponent {
     this.$renderedBanner = $(this.$betaBannerTemplate())
       .prependTo("body");
 
-    this.setupUsabilla()
+    this.setupUsabilla();
     this.bindToFeedbackButton();
     this.bindToExitButton();
   }
