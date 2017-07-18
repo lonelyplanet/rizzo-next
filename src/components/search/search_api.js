@@ -19,8 +19,8 @@ const mergeResults = (query, searchResults, videoResults) => {
   let results = [];
 
   // If we are under the '/video' path, always list video results first
-  if (window.location.pathname.substr(0, 6).toLowerCase() === "/video") {
-    results = results.concat(bestVideoResults).concat(videoResults);
+  if (window.location.pathname.toLowerCase().startsWith("/video")) {
+    results = bestVideoResults.concat(videoResults);
     bestVideoResults = [];
     videoResults = [];
   }
