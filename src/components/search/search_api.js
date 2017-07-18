@@ -3,18 +3,29 @@ import SearchServerActions from "./search_server_actions";
 
 const mergeResults = (query, searchResults, videoResults) => {
 
+  // Best video results are video's whose name starts with the query text.
+  // They'll be listed first in the results.
   let bestVideoResults = [];
   if (query.length > 1) {
     bestVideoResults = videoResults.filter((v) => {
       return v.name.toLowerCase().startsWith(query.toLowerCase());
     });
+    const bestVideoResultIds = bestVideoResults.map(v => v.id);
+    videoResults = videoResults.filter(v => !bestVideoResultIds.includes(v.id));
   }
 
   const bestVideoResultCount = bestVideoResults.length;
 
-  // Merge results by alternating between the best video results and the search results
-  const results = [];
+  let results = [];
 
+  // If we are under the '/video' path, always list video results first
+  if (window.location.pathname.substr(0, 6).toLowerCase() === "/video") {
+    results = results.concat(bestVideoResults).concat(videoResults);
+    bestVideoResults = [];
+    videoResults = [];
+  }
+
+  // Merge results by alternating between them
   while (bestVideoResults.length || searchResults.length) {
     if (bestVideoResults.length) {
       results.push(bestVideoResults.shift());
