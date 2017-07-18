@@ -1,4 +1,3 @@
-import Usabilla from "../usabilla/";
 import CookieUtil from "../../core/cookie_util";
 
 export default class BetaBannerComponent {
@@ -8,7 +7,6 @@ export default class BetaBannerComponent {
     this.$renderedBanner = $(this.$betaBannerTemplate())
       .prependTo("body");
 
-    this.setupUsabilla()
     this.bindToFeedbackButton();
     this.bindToExitButton();
   }
@@ -36,10 +34,4 @@ export default class BetaBannerComponent {
     window.location = "//connect.lonelyplanet.com/users/sign_out"; // Sign Out
   }
 
-  setupUsabilla(){
-    if(!window.usabilla_live) {
-      const UsabillaUtil = new Usabilla();
-      UsabillaUtil.serveMobileOrDestop();
-    }
-  }
 }
