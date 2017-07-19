@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.22.6"></a>
+## [0.22.6](https://github.com/lonelyplanet/rizzo-next/compare/v0.22.5...v0.22.6) (2017-07-19)
+
+
+### Bug Fixes
+
+* Add thorn tree link to mobile nav when logged in ([#728](https://github.com/lonelyplanet/rizzo-next/issues/728)) ([e7aab8b](https://github.com/lonelyplanet/rizzo-next/commit/e7aab8b)), closes [#725](https://github.com/lonelyplanet/rizzo-next/issues/725)
+* Adjust article inline ad styles ([#727](https://github.com/lonelyplanet/rizzo-next/issues/727)) ([de073e5](https://github.com/lonelyplanet/rizzo-next/commit/de073e5))
+
+
+
 <a name="0.22.5"></a>
 ## [0.22.5](https://github.com/lonelyplanet/rizzo-next/compare/v0.22.4...v0.22.5) (2017-07-19)
 
