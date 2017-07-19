@@ -13,6 +13,7 @@ let userAvatarTemplate = require("./user_avatar.hbs");
 let signOutLinkTemplate = require("./sign_out_link.hbs");
 let avatarMarkerTemplate = require("./avatar_marker.hbs");
 let profileSettingsButtonTemplate = require("./profile_settings_button.hbs");
+let thornTreeLinkTemplate = require("./thorn_tree_link.hbs");
 
 class NavigationComponent extends Component {
   initialize() {
@@ -210,7 +211,7 @@ class NavigationComponent extends Component {
 
     $liMobile.html(signOutLinkTemplate({
       user
-    }));
+    })).before(thornTreeLinkTemplate());
 
     $mobileNavigationHeader.append(avatarMarkerTemplate({
       user
