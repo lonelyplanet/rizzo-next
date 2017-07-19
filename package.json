@@ -52,6 +52,7 @@
     "imagesloaded": "*",
     "jquery": "^3.1.1",
     "jquery.dfp": "^2.4.1",
+    "js-cookie": "^2.1.4",
     "lodash": "^4.17.4",
     "mapbox-gl": "^0.38.0",
     "mapbox.js": "^3.1.1",

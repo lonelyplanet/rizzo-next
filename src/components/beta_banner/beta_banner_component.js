@@ -1,8 +1,7 @@
-import CookieUtil from "../../core/cookie_util";
+import * as Cookie from "js-cookie";
 
 export default class BetaBannerComponent {
   render() {
-    this.cookieUtil = new CookieUtil();
     this.$betaBannerTemplate = require("../beta_banner/beta_banner.hbs");
     this.$renderedBanner = $(this.$betaBannerTemplate())
       .prependTo("body");
@@ -30,8 +29,12 @@ export default class BetaBannerComponent {
   }
 
   leaveBeta() {
-    this.cookieUtil.removeCookie("_v", "www.lonelyplanet.com"); // Remove Variant
-    window.location = "//connect.lonelyplanet.com/users/sign_out"; // Sign Out
+    Cookie.remove("_v");// Remove Variant
+
+    // give a little cushion before redirecting
+    setTimeout(() => {
+      window.location = "//connect.lonelyplanet.com/users/sign_out"; // Sign Out
+    }, 500);
   }
 
 }
