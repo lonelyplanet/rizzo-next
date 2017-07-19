@@ -48,14 +48,11 @@ export default class CookieUtil {
       (document.cookie = cookie)
     );
   }
-  removeCookie(name, domain, path) {
+  removeCookie(name) {
     let cookieString = `${name}=`;
     cookieString += ";max-age=0";
     cookieString += ";expires=jan 1 1973";
 
-    let domainToSet = domain ? (";domain=" + domain) : "";
-    let pathToSet = ";path=" + (path || "/");
-
-    document.cookie = cookieString + domainToSet + pathToSet;
+    document.cookie = cookieString;
   }
 }
