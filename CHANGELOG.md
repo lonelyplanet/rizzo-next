@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.22.4"></a>
+## [0.22.4](https://github.com/lonelyplanet/rizzo-next/compare/v0.22.3...v0.22.4) (2017-07-19)
+
+
+### Bug Fixes
+
+* cookie util needs proper domain to remove ([34e5c2e](https://github.com/lonelyplanet/rizzo-next/commit/34e5c2e))
+
+
+
 <a name="0.22.3"></a>
 ## [0.22.3](https://github.com/lonelyplanet/rizzo-next/compare/v0.22.2...v0.22.3) (2017-07-18)
 
