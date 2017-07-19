@@ -1,36 +1,53 @@
 <nav class="navigation navigation--{{type}}{{#if images}} navigation--has-images{{else}} navigation--no-images{{/if}}" role="navigation">
   <ul class="navigation__list">
     {{#each navigation}}
-      <li class="js-nav-item navigation__item {{nav_class_names title}}" data-lpa-category="Destinations Next" data-lpa-action="Global Navigation Click" data-lpa-label="{{title}}">
-       <a class="navigation__link" href="{{slug}}"{{#if hidden}} hidden{{/if}}>{{title}}</a>
+      <li
+        class="js-nav-item navigation__item {{nav_class_names title}}"
+        data-lpa-category="Destinations Next"
+        data-lpa-action="Global Navigation Click"
+        data-lpa-label="{{title}}">
+        <a class="navigation__link" href="{{slug}}"{{#if hidden}} hidden{{/if}}>
+          {{title}}
+        </a>
 
         {{#if submenu.items.length}}
-        <div class="sub-navigation">
-          {{#if submenu.featured}}
-          <a class="sub-navigation-feature" href="{{submenu.featured.link}}">
-            <img class="sub-navigation-feature__image" src="{{submenu.featured.image}}" alt="{{submenu.featured.title}}">
-            <div class="sub-navigation-feature__text">
-              <div class="sub-navigation-feature__title">{{submenu.featured.title}}</div>
-              <div class="sub-navigation-feature__subtitle">{{submenu.featured.subtitle}}</div>
-            </div>
-          </a>
-          {{/if}}
+          <div class="sub-navigation">
+            {{#if submenu.featured}}
+              <a class="sub-navigation-feature" href="{{submenu.featured.link}}">
+                <img
+                  class="sub-navigation-feature__image"
+                  src="{{submenu.featured.image}}"
+                  alt="{{submenu.featured.title}}">
 
-          <ul class="sub-navigation__list">
-          {{#each submenu.items}}
-            <li class="sub-navigation__item{{#if current}} sub-navigation__item--current{{/if}}">
-              <a class="sub-navigation__link" href="{{slug}}">{{title}}</a>
-            </li>
-          {{/each}}
-          </ul>
+                <div class="sub-navigation-feature__text">
+                  <div class="sub-navigation-feature__title">
+                    {{submenu.featured.title}}
+                  </div>
 
-          {{#if submenu.call_to_action}}
-          <a class="sub-navigation__button" href="{{submenu.call_to_action.slug}}">
-            {{submenu.call_to_action.title}}
-            <i class="icon-chevron-right" aria-hidden="true"></i>
-          </a>
-          {{/if}}
-        </div>
+                  <div class="sub-navigation-feature__subtitle">
+                    {{submenu.featured.subtitle}}
+                  </div>
+                </div>
+              </a>
+            {{/if}}
+
+            <ul class="sub-navigation__list">
+              {{#each submenu.items}}
+                <li class="sub-navigation__item{{#if current}} sub-navigation__item--current{{/if}}">
+                  <a class="sub-navigation__link" href="{{slug}}">
+                    {{title}}
+                  </a>
+                </li>
+              {{/each}}
+            </ul>
+
+            {{#if submenu.call_to_action}}
+              <a class="sub-navigation__button" href="{{submenu.call_to_action.slug}}">
+                {{submenu.call_to_action.title}}
+                <i class="icon-chevron-right" aria-hidden="true"></i>
+              </a>
+            {{/if}}
+          </div>
         {{/if}}
       </li>
     {{/each}}
@@ -43,8 +60,14 @@
 
     <ul class="mobile-navigation__list">
       {{#each navigation}}
-        <li class="js-nav-item mobile-navigation__item mobile-{{nav_class_names title}}" data-lpa-category="Destinations Next" data-lpa-action="Mobile Global Navigation Click" data-lpa-label="{{title}}">
-          <a class="mobile-navigation__link" href="{{slug}}">{{title}}
+        <li
+          class="js-nav-item mobile-navigation__item mobile-{{nav_class_names title}}"
+          data-lpa-category="Destinations Next"
+          data-lpa-action="Mobile Global Navigation Click"
+          data-lpa-label="{{title}}">
+          <a class="mobile-navigation__link" href="{{slug}}">
+            {{title}}
+
             {{#if submenu}}
               <i class="icon icon--chevron-down" aria-hidden="true"></i>
             {{/if}}
@@ -52,32 +75,44 @@
 
 
           {{#if submenu.items.length}}
-          <div class="mobile-sub-navigation">
-            {{#if submenu.featured}}
-            <a class="sub-navigation-feature" href="{{submenu.featured.link}}">
-              <img class="sub-navigation-feature__image" src="{{submenu.featured.image}}" alt="{{submenu.featured.title}}">
-              <div class="sub-navigation-feature__text">
-                <div class="sub-navigation-feature__title">{{submenu.featured.title}}</div>
-                <div class="sub-navigation-feature__subtitle">{{submenu.featured.subtitle}}</div>
-              </div>
-            </a>
-            {{/if}}
+            <div class="mobile-sub-navigation">
+              {{#if submenu.featured}}
+                <a class="sub-navigation-feature" href="{{submenu.featured.link}}">
+                  <img
+                    class="sub-navigation-feature__image"
+                    src="{{submenu.featured.image}}"
+                    alt="{{submenu.featured.title}}">
 
-            <ul class="sub-navigation__list">
-            {{#each submenu.items}}
-              <li class="sub-navigation__item{{#if current}} sub-navigation__item--current{{/if}}">
-                <a class="sub-navigation__link" href="{{slug}}">{{title}}</a>
-              </li>
-            {{/each}}
-            {{#if submenu.call_to_action}}
-              <li class="sub-navigation__item">
-                <a class="sub-navigation__link" href="{{submenu.call_to_action.slug}}">
-                  {{submenu.call_to_action.title}}
+                  <div class="sub-navigation-feature__text">
+                    <div class="sub-navigation-feature__title">
+                      {{submenu.featured.title}}
+                    </div>
+
+                    <div class="sub-navigation-feature__subtitle">
+                      {{submenu.featured.subtitle}}
+                    </div>
+                  </div>
                 </a>
-              </li>
-            {{/if}}
-            </ul>
-          </div>
+              {{/if}}
+
+              <ul class="sub-navigation__list">
+                {{#each submenu.items}}
+                  <li class="sub-navigation__item{{#if current}} sub-navigation__item--current{{/if}}">
+                    <a class="sub-navigation__link" href="{{slug}}">
+                      {{title}}
+                    </a>
+                  </li>
+                {{/each}}
+
+                {{#if submenu.call_to_action}}
+                  <li class="sub-navigation__item">
+                    <a class="sub-navigation__link" href="{{submenu.call_to_action.slug}}">
+                      {{submenu.call_to_action.title}}
+                    </a>
+                  </li>
+                {{/if}}
+              </ul>
+            </div>
           {{/if}}
         </li>
       {{/each}}
