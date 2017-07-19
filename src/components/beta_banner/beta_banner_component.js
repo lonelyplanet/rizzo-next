@@ -30,7 +30,7 @@ export default class BetaBannerComponent {
   }
 
   leaveBeta() {
-    this.cookieUtil.removeCookie("_v"); // Remove Variant
+    this.cookieUtil.removeCookie("_v", "www.lonelyplanet.com"); // Remove Variant
     window.location = "//connect.lonelyplanet.com/users/sign_out"; // Sign Out
   }
 
