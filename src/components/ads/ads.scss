@@ -67,14 +67,24 @@
   text-align: center;
 }
 
-.ad--inline__container {
-  padding: 24px;
-}
-
 .adunit--sponsor-logo,
 .adunit--sponsor-logo-masthead,
 .adunit--best-in-masthead {
   display: inline-block;
+}
+
+.adunit--articles-inline iframe {
+  // Target responsive ads
+  width: 100%;
+
+  // Target fixed-width ads
+  &[width="300"],
+  &[width="320"] {
+    @media (min-width: $min-360) {
+      margin: 24px auto;
+      width: auto;
+    }
+  }
 }
 
 /// ----------------------------------------------------------------------------
