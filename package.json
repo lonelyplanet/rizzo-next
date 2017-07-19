@@ -31,7 +31,7 @@
     "version:minor": "npm run release -- --release-as minor",
     "version:major": "npm run release -- --release-as major"
   },
-  "version": "0.22.4",
+  "version": "0.22.5",
   "pre-commit": [
     "scsslint",
     "test",
