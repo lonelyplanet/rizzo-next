@@ -31,6 +31,7 @@ node_modules
 
 # Debug log from npm
 npm-debug.log
+yarn-error.log
 
 .idea
 public
