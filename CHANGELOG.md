@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.22.7"></a>
+## [0.22.7](https://github.com/lonelyplanet/rizzo-next/compare/v0.22.6...v0.22.7) (2017-07-20)
+
+
+### Bug Fixes
+
+* Always use https in profile link ([8ba2e6a](https://github.com/lonelyplanet/rizzo-next/commit/8ba2e6a))
+* Use absolute path for profile link ([b208137](https://github.com/lonelyplanet/rizzo-next/commit/b208137))
+* Use absolute path for public profile link ([fc145af](https://github.com/lonelyplanet/rizzo-next/commit/fc145af))
+* Use https in thorntree links ([7e9e371](https://github.com/lonelyplanet/rizzo-next/commit/7e9e371))
+
+
+
 <a name="0.22.6"></a>
 ## [0.22.6](https://github.com/lonelyplanet/rizzo-next/compare/v0.22.5...v0.22.6) (2017-07-19)
 
