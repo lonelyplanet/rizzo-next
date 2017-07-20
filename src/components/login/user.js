@@ -24,7 +24,7 @@ export default class User {
     this.luna = luna;
     this.connect = connect;
     this.profileLink = connect ?
-      `/profile/${id}/edit` :
+      `//www.lonelyplanet.com/profile/${id}/edit` :
       `//www.lonelyplanet.com/thorntree/profiles/${profileSlug}`;
 
     this.publicProfileLink = connect ?
