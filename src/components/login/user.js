@@ -25,11 +25,11 @@ export default class User {
     this.connect = connect;
     this.profileLink = connect ?
       `https://www.lonelyplanet.com/profile/${id}/edit` :
-      `//www.lonelyplanet.com/thorntree/profiles/${profileSlug}`;
+      `https://www.lonelyplanet.com/thorntree/profiles/${profileSlug}`;
 
     this.publicProfileLink = connect ?
       `https://www.lonelyplanet.com/profile/${username}` :
-      `//www.lonelyplanet.com/thorntree/profiles/${profileSlug}`;
+      `https://www.lonelyplanet.com/thorntree/profiles/${profileSlug}`;
 
     this.signOutLink = connect ?
       "//connect.lonelyplanet.com/users/sign_out" :
