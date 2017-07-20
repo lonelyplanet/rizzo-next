@@ -28,7 +28,7 @@ export default class User {
       `//www.lonelyplanet.com/thorntree/profiles/${profileSlug}`;
 
     this.publicProfileLink = connect ?
-      `/profile/${username}` :
+      `https://www.lonelyplanet.com/profile/${username}` :
       `//www.lonelyplanet.com/thorntree/profiles/${profileSlug}`;
 
     this.signOutLink = connect ?
