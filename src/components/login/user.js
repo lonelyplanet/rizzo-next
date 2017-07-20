@@ -24,12 +24,12 @@ export default class User {
     this.luna = luna;
     this.connect = connect;
     this.profileLink = connect ?
-      `//www.lonelyplanet.com/profile/${id}/edit` :
-      `//www.lonelyplanet.com/thorntree/profiles/${profileSlug}`;
+      `https://www.lonelyplanet.com/profile/${id}/edit` :
+      `https://www.lonelyplanet.com/thorntree/profiles/${profileSlug}`;
 
     this.publicProfileLink = connect ?
-      `/profile/${username}` :
-      `//www.lonelyplanet.com/thorntree/profiles/${profileSlug}`;
+      `https://www.lonelyplanet.com/profile/${username}` :
+      `https://www.lonelyplanet.com/thorntree/profiles/${profileSlug}`;
 
     this.signOutLink = connect ?
       "//connect.lonelyplanet.com/users/sign_out" :
