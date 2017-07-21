@@ -47,7 +47,9 @@ export default class LoginManager {
    * @param  {Object} user User login information
    */
   statusFetched(user) {
-    this.user = (user.username ? new User(user) : new User());
+    // When swapping UI components through _v cookie being set with a specific value
+    // We need to instantiante the user with any variants being sent from the status check
+    this.user = (user.username ? new User(user) : new User({ variant: user.variant }));
 
     if (!user.id) {
       return this._updateStatus();

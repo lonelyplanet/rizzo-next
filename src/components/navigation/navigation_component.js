@@ -193,7 +193,7 @@ class NavigationComponent extends Component {
     let $mobileNavigationHeader = this.$mobileNavigation.find(".js-mobile-navigation-header");
 
     if (!user.id) {
-      if (this.showNewLoginLink()) {
+      if (this.showNewLoginLink(user.variant)) {
         // lp.require is a way to detect if this is a legacy app or not (/¯◡ ‿ ◡)/¯ ~ ┻━┻
         const loginLink = window.lp.require ? "https://connect.lonelyplanet.com" : "#login";
         this.$el.find(".navigation__link[href*='sign_in']").attr("href", loginLink);
@@ -224,8 +224,8 @@ class NavigationComponent extends Component {
     this.userStatusUpdate(user);
   }
 
-  showNewLoginLink() {
-    return document.cookie.indexOf("split-16-connect") > -1;
+  showNewLoginLink(variant) {
+    return document.cookie.indexOf(variant) > -1;
   }
 }
 
