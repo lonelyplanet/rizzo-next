@@ -12,6 +12,7 @@ export default class User {
     avatar = "http://dummyimage.com/80x80/4d494d/686a82.gif",
     messages = [],
     activity = [],
+    variant,
   } = {}) {
     this.id = id;
     this.email = email;
@@ -23,6 +24,7 @@ export default class User {
     this.activity = activity;
     this.luna = luna;
     this.connect = connect;
+    this.variant = variant;
     this.profileLink = connect ?
       `https://www.lonelyplanet.com/profile/${id}/edit` :
       `https://www.lonelyplanet.com/thorntree/profiles/${profileSlug}`;

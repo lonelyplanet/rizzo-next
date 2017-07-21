@@ -2,6 +2,7 @@ import { Component } from "../../core/bane";
 import SearchComponent from "../search";
 import NavigationComponent from "../navigation";
 import NavigationState from "../navigation/navigation_state";
+import subscribe from "../../core/decorators/subscribe";
 import $ from "jquery";
 import debounce from "lodash/debounce";
 import BetaBannerComponent from "../beta_banner/beta_banner_component";
@@ -36,16 +37,23 @@ class Header extends Component {
 
     this.appendMenuIcon();
     this.buildGlobalComponents();
-    if(this.hasVariantCookie()) {
-      const $betaBanner = new BetaBannerComponent();
-      $betaBanner.render();
-    }
+
+
+    this.subscribe();
   }
 
   buildGlobalComponents() {
     $(document).on("touchstart", "a[href*='login']", () => {
       this.navigation._clickNav();
     });
+  }
+
+  @subscribe("user.status.update")
+  showBetaBanner(user) {
+    if(this.hasVariantCookie(user.variant)) {
+      const $betaBanner = new BetaBannerComponent();
+      $betaBanner.render();
+    }
   }
 
   /**
@@ -73,10 +81,10 @@ class Header extends Component {
    * If in variant group then show the beta banner
    * @return {Boolean}
    */
-  hasVariantCookie() {
+  hasVariantCookie(variant) {
     // Hard coding the specfic cookier for now just to make sure
     // to not interfere with other tests going on
-    return document.cookie.indexOf("split-16-connect") > -1;
+    return document.cookie.indexOf(variant) > -1;
   }
 
   onSearchClick(e) {
