@@ -4,8 +4,6 @@ import ArticleBodyComponent from "../article_body";
 import SocialShareComponent from "../social_share";
 import ArticleModel from "./article_model";
 
-const adpackage = document.cookie.match(/adpackage/);
-
 export default class ArticleComponent extends Component {
   initialize() {
     this._setArticle();
@@ -55,9 +53,7 @@ export default class ArticleComponent extends Component {
 
     this._setPoiCallouts(article.get("content").callouts);
 
-    if (adpackage) {
-      this._insertInlineAdSlots(this.$el);
-    }
+    this._insertInlineAdSlots(this.$el);
   }
 
   _createIdForArticle(slug) {

@@ -9,26 +9,13 @@
             {{ article.title }}
           </h1>
 
-          {{#if adpackage}}
-            <div class="article-header__title is-xsmall is-padded-bottom">
-              <div
-                id="ad-articles-sponsor-logo"
-                class="adunit--sponsor-logo">
-                Tips &amp; articles
-              </div>
-            </div>
-          {{/if}}
-
-          {{#unless adpackage}}
-            <div class="article-header__title is-xsmall is-padded-bottom js-header-title">
+          <div class="article-header__title is-xsmall is-padded-bottom">
+            <div
+              id="ad-articles-sponsor-logo"
+              class="adunit--sponsor-logo">
               Tips &amp; articles
-
-              <div class="adunit adunit--sponsor-logo display-none js-sponsor-logo"
-                data-size-mapping="sponsor-logo"
-                data-targeting='{ "position": "header" }'>
-              </div>
             </div>
-          {{/unless}}
+          </div>
         </header>
       </div>
 
