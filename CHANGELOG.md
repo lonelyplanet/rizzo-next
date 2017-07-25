@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.23.0"></a>
+# [0.23.0](https://github.com/lonelyplanet/rizzo-next/compare/v0.22.8...v0.23.0) (2017-07-25)
+
+
+### Features
+
+* Remove adpackage feature, old ads from articles ([#734](https://github.com/lonelyplanet/rizzo-next/issues/734)) ([3d378de](https://github.com/lonelyplanet/rizzo-next/commit/3d378de))
+
+
+
 <a name="0.22.8"></a>
 ## [0.22.8](https://github.com/lonelyplanet/rizzo-next/compare/v0.22.7...v0.22.8) (2017-07-21)
 
