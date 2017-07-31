@@ -7,7 +7,6 @@ import Arkham from "../../core/arkham";
 import createHistory from "history/createBrowserHistory";
 import $ from "jquery";
 import MapApi from "./map_api";
-import mapboxgl from "mapbox-gl/dist/mapbox-gl.js";
 import rizzo from "../../rizzo";
 
 let history = createHistory();
@@ -112,5 +111,3 @@ export default class MapComponent extends Component {
   }
 
 }
-
-MapComponent.supported = mapboxgl.supported();
