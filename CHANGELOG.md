@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.23.1"></a>
+## [0.23.1](https://github.com/lonelyplanet/rizzo-next/compare/v0.23.0...v0.23.1) (2017-07-31)
+
+
+### Bug Fixes
+
+* Remove mapxbox.gl ([a8b1b49](https://github.com/lonelyplanet/rizzo-next/commit/a8b1b49))
+
+
+
 <a name="0.23.0"></a>
 # [0.23.0](https://github.com/lonelyplanet/rizzo-next/compare/v0.22.8...v0.23.0) (2017-07-25)
 
