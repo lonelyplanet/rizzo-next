@@ -18,7 +18,7 @@ $mapButton.on("click", function() {
         el: ".map_holder"
       });
 
-      if (!MapComponent.default.supported && map) {
+      if (map) {
         map.close();
       }
 
