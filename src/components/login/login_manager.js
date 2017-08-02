@@ -19,7 +19,7 @@ export default class LoginManager {
    * @return {jQuery.Deferred}
    */
   checkStatus() {
-    $.when(
+    return $.when(
       $.ajax({
         url: this.lunaStatusUrl,
         dataType: "jsonp",
