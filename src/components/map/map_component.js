@@ -16,10 +16,6 @@ export default class MapComponent extends Component {
   initialize() {
     rizzo.logger.log("Creating map");
 
-    if (!MapComponent.supported) {
-      return false;
-    }
-
     this.fetchMap();
 
     Arkham.on("map.closed", () => {
