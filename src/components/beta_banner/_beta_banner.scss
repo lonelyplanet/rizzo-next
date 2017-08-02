@@ -3,51 +3,16 @@
 .lp-beta-banner {
   background: $beta-banner-color;
   color: $color-white;
-  font-size: 1.6rem;
-  padding-bottom: 1.6rem;
-  padding-top: 1.6rem;
+  font-size: 1.4rem;
+  padding-bottom: 1.4rem;
+  padding-top: 1.4rem;
   width: 100%;
 
   @media (max-width: $max-720) {
-    font-size: 1.2rem;
-  }
-
-  &--left {
-    float: left;
-    max-width: 50%;
-  }
-
-  &--right {
-    position: absolute;
-    right: 0;
-  }
-
-  &--action-list li {
-    display: inline;
-    padding-left: 3.2rem;
-
-    @media (max-width: $max-720) {
-      font-size: 1.4rem;
-      padding-left: .8rem;
-    }
-
-    a {
-      color: $color-white;
-      font-weight: 600;
-      text-decoration: underline;
-      transition: color $animation-speed ease-in-out;
-    }
-
-    a:hover,
-    a:active,
-    a:focus {
-      color: rgba($color-white, .8);
-    }
-
-    a:focus {
-      outline: 1px dotted rgba($color-white, .4);
-      outline-offset: 2px;
-    }
+    font-size: 1.1rem;
+    letter-spacing: -.65px;
+    padding-bottom: .8rem;
+    padding-top: .8rem;
   }
 
   &__container {
@@ -56,5 +21,10 @@
     display: flex;
     justify-content: space-between;
     position: relative;
+  }
+
+  p {
+    text-align: center;
+    width: 100%;
   }
 }

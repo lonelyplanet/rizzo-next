@@ -50,9 +50,9 @@ class Header extends Component {
 
   @subscribe("user.status.update")
   showBetaBanner(user) {
-    if(this.hasVariantCookie(user.variant)) {
-      const $betaBanner = new BetaBannerComponent();
-      $betaBanner.render();
+    if(this.hasVariantCookie(user.variant) && !this.$betaBanner) {
+      this.$betaBanner = new BetaBannerComponent();
+      this.$betaBanner.render();
     }
   }
 
