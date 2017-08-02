@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.23.2"></a>
+## [0.23.2](https://github.com/lonelyplanet/rizzo-next/compare/v0.23.1...v0.23.2) (2017-08-02)
+
+
+### Bug Fixes
+
+* banner styles for 1% ([#737](https://github.com/lonelyplanet/rizzo-next/issues/737)) ([ec4b3cc](https://github.com/lonelyplanet/rizzo-next/commit/ec4b3cc))
+* delete variant cookie with proper domain ([7809f40](https://github.com/lonelyplanet/rizzo-next/commit/7809f40))
+* return promise from login manager check status ([#736](https://github.com/lonelyplanet/rizzo-next/issues/736)) ([ec3fafc](https://github.com/lonelyplanet/rizzo-next/commit/ec3fafc))
+
+
+
 <a name="0.23.1"></a>
 ## [0.23.1](https://github.com/lonelyplanet/rizzo-next/compare/v0.23.0...v0.23.1) (2017-07-31)
 
