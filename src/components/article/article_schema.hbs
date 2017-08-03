@@ -2,10 +2,7 @@
   {
     "@context": "http://schema.org",
     "@type": "Article",
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "https://www.lonelyplanet.com/{{ article.slug }}"
-    },
+    "mainEntityOfPage": "https://www.lonelyplanet.com/{{ article.slug }}",
     "headline": "{{ article.title }}",
     "datePublished": "{{ article.post_date }}",
     "dateModified": "{{ article.post_date }}",
