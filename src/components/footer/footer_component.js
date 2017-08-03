@@ -5,9 +5,8 @@ class Footer extends Component {
   initialize() {
     this.updateLocationOnChange();
     this.$form = $(".js-newsletter-form");
-    this.$submitButton = $(".js-submit");
+    this.$form.on("submit", this.submit.bind(this));
     this.$success = $(".js-success");
-    this.$submitButton.on("click", this.submit.bind(this));
   }
 
   updateLocationOnChange() {
