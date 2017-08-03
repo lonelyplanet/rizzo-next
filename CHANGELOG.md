@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.23.4"></a>
+## [0.23.4](https://github.com/lonelyplanet/rizzo-next/compare/v0.23.3...v0.23.4) (2017-08-03)
+
+
+### Bug Fixes
+
+* Update mainEntityOfPage property in article schema ([#739](https://github.com/lonelyplanet/rizzo-next/issues/739)) ([f6d39a4](https://github.com/lonelyplanet/rizzo-next/commit/f6d39a4))
+
+
+
 <a name="0.23.3"></a>
 ## [0.23.3](https://github.com/lonelyplanet/rizzo-next/compare/v0.23.2...v0.23.3) (2017-08-02)
 
