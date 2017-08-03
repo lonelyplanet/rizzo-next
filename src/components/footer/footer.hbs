@@ -12,7 +12,7 @@
         </p>
 
         <form class="newsletter-register js-newsletter-form" action="//www.lonelyplanet.com/newsletter" method="post" _lpchecked="1">
-          <input name="sailthru[source]" type="hidden" value="homepagefooter">
+          <input name="newsletter[source]" type="hidden" value="homepagefooter">
           <input name="type" type="hidden" value="subscribe">
 
           <p class="newsletter-register__text">
@@ -21,17 +21,20 @@
           </p>
 
           <label for="newsletter-register-email">Email address</label>
-          <input class="newsletter-register__email" id="newsletter-register-email" name="sailthru[email]" type="email" placeholder="your@email.com" autocomplete="email" autocapitalize="none" autocorrect="off" required>
+          <input class="newsletter-register__email" id="newsletter-register-email" name="newsletter[email]" type="email" placeholder="your@email.com" autocomplete="email" autocapitalize="none" autocorrect="off" required>
 
           <label for="newsletter-register-country">Country</label>
-          <select class="newsletter-register__country" id="newsletter-register-country" name="sailthru[country]">
+          <select class="newsletter-register__country" id="newsletter-register-country" name="newsletter[country]">
             <option value="">Select country</option>
             {{#each newsletter_countries}}
               <option value="{{this}}">{{this}}</option>
             {{/each}}
           </select>
 
-          <button class="newsletter-register__button js-submit" data-lpa-action="newsletter" data-lpa-category="account">Sign up</button>
+          <input id="newsletter-register-optin" class="newsletter-register__optin js-newsletter-optin" type="checkbox" name="newsletter[legalOptIn]" required value="true">
+          <div class="newsletter-register__text">Tick to opt-in. Opt out at any time via the 'unsubscribe' link in the footer of the emails.</div>
+
+          <input class="newsletter-register__button js-submit" data-lpa-action="newsletter" data-lpa-category="account" value="Sign up" type="submit" />
         </form>
         <div class="js-success is-hidden">
           Thank you for subscribing.
