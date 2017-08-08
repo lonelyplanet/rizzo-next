@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.23.7"></a>
+## [0.23.7](https://github.com/lonelyplanet/rizzo-next/compare/v0.23.6...v0.23.7) (2017-08-08)
+
+
+### Bug Fixes
+
+* Update Scroll constructor call ([a120df9](https://github.com/lonelyplanet/rizzo-next/commit/a120df9))
+
+
+
 <a name="0.23.6"></a>
 ## [0.23.6](https://github.com/lonelyplanet/rizzo-next/compare/v0.23.5...v0.23.6) (2017-08-08)
 
