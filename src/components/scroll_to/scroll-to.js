@@ -9,9 +9,7 @@ class ScrollToComponent extends Component {
       "click .js-action-scroll-to": "scrollLinkClicked"
     };
 
-    this._scroll = new Scroll({
-        el: document.body
-    });
+    this._scroll = new Scroll(document.body);
   }
 
   scrollLinkClicked(event) {
