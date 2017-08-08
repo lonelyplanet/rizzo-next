@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.23.6"></a>
+## [0.23.6](https://github.com/lonelyplanet/rizzo-next/compare/v0.23.5...v0.23.6) (2017-08-08)
+
+
+### Bug Fixes
+
+* Add tourism solutions to the footer ([74030df](https://github.com/lonelyplanet/rizzo-next/commit/74030df))
+* avatar image warped when not a square image ([#741](https://github.com/lonelyplanet/rizzo-next/issues/741)) ([dc0de61](https://github.com/lonelyplanet/rizzo-next/commit/dc0de61))
+
+
+
 <a name="0.23.5"></a>
 ## [0.23.5](https://github.com/lonelyplanet/rizzo-next/compare/v0.23.4...v0.23.5) (2017-08-03)
 
