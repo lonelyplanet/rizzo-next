@@ -1,4 +1,5 @@
 import { Component } from "../../core/bane";
+import { authSetupWithDefaults } from "@lonelyplanet/dotcom-core/dist/helpers";
 import Overlay from "../overlay";
 import Notification from "../notification/notification";
 import waitForTransition from "../../core/utils/waitForTransition";
@@ -195,7 +196,7 @@ class NavigationComponent extends Component {
     if (!user.id) {
       if (this.showNewLoginLink(user.variant)) {
         // lp.require is a way to detect if this is a legacy app or not (/¯◡ ‿ ◡)/¯ ~ ┻━┻
-        const loginLink = window.lp.require ? "https://connect.lonelyplanet.com" : "#login";
+        const loginLink = window.lp.require ? this.buildLegacyAuthUrl() : "#login";
         this.$el.find(".navigation__link[href*='sign_in']").attr("href", loginLink);
         this.$mobileNavigation.find(".mobile-navigation__link[href*='sign_in']").attr("href", loginLink);
       }
@@ -226,6 +227,13 @@ class NavigationComponent extends Component {
 
   showNewLoginLink(variant) {
     return document.cookie.indexOf(variant) > -1;
+  }
+
+  buildLegacyAuthUrl() {
+    const windowExists = typeof window !== "undefined";
+    const { builder } = authSetupWithDefaults( windowExists && window.lp.auth);
+    const targetLinkUri = windowExists && window.location.origin + window.location.pathname;
+    return builder.getLoginUrl(null, targetLinkUri);
   }
 }
 
