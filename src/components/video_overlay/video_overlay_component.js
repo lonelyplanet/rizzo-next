@@ -67,18 +67,14 @@ export default class VideoOverlay extends Overlay {
   */
   playerReady (player) {
     this.player = player;
-    this.player.fetchVideos().then(this.fetchDone.bind(this));
+    this.listenTo(this.player, "loadstart", this.onPlayerLoadStart.bind(this));
+    this.player.fetchVideos();
   }
 
   /**
-  * Callback from the player loadVideo()
-  * @param  {bool} success - depicting whether at least one video is available or not
-  */
-  fetchDone (success) {
-    if (!success) {
-      return;
-    }
-
-    this.trigger("video.loaded");
+   * Callback from the player "loadstart" event / when a video is loaded and is ready to play.
+   */
+  onPlayerLoadStart() {
+    this.calculateDimensions();
   }
 }
