@@ -1,4 +1,3 @@
-import * as Cookie from "js-cookie";
 
 export default class BetaBannerComponent {
   render() {
