@@ -32,7 +32,7 @@ class Brightcove extends VideoPlayer {
 
     // Catch any errors thrown within play promise (only applicable on some browsers)
     if (promise) {
-      promise.catch(reason => console.log('VIDEOJS:', reason)).then(() => {});
+      promise.catch(reason => console.log("VIDEOJS:", reason)).then(() => {});
     }
   }
 
