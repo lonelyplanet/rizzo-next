@@ -1,6 +1,5 @@
 import { Component } from "../../core/bane";
 import Video from "../video";
-import VideoOverlay from "../video_overlay";
 
 /**
  * Video Poster Button Component
@@ -14,7 +13,6 @@ export default class VideoPosterButtonComponent extends Component {
     };
 
     Video.addPlayer(this.$el.find(".video-poster-button__video")[0]).then(this.playerReady.bind(this));
-    (new VideoOverlay({el:document.getElementsByClassName('video-overlay')[0]})).show();
   }
 
   showVideo() {
