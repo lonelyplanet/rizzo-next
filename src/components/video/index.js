@@ -39,7 +39,7 @@ class Video {
     // Take the return value and use .then() on it to ensure the
     // player is ready before using it.
     return new Promise((resolve) => {
-      if (player.isReady()) {
+      if (player.isReady) {
         resolve(player);
         return;
       }

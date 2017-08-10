@@ -100,7 +100,7 @@ export default class VideoPosterButtonComponent extends Component {
     this.player = player;
     this.listenTo(this.player, "ended", this.onPlayerEnded.bind(this));
     this.listenTo(this.player, "loadstart", this.onPlayerLoadStart.bind(this));
-    this.player.fetchVideos().then(this.fetchDone.bind(this));
+    this.player.fetchVideos();
   }
 
   /**
@@ -114,18 +114,6 @@ export default class VideoPosterButtonComponent extends Component {
    * Callback from the player "loadstart" event / when a video is loaded and is ready to play.
    */
   onPlayerLoadStart() {
-    this.renderText();
-  }
-
-  /**
-  * Callback from the player fetchVideos()
-  * @param  {bool} success - depicting whether at least one video is available or not
-  */
-  fetchDone(success) {
-    if (!success) {
-      return;
-    }
-
     this.render();
   }
 }

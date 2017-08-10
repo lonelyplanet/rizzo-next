@@ -8,11 +8,9 @@ class VideoPlayer extends Component {
     this.autoplay = autoplay;
     this.defaultAspectRatio = 1.77777778;
     this.events = {};
+    this.isReady = false;
+    this.on("ready", () => { this.isReady = true; });
     this.setup();
-  }
-
-  isReady() {
-    return true;
   }
 
   /**

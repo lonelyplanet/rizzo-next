@@ -28,7 +28,12 @@ class Brightcove extends VideoPlayer {
   play() {
     super.play();
     this.autoplay = true;
-    this.player.play();
+    const promise = this.player.play();
+
+    // Catch any errors thrown within play promise (only applicable on some browsers)
+    if (promise) {
+      promise.catch(reason => console.log("VIDEOJS:", reason)).then(() => {});
+    }
   }
 
   pause() {
@@ -39,12 +44,15 @@ class Brightcove extends VideoPlayer {
 
   start() {
     this.currentVideoIndex = null;
+    this.autoplay = true;
     this.loadNextVideo();
-    this.play();
   }
 
   setup() {
-    if (!this.videoEl) {
+    if (!this.videoId) {
+      this.trigger("ready");
+    }
+    else if (!this.videoEl) {
       // Insert brightcove player html
       let html = "<video ";
       if (this.videoId) {
@@ -68,7 +76,7 @@ class Brightcove extends VideoPlayer {
       script.onload = this.onLoadSetupScript.bind(this);
 
       document.body.appendChild(script);
-    } else {
+    } else if (!this.player) {
       this.player = videojs(this.videoEl);
 
       // We don't show the controls until the player is instantiated
@@ -100,10 +108,6 @@ class Brightcove extends VideoPlayer {
     this.trigger("disposed", this);
   }
 
-  isReady() {
-    return this.player && this.player.isReady_;
-  }
-
   getPlayerScriptId() {
     return "video__initialize-" + this.playerId;
   }
@@ -113,6 +117,8 @@ class Brightcove extends VideoPlayer {
   }
 
   onPlayerReady() {
+    this.currentVideoIndex = null;
+    this.loadNextVideo();
     this.trigger("ready");
   }
 
@@ -160,7 +166,7 @@ class Brightcove extends VideoPlayer {
     this.trigger("loadstart");
 
     if (this.autoplay) {
-      this.player.play();
+      this.play();
     }
   }
 
@@ -196,34 +202,44 @@ class Brightcove extends VideoPlayer {
   }
 
   fetchVideos() {
-    if (!this.player) {
-      return Promise.resolve(false);
-    }
 
     let query = null;
     try {
-      query = "ref:dest_" + window.lp.place.atlasId;
+      query = "dest_" + window.lp.place.atlasId;
     }
     catch (e) {
       return Promise.resolve(false);
     }
 
+    const apiURL = "https://www.lonelyplanet.com/video/api/";
+
     return new Promise((resolve) => {
-      this.player.catalog.getPlaylist(query, (error, playlist) => {
-        if (!error) {
-          this.videos = playlist.length ? playlist : [];
+      $.ajax({
+        url: apiURL + "playlists.json?reference_id=" + query
+      }).done((data, status, response) => {
+        if (response.status === 200 && data && data.length) {
+          this.videos = data[0].playlistitems.map(item => item.video);
         }
 
         if (this.videos.length) {
           this.loadNextVideo();
           resolve(true);
-        } else {
-          this.player.catalog.getVideo(query, (error, video) => {
-            if (!error) {
-              this.videos = [video];
-              this.loadNextVideo();
+        }
+        else {
+          $.ajax({
+            url: apiURL + "video.json?reference_id=" + query
+          }).done((data, status, response) => {
+            if (response.status === 200 && data && data.length) {
+              this.videos = data;
             }
-            resolve(!error);
+
+            if (this.videos.length) {
+              this.loadNextVideo();
+              resolve(true);
+            }
+            else {
+              resolve(false);
+            }
           });
         }
       });
@@ -231,7 +247,7 @@ class Brightcove extends VideoPlayer {
   }
 
   loadNextVideo() {
-    if (!this.player || !this.videos.length) {
+    if (!this.videos.length) {
       return;
     }
 
@@ -240,10 +256,21 @@ class Brightcove extends VideoPlayer {
 
     const video = this.videos[this.currentVideoIndex];
 
-    // Do not load a video that is already loaded
-    // (brightcove's engagement score metrics will break)
-    if (!this.player.mediainfo || (this.player.mediainfo.id !== video.id)) {
-      this.player.catalog.load(video);
+    if (!this.player) {
+      this.videoId = video.provider_id;
+      this.setup();
+    }
+    else if (!this.player.mediainfo || (this.player.mediainfo.id !== video.provider_id)) {
+      // Do not load a video that is already loaded
+      // (brightcove's engagement score metrics will break)
+      this.player.catalog.getVideo(video.provider_id, (error, video) => {
+        if (!error) {
+          this.player.catalog.load(video);
+        }
+      });
+    }
+    else if (this.autoplay) {
+      this.play();
     }
   }
 
