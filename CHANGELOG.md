@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.23.9"></a>
+## [0.23.9](https://github.com/lonelyplanet/rizzo-next/compare/v0.23.8...v0.23.9) (2017-08-10)
+
+
+### Bug Fixes
+
+* Add navigation__item--user class to sign-in nav ([e03aaee](https://github.com/lonelyplanet/rizzo-next/commit/e03aaee))
+
+
+
 <a name="0.23.8"></a>
 ## [0.23.8](https://github.com/lonelyplanet/rizzo-next/compare/v0.23.7...v0.23.8) (2017-08-09)
 
