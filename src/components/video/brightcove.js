@@ -211,9 +211,11 @@ class Brightcove extends VideoPlayer {
       return Promise.resolve(false);
     }
 
+    const apiURL = "https://www.lonelyplanet.com/video/api/";
+
     return new Promise((resolve) => {
       $.ajax({
-        url: "https://www.lonelyplanet.com/video/api/playlists.json?reference_id=" + query
+        url: apiURL + "playlists.json?reference_id=" + query
       }).done((data, status, response) => {
         if (response.status === 200 && data && data.length) {
           this.videos = data[0].playlistitems.map(item => item.video);
@@ -225,7 +227,7 @@ class Brightcove extends VideoPlayer {
         }
         else {
           $.ajax({
-            url: "https://www.lonelyplanet.com/video/api/video.json?reference_id=" + query
+            url: apiURL + "video.json?reference_id=" + query
           }).done((data, status, response) => {
             if (response.status === 200 && data && data.length) {
               this.videos = data;
