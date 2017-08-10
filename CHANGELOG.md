@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.24.0"></a>
+# [0.24.0](https://github.com/lonelyplanet/rizzo-next/compare/v0.23.9...v0.24.0) (2017-08-10)
+
+
+### Features
+
+* Updated Brightcove videos to query playlists/videos through Open Planet ([#745](https://github.com/lonelyplanet/rizzo-next/issues/745)) ([dd7a3df](https://github.com/lonelyplanet/rizzo-next/commit/dd7a3df))
+
+
+
 <a name="0.23.9"></a>
 ## [0.23.9](https://github.com/lonelyplanet/rizzo-next/compare/v0.23.8...v0.23.9) (2017-08-10)
 
