@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.24.2"></a>
+## [0.24.2](https://github.com/lonelyplanet/rizzo-next/compare/v0.24.1...v0.24.2) (2017-08-22)
+
+
+### Bug Fixes
+
+* Switch lists link to public profile link ([79a81a2](https://github.com/lonelyplanet/rizzo-next/commit/79a81a2))
+
+
+
 <a name="0.24.1"></a>
 ## [0.24.1](https://github.com/lonelyplanet/rizzo-next/compare/v0.24.0...v0.24.1) (2017-08-22)
 
