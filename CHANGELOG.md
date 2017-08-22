@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.24.1"></a>
+## [0.24.1](https://github.com/lonelyplanet/rizzo-next/compare/v0.24.0...v0.24.1) (2017-08-22)
+
+
+### Bug Fixes
+
+* Add lists to global header ([#749](https://github.com/lonelyplanet/rizzo-next/issues/749)) ([2268555](https://github.com/lonelyplanet/rizzo-next/commit/2268555))
+* Fix closing tag in user panel ([5a2dfa9](https://github.com/lonelyplanet/rizzo-next/commit/5a2dfa9))
+
+
+
 <a name="0.24.0"></a>
 # [0.24.0](https://github.com/lonelyplanet/rizzo-next/compare/v0.23.9...v0.24.0) (2017-08-10)
 
