@@ -81,6 +81,14 @@
       margin: 24px auto;
     }
   }
+
+  // Target fixed-width ads
+  &[width="320"] {
+    @media (max-width: $min-320) {
+      margin-left: -#{$spacing};
+      margin-right: -#{$spacing};
+    }
+  }
 }
 
 /// ----------------------------------------------------------------------------
