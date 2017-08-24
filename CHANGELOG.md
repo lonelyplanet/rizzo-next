@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.25.0"></a>
+# [0.25.0](https://github.com/lonelyplanet/rizzo-next/compare/v0.24.3...v0.25.0) (2017-08-24)
+
+
+### Features
+
+* add user id to dataLaery globally ([#752](https://github.com/lonelyplanet/rizzo-next/issues/752)) ([3d67395](https://github.com/lonelyplanet/rizzo-next/commit/3d67395))
+
+
+
 <a name="0.24.3"></a>
 ## [0.24.3](https://github.com/lonelyplanet/rizzo-next/compare/v0.24.2...v0.24.3) (2017-08-23)
 
