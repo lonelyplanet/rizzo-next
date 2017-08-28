@@ -68,7 +68,7 @@
     "react-dom": "^15.4.2",
     "resrc.js": "^0.9.5",
     "scroll-js": "^1.7.1",
-    "susy": "^3.0.0",
+    "susy": "~2.2.9",
     "trackjs": "^2.1.16",
     "urlencode": "^1.1.0"
   },
