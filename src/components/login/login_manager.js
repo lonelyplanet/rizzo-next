@@ -40,6 +40,23 @@ export default class LoginManager {
       this.statusFetched(user);
     });
   }
+
+   /**
+   * Sets user id to dataLayer for analytics
+   * @return null
+   */
+  setDataLayer(id) {
+    if(
+      window &&
+      window.lp &&
+      window.lp.analytics &&
+      window.lp.analytics.dataLayer &&
+      window.lp.analytics.dataLayer.length
+    ){
+      window.lp.analytics.dataLayer[0].accountId = id;
+    }
+  }
+
   /**
    * Callback from checking the user's login status.
    * If the user is not logged in, it will publish a user with a null id.
@@ -55,6 +72,7 @@ export default class LoginManager {
       return this._updateStatus();
     }
 
+    this.setDataLayer(user.id);
     this._updateStatus();
   }
 

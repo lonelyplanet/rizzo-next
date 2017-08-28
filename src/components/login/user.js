@@ -40,6 +40,7 @@ export default class User {
     if (window.lp.auth && window.lp.auth.host) {
       this.signOutLink = `${window.lp.auth.host}/users/sign_out`;
     }
+
   }
   toJSON() {
     let obj = {};
