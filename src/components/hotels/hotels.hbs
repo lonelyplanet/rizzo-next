@@ -48,11 +48,25 @@
       </form>
     </div>
     <div class="hotels__button-container">
-      <a class="hotels__more" href="http://www.lonelyplanet.com/{{see_more_slug}}">
-        or skip this step and see all hotels &amp; hostels
-        <i class="icon-chevron-right" aria-hidden="true"></i>
-        <i class="icon-chevron-right" aria-hidden="true"></i>
-      </a>
+      {{#if see_narrative }}
+        <a class="hotels__more" href="http://www.lonelyplanet.com/{{see_more_slug}}">
+          Skip this step and see all hotels &amp; hostels
+          <i class="icon-chevron-right" aria-hidden="true"></i>
+          <i class="icon-chevron-right" aria-hidden="true"></i>
+        </a>
+        <br/>
+        <a class="hotels__more" href="http://www.lonelyplanet.com/{{see_narrative}}">
+          Or explore the collection of Best Places to stay in {{{place_name}}}
+          <i class="icon-chevron-right" aria-hidden="true"></i>
+          <i class="icon-chevron-right" aria-hidden="true"></i>
+        </a>
+      {{else}}
+        <a class="hotels__more" href="http://www.lonelyplanet.com/{{see_more_slug}}">
+          or skip this step and see all hotels &amp; hostels
+          <i class="icon-chevron-right" aria-hidden="true"></i>
+          <i class="icon-chevron-right" aria-hidden="true"></i>
+        </a>
+      {{/if}}
     </div>
   </section>
 {{/if}}

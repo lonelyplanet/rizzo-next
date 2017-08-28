@@ -16,6 +16,7 @@ $hotels-max-width: 1170;
   padding-bottom: ($gutter * 2); // Override segment() padding
   padding-top: ($gutter * 2) - .6rem; // Override segment() padding
   position: relative;
+  padding-bottom: 10rem;
 
   @media (min-width: $min-720) {
     padding-bottom: ($gutter * 3);
@@ -45,8 +46,9 @@ $hotels-max-width: 1170;
     bottom: 2.5rem;
     color: $color-white;
     font-size: 1.2rem;
-    left: calc(50% - (252px / 2));
+    left: calc(50% - (328px / 2));
     position: absolute;
+    text-align: center;
 
     @media (min-width: $min-1080) {
       bottom: 5rem;
