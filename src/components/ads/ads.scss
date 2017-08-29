@@ -74,6 +74,8 @@
 }
 
 .adunit--articles-inline iframe {
+  max-width: 100%;
+
   // Target fixed-width ads
   &[width="300"],
   &[width="320"] {
