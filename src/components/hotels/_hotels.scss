@@ -13,10 +13,9 @@ $hotels-max-width: 1170;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  padding-bottom: ($gutter * 2); // Override segment() padding
+  padding-bottom: 10rem; // Override segment() padding
   padding-top: ($gutter * 2) - .6rem; // Override segment() padding
   position: relative;
-  padding-bottom: 10rem;
 
   @media (min-width: $min-720) {
     padding-bottom: ($gutter * 3);
