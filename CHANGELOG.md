@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.25.2"></a>
+## [0.25.2](https://github.com/lonelyplanet/rizzo-next/compare/v0.25.0...v0.25.2) (2017-08-29)
+
+
+### Bug Fixes
+
+* Add max-width to in-article responsive ads ([89ecdd1](https://github.com/lonelyplanet/rizzo-next/commit/89ecdd1))
+* Remove duplicate padding-bottom declaration in hotels.scss ([53e9eb1](https://github.com/lonelyplanet/rizzo-next/commit/53e9eb1))
+
+
+
 <a name="0.25.0"></a>
 # [0.25.0](https://github.com/lonelyplanet/rizzo-next/compare/v0.24.3...v0.25.0) (2017-08-24)
 
