@@ -50,17 +50,17 @@ class SocialShareComponent extends Component {
         left,
         top;
 
-    let $title = $el.closest(".article").find("meta[itemprop=\"headline\"]"),
+    let $title = $el.closest(".article").data("title"),
         title,
         tweet,
         msg = $el.data("msg"),
         url = $el.data("url") || window.location.href,
         network = $el.data("network");
 
-    if ($title.length) {
-      title = $title[0].content;
+    if ($title) {
+      title = $title;
       tweet = `${urlencode(title)} ${urlencode(url)} @lonelyplanet`;
-    }else if (msg) {
+    } else if (msg) {
       tweet = `${urlencode(msg)}`;
     }
 
