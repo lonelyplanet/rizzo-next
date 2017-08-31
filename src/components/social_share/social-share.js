@@ -57,10 +57,10 @@ class SocialShareComponent extends Component {
         url = $el.data("url") || window.location.href,
         network = $el.data("network");
 
-    if ($title.length) {
+    if ($title) {
       title = $title;
       tweet = `${urlencode(title)} ${urlencode(url)} @lonelyplanet`;
-    }else if (msg) {
+    } else if (msg) {
       tweet = `${urlencode(msg)}`;
     }
 
