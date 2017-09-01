@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.26.0"></a>
+# [0.26.0](https://github.com/lonelyplanet/rizzo-next/compare/v0.25.3...v0.26.0) (2017-09-01)
+
+
+### Features
+
+* Made explore every day channel the featured video in site header ([#758](https://github.com/lonelyplanet/rizzo-next/issues/758)) ([b65a51b](https://github.com/lonelyplanet/rizzo-next/commit/b65a51b))
+
+
+
 <a name="0.25.3"></a>
 ## [0.25.3](https://github.com/lonelyplanet/rizzo-next/compare/v0.25.2...v0.25.3) (2017-08-31)
 
