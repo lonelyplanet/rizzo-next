@@ -4,11 +4,29 @@
   <p class="intro-narrative__text">
     <span class="js-intro-narrative">{{{intro_narrative_text}}}</span>
 
-    {{#if intro_narrative_more}}
-    <a class="intro-narrative__more" href="{{intro_narrative_more}}" target="_blank">
-      Read More
-      <span class="icon-chevron-right"></span>
-    </a>
+    {{#if intro_narrative_expanded}}
+      <a class="intro-narrative__more">
+        Read More
+        <span class="icon-chevron-right"></span>
+      </a>
     {{/if}}
   </p>
+
+  {{#if intro_narrative_expanded}}
+    <div class="intro-narrative__expanded">
+      {{#each intro_narrative_expanded}}
+        {{#if @last}}
+          <p class="intro-narrative__text">
+            <span class="js-intro-narrative">{{{intro_narrative_text}}}</span>
+            <a class="intro-narrative__less">
+              Read Less
+              <span class="icon-chevron-right"></span>
+            </a>
+          </p>
+        {{else}}
+          <p class="intro-narrative__text">{{this}}</p>
+        {{/if}}
+      {{/each}}
+    </div>
+  {{/if}}
 </article>

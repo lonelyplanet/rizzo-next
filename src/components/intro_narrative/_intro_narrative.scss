@@ -37,10 +37,18 @@
   }
 }
 
+.intro-narrative__expanded {
+  display: none;
+}
+
 .intro-narrative__more {
   @include more();
   display: inline-block;
   font-style: normal;
+}
+
+.intro-narrative__less {
+  @extend .intro-narrative__more;
 }
 
 .intro-narrative__author {
