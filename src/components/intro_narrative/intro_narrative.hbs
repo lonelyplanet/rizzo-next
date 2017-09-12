@@ -16,15 +16,17 @@
     <div class="intro-narrative__expanded">
       {{#each intro_narrative_expanded}}
         {{#if @last}}
+          <h2 class="intro-narrative__title">{{{title}}}</p>
           <p class="intro-narrative__text">
-            <span class="js-intro-narrative">{{{intro_narrative_text}}}</span>
+            <span class="js-intro-narrative">{{{text}}}</span>
             <a class="intro-narrative__less">
               Read Less
               <span class="icon-chevron-right"></span>
             </a>
           </p>
         {{else}}
-          <p class="intro-narrative__text">{{this}}</p>
+          <h2 class="intro-narrative__title">{{{title}}}</p>
+          <p class="intro-narrative__text">{{text}}</p>
         {{/if}}
       {{/each}}
     </div>

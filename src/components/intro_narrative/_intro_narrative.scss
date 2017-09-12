@@ -23,6 +23,14 @@
   }
 }
 
+.intro-narrative__title {
+  @include h2();
+
+  font-size: 1.5 * $font-size;
+  text-align: center;
+  margin: 0 auto auto;
+}
+
 .intro-narrative__text {
   color: $feature-copy;
   font-size: $font-size;
