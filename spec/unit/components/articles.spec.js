@@ -10,7 +10,7 @@ let $ = require("jquery");
 let fixture = `
 <article class="article">
   <div class="article__info">
-    <a class="article__info__link" href="http://www.lonelyplanet.com/travel-tips-and-articles/where-and-how-to-watch-sport-like-a-local">
+    <a class="article__info__link" href="https://www.lonelyplanet.com/travel-tips-and-articles/where-and-how-to-watch-sport-like-a-local">
       <h2 class="article__info__title">Where and how to watch sport like a local</h2>
       <p class="article__info__teaser">There are few better ways into a place’s soul than through its sports teams. Step into the febrile atmosphere of a stadium or arena mid-match and you’ll find usually relaxed locals in a state of agitation or elation, depending on the scoreline.</p>
       <p class="article__info__blurb" style="overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 1;">Head to one of these sporting destinations and we promise you’ll see a side of town that’s impossible to find on the streets.</p>
@@ -27,7 +27,7 @@ let fixture = `
     </a>
   </div>
 
-    <a class="article__imagery" href="http://www.lonelyplanet.com/travel-tips-and-articles/where-and-how-to-watch-sport-like-a-local" tabindex="-1">
+    <a class="article__imagery" href="https://www.lonelyplanet.com/travel-tips-and-articles/where-and-how-to-watch-sport-like-a-local" tabindex="-1">
       <div class="article__imagery__image" aria-label="Image for Where and how to watch sport like a local" style="background-image: url(https://lonelyplanetwp.imgix.net/2015/08/bombonera_cs.jpg?w=748)"></div>
     </a>
 

@@ -47,8 +47,8 @@ export default class User {
       `https://www.lonelyplanet.com/thorntree/profiles/${profileSlug}`;
 
     this.signOutLink = connect ?
-      "//connect.lonelyplanet.com/users/sign_out" :
-      "//auth.lonelyplanet.com/users/sign_out";
+      "https://connect.lonelyplanet.com/users/sign_out" :
+      "https://auth.lonelyplanet.com/users/sign_out";
 
     if (window.lp.auth && window.lp.auth.host) {
       this.signOutLink = `${window.lp.auth.host}/users/sign_out`;

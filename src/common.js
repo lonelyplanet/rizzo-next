@@ -42,7 +42,7 @@ if (cookie.getCookie("lpCurrency") && cookie.getCookie("lpCurrency").match(/GBP|
       type: "default",
       text: "We use cookies to improve your experience on our website. You can update your settings",
       link_text: "here",
-      link: "http://www.lonelyplanet.com/legal/cookies"
+      link: "https://www.lonelyplanet.com/legal/cookies"
     }
   });
 }

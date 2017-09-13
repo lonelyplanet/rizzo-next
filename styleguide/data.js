@@ -20,7 +20,7 @@ const components = files
   .map(filename => {
     const raw = fs.readFileSync(path.join(__dirname, `../${filename}`), "utf8");
     const Component = require(`../${filename}`).default;
-    
+
     const name = filename.replace(/\.jsx$/, "");
 
     let docs;
@@ -53,7 +53,7 @@ const components = files
   })
   .filter(c => c.name !== "Base"); // Grab base from array first
 
-const ga = "(function(i,s,o,g,r,a,m){i[\"GoogleAnalyticsObject\"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,\"script\",\"//www.google-analytics.com/analytics.js\",\"ga\");ga(\"create\", \"UA-4603832-6\", \"auto\");ga(\"send\", \"pageview\");";
+const ga = "(function(i,s,o,g,r,a,m){i[\"GoogleAnalyticsObject\"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,\"script\",\"https://www.google-analytics.com/analytics.js\",\"ga\");ga(\"create\", \"UA-4603832-6\", \"auto\");ga(\"send\", \"pageview\");";
 
 module.exports = Object.assign({
   components,
