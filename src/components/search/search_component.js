@@ -117,7 +117,7 @@ class SearchComponent extends Component {
     this.$list.empty();
     this.currentPosition = -1;
 
-    this.$resultsLink.attr("href", "http://www.lonelyplanet.com/search?q=" + this.$input.val());
+    this.$resultsLink.attr("href", "https://www.lonelyplanet.com/search?q=" + this.$input.val());
 
     data.results.forEach((model) => {
       collection.push(this.addOne(model));
@@ -141,7 +141,7 @@ class SearchComponent extends Component {
           break;
         }
 
-        window.location.href = `http://www.lonelyplanet.com/search?q=${this.$input.val()}`;
+        window.location.href = `https://www.lonelyplanet.com/search?q=${this.$input.val()}`;
         break;
 
       case 27:

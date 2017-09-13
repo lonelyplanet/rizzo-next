@@ -1,7 +1,7 @@
 {
   "name": "rizzo-next",
   "description": "The next generation of Lonely Planet's style guide and pattern library.",
-  "homepage": "http://lonelyplanet.github.io/rizzo-next/js/index.html",
+  "homepage": "https://lonelyplanet.github.io/rizzo-next/js/index.html",
   "license": "MIT",
   "main": "src/rizzo",
   "bin": {

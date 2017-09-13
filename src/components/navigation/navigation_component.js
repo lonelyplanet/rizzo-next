@@ -20,7 +20,7 @@ class NavigationComponent extends Component {
   initialize() {
     this.state = NavigationState.getState();
     this.overlay = new Overlay();
-    this.cartUrl = "http://shop.lonelyplanet.com/cart/update";
+    this.cartUrl = "https://shop.lonelyplanet.com/cart/update";
 
     let notificationLabel = this.state.cartItemCount === 1 ? "item" : "items";
 
@@ -179,7 +179,7 @@ class NavigationComponent extends Component {
   updateShopUrl() {
     const shopUrl = this.state.cartItemCount ?
       this.cartUrl :
-      "http://shop.lonelyplanet.com/";
+      "https://shop.lonelyplanet.com/";
 
     $(".js-cart-notification")
       .find(".navigation__link")
