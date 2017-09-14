@@ -16,7 +16,7 @@
     <div class="intro-narrative__expanded">
       {{#each intro_narrative_expanded}}
         {{#if @last}}
-          <h2 class="intro-narrative__title">{{{title}}}</p>
+          <h2 class="intro-narrative__title">{{{title}}}</h2>
           <p class="intro-narrative__text">
             <span class="js-intro-narrative">{{{text}}}</span>
             <a class="intro-narrative__less">
@@ -25,7 +25,7 @@
             </a>
           </p>
         {{else}}
-          <h2 class="intro-narrative__title">{{{title}}}</p>
+          <h2 class="intro-narrative__title">{{{title}}}</h2>
           <p class="intro-narrative__text">{{text}}</p>
         {{/if}}
       {{/each}}
