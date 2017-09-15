@@ -123,3 +123,52 @@
 .intro-narrative__author__creds__title {
   @include author-title($min-320);
 }
+
+.in-detail {
+  @include clearfix;
+  margin: 0 auto $gutter;
+}
+
+.in-detail__list {
+  @include clearfix;
+  margin: 0 auto;
+
+  @media (min-width: $min-480) {
+    width: 50rem;
+  }
+
+  @media (min-width: $min-960) {
+    width: 75rem;
+  }
+
+  @media (min-width: $min-1290) {
+    width: 100rem;
+  }
+}
+
+.in-detail__heading {
+  @include h1();
+}
+
+.in-detail__section {
+  display: block;
+  text-align: left;
+  min-width: 20rem;
+  position: relative;
+  float: left;
+  margin: 2rem 6rem;
+
+  @media (min-width: $min-960) {
+    margin: 0 6rem 2rem;
+    min-height: 40rem;
+  }
+}
+
+.in-detail__title {
+  font-weight: bold;
+}
+
+.in-detail__link {
+  display: block;
+  margin-top: 2rem;
+}
