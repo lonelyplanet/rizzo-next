@@ -11,7 +11,7 @@ var path = require("path"),
  */
 module.exports = {
   plugins: [
-    // new webpack.optimize.UglifyJsPlugin(),
+    new webpack.optimize.UglifyJsPlugin(),
     new ExtractTextPlugin({
       filename: "[name].css",
     }),
