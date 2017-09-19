@@ -15,7 +15,7 @@
     "name": "Lonely Planet"
   },
   "scripts": {
-    "build": "rimraf dist && mkdir -p dist/header_normal && node bin/rizzo build -c ../lib/data/header_normal.json && node bin/rizzo build && npm run css",
+    "build": "rimraf dist && mkdir -p dist/header_normal && NODE_ENV=production node bin/rizzo build -c ../lib/data/header_normal.json && NODE_ENV=production node bin/rizzo build && npm run css",
     "ci": "karma start",
     "css": "node-sass sass/core.scss dist/core.css --include-path 'node_modules' --output-style compressed",
     "docs": "node-sass sass/docs.scss -o dist/css --include-path=node_modules && esdoc -c esdoc.json",
