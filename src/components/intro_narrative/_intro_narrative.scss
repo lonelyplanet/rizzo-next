@@ -1,5 +1,12 @@
 @import "../../../sass/webpack_deps";
 
+.intro-narrative {
+  @media (min-width: $min-720) {
+    width: 850px;
+    margin: auto;
+  }
+}
+
 .intro-narrative__heading {
   @include h1();
 
@@ -30,7 +37,7 @@
   line-height: (26 / 16);
 
   @media (min-width: $min-720) {
-    font-size: 2rem;
+    font-size: 20px;
     line-height: (36 / 20);
   }
 }
@@ -50,7 +57,8 @@
 
 .intro-narrative__title {
   color: $darkgray;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 20px;
   letter-spacing: -.02rem;
   margin-bottom: 1rem;
   margin-top: 2.5rem;
