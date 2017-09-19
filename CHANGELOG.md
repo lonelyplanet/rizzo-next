@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.26.3"></a>
+## [0.26.3](https://github.com/lonelyplanet/rizzo-next/compare/v0.26.2...v0.26.3) (2017-09-19)
+
+
+### Bug Fixes
+
+* Update webpack config for building rizzo-next ([ea75268](https://github.com/lonelyplanet/rizzo-next/commit/ea75268))
+
+
+
 <a name="0.26.2"></a>
 ## [0.26.2](https://github.com/lonelyplanet/rizzo-next/compare/v0.26.1...v0.26.2) (2017-09-12)
 
