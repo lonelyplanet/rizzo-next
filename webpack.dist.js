@@ -15,9 +15,12 @@ module.exports = {
     new ExtractTextPlugin({
       filename: "[name].css",
     }),
-    // new CommonsPlugin({
-    //   name: "common"
-    // })
+    new webpack.DefinePlugin({
+      "process.env": {
+        "NODE_ENV": JSON.stringify("production"),
+        "ASSET_HOST": JSON.stringify(process.env.ASSET_HOST),
+      },
+    }),
   ],
   // Component entries will be built dynamically
   entry: {},
