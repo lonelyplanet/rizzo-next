@@ -67,6 +67,7 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "resrc.js": "^0.9.5",
+    "rizzo-next": "^0.26.0",
     "scroll-js": "^1.7.1",
     "susy": "^2.2.9",
     "trackjs": "^2.1.16",
