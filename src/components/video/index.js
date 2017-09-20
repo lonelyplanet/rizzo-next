@@ -14,12 +14,32 @@ class Video {
     autoplay = false,
   } = {}) {
 
+    // element - can be passed in as a dom reference
+    // or the string ID of an element.  Convert to a reference if necessary.
     if (typeof element === "string") {
       element = document.getElementById(element);
     }
 
     if (!element) {
       return;
+    }
+
+    // videoId - can be passed in as the id string of a video
+    // as it pertains to the specified 'type' OR can be passed in as an
+    // URL which will be parsed to automatically determine the actual
+    // 'videoId' and 'type' values.
+    if (videoId && videoId.startsWith("http")) {
+      const youtubeId = this.getYoutubeId(videoId);
+      const brightcoveId = this.getBrightcoveId(videoId);
+
+      if (youtubeId) {
+        videoId = youtubeId;
+        type = "youtube";
+      }
+      if (brightcoveId) {
+        videoId = brightcoveId;
+        type = "brightcove";
+      }
     }
 
     this.players = this.players || new Map();
@@ -53,6 +73,18 @@ class Video {
     if (this.players) {
       this.players.delete(player.el);
     }
+  }
+
+  static getYoutubeId(url) {
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    const match = url.match(regExp);
+    return match && match[2].length == 11 ? match[2] : null;
+  }
+
+  static getBrightcoveId(url) {
+    const regExp = /^.*\.brightcove\..*(\/videos\/|\?videoId=)([0-9]+).*/;
+    const match = url.match(regExp);
+    return match ? match[2] : null;
   }
 }
 

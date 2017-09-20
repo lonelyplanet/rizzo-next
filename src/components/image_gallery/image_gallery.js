@@ -28,7 +28,7 @@ export default class ImageGalleryComponent extends Component {
     autoplayVideos = true
   } = {}) {
     this.template = require("./image_gallery.hbs");
-    this.autplayVideos = autoplayVideos;
+    this.autoplayVideos = autoplayVideos;
 
     this.$images = this.$el.find(galleryImageSelector);
 
@@ -56,8 +56,8 @@ export default class ImageGalleryComponent extends Component {
           image = $linkEl.find("img").attr("src"),
           link = $linkEl.attr("href"),
           largeImage = link.match(/\.(jpg|png|gif)/) ? link : image,
-          youtubeID = this._youtubeID(link),
-          brightcoveID = this._brightcoveID(link);
+          youtubeID = Video.getYoutubeId(link),
+          brightcoveID = Video.getBrightcoveId(link);
 
       let item = {
         src: largeImage,
@@ -79,7 +79,6 @@ export default class ImageGalleryComponent extends Component {
       }
 
       if (item.videoID) {
-        item.youtubeID = youtubeID;
         item.html = "<div class='pswp__player' id='" + item.videoID + "'></div>";
         item.title = null;
         item.src = null;
@@ -133,26 +132,6 @@ export default class ImageGalleryComponent extends Component {
       this._player.dispose();
       this._player = null;
     }
-  }
-
-  /**
-   * Gets youtube movie id from given youtube movie url
-   */
-  _youtubeID(url) {
-    let regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/,
-      match = url.match(regExp);
-
-    return match && match[2].length == 11 ? match[2] : null;
-  }
-
-  /**
-   * Gets brightcove movie id from given brightcove movie url
-   */
-  _brightcoveID(url) {
-    let regExp = /^.*\.brightcove\..*(\/videos\/|\?videoId=)([0-9]+).*/,
-      match = url.match(regExp);
-
-    return match ? match[2] : null;
   }
 
   /**
