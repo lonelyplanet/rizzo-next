@@ -2,6 +2,77 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.26.5"></a>
+## [0.26.5](https://github.com/lonelyplanet/rizzo-next/compare/v0.26.4...v0.26.5) (2017-09-20)
+
+
+
+<a name="0.26.4"></a>
+## [0.26.4](https://github.com/lonelyplanet/rizzo-next/compare/v0.26.3...v0.26.4) (2017-09-19)
+
+
+### Bug Fixes
+
+* Update webpack config ([ce75888](https://github.com/lonelyplanet/rizzo-next/commit/ce75888))
+
+
+
+<a name="0.26.3"></a>
+## [0.26.3](https://github.com/lonelyplanet/rizzo-next/compare/v0.26.2...v0.26.3) (2017-09-19)
+
+
+### Bug Fixes
+
+* Update webpack config for building rizzo-next ([ea75268](https://github.com/lonelyplanet/rizzo-next/commit/ea75268))
+
+
+
+<a name="0.26.2"></a>
+## [0.26.2](https://github.com/lonelyplanet/rizzo-next/compare/v0.26.1...v0.26.2) (2017-09-12)
+
+
+
+<a name="0.26.1"></a>
+## [0.26.1](https://github.com/lonelyplanet/rizzo-next/compare/v0.26.0...v0.26.1) (2017-09-06)
+
+
+### Bug Fixes
+
+* Make user nav respect host ([7284ce7](https://github.com/lonelyplanet/rizzo-next/commit/7284ce7))
+
+
+
+<a name="0.26.0"></a>
+# [0.26.0](https://github.com/lonelyplanet/rizzo-next/compare/v0.25.3...v0.26.0) (2017-09-01)
+
+
+### Features
+
+* Made explore every day channel the featured video in site header ([#758](https://github.com/lonelyplanet/rizzo-next/issues/758)) ([b65a51b](https://github.com/lonelyplanet/rizzo-next/commit/b65a51b))
+
+
+
+<a name="0.25.3"></a>
+## [0.25.3](https://github.com/lonelyplanet/rizzo-next/compare/v0.25.2...v0.25.3) (2017-08-31)
+
+
+### Bug Fixes
+
+* Get article sharing working again ([c535deb](https://github.com/lonelyplanet/rizzo-next/commit/c535deb))
+
+
+
+<a name="0.25.2"></a>
+## [0.25.2](https://github.com/lonelyplanet/rizzo-next/compare/v0.25.0...v0.25.2) (2017-08-29)
+
+
+### Bug Fixes
+
+* Add max-width to in-article responsive ads ([89ecdd1](https://github.com/lonelyplanet/rizzo-next/commit/89ecdd1))
+* Remove duplicate padding-bottom declaration in hotels.scss ([53e9eb1](https://github.com/lonelyplanet/rizzo-next/commit/53e9eb1))
+
+
+
 <a name="0.25.0"></a>
 # [0.25.0](https://github.com/lonelyplanet/rizzo-next/compare/v0.24.3...v0.25.0) (2017-08-24)
 

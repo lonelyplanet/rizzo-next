@@ -11,56 +11,56 @@
       "navigation": [
         {
           "title": "Search",
-          "slug": "//www.lonelyplanet.com/search",
+          "slug": "https://www.lonelyplanet.com/search",
           "css_class": "navigation__search--mobile"
         },
         {
           "title": "Video",
-          "slug": "//www.lonelyplanet.com/video",
+          "slug": "https://www.lonelyplanet.com/video",
           "submenu": {
             "featured": {
-              "image": "https://lonelyplanetstatic.imgix.net/op-video-sync/assets/art_and_culture_masthead2.jpg?w=80&h=60&fit=min",
-              "title": "Art and culture",
+              "image": "https://lonelyplanetstatic.imgix.net/op-video-sync/assets/exploreeveryday_masthead2.jpg?w=80&h=60&fit=min",
+              "title": "Explore every day",
               "subtitle": "Featured",
-              "link": "//www.lonelyplanet.com/video/art-and-culture/v/cha/2"
+              "link": "https://www.lonelyplanet.com/video/explore-every-day/v/cha/4"
             },
             "items": [
               {
                 "title": "Adventure travel",
-                "slug": "//www.lonelyplanet.com/video/adventure-travel/v/cha/1"
+                "slug": "https://www.lonelyplanet.com/video/adventure-travel/v/cha/1"
+              },
+              {
+                "title": "Art and culture",
+                "slug": "https://www.lonelyplanet.com/video/art-and-culture/v/cha/2"
               },
               {
                 "title": "Beaches, coasts and islands",
-                "slug": "//www.lonelyplanet.com/video/beaches/v/cha/3"
-              },
-              {
-                "title": "Explore every day",
-                "slug": "//www.lonelyplanet.com/video/explore-every-day/v/cha/4"
+                "slug": "https://www.lonelyplanet.com/video/beaches/v/cha/3"
               },
               {
                 "title": "Food and drink",
-                "slug": "//www.lonelyplanet.com/video/food-and-drink/v/cha/7"
+                "slug": "https://www.lonelyplanet.com/video/food-and-drink/v/cha/7"
               },
               {
                 "title": "Journeys",
-                "slug": "//www.lonelyplanet.com/video/journeys/v/cha/9"
+                "slug": "https://www.lonelyplanet.com/video/journeys/v/cha/9"
               }
             ],
             "call_to_action": {
-              "slug": "//www.lonelyplanet.com/video",
+              "slug": "https://www.lonelyplanet.com/video",
               "title": "Browse Videos"
             }
           }
         },
         {
           "title": "Destinations",
-          "slug": "//www.lonelyplanet.com/places",
+          "slug": "https://www.lonelyplanet.com/places",
           "submenu": {
             "featured": {
               "image": "https://lonelyplanetstatic.imgix.net/marketing/2017/BIT/BIT-nav-image.png?w=80&h=60&fit=min",
               "title": "Best in Travel",
               "subtitle": "Featured",
-              "link": "//www.lonelyplanet.com/best-in-travel"
+              "link": "https://www.lonelyplanet.com/best-in-travel"
             },
             "items": [
               {
@@ -105,7 +105,7 @@
               }
             ],
             "call_to_action": {
-              "slug": "//www.lonelyplanet.com/places",
+              "slug": "https://www.lonelyplanet.com/places",
               "title": "See All Countries"
             }
           }
@@ -148,11 +148,11 @@
         },
         {
           "title": "Shop",
-          "slug": "http://shop.lonelyplanet.com"
+          "slug": "https://shop.lonelyplanet.com"
         },
         {
           "title": "Sign In",
-          "slug": "//auth.lonelyplanet.com/users/sign_in"
+          "slug": "https://auth.lonelyplanet.com/users/sign_in"
         }
       ]
     }

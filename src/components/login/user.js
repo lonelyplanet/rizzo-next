@@ -1,5 +1,18 @@
 let rClass = /\sclass=\"[a-zA-Z_-\s]*\"/g;
 
+const hosts = (function(h) {
+  const lpHost = "https://www.lonelyplanet.com";
+
+  if (!h) {
+    return {
+      profile: lpHost,
+      pois: lpHost,
+    };
+  }
+
+  return h;
+}(window.lp && window.lp.hosts));
+
 export default class User {
   constructor({
     id,
@@ -26,16 +39,16 @@ export default class User {
     this.connect = connect;
     this.variant = variant;
     this.profileLink = connect ?
-      `https://www.lonelyplanet.com/profile/${id}/edit` :
+      `${hosts.profile}/profile/${id}/edit` :
       `https://www.lonelyplanet.com/thorntree/profiles/${profileSlug}`;
 
     this.publicProfileLink = connect ?
-      `https://www.lonelyplanet.com/profile/${username}` :
+      `${hosts.profile}/profile/${username}` :
       `https://www.lonelyplanet.com/thorntree/profiles/${profileSlug}`;
 
     this.signOutLink = connect ?
-      "//connect.lonelyplanet.com/users/sign_out" :
-      "//auth.lonelyplanet.com/users/sign_out";
+      "https://connect.lonelyplanet.com/users/sign_out" :
+      "https://auth.lonelyplanet.com/users/sign_out";
 
     if (window.lp.auth && window.lp.auth.host) {
       this.signOutLink = `${window.lp.auth.host}/users/sign_out`;

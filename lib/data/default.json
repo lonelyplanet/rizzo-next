@@ -10,56 +10,56 @@
       "navigation": [
         {
           "title": "Search",
-          "slug": "//www.lonelyplanet.com/search",
+          "slug": "https://www.lonelyplanet.com/search",
           "css_class": "navigation__search--mobile"
         },
         {
           "title": "Video",
-          "slug": "//www.lonelyplanet.com/video",
+          "slug": "https://www.lonelyplanet.com/video",
           "submenu": {
             "featured": {
-              "image": "https://lonelyplanetstatic.imgix.net/op-video-sync/assets/art_and_culture_masthead2.jpg?w=80&h=60&fit=min",
-              "title": "Art and culture",
+              "image": "https://lonelyplanetstatic.imgix.net/op-video-sync/assets/exploreeveryday_masthead2.jpg?w=80&h=60&fit=min",
+              "title": "Explore every day",
               "subtitle": "Featured",
-              "link": "//www.lonelyplanet.com/video/art-and-culture/v/cha/2"
+              "link": "https://www.lonelyplanet.com/video/explore-every-day/v/cha/4"
             },
             "items": [
               {
                 "title": "Adventure travel",
-                "slug": "//www.lonelyplanet.com/video/adventure-travel/v/cha/1"
+                "slug": "https://www.lonelyplanet.com/video/adventure-travel/v/cha/1"
+              },
+              {
+                "title": "Art and culture",
+                "slug": "https://www.lonelyplanet.com/video/art-and-culture/v/cha/2"
               },
               {
                 "title": "Beaches, coasts and islands",
-                "slug": "//www.lonelyplanet.com/video/beaches/v/cha/3"
-              },
-              {
-                "title": "Explore every day",
-                "slug": "//www.lonelyplanet.com/video/explore-every-day/v/cha/4"
+                "slug": "https://www.lonelyplanet.com/video/beaches/v/cha/3"
               },
               {
                 "title": "Food and drink",
-                "slug": "//www.lonelyplanet.com/video/food-and-drink/v/cha/7"
+                "slug": "https://www.lonelyplanet.com/video/food-and-drink/v/cha/7"
               },
               {
                 "title": "Journeys",
-                "slug": "//www.lonelyplanet.com/video/journeys/v/cha/9"
+                "slug": "https://www.lonelyplanet.com/video/journeys/v/cha/9"
               }
             ],
             "call_to_action": {
-              "slug": "//www.lonelyplanet.com/video",
+              "slug": "https://www.lonelyplanet.com/video",
               "title": "Browse Videos"
             }
           }
         },
         {
           "title": "Destinations",
-          "slug": "//www.lonelyplanet.com/places",
+          "slug": "https://www.lonelyplanet.com/places",
           "submenu": {
             "featured": {
               "image": "https://lonelyplanetstatic.imgix.net/marketing/2017/BIT/BIT-nav-image.png?w=80&h=60&fit=min",
               "title": "Best in Travel",
               "subtitle": "Featured",
-              "link": "//www.lonelyplanet.com/best-in-travel"
+              "link": "https://www.lonelyplanet.com/best-in-travel"
             },
             "items": [
               {
@@ -104,7 +104,7 @@
               }
             ],
             "call_to_action": {
-              "slug": "//www.lonelyplanet.com/places",
+              "slug": "https://www.lonelyplanet.com/places",
               "title": "See All Countries"
             }
           }
@@ -147,12 +147,12 @@
         },
         {
           "title": "Shop",
-          "slug": "http://shop.lonelyplanet.com"
+          "slug": "https://shop.lonelyplanet.com"
         },
         {
           "title": "Sign In",
           "additional_nav_class": "navigation__item--user",
-          "slug": "//auth.lonelyplanet.com/users/sign_in"
+          "slug": "https://auth.lonelyplanet.com/users/sign_in"
         }
       ]
     },
@@ -178,61 +178,61 @@
 
       "footer_nav_shop_items":
       [
-        { "title": "Destination guides", "url": "http://shop.lonelyplanet.com/destination-guides" },
-        { "title": "eBooks", "url": "http://lonelyplanet.com/ebooks" },
-        { "title": "Pictorial & gifts", "url": "http://shop.lonelyplanet.com/pictorials-and-gifts" },
-        { "title": "Phrasebooks", "url": "http://shop.lonelyplanet.com/phrasebooks" },
-        { "title": "Activity guides", "url": "http://shop.lonelyplanet.com/activity-guides" },
-        { "title": "Special offers", "url": "http://shop.lonelyplanet.com/special-offers" }
+        { "title": "Destination guides", "url": "https://shop.lonelyplanet.com/destination-guides" },
+        { "title": "eBooks", "url": "https://lonelyplanet.com/ebooks" },
+        { "title": "Pictorial & gifts", "url": "https://shop.lonelyplanet.com/pictorials-and-gifts" },
+        { "title": "Phrasebooks", "url": "https://shop.lonelyplanet.com/phrasebooks" },
+        { "title": "Activity guides", "url": "https://shop.lonelyplanet.com/activity-guides" },
+        { "title": "Special offers", "url": "https://shop.lonelyplanet.com/special-offers" }
       ],
 
       "footer_nav_forum_items":
       [
-        { "title": "Country forums", "url": "http://lonelyplanet.com/thorntree/categories/country-forums" },
-        { "title": "Talk to Lonely Planet", "url": "http://lonelyplanet.com/thorntree/categories/talk-to-lonely-planet" },
-        { "title": "Interest forums", "url": "http://lonelyplanet.com/thorntree/categories/interest-forums" },
-        { "title": "Travel buddies & for sale", "url": "http://lonelyplanet.com/thorntree/categories/sell-swap-meet-up" }
+        { "title": "Country forums", "url": "https://lonelyplanet.com/thorntree/categories/country-forums" },
+        { "title": "Talk to Lonely Planet", "url": "https://lonelyplanet.com/thorntree/categories/talk-to-lonely-planet" },
+        { "title": "Interest forums", "url": "https://lonelyplanet.com/thorntree/categories/interest-forums" },
+        { "title": "Travel buddies & for sale", "url": "https://lonelyplanet.com/thorntree/categories/sell-swap-meet-up" }
       ],
 
       "footer_nav_interest_items":
       [
-        { "title": "Adventure travel", "url": "http://www.lonelyplanet.com/adventure-travel" },
-        { "title": "Art and culture", "url": "http://www.lonelyplanet.com/art-and-culture" },
-        { "title": "Backpacking", "url": "http://www.lonelyplanet.com/backpacking" },
-        { "title": "Beaches, coasts and islands", "url": "http://www.lonelyplanet.com/beaches-coasts-and-islands" },
-        { "title": "Family holidays", "url": "http://www.lonelyplanet.com/family-holidays" },
-        { "title": "Festivals", "url": "http://www.lonelyplanet.com/festivals" },
-        { "title": "Food and drink", "url": "http://www.lonelyplanet.com/food-and-drink" },
-        { "title": "Honeymoon and romance", "url": "http://www.lonelyplanet.com/honeymoon-and-romance" },
-        { "title": "Road trips", "url": "http://www.lonelyplanet.com/road-trips" },
-        { "title": "Travel gear and tech", "url": "http://www.lonelyplanet.com/travel-gear-and-tech" },
-        { "title": "Travel on a budget", "url": "http://www.lonelyplanet.com/travel-on-a-budget" },
-        { "title": "Wildlife and nature", "url": "http://www.lonelyplanet.com/wildlife-and-nature" }
+        { "title": "Adventure travel", "url": "https://www.lonelyplanet.com/adventure-travel" },
+        { "title": "Art and culture", "url": "https://www.lonelyplanet.com/art-and-culture" },
+        { "title": "Backpacking", "url": "https://www.lonelyplanet.com/backpacking" },
+        { "title": "Beaches, coasts and islands", "url": "https://www.lonelyplanet.com/beaches-coasts-and-islands" },
+        { "title": "Family holidays", "url": "https://www.lonelyplanet.com/family-holidays" },
+        { "title": "Festivals", "url": "https://www.lonelyplanet.com/festivals" },
+        { "title": "Food and drink", "url": "https://www.lonelyplanet.com/food-and-drink" },
+        { "title": "Honeymoon and romance", "url": "https://www.lonelyplanet.com/honeymoon-and-romance" },
+        { "title": "Road trips", "url": "https://www.lonelyplanet.com/road-trips" },
+        { "title": "Travel gear and tech", "url": "https://www.lonelyplanet.com/travel-gear-and-tech" },
+        { "title": "Travel on a budget", "url": "https://www.lonelyplanet.com/travel-on-a-budget" },
+        { "title": "Wildlife and nature", "url": "https://www.lonelyplanet.com/wildlife-and-nature" }
       ],
 
       "footer_nav_booking_items":
       [
-        { "title": "Hotels", "url": "http://www.lonelyplanet.com/hotels" },
-        { "title": "Flights", "url": "http://www.lonelyplanet.com/flights" },
-        { "title": "Insurance", "url": "http://www.lonelyplanet.com/travel-insurance" }
+        { "title": "Hotels", "url": "https://www.lonelyplanet.com/hotels" },
+        { "title": "Flights", "url": "https://www.lonelyplanet.com/flights" },
+        { "title": "Insurance", "url": "https://www.lonelyplanet.com/travel-insurance" }
       ],
 
       "footer_bottom_links":
       [
-        { "title": "About us", "url": "http://lonelyplanet.com/about" },
-        { "title": "Work for Us", "url": "http://lonelyplanet.com/jobs" },
-        { "title": "Contact us", "url": "http://lonelyplanet.com/contact" },
-        { "title": "Press, trade and advertising", "url": "http://lonelyplanet.com/press-trade-advertising" },
-        { "title": "Tourism Solutions", "url": "http://www.lonelyplanet.com/tourism" },
-        { "title": "Terms & conditions", "url": "http://lonelyplanet.com/legal/website-terms" },
-        { "title": "Privacy policy", "url": "http://lonelyplanet.com/legal/privacy-policy" }
+        { "title": "About us", "url": "https://lonelyplanet.com/about" },
+        { "title": "Work for Us", "url": "https://lonelyplanet.com/jobs" },
+        { "title": "Contact us", "url": "https://lonelyplanet.com/contact" },
+        { "title": "Press, trade and advertising", "url": "https://lonelyplanet.com/press-trade-advertising" },
+        { "title": "Tourism Solutions", "url": "https://www.lonelyplanet.com/tourism" },
+        { "title": "Terms & conditions", "url": "https://lonelyplanet.com/legal/website-terms" },
+        { "title": "Privacy policy", "url": "https://lonelyplanet.com/legal/privacy-policy" }
       ],
 
       "footer_social_media_links":
       [
-        { "title": "Facebook", "className": "facebook", "url": "http://www.facebook.com/lonelyplanet" },
-        { "title": "Twitter", "className": "twitter", "url": "http://www.twitter.com/lonelyplanet" },
-        { "title": "Pinterest", "className": "pinterest", "url": "http://www.pinterest.com/lonelyplanet" }
+        { "title": "Facebook", "className": "facebook", "url": "https://www.facebook.com/lonelyplanet" },
+        { "title": "Twitter", "className": "twitter", "url": "https://www.twitter.com/lonelyplanet" },
+        { "title": "Pinterest", "className": "pinterest", "url": "https://www.pinterest.com/lonelyplanet" }
       ],
       "newsletter_countries": [
         "Australia",

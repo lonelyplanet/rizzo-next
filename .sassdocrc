@@ -11,9 +11,9 @@
   "package": "package.json",
   "view": {
     "baseSourcePath": "https://github.com/lonelyplanet/rizzo-next/tree/master/sass",
-    "faviconPath": "http://lonelyplanet.com/favicon.ico",
+    "faviconPath": "https://lonelyplanet.com/favicon.ico",
     "library": {
-      "homepage": "//rizzo.lonelyplanet.com",
+      "homepage": "https://rizzo.lonelyplanet.com",
       "name": "rizzo-next"
     },
     "logoPath": "https://s3.amazonaws.com/static-asset/lonelyplanet-logo.png",
