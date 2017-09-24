@@ -3,14 +3,16 @@
 
   <p class="intro-narrative__featured">
     <span class="js-intro-narrative">{{{intro_narrative_text}}}</span>
+  </p>
 
-    {{#if intro_narrative_expanded}}
+  {{#if intro_narrative_expanded}}
+    <p class="intro-narrative__expanded-link">
       <a class="intro-narrative__more">
         Read More
-        <span class="icon-chevron-right"></span>
+        <span class="icon-chevron-down"></span>
       </a>
-    {{/if}}
-  </p>
+    </p>
+  {{/if}}
 
   {{#if intro_narrative_expanded}}
     <div class="intro-narrative__expanded">
@@ -19,9 +21,12 @@
           <h2 class="intro-narrative__title">{{{title}}}</h2>
           <p class="intro-narrative__text">
             <span class="js-intro-narrative">{{{text}}}</span>
+          </p>
+
+          <p class="intro-narrative__expanded-link">
             <a class="intro-narrative__less">
               Read Less
-              <span class="icon-chevron-right"></span>
+              <span class="icon-chevron-up"></span>
             </a>
           </p>
         {{else}}
