@@ -42,12 +42,20 @@
   }
 }
 
+.intro-narrative__text em {
+  font-style: italic;
+}
+
 .intro-narrative__featured {
   @include lede;
 
   em {
     font-style: normal;
   }
+}
+
+.intro-narrative__featured em {
+  font-style: italic;
 }
 
 .intro-narrative__title {
