@@ -1,21 +1,69 @@
 import Brightcove from "./brightcove";
 import Youtube from "./youtube";
+import File from "./file";
 
 require("./_video.scss");
 
 let players = new Map();
 players.set("brightcove", Brightcove);
 players.set("youtube", Youtube);
+players.set("file", File)
 
+/*
+  Video - an interface for inserting video embeds onto the page and/or
+          creating a reference to a pre-existing video embed on the page.
+
+  example usage:
+
+    let player = null;
+    Video.addPlayer("video-elements-id", {autoplay: true}).then((x) => {player = x;});
+    player.on("ended", () => alert("video finished playing!")));
+
+  parameters:
+
+    element - The HTML element to create a player in. This can be a string id for
+          an existing DOM element or can be a reference to a DOM element.
+
+    type - (optional) "brightcove", "youtube", or "file".  This determines which type of
+          of embed code to generate and determines how rizzo interacts with the
+          player
+
+    playerName - (optional) "default", "bestintravel", "destinations", or "background".  This determines
+          which player from the respective "type" to insert into the page. ("brightcove" only).
+
+    videoId - (optional) The id of the video to play.  This can be either an id
+          pertaining to the platform depicted by the 'type' parameter, or it can
+          be a URL to a video (which will be parsed internally to get the video id)
+
+    autoplay - (optional) whether the player should autoplay once it's ready/loaded
+
+    poster - (optional) URL to poster image to display before video begins
+          playing ("file" only)
+
+    seo - (optional) Whether to render SEO markup for the video ("brightcove" only)
+
+    controls - (optional) Whether to include HTML5 video controls on the player or
+          not ("brightcove" and "file" only)
+
+  events:
+
+    "ready" - Player has finished loading
+    "disposed" - Player has been torn down and removed from the page
+    "loadstart" - Video has finished loading and is ready to play ("brightcove" only)
+    "ended" - Player has finished playing the current video ("brightcove" only)
+
+*/
 class Video {
   static addPlayer(element, {
     type = "brightcove",
+    playerName = "default",
     videoId = null,
     autoplay = false,
+    poster = null,
+    controls = true,
+    seo = true,
   } = {}) {
 
-    // element - can be passed in as a dom reference
-    // or the string ID of an element.  Convert to a reference if necessary.
     if (typeof element === "string") {
       element = document.getElementById(element);
     }
@@ -24,11 +72,7 @@ class Video {
       return;
     }
 
-    // videoId - can be passed in as the id string of a video
-    // as it pertains to the specified 'type' OR can be passed in as an
-    // URL which will be parsed to automatically determine the actual
-    // 'videoId' and 'type' values.
-    if (videoId && videoId.startsWith("http")) {
+    if (videoId && videoId.toLowerCase().startsWith("http")) {
       const youtubeId = this.getYoutubeId(videoId);
       const brightcoveId = this.getBrightcoveId(videoId);
 
@@ -40,6 +84,9 @@ class Video {
         videoId = brightcoveId;
         type = "brightcove";
       }
+      if (!youtubeId && !brightcoveId) {
+        type = "file";
+      }
     }
 
     this.players = this.players || new Map();
@@ -50,6 +97,10 @@ class Video {
           playerId: this.players.size + 1,
           videoId,
           autoplay,
+          poster,
+          controls,
+          playerName,
+          seo,
         });
 
     this.players.set(element, player);

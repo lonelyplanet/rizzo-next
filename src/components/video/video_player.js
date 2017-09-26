@@ -2,10 +2,23 @@ import { Component } from "../../core/bane";
 
 class VideoPlayer extends Component {
 
-  initialize({ playerId, videoId = null, autoplay = false }) {
+  initialize({
+    playerId,
+    playerName = "default",
+    videoId = null,
+    autoplay = false,
+    poster = null,
+    controls = true,
+    seo = true, }) {
+
     this.playerId = playerId;
     this.videoId = videoId;
     this.autoplay = autoplay;
+    this.poster = poster;
+    this.playerName = playerName;
+    this.seo = seo;
+    this.controls = controls;
+
     this.defaultAspectRatio = 1.77777778;
     this.events = {};
     this.isReady = false;
@@ -22,22 +35,36 @@ class VideoPlayer extends Component {
   }
 
   /**
-   * Override to actually kill the underlying player
+   * Kills the underlying player (removing it from the page and any references to it)
+   * Make sure this.trigger("disposed") is called within this function.
    */
   dispose() {
     this.trigger("disposed", this);
   }
 
   /**
-   * Override to actually play the underlying player
+   * Plays the underlying player
    */
   play() {
   }
 
   /**
-   * Override to actually pause the underlying player
+   * Similar to play(), but should be used when expecting to play through a series of videos.
+   */
+  start() {
+    this.play();
+  }
+
+  /**
+   * Pauses the underlying player
    */
   pause() {
+  }
+
+  /**
+   * Loads one or more videos into the players "video cache". (Currently only works with Brightcove)
+   */
+  fetchVideos() {
   }
 
 }

@@ -2,12 +2,27 @@
 
 import VideoPlayer from "./video_player";
 
+const bcPlayerIds = {
+  default: "default",
+  background: "BJputewob",
+  bestintravel: "HkJcclwoZ",
+  destinations: "HkPdqeDiZ",
+};
+
 class Brightcove extends VideoPlayer {
   initialize(options) {
-    super.initialize(options);
+    options = options || {};
+
+    this.player = null;
 
     this.videos = [];
     this.currentVideoIndex = null;
+
+    this.bcAccountId = "5104226627001";
+    this.bcEmbedId = "default";
+    this.bcPlayerId = bcPlayerIds[options.playerName];
+
+    super.initialize(options);
 
     this.events["click .video-js"] = "onClickVideo";
   }
@@ -59,8 +74,8 @@ class Brightcove extends VideoPlayer {
         html += "data-video-id='" + this.videoId + "' ";
       }
       html += "data-account='5104226627001' ";
-      html += "data-player='default' ";
-      html += "data-embed='default' ";
+      html += "data-player='" + this.bcPlayerId + "' ";
+      html += "data-embed='" + this.bcEmbedId + "' ";
       html += "data-application-id ";
       html += "class='video-js' ";
       html += "></video>";
@@ -68,7 +83,7 @@ class Brightcove extends VideoPlayer {
 
       // Insert script to initialize brightcove player
       const scriptId = this.getPlayerScriptId();
-      const scriptSrc = "https://players.brightcove.net/5104226627001/default_default/index.min.js";
+      const scriptSrc = "https://players.brightcove.net/" + this.bcAccountId + "/" + this.bcPlayerId + "_" + this.bcEmbedId + "/index.min.js";
       const script = document.createElement("script");
 
       script.id = scriptId;
@@ -80,8 +95,8 @@ class Brightcove extends VideoPlayer {
       this.player = videojs(this.videoEl);
 
       // We don't show the controls until the player is instantiated
-      // or else the controls show briefly without the brightcove theme applied.
-      this.player.controls(true);
+      // or else the controls show briefly without the brightcove theme applied.{
+      this.player.controls(this.controls);
 
       this.player.on("loadstart", this.onPlayerLoadStart.bind(this));
       this.player.on("playing", this.onPlayerPlaying.bind(this));
@@ -394,7 +409,7 @@ class Brightcove extends VideoPlayer {
    * This is run automatically when any video is loaded.
    */
   renderSEOMarkup() {
-    if (!this.player || !this.player.mediainfo) {
+    if (!this.seo || !this.player || !this.player.mediainfo) {
       return;
     }
 
@@ -418,7 +433,7 @@ class Brightcove extends VideoPlayer {
     let seconds = Math.ceil(this.getVideoProperty("duration"));
     let duration = "PT" + seconds + "S";
 
-    let embedUrl = "https://players.brightcove.net/5104226627001/default_default/index.html?videoId=" + videoId;
+    let embedUrl = "https://players.brightcove.net/" + this.bcAccountId + "/" + this.bcPlayerId + "_" + this.bcEmbedId + "/index.html?videoId=" + videoId;
 
     let data = {
       "@context": "http://schema.org",

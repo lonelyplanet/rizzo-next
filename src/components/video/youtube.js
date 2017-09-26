@@ -14,12 +14,12 @@ class Youtube extends VideoPlayer {
 
       this.$el.html(html);
     }
-    this.trigger("ready");
+    super.setup();
   }
 
   dispose() {
     this.$el.html("");
-    this.trigger("disposed", this);
+    super.dispose();
   }
 }
 
