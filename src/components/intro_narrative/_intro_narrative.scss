@@ -74,17 +74,28 @@
 
 .intro-narrative__expanded-link {
   text-align: center;
-  margin-top: 4.2rem;
+  margin-top: 19px;
 }
 
 .intro-narrative__more {
   @include more();
   display: inline-block;
   font-style: normal;
+  width: 111px;
 }
 
 .intro-narrative__less {
   @extend .intro-narrative__more;
+}
+
+.intro-narrative__more-separator {
+  width: 111px;
+  color: #E1E9ED;
+  margin-top: 56px;
+}
+
+.intro-narrative__less-separator {
+  @extend .intro-narrative__more-separator;
 }
 
 .intro-narrative__author {
