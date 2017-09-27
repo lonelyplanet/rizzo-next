@@ -16,6 +16,11 @@ video {
     top: 0;
   }
 
+  .vjs-overlay-top-right {
+    right: 0;
+    top: 0;
+  }
+
   .vjs-overlay-bottom {
     left: 0;
     margin-left: 0;
@@ -59,5 +64,73 @@ video {
     position: absolute;
     top: 0;
     width: 100%;
+  }
+}
+
+.video__popout {
+  width: 100%;
+  height: 100%;
+
+  &__inner {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: opacity 200ms ease;
+    opacity: 0;
+
+    &-visible {
+      opacity: 1;
+    }
+
+    .video__popout-overlay {
+      position: absolute;
+      right: 0px;
+      top: -30px;
+      opacity: 0;
+      background-color: rgba($color-black, .45);
+      color: $color-white;
+      font-size: 10px;
+      font-weight: 600;
+      padding: .7em;
+      cursor: pointer;
+      transition: top 1s ease, opacity 200ms ease;
+      z-index: 1;
+    }
+
+    &-poppedout {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      position: fixed;
+      z-index: 1;
+      width: 60%;
+      max-width: 406px;
+      height: initial;
+      box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, .4);
+
+      .video-js {
+        padding-top: 56.25% /* 16:9 */
+      }
+
+      .video__popout-overlay  {
+        opacity: 1;
+      }
+    }
+
+    &-hover {
+      .video__popout-overlay  {
+        top: 0px;
+      }
+      .vjs-control-bar {
+        transform: translateY(0) !important;
+      }
+    }
+  }
+}
+
+.video--adplaying {
+  .video__popout-overlay {
+    display: none;
   }
 }

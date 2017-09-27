@@ -16,8 +16,10 @@ players.set("file", File)
   example usage:
 
     let player = null;
-    Video.addPlayer("video-elements-id", {autoplay: true}).then((x) => {player = x;});
-    player.on("ended", () => alert("video finished playing!")));
+    Video.addPlayer("element-id", {autoplay: true}).then((x) => {
+      player = x;
+      player.on("ended", () => alert("video finished playing!")));
+    });
 
   parameters:
 
@@ -31,11 +33,11 @@ players.set("file", File)
     playerName - (optional) "default", "bestintravel", "destinations", or "background".  This determines
           which player from the respective "type" to insert into the page. ("brightcove" only).
 
-    videoId - (optional) The id of the video to play.  This can be either an id
+    videoId - (optional) The id or URL of the video to play.  This can be either an id
           pertaining to the platform depicted by the 'type' parameter, or it can
-          be a URL to a video (which will be parsed internally to get the video id)
+          be a URL to a video (which will be parsed internally to get the video id if needed)
 
-    autoplay - (optional) whether the player should autoplay once it's ready/loaded
+    autoplay - (optional) Whether the player should autoplay once it's ready/loaded
 
     poster - (optional) URL to poster image to display before video begins
           playing ("file" only)
@@ -44,6 +46,10 @@ players.set("file", File)
 
     controls - (optional) Whether to include HTML5 video controls on the player or
           not ("brightcove" and "file" only)
+
+    popout - (optional) Whether the player should follow the user when it scrolls
+          out of view ("brightcove" only) -- Only works if the video embed does not
+          exist on the page prior to instantiation.
 
   events:
 
@@ -62,6 +68,7 @@ class Video {
     poster = null,
     controls = true,
     seo = true,
+    popout = false,
   } = {}) {
 
     if (typeof element === "string") {
@@ -101,6 +108,7 @@ class Video {
           controls,
           playerName,
           seo,
+          popout,
         });
 
     this.players.set(element, player);

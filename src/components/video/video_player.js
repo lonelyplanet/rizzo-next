@@ -9,7 +9,9 @@ class VideoPlayer extends Component {
     autoplay = false,
     poster = null,
     controls = true,
-    seo = true, }) {
+    seo = true,
+    popout = false,
+  }) {
 
     this.playerId = playerId;
     this.videoId = videoId;
@@ -18,6 +20,7 @@ class VideoPlayer extends Component {
     this.playerName = playerName;
     this.seo = seo;
     this.controls = controls;
+    this.popout = popout;
 
     this.defaultAspectRatio = 1.77777778;
     this.events = {};
