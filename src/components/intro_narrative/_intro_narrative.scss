@@ -2,8 +2,8 @@
 
 .intro-narrative {
   @media (min-width: $min-720) {
-    width: 850px;
     margin: auto;
+    width: 850px;
   }
 }
 
@@ -37,13 +37,13 @@
   line-height: (26 / 16);
 
   @media (min-width: $min-720) {
-    font-size: 20px;
+    font-size: 2rem;
     line-height: (36 / 20);
   }
-}
 
-.intro-narrative__text em {
-  font-style: italic;
+  em {
+    font-style: italic;
+  }
 }
 
 .intro-narrative__featured {
@@ -54,14 +54,10 @@
   }
 }
 
-.intro-narrative__featured em {
-  font-style: italic;
-}
-
 .intro-narrative__title {
   color: $darkgray;
+  font-size: 2rem;
   font-weight: 600;
-  font-size: 20px;
   letter-spacing: -.02rem;
   margin-bottom: 1rem;
   margin-top: 2.5rem;
@@ -73,30 +69,24 @@
 }
 
 .intro-narrative__expanded-link {
+  margin-top: 1.9rem;
   text-align: center;
-  margin-top: 19px;
 }
 
-.intro-narrative__more {
+.intro-narrative__more,
+.intro-narrative__less {
   @include more();
+  cursor: pointer;
   display: inline-block;
   font-style: normal;
-  cursor: pointer;
   width: 111px;
 }
 
-.intro-narrative__less {
-  @extend .intro-narrative__more;
-}
-
-.intro-narrative__more-separator {
-  width: 111px;
-  color: #E1E9ED;
-  margin-top: 56px;
-}
-
+.intro-narrative__more-separator,
 .intro-narrative__less-separator {
-  @extend .intro-narrative__more-separator;
+  color: $color-light-slate;
+  margin-top: 5.6rem;
+  width: 111px;
 }
 
 .intro-narrative__author {
