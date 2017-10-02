@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.27.4"></a>
+## [0.27.4](https://github.com/lonelyplanet/rizzo-next/compare/v0.26.5...v0.27.4) (2017-10-02)
+
+
+### Bug Fixes
+
+* Remove outline: none from buttons ([#771](https://github.com/lonelyplanet/rizzo-next/issues/771)) ([50fa6eb](https://github.com/lonelyplanet/rizzo-next/commit/50fa6eb))
+* Resolve scss-lint errors ([#770](https://github.com/lonelyplanet/rizzo-next/issues/770)) ([a5af151](https://github.com/lonelyplanet/rizzo-next/commit/a5af151))
+
+
+
 <a name="0.26.5"></a>
 ## [0.26.5](https://github.com/lonelyplanet/rizzo-next/compare/v0.26.4...v0.26.5) (2017-09-20)
 
