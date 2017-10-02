@@ -11,12 +11,20 @@ class File extends VideoPlayer {
     if (this.videoId) {
       let html = "<video preload='auto' src='" + this.videoId + "' ";
 
+      if (this.cover) {
+        html += "class='video__cover' ";
+      }
+
       if (this.controls) {
-        html += " controls ";
+        html += "controls ";
+      }
+
+      if (this.muted) {
+        html += "muted ";
       }
 
       if (this.autoplay) {
-        html += " autoplay ";
+        html += "autoplay ";
       }
 
       if (this.poster) {
@@ -27,7 +35,13 @@ class File extends VideoPlayer {
 
       this.$el.html(html);
 
+      if (this.cover) {
+        this.$el.addClass("video__cover--container");
+      }
+
       this.player = this.el.getElementsByTagName("video")[0];
+      this.player.on("playing", () => { this.trigger("started"); });
+      this.player.on("ended", () => { this.trigger("ended"); });
     }
     super.setup();
   }
@@ -35,7 +49,10 @@ class File extends VideoPlayer {
   play() {
     super.play();
     if (this.player) {
-      this.player.play();
+      const promise = this.player.play();
+      if (promise) {
+        promise.catch(reason => console.log("VIDEOJS:", reason)).then(() => {});
+      }
     }
   }
 

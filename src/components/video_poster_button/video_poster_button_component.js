@@ -12,9 +12,7 @@ export default class VideoPosterButtonComponent extends Component {
         "click .video-poster-button__inner": "onClick"
     };
 
-    Video.addPlayer(
-      this.$el.find(".video-poster-button__video")[0],
-      { popout: true }).then(this.playerReady.bind(this));
+    Video.addPlayer(this.$el.find(".video-poster-button__video")[0]).then(this.playerReady.bind(this));
   }
 
   showVideo() {

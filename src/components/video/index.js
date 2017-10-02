@@ -51,12 +51,22 @@ players.set("file", File)
           out of view ("brightcove" only) -- Only works if the video embed does not
           exist on the page prior to instantiation.
 
+    cover - (optional) Whether to cover the entire parent element with the
+          video -- acts similar to background-size css. ("file" and "brightcove" only).
+
+    muted - (optional) Whether the video should be muted or not ("file" and "brightcove" only).
+
+    playWhenInView - (optional) Whether to play the video automatically once the
+          player enters the viewport.  This will only trigger once during the lifetime of
+          the player instance. ("brightcove" only).
+
   events:
 
-    "ready" - Player has finished loading
+    "ready" - Player has finished loading and is ready to be interacted with
     "disposed" - Player has been torn down and removed from the page
     "loadstart" - Video has finished loading and is ready to play ("brightcove" only)
-    "ended" - Player has finished playing the current video ("brightcove" only)
+    "started" - Video playback has either started OR Ad playback has started ("brightcove" and "file" only)
+    "ended" - Player has finished playing the current video ("brightcove" and "file" only)
 
 */
 class Video {
@@ -69,6 +79,9 @@ class Video {
     controls = true,
     seo = true,
     popout = false,
+    cover = false,
+    muted = false,
+    playWhenInView = false,
   } = {}) {
 
     if (typeof element === "string") {
@@ -79,22 +92,8 @@ class Video {
       return;
     }
 
-    if (videoId && videoId.toLowerCase().startsWith("http")) {
-      const youtubeId = this.getYoutubeId(videoId);
-      const brightcoveId = this.getBrightcoveId(videoId);
-
-      if (youtubeId) {
-        videoId = youtubeId;
-        type = "youtube";
-      }
-      if (brightcoveId) {
-        videoId = brightcoveId;
-        type = "brightcove";
-      }
-      if (!youtubeId && !brightcoveId) {
-        type = "file";
-      }
-    }
+    type = this.cleanVideoType(type, videoId);
+    videoId = this.cleanVideoId(videoId);
 
     this.players = this.players || new Map();
 
@@ -109,6 +108,9 @@ class Video {
           playerName,
           seo,
           popout,
+          cover,
+          muted,
+          playWhenInView,
         });
 
     this.players.set(element, player);
@@ -132,6 +134,41 @@ class Video {
     if (this.players) {
       this.players.delete(player.el);
     }
+  }
+
+  static cleanVideoType(type, videoId) {
+    if (videoId && videoId.toLowerCase().startsWith("http")) {
+      const youtubeId = this.getYoutubeId(videoId);
+      const brightcoveId = this.getBrightcoveId(videoId);
+
+      if (youtubeId) {
+        return "youtube";
+      }
+      if (brightcoveId) {
+        return "brightcove";
+      }
+      if (!youtubeId && !brightcoveId) {
+        return "file";
+      }
+    }
+
+    return type;
+  }
+
+  static cleanVideoId(videoId) {
+    if (videoId && videoId.toLowerCase().startsWith("http")) {
+      const youtubeId = this.getYoutubeId(videoId);
+      const brightcoveId = this.getBrightcoveId(videoId);
+
+      if (youtubeId) {
+        return youtubeId;
+      }
+      if (brightcoveId) {
+        return brightcoveId;
+      }
+    }
+
+    return videoId;
   }
 
   static getYoutubeId(url) {
