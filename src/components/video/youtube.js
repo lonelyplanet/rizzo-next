@@ -10,9 +10,7 @@ class Youtube extends VideoPlayer {
       if (this.autoplay) {
         html += "?autoplay=1";
       }
-      html += "' frameborder='0' allowfullscreen ";
-
-      html += "></iframe>";
+      html += "' frameborder='0' allowfullscreen ></iframe>";
 
       this.$el.html(html);
     }

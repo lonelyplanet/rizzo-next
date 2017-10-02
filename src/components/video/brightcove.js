@@ -13,8 +13,7 @@ const bcPlayerIds = {
 };
 
 class Brightcove extends VideoPlayer {
-  initialize(options) {
-    options = options || {};
+  initialize(options = {}) {
 
     // Playlist props
     this.videos = [];
@@ -403,16 +402,6 @@ class Brightcove extends VideoPlayer {
     adOverlay.css("display", "none");
   }
 
-  enablePopoutOverlay() {
-    const popoutOverlay = this.$el.find("#" + this.getPopoutOverlayId());
-    popoutOverlay.css("display", "inline-block");
-  }
-
-  disablePopoutOverlay() {
-    const popoutOverlay = this.$el.find("#" + this.getPopoutOverlayId());
-    popoutOverlay.css("display", "inline-block");
-  }
-
   fetchVideos() {
     let query = null;
     try {
@@ -637,7 +626,7 @@ class Brightcove extends VideoPlayer {
     let seconds = Math.ceil(this.getVideoProperty("duration"));
     let duration = "PT" + seconds + "S";
 
-    let embedUrl = "https://players.brightcove.net/" + this.bcAccountId + "/" + this.bcPlayerId + "_" + this.bcEmbedId + "/index.html?videoId=" + videoId;
+    let embedUrl = "https://players.brightcove.net/" + this.bcAccountId + "/default_" + this.bcEmbedId + "/index.html?videoId=" + videoId;
 
     let data = {
       "@context": "http://schema.org",
