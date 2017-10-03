@@ -39,7 +39,7 @@ $navigation-sub-height-mobile: $header-height-mobile;
     position: fixed;
     right: 0;
     top: 0;
-    z-index: z("top");
+    z-index: z("top") + 1;
   }
 
   &.is-bottom {

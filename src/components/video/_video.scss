@@ -1,5 +1,11 @@
 @import "../../../sass/webpack_deps";
 
+video {
+  height: 100%;
+  margin: 0 auto;
+  width: 100%;
+}
+
 .video-js {
   height: 100%;
   margin: 0 auto;
@@ -10,12 +16,23 @@
     top: 0;
   }
 
+  .vjs-overlay-top-right {
+    right: 0;
+    top: 0;
+  }
+
   .vjs-overlay-bottom {
     left: 0;
     margin-left: 0;
     max-width: 100%;
     width: 100%;
   }
+
+  // scss-lint:disable ImportantRule
+  .vjs-control-bar {
+    transition: transform 200ms ease !important;
+  }
+  // scss-lint:enable ImportantRule
 
   .vjs-big-play-button {
     @media (max-width: $max-480) {
@@ -54,4 +71,96 @@
     top: 0;
     width: 100%;
   }
+}
+
+.video__popout {
+  height: 100%;
+  width: 100%;
+}
+
+.video__popout-inner {
+  height: 100%;
+  opacity: 0;
+  overflow: hidden;
+  position: relative;
+  transition: opacity 200ms ease;
+  width: 100%;
+
+
+  &-visible {
+    opacity: 1;
+  }
+
+  .video__popout-overlay {
+    background-color: rgba($color-black, .45);
+    color: $color-white;
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: 600;
+    opacity: 0;
+    padding: .7em;
+    position: absolute;
+    right: 0;
+    top: -30px;
+    transition: top 200ms ease, opacity 200ms ease;
+    z-index: 1;
+  }
+
+  &-poppedout {
+    bottom: 20px;
+    box-shadow: 0 1px 8px 0 rgba($color-black, .4);
+    height: initial;
+    max-width: 406px;
+    position: fixed;
+    right: 20px;
+    width: 60%;
+    z-index: 1;
+
+    .video-js {
+      padding-top: 56.25%; // 16:9
+    }
+
+    .video__popout-overlay {
+      opacity: 1;
+    }
+  }
+
+  &-hover {
+    .video__popout-overlay {
+      top: 0;
+    }
+
+    // scss-lint:disable ImportantRule
+    .vjs-control-bar {
+      transform: translateY(0) !important;
+    }
+    // scss-lint:enable ImportantRule
+  }
+}
+
+.video__adplaying {
+  .video__popout-overlay {
+    display: none;
+  }
+}
+
+.video__cover--container {
+  overflow: hidden;
+  position: relative;
+
+  // scss-lint:disable ImportantRule
+  .video-js,
+  video {
+    height: auto !important;
+    left: 50% !important;
+    min-height: 100%;
+    min-width: 100%;
+    overflow: hidden;
+    position: absolute;
+    top: 50% !important;
+    transform: translateX(-50%) translateY(-50%);
+    width: auto !important;
+    z-index: -1000;
+  }
+  // scss-lint:enable ImportantRule
 }

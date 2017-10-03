@@ -1,15 +1,53 @@
 /* global videojs */
 
 import VideoPlayer from "./video_player";
+import { get } from "lodash";
+
+const _ = { get };
+
+const bcPlayerIds = {
+  default: "default",
+  background: "BJputewob",
+  bestintravel: "HkJcclwoZ",
+  destinations: "HkPdqeDiZ",
+};
 
 class Brightcove extends VideoPlayer {
-  initialize(options) {
-    super.initialize(options);
+  initialize(options = {}) {
 
+    // Playlist props
     this.videos = [];
     this.currentVideoIndex = null;
 
+    // Brightcove props
+    this.player = null;
+    this.bcAccountId = "5104226627001";
+    this.bcEmbedId = "default";
+    this.bcPlayerId = bcPlayerIds[options.playerName];
+
+    // Whether the player is within the viewport or not
+    this.inView = this.isInView();
+
+    // Popout props
+    this.popoutEnabled = false; // overrides this.popout (ex. player won't popout if it's not current playing)
+    this.isPoppedOut = false; // whether the player is poppout out currently or not
+    this.popoutOutOfViewTimeoutId = null;
+    this.popoutInViewTimeoutId = null;
+
+    super.initialize(options);
+
     this.events["click .video-js"] = "onClickVideo";
+
+    window.addEventListener("scroll", this.onWindowScroll.bind(this));
+  }
+
+  set(options) {
+    this.autoplay = _.get(options, "autoplay", this.autoplay);
+
+    const videoId = _.get(options, "videoId", null);
+    if (videoId) {
+      this.loadVideo(videoId);
+    }
   }
 
   get videoEl() {
@@ -17,6 +55,95 @@ class Brightcove extends VideoPlayer {
       return this.el;
     }
     return this.$el.find(".video-js")[0];
+  }
+
+  onWindowScroll() {
+    const inView = this.isInView();
+    if (!this.inView && inView) {
+      this.onInView();
+    }
+    else if (this.inView && !inView) {
+      this.onOutOfView();
+    }
+    this.inView = inView;
+  }
+
+  updatePopout() {
+    if (this.popoutEnabled && this.isAboveViewport()) {
+      this.showPopout();
+    }
+    else {
+      this.hidePopout();
+    }
+  }
+
+  showPopout() {
+    if (!this.popout || this.isPoppedOut) {
+      return;
+    }
+
+    this.isPoppedOut = true;
+    const popoutInner = this.$el.find(".video__popout-inner");
+
+    clearInterval(this.popoutInViewTimeoutId);
+    this.popoutInViewTimeoutId = null;
+    if (!this.popoutOutOfViewTimeoutId) {
+      popoutInner.removeClass("video__popout-inner-visible");
+      this.popoutOutOfViewTimeoutId = setTimeout(() => {
+        popoutInner.addClass("video__popout-inner-poppedout").addClass("video__popout-inner-visible");
+        this.popoutOutOfViewTimeoutId = null;
+      }, 200);
+    }
+  }
+
+  hidePopout() {
+    if (!this.popout || !this.isPoppedOut) {
+      return;
+    }
+
+    this.isPoppedOut = false;
+    const popoutInner = this.$el.find(".video__popout-inner");
+
+    clearInterval(this.popoutOutOfViewTimeoutId);
+    this.popoutOutOfViewTimeoutId = null;
+    if (!this.popoutInViewTimeoutId) {
+      popoutInner.removeClass("video__popout-inner-visible");
+      this.popoutInViewTimeoutId = setTimeout(() => {
+        popoutInner.removeClass("video__popout-inner-poppedout").addClass("video__popout-inner-visible");
+        this.popoutInViewTimeoutId = null;
+      }, 200);
+    }
+  }
+
+  onInView() {
+    this.updatePopout();
+
+    if (this.playWhenInView) {
+      this.play();
+      this.playWhenInView = false;
+    }
+  }
+
+  onOutOfView() {
+    this.updatePopout();
+  }
+
+  isInView() {
+    return !this.isAboveViewport() && !this.isBelowViewport();
+  }
+
+  isBelowViewport() {
+    const bounds = this.el.getBoundingClientRect();
+    const halfContainerHeight = bounds.height / 2;
+    const windowHeight = window.innerHeight;
+    return bounds.top > (windowHeight - halfContainerHeight);
+
+  }
+
+  isAboveViewport() {
+    const bounds = this.el.getBoundingClientRect();
+    const halfContainerHeight = bounds.height / 2;
+    return bounds.top < -(halfContainerHeight);
   }
 
   onClickVideo(event) {
@@ -29,8 +156,6 @@ class Brightcove extends VideoPlayer {
     super.play();
     this.autoplay = true;
     const promise = this.player.play();
-
-    // Catch any errors thrown within play promise (only applicable on some browsers)
     if (promise) {
       promise.catch(reason => console.log("VIDEOJS:", reason)).then(() => {});
     }
@@ -54,21 +179,47 @@ class Brightcove extends VideoPlayer {
     }
     else if (!this.videoEl) {
       // Insert brightcove player html
-      let html = "<video ";
+      let html = "<div class='video__popout'>";
+      html += "<div class='video__popout-inner video__popout-inner-visible ";
+      if (this.cover) {
+        html += "video__cover--container ";
+      }
+      html += "' >";
+
+      if (this.popout) {
+        html += "<div id=\"" + this.getPopoutOverlayId() + "\" class=\"video__popout-overlay icon-close-small\" ></div>";
+      }
+
+      html += "<video ";
       if (this.videoId) {
         html += "data-video-id='" + this.videoId + "' ";
       }
       html += "data-account='5104226627001' ";
-      html += "data-player='default' ";
-      html += "data-embed='default' ";
+      html += "data-player='" + this.bcPlayerId + "' ";
+      html += "data-embed='" + this.bcEmbedId + "' ";
       html += "data-application-id ";
       html += "class='video-js' ";
       html += "></video>";
+
+      html += "</div></div>";
       this.el.innerHTML = html;
+
+      // Bind hover class as we style various things under this class
+      // and :hover doesn't bubble
+      this.$el.find(".video__popout-inner")
+      .mouseenter(function () {
+        $(this).addClass("video__popout-inner-hover");
+      })
+      .mouseleave(function() {
+        $(this).removeClass("video__popout-inner-hover");
+      });
+
+      // Bind click handler to X button for popout
+      this.$el.find("#" + this.getPopoutOverlayId()).click(this.onClickPopoutOverlay.bind(this));
 
       // Insert script to initialize brightcove player
       const scriptId = this.getPlayerScriptId();
-      const scriptSrc = "https://players.brightcove.net/5104226627001/default_default/index.min.js";
+      const scriptSrc = "https://players.brightcove.net/" + this.bcAccountId + "/" + this.bcPlayerId + "_" + this.bcEmbedId + "/index.min.js";
       const script = document.createElement("script");
 
       script.id = scriptId;
@@ -80,12 +231,17 @@ class Brightcove extends VideoPlayer {
       this.player = videojs(this.videoEl);
 
       // We don't show the controls until the player is instantiated
-      // or else the controls show briefly without the brightcove theme applied.
-      this.player.controls(true);
+      // or else the controls show briefly without the brightcove theme applied.{
+      this.player.controls(this.controls);
+
+      this.player.muted(this.muted);
 
       this.player.on("loadstart", this.onPlayerLoadStart.bind(this));
       this.player.on("playing", this.onPlayerPlaying.bind(this));
+      this.player.on("pause", this.onPlayerPause.bind(this));
       this.player.on("ended", this.onPlayerEnded.bind(this));
+      this.player.on("ads-ad-play", this.onAdPlay.bind(this));
+      this.player.on("ads-ad-pause", this.onAdPlay.bind(this));
       this.player.on("ads-ad-started", this.onAdStarted.bind(this));
       this.player.on("ads-ad-ended", this.onAdEnded.bind(this));
       this.player.ready(this.onPlayerReady.bind(this));
@@ -105,6 +261,8 @@ class Brightcove extends VideoPlayer {
       this.player = null;
     }
 
+    this.$el.html("");
+
     this.trigger("disposed", this);
   }
 
@@ -120,6 +278,11 @@ class Brightcove extends VideoPlayer {
     this.currentVideoIndex = null;
     this.loadNextVideo();
     this.trigger("ready");
+
+    if (this.isInView() && this.playWhenInView) {
+      this.play();
+      this.playWhenInView = false;
+    }
   }
 
   onPlayerCueChange() {
@@ -173,22 +336,60 @@ class Brightcove extends VideoPlayer {
   onPlayerPlaying() {
     this.updateDataLayer();
     this.disableAdOverlay();
+    this.popoutEnabled = true;
+    this.updatePopout();
+    this.$el.removeClass("video__adplaying");
+    this.trigger("started");
+  }
+
+  onPlayerPause() {
+    if (this.isInView()) {
+      this.popoutEnabled = false;
+      this.updatePopout();
+    }
   }
 
   onPlayerEnded() {
     if (this.currentVideoIndex >= this.videos.length - 1) {
+      this.popoutEnabled = false;
+      this.updatePopout();
       this.trigger("ended");
     } else {
       this.loadNextVideo();
     }
   }
 
+  onAdPlay() {
+    this.popoutEnabled = true;
+    this.updatePopout();
+    this.$el.addClass("video__adplaying");
+  }
+
+  onAdPause() {
+    if (this.isInView()) {
+      this.popoutEnabled = false;
+      this.updatePopout();
+    }
+    this.$el.removeClass("video__adplaying");
+  }
+
   onAdStarted() {
     this.enableAdOverlay();
+    this.popoutEnabled = true;
+    this.updatePopout();
+    this.$el.addClass("video__adplaying");
+    this.trigger("started");
   }
 
   onAdEnded() {
     this.disableAdOverlay();
+    this.$el.removeClass("video__adplaying");
+  }
+
+  onClickPopoutOverlay() {
+    this.pause();
+    this.popoutEnabled = false;
+    this.updatePopout();
   }
 
   enableAdOverlay() {
@@ -202,7 +403,6 @@ class Brightcove extends VideoPlayer {
   }
 
   fetchVideos() {
-
     let query = null;
     try {
       query = "dest_" + window.lp.place.atlasId;
@@ -246,6 +446,25 @@ class Brightcove extends VideoPlayer {
     });
   }
 
+  loadVideo(videoId) {
+    if (!this.player) {
+      this.videoId = videoId;
+      this.setup();
+    }
+    else if (!this.player.mediainfo || (this.player.mediainfo.id !== videoId)) {
+      // Do not load a video that is already loaded
+      // (brightcove's engagement score metrics will break)
+      this.player.catalog.getVideo(videoId, (error, video) => {
+        if (!error) {
+          this.player.catalog.load(video);
+        }
+      });
+    }
+    else if (this.autoplay) {
+      this.play();
+    }
+  }
+
   loadNextVideo() {
     if (!this.videos.length) {
       return;
@@ -256,22 +475,7 @@ class Brightcove extends VideoPlayer {
 
     const video = this.videos[this.currentVideoIndex];
 
-    if (!this.player) {
-      this.videoId = video.provider_id;
-      this.setup();
-    }
-    else if (!this.player.mediainfo || (this.player.mediainfo.id !== video.provider_id)) {
-      // Do not load a video that is already loaded
-      // (brightcove's engagement score metrics will break)
-      this.player.catalog.getVideo(video.provider_id, (error, video) => {
-        if (!error) {
-          this.player.catalog.load(video);
-        }
-      });
-    }
-    else if (this.autoplay) {
-      this.play();
-    }
+    this.loadVideo(video.provider_id);
   }
 
   /**
@@ -306,6 +510,10 @@ class Brightcove extends VideoPlayer {
     return "ad-overlay-" + this.playerId;
   }
 
+  getPopoutOverlayId() {
+    return "popout-overlay-" + this.playerId;
+  }
+
   getCues() {
     if (!this.player) {
       return [];
@@ -330,7 +538,7 @@ class Brightcove extends VideoPlayer {
   }
 
   configureOverlays() {
-    if (!this.player) {
+    if (!this.player || !this.player.overlay) {
       return;
     }
 
@@ -394,7 +602,7 @@ class Brightcove extends VideoPlayer {
    * This is run automatically when any video is loaded.
    */
   renderSEOMarkup() {
-    if (!this.player || !this.player.mediainfo) {
+    if (!this.seo || !this.player || !this.player.mediainfo) {
       return;
     }
 
@@ -418,7 +626,7 @@ class Brightcove extends VideoPlayer {
     let seconds = Math.ceil(this.getVideoProperty("duration"));
     let duration = "PT" + seconds + "S";
 
-    let embedUrl = "https://players.brightcove.net/5104226627001/default_default/index.html?videoId=" + videoId;
+    let embedUrl = "https://players.brightcove.net/" + this.bcAccountId + "/default_" + this.bcEmbedId + "/index.html?videoId=" + videoId;
 
     let data = {
       "@context": "http://schema.org",

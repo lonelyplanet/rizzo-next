@@ -10,16 +10,16 @@ class Youtube extends VideoPlayer {
       if (this.autoplay) {
         html += "?autoplay=1";
       }
-      html += "' frameborder='0' allowfullscreen></iframe>";
+      html += "' frameborder='0' allowfullscreen ></iframe>";
 
       this.$el.html(html);
     }
-    this.trigger("ready");
+    super.setup();
   }
 
   dispose() {
     this.$el.html("");
-    this.trigger("disposed", this);
+    super.dispose();
   }
 }
 
