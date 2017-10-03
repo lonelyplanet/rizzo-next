@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.28.0"></a>
+# [0.28.0](https://github.com/lonelyplanet/rizzo-next/compare/v0.27.4...v0.28.0) (2017-10-03)
+
+
+### Features
+
+* Updated Video components for Best in Travel ([#772](https://github.com/lonelyplanet/rizzo-next/issues/772)) ([ca6944d](https://github.com/lonelyplanet/rizzo-next/commit/ca6944d))
+
+
+
 <a name="0.27.4"></a>
 ## [0.27.4](https://github.com/lonelyplanet/rizzo-next/compare/v0.26.5...v0.27.4) (2017-10-02)
 
