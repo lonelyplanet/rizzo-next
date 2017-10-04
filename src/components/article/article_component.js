@@ -22,7 +22,7 @@ export default class ArticleComponent extends Component {
 
     const paragraphs = $articleBody.find("p")
       .filter((index, p) => {
-        return !$(p).attr("class") || $(p).attr("class") === "feature" ;
+        return (!$(p).attr("class") || $(p).attr("class") === "feature") && !$(p).has(".copy--body__strong").length;
       });
 
     $(paragraphs).each((index, p) => {
