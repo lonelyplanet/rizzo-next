@@ -40,8 +40,8 @@ class File extends VideoPlayer {
       }
 
       this.player = this.el.getElementsByTagName("video")[0];
-      this.player.on("playing", () => { this.trigger("started"); });
-      this.player.on("ended", () => { this.trigger("ended"); });
+      this.player.onplaying = () => { this.trigger("started"); };
+      this.player.onended = () => { this.trigger("ended"); };
     }
     super.setup();
   }

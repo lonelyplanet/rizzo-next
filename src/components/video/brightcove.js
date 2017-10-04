@@ -240,8 +240,8 @@ class Brightcove extends VideoPlayer {
       this.player.on("playing", this.onPlayerPlaying.bind(this));
       this.player.on("pause", this.onPlayerPause.bind(this));
       this.player.on("ended", this.onPlayerEnded.bind(this));
-      this.player.on("ads-ad-play", this.onAdPlay.bind(this));
-      this.player.on("ads-ad-pause", this.onAdPlay.bind(this));
+      this.player.on("ads-play", this.onAdPlay.bind(this));
+      this.player.on("ads-pause", this.onAdPause.bind(this));
       this.player.on("ads-ad-started", this.onAdStarted.bind(this));
       this.player.on("ads-ad-ended", this.onAdEnded.bind(this));
       this.player.ready(this.onPlayerReady.bind(this));
