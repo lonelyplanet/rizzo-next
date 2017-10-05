@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.28.3"></a>
+## [0.28.3](https://github.com/lonelyplanet/rizzo-next/compare/v0.28.2...v0.28.3) (2017-10-05)
+
+
+### Bug Fixes
+
+* Put love letter ad slot in intro narrative component ([#775](https://github.com/lonelyplanet/rizzo-next/issues/775)) ([310085a](https://github.com/lonelyplanet/rizzo-next/commit/310085a))
+
+
+
 <a name="0.28.2"></a>
 ## [0.28.2](https://github.com/lonelyplanet/rizzo-next/compare/v0.28.1...v0.28.2) (2017-10-04)
 
