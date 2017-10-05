@@ -28,6 +28,14 @@
   &:hover [class*="icon-"] {
     animation: heartbeat 3000ms infinite;
   }
+
+  .has-sponsor & {
+    margin-bottom: 0;
+
+    &::after {
+      display: none;
+    }
+  }
 }
 
 .intro-narrative__text {
