@@ -73,6 +73,13 @@
   display: inline-block;
 }
 
+.intro-narrative .adunit--sponsor-logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
 .adunit--articles-inline iframe {
   max-width: 100%;
 
