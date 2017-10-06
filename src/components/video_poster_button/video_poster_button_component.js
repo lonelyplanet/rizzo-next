@@ -51,13 +51,15 @@ export default class VideoPosterButtonComponent extends Component {
   }
 
   renderImage() {
-    let image = null;
+    let image = this.player.poster;
 
-    try {
-        const mediainfo = this.player.player.mediainfo;
-        image = mediainfo.poster;
-    }
-    catch (e) {
+    if (!image) {
+      try {
+          const mediainfo = this.player.player.mediainfo;
+          image = mediainfo.poster;
+      }
+      catch (e) {
+      }
     }
 
     if (!image) {
@@ -99,7 +101,16 @@ export default class VideoPosterButtonComponent extends Component {
   playerReady(player) {
     this.player = player;
     this.listenTo(this.player, "ended", this.onPlayerEnded.bind(this));
-    this.listenTo(this.player, "loadstart", this.onPlayerLoadStart.bind(this));
+
+    // If the player has a poster configured on it, we can render the poster button now
+    if (this.player.poster) {
+      this.render();
+    }
+    else {
+      // We need to wait until the player has mediainfo before we can get the poster image
+      this.listenTo(this.player, "loadstart", this.onPlayerLoadStart.bind(this));
+    }
+
     this.player.fetchVideos();
   }
 

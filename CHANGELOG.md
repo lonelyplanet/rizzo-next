@@ -2,6 +2,57 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.28.3"></a>
+## [0.28.3](https://github.com/lonelyplanet/rizzo-next/compare/v0.28.2...v0.28.3) (2017-10-05)
+
+
+### Bug Fixes
+
+* Put love letter ad slot in intro narrative component ([#775](https://github.com/lonelyplanet/rizzo-next/issues/775)) ([310085a](https://github.com/lonelyplanet/rizzo-next/commit/310085a))
+
+
+
+<a name="0.28.2"></a>
+## [0.28.2](https://github.com/lonelyplanet/rizzo-next/compare/v0.28.1...v0.28.2) (2017-10-04)
+
+
+### Bug Fixes
+
+* Fixed event handling in video components ([#774](https://github.com/lonelyplanet/rizzo-next/issues/774)) ([675f5e4](https://github.com/lonelyplanet/rizzo-next/commit/675f5e4))
+
+
+
+<a name="0.28.1"></a>
+## [0.28.1](https://github.com/lonelyplanet/rizzo-next/compare/v0.28.0...v0.28.1) (2017-10-04)
+
+
+### Bug Fixes
+
+* Exclude paragraphs that look like headings from in-article ads ([#773](https://github.com/lonelyplanet/rizzo-next/issues/773)) ([bf10298](https://github.com/lonelyplanet/rizzo-next/commit/bf10298))
+
+
+
+<a name="0.28.0"></a>
+# [0.28.0](https://github.com/lonelyplanet/rizzo-next/compare/v0.27.4...v0.28.0) (2017-10-03)
+
+
+### Features
+
+* Updated Video components for Best in Travel ([#772](https://github.com/lonelyplanet/rizzo-next/issues/772)) ([ca6944d](https://github.com/lonelyplanet/rizzo-next/commit/ca6944d))
+
+
+
+<a name="0.27.4"></a>
+## [0.27.4](https://github.com/lonelyplanet/rizzo-next/compare/v0.26.5...v0.27.4) (2017-10-02)
+
+
+### Bug Fixes
+
+* Remove outline: none from buttons ([#771](https://github.com/lonelyplanet/rizzo-next/issues/771)) ([50fa6eb](https://github.com/lonelyplanet/rizzo-next/commit/50fa6eb))
+* Resolve scss-lint errors ([#770](https://github.com/lonelyplanet/rizzo-next/issues/770)) ([a5af151](https://github.com/lonelyplanet/rizzo-next/commit/a5af151))
+
+
+
 <a name="0.26.5"></a>
 ## [0.26.5](https://github.com/lonelyplanet/rizzo-next/compare/v0.26.4...v0.26.5) (2017-09-20)
 
