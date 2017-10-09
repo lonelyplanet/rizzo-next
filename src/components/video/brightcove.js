@@ -7,9 +7,10 @@ const _ = { get };
 
 const bcPlayerIds = {
   default: "default",
+  article: "S1T3jIHnZ",
   background: "BJputewob",
   bestintravel: "HkJcclwoZ",
-  destinations: "HkPdqeDiZ",
+  destination: "HkPdqeDiZ",
 };
 
 class Brightcove extends VideoPlayer {
@@ -119,6 +120,7 @@ class Brightcove extends VideoPlayer {
     this.updatePopout();
 
     if (this.playWhenInView) {
+      this.player.muted(true);
       this.play();
       this.playWhenInView = false;
     }
@@ -280,6 +282,7 @@ class Brightcove extends VideoPlayer {
     this.trigger("ready");
 
     if (this.isInView() && this.playWhenInView) {
+      this.player.muted(true);
       this.play();
       this.playWhenInView = false;
     }
@@ -322,6 +325,7 @@ class Brightcove extends VideoPlayer {
       tt.oncuechange = this.onPlayerCueChange.bind(this);
     }
 
+    this.renderPixel();
     this.renderSEOMarkup();
     this.updateDataLayer();
     this.configureOverlays();
@@ -593,6 +597,16 @@ class Brightcove extends VideoPlayer {
       brightcoveTitle: this.getVideoProperty("name"),
       brightcoveDescription: this.getVideoProperty("description")
     });
+  }
+
+  renderPixel() {
+    const customFields = this.getVideoProperty("customFields");
+
+    console.log("GOT", customFields);
+
+    if (this.insertPixel && customFields && customFields.pixel) {
+      this.$el.after(customFields.pixel);
+    }
   }
 
   /**

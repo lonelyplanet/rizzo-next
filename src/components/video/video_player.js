@@ -14,6 +14,7 @@ class VideoPlayer extends Component {
     cover = false,
     muted = false,
     playWhenInView = false,
+    insertPixel = true,
   }) {
 
     this.playerId = playerId;
@@ -27,6 +28,7 @@ class VideoPlayer extends Component {
     this.cover = cover;
     this.muted = muted;
     this.playWhenInView = playWhenInView;
+    this.insertPixel = insertPixel;
 
     this.defaultAspectRatio = 1.77777778;
     this.events = {};

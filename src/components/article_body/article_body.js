@@ -54,7 +54,10 @@ export default class ArticleBodyComponent extends Component {
     this.$el.find("[data-op-video-id]")
       .addClass("is-visible")
       .each((i, el) => {
-        Video.addPlayer(el);
+        Video.addPlayer(el, {
+          playerName: "article",
+          insertPixel: false,
+       });
       });
   }
 
