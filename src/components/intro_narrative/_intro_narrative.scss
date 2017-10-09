@@ -57,9 +57,8 @@
 .intro-narrative__featured {
   @include lede;
 
-  em {
-    font-style: normal;
-  }
+  em { font-style: normal; }
+  p { margin: 2.5rem 0; }
 }
 
 .intro-narrative__title {
