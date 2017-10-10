@@ -39,13 +39,14 @@ class VideoPlayer extends Component {
 
   /**
    * Use this to change any properties of the player after initialization.
-   * There is no default logic for this method as changing some properties may
-   * involve complex operations rather than simply changing the properties
-   * on the instance.
+   * There is very simple default logic for this method and it is expected
+   * that subclasses will have complex operations rather than simply copying
+   * the properties to the instance.
    * Warning: This is implemented as needed and currently only covers "autoplay"
    * and "videoId" on Brightcove players.
    */
   set(options) {
+    Object.assign(this, options);
   }
 
   /**
