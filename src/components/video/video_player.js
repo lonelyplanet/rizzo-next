@@ -14,6 +14,7 @@ class VideoPlayer extends Component {
     cover = false,
     muted = false,
     playWhenInView = false,
+    insertPixel = true,
   }) {
 
     this.playerId = playerId;
@@ -27,6 +28,7 @@ class VideoPlayer extends Component {
     this.cover = cover;
     this.muted = muted;
     this.playWhenInView = playWhenInView;
+    this.insertPixel = insertPixel;
 
     this.defaultAspectRatio = 1.77777778;
     this.events = {};
@@ -37,13 +39,14 @@ class VideoPlayer extends Component {
 
   /**
    * Use this to change any properties of the player after initialization.
-   * There is no default logic for this method as changing some properties may
-   * involve complex operations rather than simply changing the properties
-   * on the instance.
+   * There is very simple default logic for this method and it is expected
+   * that subclasses will have complex operations rather than simply copying
+   * the properties to the instance.
    * Warning: This is implemented as needed and currently only covers "autoplay"
    * and "videoId" on Brightcove players.
    */
   set(options) {
+    Object.assign(this, options);
   }
 
   /**

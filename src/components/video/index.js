@@ -7,7 +7,7 @@ require("./_video.scss");
 let players = new Map();
 players.set("brightcove", Brightcove);
 players.set("youtube", Youtube);
-players.set("file", File)
+players.set("file", File);
 
 /*
   Video - an interface for inserting video embeds onto the page and/or
@@ -60,6 +60,9 @@ players.set("file", File)
           player enters the viewport.  This will only trigger once during the lifetime of
           the player instance. ("brightcove" only).
 
+    insertPixel - (optional) Whether to fetch a tracking pixel from the video's
+          "custom fields" and insert the pixel onto the page ("brightcove" only).
+
   events:
 
     "ready" - Player has finished loading and is ready to be interacted with
@@ -82,6 +85,7 @@ class Video {
     cover = false,
     muted = false,
     playWhenInView = false,
+    insertPixel = true,
   } = {}) {
 
     if (typeof element === "string") {
@@ -111,6 +115,7 @@ class Video {
           cover,
           muted,
           playWhenInView,
+          insertPixel,
         });
 
     this.players.set(element, player);
