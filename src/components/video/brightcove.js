@@ -602,8 +602,6 @@ class Brightcove extends VideoPlayer {
   renderPixel() {
     const customFields = this.getVideoProperty("customFields");
 
-    console.log("GOT", customFields);
-
     if (this.insertPixel && customFields && customFields.pixel) {
       this.$el.after(customFields.pixel);
     }
