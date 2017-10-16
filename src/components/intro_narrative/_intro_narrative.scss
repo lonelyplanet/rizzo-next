@@ -57,8 +57,13 @@
 .intro-narrative__featured {
   @include lede;
 
-  em { font-style: normal; }
-  p { margin: 2.5rem 0; }
+  em {
+    font-style: normal;
+  }
+
+  p {
+    margin: 2.5rem 0;
+  }
 }
 
 .intro-narrative__title {
@@ -152,11 +157,11 @@
 
 .in-detail__section {
   display: block;
-  text-align: left;
-  min-width: 20rem;
-  position: relative;
   float: left;
   margin: 2rem 6rem;
+  min-width: 20rem;
+  position: relative;
+  text-align: left;
 
   @media (min-width: $min-960) {
     margin: 0 6rem 2rem;
