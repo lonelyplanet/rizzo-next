@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.29.0"></a>
+# [0.29.0](https://github.com/lonelyplanet/rizzo-next/compare/v0.28.3...v0.29.0) (2017-10-16)
+
+
+### Bug Fixes
+
+* Resolve sass-lint errors in in-detail.scss ([479a5ac](https://github.com/lonelyplanet/rizzo-next/commit/479a5ac))
+* Resolve sass-lint errors in intro-narrative.scss ([d4b611e](https://github.com/lonelyplanet/rizzo-next/commit/d4b611e))
+
+
+### Features
+
+* Added logic for inserting video pixels into pages ([#777](https://github.com/lonelyplanet/rizzo-next/issues/777)) ([f1d3f24](https://github.com/lonelyplanet/rizzo-next/commit/f1d3f24))
+* Introduces new In-Detail component ([fec5573](https://github.com/lonelyplanet/rizzo-next/commit/fec5573))
+
+
+
 <a name="0.28.3"></a>
 ## [0.28.3](https://github.com/lonelyplanet/rizzo-next/compare/v0.28.2...v0.28.3) (2017-10-05)
 
