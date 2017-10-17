@@ -1,0 +1,14 @@
+<article class="in-detail">
+  <h1 class="in-detail__heading">{{header}}</h1>
+
+  <div class="in-detail__list">
+    {{#each in_detail_cards}}
+      <div class="in-detail__section">
+        <h3 class="in-detail__title">{{title}}</h3>
+        {{#each cards}}
+          <a class="in-detail__link" href="{{url}}">{{title}}</a>
+        {{/each}}
+      </div>
+    {{/each}}
+  </div>
+</article>
