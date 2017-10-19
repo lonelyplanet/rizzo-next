@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.29.1"></a>
+## [0.29.1](https://github.com/lonelyplanet/rizzo-next/compare/v0.29.0...v0.29.1) (2017-10-19)
+
+
+### Bug Fixes
+
+* Remove duplicate in-detail styles from intro-narrative.scss ([b1f378d](https://github.com/lonelyplanet/rizzo-next/commit/b1f378d))
+* remove linking from profile avatar ([#765](https://github.com/lonelyplanet/rizzo-next/issues/765)) ([#778](https://github.com/lonelyplanet/rizzo-next/issues/778)) ([8f20c0b](https://github.com/lonelyplanet/rizzo-next/commit/8f20c0b))
+* Remove unnecessary overflow rule from in-detail component ([9e4afe1](https://github.com/lonelyplanet/rizzo-next/commit/9e4afe1))
+* Update in-detail component layout, styles ([8b30f21](https://github.com/lonelyplanet/rizzo-next/commit/8b30f21))
+* Use rem values for in-detail component ([7841a61](https://github.com/lonelyplanet/rizzo-next/commit/7841a61))
+
+
+
 <a name="0.29.0"></a>
 # [0.29.0](https://github.com/lonelyplanet/rizzo-next/compare/v0.28.3...v0.29.0) (2017-10-16)
 
