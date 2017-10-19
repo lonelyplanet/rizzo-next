@@ -1,14 +1,46 @@
-<article class="in-detail">
-  <h1 class="in-detail__heading">{{header}}</h1>
+<section class="in-detail">
+  <h2 class="in-detail__heading">
+    {{header}}
+  </h2>
 
-  <div class="in-detail__list">
+  <div class="in-detail__grid">
     {{#each in_detail_cards}}
-      <div class="in-detail__section">
-        <h3 class="in-detail__title">{{title}}</h3>
-        {{#each cards}}
-          <a class="in-detail__link" href="{{url}}">{{title}}</a>
-        {{/each}}
-      </div>
+      <article class="in-detail__article">
+        <h3 class="in-detail__article-title">
+          <label for="in-detail-article-{{@index}}">
+            {{title}}
+          </label>
+        </h3>
+
+        <input
+          class="in-detail__toggle-control"
+          id="in-detail-article-{{@index}}"
+          type="checkbox">
+
+        <span class="in-detail__button" role="button">
+          <svg
+            class="in-detail__button-icon"
+            viewBox="0 0 32 32"
+            aria-labelledby="in-detail-button-icon-{{@index}}"
+            version="1.1">
+            <title id="in-detail-button-icon-{{@index}}">
+              Toggle content visibility
+            </title>
+
+            <path d="M32 6.857h-32l16 18.286z"></path>
+          </svg>
+        </span>
+
+        <ul class="in-detail__article-list">
+          {{#each cards}}
+            <li class="in-detail__article-list-item">
+              <a href="{{url}}">
+                {{title}}
+              </a>
+            </li>
+          {{/each}}
+        </ul>
+      </article>
     {{/each}}
   </div>
-</article>
+</section>
