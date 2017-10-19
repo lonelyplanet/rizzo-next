@@ -22,7 +22,6 @@
       grid-column-gap: gutter(static);
       grid-row-gap: #{gutter(static) * 2};
       grid-template-columns: repeat(auto-fill, minmax(#{span(3 static)}, 1fr));
-      overflow: visible;
     }
   }
 }
