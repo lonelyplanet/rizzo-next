@@ -11,7 +11,7 @@
   @include h1();
 
   @media (min-width: $min-720) {
-    margin-bottom: 120px;
+    margin-bottom: 12rem;
   }
 }
 
@@ -51,7 +51,7 @@
 }
 
 .in-detail__article-title {
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: $font-weight-semibold;
   line-height: (24 / 20);
 
@@ -60,7 +60,7 @@
       align-items: center;
       cursor: pointer;
       display: flex;
-      height: 78px;
+      height: 7.8rem;
       justify-content: space-between;
       width: 100%;
     }
@@ -68,13 +68,13 @@
 }
 
 .in-detail__article-list {
-  font-size: 16px;
+  font-size: 1.6rem;
   line-height: (20 / 16);
   list-style: none;
 
   @media (max-width: $max-720) {
     display: none;
-    padding-bottom: 72px;
+    padding-bottom: 7.2rem;
     padding-left: gutter(static);
     padding-right: gutter(static);
   }
@@ -95,11 +95,11 @@
 .in-detail__toggle-control {
   @media (max-width: $max-720) {
     appearance: none;
-    height: 30px;
+    height: 3rem;
     position: absolute;
     right: 0;
-    top: 24px;
-    width: 30px;
+    top: 2.4rem;
+    width: 3rem;
   }
 
   @media (min-width: $min-720) {
@@ -119,10 +119,10 @@
     align-items: center;
     background-color: $color-white;
     border-radius: 50%;
-    box-shadow: rgba($color-black, .16) 0 0 4px;
+    box-shadow: rgba($color-black, .16) 0 0 .4rem;
     color: $lpblue;
     display: inline-flex;
-    font-size: 9px;
+    font-size: .9rem;
     justify-content: center;
     line-height: 1;
   }
