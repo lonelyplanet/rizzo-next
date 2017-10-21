@@ -35,6 +35,19 @@ class Brightcove extends VideoPlayer {
     this.popoutOutOfViewTimeoutId = null;
     this.popoutInViewTimeoutId = null;
 
+    /*
+      This is populated every time a text track's oncuechange event is fired.
+      We can compare this to what it was previously to determine whether it's
+      the first time seeing an active cue or not (so we can call onPlayerCuePointHit).
+    */
+    this.activeCues = [];
+
+    /*
+      If at any point this is set to true and the "playing" event is fired,
+      closed captions will be forced on and this will immediately be set back to false.
+    */
+    this.enableCaptionsWhenPlaying = false;
+
     super.initialize(options);
 
     this.events["click .video-js"] = "onClickVideo";
@@ -119,7 +132,8 @@ class Brightcove extends VideoPlayer {
   onInView() {
     this.updatePopout();
 
-    if (this.playWhenInView) {
+    if (this.player && this.playWhenInView) {
+      this.enableCaptionsWhenPlaying = true;
       this.player.muted(true);
       this.play();
       this.playWhenInView = false;
@@ -282,37 +296,57 @@ class Brightcove extends VideoPlayer {
     this.trigger("ready");
 
     if (this.isInView() && this.playWhenInView) {
+      this.enableCaptionsWhenPlaying = true;
       this.player.muted(true);
       this.play();
       this.playWhenInView = false;
     }
   }
 
-  onPlayerCueChange() {
-    const tt = this.player.textTracks()[0];
-    const activeCue = tt.activeCues[0];
-    if (!activeCue || activeCue.text !== "CODE") {
+  enableCaptions() {
+    if (!this.player) {
       return;
     }
+    this.player.controls(false);
+    this.$el.find('.vjs-captions-menu-item').click();
+    this.player.controls(true);
+  }
 
-    const cue = activeCue.originalCuePoint;
+  getActiveCues() {
+    const activeCues = [];
+    this.player.textTracks().tracks_.forEach((tt) => {
+      tt.activeCues_.forEach((c) => {
+        activeCues.push(c);
+      })
+    });
+    return activeCues;
+  }
 
+  onPlayerCueChange() {
+    const activeCues = this.getActiveCues();
+
+    const cuePointCue = activeCues.find(c => c.text === "CODE" && c.originalCuePoint);
+    if (cuePointCue) {
+      const cue = cuePointCue.originalCuePoint;
+      const cueAlreadyExisted = this.activeCues.find(c => c.originalCuePoint && c.originalCuePoint.id === cue.id);
+      if (!cueAlreadyExisted) {
+        this.onPlayerCuePointHit(cue);
+      }
+    }
+
+    this.activeCues = activeCues;
+  }
+
+  onPlayerCuePointHit(cue) {
     const overlayElementId = `ad-lowerthird-${this.playerId}-${cue.id}`;
-    const element = document.getElementById(overlayElementId);
 
+    const element = document.getElementById(overlayElementId);
     if (!element) {
       return;
     }
 
-    let cueIndex = null;
-
-    this.getCues().forEach((c, i) => {
-      if (c.originalCuePoint.id === cue.id) {
-        cueIndex = i;
-      }
-    });
-
-    if (cueIndex === null) {
+    const cueIndex = this.player.mediainfo.cuePoints.findIndex(c => c.id === cue.id);
+    if (cueIndex === -1) {
       return;
     }
 
@@ -320,10 +354,9 @@ class Brightcove extends VideoPlayer {
   }
 
   onPlayerLoadStart() {
-    const tt = this.player.textTracks()[0];
-    if (tt) {
+    this.player.textTracks().tracks_.forEach((tt) => {
       tt.oncuechange = this.onPlayerCueChange.bind(this);
-    }
+    });
 
     this.renderPixel();
     this.renderSEOMarkup();
@@ -338,6 +371,12 @@ class Brightcove extends VideoPlayer {
   }
 
   onPlayerPlaying() {
+
+    if (this.enableCaptionsWhenPlaying) {
+      this.enableCaptions();
+      this.enableCaptionsWhenPlaying = false;
+    }
+
     this.updateDataLayer();
     this.disableAdOverlay();
     this.popoutEnabled = true;
@@ -518,37 +557,12 @@ class Brightcove extends VideoPlayer {
     return "popout-overlay-" + this.playerId;
   }
 
-  getCues() {
-    if (!this.player) {
-      return [];
-    }
-
-    const tt = this.player.textTracks()[0];
-    if (!tt) {
-      return [];
-    }
-
-    let index = 0;
-    const cues = [];
-    while (index < tt.cues.length) {
-      const cue = tt.cues[index];
-      if (cue.text === "CODE") {
-        cues.push(cue);
-      }
-      index += 1;
-    }
-
-    return cues;
-  }
-
   configureOverlays() {
     if (!this.player || !this.player.overlay) {
       return;
     }
 
-    const overlays = this.getCues().map((c) => {
-      const cue = c.originalCuePoint;
-
+    const overlays = this.player.mediainfo.cuePoints.map((cue) => {
       const defaultEnd = cue.startTime + 15;
       const end = defaultEnd < cue.endTime ? defaultEnd : cue.endTime;
 
