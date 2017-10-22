@@ -194,12 +194,10 @@ class NavigationComponent extends Component {
     let $mobileNavigationHeader = this.$mobileNavigation.find(".js-mobile-navigation-header");
 
     if (!user.id) {
-      if (this.showNewLoginLink(user.variant)) {
-        // lp.require is a way to detect if this is a legacy app or not (/¯◡ ‿ ◡)/¯ ~ ┻━┻
-        const loginLink = window.lp.require ? this.buildLegacyAuthUrl() : "#login";
-        this.$el.find(".navigation__link[href*='sign_in']").attr("href", loginLink);
-        this.$mobileNavigation.find(".mobile-navigation__link[href*='sign_in']").attr("href", loginLink);
-      }
+     
+      const loginLink = window.lp.require ? this.buildLegacyAuthUrl() : "#login";
+      this.$el.find(".navigation__link[href*='sign_in']").attr("href", loginLink);
+      this.$mobileNavigation.find(".mobile-navigation__link[href*='sign_in']").attr("href", loginLink);
       return;
     }
 
@@ -223,10 +221,6 @@ class NavigationComponent extends Component {
   @subscribe("user.notifications.update")
   userNotificationUpdate(user) {
     this.userStatusUpdate(user);
-  }
-
-  showNewLoginLink(variant) {
-    return document.cookie.indexOf(variant) > -1;
   }
 
   buildLegacyAuthUrl() {
