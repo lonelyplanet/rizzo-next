@@ -34,7 +34,6 @@ export default class LoginManager {
       })
     ).done(([lunaUser], [connectUser]) => {
       let user = Object.assign({}, connectUser, { "connect": true });
-
       if (lunaUser.id) {
         user = Object.assign({}, lunaUser, { "luna": true });
         
@@ -44,11 +43,13 @@ export default class LoginManager {
             xhrFields: {
               withCredentials: true
            },
+          })
+          .fail(function(xhr, status, error) {
+            throw `Error migrating luna session: ${error}`;
           });
         }
        
       }
-
       this.statusFetched(user);
     });
   }
