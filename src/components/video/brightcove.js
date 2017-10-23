@@ -35,6 +35,18 @@ class Brightcove extends VideoPlayer {
     this.popoutOutOfViewTimeoutId = null;
     this.popoutInViewTimeoutId = null;
 
+    /*
+      This is populated every time a text track's oncuechange event is fired.
+      We can compare this to what it was previously to determine whether it's
+      the first time seeing an active cue or not (so we can call onPlayerCuePoint).
+    */
+    this.activeCues = [];
+
+    // These flags control whether certain UI elements should automatically
+    // become visible while an ad or video are playing, and should be hidden otherwise.
+    this.showCaptions = false;
+    this.showMutedOverlay = false;
+
     super.initialize(options);
 
     this.events["click .video-js"] = "onClickVideo";
@@ -119,10 +131,12 @@ class Brightcove extends VideoPlayer {
   onInView() {
     this.updatePopout();
 
-    if (this.playWhenInView) {
+    if (this.player && this.playWhenInView) {
+      this.playWhenInView = false;
+      this.showMutedOverlay = true;
+      this.showCaptions = true;
       this.player.muted(true);
       this.play();
-      this.playWhenInView = false;
     }
   }
 
@@ -139,7 +153,6 @@ class Brightcove extends VideoPlayer {
     const halfContainerHeight = bounds.height / 2;
     const windowHeight = window.innerHeight;
     return bounds.top > (windowHeight - halfContainerHeight);
-
   }
 
   isAboveViewport() {
@@ -203,6 +216,8 @@ class Brightcove extends VideoPlayer {
       html += "class='video-js' ";
       html += "></video>";
 
+      html += "<div class='video__muted-overlay'><span class='vjs-icon-volume-high' /></div>";
+
       html += "</div></div>";
       this.el.innerHTML = html;
 
@@ -218,6 +233,9 @@ class Brightcove extends VideoPlayer {
 
       // Bind click handler to X button for popout
       this.$el.find("#" + this.getPopoutOverlayId()).click(this.onClickPopoutOverlay.bind(this));
+
+      // Bind click handler to muted button
+      this.$el.find(".video__muted-overlay").click(this.onClickMutedOverlay.bind(this));
 
       // Insert script to initialize brightcove player
       const scriptId = this.getPlayerScriptId();
@@ -282,37 +300,92 @@ class Brightcove extends VideoPlayer {
     this.trigger("ready");
 
     if (this.isInView() && this.playWhenInView) {
+      this.playWhenInView = false;
+      this.showMutedOverlay = true;
+      this.showCaptions = true;
       this.player.muted(true);
       this.play();
-      this.playWhenInView = false;
+
     }
   }
 
-  onPlayerCueChange() {
-    const tt = this.player.textTracks()[0];
-    const activeCue = tt.activeCues[0];
-    if (!activeCue || activeCue.text !== "CODE") {
+  enableCaptions() {
+    if (!this.player) {
       return;
     }
 
-    const cue = activeCue.originalCuePoint;
+    const controls = this.player.controls();
 
+    const enableCaptionsButton = this.$el.find('.vjs-captions-menu-item');
+    if (enableCaptionsButton.length) {
+      if (controls) {
+        this.player.controls(false);
+      }
+      enableCaptionsButton.click();
+      if (controls) {
+        this.player.controls(true);
+      }
+    }
+  }
+
+  disableCaptions() {
+    if (!this.player) {
+      return;
+    }
+
+    const controls = this.player.controls();
+
+    const enableCaptionsButton = this.$el.find('.vjs-captions-menu-item');
+
+    if (enableCaptionsButton.length) {
+      const disableCaptionsButton = enableCaptionsButton.prev();
+      if (disableCaptionsButton.length) {
+        if (controls) {
+          this.player.controls(false);
+        }
+        disableCaptionsButton.click();
+        if (controls) {
+          this.player.controls(true);
+        }
+      }
+    }
+  }
+
+  getActiveCues() {
+    const activeCues = [];
+    this.player.textTracks().tracks_.forEach((tt) => {
+      tt.activeCues_.forEach((c) => {
+        activeCues.push(c);
+      })
+    });
+    return activeCues;
+  }
+
+  onPlayerCueChange() {
+    const activeCues = this.getActiveCues();
+
+    const cuePointCue = activeCues.find(c => c.text === "CODE" && c.originalCuePoint);
+    if (cuePointCue) {
+      const cue = cuePointCue.originalCuePoint;
+      const cueAlreadyExisted = this.activeCues.find(c => c.originalCuePoint && c.originalCuePoint.id === cue.id);
+      if (!cueAlreadyExisted) {
+        this.onPlayerCuePoint(cue);
+      }
+    }
+
+    this.activeCues = activeCues;
+  }
+
+  onPlayerCuePoint(cue) {
     const overlayElementId = `ad-lowerthird-${this.playerId}-${cue.id}`;
-    const element = document.getElementById(overlayElementId);
 
+    const element = document.getElementById(overlayElementId);
     if (!element) {
       return;
     }
 
-    let cueIndex = null;
-
-    this.getCues().forEach((c, i) => {
-      if (c.originalCuePoint.id === cue.id) {
-        cueIndex = i;
-      }
-    });
-
-    if (cueIndex === null) {
+    const cueIndex = this.player.mediainfo.cuePoints.findIndex(c => c.id === cue.id);
+    if (cueIndex === -1) {
       return;
     }
 
@@ -320,10 +393,9 @@ class Brightcove extends VideoPlayer {
   }
 
   onPlayerLoadStart() {
-    const tt = this.player.textTracks()[0];
-    if (tt) {
+    this.player.textTracks().tracks_.forEach((tt) => {
       tt.oncuechange = this.onPlayerCueChange.bind(this);
-    }
+    });
 
     this.renderPixel();
     this.renderSEOMarkup();
@@ -338,6 +410,14 @@ class Brightcove extends VideoPlayer {
   }
 
   onPlayerPlaying() {
+    if (this.showCaptions) {
+      this.enableCaptions();
+    }
+
+    if (this.showMutedOverlay) {
+      this.enableMutedOverlay();
+    }
+
     this.updateDataLayer();
     this.disableAdOverlay();
     this.popoutEnabled = true;
@@ -354,6 +434,8 @@ class Brightcove extends VideoPlayer {
   }
 
   onPlayerEnded() {
+    this.disableMutedOverlay();
+
     if (this.currentVideoIndex >= this.videos.length - 1) {
       this.popoutEnabled = false;
       this.updatePopout();
@@ -378,6 +460,14 @@ class Brightcove extends VideoPlayer {
   }
 
   onAdStarted() {
+    if (this.showCaptions) {
+      this.enableCaptions();
+    }
+
+    if (this.showMutedOverlay) {
+      this.enableMutedOverlay();
+    }
+
     this.enableAdOverlay();
     this.popoutEnabled = true;
     this.updatePopout();
@@ -396,6 +486,17 @@ class Brightcove extends VideoPlayer {
     this.updatePopout();
   }
 
+  onClickMutedOverlay() {
+    if (!this.player) {
+      return;
+    }
+    this.showCaptions = false;
+    this.showMutedOverlay = false;
+    this.player.muted(false);
+    this.disableCaptions();
+    this.disableMutedOverlay();
+  }
+
   enableAdOverlay() {
     const adOverlay = this.$el.find("#" + this.getAdOverlayId());
     adOverlay.css("display", "inline-block");
@@ -406,20 +507,41 @@ class Brightcove extends VideoPlayer {
     adOverlay.css("display", "none");
   }
 
-  fetchVideos() {
-    let query = null;
-    try {
-      query = "dest_" + window.lp.place.atlasId;
+  enableMutedOverlay() {
+    if (!this.player) {
+      return;
     }
-    catch (e) {
-      return Promise.resolve(false);
+    const mutedOverlay = this.$el.find(".video__muted-overlay");
+    mutedOverlay.css({ display: "flex" });
+    this.player.controls(false);
+    this.$el.find("#" + this.getPopoutOverlayId()).hide();
+  }
+
+  disableMutedOverlay() {
+    if (!this.player) {
+      return;
+    }
+    const mutedOverlay = this.$el.find(".video__muted-overlay");
+    mutedOverlay.hide();
+    this.player.controls(true);
+    this.$el.find("#" + this.getPopoutOverlayId()).show();
+  }
+
+  fetchVideos(referenceId) {
+    if (!referenceId) {
+      try {
+        referenceId = "dest_" + window.lp.place.atlasId;
+      }
+      catch (e) {
+        return Promise.resolve(false);
+      }
     }
 
     const apiURL = "https://www.lonelyplanet.com/video/api/";
 
     return new Promise((resolve) => {
       $.ajax({
-        url: apiURL + "playlists.json?reference_id=" + query
+        url: apiURL + "playlists.json?reference_id=" + referenceId
       }).done((data, status, response) => {
         if (response.status === 200 && data && data.length) {
           this.videos = data[0].playlistitems.map(item => item.video);
@@ -431,7 +553,7 @@ class Brightcove extends VideoPlayer {
         }
         else {
           $.ajax({
-            url: apiURL + "video.json?reference_id=" + query
+            url: apiURL + "video.json?reference_id=" + referenceId
           }).done((data, status, response) => {
             if (response.status === 200 && data && data.length) {
               this.videos = data;
@@ -518,37 +640,12 @@ class Brightcove extends VideoPlayer {
     return "popout-overlay-" + this.playerId;
   }
 
-  getCues() {
-    if (!this.player) {
-      return [];
-    }
-
-    const tt = this.player.textTracks()[0];
-    if (!tt) {
-      return [];
-    }
-
-    let index = 0;
-    const cues = [];
-    while (index < tt.cues.length) {
-      const cue = tt.cues[index];
-      if (cue.text === "CODE") {
-        cues.push(cue);
-      }
-      index += 1;
-    }
-
-    return cues;
-  }
-
   configureOverlays() {
     if (!this.player || !this.player.overlay) {
       return;
     }
 
-    const overlays = this.getCues().map((c) => {
-      const cue = c.originalCuePoint;
-
+    const overlays = this.player.mediainfo.cuePoints.map((cue) => {
       const defaultEnd = cue.startTime + 15;
       const end = defaultEnd < cue.endTime ? defaultEnd : cue.endTime;
 
@@ -603,7 +700,8 @@ class Brightcove extends VideoPlayer {
     const customFields = this.getVideoProperty("customFields");
 
     if (this.insertPixel && customFields && customFields.pixel) {
-      this.$el.after(customFields.pixel);
+      const pixel = customFields.pixel.replace("[timestamp]", (new Date()).getTime());
+      this.$el.after(pixel);
     }
   }
 
