@@ -169,7 +169,11 @@ linters:
 
   PropertySpelling:
     enabled: true
-    extra_properties: []
+    extra_properties: [
+      "grid-column-gap",
+      "grid-row-gap",
+      "grid-template-columns"
+    ]
 
   PropertyUnits:
     exclude:
