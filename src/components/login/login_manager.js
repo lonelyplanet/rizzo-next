@@ -6,10 +6,12 @@ export default class LoginManager {
   constructor() {
     this.lunaStatusUrl = "https://auth.lonelyplanet.com/users/status.json";
     this.dotcomConnectStatusUrl = "https://connect.lonelyplanet.com/users/status.json";
+    this.dotcomConnectMigrateUrl = "https://connect.lonelyplanet.com/users/migrate";
     this.feedUrl = "https://www.lonelyplanet.com/thorntree/users/feed";
 
     if (window.lp.auth && window.lp.auth.host) {
       this.dotcomConnectStatusUrl = `${window.lp.auth.host}/users/status.json`;
+      this.dotcomConnectMigrateUrl = `${window.lp.auth.host}/users/migrate`;
     }
 
     this.checkStatus();
@@ -32,13 +34,32 @@ export default class LoginManager {
       })
     ).done(([lunaUser], [connectUser]) => {
       let user = Object.assign({}, connectUser, { "connect": true });
-
       if (lunaUser.id) {
         user = Object.assign({}, lunaUser, { "luna": true });
+        
+        if(!this.isLunaPage()) {
+          $.post({
+            url: this.dotcomConnectMigrateUrl,
+            xhrFields: {
+              withCredentials: true
+           },
+          })
+          .fail(function(xhr, status, error) {
+            throw `Error migrating luna session: ${error}`;
+          });
+        }
+       
       }
-
       this.statusFetched(user);
     });
+  }
+
+  isLunaPage() {
+    const full = window.location.host;
+    const parts = full.split(".");
+    const subDomain = parts[0];
+
+    return subDomain === "auth";
   }
 
    /**

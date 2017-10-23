@@ -5,7 +5,6 @@ import NavigationState from "../navigation/navigation_state";
 import subscribe from "../../core/decorators/subscribe";
 import $ from "jquery";
 import debounce from "lodash/debounce";
-import BetaBannerComponent from "../beta_banner/beta_banner_component";
 
 /**
  * The page header which contains both search and navigation.
@@ -37,23 +36,12 @@ class Header extends Component {
 
     this.appendMenuIcon();
     this.buildGlobalComponents();
-
-
-    this.subscribe();
   }
 
   buildGlobalComponents() {
     $(document).on("touchstart", "a[href*='login']", () => {
       this.navigation._clickNav();
     });
-  }
-
-  @subscribe("user.status.update")
-  showBetaBanner(user) {
-    if(this.hasVariantCookie(user.variant) && !this.$betaBanner) {
-      this.$betaBanner = new BetaBannerComponent();
-      this.$betaBanner.render();
-    }
   }
 
   /**
@@ -75,16 +63,6 @@ class Header extends Component {
    */
   isTooBig() {
     return this.$search.width() > this.$inner.width() * .42;
-  }
-
-  /**
-   * If in variant group then show the beta banner
-   * @return {Boolean}
-   */
-  hasVariantCookie(variant) {
-    // Hard coding the specfic cookier for now just to make sure
-    // to not interfere with other tests going on
-    return document.cookie.indexOf(variant) > -1;
   }
 
   onSearchClick(e) {
