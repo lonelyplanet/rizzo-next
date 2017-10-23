@@ -91,6 +91,41 @@ video {
     opacity: 1;
   }
 
+  .video__muted-overlay {
+    align-items: center;
+    color: $color-white;
+    display: none;
+    font-size: 80px;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    transition: opacity 200ms ease;
+    width: 100%;
+
+    .vjs-icon-volume-high {
+      background-color: rgba($color-black, .45);
+      border-radius: 50%;
+      cursor: pointer;
+      height: 120px;
+      text-align: center;
+      text-shadow: 0 1px 6px rgba($color-black, .5);
+      transition: text-shadow 200ms ease, background-color 200ms ease;
+      width: 120px;
+    }
+
+    .video__muted-overlay:hover {
+      background-color: rgba($color-black, .55);
+      text-shadow: 0 1px 9px rgba($color-black, .7);
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
   .video__popout-overlay {
     background-color: rgba($color-black, .45);
     color: $color-white;
