@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.29.2"></a>
+## [0.29.2](https://github.com/lonelyplanet/rizzo-next/compare/v0.29.1...v0.29.2) (2017-10-23)
+
+
+### Bug Fixes
+
+* add grid rules ([4b03b67](https://github.com/lonelyplanet/rizzo-next/commit/4b03b67))
+
+
+
 <a name="0.29.1"></a>
 ## [0.29.1](https://github.com/lonelyplanet/rizzo-next/compare/v0.29.0...v0.29.1) (2017-10-19)
 
