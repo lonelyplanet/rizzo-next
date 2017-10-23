@@ -19,10 +19,10 @@
           "slug": "https://www.lonelyplanet.com/video",
           "submenu": {
             "featured": {
-              "image": "https://lonelyplanetstatic.imgix.net/op-video-sync/assets/exploreeveryday_masthead2.jpg?w=80&h=60&fit=min",
-              "title": "Explore every day",
+              "image": "https://lonelyplanetstatic.imgix.net/op-video-sync/assets/bit18_masthead.jpg?w=80&h=60&fit=min",
+              "title": "Best in travel 2018",
               "subtitle": "Featured",
-              "link": "https://www.lonelyplanet.com/video/explore-every-day/v/cha/4"
+              "link": "https://www.lonelyplanet.com/video/best-in-travel-2018/v/cha/10"
             },
             "items": [
               {
@@ -36,6 +36,10 @@
               {
                 "title": "Beaches, coasts and islands",
                 "slug": "https://www.lonelyplanet.com/video/beaches/v/cha/3"
+              },
+              {
+                "title": "Explore every day",
+                "slug": "https://www.lonelyplanet.com/video/explore-every-day/v/cha/4"
               },
               {
                 "title": "Food and drink",
