@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.29.3"></a>
+## [0.29.3](https://github.com/lonelyplanet/rizzo-next/compare/v0.29.2...v0.29.3) (2017-10-24)
+
+
+### Bug Fixes
+
+* temporarily remove luna session migration ([#782](https://github.com/lonelyplanet/rizzo-next/issues/782)) ([e5f3e8c](https://github.com/lonelyplanet/rizzo-next/commit/e5f3e8c))
+* update featured destination image (BIT 2018) ([58a7646](https://github.com/lonelyplanet/rizzo-next/commit/58a7646))
+
+
+
 <a name="0.29.2"></a>
 ## [0.29.2](https://github.com/lonelyplanet/rizzo-next/compare/v0.29.1...v0.29.2) (2017-10-23)
 
