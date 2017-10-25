@@ -78,6 +78,15 @@ video {
   width: 100%;
 }
 
+.video__popout-mobile {
+  .video__popout-inner-poppedout {
+    .video__popout-overlay {
+      opacity: 1;
+      top: 0;
+    }
+  }
+}
+
 .video__popout-inner {
   height: 100%;
   opacity: 0;

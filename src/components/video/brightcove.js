@@ -1,6 +1,7 @@
 /* global videojs */
 
 import VideoPlayer from "./video_player";
+import MobileUtil from "../../core/mobile_util";
 import { get } from "lodash";
 
 const _ = { get };
@@ -193,32 +194,20 @@ class Brightcove extends VideoPlayer {
       this.trigger("ready");
     }
     else if (!this.videoEl) {
-      // Insert brightcove player html
-      let html = "<div class='video__popout'>";
-      html += "<div class='video__popout-inner video__popout-inner-visible ";
-      if (this.cover) {
-        html += "video__cover--container ";
-      }
-      html += "' >";
+      let html = `
+        <div class="video__popout ${MobileUtil.isMobile() ? "video__popout-mobile" : ""}">
+          <div class="video__popout-inner video__popout-inner-visible ${this.cover ? "video__cover--container" : ""}">
+            ${this.popout ? "<div id='" + this.getPopoutOverlayId() + "' class='video__popout-overlay icon-close-small'></div>" : ""}
+            <video
+              ${this.videoId ? "data-video-id='" + this.videoId + "'" : ""}
+              data-account="${this.bcAccountId}"
+              data-player="${this.bcPlayerId}"
+              data-embed="${this.bcEmbedId}"
+              data-application-id class="video-js" playsinline ></video>
+            <div class='video__muted-overlay'><span class='vjs-icon-volume-high' /></div>
+          </div>
+        </div>`;
 
-      if (this.popout) {
-        html += "<div id=\"" + this.getPopoutOverlayId() + "\" class=\"video__popout-overlay icon-close-small\" ></div>";
-      }
-
-      html += "<video ";
-      if (this.videoId) {
-        html += "data-video-id='" + this.videoId + "' ";
-      }
-      html += "data-account='5104226627001' ";
-      html += "data-player='" + this.bcPlayerId + "' ";
-      html += "data-embed='" + this.bcEmbedId + "' ";
-      html += "data-application-id ";
-      html += "class='video-js' ";
-      html += "></video>";
-
-      html += "<div class='video__muted-overlay'><span class='vjs-icon-volume-high' /></div>";
-
-      html += "</div></div>";
       this.el.innerHTML = html;
 
       // Bind hover class as we style various things under this class
@@ -239,7 +228,7 @@ class Brightcove extends VideoPlayer {
 
       // Insert script to initialize brightcove player
       const scriptId = this.getPlayerScriptId();
-      const scriptSrc = "https://players.brightcove.net/" + this.bcAccountId + "/" + this.bcPlayerId + "_" + this.bcEmbedId + "/index.min.js";
+      const scriptSrc = `https://players.brightcove.net/${this.bcAccountId}/${this.bcPlayerId}_${this.bcEmbedId}/index.min.js`;
       const script = document.createElement("script");
 
       script.id = scriptId;
@@ -305,7 +294,6 @@ class Brightcove extends VideoPlayer {
       this.showCaptions = true;
       this.player.muted(true);
       this.play();
-
     }
   }
 
@@ -316,7 +304,7 @@ class Brightcove extends VideoPlayer {
 
     const controls = this.player.controls();
 
-    const enableCaptionsButton = this.$el.find('.vjs-captions-menu-item');
+    const enableCaptionsButton = this.$el.find(".vjs-captions-menu-item");
     if (enableCaptionsButton.length) {
       if (controls) {
         this.player.controls(false);
@@ -335,7 +323,7 @@ class Brightcove extends VideoPlayer {
 
     const controls = this.player.controls();
 
-    const enableCaptionsButton = this.$el.find('.vjs-captions-menu-item');
+    const enableCaptionsButton = this.$el.find(".vjs-captions-menu-item");
 
     if (enableCaptionsButton.length) {
       const disableCaptionsButton = enableCaptionsButton.prev();
@@ -356,7 +344,7 @@ class Brightcove extends VideoPlayer {
     this.player.textTracks().tracks_.forEach((tt) => {
       tt.activeCues_.forEach((c) => {
         activeCues.push(c);
-      })
+      });
     });
     return activeCues;
   }
@@ -437,8 +425,6 @@ class Brightcove extends VideoPlayer {
     this.disableMutedOverlay();
 
     if (this.currentVideoIndex >= this.videos.length - 1) {
-      this.popoutEnabled = false;
-      this.updatePopout();
       this.trigger("ended");
     } else {
       this.loadNextVideo();
@@ -464,9 +450,12 @@ class Brightcove extends VideoPlayer {
       this.enableCaptions();
     }
 
-    if (this.showMutedOverlay) {
-      this.enableMutedOverlay();
-    }
+    /*
+      Ads aren't programmatically unmutable in most cases
+      so don't cover the ad and don't make the user think
+      they can unmute it using our overlay.
+    */
+    this.disableMutedOverlay();
 
     this.enableAdOverlay();
     this.popoutEnabled = true;
@@ -508,7 +497,7 @@ class Brightcove extends VideoPlayer {
   }
 
   enableMutedOverlay() {
-    if (!this.player) {
+    if (!this.player || MobileUtil.isMobile()) {
       return;
     }
     const mutedOverlay = this.$el.find(".video__muted-overlay");
@@ -541,7 +530,7 @@ class Brightcove extends VideoPlayer {
 
     return new Promise((resolve) => {
       $.ajax({
-        url: apiURL + "playlists.json?reference_id=" + referenceId
+        url: `${apiURL}playlists.json?reference_id=${referenceId}`
       }).done((data, status, response) => {
         if (response.status === 200 && data && data.length) {
           this.videos = data[0].playlistitems.map(item => item.video);
@@ -553,7 +542,7 @@ class Brightcove extends VideoPlayer {
         }
         else {
           $.ajax({
-            url: apiURL + "video.json?reference_id=" + referenceId
+            url: `${apiURL}video.json?reference_id=${referenceId}`
           }).done((data, status, response) => {
             if (response.status === 200 && data && data.length) {
               this.videos = data;
@@ -649,10 +638,10 @@ class Brightcove extends VideoPlayer {
       const defaultEnd = cue.startTime + 15;
       const end = defaultEnd < cue.endTime ? defaultEnd : cue.endTime;
 
-      const cueElementId = "ad-lowerthird-" + this.playerId + "-" + cue.id;
+      const cueElementId = `ad-lowerthird-${this.playerId}-${cue.id}`;
 
       return {
-        content: "<div id=\"" + cueElementId + "\" class=\"video__lowerthird-overlay\" />",
+        content: `<div id="${cueElementId}" class="video__lowerthird-overlay" />`,
         align: "bottom",
         start: cue.startTime,
         end,
@@ -660,7 +649,7 @@ class Brightcove extends VideoPlayer {
     });
 
     overlays.push({
-      content: "<div id=\"" + this.getAdOverlayId() + "\" class=\"video__ad-overlay\">Advertisement</div>",
+      content: `<div id="${this.getAdOverlayId()}" class="video__ad-overlay">Advertisement</div>`,
       align: "top-left",
       start: "ads-ad-started",
       end: "playing",
@@ -734,9 +723,9 @@ class Brightcove extends VideoPlayer {
     // https://en.wikipedia.org/wiki/ISO_8601#Durations
     // Brightcove returns the number of seconds (ex. 161.685)
     let seconds = Math.ceil(this.getVideoProperty("duration"));
-    let duration = "PT" + seconds + "S";
+    let duration = `PT${seconds}S`;
 
-    let embedUrl = "https://players.brightcove.net/" + this.bcAccountId + "/default_" + this.bcEmbedId + "/index.html?videoId=" + videoId;
+    let embedUrl = `https://players.brightcove.net/${this.bcAccountId}/default_${this.bcEmbedId}/index.html?videoId=${videoId}`;
 
     let data = {
       "@context": "http://schema.org",
