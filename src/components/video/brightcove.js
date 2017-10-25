@@ -1,6 +1,7 @@
 /* global videojs */
 
 import VideoPlayer from "./video_player";
+import MobileUtil from "../../core/mobile_util";
 import { get } from "lodash";
 
 const _ = { get };
@@ -194,7 +195,12 @@ class Brightcove extends VideoPlayer {
     }
     else if (!this.videoEl) {
       // Insert brightcove player html
-      let html = "<div class='video__popout'>";
+      let html = "<div class='video__popout ";
+      if (MobileUtil.isMobile()) {
+        html += "video__popout-mobile";
+      }
+      html += "'>";
+
       html += "<div class='video__popout-inner video__popout-inner-visible ";
       if (this.cover) {
         html += "video__cover--container ";
@@ -214,6 +220,7 @@ class Brightcove extends VideoPlayer {
       html += "data-embed='" + this.bcEmbedId + "' ";
       html += "data-application-id ";
       html += "class='video-js' ";
+      html += "playsinline ";
       html += "></video>";
 
       html += "<div class='video__muted-overlay'><span class='vjs-icon-volume-high' /></div>";
@@ -305,7 +312,6 @@ class Brightcove extends VideoPlayer {
       this.showCaptions = true;
       this.player.muted(true);
       this.play();
-
     }
   }
 
@@ -437,8 +443,6 @@ class Brightcove extends VideoPlayer {
     this.disableMutedOverlay();
 
     if (this.currentVideoIndex >= this.videos.length - 1) {
-      this.popoutEnabled = false;
-      this.updatePopout();
       this.trigger("ended");
     } else {
       this.loadNextVideo();
@@ -464,9 +468,12 @@ class Brightcove extends VideoPlayer {
       this.enableCaptions();
     }
 
-    if (this.showMutedOverlay) {
-      this.enableMutedOverlay();
-    }
+    /*
+      Ads aren't programmatically unmutable in most cases
+      so don't cover the ad and don't make the user think
+      they can unmute it using our overlay.
+    */
+    this.disableMutedOverlay();
 
     this.enableAdOverlay();
     this.popoutEnabled = true;
@@ -508,7 +515,7 @@ class Brightcove extends VideoPlayer {
   }
 
   enableMutedOverlay() {
-    if (!this.player) {
+    if (!this.player || MobileUtil.isMobile()) {
       return;
     }
     const mutedOverlay = this.$el.find(".video__muted-overlay");
