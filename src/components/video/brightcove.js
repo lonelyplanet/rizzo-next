@@ -322,7 +322,7 @@ class Brightcove extends VideoPlayer {
 
     const controls = this.player.controls();
 
-    const enableCaptionsButton = this.$el.find('.vjs-captions-menu-item');
+    const enableCaptionsButton = this.$el.find(".vjs-captions-menu-item");
     if (enableCaptionsButton.length) {
       if (controls) {
         this.player.controls(false);
@@ -341,7 +341,7 @@ class Brightcove extends VideoPlayer {
 
     const controls = this.player.controls();
 
-    const enableCaptionsButton = this.$el.find('.vjs-captions-menu-item');
+    const enableCaptionsButton = this.$el.find(".vjs-captions-menu-item");
 
     if (enableCaptionsButton.length) {
       const disableCaptionsButton = enableCaptionsButton.prev();
@@ -362,7 +362,7 @@ class Brightcove extends VideoPlayer {
     this.player.textTracks().tracks_.forEach((tt) => {
       tt.activeCues_.forEach((c) => {
         activeCues.push(c);
-      })
+      });
     });
     return activeCues;
   }
