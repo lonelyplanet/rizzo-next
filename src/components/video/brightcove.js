@@ -725,7 +725,7 @@ class Brightcove extends VideoPlayer {
     let seconds = Math.ceil(this.getVideoProperty("duration"));
     let duration = `PT${seconds}S`;
 
-    let embedUrl = `https://players.brightcove.net/${this.bcAccountId}/default_${this.bcEmbedId}/index.html?videoId=${videoId}`
+    let embedUrl = `https://players.brightcove.net/${this.bcAccountId}/default_${this.bcEmbedId}/index.html?videoId=${videoId}`;
 
     let data = {
       "@context": "http://schema.org",
