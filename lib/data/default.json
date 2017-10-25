@@ -156,7 +156,7 @@
         {
           "title": "Sign In",
           "additional_nav_class": "navigation__item--user",
-          "slug": "https://auth.lonelyplanet.com/users/sign_in"
+          "slug": "#login"
         }
       ]
     },
