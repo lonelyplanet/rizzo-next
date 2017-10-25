@@ -64,13 +64,15 @@
     "pickadate": "*",
     "picturefill": "*",
     "postal": "^2.0.5",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
     "resrc.js": "^0.9.5",
     "scroll-js": "^1.7.1",
     "susy": "^2.2.9",
     "trackjs": "^2.1.16",
     "urlencode": "^1.1.0"
+  },
+  "peerDependencies": {
+    "react": "^15.0.0 || ^16.0.0",
+    "react-dom": "^15.0.0 || ^16.0.0"
   },
   "devDependencies": {
     "autoprefixer-loader": "^3.1.0",
