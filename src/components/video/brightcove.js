@@ -203,7 +203,7 @@ class Brightcove extends VideoPlayer {
               data-account="${this.bcAccountId}"
               data-player="${this.bcPlayerId}"
               data-embed="${this.bcEmbedId}"
-              data-application-id class="video-js" playsinline ></video>
+              data-application-id class="video-js" ></video>
             <div class='video__muted-overlay'><span class='vjs-icon-volume-high' /></div>
           </div>
         </div>`;
