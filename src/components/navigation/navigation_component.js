@@ -195,9 +195,10 @@ class NavigationComponent extends Component {
 
     if (!user.id) {
      
-      const loginLink = window.lp.require ? this.buildLegacyAuthUrl() : "#login";
-      this.$el.find(".navigation__link[href*='sign_in']").attr("href", loginLink);
-      this.$mobileNavigation.find(".mobile-navigation__link[href*='sign_in']").attr("href", loginLink);
+      if (window.lp.require) {
+        this.$el.find(".navigation__link[href*='login']").attr("href", this.buildLegacyAuthUrl());
+        this.$mobileNavigation.find(".mobile-navigation__link[href*='login']").attr("href", this.buildLegacyAuthUrl());
+      }
       return;
     }
 
