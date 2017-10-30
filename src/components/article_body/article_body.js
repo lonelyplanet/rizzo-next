@@ -57,7 +57,10 @@ export default class ArticleBodyComponent extends Component {
         Video.addPlayer(el, {
           playerName: "article",
           insertPixel: false,
-       });
+        }).then((player) => {
+          const description = player.getVideoProperty("description") || "";
+          $(player.videoEl).after(`<span class="copy--caption">${description}</span>`);
+        });
       });
   }
 
