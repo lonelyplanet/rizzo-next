@@ -11,7 +11,7 @@ class Footer extends Component {
 
   updateLocationOnChange() {
     $(".js-language-select").on("change", function(event) {
-      let url = "https://" + $(this).val();
+      let url = "http://" + $(this).val();
 
       window.location = url;
 
