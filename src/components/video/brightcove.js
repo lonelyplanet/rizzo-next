@@ -8,7 +8,6 @@ const _ = { get };
 
 const bcPlayerIds = {
   default: "default",
-  article: "S1T3jIHnZ",
   background: "BJputewob",
   bestintravel: "HkJcclwoZ",
   destination: "HkPdqeDiZ",

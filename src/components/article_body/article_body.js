@@ -55,7 +55,6 @@ export default class ArticleBodyComponent extends Component {
       .addClass("is-visible")
       .each((i, el) => {
         Video.addPlayer(el, {
-          playerName: "article",
           insertPixel: false,
         }).then((player) => {
           const description = player.getVideoProperty("description") || "";
