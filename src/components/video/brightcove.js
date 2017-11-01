@@ -190,10 +190,7 @@ class Brightcove extends VideoPlayer {
   }
 
   setup() {
-    if (!this.videoId) {
-      this.trigger("ready");
-    }
-    else if (!this.videoEl) {
+    if (!this.videoEl) {
       let html = `
         <div class="video__popout ${MobileUtil.isMobile() ? "video__popout-mobile" : ""}">
           <div class="video__popout-inner video__popout-inner-visible ${this.cover ? "video__cover--container" : ""}">
