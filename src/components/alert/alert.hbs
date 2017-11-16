@@ -1,9 +1,10 @@
 <section class="alert is-visible">
   <div class="alert__container alert__container--{{ alert.type }}">
     <div class="alert__inner">
-      {{ alert.text }} <a class="js-alert-link alert__inner--link" href="{{alert.link}}">{{ alert.link_text }}</a>.
+      <div class="alert__message">
+        {{ alert.text }} <a class="js-alert-link alert__inner--link" href="{{alert.link}}">{{ alert.link_text }}</a>.
+      </div>
       <button class="alert__close icon-close-small js-close">Close</button>
     </div>
   </div>
 </section>
-
