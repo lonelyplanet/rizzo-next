@@ -1,5 +1,7 @@
 ![](https://doc.esdoc.org/github.com/lonelyplanet/rizzo-next/badge.svg)
 # Rizzo Next
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/lonelyplanet/rizzo-next.svg)](https://greenkeeper.io/)
 Rizzo next is the evolution of Lonely Planet’s pattern library.
 
 The idea of a pattern library such as Rizzo is to have common grounds between design and development. Pull out patterns from the design and implement them in a re-usable fashion across projects.
