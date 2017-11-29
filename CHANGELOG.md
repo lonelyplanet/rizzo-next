@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.29.12"></a>
+## [0.29.12](https://github.com/lonelyplanet/rizzo-next/compare/v0.29.11...v0.29.12) (2017-11-29)
+
+
+### Bug Fixes
+
+* Make alert banner responsive ([00a2206](https://github.com/lonelyplanet/rizzo-next/commit/00a2206))
+* update list stacking styles ([#800](https://github.com/lonelyplanet/rizzo-next/issues/800)) ([fab5149](https://github.com/lonelyplanet/rizzo-next/commit/fab5149))
+
+
+
 <a name="0.29.11"></a>
 ## [0.29.11](https://github.com/lonelyplanet/rizzo-next/compare/v0.29.10...v0.29.11) (2017-11-03)
 
