@@ -16,6 +16,10 @@
 }
 
 .in-detail__grid {
+  @media (max-width: $max-960) {
+    max-height: 100%;
+  }
+
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -82,6 +86,7 @@
 .in-detail__toggle-control {
   @media (max-width: $max-960) {
     appearance: none;
+    border: 0;
     height: 3rem;
     position: absolute;
     right: 0;
@@ -91,6 +96,10 @@
 
   @media (min-width: $min-960) {
     display: none;
+  }
+
+  &:checked {
+    background-color: transparent;
   }
 }
 
