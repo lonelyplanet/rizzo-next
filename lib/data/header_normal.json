@@ -156,7 +156,8 @@
         },
         {
           "title": "Sign In",
-          "slug": "#login"
+          "slug": "#login",
+          "additional_link_class": "js-gtm-login"
         }
       ]
     }
