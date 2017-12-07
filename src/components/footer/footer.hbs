@@ -16,8 +16,7 @@
           <input name="type" type="hidden" value="subscribe">
 
           <p class="newsletter-register__text">
-            Subscribe now and receive a 20% discount on your next
-            guidebook purchase.
+             Subscribe and get 20% off at our online shop.
           </p>
 
           <label for="newsletter-register-email">Email address</label>
@@ -31,8 +30,8 @@
             {{/each}}
           </select>
 
-          <input id="newsletter-register-optin" class="newsletter-register__optin js-newsletter-optin" type="checkbox" name="newsletter[legalOptIn]" required value="true">
-          <div class="newsletter-register__text">Tick to opt-in. Opt out at any time via the 'unsubscribe' link in the footer of the emails.</div>
+          <input id="newsletter-register-optin" class="newsletter-register__optin js-newsletter-optin" type="checkbox" name="newsletter[legalOptIn]" required value="true" checked style="display: none;">
+          <div class="newsletter-register__text">I would like to receive emails from Lonely Planet, including Lonely Planet travel and product information, special offers, promotions, advertisements, third-party offers, and surveys. I can withdraw this consent at any time by unsubscribing using the link at the bottom of all emails. Contact Lonely Planet <a rel="noopener noreferrer" href="https://www.lonelyplanet.com/contact" target="_blank"> here</a>. <a  rel="noopener noreferrer" href="https://www.lonelyplanet.com/legal/privacy-policy/"  target="_blank">Lonely Planet Privacy Policy.</a></div>
 
           <input class="newsletter-register__button js-submit" data-lpa-action="newsletter" data-lpa-category="account" value="Sign up" type="submit" />
         </form>
