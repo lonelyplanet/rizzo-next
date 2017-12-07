@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.29.14"></a>
+## [0.29.14](https://github.com/lonelyplanet/rizzo-next/compare/v0.29.13...v0.29.14) (2017-12-07)
+
+
+### Bug Fixes
+
+* mobile styles for in detail list ([#804](https://github.com/lonelyplanet/rizzo-next/issues/804)) ([9d987ba](https://github.com/lonelyplanet/rizzo-next/commit/9d987ba))
+
+
+
 <a name="0.29.13"></a>
 ## [0.29.13](https://github.com/lonelyplanet/rizzo-next/compare/v0.29.12...v0.29.13) (2017-12-01)
 
