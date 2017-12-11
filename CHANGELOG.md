@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.30.0"></a>
+# [0.30.0](https://github.com/lonelyplanet/rizzo-next/compare/v0.29.14...v0.30.0) (2017-12-11)
+
+
+### Features
+
+* Removed watch later from user panel ([#805](https://github.com/lonelyplanet/rizzo-next/issues/805)) ([fdb9906](https://github.com/lonelyplanet/rizzo-next/commit/fdb9906))
+
+
+
 <a name="0.29.14"></a>
 ## [0.29.14](https://github.com/lonelyplanet/rizzo-next/compare/v0.29.13...v0.29.14) (2017-12-07)
 
