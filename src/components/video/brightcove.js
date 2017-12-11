@@ -630,16 +630,20 @@ class Brightcove extends VideoPlayer {
       return;
     }
 
-    const overlays = this.player.mediainfo.cuePoints.map((cue) => {
-      const defaultEnd = cue.startTime + 15;
-      const end = defaultEnd < cue.endTime ? defaultEnd : cue.endTime;
+    const overlayCuePoints = this.player.mediainfo.cuePoints
+      .filter((cuePoint) => cuePoint.type === "CODE")
+      .filter((cuePoint) => cuePoint.name !== "preview start" && cuePoint.name !== "preview end");
 
-      const cueElementId = `ad-lowerthird-${this.playerId}-${cue.id}`;
+    const overlays = overlayCuePoints.map((cuePoint) => {
+      const defaultEnd = cuePoint.startTime + 15;
+      const end = defaultEnd < cuePoint.endTime ? defaultEnd : cuePoint.endTime;
+
+      const cueElementId = `ad-lowerthird-${this.playerId}-${cuePoint.id}`;
 
       return {
         content: `<div id="${cueElementId}" class="video__lowerthird-overlay" />`,
         align: "bottom",
-        start: cue.startTime,
+        start: cuePoint.startTime,
         end,
       };
     });
