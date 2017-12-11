@@ -326,7 +326,13 @@ $logo-height: 4rem;
   font-size: 1.2rem;
   letter-spacing: .02rem;
   line-height: (18 / 12);
+  margin-top: 16px;
 }
+
+.newsletter-register__disclaimer {
+  font-size: 1.1rem;
+}
+
 
 .newsletter-register__email {
   @include form-control;
