@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.30.1"></a>
+## [0.30.1](https://github.com/lonelyplanet/rizzo-next/compare/v0.30.0...v0.30.1) (2017-12-12)
+
+
+### Bug Fixes
+
+* update legal copy in newsletter sign up form ([#806](https://github.com/lonelyplanet/rizzo-next/issues/806)) ([f9c308a](https://github.com/lonelyplanet/rizzo-next/commit/f9c308a))
+
+
+
 <a name="0.30.0"></a>
 # [0.30.0](https://github.com/lonelyplanet/rizzo-next/compare/v0.29.14...v0.30.0) (2017-12-11)
 
