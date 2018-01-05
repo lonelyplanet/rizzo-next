@@ -194,7 +194,11 @@ $lp-global-header-mobile-icon-padding: ($header-height-mobile - $lp-global-heade
   &__mobile-search,
   &__mobile-menu {
     font-size: $lp-global-header-mobile-icon-size;
+    height: $header-height-mobile;
     line-height: 1;
+    padding: $lp-global-header-mobile-icon-padding;
+    top: 0;
+    width: $header-height-mobile;
   }
 
   &__mobile-cart {
@@ -218,14 +222,6 @@ $lp-global-header-mobile-icon-padding: ($header-height-mobile - $lp-global-heade
   &--narrow &__mobile-menu,
   &--narrow &__mobile-cart {
     color: $darkgray;
-  }
-
-  &__mobile-search,
-  &__mobile-menu {
-    height: $header-height-mobile;
-    padding: $lp-global-header-mobile-icon-padding;
-    top: 0;
-    width: $header-height-mobile;
   }
 
   &__mobile-menu {
