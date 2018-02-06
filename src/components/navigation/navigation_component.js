@@ -213,7 +213,7 @@ class NavigationComponent extends Component {
       user
     })).before(thornTreeLinkTemplate());
 
-    $mobileNavigationHeader.append(avatarMarkerTemplate({
+    $mobileNavigationHeader.html(avatarMarkerTemplate({
       user
     })).append(profileSettingsButtonTemplate({
       user
