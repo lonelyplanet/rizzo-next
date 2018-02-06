@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.30.3"></a>
+## [0.30.3](https://github.com/lonelyplanet/rizzo-next/compare/v0.30.2...v0.30.3) (2018-02-06)
+
+
+### Bug Fixes
+
+* Add script for uploading dist to s3 ([2587fc3](https://github.com/lonelyplanet/rizzo-next/commit/2587fc3))
+* replace mobile avatar on update ([#809](https://github.com/lonelyplanet/rizzo-next/issues/809)) ([30bfef9](https://github.com/lonelyplanet/rizzo-next/commit/30bfef9))
+
+
+
 <a name="0.30.2"></a>
 ## [0.30.2](https://github.com/lonelyplanet/rizzo-next/compare/v0.30.1...v0.30.2) (2017-12-12)
 
