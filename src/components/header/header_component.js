@@ -2,7 +2,6 @@ import { Component } from "../../core/bane";
 import SearchComponent from "../search";
 import NavigationComponent from "../navigation";
 import NavigationState from "../navigation/navigation_state";
-import subscribe from "../../core/decorators/subscribe";
 import $ from "jquery";
 import debounce from "lodash/debounce";
 
