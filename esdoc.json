@@ -3,14 +3,25 @@
   "excludes": ["node_modules", "spec", "sass", "tmp"],
   "includes": ["\\.(jsx?)$"],
   "destination": "./docs/js",
-  "test": {
-    "type": "mocha",
-    "source": "./spec"
-  },
   "plugins": [
     {
+      "name": "esdoc-standard-plugin",
+      "option": {
+        "test": {
+          "type": "mocha",
+          "source": "./spec"
+        }
+      }
+    },
+    {
       "name": "esdoc-es7-plugin"
+    },
+    {
+      "name": "esdoc-inject-style-plugin",
+      "option": {
+        "enable": true,
+        "styles": ["dist/css/docs.css"]
+      }
     }
-  ],
-  "styles": ["dist/css/docs.css"]
+  ]
 }
