@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.30.5"></a>
+## [0.30.5](https://github.com/lonelyplanet/rizzo-next/compare/v0.30.4...v0.30.5) (2018-02-13)
+
+
+### Bug Fixes
+
+* Remove shop cookie count for now ([3351109](https://github.com/lonelyplanet/rizzo-next/commit/3351109))
+
+
+
 <a name="0.30.4"></a>
 ## [0.30.4](https://github.com/lonelyplanet/rizzo-next/compare/v0.30.3...v0.30.4) (2018-02-13)
 
