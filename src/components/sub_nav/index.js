@@ -68,20 +68,12 @@ export default class SubNav extends Component {
           firstTrigger = false;
         }
 
-        let isFixed = ($window.scrollTop() >= subNavTop) && ($window.scrollTop() <= this.contentHeight),
-            isBottom = ($window.scrollTop() >= subNavTop) && ($window.scrollTop() >= this.contentHeight);
+        let isFixed = $window.scrollTop() >= subNavTop;
 
         if (isFixed) {
           $subNav
             .addClass("is-fixed")
             .removeClass("is-bottom");
-
-          $subNavPlaceholder
-            .addClass("is-fixed");
-
-        } else if (isBottom) {
-          $subNav
-            .addClass("is-bottom");
 
           $subNavPlaceholder
             .addClass("is-fixed");
