@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.30.4"></a>
+## [0.30.4](https://github.com/lonelyplanet/rizzo-next/compare/v0.30.3...v0.30.4) (2018-02-13)
+
+
+### Bug Fixes
+
+* show subnav for full length of destination page ([#810](https://github.com/lonelyplanet/rizzo-next/issues/810)) ([05b6cd7](https://github.com/lonelyplanet/rizzo-next/commit/05b6cd7))
+
+
+
 <a name="0.30.3"></a>
 ## [0.30.3](https://github.com/lonelyplanet/rizzo-next/compare/v0.30.2...v0.30.3) (2018-02-06)
 
