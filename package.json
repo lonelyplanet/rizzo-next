@@ -35,7 +35,6 @@
   },
   "version": "0.30.4",
   "pre-commit": [
-    "scsslint",
     "test",
     "lint"
   ],
