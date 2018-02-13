@@ -1,14 +1,15 @@
 import assign from "lodash/assign";
 import Events from "../../core/mixins/events";
 import Arkham from "../../core/arkham";
-import ShopCookieUtil from "../../core/shop_cookie_util";
+// Commenting out until we get new shop cookie figured out
+// import ShopCookieUtil from "../../core/shop_cookie_util";
 
 /* mock data */
 
 let state = {
   isOpen: false,
   isNavOpen: false,
-  cartItemCount: new ShopCookieUtil().getShopItemCount(),
+  cartItemCount: 0, // Commenting out for now... new ShopCookieUtil().getShopItemCount(),
   cart: {
     title: "YOUR SHOPPING CART",
     items: [ { name: "Thailand Travel Guide", price: "$19.99",
