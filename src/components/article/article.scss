@@ -13,7 +13,6 @@
 /// ----------------------------------------------------------------------------
 
 .article {
-  border-bottom: .1rem solid $color-gray;
   opacity: 1;
   overflow: hidden; // Prevent horizontal movement in iOS caused by .size-full images
   position: relative;
@@ -37,6 +36,7 @@
 
 .article__container {
   @include container-padded;
+  border-bottom: .1rem solid $color-gray;
   padding-bottom: gutter(static);
   padding-top: 4.4rem;
   position: relative;

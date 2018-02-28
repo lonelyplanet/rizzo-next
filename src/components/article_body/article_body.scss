@@ -86,6 +86,7 @@
       padding-left: 2rem;
     }
 
+    .copy--h2,
     .copy--h3,
     .copy--h4 {
       color: $darkgray;
@@ -93,6 +94,11 @@
       letter-spacing: -.02rem;
       margin-bottom: 1rem;
       margin-top: 2.5rem;
+    }
+
+    .copy--h2 {
+      font-size: 2.7rem;
+      line-height: (28 / 18);
     }
 
     .copy--h3 {
