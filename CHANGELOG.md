@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.31.0"></a>
+# [0.31.0](https://github.com/lonelyplanet/rizzo-next/compare/v0.30.5...v0.31.0) (2018-03-01)
+
+
+### Features
+
+* Changed styles for the newly added articles list ([484a2eb](https://github.com/lonelyplanet/rizzo-next/commit/484a2eb))
+
+
+
 <a name="0.30.5"></a>
 ## [0.30.5](https://github.com/lonelyplanet/rizzo-next/compare/v0.30.4...v0.30.5) (2018-02-13)
 
