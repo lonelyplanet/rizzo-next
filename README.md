@@ -1,4 +1,3 @@
-![](https://doc.esdoc.org/github.com/lonelyplanet/rizzo-next/badge.svg)
 # Rizzo Next
 Rizzo next is the evolution of Lonely Planet’s pattern library.
 
@@ -10,7 +9,6 @@ This repository contains common styles, and components as well as performance da
 ```shell
 npm test # Run unit tests
 npm run lint # Lint code
-npm run docs # Document code with ESDoc
 ```
 
 ### Test
@@ -24,13 +22,6 @@ To use watch mode…
 
 ```shell
 npm run ci
-```
-
-### Docs
-Generate documentation locally with
-
-```shell
-npm run docs
 ```
 
 ### Linting
