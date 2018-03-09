@@ -224,3 +224,37 @@ $author: (
   margin-top: .4rem;
   max-width: 40rem;
 }
+
+.author_modern {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.author_modern__inner {
+  align-items: baseline;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-top: 16px;
+}
+
+.author_modern__name {
+  color: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  margin-right: 8px;
+  margin-top: 10px;
+}
+
+.author_modern__details {
+  color: $light-text-color;
+  font-size: 12px;
+  line-height: 1;
+  margin-right: 8px;
+  margin-top: 8px;
+}

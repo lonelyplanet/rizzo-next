@@ -118,3 +118,41 @@
     display: none;
   }
 }
+
+.article-subheader {
+  margin-top: 3rem;
+}
+
+.social-share-container {
+  display: inline-block;
+  margin-left: 4rem;
+}
+
+.article__author_modern {
+  display: inline-block;
+  width: 30%;
+  float: left;
+  border-right: .1rem solid $color-gray;
+
+  @media (min-width: $min-600) {
+    &::before {
+      background-color: $color-red;
+      content: "";
+      display: block;
+      height: .2rem;
+      width: 4.8rem;
+    }
+  }
+
+  @media (min-width: $min-840) {
+    width: 25%;
+  }
+
+  @media (min-width: $min-1024) {
+    width: 19%;
+  }
+}
+
+.share-text {
+  margin-bottom: 0.7rem;
+}

@@ -39,7 +39,6 @@ class SocialShareComponent extends Component {
     return window.location.pathname;
   }
 
-
   socialShareControlClicked(event) {
     let $el = $(event.currentTarget);
 
@@ -51,6 +50,8 @@ class SocialShareComponent extends Component {
         top;
 
     let $title = $el.closest(".article").data("title"),
+        $images = $el.closest(".article").find("img"),
+        imageUrl = $($images).attr("src"),
         title,
         tweet,
         msg = $el.data("msg"),
@@ -63,8 +64,6 @@ class SocialShareComponent extends Component {
     } else if (msg) {
       tweet = `${urlencode(msg)}`;
     }
-
-
 
     left = Math.round((winWidth / 2) - (width / 2));
     top = winHeight > height ? Math.round((winHeight / 2) - (height / 2)) : 0;
@@ -84,6 +83,18 @@ class SocialShareComponent extends Component {
 
     if (network === "facebook") {
       window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, "share", `${windowOptions},${windowSize}`);
+
+      return "facebook";
+    }
+
+    if (network === "pinterest") {
+      window.open(`https://www.pinterest.com/pin/create/button/?url=${url}&media=${imageUrl}&description=${tweet}`, "share", `${windowOptions},${windowSize}`);
+
+      return "pinterest";
+    }
+
+    if (network === "facebook-messenger") {
+      window.open(`fb-messenger://share/?link=${url}`, "share", `${windowOptions},${windowSize}`);
 
       return "facebook";
     }
