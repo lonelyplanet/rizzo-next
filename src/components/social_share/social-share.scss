@@ -115,6 +115,13 @@ $social-platforms: facebook facebook-messenger twitter pinterest;
   }
 }
 
+.social-share__control__pinterest {
+  .svg-icon {
+    width: 90%;
+    height: 90%;
+  }
+}
+
 .social-share__control--no-menu {
   color: white;
   margin-right: .5rem;

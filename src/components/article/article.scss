@@ -156,3 +156,11 @@
 .share-text {
   margin-bottom: 0.7rem;
 }
+
+.post-date time {
+  color: $darkgray;
+  text-transform: none;
+  font-size: 12px;
+  margin-top: 5px;
+  display: block;
+}
