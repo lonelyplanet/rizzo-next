@@ -129,10 +129,10 @@
 }
 
 .article__author_modern {
-  display: inline-block;
-  width: 30%;
-  float: left;
   border-right: .1rem solid $color-gray;
+  display: inline-block;
+  float: left;
+  width: 30%;
 
   @media (min-width: $min-600) {
     &::before {
@@ -154,13 +154,13 @@
 }
 
 .share-text {
-  margin-bottom: 0.7rem;
+  margin-bottom: .7rem;
 }
 
 .post-date time {
   color: $darkgray;
-  text-transform: none;
+  display: block;
   font-size: 12px;
   margin-top: 5px;
-  display: block;
+  text-transform: none;
 }

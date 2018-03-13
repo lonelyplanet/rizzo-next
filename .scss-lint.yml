@@ -239,10 +239,15 @@ linters:
 
   SelectorDepth:
     exclude:
+      - 'sass/docs.scss' # temporary exclusion; 4 deep, needs refactored
       - 'sass/generic/_print.scss' # need for article-body styles
       - 'src/components/article_body/article_body.scss' # because markup from WP is messy and overspecificity is needed
       - 'src/components/interests/_interests.scss' # temporary exclusion; 4 deep, needs refactored
       - 'src/components/navigation/_user-panel.scss' # temporary exclusion; 4 deep, needs refactored
+      - 'src/components/footer/_footer.scss' # temporary exclusion; 4 deep, needs refactored
+      - 'src/components/header/_header.scss' # temporary exclusion; 4 deep, needs refactored
+      - 'src/components/hotels/_hotels.scss' # temporary exclusion; 4 deep, needs refactored
+      - 'src/components/navigation/_navigation.scss' # temporary exclusion; 4 deep, needs refactored
     enabled: true
     max_depth: 3
 

@@ -12,10 +12,10 @@
 
 $social-share: (
   'background-color': darken($color-white, 6),
-  'background-color-facebook': #39599A,
-  'background-color-facebook-messenger': #0182FF,
-  'background-color-twitter': #55ACEE,
-  'background-color-pinterest': #BD081C,
+  'background-color-facebook': #39599a,
+  'background-color-facebook-messenger': #0182ff,
+  'background-color-twitter': #55acee,
+  'background-color-pinterest': #bd081c,
   'button-size': 3rem,
   'button-size-big': 4rem,
   'margin-left': .4rem,
@@ -98,7 +98,7 @@ $social-platforms: facebook facebook-messenger twitter pinterest;
     &__#{$social-platform} {
       &,
       &:hover,
-      &:active, 
+      &:active,
       &:focus {
         background-color: get($social-share, "background-color-#{$social-platform}");
       }
@@ -117,19 +117,19 @@ $social-platforms: facebook facebook-messenger twitter pinterest;
 
 .social-share__control__pinterest {
   .svg-icon {
-    width: 90%;
     height: 90%;
+    width: 90%;
   }
 }
 
 .social-share__control--no-menu {
-  color: white;
+  color: $color-white;
   margin-right: .5rem;
 
   &:hover,
   &:active,
   &:focus {
-    opacity: 0.7;
+    opacity: .7;
   }
 }
 

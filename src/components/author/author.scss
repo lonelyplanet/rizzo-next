@@ -226,11 +226,11 @@ $author: (
 }
 
 .author_modern {
-  display: flex;
   align-items: baseline;
-  justify-content: space-between;
+  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .author_modern__inner {
