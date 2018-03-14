@@ -13,14 +13,19 @@
             <div
               id="ad-articles-sponsor-logo"
               class="adunit--sponsor-logo">
-              Tips &amp; articles
+              Featured article
             </div>
           </div>
         </header>
-      </div>
-
-      <div class="article__author">
-        {{> "components/author/author"}}
+        <div class="article-subheader">
+          <div class="article__author_modern">
+            {{> "components/author/author_modern"}}
+          </div>
+          <div class="social-share-container">
+            <div class="post-date share-text">share</div>
+            {{> "components/social_share/social_share_article"}}
+          </div>
+        </div>
       </div>
     </div>
 
@@ -28,14 +33,16 @@
       {{> "components/article_body/article_body"}}
 
       {{> "components/ads/ad_article_sponsor" }}
-
-      <footer class="article__footer js-article-footer">
-        <div class="post-date in-article-footer js-article-post-date">
-          Published <time datetime="{{ article.post_date }}"></time>
-        </div>
-
-        {{> "components/social_share/social_share_article"}}
-      </footer>
+      <div class="no-flexbox js-article-footer">
+        <footer class="article__footer">
+          <div class="post-date in-article-footer js-article-post-date">
+            Published<br><time datetime="{{ article.post_date }}"></time>
+          </div>
+          <div class="social-share-footer">
+            {{> "components/social_share/social_share_article"}}
+          </div>
+        </footer>
+      </div>
     </div>
   </div>
 </article>

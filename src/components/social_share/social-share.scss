@@ -12,15 +12,17 @@
 
 $social-share: (
   'background-color': darken($color-white, 6),
+  'background-color-facebook': #39599a,
+  'background-color-facebook-messenger': #0182ff,
+  'background-color-twitter': #55acee,
+  'background-color-pinterest': #bd081c,
   'button-size': 3rem,
   'button-size-big': 4rem,
   'margin-left': .4rem,
   'margin-top': .9rem
 );
 
-
-
-
+$social-platforms: facebook facebook-messenger twitter pinterest;
 
 /// ----------------------------------------------------------------------------
 /// Base
@@ -42,6 +44,10 @@ $social-share: (
   }
 }
 
+.social-share-footer {
+  float: right;
+}
+
 .social-share--centered {
   float: none;
 }
@@ -55,10 +61,6 @@ $social-share: (
     margin: 0 .5rem;
   }
 }
-
-
-
-
 
 /// ----------------------------------------------------------------------------
 /// Elements
@@ -92,6 +94,17 @@ $social-share: (
     background-color: darken(get($social-share, "background-color"), 3);
   }
 
+  @each $social-platform in $social-platforms {
+    &__#{$social-platform} {
+      &,
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: get($social-share, "background-color-#{$social-platform}");
+      }
+    }
+  }
+
   &--big {
     height: get($social-share, "button-size-big");
     width: get($social-share, "button-size-big");
@@ -99,6 +112,24 @@ $social-share: (
 
   .svg-icon {
     vertical-align: middle;
+  }
+}
+
+.social-share__control__pinterest {
+  .svg-icon {
+    height: 90%;
+    width: 90%;
+  }
+}
+
+.social-share__control--no-menu {
+  color: $color-white;
+  margin-right: .5rem;
+
+  &:hover,
+  &:active,
+  &:focus {
+    opacity: .7;
   }
 }
 

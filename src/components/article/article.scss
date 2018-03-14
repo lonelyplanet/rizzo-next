@@ -118,3 +118,49 @@
     display: none;
   }
 }
+
+.article-subheader {
+  margin-top: 3rem;
+}
+
+.social-share-container {
+  display: inline-block;
+  margin-left: 4rem;
+}
+
+.article__author_modern {
+  border-right: .1rem solid $color-gray;
+  display: inline-block;
+  float: left;
+  width: 30%;
+
+  @media (min-width: $min-600) {
+    &::before {
+      background-color: $color-red;
+      content: "";
+      display: block;
+      height: .2rem;
+      width: 4.8rem;
+    }
+  }
+
+  @media (min-width: $min-840) {
+    width: 25%;
+  }
+
+  @media (min-width: $min-1024) {
+    width: 19%;
+  }
+}
+
+.share-text {
+  margin-bottom: .7rem;
+}
+
+.post-date time {
+  color: $darkgray;
+  display: block;
+  font-size: 12px;
+  margin-top: 5px;
+  text-transform: none;
+}

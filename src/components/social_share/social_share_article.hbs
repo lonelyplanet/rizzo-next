@@ -1,46 +1,19 @@
-<div class="social-share in-article-footer js-action-sheet">
-  <div class="social-share__item js-action-sheet-item">
-    <button class="social-share__control js-action-sheet-menu-control" title="Share this article on Twitter, Facebook, or email" aria-label="Share this article on Twitter, Facebook, or email" aria-owns="social-share-menu">
-      <svg class="svg-icon svg-icon--small">
-        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lp-icon-share"></use>
+<div class="js-action-sheet">
+  <div class="social-share__container js-action-sheet-item">
+    <button class="social-share__control social-share__control--no-menu social-share__control--big social-share__control__facebook js-action-sheet-share-control" data-network="facebook">
+      <svg class="svg-icon svg-icon--small svg-icon--inline">
+        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lp-icon-facebook"></use>
       </svg>
     </button>
-
-    <div class="social-share__menu social-share__menu--top" id="social-share-menu" aria-hidden="true" hidden>
-      <div class="social-share__menu__inner">
-        <ul>
-          <li>
-            <button class="social-share__control js-action-sheet-share-control" data-network="twitter">
-              <svg class="svg-icon svg-icon--small svg-icon--inline svg-icon--gray">
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lp-icon-twitter"></use>
-              </svg>
-              <span>Share on Twitter</span>
-            </button>
-          </li>
-
-          <li>
-            <button class="social-share__control js-action-sheet-share-control" data-network="facebook">
-              <svg class="svg-icon svg-icon--small svg-icon--inline svg-icon--gray">
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lp-icon-facebook-block"></use>
-              </svg>
-              <span>Share on Facebook</span>
-            </button>
-          </li>
-
-          {{#if email}}
-            <li>
-              <button class="social-share__control js-action-sheet-share-control" data-network="email">
-                <svg class="svg-icon svg-icon--small svg-icon--inline svg-icon--gray">
-                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lp-icon-email"></use>
-                </svg>
-                <span>Share by email</span>
-              </button>
-            </li>
-          {{/if}}
-        </ul>
-      </div><!-- .social-share__menu__inner -->
-
-      <div class="social-share__menu__arrow"></div>
-    </div><!-- .social-share__menu -->
-  </div><!-- .social-share__item -->
-</div><!-- .social-share -->
+    <button class="social-share__control social-share__control--no-menu social-share__control--big social-share__control__twitter js-action-sheet-share-control" data-network="twitter">
+      <svg class="svg-icon svg-icon--small svg-icon--inline">
+        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lp-icon-twitter"></use>
+      </svg>
+    </button>
+    <button class="social-share__control social-share__control--no-menu social-share__control--big social-share__control__pinterest js-action-sheet-share-control" data-network="pinterest">
+      <svg class="svg-icon svg-icon--inline">
+        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lp-icon-pinterest-large"></use>
+      </svg>
+    </button>
+  </div>
+</div>
