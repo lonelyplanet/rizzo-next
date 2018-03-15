@@ -16,13 +16,14 @@ $social-share: (
   'background-color-facebook-messenger': #0182ff,
   'background-color-twitter': #55acee,
   'background-color-pinterest': #bd081c,
+  'background-color-whats-app': #28eb76,
   'button-size': 3rem,
   'button-size-big': 4rem,
   'margin-left': .4rem,
   'margin-top': .9rem
 );
 
-$social-platforms: facebook facebook-messenger twitter pinterest;
+$social-platforms: facebook facebook-messenger twitter pinterest whats-app;
 
 /// ----------------------------------------------------------------------------
 /// Base
