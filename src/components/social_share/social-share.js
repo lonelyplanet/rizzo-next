@@ -1,9 +1,11 @@
 import { Component } from "../../core/bane";
+import MobilUtil from "../../core/mobile_util";
 import $ from "jquery";
 import urlencode from "urlencode";
 
 class SocialShareComponent extends Component {
   initialize() {
+    this.isMobile = MobilUtil.isMobile();
     this.isSocialShareMenuHidden = false;
 
     this.events = {
@@ -53,16 +55,17 @@ class SocialShareComponent extends Component {
         $images = $el.closest(".article").find("img"),
         imageUrl = $($images).attr("src"),
         title,
-        tweet,
+        shareMsg,
         msg = $el.data("msg"),
         url = $el.data("url") || window.location.href,
-        network = $el.data("network");
+        network = $el.data("network"),
+        facebookAppId = "111537044496";
 
     if ($title) {
       title = $title;
-      tweet = `${urlencode(title)} ${urlencode(url)} @lonelyplanet`;
+      shareMsg = `${urlencode(title)} ${urlencode(url)}`;
     } else if (msg) {
-      tweet = `${urlencode(msg)}`;
+      shareMsg = `${urlencode(msg)}`;
     }
 
     left = Math.round((winWidth / 2) - (width / 2));
@@ -76,6 +79,7 @@ class SocialShareComponent extends Component {
         windowSize = `width=${width},height=${height},left=${left},left=${top}`;
 
     if (network === "twitter") {
+      const tweet = `${shareMsg} @lonelyplanet`;
       window.open(`https://twitter.com/intent/tweet?text=${tweet}`, "share", `${windowOptions},${windowSize}`);
 
       return "twitter";
@@ -88,15 +92,22 @@ class SocialShareComponent extends Component {
     }
 
     if (network === "pinterest") {
-      window.open(`https://www.pinterest.com/pin/create/button/?url=${url}&media=${imageUrl}&description=${tweet}`, "share", `${windowOptions},${windowSize}`);
+      window.open(`https://www.pinterest.com/pin/create/button/?url=${url}&media=${imageUrl}&description=${shareMsg}`, "share", `${windowOptions},${windowSize}`);
 
       return "pinterest";
     }
 
     if (network === "facebook-messenger") {
-      window.open(`fb-messenger://share/?link=${url}`, "share", `${windowOptions},${windowSize}`);
+      window.open(`fb-messenger://share/?link=${url}&app_id=${facebookAppId}`, "share", `${windowOptions},${windowSize}`);
 
       return "facebook";
+    }
+
+    if (network === "whats-app") {
+      const url = this.isMobile ? `whatsapp://send?text=${shareMsg}` : `https://api.whatsapp.com/send?text=${shareMsg}`;
+      window.open(url, "share", `${windowOptions},${windowSize}`);
+
+      return "whats-app";
     }
 
     if (network === "email") {
