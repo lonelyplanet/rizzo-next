@@ -53,9 +53,9 @@ class SearchComponent extends Component {
         this.hide();
       },
 
-      "keydown .lp-search__input": "onKeyup"
+      // TODO: Uncomment to re-enable autocomplete
+      // "keydown .lp-search__input": "onKeyup"
     };
-    //$(document.body).on("keyup", this.onKeyup.bind(this));
 
     this.collection = [];
     this.overlay = new Overlay({
