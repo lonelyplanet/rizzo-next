@@ -52,10 +52,8 @@ class SearchComponent extends Component {
 
         this.hide();
       },
-
       "keydown .lp-search__input": "onKeyup"
     };
-    //$(document.body).on("keyup", this.onKeyup.bind(this));
 
     this.collection = [];
     this.overlay = new Overlay({
@@ -67,7 +65,7 @@ class SearchComponent extends Component {
     SearchState.on("change:results", this.searchComplete.bind(this));
   }
 
-  build(){
+  build() {
     this.$el = $(template());
 
     this.$input = this.$el.find(".js-lp-search-input");
@@ -168,13 +166,14 @@ class SearchComponent extends Component {
         break;
 
       default:
-        clearTimeout(this.searchTimer);
+        // TODO: Uncomment to re-enable autosuggest
+        // clearTimeout(this.searchTimer);
 
-        this.searchTimer = window.setTimeout(() => {
-          SearchActions.typing({
-            query: this.$input.val()
-          });
-        }, 200);
+        // this.searchTimer = window.setTimeout(() => {
+        //   SearchActions.typing({
+        //     query: this.$input.val()
+        //   });
+        // }, 200);
 
         break;
     }
