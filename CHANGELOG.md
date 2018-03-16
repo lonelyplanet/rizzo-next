@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.32.2"></a>
+## [0.32.2](https://github.com/lonelyplanet/rizzo-next/compare/v0.32.1...v0.32.2) (2018-03-16)
+
+
+### Bug Fixes
+
+* Disable autocomplete ([f2f9b95](https://github.com/lonelyplanet/rizzo-next/commit/f2f9b95))
+
+
+
 <a name="0.32.1"></a>
 ## [0.32.1](https://github.com/lonelyplanet/rizzo-next/compare/v0.32.0...v0.32.1) (2018-03-16)
 
