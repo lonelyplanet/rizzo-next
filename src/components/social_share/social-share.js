@@ -103,11 +103,11 @@ class SocialShareComponent extends Component {
       return "facebook";
     }
 
-    if (network === "whats-app") {
+    if (network === "whatsapp") {
       const url = this.isMobile ? `whatsapp://send?text=${shareMsg}` : `https://api.whatsapp.com/send?text=${shareMsg}`;
       window.open(url, "share", `${windowOptions},${windowSize}`);
 
-      return "whats-app";
+      return "whatsapp";
     }
 
     if (network === "email") {
