@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.32.1"></a>
+## [0.32.1](https://github.com/lonelyplanet/rizzo-next/compare/v0.32.0...v0.32.1) (2018-03-16)
+
+
+### Bug Fixes
+
+* add the WhatsApp social media icon to articles ([#818](https://github.com/lonelyplanet/rizzo-next/issues/818)) ([70e9eda](https://github.com/lonelyplanet/rizzo-next/commit/70e9eda))
+* update whatsapp name ([#820](https://github.com/lonelyplanet/rizzo-next/issues/820)) ([28afeb4](https://github.com/lonelyplanet/rizzo-next/commit/28afeb4))
+
+
+
 <a name="0.32.0"></a>
 # [0.32.0](https://github.com/lonelyplanet/rizzo-next/compare/v0.30.5...v0.32.0) (2018-03-15)
 
