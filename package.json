@@ -32,7 +32,7 @@
     "version:minor": "npm run release -- --release-as minor",
     "version:major": "npm run release -- --release-as major"
   },
-  "version": "0.32.2",
+  "version": "0.32.3",
   "pre-commit": [
     "test",
     "lint"

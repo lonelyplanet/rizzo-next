@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.32.3"></a>
+## [0.32.3](https://github.com/lonelyplanet/rizzo-next/compare/v0.32.2...v0.32.3) (2018-03-19)
+
+
+### Bug Fixes
+
+* Add gtm classes for analytics ([#821](https://github.com/lonelyplanet/rizzo-next/issues/821)) ([9f7f589](https://github.com/lonelyplanet/rizzo-next/commit/9f7f589))
+
+
+
 <a name="0.32.2"></a>
 ## [0.32.2](https://github.com/lonelyplanet/rizzo-next/compare/v0.32.1...v0.32.2) (2018-03-16)
 
