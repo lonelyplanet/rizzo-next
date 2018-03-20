@@ -59,7 +59,7 @@
     "mapbox.js": "^3.1.1",
     "matchmedia-polyfill": "^0.3.0",
     "mkdirp": "^0.5.1",
-    "moment": "^2.21.0",
+    "moment": "^2.10.6",
     "owlcarousel-pre": "1.3.3",
     "photoswipe": "^4.1.0",
     "pickadate": "*",
