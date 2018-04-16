@@ -23,6 +23,10 @@ class File extends VideoPlayer {
         html += "muted ";
       }
 
+      if (this.playsInline) {
+        html += "playsinline webkit-playsinline ";
+      }
+
       if (this.autoplay) {
         html += "autoplay ";
       }

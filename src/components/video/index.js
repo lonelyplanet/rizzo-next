@@ -56,6 +56,9 @@ players.set("file", File);
 
     muted - (optional) Whether the video should be muted or not ("file" and "brightcove" only).
 
+    playsInline - (optional) Whether the video should play inline on mobile devices or popout into
+          the device's native player ("file" and "brightcove" only)
+
     playWhenInView - (optional) Whether to play the video automatically once the
           player enters the viewport.  This will only trigger once during the lifetime of
           the player instance. ("brightcove" only).
@@ -84,6 +87,7 @@ class Video {
     popout = false,
     cover = false,
     muted = false,
+    playsInline = false,
     playWhenInView = false,
     insertPixel = true,
   } = {}) {
@@ -114,6 +118,7 @@ class Video {
           popout,
           cover,
           muted,
+          playsInline,
           playWhenInView,
           insertPixel,
         });

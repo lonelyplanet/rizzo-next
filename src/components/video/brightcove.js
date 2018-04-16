@@ -218,6 +218,7 @@ class Brightcove extends VideoPlayer {
             ${this.popout ? "<div id='" + this.getPopoutOverlayId() + "' class='video__popout-overlay icon-close-small'></div>" : ""}
             <video
               ${this.videoId ? "data-video-id='" + this.videoId + "'" : ""}
+              ${this.playsInline ? "playsinline webkit-playsinline" : ""}
               data-account="${this.bcAccountId}"
               data-player="${this.bcPlayerId}"
               data-embed="${this.bcEmbedId}"
@@ -257,10 +258,8 @@ class Brightcove extends VideoPlayer {
     } else if (!this.player) {
       this.player = videojs(this.videoEl);
 
-      // We don't show the controls until the player is instantiated
-      // or else the controls show briefly without the brightcove theme applied.{
       this.player.controls(this.controls);
-
+      this.player.playsinline(this.playsInline);
       this.player.muted(this.muted);
 
       this.player.on("loadstart", this.onPlayerLoadStart.bind(this));
