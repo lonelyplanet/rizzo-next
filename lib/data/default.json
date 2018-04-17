@@ -183,12 +183,12 @@
 
       "footer_nav_shop_items":
       [
-        { "title": "Destination guides", "url": "https://shop.lonelyplanet.com/destination-guides" },
-        { "title": "eBooks", "url": "https://lonelyplanet.com/ebooks" },
-        { "title": "Pictorial & gifts", "url": "https://shop.lonelyplanet.com/pictorials-and-gifts" },
-        { "title": "Phrasebooks", "url": "https://shop.lonelyplanet.com/phrasebooks" },
-        { "title": "Activity guides", "url": "https://shop.lonelyplanet.com/activity-guides" },
-        { "title": "Special offers", "url": "https://shop.lonelyplanet.com/special-offers" }
+        { "title": "Destination guides", "url": "https://shop.lonelyplanet.com/pages/guide-books" },
+        { "title": "eBooks", "url": "https://shop.lonelyplanet.com/categories/ebooks" },
+        { "title": "Pictorial & gifts", "url": "https://shop.lonelyplanet.com/categories/pictorials-reference" },
+        { "title": "Phrasebooks", "url": "https://shop.lonelyplanet.com/categories/phrasebooks" },
+        { "title": "Lonely Planet Kids", "url": "https://shop.lonelyplanet.com/pages/lonely-planet-kids" },
+        { "title": "Special offers", "url": "https://shop.lonelyplanet.com/pages/deals" }
       ],
 
       "footer_nav_forum_items":
