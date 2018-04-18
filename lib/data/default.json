@@ -170,7 +170,7 @@
       "footer_nav_destination_items":
       [
         { "title": "Africa", "url": "https://www.lonelyplanet.com/africa" },
-        { "title": "Antarctica", "url": "https://www.lonelyplanet.com/antarctica" },
+        { "title": "Antarctica", "url": "https://www.lonelyplanet.com/antarctica-1007062" },
         { "title": "Asia", "url": "https://www.lonelyplanet.com/asia" },
         { "title": "Caribbean Islands", "url": "https://www.lonelyplanet.com/caribbean" },
         { "title": "Central America", "url": "https://www.lonelyplanet.com/central-america" },
@@ -193,26 +193,26 @@
 
       "footer_nav_forum_items":
       [
-        { "title": "Country forums", "url": "https://lonelyplanet.com/thorntree/categories/country-forums" },
-        { "title": "Talk to Lonely Planet", "url": "https://lonelyplanet.com/thorntree/categories/talk-to-lonely-planet" },
-        { "title": "Interest forums", "url": "https://lonelyplanet.com/thorntree/categories/interest-forums" },
-        { "title": "Travel buddies & for sale", "url": "https://lonelyplanet.com/thorntree/categories/sell-swap-meet-up" }
+        { "title": "Country forums", "url": "https://www.lonelyplanet.com/thorntree/categories/country-forums" },
+        { "title": "Talk to Lonely Planet", "url": "https://www.lonelyplanet.com/thorntree/categories/talk-to-lonely-planet" },
+        { "title": "Interest forums", "url": "https://www.lonelyplanet.com/thorntree/categories/interest-forums" },
+        { "title": "Travel buddies & for sale", "url": "https://www.lonelyplanet.com/thorntree/categories/sell-swap-meet-up" }
       ],
 
       "footer_nav_interest_items":
       [
-        { "title": "Adventure travel", "url": "https://www.lonelyplanet.com/adventure-travel" },
-        { "title": "Art and culture", "url": "https://www.lonelyplanet.com/art-and-culture" },
-        { "title": "Backpacking", "url": "https://www.lonelyplanet.com/backpacking" },
-        { "title": "Beaches, coasts and islands", "url": "https://www.lonelyplanet.com/beaches-coasts-and-islands" },
-        { "title": "Family holidays", "url": "https://www.lonelyplanet.com/family-holidays" },
-        { "title": "Festivals", "url": "https://www.lonelyplanet.com/festivals" },
-        { "title": "Food and drink", "url": "https://www.lonelyplanet.com/food-and-drink" },
-        { "title": "Honeymoon and romance", "url": "https://www.lonelyplanet.com/honeymoon-and-romance" },
-        { "title": "Road trips", "url": "https://www.lonelyplanet.com/road-trips" },
-        { "title": "Travel gear and tech", "url": "https://www.lonelyplanet.com/travel-gear-and-tech" },
-        { "title": "Travel on a budget", "url": "https://www.lonelyplanet.com/travel-on-a-budget" },
-        { "title": "Wildlife and nature", "url": "https://www.lonelyplanet.com/wildlife-and-nature" }
+        { "title": "Adventure travel", "url": "https://www.lonelyplanet.com/adventure-travel/" },
+        { "title": "Art and culture", "url": "https://www.lonelyplanet.com/art-and-culture/" },
+        { "title": "Backpacking", "url": "https://www.lonelyplanet.com/backpacking/" },
+        { "title": "Beaches, coasts and islands", "url": "https://www.lonelyplanet.com/beaches-coasts-and-islands/" },
+        { "title": "Family holidays", "url": "https://www.lonelyplanet.com/family-holidays/" },
+        { "title": "Festivals", "url": "https://www.lonelyplanet.com/festivals/" },
+        { "title": "Food and drink", "url": "https://www.lonelyplanet.com/food-and-drink/" },
+        { "title": "Honeymoon and romance", "url": "https://www.lonelyplanet.com/honeymoon-and-romance/" },
+        { "title": "Road trips", "url": "https://www.lonelyplanet.com/road-trips/" },
+        { "title": "Travel gear and tech", "url": "https://www.lonelyplanet.com/travel-gear-and-tech/" },
+        { "title": "Travel on a budget", "url": "https://www.lonelyplanet.com/travel-on-a-budget/" },
+        { "title": "Wildlife and nature", "url": "https://www.lonelyplanet.com/wildlife-and-nature/" }
       ],
 
       "footer_nav_booking_items":
@@ -224,13 +224,13 @@
 
       "footer_bottom_links":
       [
-        { "title": "About us", "url": "https://lonelyplanet.com/about" },
-        { "title": "Work for Us", "url": "https://lonelyplanet.com/jobs" },
-        { "title": "Contact us", "url": "https://lonelyplanet.com/contact" },
-        { "title": "Press, trade and advertising", "url": "https://lonelyplanet.com/press-trade-advertising" },
+        { "title": "About us", "url": "https://www.lonelyplanet.com/about/" },
+        { "title": "Work for Us", "url": "https://www.lonelyplanet.com/about/careers/" },
+        { "title": "Contact us", "url": "https://www.lonelyplanet.com/contact" },
+        { "title": "Press, trade and advertising", "url": "https://www.lonelyplanet.com/press-trade-advertising/" },
         { "title": "Tourism Solutions", "url": "https://www.lonelyplanet.com/tourism" },
-        { "title": "Terms & conditions", "url": "https://lonelyplanet.com/legal/website-terms" },
-        { "title": "Privacy policy", "url": "https://lonelyplanet.com/legal/privacy-policy" }
+        { "title": "Terms & conditions", "url": "https://www.lonelyplanet.com/legal/website-terms/" },
+        { "title": "Privacy policy", "url": "https://www.lonelyplanet.com/legal/privacy-policy/" }
       ],
 
       "footer_social_media_links":
