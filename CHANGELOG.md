@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.33.0"></a>
+# [0.33.0](https://github.com/lonelyplanet/rizzo-next/compare/v0.32.6...v0.33.0) (2018-04-19)
+
+
+### Features
+
+* Updated video components to work alongside videojs-lp plugin ([#825](https://github.com/lonelyplanet/rizzo-next/issues/825)) ([f4bca1d](https://github.com/lonelyplanet/rizzo-next/commit/f4bca1d))
+
+
+
 <a name="0.32.6"></a>
 ## [0.32.6](https://github.com/lonelyplanet/rizzo-next/compare/v0.32.5...v0.32.6) (2018-04-19)
 
