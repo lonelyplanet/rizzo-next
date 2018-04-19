@@ -13,6 +13,7 @@ class VideoPlayer extends Component {
     popout = false,
     cover = false,
     muted = false,
+    playsInline = false,
     playWhenInView = false,
     insertPixel = true,
   }) {
@@ -27,6 +28,7 @@ class VideoPlayer extends Component {
     this.popout = popout;
     this.cover = cover;
     this.muted = muted;
+    this.playsInline = playsInline;
     this.playWhenInView = playWhenInView;
     this.insertPixel = insertPixel;
 

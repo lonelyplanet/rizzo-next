@@ -47,7 +47,3 @@ export default class ImageSliderComponent extends Component {
     }
   }
 }
-
-
-
-

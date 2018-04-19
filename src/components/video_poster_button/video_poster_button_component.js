@@ -13,7 +13,7 @@ export default class VideoPosterButtonComponent extends Component {
     };
 
     Video.addPlayer(this.$el.find(".video-poster-button__video")[0], {
-      playerName: "destination",
+      playsInline: true,
     }).then(this.playerReady.bind(this));
   }
 

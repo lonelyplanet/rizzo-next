@@ -11,6 +11,7 @@ const bcPlayerIds = {
   background: "BJputewob",
   bestintravel: "HkJcclwoZ",
   destination: "HkPdqeDiZ",
+  test: "H1SwHfqIM",
 };
 
 class Brightcove extends VideoPlayer {
@@ -102,6 +103,11 @@ class Brightcove extends VideoPlayer {
     this.popoutInViewTimeoutId = null;
     if (!this.popoutOutOfViewTimeoutId) {
       popoutInner.removeClass("video__popout-inner-visible");
+      if (this.hasLPUIPlugin()) {
+        this.player.lp().props({
+          popoutHandler: this.onClickPopoutOverlay.bind(this),
+        });
+      }
       this.popoutOutOfViewTimeoutId = setTimeout(() => {
         popoutInner.addClass("video__popout-inner-poppedout").addClass("video__popout-inner-visible");
         this.popoutOutOfViewTimeoutId = null;
@@ -121,11 +127,18 @@ class Brightcove extends VideoPlayer {
     this.popoutOutOfViewTimeoutId = null;
     if (!this.popoutInViewTimeoutId) {
       popoutInner.removeClass("video__popout-inner-visible");
+      if (this.hasLPUIPlugin()) {
+        this.player.lp().hidePopout();
+      }
       this.popoutInViewTimeoutId = setTimeout(() => {
         popoutInner.removeClass("video__popout-inner-poppedout").addClass("video__popout-inner-visible");
         this.popoutInViewTimeoutId = null;
       }, 200);
     }
+  }
+
+  hasLPUIPlugin() {
+    return this.player && this.player.lp && this.player.lp() && this.player.lp().props;
   }
 
   onInView() {
@@ -162,9 +175,18 @@ class Brightcove extends VideoPlayer {
   }
 
   onClickVideo(event) {
-    // Prevent event from bubbling into the UI
-    // when the user interacts with the video.
-    event.stopPropagation();
+    /*
+      Prevent event from bubbling into the UI
+      when the user interacts with the video.
+
+      This was originally put it for our "Video Poster Button" component
+      (which isn't currently used anymore and didn't use our videojs-lp plugin).
+
+      Stopping event propagation breaks our videojs-lp plugin though, so check for it here.
+    */
+    if (!this.hasLPUIPlugin()) {
+      event.stopPropagation();
+    }
   }
 
   play() {
@@ -196,6 +218,7 @@ class Brightcove extends VideoPlayer {
             ${this.popout ? "<div id='" + this.getPopoutOverlayId() + "' class='video__popout-overlay icon-close-small'></div>" : ""}
             <video
               ${this.videoId ? "data-video-id='" + this.videoId + "'" : ""}
+              ${this.playsInline ? "playsinline webkit-playsinline" : ""}
               data-account="${this.bcAccountId}"
               data-player="${this.bcPlayerId}"
               data-embed="${this.bcEmbedId}"
@@ -235,10 +258,8 @@ class Brightcove extends VideoPlayer {
     } else if (!this.player) {
       this.player = videojs(this.videoEl);
 
-      // We don't show the controls until the player is instantiated
-      // or else the controls show briefly without the brightcove theme applied.{
       this.player.controls(this.controls);
-
+      this.player.playsinline(this.playsInline);
       this.player.muted(this.muted);
 
       this.player.on("loadstart", this.onPlayerLoadStart.bind(this));
@@ -283,6 +304,14 @@ class Brightcove extends VideoPlayer {
     this.currentVideoIndex = null;
     this.loadNextVideo();
     this.trigger("ready");
+
+    /*
+      We weren't able to detect whether the videojs-lp plugin
+      is loaded until now, so disable redundant UI here
+    */
+    if (this.hasLPUIPlugin()) {
+      this.$el.find("#" + this.getPopoutOverlayId()).hide();
+    }
 
     if (this.isInView() && this.playWhenInView) {
       this.playWhenInView = false;
@@ -377,9 +406,13 @@ class Brightcove extends VideoPlayer {
   }
 
   onPlayerLoadStart() {
-    this.player.textTracks().tracks_.forEach((tt) => {
-      tt.oncuechange = this.onPlayerCueChange.bind(this);
-    });
+    if (!this.hasLPUIPlugin()) {
+      // We don't listen to oncuechange events if videojs-lp is registered
+      // as it will take care of any cue-based logic we want.
+      this.player.textTracks().tracks_.forEach((tt) => {
+        tt.oncuechange = this.onPlayerCueChange.bind(this);
+      });
+    }
 
     this.renderPixel();
     this.renderSEOMarkup();
@@ -496,14 +529,25 @@ class Brightcove extends VideoPlayer {
     if (!this.player || MobileUtil.isMobile()) {
       return;
     }
-    const mutedOverlay = this.$el.find(".video__muted-overlay");
-    mutedOverlay.css({ display: "flex" });
-    this.player.controls(false);
-    this.$el.find("#" + this.getPopoutOverlayId()).hide();
+
+    if (this.hasLPUIPlugin()) {
+      this.player.lp().props({
+        mutedOverlayHandler: () => {
+          this.showCaptions = false;
+          this.showMutedOverlay = false;
+          this.player.lp().props({ mutedOverlayHandler: null });
+        }
+      });
+    } else {
+      const mutedOverlay = this.$el.find(".video__muted-overlay");
+      mutedOverlay.css({ display: "flex" });
+      this.player.controls(false);
+      this.$el.find("#" + this.getPopoutOverlayId()).hide();
+    }
   }
 
   disableMutedOverlay() {
-    if (!this.player) {
+    if (!this.player || this.hasLPUIPlugin()) {
       return;
     }
     const mutedOverlay = this.$el.find(".video__muted-overlay");
@@ -626,7 +670,9 @@ class Brightcove extends VideoPlayer {
   }
 
   configureOverlays() {
-    if (!this.player || !this.player.overlay) {
+    if (!this.player || !this.player.overlay || this.hasLPUIPlugin()) {
+      // We can't configure the overlays if there is no player or not overlays plugin registered.
+      // Don't configure overlays if the videojs-lp-ui plugin is registered as it takes care of the overlys for us.
       return;
     }
 
