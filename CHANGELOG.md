@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.34.0"></a>
+# [0.34.0](https://github.com/lonelyplanet/rizzo-next/compare/v0.33.0...v0.34.0) (2018-04-25)
+
+
+### Features
+
+* Added Video pauseWhenOutOfView and outOfViewThreshold cfg params ([#827](https://github.com/lonelyplanet/rizzo-next/issues/827)) ([770eab5](https://github.com/lonelyplanet/rizzo-next/commit/770eab5))
+
+
+
 <a name="0.33.0"></a>
 # [0.33.0](https://github.com/lonelyplanet/rizzo-next/compare/v0.32.6...v0.33.0) (2018-04-19)
 
