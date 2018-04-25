@@ -57,6 +57,7 @@ class Brightcove extends VideoPlayer {
 
   set(options) {
     this.autoplay = _.get(options, "autoplay", this.autoplay);
+    this.playWhenInView = _.get(options, "playWhenInView", this.playWhenInView);
 
     const videoId = _.get(options, "videoId", null);
     if (videoId) {
@@ -145,7 +146,6 @@ class Brightcove extends VideoPlayer {
     this.updatePopout();
 
     if (this.player && this.playWhenInView) {
-      this.playWhenInView = false;
       this.showMutedOverlay = true;
       this.showCaptions = true;
       this.player.muted(true);
@@ -155,6 +155,10 @@ class Brightcove extends VideoPlayer {
 
   onOutOfView() {
     this.updatePopout();
+
+    if (this.player && this.pauseWhenOutOfView) {
+      this.pause();
+    }
   }
 
   isInView() {
@@ -163,15 +167,17 @@ class Brightcove extends VideoPlayer {
 
   isBelowViewport() {
     const bounds = this.el.getBoundingClientRect();
-    const halfContainerHeight = bounds.height / 2;
+    const containerHeightThreshold = bounds.height * this.outOfViewThreshold;
+    // const halfContainerHeight = bounds.height / 2;
     const windowHeight = window.innerHeight;
-    return bounds.top > (windowHeight - halfContainerHeight);
+    return bounds.top > (windowHeight - containerHeightThreshold);
   }
 
   isAboveViewport() {
     const bounds = this.el.getBoundingClientRect();
-    const halfContainerHeight = bounds.height / 2;
-    return bounds.top < -(halfContainerHeight);
+    const containerHeightThreshold = bounds.height * this.outOfViewThreshold;
+    // const halfContainerHeight = bounds.height / 2;
+    return bounds.top < -(containerHeightThreshold);
   }
 
   onClickVideo(event) {
@@ -314,11 +320,14 @@ class Brightcove extends VideoPlayer {
     }
 
     if (this.isInView() && this.playWhenInView) {
-      this.playWhenInView = false;
       this.showMutedOverlay = true;
       this.showCaptions = true;
       this.player.muted(true);
       this.play();
+    }
+
+    if (!this.isInView() && this.pauseWhenOutOfView) {
+      this.pause();
     }
   }
 

@@ -15,6 +15,8 @@ class VideoPlayer extends Component {
     muted = false,
     playsInline = false,
     playWhenInView = false,
+    pauseWhenOutOfView = false,
+    outOfViewThreshold = 0.5,
     insertPixel = true,
   }) {
 
@@ -30,6 +32,8 @@ class VideoPlayer extends Component {
     this.muted = muted;
     this.playsInline = playsInline;
     this.playWhenInView = playWhenInView;
+    this.pauseWhenOutOfView = pauseWhenOutOfView;
+    this.outOfViewThreshold = outOfViewThreshold;
     this.insertPixel = insertPixel;
 
     this.defaultAspectRatio = 1.77777778;
@@ -44,8 +48,11 @@ class VideoPlayer extends Component {
    * There is very simple default logic for this method and it is expected
    * that subclasses will have complex operations rather than simply copying
    * the properties to the instance.
-   * Warning: This is implemented as needed and currently only covers "autoplay"
-   * and "videoId" on Brightcove players.
+   * Warning: This is implemented as needed and currently only covers "autoplay",
+   * "playWhenInView", and "videoId" on Brightcove players.
+   *
+   * This is currently only used in github.com/lonelyplanet/marketing.git
+   * at app/pages/best_in_travel/components/video_gallery.js
    */
   set(options) {
     Object.assign(this, options);
