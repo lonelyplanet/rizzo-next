@@ -52,7 +52,7 @@ players.set("file", File);
           exist on the page prior to instantiation.
 
     cover - (optional) Whether to cover the entire parent element with the
-          video -- acts similar to background-size css. ("file" and "brightcove" only).
+          video -- acts similar to background-size css. ("file" and "brightcove" only)
 
     muted - (optional) Whether the video should be muted or not ("file" and "brightcove" only).
 
@@ -60,11 +60,18 @@ players.set("file", File);
           the device's native player ("file" and "brightcove" only)
 
     playWhenInView - (optional) Whether to play the video automatically once the
-          player enters the viewport.  This will only trigger once during the lifetime of
-          the player instance. ("brightcove" only).
+          player enters the viewport. ("brightcove" only)
+
+    pauseWhenOutOfView - (optional) Whether to pause the video automatically once the
+          player leaves the viewport. ("brightcove" only)
+
+    outOfViewThreshold - (optional | default: 0.5 | Decimal between 0 and 1)
+          Determines how much of the player should be outside of the viewport to be considered
+          "out of view".  Use this alongside "playsWhenInView" and/or "pauseWhenOutOfView".
+          ("brightcove" only)
 
     insertPixel - (optional) Whether to fetch a tracking pixel from the video's
-          "custom fields" and insert the pixel onto the page ("brightcove" only).
+          "custom fields" and insert the pixel onto the page. ("brightcove" only)
 
   events:
 
@@ -89,6 +96,8 @@ class Video {
     muted = false,
     playsInline = false,
     playWhenInView = false,
+    pauseWhenOutOfView = false,
+    outOfViewThreshold = 0.5,
     insertPixel = true,
   } = {}) {
 
@@ -120,6 +129,8 @@ class Video {
           muted,
           playsInline,
           playWhenInView,
+          pauseWhenOutOfView,
+          outOfViewThreshold,
           insertPixel,
         });
 
