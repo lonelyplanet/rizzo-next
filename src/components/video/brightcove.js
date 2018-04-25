@@ -168,7 +168,6 @@ class Brightcove extends VideoPlayer {
   isBelowViewport() {
     const bounds = this.el.getBoundingClientRect();
     const containerHeightThreshold = bounds.height * this.outOfViewThreshold;
-    // const halfContainerHeight = bounds.height / 2;
     const windowHeight = window.innerHeight;
     return bounds.top > (windowHeight - containerHeightThreshold);
   }
@@ -176,7 +175,6 @@ class Brightcove extends VideoPlayer {
   isAboveViewport() {
     const bounds = this.el.getBoundingClientRect();
     const containerHeightThreshold = bounds.height * this.outOfViewThreshold;
-    // const halfContainerHeight = bounds.height / 2;
     return bounds.top < -(containerHeightThreshold);
   }
 
