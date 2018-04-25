@@ -156,7 +156,7 @@ class Brightcove extends VideoPlayer {
   onOutOfView() {
     this.updatePopout();
 
-    if (this.player && this.pauseWhenOutOfView) {
+    if (this.pauseWhenOutOfView) {
       this.pause();
     }
   }
@@ -198,16 +198,20 @@ class Brightcove extends VideoPlayer {
   play() {
     super.play();
     this.autoplay = true;
-    const promise = this.player.play();
-    if (promise) {
-      promise.catch(reason => console.log("VIDEOJS:", reason)).then(() => {});
+    if (this.player) {
+      const promise = this.player.play();
+      if (promise) {
+        promise.catch(reason => console.log("VIDEOJS:", reason)).then(() => {});
+      }
     }
   }
 
   pause() {
     super.pause();
     this.autoplay = false;
-    this.player.pause();
+    if (this.player) {
+      this.player.pause();
+    }
   }
 
   start() {
