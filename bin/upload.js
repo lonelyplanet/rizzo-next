@@ -36,11 +36,11 @@ const upload = (Key, Body) => new Promise((resolve, reject) => {
 });
 
 const componentsKey = `${baseKey}/components.json`;
-const files = glob.sync("dist/*.*");
+const files = glob.sync("dist/**/*.?(css|html|js)");
 
 const promises = files.map((filename) => {
   const filePath = path.join(process.cwd(), filename);
-  const basename = path.basename(filename);
+  const basename = path.relative(path.join(process.cwd(), "dist"), filename);
   const body = fs.readFileSync(filePath);
   const key = `${baseKey}/${version}/${basename}`;
 
