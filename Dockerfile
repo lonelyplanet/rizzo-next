@@ -1,4 +1,4 @@
-FROM node:argon
+FROM node:10-slim
 RUN mkdir -p /code
 WORKDIR /code
 COPY package.json /code
