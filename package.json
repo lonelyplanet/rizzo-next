@@ -104,7 +104,7 @@
     "karma-phantomjs-launcher": "^1.0.0",
     "karma-sinon": "^1.0.4",
     "karma-webpack": "^2.0.3",
-    "mocha": "^3.4.2",
+    "mocha": "4.0.0",
     "node-sass": "4.9.0",
     "object-assign": "^4.1.1",
     "phantomjs-prebuilt": "^2.1.4",
