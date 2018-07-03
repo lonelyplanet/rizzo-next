@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.35.0"></a>
+# [0.35.0](https://github.com/lonelyplanet/rizzo-next/compare/v0.34.1...v0.35.0) (2018-07-03)
+
+
+### Bug Fixes
+
+* add normal upload as well ([d2e2481](https://github.com/lonelyplanet/rizzo-next/commit/d2e2481))
+* fix failing header test ([06c7ff4](https://github.com/lonelyplanet/rizzo-next/commit/06c7ff4))
+* fix some package issue ([dc1fccb](https://github.com/lonelyplanet/rizzo-next/commit/dc1fccb))
+* remove search autocomplete component ([c0c382e](https://github.com/lonelyplanet/rizzo-next/commit/c0c382e))
+* update dockerfile ([5d8ffb2](https://github.com/lonelyplanet/rizzo-next/commit/5d8ffb2))
+* use full node 10 image ([edcf612](https://github.com/lonelyplanet/rizzo-next/commit/edcf612))
+
+
+### Features
+
+* add header logo modifier; add foods logo svg ([d1fcb3a](https://github.com/lonelyplanet/rizzo-next/commit/d1fcb3a))
+
+
+
 <a name="0.34.2"></a>
 ## [0.34.2](https://github.com/lonelyplanet/rizzo-next/compare/v0.34.1...v0.34.2) (2018-05-30)
 
