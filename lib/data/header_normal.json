@@ -19,10 +19,10 @@
           "slug": "https://www.lonelyplanet.com/video",
           "submenu": {
             "featured": {
-              "image": "https://lonelyplanetstatic.imgix.net/op-video-sync/assets/bit18_masthead.jpg?w=80&h=60&fit=min",
-              "title": "Best in Travel 2018",
+              "image": "https://lonelyplanetstatic.imgix.net/op-video-sync/assets/discover_series_masthead.png?w=80&h=60&fit=min",
+              "title": "The Discover Series",
               "subtitle": "Featured",
-              "link": "https://www.lonelyplanet.com/video/best-in-travel-2018/v/cha/10"
+              "link": "https://www.lonelyplanet.com/video/the-discover-series/v/cha/11"
             },
             "items": [
               {
@@ -36,6 +36,10 @@
               {
                 "title": "Beaches, coasts and islands",
                 "slug": "https://www.lonelyplanet.com/video/beaches/v/cha/3"
+              },
+              {
+                "title": "Best in Travel 2018",
+                "slug": "https://www.lonelyplanet.com/video/best-in-travel-2018/v/cha/10"
               },
               {
                 "title": "Explore every day",
