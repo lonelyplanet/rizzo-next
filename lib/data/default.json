@@ -143,10 +143,6 @@
                 "slug": "https://www.lonelyplanet.com/sightseeing-tours"
               },
               {
-                "title": "Airport transfers",
-                "slug": "https://www.lonelyplanet.com/airport-transfers"
-              },
-              {
                 "title": "Car rental",
                 "slug": "https://www.lonelyplanet.com/car-rental"
               }
@@ -198,9 +194,9 @@
       "footer_nav_forum_items":
       [
         { "title": "Country forums", "url": "https://www.lonelyplanet.com/thorntree/categories/country-forums" },
-        { "title": "Talk to Lonely Planet", "url": "https://www.lonelyplanet.com/thorntree/categories/talk-to-lonely-planet" },
         { "title": "Interest forums", "url": "https://www.lonelyplanet.com/thorntree/categories/interest-forums" },
-        { "title": "Travel buddies & for sale", "url": "https://www.lonelyplanet.com/thorntree/categories/sell-swap-meet-up" }
+        { "title": "Travel companions", "url": "https://www.lonelyplanet.com/thorntree/categories/travel-companions" },
+        { "title": "Talk to Lonely Planet", "url": "https://www.lonelyplanet.com/thorntree/categories/talk-to-lonely-planet" }
       ],
 
       "footer_nav_interest_items":
