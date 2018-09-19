@@ -1,7 +1,13 @@
 import $ from "jquery";
 let Injector = require("inject-loader!../../../src/components/header/header_component");
 
+let showSearchCalled = 0;
+
+let SearchMock = function() {};
+SearchMock.prototype = { show: function() { ++showSearchCalled; } };
+
 let Header = Injector({
+  "../search": SearchMock,
   "../navigation": function() {}
 }).default;
 
@@ -26,4 +32,11 @@ describe("header", () => {
     // Cleanup
     Header.prototype.isTooBig = isTooBig;
   });
+});
+
+it("should show the search when clicked", () => {
+  let $el = $(html);
+  let header = new Header({ el: $el });
+   $el.find(".js-lp-global-header-search").eq(0).trigger("click");
+   expect(showSearchCalled).to.be(1);
 });
