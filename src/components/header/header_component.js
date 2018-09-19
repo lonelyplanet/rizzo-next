@@ -1,6 +1,7 @@
 import $ from "jquery";
 import debounce from "lodash/debounce";
 import { Component } from "../../core/bane";
+import SearchComponent from "../search";
 import NavigationComponent from "../navigation";
 import NavigationState from "../navigation/navigation_state";
 
@@ -13,7 +14,7 @@ class Header extends Component {
 
   initialize() {
     this.state = NavigationState.getState();
-
+    this.search = new SearchComponent();
     this.navigation = new NavigationComponent({
       el: $(".navigation")
     });
@@ -61,6 +62,12 @@ class Header extends Component {
    */
   isTooBig() {
     return this.$search.width() > this.$inner.width() * .42;
+  }
+
+  onSearchClick(e) {
+    e.preventDefault();
+
+    this.search.show();
   }
 
   onMobileMenuClick(e){
