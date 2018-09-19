@@ -11,6 +11,8 @@ class ThingsToDo extends Component {
   initialize() {
     this.currentIndex = (this.getCurrentIndex()) || 0;
 
+    this.slug = this.getSlug();
+
     this.options = {
       numOfCards: 4
     };
@@ -22,20 +24,29 @@ class ThingsToDo extends Component {
       "swipeleft": "loadMore"
     };
 
-    this.fetchCards().done(this.cardsFetched.bind(this)).fail((jqXHR) => {
-      rizzo.logger.error(new Error(`
-        Could not fetch /api/${window.lp.place.slug}/experiences.json.
-        Response Text: ${jqXHR.responseText}.
-        Status: ${jqXHR.statusText}
-        `));
-      return this.nukeIt();
-    });
+    if (this.slug) {
+      this.fetchCards().done(this.cardsFetched.bind(this)).fail((jqXHR) => {
+        rizzo.logger.error(new Error(`
+          Could not fetch /api/${this.slug}/experiences.json.
+          Response Text: ${jqXHR.responseText}.
+          Status: ${jqXHR.statusText}
+          `));
+        return this.nukeIt();
+      });
+    }
 
     this.navigation = require("./things_to_do_navigation.hbs");
   }
+  getSlug() {
+    try {
+      return window.lp.place.slug;
+    } catch (e) {
+      return null;
+    }
+  }
   getCurrentIndex() {
     let obj = window.localStorage && JSON.parse(window.localStorage.getItem("ttd.currentIndex"));
-    if (!obj || obj.slug !== window.lp.place.slug) {
+    if (!obj || obj.slug !== this.slug) {
       return;
     }
 
@@ -45,11 +56,11 @@ class ThingsToDo extends Component {
     const op_variant = window.location.href.match(/op_variant=true/);
     if (op_variant == null) {
       return $.ajax({
-        url: `/api/${window.lp.place.slug}/experiences.json`
+        url: `/api/${this.slug}/experiences.json`
       });
     } else {
       return $.ajax({
-        url: `/api/${window.lp.place.slug}/experiences.json?op_variant=true`
+        url: `/api/${this.slug}/experiences.json?op_variant=true`
       });
     }
   }
@@ -138,7 +149,7 @@ class ThingsToDo extends Component {
     let cards = this.nextCards();
     if (window.localStorage) {
       try {
-        window.localStorage.setItem("ttd.currentIndex", JSON.stringify({ index: this.currentIndex, slug: window.lp.place.slug }));
+        window.localStorage.setItem("ttd.currentIndex", JSON.stringify({ index: this.currentIndex, slug: this.slug }));
       } catch(e) {
         rizzo.logger.log("Couldn't set TTD in local storage");
       }
