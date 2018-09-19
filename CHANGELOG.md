@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.35.6"></a>
+## [0.35.6](https://github.com/lonelyplanet/rizzo-next/compare/v0.35.5...v0.35.6) (2018-09-19)
+
+
+### Bug Fixes
+
+* things to do shuold only fetch if content has a slug to fetch by ([#841](https://github.com/lonelyplanet/rizzo-next/issues/841)) ([00dba30](https://github.com/lonelyplanet/rizzo-next/commit/00dba30))
+
+
+
 <a name="0.35.5"></a>
 ## [0.35.5](https://github.com/lonelyplanet/rizzo-next/compare/v0.35.4...v0.35.5) (2018-09-10)
 
