@@ -128,7 +128,7 @@
 .sub-navigation {
   $top: ($header-height - $gutter);
   $left: 50%;
-  $width: 32rem;
+  $width: 34rem;
   $margin-left: -($width / 2);
   $padding-top: 0;
   @include dropdown-menu($top, $left, $width, $margin-left, $padding-top);
