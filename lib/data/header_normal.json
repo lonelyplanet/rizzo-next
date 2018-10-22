@@ -19,10 +19,10 @@
           "slug": "https://www.lonelyplanet.com/video",
           "submenu": {
             "featured": {
-              "image": "https://lonelyplanetstatic.imgix.net/op-video-sync/assets/tokyo-modern-social.jpg?w=80&h=60&fit=min",
-              "title": "Tokyo Modern | Classic",
+              "image": "https://lonelyplanetstatic.imgix.net/op-video-sync/assets/bit19_masthead.jpg?w=80&h=60&fit=min",
+              "title": "Best in Travel 2019",
               "subtitle": "Featured",
-              "link": "https://www.lonelyplanet.com/video/tokyo-modern-classic/v/cha/13"
+              "link": "https://www.lonelyplanet.com/video/best-in-travel-2019/v/cha/14"
             },
             "items": [
               {
@@ -36,10 +36,6 @@
               {
                 "title": "Beaches, coasts and islands",
                 "slug": "https://www.lonelyplanet.com/video/beaches/v/cha/3"
-              },
-              {
-                "title": "Best in Travel 2018",
-                "slug": "https://www.lonelyplanet.com/video/best-in-travel-2018/v/cha/10"
               },
               {
                 "title": "Explore Abu Dhabi",
@@ -56,6 +52,10 @@
               {
                 "title": "Journeys",
                 "slug": "https://www.lonelyplanet.com/video/journeys/v/cha/9"
+              },
+              {
+                "title": "Tokyo Modern | Classic",
+                "slug": "https://www.lonelyplanet.com/video/tokyo-modern-classic/v/cha/13"
               }
             ],
             "call_to_action": {
