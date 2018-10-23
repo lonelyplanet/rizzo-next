@@ -1,4 +1,11 @@
 <div class="article-body has-legacy-code js-article-body" data-post-date="{{ article.post_date }}">
+
+  <div class="tags">
+    {{#each article.tags}}
+      <button class="tag">{{this}}</button>
+    {{/each}}
+  </div>
+
   <div class="article-body__content">
     {{{ article.content.head }}}
   </div><!-- .article-body__content -->
