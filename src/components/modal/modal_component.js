@@ -1,3 +1,4 @@
+import { analytics, EventNames, getTrackMethod } from "@lonelyplanet/lp-analytics";
 import { Component } from "../../core/bane";
 import waitForTimeout from "../../core/utils/waitForTransition";
 import Overlay from "../overlay";
@@ -7,6 +8,7 @@ import SocialShareComponent from "../social_share";
 
 class Modal extends Component {
   initialize(options) {
+    this.track = getTrackMethod();
     this.events = {
       "touchend a": "goTo"
     };
@@ -132,6 +134,17 @@ class Modal extends Component {
       value: "sign up"
     };
     window.lp.analytics.send("event", dataLayer);
+    /**
+     * From what I can tell this has only been used to offer ebooks
+     * after users submit their email address to sign up for our newsletter.
+     * Hence the above tracking specific to newsletter subscriptions.
+     * An example: https://github.com/lonelyplanet/destinations-next/commit/e5546e752d793fd15dc67d515f3f17da199c51b1#diff-986789ce7bc7e90c1dee9fd68a5e28c9
+     * I don't know if it's still in use (the file in the PR above has since been deleted),
+     * but just in case, tracking here as well.
+     */
+    this.track({
+      [analytics.eventName]: EventNames.newsletterSubscription,
+    });
   }
 
   submit(e) {
