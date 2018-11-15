@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.35.10"></a>
+## [0.35.10](https://github.com/lonelyplanet/rizzo-next/compare/v0.35.9...v0.35.10) (2018-11-09)
+
+
+### Features
+
+* track newsletter subscriptions in modal and footer ([3ebeb97](https://github.com/lonelyplanet/rizzo-next/commit/3ebeb97))
+
+
+
 <a name="0.35.9"></a>
 ## [0.35.9](https://github.com/lonelyplanet/rizzo-next/compare/v0.35.8...v0.35.9) (2018-10-23)
 
