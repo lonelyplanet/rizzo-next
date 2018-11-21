@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.35.11"></a>
+## [0.35.11](https://github.com/lonelyplanet/rizzo-next/compare/v0.35.10...v0.35.11) (2018-11-21)
+
+
+
 <a name="0.35.10"></a>
 ## [0.35.10](https://github.com/lonelyplanet/rizzo-next/compare/v0.35.9...v0.35.10) (2018-11-09)
 
