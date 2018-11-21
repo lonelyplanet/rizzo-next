@@ -1,7 +1,7 @@
 <div class="article-body has-legacy-code js-article-body" data-post-date="{{ article.post_date }}">
 
   <div class="article-tags">
-    {{#each article.tags}}
+    {{#each article.tags_for_ui}}
       <a href="https://www.lonelyplanet.com/search?topic_id={{this.id}}" target="_blank">
         <button class="tag">{{this.label}}</button>
       </a>
