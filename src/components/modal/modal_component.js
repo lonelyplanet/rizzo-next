@@ -1,4 +1,3 @@
-import { analytics, EventNames, getTrackMethod } from "@lonelyplanet/lp-analytics";
 import { Component } from "../../core/bane";
 import waitForTimeout from "../../core/utils/waitForTransition";
 import Overlay from "../overlay";
@@ -8,7 +7,6 @@ import SocialShareComponent from "../social_share";
 
 class Modal extends Component {
   initialize(options) {
-    this.track = getTrackMethod();
     this.events = {
       "touchend a": "goTo"
     };
@@ -142,9 +140,10 @@ class Modal extends Component {
      * I don't know if it's still in use (the file in the PR above has since been deleted),
      * but just in case, tracking here as well.
      */
-    this.track({
-      [analytics.eventName]: EventNames.newsletterSubscription,
-    });
+    if (typeof window !== "undefined" && window.dataLayer && Array.isArray(window.dataLayer)) {
+      // shim for lp-analytics; importing the module seems to break rizzo (not this, rizzo-next, but legacy rizzo, which imports this)
+      window.dataLayer.push({ event: "newsletter-subscribe" });
+    }
   }
 
   submit(e) {
