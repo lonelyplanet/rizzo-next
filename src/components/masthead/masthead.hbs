@@ -31,6 +31,14 @@
             <span class="masthead__breadcrumb__separator" aria-hidden="true">/</span>
           {{/if}}
           <a href="{{masthead.parent.slug}}">{{masthead.parent.place}}</a>
+
+          {{#if masthead.slug_parents}}
+            {{#each masthead.slug_parents}}
+              <span class="masthead__breadcrumb__separator" aria-hidden="true">/</span>
+              <a href="{{slug}}">{{place}}</a>
+            {{/each}}
+          {{/if}}
+
         </div>
       {{/if}}
 
