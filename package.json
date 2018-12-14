@@ -39,6 +39,7 @@
   ],
   "dependencies": {
     "@lonelyplanet/dotcom-core": "^2.14.0",
+    "@lonelyplanet/lp-analytics": "^2.0.9",
     "airbrake-js": "^0.9.3",
     "async": "^2.0.0-rc.4",
     "aws-sdk": "^2.155.0",
