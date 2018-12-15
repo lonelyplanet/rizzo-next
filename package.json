@@ -15,7 +15,7 @@
     "name": "Lonely Planet"
   },
   "scripts": {
-    "build": "rimraf dist && mkdir -p dist/header_normal && NODE_ENV=production node bin/rizzo build -c ../lib/data/header_normal.json && NODE_ENV=production node bin/rizzo build && npm run css",
+    "build": "npm ci && rimraf dist && mkdir -p dist/header_normal && NODE_ENV=production node bin/rizzo build -c ../lib/data/header_normal.json && NODE_ENV=production node bin/rizzo build && npm run css",
     "start:ci": "babel -d dist src --watch",
     "ci": "karma start",
     "css": "node-sass sass/core.scss dist/core.css --include-path 'node_modules' --output-style compressed",
@@ -48,7 +48,7 @@
     "clamp-js": "*",
     "commander": "^2.9.0",
     "es5-shim": "^4.1.13",
-    "flamsteed": "latest",
+    "flamsteed": "0.0.4",
     "glob": "^7.1.2",
     "handlebars": "^4.1.0",
     "history": "^4.6.3",
