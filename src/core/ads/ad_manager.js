@@ -93,7 +93,11 @@ export default class AdManager {
   }
 
   _track($adunit) {
-    return `${$adunit.data("sizeMapping")}-${$adunit[0].id}-${$adunit.data("adType") || "default"}`;
+    if ($adunit && $adunit[0] && "id" in $adunit[0]) {
+      return `${$adunit.data("sizeMapping")}-${$adunit[0].id}-${$adunit.data("adType") || "default"}`;
+    } else {
+      return "default";
+    }
   }
 
   formatKeywords(config) {
