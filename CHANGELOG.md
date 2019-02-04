@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.35.17"></a>
+## [0.35.17](https://github.com/lonelyplanet/rizzo-next/compare/v0.35.15...v0.35.17) (2019-02-04)
+
+
+### Features
+
+* remove usabilla ([a9453a3](https://github.com/lonelyplanet/rizzo-next/commit/a9453a3))
+
+
+
 <a name="0.35.16"></a>
 ## [0.35.16](https://github.com/lonelyplanet/rizzo-next/compare/v0.35.13...v0.35.16) (2019-01-18)
 
