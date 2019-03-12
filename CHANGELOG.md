@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.36.0"></a>
+# [0.36.0](https://github.com/lonelyplanet/rizzo-next/compare/v0.35.17...v0.36.0) (2019-03-12)
+
+
+### Bug Fixes
+
+* locked down mapbox.js version to 3.1.1 ([702a394](https://github.com/lonelyplanet/rizzo-next/commit/702a394))
+
+
+
 <a name="0.35.17"></a>
 ## [0.35.17](https://github.com/lonelyplanet/rizzo-next/compare/v0.35.15...v0.35.17) (2019-02-04)
 
