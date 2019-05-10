@@ -128,3 +128,14 @@
 .intro-narrative__author__creds__title {
   @include author-title($min-320);
 }
+
+.intro-narrative__logo {
+  display: block;
+  margin: 0 auto 1rem auto;
+  width: 22rem;
+  padding-bottom: 1rem;
+
+  @media (max-width: $min-720) {
+    width: 13rem;
+  }
+}
