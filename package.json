@@ -15,7 +15,7 @@
     "name": "Lonely Planet"
   },
   "scripts": {
-    "build": "rimraf dist && mkdir -p dist/header_normal && NODE_ENV=production node bin/rizzo build -c ../lib/data/header_normal.json && NODE_ENV=production node bin/rizzo build && npm run css",
+    "build": "npm ci && rimraf dist && mkdir -p dist/header_normal && NODE_ENV=production node bin/rizzo build -c ../lib/data/header_normal.json && NODE_ENV=production node bin/rizzo build && npm run css",
     "start:ci": "babel -d dist src --watch",
     "ci": "karma start",
     "css": "node-sass sass/core.scss dist/core.css --include-path 'node_modules' --output-style compressed",
@@ -39,6 +39,7 @@
   ],
   "dependencies": {
     "@lonelyplanet/dotcom-core": "^2.14.0",
+    "@lonelyplanet/lp-analytics": "^2.0.9",
     "airbrake-js": "^0.9.3",
     "async": "^2.0.0-rc.4",
     "aws-sdk": "^2.155.0",
