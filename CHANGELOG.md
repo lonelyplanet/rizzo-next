@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.38.7"></a>
+## [0.38.7](https://github.com/lonelyplanet/rizzo-next/compare/v0.38.6...v0.38.7) (2019-10-15)
+
+
+### Bug Fixes
+
+* clean dfp strings of special characters ([#875](https://github.com/lonelyplanet/rizzo-next/issues/875)) ([3a42103](https://github.com/lonelyplanet/rizzo-next/commit/3a42103))
+* support bit 2020 logo ([#876](https://github.com/lonelyplanet/rizzo-next/issues/876)) ([6151598](https://github.com/lonelyplanet/rizzo-next/commit/6151598))
+
+
+
 <a name="0.38.6"></a>
 ## [0.38.6](https://github.com/lonelyplanet/rizzo-next/compare/v0.38.5...v0.38.6) (2019-06-17)
 
