@@ -48,7 +48,7 @@
     "clamp-js": "*",
     "commander": "^2.9.0",
     "es5-shim": "^4.1.13",
-    "flamsteed": "0.0.4",
+    "flamsteed": "latest",
     "glob": "^7.1.2",
     "handlebars": "^4.1.0",
     "history": "^4.6.3",
