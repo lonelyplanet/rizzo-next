@@ -165,7 +165,12 @@
       </div>
 
       <p class="lp-global-footer__copyright">
-        &copy; {{copyright_year}} Lonely Planet. All rights reserved.
+        &copy; 
+        <script>
+            var CurrentYear = new Date().getFullYear()
+            document.write(CurrentYear)
+        </script>
+         Lonely Planet. All rights reserved.
         No part of this site may be reproduced without our written permission.
       </p>
     </div>
