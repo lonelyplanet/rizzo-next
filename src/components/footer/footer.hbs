@@ -11,33 +11,11 @@
           </a>
         </p>
 
-        <form class="newsletter-register js-newsletter-form" action="https://www.lonelyplanet.com/newsletter" method="post" _lpchecked="1">
-          <input name="newsletter[source]" type="hidden" value="homepagefooter">
-          <input name="type" type="hidden" value="subscribe">
-
+        <div class="newsletter-register">
           <p class="newsletter-register__text">
              Get 20% off at our online shop.
           </p>
-
-          <label for="newsletter-register-email">Email address</label>
-          <input class="newsletter-register__email" id="newsletter-register-email" name="newsletter[email]" type="email" placeholder="your@email.com" autocomplete="email" autocapitalize="none" autocorrect="off" required>
-
-          <label for="newsletter-register-country">Country</label>
-          <select class="newsletter-register__country" id="newsletter-register-country" name="newsletter[country]">
-            <option value="">Select country</option>
-            {{#each newsletter_countries}}
-              <option value="{{this}}">{{this}}</option>
-            {{/each}}
-          </select>
-
-          <input id="newsletter-register-optin" class="newsletter-register__optin js-newsletter-optin" type="checkbox" name="newsletter[legalOptIn]" required value="true" checked style="display: none;">
-          <div class="newsletter-register__text newsletter-register__disclaimer">I want emails from Lonely Planet with travel and product information, promotions, advertisements, third-party offers, and
-          surveys. I can unsubscribe any time using the unsubscribe link at the end of all emails. Contact Lonely Planet <a rel="noopener noreferrer" href="https://www.lonelyplanet.com/contact" target="_blank"> here</a>. Lonely Planet <a rel="noopener noreferrer" href="https://www.lonelyplanet.com/legal/privacy-policy/" target="_blank">Privacy Policy.</a></div>
-
-          <input class="newsletter-register__button js-submit" data-lpa-action="newsletter" data-lpa-category="account" value="Subscribe" type="submit" />
-        </form>
-        <div class="js-success is-hidden">
-          Thank you for subscribing.
+          <a role="button" class="newsletter-register__button" href="https://www.lonelyplanet.com/newsletter">Subscribe</a>
         </div>
       </div>
 
@@ -187,7 +165,9 @@
       </div>
 
       <p class="lp-global-footer__copyright">
-        &copy; {{copyright_year}} Lonely Planet. All rights reserved.
+        &copy; 
+        <script>document.write(new Date().getFullYear())</script>
+         Lonely Planet. All rights reserved.
         No part of this site may be reproduced without our written permission.
       </p>
     </div>
