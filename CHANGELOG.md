@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.38.8"></a>
+## [0.38.8](https://github.com/lonelyplanet/rizzo-next/compare/v0.38.7...v0.38.8) (2020-11-06)
+
+
+### Bug Fixes
+
+* remove newsletter form from footer and replace with button ([#877](https://github.com/lonelyplanet/rizzo-next/issues/877)) ([bd30db0](https://github.com/lonelyplanet/rizzo-next/commit/bd30db0))
+
+
+
 <a name="0.38.7"></a>
 ## [0.38.7](https://github.com/lonelyplanet/rizzo-next/compare/v0.38.6...v0.38.7) (2019-10-15)
 
