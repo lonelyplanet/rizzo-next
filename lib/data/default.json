@@ -170,7 +170,7 @@
       "footer_nav_destination_items":
       [
         { "title": "Africa", "url": "https://www.lonelyplanet.com/africa" },
-        { "title": "Antarctica", "url": "https://www.lonelyplanet.com/antarctica-1007062" },
+        { "title": "Antarctica", "url": "https://www.lonelyplanet.com/antarctica" },
         { "title": "Asia", "url": "https://www.lonelyplanet.com/asia" },
         { "title": "Caribbean Islands", "url": "https://www.lonelyplanet.com/caribbean" },
         { "title": "Central America", "url": "https://www.lonelyplanet.com/central-america" },
@@ -183,12 +183,12 @@
 
       "footer_nav_shop_items":
       [
+        { "title": "Lonely Planet Membership", "url": "https://www.lonelyplanet.com/membership" },
         { "title": "Destination guides", "url": "https://shop.lonelyplanet.com/pages/guide-books" },
-        { "title": "eBooks", "url": "https://shop.lonelyplanet.com/categories/ebooks" },
         { "title": "Pictorial & gifts", "url": "https://shop.lonelyplanet.com/categories/pictorials-reference" },
         { "title": "Phrasebooks", "url": "https://shop.lonelyplanet.com/categories/phrasebooks" },
         { "title": "Lonely Planet Kids", "url": "https://shop.lonelyplanet.com/pages/lonely-planet-kids" },
-        { "title": "Special offers", "url": "https://shop.lonelyplanet.com/pages/deals" }
+        { "title": "Non-English Guides", "url": "https://support.lonelyplanet.com/hc/en-us/articles/218157937-General-guidebook-information-#product3" }
       ],
 
       "footer_nav_forum_items":
@@ -200,18 +200,18 @@
 
       "footer_nav_interest_items":
       [
-        { "title": "Adventure travel", "url": "https://www.lonelyplanet.com/adventure-travel/" },
-        { "title": "Art and culture", "url": "https://www.lonelyplanet.com/art-and-culture/" },
-        { "title": "Backpacking", "url": "https://www.lonelyplanet.com/backpacking/" },
-        { "title": "Beaches, coasts and islands", "url": "https://www.lonelyplanet.com/beaches-coasts-and-islands/" },
-        { "title": "Family holidays", "url": "https://www.lonelyplanet.com/family-holidays/" },
-        { "title": "Festivals", "url": "https://www.lonelyplanet.com/festivals/" },
-        { "title": "Food and drink", "url": "https://www.lonelyplanet.com/food-and-drink/" },
-        { "title": "Honeymoon and romance", "url": "https://www.lonelyplanet.com/honeymoon-and-romance/" },
-        { "title": "Road trips", "url": "https://www.lonelyplanet.com/road-trips/" },
-        { "title": "Travel gear and tech", "url": "https://www.lonelyplanet.com/travel-gear-and-tech/" },
-        { "title": "Travel on a budget", "url": "https://www.lonelyplanet.com/travel-on-a-budget/" },
-        { "title": "Wildlife and nature", "url": "https://www.lonelyplanet.com/wildlife-and-nature/" }
+        { "title": "Adventure travel", "url": "https://www.lonelyplanet.com/inspiration/adventure-travel/" },
+        { "title": "Art and culture", "url": "https://www.lonelyplanet.com/inspiration/art-and-culture/" },
+        { "title": "Backpacking", "url": "https://www.lonelyplanet.com/inspiration/backpacking/" },
+        { "title": "Beaches, coasts and islands", "url": "https://www.lonelyplanet.com/inspiration/beaches-coasts-and-islands/" },
+        { "title": "Family holidays", "url": "https://www.lonelyplanet.com/inspiration/family-holidays/" },
+        { "title": "Festivals", "url": "https://www.lonelyplanet.com/inspiration/festivals/" },
+        { "title": "Food and drink", "url": "https://www.lonelyplanet.com/inspiration/food-and-drink/" },
+        { "title": "Honeymoon and romance", "url": "https://www.lonelyplanet.com/inspiration/honeymoon-and-romance/" },
+        { "title": "Road trips", "url": "https://www.lonelyplanet.com/inspiration/road-trips/" },
+        { "title": "Travel gear and tech", "url": "https://www.lonelyplanet.com/inspiration/travel-gear-and-tech/" },
+        { "title": "Travel on a budget", "url": "https://www.lonelyplanet.com/inspiration/travel-on-a-budget/" },
+        { "title": "Wildlife and nature", "url": "https://www.lonelyplanet.com/inspiration/wildlife-and-nature/" }
       ],
 
       "footer_nav_booking_items":
