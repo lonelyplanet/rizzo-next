@@ -22,7 +22,6 @@ window.lp.ads = window.lp.ads || {};
 window.lp.ads.manager = new AdManager(window.lp.ads).initialize();
 
 rizzo.renderComponent(GlobalHeader, ".lp-global-header");
-rizzo.renderComponent(GlobalFooter, ".lp-global-footer");
 
 FastClick.attach(document.body);
 
