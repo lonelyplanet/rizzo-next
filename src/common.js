@@ -31,7 +31,6 @@ if (typeof ENV_PROD !== "undefined" && ENV_PROD) {
 }
 
 let cookie = new CookieUtil();
-cookie.setCookie("destinations-next-cookie", true, 14);
 
 // Show cookie notification for EU users
 if (cookie.getCookie("lpCurrency") && cookie.getCookie("lpCurrency").match(/GBP|EUR/)) {
