@@ -108,7 +108,7 @@
     "karma-sinon": "^1.0.4",
     "karma-webpack": "^2.0.3",
     "mocha": "4.0.0",
-    "node-sass": "4.9.0",
+    "node-sass": "4.14.0",
     "object-assign": "^4.1.1",
     "phantomjs-prebuilt": "^2.1.4",
     "pre-commit": "^1.1.2",
