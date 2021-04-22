@@ -1,7 +1,7 @@
 import { Component } from "../../core/bane";
 import Overlay from "../overlay";
 import waitForTransition from "../../core/utils/waitForTransition";
-import SearchActions from "./search_actions";
+// import SearchActions from "./search_actions";
 import SearchState from "./search_state";
 import template from "./search.hbs";
 
