@@ -1,7 +1,6 @@
 import "./components/analytics";
 import rizzo from "rizzo-next";
 import GlobalHeader from "./components/header";
-import GlobalFooter from "./components/footer";
 import FastClick from "fastclick";
 import "./core/utils/preload";
 import "./core/utils/detect_swipe";
