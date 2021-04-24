@@ -86,7 +86,7 @@ class SocialShareComponent extends Component {
     }
 
     if (network === "facebook") {
-      window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, "share", `${windowOptions},${windowSize}`);
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${urlencode(url)}`, "share", `${windowOptions},${windowSize}`);
 
       return "facebook";
     }
