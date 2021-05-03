@@ -16,14 +16,14 @@ $logo-height: 4rem;
 
   &__bottom {
     @include clearfix;
-    border-top: .1rem solid $color-gray;
+    border-top: 0.1rem solid $color-gray;
     padding-bottom: $gutter;
     position: relative;
 
     @media (min-width: $min-960) {
       padding-bottom: ($spacing + 6.6);
       padding-left: 8rem + $gutter;
-      padding-right: ($logo-height + .2) * 3 + $spacing;
+      padding-right: ($logo-height + 0.2) * 3 + $spacing;
       padding-top: 2.6rem;
     }
   }
@@ -50,17 +50,17 @@ $logo-height: 4rem;
     float: left;
 
     &:not(:first-child) {
-      margin-left: .6rem;
+      margin-left: 0.6rem;
     }
   }
 
   &__social-link {
-    border: .1rem solid $social-network-button-color;
+    border: 0.1rem solid $social-network-button-color;
     border-radius: 50%;
     color: darken($color-white, 20); // #cccdce;
     display: block;
     height: $logo-height;
-    line-height: ($logo-height + .5);
+    line-height: ($logo-height + 0.5);
     text-align: center;
     transition-duration: $animation-speed;
     transition-property: color, border, background-color;
@@ -74,7 +74,7 @@ $logo-height: 4rem;
     }
 
     .svg-icon {
-      top: -.3rem;
+      top: -0.3rem;
     }
 
     &--facebook {
@@ -200,7 +200,7 @@ $logo-height: 4rem;
     float: left;
     max-height: 600px;
     padding-right: percentage($gutter / $max-width);
-    width: percentage(22rem / $max-width);
+    width: 20%;
   }
 
   &:not(:first-of-type) {
@@ -289,7 +289,7 @@ $logo-height: 4rem;
 
 .lp-global-footer__main__links__list__item {
   font-size: 1.3rem;
-  letter-spacing: .02rem;
+  letter-spacing: 0.02rem;
   line-height: 2.2;
   list-style: none;
 
@@ -324,7 +324,7 @@ $logo-height: 4rem;
 .newsletter-register__text {
   color: $font-color-light;
   font-size: 1.2rem;
-  letter-spacing: .02rem;
+  letter-spacing: 0.02rem;
   line-height: (18 / 12);
   margin-top: 16px;
 }
@@ -332,7 +332,6 @@ $logo-height: 4rem;
 .newsletter-register__disclaimer {
   font-size: 1.1rem;
 }
-
 
 .newsletter-register__email {
   @include form-control;
@@ -384,7 +383,7 @@ $logo-height: 4rem;
 }
 
 .language__label {
-  color: rgba($titlegray, .72);
+  color: rgba($titlegray, 0.72);
   font-size: 1.3rem;
   line-height: 1;
 
